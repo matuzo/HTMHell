@@ -2,5 +2,9 @@
 layout: layouts/base.njk
 title: Markup from hell
 ---
+<p class="site-intro">
+  {{ hell.site_description }}
+</p>
+
 {% set entries = collections.entries | head(-3)  %}
 {% include "entries.njk" %}
