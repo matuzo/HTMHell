@@ -1,6 +1,6 @@
 // const filters = require('./_11ty/filters.js')
 // const collections = require('./_11ty/collections.js')
-// const transforms = require('./_11ty/transforms.js')
+const authors = require('./hell/_data/authors.js')
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -17,6 +17,21 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
   });
+
+  eleventyConfig.addNunjucksShortcode("author", function(id) {
+    let authorHTML;
+    authors.authors.filter(author => {
+      console.log(author.id )
+      console.log(id )
+      if (author.id === id) {
+        console.log(author)
+        authorHTML = `<a href="${ author.link }" rel="noopener">${ author.name }</a>`;
+      }
+    });
+    return authorHTML;
+  });
+
+
   // // Filters
   // Object.keys(filters).forEach(filterName => {
   //   eleventyConfig.addFilter(filterName, filters[filterName])
