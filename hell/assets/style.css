@@ -10,13 +10,24 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: sans-serif;
+  line-height: 1.6;
   margin: 0;
 }
 
+h2 {
+  margin: 0 0 1.6rem;
+}
+
+ul[class],
 ol[class] {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+p {
+  margin: 0 0 2.4rem;
 }
 
 a:link {
@@ -49,19 +60,25 @@ a:hover {
 /* Header */
 
 .site-header {
-  
-  margin-bottom: 3rem;
-  position: sticky;
   left: 0;
-  top: 20px;
-  height: 210px;
+  top: 0;
+  height: 23rem;
+  padding-top: 2rem;
 }
 
 
 @media (min-width: 768px) {
   .site-header {
+    position: sticky;
     height: 350px;
   }
+}
+
+.site-intro {
+  font-size: 2.2rem;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
 /* Logo */
@@ -72,6 +89,7 @@ a:hover {
 
   transition: left 0.3s, transform 0.7s, width 0.6s;
   left: 50%;
+  
 }
 
 .site-logo--scrolled {
@@ -110,5 +128,22 @@ a:hover {
   }
 }
 
-.previews {
+/* Previews */
+
+.preview {
+  margin-bottom: 4.2rem;
+}
+
+.preview__header {
+  margin-bottom: 2.4rem;
+}
+
+.preview__heading {
+  margin-bottom: 0;
+}
+
+/* Footer */
+
+.site-footer {
+  margin: 4.8rem 2rem 2rem;
 }
