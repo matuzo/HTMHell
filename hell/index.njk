@@ -1,0 +1,6 @@
+---
+layout: layouts/base.njk
+title: Markup from hell
+---
+{% set entries = collections.entries | head(-3)  %}
+{% include "entries.njk" %}

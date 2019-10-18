@@ -1,0 +1,17 @@
+<ol class="previews">
+{% for post in entries | reverse %}
+  <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+    <h2>
+      <a href="{{ post.url | url }}" class="">
+        {{ post.data.title }}
+      </a>
+    </h2>
+
+    {% highlight "html" %}
+      {{ post.data.sample | pretty | safe }}
+    {% endhighlight %}
+      
+    <time class="" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+  </li>
+{% endfor %}
+</ol>
