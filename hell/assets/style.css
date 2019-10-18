@@ -24,6 +24,10 @@ body {
   }
 }
 
+h1 {
+  color: #d72b2b;
+}
+
 h2 {
   margin: 0 0 1.6rem;
 }
@@ -73,17 +77,15 @@ a:hover {
 /* Header */
 
 .site-header {
-  left: 0;
-  top: 0;
-  height: 23rem;
-  padding-top: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 
 @media (min-width: 768px) {
   .site-header {
-    position: sticky;
-    height: 39rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
   }
 }
 
@@ -108,39 +110,12 @@ a:hover {
 .site-logo {
   transform: translateX(-50%) rotate(360deg);
   position: relative;
-
-  transition: left 0.3s, transform 0.7s, width 0.6s;
   left: 50%;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .site-logo {
-    transition: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .site--scrolled .site-logo {
-    left: 0;
-    transform: none;
-    width: 100px;
-  }
-}
-
-
-.site-logo__title,
-.site-logo__items {
-  transition: opacity 1s;
-}
-
-.site--scrolled .site-logo__title,
-.site--scrolled .site-logo__items {
-  opacity: 0;
-}
-
 @media (min-width: 768px) {
   .site-logo {
-    width: 360px;
+    width: 340px;
   }
 }
 
