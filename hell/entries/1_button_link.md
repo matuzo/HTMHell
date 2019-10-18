@@ -20,7 +20,7 @@ goodcode: '<a href="https://"><img alt="Name of website" src="logo.jpg"></a>'
 
 ## What's bad about it
 
-1. Wrong usage of the button element. There's a tag for linking to external sites (`<a>`).  
+1. Wrong usage of the button element. There's an element for linking to external sites (`<a>`).  
 Do not change native semantics, unless you really have to.
 1. It's possible to link to pages without JavaScript.
 1. The `title` attribute is redundant.

@@ -52,98 +52,11 @@
   </header>
 
   <main class="site-content">
-    <h1 class="u-hidden">{{ title }}</h1>
-
     {{ content | safe }}
   </main>
 
   <footer class="site-footer">
     curated by <a href="https://twitter.com/mmatuzo">@mmatuzo</a>
   </footer>
-
-  <script>
-
-    var site = document.documentElement;
-/**
-* hide header
-*/
-const shrinkHeader = () => {
-site.classList.add('site--scrolled')
-}
-
-/**
-* Show header
-*/
-const expandHeader = () => {
-site.classList.remove('site--scrolled')
-}
-
-/**
-* Check if the site has been scrolled and show or hide header accordingly
-*/
-const checkPos = () => {
-var lastKnownScrollPosition = window.pageYOffset
-
-if (lastKnownScrollPosition > 0) {
-requestAnimationFrame(shrinkHeader)
-}
-
-if (lastKnownScrollPosition == 0) {
-requestAnimationFrame(expandHeader)
-}
-}
-
-
-var throttle = function (fn) {
-var running
-var lastTime = 0
-var gDelay = 125
-var RIC_DEFAULT_TIMEOUT = 666
-var rICTimeout = RIC_DEFAULT_TIMEOUT
-var run = function () {
-  running = false
-  lastTime = Date.now()
-  fn()
-}
-var idleCallback = requestIdleCallback
-  ? function () {
-    requestIdleCallback(run, { timeout: rICTimeout })
-    if (rICTimeout !== RIC_DEFAULT_TIMEOUT) {
-      rICTimeout = RIC_DEFAULT_TIMEOUT
-    }
-  }
-  : rAFIt(function () {
-    setTimeout(run)
-  }, true)
-return function (isPriority) {
-  var delay
-  if ((isPriority = isPriority === true)) {
-    rICTimeout = 44
-  }
-
-  if (running) {
-    return
-  }
-
-  running = true
-
-  delay = gDelay - (Date.now() - lastTime)
-
-  if (delay < 0) {
-    delay = 0
-  }
-
-  if (isPriority || (delay < 9 && requestIdleCallback)) {
-    idleCallback()
-  } else {
-    setTimeout(idleCallback, delay)
-  }
-}
-}
-
-window.addEventListener('scroll', throttle(checkPos))
-
-  </script>
-  
 </body>
 </html>

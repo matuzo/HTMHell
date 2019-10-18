@@ -10,13 +10,25 @@ badcode: '<div tabindex="-1">
   </div>
 </div>'
 
-goodcode: '<div tabindex="-1">
-  <div role="button">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24">
+goodcode: '<button>
+  <span class="sr-only">Send</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" aria-hidden="true">
       …
     </svg>
-  </div>
 </div>'
+
+goodcodeCSS: '.sr-only {
+position: absolute;
+white-space: nowrap;
+width: 1px;
+height: 1px;
+overflow: hidden;
+border: 0;
+padding: 0;
+clip: rect(0 0 0 0);
+clip-path: inset(50%);
+margin: -1px;
+}'
 ---
 
 <div class="section">
@@ -32,16 +44,19 @@ goodcode: '<div tabindex="-1">
 
 ## What's bad about it
 
-1. Wrong usage of the button element. There's a tag for linking to external sites (`<a>`).  
-Do not change native semantics, unless you really have to.
-1. It's possible to link to pages without JavaScript.
-1. The `title` attribute is redundant.
-1. The `tabindex` attribute is redundant. A button doesn't need `tabindex`, it's focusable by default.
+1. Setting button semantics explicitly isn't necessary, there's an element for that (`button`)
+1. You don't need the `tabindex` attribute if you use a `button`. HTML buttons are focusable by default.
+1. A click event on a `div` triggers only on click. A click event on a `button` triggers on click and if the users presses the <kbd>Enter</kbd> or <kbd>Space</kbd> key.
+1. There's no text alternative for the icon.
 </div>
 
 <div class="section">
 
 ## Good code
+
+```css
+{{ goodcodeCSS }}
+```
 
 ```html
 {{ goodcode | pretty }}
