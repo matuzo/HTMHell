@@ -12,7 +12,16 @@ body {
   font-size: 1.6rem;
   font-family: sans-serif;
   line-height: 1.6;
-  margin: 0;
+  max-width: 104rem;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.9rem;
+    line-height: 1.8;
+  }
 }
 
 h2 {
@@ -24,6 +33,10 @@ ol[class] {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+li {
+  margin-bottom: 1.6rem;;
 }
 
 p {
@@ -70,7 +83,7 @@ a:hover {
 @media (min-width: 768px) {
   .site-header {
     position: sticky;
-    height: 350px;
+    height: 39rem;
   }
 }
 
@@ -79,6 +92,15 @@ a:hover {
   text-align: center;
   font-weight: bold;
   line-height: 1.5;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .site-intro {
+    margin-bottom: 4.8rem;
+  }
 }
 
 /* Logo */
@@ -89,13 +111,20 @@ a:hover {
 
   transition: left 0.3s, transform 0.7s, width 0.6s;
   left: 50%;
-  
 }
 
-.site-logo--scrolled {
-  left: 0;
-  transform: none;
-  width: 100px;
+@media (prefers-reduced-motion: reduce) {
+  .site-logo {
+    transition: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .site--scrolled .site-logo {
+    left: 0;
+    transform: none;
+    width: 100px;
+  }
 }
 
 
@@ -104,8 +133,8 @@ a:hover {
   transition: opacity 1s;
 }
 
-.site-logo--scrolled .site-logo__title,
-.site-logo--scrolled .site-logo__items {
+.site--scrolled .site-logo__title,
+.site--scrolled .site-logo__items {
   opacity: 0;
 }
 
@@ -116,9 +145,11 @@ a:hover {
 }
 
 /* Content */
-
 .site-content {
   padding: 0 20px;
+  max-width: 100rem;
+  margin: 0 auto;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -129,7 +160,6 @@ a:hover {
 }
 
 /* Previews */
-
 .preview {
   margin-bottom: 4.2rem;
 }
@@ -143,7 +173,25 @@ a:hover {
 }
 
 /* Footer */
-
 .site-footer {
   margin: 4.8rem 2rem 2rem;
+  max-width: 74rem;
+}
+
+@media (min-width: 768px) {
+  .site-footer {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Section */
+
+.section {
+  margin-bottom: 3.2rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-bottom: 4.6rem;
+  }
 }

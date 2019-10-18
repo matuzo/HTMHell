@@ -39,14 +39,16 @@
     <meta property="og:locale" content="en_GB">
     <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="assets/prism.css" />
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="/assets/prism.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
 
 </head>
 <body>
 
   <header class="site-header">
-    {% include "logo.njk" %}
+    <a href="/">
+      {% include "logo.njk" %}
+    </a>
   </header>
 
   <main class="site-content">
@@ -61,7 +63,86 @@
 
   <script>
 
-    
+    var site = document.documentElement;
+/**
+* hide header
+*/
+const shrinkHeader = () => {
+site.classList.add('site--scrolled')
+}
+
+/**
+* Show header
+*/
+const expandHeader = () => {
+site.classList.remove('site--scrolled')
+}
+
+/**
+* Check if the site has been scrolled and show or hide header accordingly
+*/
+const checkPos = () => {
+var lastKnownScrollPosition = window.pageYOffset
+
+if (lastKnownScrollPosition > 0) {
+requestAnimationFrame(shrinkHeader)
+}
+
+if (lastKnownScrollPosition == 0) {
+requestAnimationFrame(expandHeader)
+}
+}
+
+
+var throttle = function (fn) {
+var running
+var lastTime = 0
+var gDelay = 125
+var RIC_DEFAULT_TIMEOUT = 666
+var rICTimeout = RIC_DEFAULT_TIMEOUT
+var run = function () {
+  running = false
+  lastTime = Date.now()
+  fn()
+}
+var idleCallback = requestIdleCallback
+  ? function () {
+    requestIdleCallback(run, { timeout: rICTimeout })
+    if (rICTimeout !== RIC_DEFAULT_TIMEOUT) {
+      rICTimeout = RIC_DEFAULT_TIMEOUT
+    }
+  }
+  : rAFIt(function () {
+    setTimeout(run)
+  }, true)
+return function (isPriority) {
+  var delay
+  if ((isPriority = isPriority === true)) {
+    rICTimeout = 44
+  }
+
+  if (running) {
+    return
+  }
+
+  running = true
+
+  delay = gDelay - (Date.now() - lastTime)
+
+  if (delay < 0) {
+    delay = 0
+  }
+
+  if (isPriority || (delay < 9 && requestIdleCallback)) {
+    idleCallback()
+  } else {
+    setTimeout(idleCallback, delay)
+  }
+}
+}
+
+window.addEventListener('scroll', throttle(checkPos))
+
   </script>
   
 </body>
