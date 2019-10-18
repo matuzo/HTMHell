@@ -4,7 +4,8 @@
   "description": "",
   "main": "#",
   "scripts": {
-    "start": "ELEVENTY_ENV=development npx @11ty/eleventy --serve"
+    "start": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
+    "build": "ELEVENTY_ENV=production npx @11ty/eleventy"
   },
   "author": "",
   "license": "ISC",
