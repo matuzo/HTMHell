@@ -9,6 +9,11 @@ module.exports = {
       "id": "schepp",
       "name": "Schepp",
       "link": "https://twitter.com/derSchepp"
+    },
+    {
+      "id": "hidde",
+      "name": "Hidde",
+      "link": "https://twitter.com/hdv"
     }
   ]
 };
