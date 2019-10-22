@@ -5,7 +5,7 @@ author: schepp
 permalink: /{{ title | slug }}/index.html
 badcode: '<div tabindex="-1">
   <div role="button">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24">
+    <svg width="28" height="24">
       …
     </svg>
   </div>
@@ -13,7 +13,7 @@ badcode: '<div tabindex="-1">
 
 goodcode: '<button>
   <span class="sr-only">Send</span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" aria-hidden="true">
+    <svg width="28" height="24" aria-hidden="true">
       …
     </svg>
 </button>'
