@@ -21,9 +21,9 @@ goodcode: '<a href="https://"><img alt="Name of website" src="logo.jpg"></a>'
 
 <div class="section">
 
-## What's bad about it
+## Issues and how to fix them
 
-1. Wrong usage of the button element. There's an element for linking to external sites (`<a>`).  Do not change native semantics, unless you really have to.
+1. Wrong usage of the button element. There's an element for linking to external sites (`<a>`). Do not change native semantics, unless you really have to.
 1. It's possible to link to pages without JavaScript.
 1. The `title` attribute is redundant.
 1. The `tabindex` attribute is redundant. A button doesn't need `tabindex`, it's focusable by default.

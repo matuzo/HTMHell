@@ -43,7 +43,7 @@ margin: -1px;
 
 <div class="section">
 
-## What's bad about it
+## Issues and how to fix them
 
 1. Setting button semantics explicitly isn't necessary, there's an element for that (`button`)
 1. You don't need the `tabindex` attribute if you use a `button`. HTML buttons are focusable by default.

@@ -23,7 +23,7 @@ goodcodeCSS: '.button {
 
 <div class="section">
 
-## What's bad about it
+## Issues and how to fix them
 
 1. By nesting a button inside of a link, you're sending two messages: this is a button, but also this is a link.
 </div>

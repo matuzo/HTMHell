@@ -31,7 +31,7 @@ goodcode: '<a class="button" href="#form">
 
 <div class="section">
 
-## What’s bad about it
+## Issues and how to fix them
 
 It’s a link to a form at the same page that looks like a button.
 
