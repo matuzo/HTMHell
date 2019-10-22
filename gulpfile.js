@@ -3,11 +3,12 @@ let cleanCSS = require('gulp-clean-css');
 let rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var pipeline = require('readable-stream').pipeline;
- 
+var concat = require('gulp-concat');
+
 gulp.task('styles', function() {
   return gulp.src('./hell/assets/*.css')
     .pipe(cleanCSS())
-    .pipe(rename('style.min.css'))
+    .pipe(concat('style.min.css'))
     .pipe(gulp.dest('./hell/assets/min'));
 });
 
