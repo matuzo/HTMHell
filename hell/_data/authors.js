@@ -14,6 +14,11 @@ module.exports = {
       "id": "hidde",
       "name": "Hidde",
       "link": "https://twitter.com/hdv"
+    },
+    {
+      "id": "pepelsbey",
+      "name": "Vadim",
+      "link": "https://twitter.com/pepelsbey_"
     }
   ]
 };
