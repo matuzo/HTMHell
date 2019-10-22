@@ -30,6 +30,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPassthroughCopy({"./hell/assets": "assets"});
+  eleventyConfig.addPassthroughCopy({"./hell/favicon/*": "/"});
   
   return {
     templateFormats: [

@@ -6,33 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#36b1bf">
-    <meta name="msapplication-TileColor" content="#efefef">
-    <meta name="theme-color" content="#36b1bf">
-
-    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="{{ metadata.title }}">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d72b2b">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Search Engine -->
-    <meta name="description" content="{{ description }}">
+    <meta name="description" content="{{ hell.site_description }}">
     {# <meta name="image" content="{{ metadata.cloudinary }}/w_1200/{{ image or metadata.smimage }}"> #}
     <!-- Schema.org for Google -->
     <meta itemprop="name" content="{{ title }}">
-    <meta itemprop="description" content="{{ description }}">
+    <meta itemprop="description" content="{{ hell.site_description }}">
     {# <meta itemprop="image" content="{{ metadata.cloudinary }}/w_1200/{{ image or metadata.smimage }}"> #}
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ title }}">
-    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:description" content="{{ hell.site_description }}">
     <meta name="twitter:site" content="@mmatuzo">
     <meta name="twitter:creator" content="@mmatuzo">
     {# <meta name="twitter:image:src" content="{{ metadata.cloudinary }}/w_1024/{{ image or metadata.smimage }}"> #}
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:title" content="{{ title }}">
-    <meta property="og:description" content="{{ description }}">
+    <meta property="og:description" content="{{ hell.site_description }}">
     <meta property="og:image" content="{{ metadata.cloudinary }}/w_1200/{{ image or metadata.smimage }}">
     <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ title }}">
@@ -48,7 +47,7 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="/">
+    <a href="/" class="site-logo-link">
       {% include "logo.njk" %}
     </a>
   </header>
