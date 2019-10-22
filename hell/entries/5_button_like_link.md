@@ -10,8 +10,8 @@ badcode: '<a href="#form" role="button" aria-haspopup="true">
 
 
 goodcodeCSS: '.button {
-    /* Use CSS to apply padding */
-    padding: 0 0.5em;
+/* use CSS to apply button-like styles to the link */
+
 }'
 
 goodcode: '<a class="button" href="#form">
