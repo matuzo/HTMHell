@@ -19,22 +19,22 @@
     <meta name="description" content="{{ hell.site_description }}">
     <meta name="image" content="{{ hell.site_url }}/assets/og_image.jpg">
     <!-- Schema.org for Google -->
-    <meta itemprop="name" content="{{ title }}">
+    <meta itemprop="name" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
     <meta itemprop="description" content="{{ hell.site_description }}">
     <meta itemprop="image" content="{{ hell.site_url }}/assets/og_image.jpg">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:title" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
     <meta name="twitter:description" content="{{ hell.site_description }}">
     <meta name="twitter:site" content="@mmatuzo">
     <meta name="twitter:creator" content="@mmatuzo">
     <meta name="twitter:image:src" content="{{ hell.site_url }}/assets/og_image.jpg">
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta property="og:title" content="{{ title }}">
+    <meta property="og:title" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
     <meta property="og:description" content="{{ hell.site_description }}">
     <meta property="og:image" content="{{ hell.site_url }}/assets/og_image.jpg">
     <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
-    <meta property="og:site_name" content="{{ title }}">
+    <meta property="og:site_name" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
     <meta property="og:locale" content="en_GB">
     <meta property="og:type" content="website">
 
