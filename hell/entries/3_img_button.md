@@ -28,7 +28,6 @@ clip-path: inset(50%);
 margin: -1px;
 }'
 ---
----
 
 <div class="section">
 
