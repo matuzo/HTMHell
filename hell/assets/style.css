@@ -139,6 +139,16 @@ a:hover {
   display: inline-block;
 }
 
+.site-logo {
+  display: none;
+}
+
+@supports(display: grid) {
+  .site-logo {
+    display: block;
+  }
+}
+
 .site-logo__666 {
   transition: opacity 0.3s ease-in, fill 0.6s ease-in;
   fill: #d72b2b;
@@ -192,6 +202,7 @@ a:hover {
   max-width: 100rem;
   margin: 0 auto;
   position: relative;
+  display: block;
 }
 
 @media (min-width: 768px) {
