@@ -27,6 +27,14 @@ body {
 h1 {
   color: #d72b2b;
   margin-top: 0;
+  font-size: 2.8rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
 }
 
 h2 {
