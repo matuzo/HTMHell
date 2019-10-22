@@ -6,27 +6,12 @@ permalink: /{{ title | slug }}/index.html
 badcode: '<img src="/images/edit.gif" onclick="openEditDialog(123)">
 <img src="/images/delete.gif" onclick="openDeleteDialog(123)">'
 goodcode: '<button onclick="openEditDialog(123)">
-<span class="sr-only">Edit product XY</span>
-  <img src="/images/edit.gif" alt="">
+  <img src="/images/edit.gif" alt="Edit product XY">
 </button>
 
 <button onclick="openDeleteDialog(123)">
-<span class="sr-only">Delete product XY</span>
-  <img src="/images/delete.gif" alt="">
+  <img src="/images/delete.gif" alt="Delete product XY">
 </button>'
-
-goodcodeCSS: '.sr-only {
-position: absolute;
-white-space: nowrap;
-width: 1px;
-height: 1px;
-overflow: hidden;
-border: 0;
-padding: 0;
-clip: rect(0 0 0 0);
-clip-path: inset(50%);
-margin: -1px;
-}'
 ---
 
 <div class="section">
@@ -50,10 +35,6 @@ margin: -1px;
 <div class="section">
 
 ## Good code
-
-```css
-{{ goodcodeCSS | prettyCSS }}
-```
 
 ```html
 {{ goodcode | pretty }}
