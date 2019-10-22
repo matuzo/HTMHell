@@ -8,5 +8,5 @@ title: Markup from hell
   {{ hell.site_description }}
 </p>
 
-{% set entries = collections.entries | head(-3)  %}
+{% set entries = collections.entries %}
 {% include "entries.njk" %}
