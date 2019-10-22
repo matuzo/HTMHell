@@ -7,3 +7,5 @@ A collection of bad practices in HTML, copied from real websites.
 * Add about page
 * Generate preview images
 * Add contribution form
+* Add RSS feed
+* Add pagination
