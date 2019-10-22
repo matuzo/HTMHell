@@ -5,7 +5,9 @@
   "main": "#",
   "scripts": {
     "start": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
-    "build": "gulp build && ELEVENTY_ENV=production npx @11ty/eleventy"
+    "build-gulp": "gulp build",
+    "build-site": "ELEVENTY_ENV=production npx @11ty/eleventy",
+    "build": "npm run build-gulp & npm run build-site "
   },
   "author": "",
   "license": "ISC",
