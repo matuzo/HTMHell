@@ -5,7 +5,7 @@
   "main": "#",
   "scripts": {
     "start": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
-    "build": "ELEVENTY_ENV=production npx @11ty/eleventy"
+    "build": "gulp build && ELEVENTY_ENV=production npx @11ty/eleventy"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,11 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.9.0",
-    "luxon": "^1.19.3"
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "luxon": "^1.19.3",
+    "readable-stream": "^3.4.0"
   }
 }

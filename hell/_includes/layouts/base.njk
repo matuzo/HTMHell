@@ -39,12 +39,14 @@
     <meta property="og:locale" content="en_GB">
     <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="/assets/prism.css" />
-    <link rel="stylesheet" href="/assets/style.css" />
-
+    {% if hell.env == 'development' %}
+      <link rel="stylesheet" href="/assets/prism.css" />
+      <link rel="stylesheet" href="/assets/style.css" />
+    {% else %}
+      <link rel="stylesheet" href="/assets/min/style.min.css" />
+    {% endif %}
 </head>
 <body>
-
   <header class="site-header">
     <a href="/">
       {% include "logo.njk" %}
@@ -58,5 +60,11 @@
   <footer class="site-footer">
     curated by <a href="https://twitter.com/mmatuzo">@mmatuzo</a>
   </footer>
+  
+  {% if hell.env == 'development' %}
+    <script src="/assets/script.js"></script>
+  {% else %}
+    <script src="/assets/min/script.min.js"></script>
+  {% endif %}
 </body>
 </html>

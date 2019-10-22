@@ -26,10 +26,12 @@ body {
 
 h1 {
   color: #d72b2b;
+  margin-top: 0;
 }
 
 h2 {
   margin: 0 0 1.6rem;
+
 }
 
 ul[class],
@@ -113,9 +115,50 @@ a:hover {
   left: 50%;
 }
 
+.site-logo__666 {
+  transition: opacity 0.3s ease-in, fill 0.6s ease-in;
+  fill: #d72b2b;
+  opacity: 0;
+}
+
+.site--loaded .site-logo__1 {
+  opacity: 1;
+  transition-delay: 0.3s;
+  fill: #000;
+}
+
+.site--loaded .site-logo__2 {
+  opacity: 1;
+  transition-delay: 0.5s;
+  fill: #000;
+
+}
+
+.site--loaded .site-logo__3 {
+  opacity: 1;
+  transition-delay: 0.7s;
+  fill: #000;
+
+}
+
+.site--loaded .site-logo__4 {
+  opacity: 1;
+  transition-delay: .9s;
+  fill: #000;
+}
+
+.site--loaded .site-logo__5 {
+  opacity: 1;
+  transition-delay: 1.3s;
+}
+
+.site-logo:hover polygon {
+  fill: #d72b2b;
+}
+
 @media (min-width: 768px) {
   .site-logo {
-    width: 340px;
+    height: 30.4rem;
   }
 }
 
@@ -136,7 +179,7 @@ a:hover {
 
 /* Previews */
 .preview {
-  margin-bottom: 4.2rem;
+  margin-bottom: 5.7rem;
 }
 
 .preview__header {
@@ -145,6 +188,7 @@ a:hover {
 
 .preview__heading {
   margin-bottom: 0;
+  line-height: 1.5;
 }
 
 /* Footer */
