@@ -2,21 +2,21 @@ const { DateTime } = require("luxon");
 const prettifyHTML = require('prettify-html');
 
 module.exports = {
-  // Date formatting (machine readable)
-  // machineDate: dateObj => {
-  //   return DateTime.fromJSDate(dateObj).toFormat("yyyy-MM-ddT00:00:00+00:00");
-  // },
+  htmlDateString: dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+  },
 
-  // // Date formatting (human readable)
-  // readableDate: dateObj => {
-  //   let date = DateTime.fromJSDate(dateObj);
+  readableDate: dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
+  },
 
-  //   if (typeof dateObj === 'string') {
-  //     date = DateTime.fromFormat(dateObj.split(" GMT")[0], "ccc LLL dd y hh:mm:ss");
-  //   }
+  head: (array, n) => {
+    if( n < 0 ) {
+      return array.slice(n);
+    }
 
-  //   return date.toFormat("LLLL d., yyyy");
-  // },
+    return array.slice(0, n);
+  },
 
   pretty: value => {
     return prettifyHTML(value)
