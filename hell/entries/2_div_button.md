@@ -1,7 +1,8 @@
 ---
-title: "div with button role"
+title: "#2 div with button role"
 date: 2019-10-17
 author: schepp
+permalink: /{{ title | slug }}/index.html
 badcode: '<div tabindex="-1">
   <div role="button">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24">
@@ -15,7 +16,7 @@ goodcode: '<button>
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" aria-hidden="true">
       …
     </svg>
-</div>'
+</button>'
 
 goodcodeCSS: '.sr-only {
 position: absolute;
@@ -55,7 +56,7 @@ margin: -1px;
 ## Good code
 
 ```css
-{{ goodcodeCSS }}
+{{ goodcodeCSS | prettyCSS }}
 ```
 
 ```html

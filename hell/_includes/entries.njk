@@ -4,12 +4,11 @@
       <div class="preview__header">
         <h2 class="preview__heading">
           <a href="{{ post.url | url }}" class="">
-            #{{ loop.revindex }}
             {{ post.data.title }}
           </a>
         </h2>
 
-        posted on <time class="" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> by {% author post.data.author %}
+        submitted on <time class="" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> by {% author post.data.author %}
       </div>
 
       {% highlight "html" %}

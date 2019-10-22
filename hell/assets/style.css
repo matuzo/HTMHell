@@ -41,6 +41,17 @@ ol[class] {
   list-style: none;
 }
 
+ol {
+  padding-left: 2rem;
+}
+
+@media (min-width: 768px) {
+  ol {
+    padding-left: 4rem;
+  }
+}
+
+
 li {
   margin-bottom: 1.6rem;;
 }
@@ -59,6 +70,10 @@ a:visited {
 
 a:hover {
   text-decoration: none;
+}
+
+*:focus {
+  outline: 5px solid #a83636;
 }
 
 /* Helper */
@@ -109,10 +124,11 @@ a:hover {
 
 /* Logo */
 
-.site-logo {
+.site-logo-link {
   transform: translateX(-50%) rotate(360deg);
   position: relative;
   left: 50%;
+  display: inline-block;
 }
 
 .site-logo__666 {
