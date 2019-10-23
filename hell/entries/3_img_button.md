@@ -5,7 +5,15 @@ author: mmatuzo
 permalink: /{{ title | slug }}/index.html
 badcode: '<img src="/images/edit.gif" onclick="openEditDialog(123)">
 <img src="/images/delete.gif" onclick="openDeleteDialog(123)">'
-goodcode: '<button onclick="openEditDialog(123)">
+goodcode1: '<button onclick="openEditDialog(123)">
+  <img src="/images/edit.gif" alt="Edit product XY">
+</button>
+
+<button onclick="openDeleteDialog(123)">
+  <img src="/images/delete.gif" alt="Delete product XY">
+</button>'
+
+goodcode2: '<button onclick="openEditDialog(123)">
 <span class="sr-only">Edit product XY</span>
   <img src="/images/edit.gif" alt="">
 </button>
@@ -51,12 +59,25 @@ margin: -1px;
 
 ## Good code
 
+### Solution #1: Use buttons and add `alt` attribute to images
+
+```html
+{{ goodcode1 | pretty }}
+```
+
+### Solution #2: Use buttons, add text content and hide images
+
+Unfortunately, there’s no native way of hiding content only visually.  
+This class makes sure that content is visually hidden but still accessible to screen reader users.
+
 ```css
 {{ goodcodeCSS | prettyCSS }}
 ```
 
+An image with an empty `alt` attribute is not accessible to screen reader users, which in this case is desired, because there’s a screen reader accessible text alternative.
+
 ```html
-{{ goodcode | pretty }}
+{{ goodcode2 | pretty }}
 ```
 </div>
 
