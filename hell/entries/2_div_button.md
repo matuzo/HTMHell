@@ -11,14 +11,14 @@ badcode: '<div tabindex="-1">
   </div>
 </div>'
 
-goodcode: '<button>
+goodcode1: '<button>
   <span class="sr-only">Send</span>
     <svg width="28" height="24" aria-hidden="true">
       …
     </svg>
 </button>'
 
-goodcodeCSS: '.sr-only {
+goodcode1CSS: '.sr-only {
 position: absolute;
 white-space: nowrap;
 width: 1px;
@@ -30,6 +30,12 @@ clip: rect(0 0 0 0);
 clip-path: inset(50%);
 margin: -1px;
 }'
+
+goodcode2: '<button aria-label="Send">
+    <svg width="28" height="24" aria-hidden="true">
+      …
+    </svg>
+</button>'
 ---
 
 <div class="section">
@@ -55,12 +61,22 @@ margin: -1px;
 
 ## Good code
 
+### Solution #1: Use button and place text for screenreaders inside
+
 ```css
-{{ goodcodeCSS | prettyCSS }}
+{{ goodcode1CSS | prettyCSS }}
 ```
 
 ```html
-{{ goodcode | pretty }}
+{{ goodcode1 | pretty }}
+```
+
+### Solution #2: Use button and place text for screenreaders within `aria-label` attribute
+
+For more information and example see [MDN | Using the aria-label attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute).
+
+```html
+{{ goodcode2 | pretty }}
 ```
 </div>
 
