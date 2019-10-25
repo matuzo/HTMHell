@@ -8,7 +8,7 @@ const takeScreenshot = async (path) => {
   const page = await browser.newPage();
   await page.goto(`http://localhost:8080/${path}`);
   
-  await page.$$eval('body', html => {
+  await page.$$eval('html', html => {
     html[0].setAttribute('class', 'screenshot')
   });
 

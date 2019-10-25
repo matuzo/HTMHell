@@ -264,19 +264,13 @@ a:hover {
   }
 }
 
-/* Bad code only */
-
+/* Bad code only for og image screenshots */
 .screenshot {
-  height: 100%;
-}
-
-.screenshot body {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .screenshot h1,
 .screenshot h2,
 .screenshot .section:not(.bad),
@@ -287,6 +281,10 @@ a:hover {
 
 .screenshot pre[class*="language-"] {
   white-space: normal !important;
+}
+
+.screenshot .bad {
+  margin-bottom: 0;
 }
 
 .screenshot .site-content {
