@@ -271,6 +271,12 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+
+.screenshot body {
+  width: 100%;
+  max-width: 110rem;
+}
+
 .screenshot h1,
 .screenshot h2,
 .screenshot .section:not(.bad),
@@ -289,4 +295,9 @@ a:hover {
 
 .screenshot .site-content {
   padding: 0;
+  max-width: 100%;
+}
+
+.screenshot code {
+  font-size: 2.4rem;
 }
