@@ -55,6 +55,8 @@ margin: -1px;
 
 ## Good code
 
+{{ snippets.sr_only }}
+
 ```css
 {{ goodcodeCSS | prettyCSS }}
 ```

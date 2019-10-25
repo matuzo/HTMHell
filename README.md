@@ -1,6 +1,7 @@
 # HTMHell - Markup From Hell
 
 A collection of bad practices in HTML, copied from real websites.
+
 ## Contributing
 
 ### Rules
@@ -44,3 +45,11 @@ Add a submission in `./hell/entries` by copying any other markdown file in this 
 1. Show bad code
 2. Explain how to fix it
 3. Show good code
+
+## Snippets
+
+I’m afraid that many suggestions will recur. To avoid duplicate content, there’s a file with snippets in `hell/_data/snippets.js` that you can use like this:
+
+```
+{{ snippets.sr_only }}
+```
