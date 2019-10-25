@@ -22,8 +22,13 @@ A collection of bad practices in HTML, copied from real websites.
   ```
   npm run start
   ```
+3. Take screenshot
+While the server is still running, run the following command to take a screenshot of your code.
+```
+node screenshot
+```
 
-3. Create a pull request.
+4. Push and create a pull request.
 
 
 ### Adding authors

@@ -31,6 +31,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({"./hell/assets": "assets"});
   eleventyConfig.addPassthroughCopy({"./hell/favicon/*": "/"});
+  eleventyConfig.addPassthroughCopy("./hell/images");
   
   return {
     templateFormats: [

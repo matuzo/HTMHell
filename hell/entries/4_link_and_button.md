@@ -12,7 +12,7 @@ goodcodeCSS: '.button {
 }'
 ---
 
-<div class="section">
+<div class="section bad">
 
 ## Bad code
 

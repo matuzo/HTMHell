@@ -37,7 +37,7 @@ margin: -1px;
 }'
 ---
 
-<div class="section">
+<div class="section bad">
 
 ## Bad code
 
