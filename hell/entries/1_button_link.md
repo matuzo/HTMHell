@@ -1,6 +1,6 @@
 ---
 title: "#1 button disguised as a link"
-date: 2019-10-17
+date: 2019-10-17T01:00:00
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: mmatuzo
