@@ -263,3 +263,32 @@ a:hover {
     margin-bottom: 4.6rem;
   }
 }
+
+/* Bad code only */
+
+.screenshot {
+  height: 100%;
+}
+
+.screenshot body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screenshot h1,
+.screenshot h2,
+.screenshot .section:not(.bad),
+.screenshot footer,
+.screenshot header {
+  display: none;
+}
+
+.screenshot pre[class*="language-"] {
+  white-space: normal !important;
+}
+
+.screenshot .site-content {
+  padding: 0;
+}

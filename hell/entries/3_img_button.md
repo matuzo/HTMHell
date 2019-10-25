@@ -37,7 +37,7 @@ margin: -1px;
 }'
 ---
 
-<div class="section">
+<div class="section bad">
 
 ## Bad code
 
@@ -67,8 +67,7 @@ margin: -1px;
 
 ### Solution #2: Use buttons, add text content and hide images
 
-Unfortunately, there’s no native way of hiding content only visually.  
-This class makes sure that content is visually hidden but still accessible to screen reader users.
+{{ snippets.sr_only }}
 
 ```css
 {{ goodcodeCSS | prettyCSS }}

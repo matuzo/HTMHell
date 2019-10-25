@@ -32,7 +32,7 @@ margin: -1px;
 }'
 ---
 
-<div class="section">
+<div class="section bad">
 
 ## Bad code
 
@@ -54,6 +54,8 @@ margin: -1px;
 <div class="section">
 
 ## Good code
+
+{{ snippets.sr_only }}
 
 ```css
 {{ goodcodeCSS | prettyCSS }}

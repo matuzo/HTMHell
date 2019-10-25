@@ -10,7 +10,7 @@ badcode: '<button role="link" title="Name of website" tabindex="0">
 goodcode: '<a href="https://"><img alt="Name of website" src="logo.jpg"></a>'
 ---
 
-<div class="section">
+<div class="section bad">
 
 ## Bad code
 

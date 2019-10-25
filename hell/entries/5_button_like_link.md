@@ -19,7 +19,7 @@ goodcode: '<a class="button" href="#form">
 </a>'
 ---
 
-<div class="section">
+<div class="section bad">
 
 ## Bad code
 
