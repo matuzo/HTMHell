@@ -1,6 +1,6 @@
 ---
 title: "#2 div with button role"
-date: 2019-10-17
+date: 2019-10-17T02:00:00
 author: schepp
 permalink: /{{ title | slug }}/index.html
 badcode: '<div tabindex="-1">
