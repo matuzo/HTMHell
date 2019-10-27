@@ -1,6 +1,11 @@
 ---
 layout: layouts/base.njk
 title: Markup from hell
+pagination:
+  data: collections.entries
+  size: 5
+  alias: submissions
+  reverse: true
 ---
 <h1 class="u-hidden">{{ title }}</h1>
 
@@ -8,5 +13,5 @@ title: Markup from hell
   {{ hell.site_description }}
 </p>
 
-{% set entries = collections.entries %}
+{% set entries = submissions %}
 {% include "entries.njk" %}

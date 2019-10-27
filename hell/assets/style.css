@@ -268,6 +268,46 @@ a:hover {
   }
 }
 
+/* Pagination */
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination__item {
+  margin-right: 1.6rem;
+}
+
+.pagination__link {
+  min-width: 5rem;
+  height: 5rem;
+  border: 3px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding: 0 1rem;
+}
+
+.pagination__link:link,
+.pagination__link:visited {
+  color: #d72b2b;
+  text-decoration: none;
+}
+
+.pagination__link[aria-current="page"] {
+  font-weight: bold;
+  color: #000000;
+}
+
+.pagination__link:hover {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+
 /* Bad code only for og image screenshots */
 .screenshot {
   height: 100%;
