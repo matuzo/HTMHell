@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 let cleanCSS = require('gulp-clean-css');
-let rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var pipeline = require('readable-stream').pipeline;
 var concat = require('gulp-concat');
