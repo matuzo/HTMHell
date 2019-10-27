@@ -80,7 +80,11 @@ a:hover {
   text-decoration: none;
 }
 
-*:focus {
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.js-focus-visible .focus-visible {
   outline: 5px solid #a83636;
 }
 
