@@ -23,7 +23,7 @@ module.exports = {
     {
       id: "dirty-co.de",
       name: "Dirty-Co.de",
-      link: "https://twitter.com/dirtycode1337"
+      link: "https://dirty-co.de"
     }
   ]
 };
