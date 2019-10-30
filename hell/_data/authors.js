@@ -24,6 +24,11 @@ module.exports = {
       "id": "smaerdian",
       "name": "Sarah",
       "link": "https://twitter.com/smaerdian"
+    },
+    {
+      "id": "svsven",
+      "name": "Sven",
+      "link": "https://github.com/svsven"
     }
   ]
 };
