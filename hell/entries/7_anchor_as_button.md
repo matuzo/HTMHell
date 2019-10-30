@@ -4,7 +4,8 @@ date: 2019-10-30
 author: svsven
 permalink: /{{ title | slug }}/index.html
 badcode: '<a href="#" onclick="modal.open()">Login</a>'
-goodcode: '<button onclick="modal.open()" aria-label="login">Login</button>'
+goodcode_one: '<button onclick="modal.open()">Login</button>'
+goodcode_two: '<a href="/login" onclick="modal.open()">Login</a>'
 ---
 
 <div class="section bad">
@@ -21,9 +22,9 @@ goodcode: '<button onclick="modal.open()" aria-label="login">Login</button>'
 
 ## Issues and how to fix them
 
-1. The anchor tag is being used as a button instead of a link, without having the `role="button"` attribute.
-1. The `href` attribute returns a placeholder value that does not link anywhere.
-1. Due to the above points, this element has accessibility issues. Use the semantically correct `<button></button>` element instead.
+1. The anchor tag is being used as a button instead of a navigational link. Its only purpose is to trigger an action on the same page. An anchor tag should be used for navigation; to create links to other pages, anchor points on the same page or to resources such as PDF files.
+1. In this case, the `href` attribute contains a placeholder value that links to the same page but does not navigate to an anchor point.
+1. Due to the above points, this element has accessibility issues. Browsers and devices that do not support JavaScript will not be able to access the content and functionality on the modal, and screen readers may parse the element incorrectly.
 
 
 </div>
@@ -32,8 +33,21 @@ goodcode: '<button onclick="modal.open()" aria-label="login">Login</button>'
 
 ## Good code
 
+### Solution #1: Use a button element
 ```html
-{{ goodcode | pretty }}
+{{ goodcode_one | pretty }}
 ```
+
+Since the only purpose of this element is to trigger an action on the same page instead of navigation; the `<button></button>` element is the semantically correct element to use.
+
+
+### Solution #2: Add a valid href value to the login form
+```html
+{{ goodcode_two | pretty }}
+```
+
+Another solution is to add a `href` value to a location where the same actions as the modal can be performed.
+This provides a fallback for browsers and devices that do not support JavaScript. This is an example of progressive enhancement.
+
 
 </div>
