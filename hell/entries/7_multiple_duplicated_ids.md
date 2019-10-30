@@ -54,10 +54,10 @@ goodcode: '
 
 ## Issues and how to fix them
 
-An ID should be unique no matter on which tag it is added. Also this code uses a table-based layout (and yeah, it is on a live production site still running, redesigned in 2016).
+An `id` should be unique no matter on which tag it's added. Also this code uses a table-based layout (and yeah, it's on a live production site still running, redesigned in 2016). Avoid using tables for layout reasons only, because table elements have a semantic meaning. Using them could make your document more confusing for some people.
 
-1. Altering the current HTML to HTML5 tags, which reduces the HTML and avoids this table-based layout.
-2. Style the new tags like before to don't break the whole layout.
+1. Replace the current markup with semantic HTML5 tags, which reduces the number of tags and avoids the table-based layout.
+2. Style the new elements like before by using Flexbox or CSS Grid.
 
 </div>
 
