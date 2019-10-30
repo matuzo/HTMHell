@@ -13,8 +13,8 @@ const takeScreenshot = async (path) => {
   });
 
   await page.setViewport({
-    width: 1200,
-    height: 600
+    width: 1300,
+    height: 650
   });
 
   await page.screenshot({path: `./hell/images/og/${path}.png`});
