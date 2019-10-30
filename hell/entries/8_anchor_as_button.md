@@ -1,5 +1,5 @@
 ---
-title: "#7 anchor tag used as button"
+title: "#8 anchor tag used as button"
 date: 2019-10-30
 author: svsven
 permalink: /{{ title | slug }}/index.html
