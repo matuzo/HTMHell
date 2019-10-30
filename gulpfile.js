@@ -1,22 +1,23 @@
 var gulp = require('gulp');
 let cleanCSS = require('gulp-clean-css');
-let rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var pipeline = require('readable-stream').pipeline;
 var concat = require('gulp-concat');
 
 gulp.task('styles', function() {
-  return gulp.src('./hell/assets/*.css')
-    .pipe(cleanCSS())
-    .pipe(concat('style.min.css'))
-    .pipe(gulp.dest('./hell/assets/min'));
+  return pipeline(
+    gulp.src('./hell/assets/*.css'),
+    cleanCSS(),
+    concat('style.min.css'),
+    gulp.dest('./hell/assets/min')
+  );
 });
 
 gulp.task('scripts', function () {
   return pipeline(
     gulp.src('./hell/assets/*.js'),
     uglify(),
-    rename('script.min.js'),
+    concat('script.min.js'),
     gulp.dest('./hell/assets/min')
   );
 });
