@@ -26,6 +26,11 @@ module.exports = {
       "link": "https://twitter.com/smaerdian"
     },
     {
+      "id": "dirty-co.de",
+      "name": "Dirty-Co.de",
+      "link": "https://dirty-co.de"
+    },
+    {
       "id": "svsven",
       "name": "Sven",
       "link": "https://github.com/svsven"
