@@ -26,7 +26,6 @@
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.2",
     "luxon": "^1.19.3",
     "readable-stream": "^3.4.0"

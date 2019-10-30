@@ -1,5 +1,5 @@
 <ol class="previews">
-  {% for post in entries | reverse %}
+  {% for post in entries %}
     <li class="preview">
       <div class="preview__header">
         <h2 class="preview__heading">
@@ -18,3 +18,37 @@
     </li>
   {% endfor %}
 </ol>
+
+<nav aria-label="Select page">
+  <ol class="pagination">
+    {% if pagination.previousPageHref %}
+      <li class="pagination__item pagination__item--next">
+        <a class="pagination__link" href="{{ pagination.previousPageHref }}">
+          Previous
+          <span class="u-hidden">
+            page
+          </span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% for page in pagination.hrefs %}
+      <li class="pagination__item">
+        <a class="pagination__link" href="{{ page }}" {% if pagination.pageNumber == loop.index0 %}aria-current="page"{% endif %}>
+          <span class="u-hidden">page </span> {{ loop.index }}
+        </a>
+      </li>
+    {% endfor %}
+
+    {% if pagination.nextPageHref %}
+      <li class="pagination__item pagination__item--next-group">
+        <a class="pagination__link" href="{{ pagination.nextPageHref }}">
+          Next
+          <span class="u-hidden">
+            page
+          </span>
+        </a>
+      </li>
+    {% endif %}
+  </ol>
+</nav>
