@@ -39,7 +39,7 @@ h1 {
 
 h2 {
   margin: 0 0 1.6rem;
-
+  font-size: 2.6rem;
 }
 
 ul[class],
@@ -115,12 +115,12 @@ a:hover {
 @media (min-width: 768px) {
   .site-header {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
   }
 }
 
 .site-intro {
-  font-size: 2.2rem;
+  font-size: 2rem;
   text-align: center;
   font-weight: bold;
   line-height: 1.5;
@@ -131,21 +131,51 @@ a:hover {
 
 @media (min-width: 768px) {
   .site-intro {
-    margin-bottom: 4.8rem;
+    margin-bottom: 5.6rem;
   }
 }
 
-.site-rss {
+@media (min-width: 1024px) {
+  .site-intro {
+    max-width: 100%;
+  }
+}
+
+.site-meta-link {
   position: absolute;
   right: 2rem;
   top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
+.site-meta-link > * {
+  margin-bottom: 1rem;
+}
 
 @media (min-width: 768px) {
-  .site-rss {
+  .site-meta-link {
     top: 6rem;
   }
+}
+
+.site-twitter {
+  display: inline-block;
+}
+
+.site-twitter svg {
+  fill: currentColor;
+}
+
+.site-twitter:link,
+.site-twitter:visited {
+  color: #000;
+}
+
+.site-twitter:focus,
+.site-twitter:hover {
+  color: #d72b2b;
 }
 
 /* Logo */
@@ -210,7 +240,7 @@ a:hover {
 
 @media (min-width: 768px) {
   .site-logo {
-    height: 30.4rem;
+    height: 27.4rem;
   }
 }
 
@@ -225,14 +255,22 @@ a:hover {
 
 @media (min-width: 768px) {
   .site-content {
-    padding-left: 13rem;
-    padding-right: 13rem;
+    padding: 1.9rem 13rem 0;
   }
 }
 
 /* Previews */
 .preview {
-  margin-bottom: 5.7rem;
+  padding-bottom: 4rem;
+}
+
+
+.preview:not(:last-child) {
+  background: url('/assets/pentagramm.svg') center bottom no-repeat;
+  background-size: auto;
+  background-size: 40px;
+  margin-bottom: 3.6rem;
+  padding-bottom: 7rem;
 }
 
 .preview__header {
