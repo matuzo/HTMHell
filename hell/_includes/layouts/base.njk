@@ -50,7 +50,10 @@
     <a href="/" class="site-logo-link">
       {% include "logo.njk" %}
     </a>
-    <a href="{{ hell.site_url }}/feed.xml" class="site-rss">RSS</a>
+    <div class="site-meta-link">
+      <a href="{{ hell.site_url }}/feed.xml">Feed</a>
+      {% include "twitter_link.njk" %}
+    </div>
   </header>
 
   <main class="site-content">
@@ -58,7 +61,8 @@
   </main>
 
   <footer class="site-footer">
-    curated by <a href="https://twitter.com/mmatuzo">@mmatuzo</a>
+    curated by <a href="https://twitter.com/mmatuzo">@mmatuzo</a><br>
+    <small>Twitter icon made by <a href="https://www.flaticon.com/authors/pixel-perfect">Pixel Perfect</a> from www.flaticon.com</small>
   </footer>
   
   {% if hell.env == 'development' %}
