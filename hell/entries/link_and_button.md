@@ -1,6 +1,6 @@
 ---
 title: "#4 link-also-button"
-date: 2019-10-22
+date: 2019-10-22T02:00:00
 author: hidde
 permalink: /{{ title | slug }}/index.html
 badcode: '<a href="https://example.com"><button>Example</button></a>'

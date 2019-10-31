@@ -45,7 +45,7 @@ Add an author in `./hell/_data/authors.js` if they're not listed.
 
 ### Adding a submission
 
-Add a submission in `./hell/entries` by copying any other markdown file in this folder. The filename should start with a counter followed by any file name, e.g. `12_my_entry.md`.
+Add a submission in `./hell/entries` by copying any other markdown file in this folder.
 
 1. Show bad code
 2. Explain how to fix it

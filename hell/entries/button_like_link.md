@@ -1,6 +1,6 @@
 ---
 title: "#5 button-like-link"
-date: 2019-10-22
+date: 2019-10-22T03:00:00
 author: pepelsbey
 permalink: /{{ title | slug }}/index.html
 
