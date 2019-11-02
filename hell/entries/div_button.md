@@ -45,9 +45,9 @@ margin: -1px;
 
 ## Issues and how to fix them
 
-1. Setting button semantics explicitly isn't necessary, there's an element for that (`button`)
+1. Setting button semantics explicitly using the `role` attribute isn't necessary, there's an element for that (`button`).
 1. You don't need the `tabindex` attribute if you use a `button`. HTML buttons are focusable by default.
-1. A click event on a `div` triggers only on click. A click event on a `button` triggers on click and if the users presses the <kbd>Enter</kbd> or <kbd>Space</kbd> key.
+1. A click event on a `div` triggers only on click. {{ snippets.button_click }}
 1. There's no text alternative for the icon.
 </div>
 

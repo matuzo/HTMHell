@@ -51,7 +51,7 @@ margin: -1px;
 ## Issues and how to fix them
 
 1. The purpose of the `img` element is to display images, not to execute JavaScript.
-1. A click event on a `img` triggers only on click. A click event on a `button` triggers on click and if the users presses the <kbd>Enter</kbd> or <kbd>Space</kbd> key.
+1. A click event on a `img` triggers only on click. {{ snippets.button_click }}
 1. There's no text alternative for the image.
 </div>
 

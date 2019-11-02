@@ -35,7 +35,7 @@ goodcode: '<a class="button" href="#form">
 
 It’s a link to a form at the same page that looks like a button.
 
-1. By adding `role="button"` to a link, you’re telling that it’s a button, though it acts like a link.
+1. By adding `role="button"` to a link, you’re telling that it’s a button, though it acts like a link. {{ snippets.native_semantics }}
 2. `aria-haspopup="true"` suggests that there’s a popup, but it doesn’t exist.
 3. Padding should be added via CSS, not `&nbsp;`.
 

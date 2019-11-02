@@ -8,7 +8,7 @@ badcode: '
 <table>
 	<tr id="body">
 		<td id="body">
-			<table border="0" cellpadding="0" cellspacing="0" id="body">
+			<table id="body">
 				<tr id="body_row">
 					<td id="body_left">…</td>
 					<td id="body_middle">…</td>
@@ -47,7 +47,7 @@ goodcode: '
 An `id` should be unique no matter on which tag it's added. Also this code uses a table-based layout (and yeah, it's on a live production site still running, redesigned in 2016). Avoid using tables for layout reasons only, because table elements have a semantic meaning. Using them could make your document more confusing for some people.
 
 1. Replace the current markup with semantic HTML5 tags. This reduces the number of tags and avoids the table-based layout.
-2. Style the new elements like before by using Flexbox or CSS Grid.
+2. Style the new elements by using [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) or [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
 
 </div>
 
