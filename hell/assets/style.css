@@ -88,6 +88,24 @@ a:hover {
   outline: 5px solid #a83636;
 }
 
+
+kbd,
+code {
+	background:#000;
+	color:#fff;
+	padding: 0.2rem 0.3rem 0.3rem;
+	border-radius: 0.2rem;
+	display: inline-block;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	line-height: 1;
+	font-size: 1.5rem;
+}
+
+kbd {
+	background:#545454;
+	color:#fff;
+}
+
 /* Helper */
 
 .u-hidden {
