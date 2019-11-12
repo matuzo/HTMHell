@@ -408,3 +408,9 @@ kbd {
 .screenshot code {
   font-size: 2.4rem;
 }
+
+.readmore {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
