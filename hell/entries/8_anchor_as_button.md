@@ -4,7 +4,7 @@ date: 2019-10-30
 author: svsven
 permalink: /{{ title | slug }}/index.html
 badcode: '<a href="#" onclick="modal.open()">Login</a>'
-goodcode_one: '<button onclick="modal.open()">Login</button>'
+goodcode_one: '<button type="button" onclick="modal.open()">Login</button>'
 goodcode_two: '<a href="/login" onclick="modal.open()">Login</a>'
 ---
 
