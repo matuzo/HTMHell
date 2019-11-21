@@ -44,8 +44,8 @@ goodcode: '<div id="page-top">
         <div class="row">
           <div class="content col-sm-12">
             <div class="content-inner">
-              <section aria-labelledby="carouselheading" lass="content__body">
-                <h3 id="carouselheading" hidden>New Products</h3>
+              <section aria-labelledby="sliderheading" class="content__body">
+                <h2 id="sliderheading" hidden>New Products</h2>
                 <ul class="slider">
                   <li class="slide">
                     …
@@ -80,7 +80,7 @@ goodcode: '<div id="page-top">
 1. Screen readers may announce the role of a `<section>` (_region_), when a user navigates to this section. User Agents may also provide methods to navigate to section elements. Using too many (nested) sections may make interfaces for screen reader users unnecessarily complicated.
 1. `<section>`s are no replacement for `<div>`s.
 1. [A`<header>` typically only contains a group of introductory or navigational aids](https://www.w3.org/TR/html52/sections.html#the-header-element) for its nearest ancestor `<main>` element or sectioning content or sectioning root element.
-1. The slider should be enclosed in a labeled region, to allow users to find it easily.
+1. The [slider should be enclosed in a labeled region](https://www.w3.org/WAI/tutorials/carousels/structure/), to allow users to find it easily.
 
 <div class="section">
 
