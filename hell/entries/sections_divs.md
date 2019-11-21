@@ -1,7 +1,8 @@
 ---
 title: "#10 <section> is no replacement for <div>"
+seo_title: "#10 section is no replacement for div"
 date: 2019-11-08T01:00:00
-permalink: /{{ title | slug }}/index.html
+permalink: /{{ seo_title | slug }}/index.html
 layout: layouts/entry.njk
 author: mmatuzo
 badcode: '<section id="page-top">
