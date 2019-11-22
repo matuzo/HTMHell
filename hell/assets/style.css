@@ -221,34 +221,29 @@ kbd {
   opacity: 0;
 }
 
-.site--loaded .site-logo__1 {
+.site--loaded .site-logo__666 {
   opacity: 1;
-  transition-delay: 0.3s;
   fill: #000;
 }
 
+.site--loaded .site-logo__1 {
+  transition-delay: 0.3s;
+}
+
 .site--loaded .site-logo__2 {
-  opacity: 1;
   transition-delay: 0.5s;
-  fill: #000;
 
 }
 
 .site--loaded .site-logo__3 {
-  opacity: 1;
   transition-delay: 0.7s;
-  fill: #000;
-
 }
 
 .site--loaded .site-logo__4 {
-  opacity: 1;
   transition-delay: .9s;
-  fill: #000;
 }
 
 .site--loaded .site-logo__5 {
-  opacity: 1;
   transition-delay: 1.3s;
 }
 
