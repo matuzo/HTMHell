@@ -88,7 +88,6 @@ a:hover {
   outline: 5px solid #a83636;
 }
 
-
 kbd,
 code {
 	background:#000;
@@ -104,6 +103,11 @@ code {
 kbd {
 	background:#545454;
 	color:#fff;
+}
+
+blockquote {
+  margin-left: 0;
+  font-style: italic;
 }
 
 /* Helper */
