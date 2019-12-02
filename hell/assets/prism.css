@@ -161,3 +161,51 @@ pre[class*="language-"] {
 		font-weight: normal;
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		color: #dedede;
+	}
+
+	/* Code blocks */
+	pre[class*="language-"] {
+		border-color: #dedede;
+	}
+
+	:not(pre) > code[class*="language-"],
+	pre[class*="language-"] {
+		background:	#000000;
+	}
+
+	.token.property,
+	.token.tag,
+	.token.constant,
+	.token.symbol,
+	.token.deleted {
+		color: #e85f5f;
+	}
+
+	.token.selector,
+	.token.attr-name,
+	.token.string,
+	.token.char,
+	.token.builtin,
+	.token.inserted {
+		color: #dedede;
+	}
+
+	.token.punctuation {
+		color: #dedede;
+	}
+
+	.token.atrule,
+	.token.attr-value,
+	.token.function {
+		color: #d79d9d;
+	}
+
+	.token.keyword {
+		color: #ffffff;
+	}
+}
