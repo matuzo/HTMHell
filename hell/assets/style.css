@@ -251,8 +251,12 @@ blockquote {
   transition-delay: 1.3s;
 }
 
-.site-logo:hover polygon {
+.site-logo polygon {
   fill: #d72b2b;
+}
+
+.site-logo:hover polygon {
+  fill: #000000;
 }
 
 @media (min-width: 768px) {
@@ -412,4 +416,61 @@ blockquote {
   font-size: 2rem;
   font-weight: bold;
   margin-top: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000000;
+    color: #dedede;
+  }
+
+  kbd,
+  code {
+    background:#dedede;
+    color:#000000;
+  }
+
+  kbd {
+    background:#545454;
+    color:#fff;
+  }
+
+  .site--loaded .site-logo__666 {
+    fill: #ffffff;
+  }
+
+  .site-logo:hover polygon {
+    fill: #ffffff;
+  }
+
+  .site-logo__circle {
+    fill: #ffffff;
+  }
+
+  .site-twitter:not(:hover):link,
+  .site-twitter:not(:hover):visited {
+    color: #dedede;
+  }
+
+  .preview:not(:last-child) {
+    background-image: url('/assets/pentagramm-light.svg');
+  }
+
+  .pagination__link {
+    border-color: #dedede;
+  }
+  
+  .pagination__link:link,
+  .pagination__link:visited {
+    color: #d72b2b;
+  }
+  
+  .pagination__link[aria-current="page"] {
+    color: #dedede;
+  }
+  
+  .pagination__link:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
 }
