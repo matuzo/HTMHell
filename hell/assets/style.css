@@ -473,4 +473,8 @@ blockquote {
     background: #FFFFFF;
     color: #000000;
   }
+
+  a:visited {
+    color: #dc6565;
+  }
 }
