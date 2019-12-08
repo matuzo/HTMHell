@@ -2,6 +2,8 @@
 
 A collection of bad practices in HTML, copied from real websites.
 
+<https://www.htmhell.dev>
+
 ## Contributing
 
 ### Rules
