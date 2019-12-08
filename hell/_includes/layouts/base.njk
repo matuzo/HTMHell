@@ -47,13 +47,22 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="/" class="site-logo-link">
-      {% include "logo.njk" %}
-    </a>
+
     <div class="site-meta-link">
-      <a href="{{ hell.site_url }}/feed.xml">Feed</a>
-      {% include "twitter_link.njk" %}
     </div>
+
+    <nav class="nav">
+      <ol class="nav__items">
+        <li class="nav__item"><a href="https://github.com/matuzo/HTMHell" class="nav__link" rel="noopener">Github</a></li>
+        <li class="nav__item"><a href="{{ hell.site_url }}/feed.xml" class="nav__link">Feed</a></li>
+        <li class="nav__item">{% include "twitter_link.njk" %}</li>
+        <li class="nav__item">
+          <a href="/" class="site-logo-link">
+            {% include "logo.njk" %}
+          </a>
+        </li>
+      </ol>
+    </nav>
   </header>
 
   <main class="site-content">
