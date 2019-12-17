@@ -20,19 +20,19 @@ Did you encounter markup that's worth adding to this prestigious collection? Ple
 
 1. [Fork the repository](https://github.com/matuzo/HTMHell) and install the dependencies.
 
-```shell
+```html
 npm install
 ```
 
 2. Run the project
 
-```shell
+```html
 npm run start
 ```
 
 3. Take screenshot While the server is still running, run the following command to take a screenshot of your code.
 
-```shell
+```html
 npm run screenshot
 ```
 
