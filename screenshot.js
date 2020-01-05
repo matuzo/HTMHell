@@ -1,5 +1,5 @@
 const settings = {
-  port: 8081,
+  port: 8080,
   screenShotWidth: 1300
 }
 const puppeteer = require('puppeteer');
