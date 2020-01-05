@@ -1,45 +1,70 @@
+const settings = {
+  port: 8081,
+  screenShotWidth: 1300
+}
 const puppeteer = require('puppeteer');
-var fs = require('fs');
+const fs = require('fs').promises;
 var fm = require('front-matter');
 const slugify = require("slugify");
+const folder = './hell/entries/';
+
+slugify.extend({'<': '', '>': ''})
+
+const readDir = async folder => {
+  return await fs.readdir(folder);
+}
+
+const readFile = async path => {
+  return await fs.readFile(path, 'utf8')
+}
 
 const takeScreenshot = async (path) => {
   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+  console.log('Opening browser')
   const page = await browser.newPage();
-  await page.goto(`http://localhost:8080/${path}`);
-  
-  await page.$$eval('html', html => {
-    html[0].setAttribute('class', 'screenshot')
-  });
 
   await page.setViewport({
-    width: 1300,
-    height: 650
+    width: settings.screenShotWidth,
+    height: settings.screenShotWidth / 2
+  });
+  
+  await page.goto(`http://localhost:${settings.port}/${path}`);
+  console.log(`Opening http://localhost:${settings.port}/${path}`)
+
+  await page.$eval('html', html => {
+    html.classList.add('class', 'screenshot')
   });
 
-  await page.screenshot({path: `./hell/images/og/${path}.png`});
+  const [response] = await Promise.all([
+    page.waitForNavigation(),
+    page.screenshot({path: `./hell/images/og/${path}.png`})
+  ])
+
   await browser.close();
+  console.log('Closing browser')
+
+  return browser;
 }
 
-const folder = './hell/entries/';
+readDir(folder).then( async (files) => {
+  console.log('Reading dir')
 
-// Loop through all the files
-fs.readdir(folder, function (err, files) {
-  if (err) {
-    console.error("Could not list the directory.", err);
-    process.exit(1);
-  }
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
 
-  files.forEach(function (file, index) {
     if (file.indexOf('.md') > -1) {
-      console.log(folder+file)
+      console.log(`Processing ${folder+file}`)
 
-      fs.readFile(folder+file, 'utf8', function(err, data){
-        if (err) throw err
-       
-        var content = fm(data)      
-        takeScreenshot(slugify(content.attributes.title))
+      const fileContent = await readFile(folder+file)
+      var content = fm(fileContent)  
+ 
+      await takeScreenshot(slugify(content.attributes.title, {
+        lower: true
+      })).catch(err => {
+        console.log(err)
       })
     }
-  });
+  }
+
+  console.log('End reading dir')
 });
