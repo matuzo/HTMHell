@@ -208,4 +208,13 @@ pre[class*="language-"] {
 	.token.keyword {
 		color: #ffffff;
 	}
+
+	.token.operator,
+	.token.entity,
+	.token.url,
+	.language-css .token.string,
+	.style .token.string,
+	.token.variable {
+		color: #7fb5b5;
+	}
 }
