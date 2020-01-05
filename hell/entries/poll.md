@@ -11,15 +11,20 @@ badcode: '<form role="form">
       <input type="radio" name="poll" aria-labelledby="pollQuestion" value="[object Object]">
       <span>Yes</span>     
 
+
       <input type="radio" name="poll" aria-labelledby="pollQuestion" value="[object Object]">
       <span>No</span>   
+
 
       <input type="radio" name="poll" aria-labelledby="pollQuestion" value="[object Object]">
       <span>Maybe</span>
       
+
       <input type="radio" name="poll" aria-labelledby="pollQuestion" value="[object Object]">
       <span>Can you repeat the question?</span>      
     </div>
+
+
     <button type="submit">Vote</button>
   </div>
 </form>'
@@ -27,18 +32,24 @@ badcode: '<form role="form">
 goodcode: '<form aria-labelledby="poll-title">
   <h2 id="poll-title">Poll title</h2>
   <fieldset>
-    <legend>Is this accessible?</legend>      
+    <legend>Is this accessible?</legend>
+
+
     <input type="radio" id="radio1" name="poll" value="yes">
     <label for="radio1">Yes</label>
+
 
     <input type="radio" id="radio2" name="poll" value="no">
     <label for="radio2">No</label>
 
+
     <input type="radio" id="radio3" name="poll" value="maybe">
     <label for="radio3">Maybe</label>
 
+
     <input type="radio" id="radio4" name="poll" value="[object Object]">
     <label for="radio4">Can you repeat the question?</label>  
+
 
     <button type="submit">Vote</button>
   </fieldset>
