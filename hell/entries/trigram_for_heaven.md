@@ -44,7 +44,7 @@ Menu
 
 <div class="section">
 
-## Funfact
+## Fun fact
 
 > The Bagua or Pa Kua are eight symbols used in Taoist cosmology to represent the fundamental principles of reality, seen as a range of eight interrelated concepts. Each consists of three lines, each line either "broken" or "unbroken", respectively representing yin or yang. Due to their tripartite structure, they are often referred to as Eight Trigrams in English.
 <https://en.wikipedia.org/wiki/Bagua>
