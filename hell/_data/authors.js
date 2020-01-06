@@ -34,6 +34,11 @@ module.exports = {
       "id": "svsven",
       "name": "Sven",
       "link": "https://github.com/svsven"
+    },
+    {
+      "id": "erik",
+      "name": "Erik",
+      "link": "https://twitter.com/erikkroes"
     }
   ]
 };
