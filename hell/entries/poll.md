@@ -47,7 +47,7 @@ goodcode: '<form aria-labelledby="poll-title">
     <label for="radio3">Maybe</label>
 
 
-    <input type="radio" id="radio4" name="poll" value="[object Object]">
+    <input type="radio" id="radio4" name="poll" value="repeat">
     <label for="radio4">Can you repeat the question?</label>  
 
 
