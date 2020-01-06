@@ -369,7 +369,15 @@ blockquote {
   }
 }
 
-/* Pagination */
+/* Entry */
+
+.entry-header {
+  margin-bottom: 2.4rem;
+}
+
+.entry-heading {
+  margin-bottom: 0;
+}
 
 .entry li::marker {
   content: "🔥\00a0";

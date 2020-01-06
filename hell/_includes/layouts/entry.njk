@@ -3,7 +3,10 @@ layout: layouts/base.njk
 og_image: {{ title | slug }}
 ---
 
-<h1>{{ title }}</h1>
+<div class="entry-header">
+  <h1 class="entry-heading">{{ title }}</h1>
+  submitted on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> by {% author author %}
+</div>
 
 <div class="entry">
   {{ content | safe }}
