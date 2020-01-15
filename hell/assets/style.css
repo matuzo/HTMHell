@@ -441,6 +441,7 @@ blockquote {
 .screenshot h2,
 .screenshot .section:not(.bad),
 .screenshot footer,
+.screenshot .entry-header,
 .screenshot header {
   display: none;
 }
