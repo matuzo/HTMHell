@@ -40,7 +40,8 @@ module.exports = {
       "name": "Erik",
       "link": "https://twitter.com/erikkroes"
     },
-    "id": "odepax",
+    {
+      "id": "odepax",
       "name": "Odepax",
       "link": "https://github.com/Odepax"
     }
