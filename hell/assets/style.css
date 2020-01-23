@@ -450,7 +450,8 @@ li.pagination__item::marker{
 .screenshot .section:not(.bad),
 .screenshot footer,
 .screenshot .entry-header,
-.screenshot header {
+.screenshot header,
+.screenshot nav {
   display: none;
 }
 
