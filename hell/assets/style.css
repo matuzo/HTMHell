@@ -392,8 +392,16 @@ blockquote {
   justify-content: center;
 }
 
+.pagination--next-prev {
+  justify-content: space-between;
+}
+
 .pagination__item {
   margin-right: 1.6rem;
+}
+
+li.pagination__item::marker{
+  content: '';
 }
 
 .pagination__link {
@@ -515,16 +523,16 @@ blockquote {
   .pagination__link {
     border-color: #dedede;
   }
-  
+
   .pagination__link:link,
   .pagination__link:visited {
     color: #dc6565;
   }
-  
+
   .pagination__link[aria-current="page"] {
     color: #dedede;
   }
-  
+
   .pagination__link:hover {
     background: #FFFFFF;
     color: #000000;
