@@ -64,7 +64,7 @@ li {
   margin-bottom: 1.6rem;;
 }
 
-p {
+p, pre {
   margin: 0 0 2.4rem;
 }
 
@@ -533,4 +533,19 @@ blockquote {
   a:visited {
     color: #dc6565;
   }
+}
+
+/* Video */
+
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.video iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
