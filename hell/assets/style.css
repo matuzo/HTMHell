@@ -440,6 +440,7 @@ blockquote {
 .screenshot h1,
 .screenshot h2,
 .screenshot .section:not(.bad),
+.screenshot .section > p,
 .screenshot footer,
 .screenshot .entry-header,
 .screenshot header {
