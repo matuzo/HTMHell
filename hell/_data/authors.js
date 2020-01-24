@@ -44,6 +44,11 @@ module.exports = {
       "id": "odepax",
       "name": "Odepax",
       "link": "https://github.com/Odepax"
+    },
+    {
+      "id": "claire",
+      "name": "Claire",
+      "link": "https://twitter.com/abrightclearweb"
     }
   ]
 };
