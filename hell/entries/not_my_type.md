@@ -26,6 +26,7 @@ goodcode: '<a href="/signup" class="button">Sign up</a>'
 1. {{ snippets.negative_tabindex }}.
 1. {{ snippets.native_semantics }}
 1. {{ snippets.use_button }}
+</div>
 
 <div class="section">
 
@@ -42,4 +43,5 @@ goodcode: '<a href="/signup" class="button">Sign up</a>'
 
 * [4.8.2. Links created by a and area elements](https://www.w3.org/TR/html52/links.html#links)
 * [4.5.1. The a element](https://www.w3.org/TR/html52/textlevel-semantics.html#the-a-element)
+
 </div>
