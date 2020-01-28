@@ -64,7 +64,7 @@ li {
   margin-bottom: 1.6rem;;
 }
 
-p {
+p, pre {
   margin: 0 0 2.4rem;
 }
 
@@ -448,6 +448,7 @@ li.pagination__item::marker{
 .screenshot h1,
 .screenshot h2,
 .screenshot .section:not(.bad),
+.screenshot .section > p,
 .screenshot footer,
 .screenshot .entry-header,
 .screenshot header,
@@ -542,4 +543,19 @@ li.pagination__item::marker{
   a:visited {
     color: #dc6565;
   }
+}
+
+/* Video */
+
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.video iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
