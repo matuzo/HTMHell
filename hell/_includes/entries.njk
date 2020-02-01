@@ -1,4 +1,4 @@
-<ol class="previews">
+<ol class="previews u-list-reset">
   {% for post in entries %}
     <li class="preview">
       <div class="preview__header">
@@ -26,7 +26,7 @@
 </ol>
 
 <nav aria-label="Select page">
-  <ol class="pagination">
+  <ol class="pagination u-list-reset">
     {% if pagination.previousPageHref %}
       <li class="pagination__item pagination__item--next">
         <a class="pagination__link" href="{{ pagination.previousPageHref }}">
