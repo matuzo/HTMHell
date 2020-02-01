@@ -74,6 +74,7 @@ Letters are wrapped in `div`s to animate each letter with JavaScript.
 1. A large DOM tree results in a large accessibility tree, which may have a bad impact on the performance of assistive technology.
 2. The separation of presentation from content is advised. Move styles that don't change dynamically into a CSS file.
 
+</div>
 
 <div class="section">
 

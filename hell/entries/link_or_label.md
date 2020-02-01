@@ -39,6 +39,8 @@ goodcode: '<input type="checkbox" id="accept" required>
 1. The ability to click a label provides usability and accessibility benefits (larger hit area).
 1. Place links outside the `label` element.
 
+</div>
+
 <div class="section">
 
 ## Good code

@@ -82,6 +82,8 @@ goodcode: '<div id="page-top">
 1. A`<header>` typically only contains a group of introductory or navigational aids for its nearest ancestor `<main>` element or sectioning content or sectioning root element. If it's not a descendant of the main element or a sectioning content element, then that [header is scoped to the body](https://www.w3.org/TR/html52/sections.html#the-header-element). 
 1. The [carousel (.slider) should be enclosed in a labeled region](https://www.w3.org/WAI/tutorials/carousels/structure/), to allow users to find it easily.
 
+</div>
+
 <div class="section">
 
 ## Good code

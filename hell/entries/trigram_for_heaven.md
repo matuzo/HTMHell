@@ -33,6 +33,8 @@ Menu
 1. A `span` isn't keyboard focusable, but this element must be focusable, because it's used for opening and closing the main navigation.
 1. `aria-expanded` must be added to indicate wheather the main navigation is collapsed or not.
 
+</div>
+
 <div class="section">
 
 ## Good code
