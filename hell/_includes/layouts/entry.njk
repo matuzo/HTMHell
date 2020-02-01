@@ -24,18 +24,24 @@ og_image: {{ title | slug }}
 {% set nextItemIndex = currentItemIndex + 1 %}
 
 <nav aria-label="Select next or previous entry">
-  <ol class="pagination pagination--next-prev">
+  <ol class="page-nav">
     {% if prevItemIndex >= 0 %}
       {% set prev = collections.entries[prevItemIndex] %}
-      <li class="pagination__item">
-        <a class="pagination__link" href="{{ prev.url }}">Previous</a>
+      <li class="page-nav__item page-nav__item--prev">
+        <a class="page-nav__link page-nav__link--prev" href="{{ prev.url }}">
+          <div class="page-nav__label">Previous</div>
+          {{ prev.data.title }}
+        </a>
       </li>
     {% endif %}
 
     {% if nextItemIndex < collections.entries.length %}
       {% set next = collections.entries[nextItemIndex] %}
-      <li class="pagination__item">
-        <a class="pagination__link" href="{{ next.url }}">Next</a>
+      <li class="page-nav__item page-nav__item--next">
+        <a class="page-nav__link page-nav__link--next" href="{{ next.url }}">
+          <div class="page-nav__label">Next</div>
+          {{ next.data.title }}
+        </a>
       </li>
     {% endif %}
   </ol>
