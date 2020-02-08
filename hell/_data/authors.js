@@ -49,6 +49,11 @@ module.exports = {
       "id": "claire",
       "name": "Claire",
       "link": "https://twitter.com/abrightclearweb"
-    }
+    },
+    {
+      "id": "spell",
+      "name": "Spell",
+      "link": "https://twitter.com/Spellacy"
+    }    
   ]
 };
