@@ -56,7 +56,7 @@ li {
   margin-bottom: 1.6rem;;
 }
 
-p, pre {
+p, pre, blockquote {
   margin: 0 0 2.4rem;
 }
 
@@ -98,7 +98,6 @@ kbd {
 }
 
 blockquote {
-  margin-left: 0;
   font-style: italic;
 }
 
