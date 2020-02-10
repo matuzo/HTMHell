@@ -53,7 +53,7 @@ module.exports = {
     {
       "id": "spell",
       "name": "Spell",
-      "link": "https://twitter.com/Spellacy"
+      "link": "https://michaelspellacy.com/"
     }    
   ]
 };
