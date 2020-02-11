@@ -29,6 +29,13 @@ pre[class*="language-"] {
 	font-size: 1.4rem;
 }
 
+@media (min-width: 768px) {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		font-size: 1.5rem;
+	}
+}
+
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1em;
