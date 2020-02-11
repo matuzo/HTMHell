@@ -577,6 +577,12 @@ blockquote {
   min-height: 50px;
 }
 
+@media (prefers-color-scheme: dark) {
+  .page-nav__link {
+    background-image: url('/assets/pentagramm-light.svg');
+  }
+}
+
 .page-nav__link:hover {
   text-decoration: none;
 }
