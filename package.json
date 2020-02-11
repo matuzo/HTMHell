@@ -7,7 +7,7 @@
     "start": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
     "build-gulp": "gulp build",
     "build-site": "ELEVENTY_ENV=production npx @11ty/eleventy",
-    "build": "npm run build-gulp & npm run build-site",
+    "build": "npm run build-gulp && npm run build-site",
     "screenshot": "npm run build-gulp && node screenshot"
   },
   "author": "",
