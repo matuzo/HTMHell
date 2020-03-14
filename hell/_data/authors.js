@@ -54,6 +54,11 @@ module.exports = {
       "id": "spell",
       "name": "Spell",
       "link": "https://michaelspellacy.com/"
+    }, 
+    {
+      "id": "sime",
+      "name": "Šime",
+      "link": "https://twitter.com/simevidas"
     }    
   ]
 };
