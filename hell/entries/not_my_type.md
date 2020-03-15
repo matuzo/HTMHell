@@ -26,6 +26,7 @@ goodcode: '<a href="/signup" class="button">Sign up</a>'
 1. {{ snippets.negative_tabindex }}.
 1. {{ snippets.native_semantics }}
 1. {{ snippets.use_button }}
+1. When Gzip compression is enabled on the web server, having `href` as the first attribute improves performance.
 </div>
 
 <div class="section">
