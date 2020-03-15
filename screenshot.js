@@ -18,7 +18,17 @@ const readFile = async path => {
   return await fs.readFile(path, 'utf8')
 }
 
-const takeScreenshot = async (path) => {
+const takeScreenshot = async (attributes) => {
+  let title = attributes.title;
+
+  if (attributes.seo_title) {
+    title = attributes.seo_title
+  }
+
+  const path = slugify(title, {
+    lower: true
+  })
+
   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   console.log('Opening browser')
   const page = await browser.newPage();
@@ -58,9 +68,7 @@ readDir(folder).then( async (files) => {
       const fileContent = await readFile(folder+file)
       var content = fm(fileContent)  
  
-      await takeScreenshot(slugify(content.attributes.title, {
-        lower: true
-      })).catch(err => {
+      await takeScreenshot(content.attributes).catch(err => {
         console.log(err)
       })
     }
