@@ -447,6 +447,9 @@ blockquote {
 
 .screenshot pre[class*="language-"] {
   white-space: normal !important;
+  max-height: 550px;
+  overflow: auto;
+  margin: 0;
 }
 
 .screenshot .bad {

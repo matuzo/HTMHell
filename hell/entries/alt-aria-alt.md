@@ -1,7 +1,8 @@
 ---
 title: "#16 alt, no wait…, aria-label, no wait…, alt"
+seo_title: "#16 alt, no aria-label, no alt"
 date: 2020-02-09T07:00:00
-permalink: /alt-no-aria-label-no-alt/index.html
+permalink: /{{ seo_title | slug }}/index.html
 layout: layouts/entry.njk
 author: spell
 badcode: '<a tabindex="0">
