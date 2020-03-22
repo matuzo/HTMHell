@@ -59,6 +59,11 @@ module.exports = {
       "id": "sime",
       "name": "Šime",
       "link": "https://twitter.com/simevidas"
-    }    
+    },
+    {
+      "id": "christophfreyer",
+      "name": "Christoph",
+      "link": "https://www.christoph-freyer.at/"
+    }
   ]
 };
