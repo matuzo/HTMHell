@@ -6,5 +6,6 @@ module.exports = {
   span_click: "A click event on a `span` triggers only on click.",
   use_button: "If you need a button, use the `<button>` element.",
   negative_tabindex: "A negative `tabindex` value means that the element is not accessible via keyboard, but it could be focused with Javascript",
-  skip_headings: "Heading levels shouldn’t be skipped. Screen reader users rely on a sound document outline and hierarchy. It helps with navigation and understanding how the page is structured."
-};
+  skip_headings: "Heading levels shouldn’t be skipped. Screen reader users rely on a sound document outline and hierarchy. It helps with navigation and understanding how the page is structured.",
+  div_semantics: "The `<div>` element is an element of last resort, for when no other element is suitable. Use of the `<div>` element instead of more appropriate elements leads to poor accessibility."
+}
