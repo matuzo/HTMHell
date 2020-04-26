@@ -177,7 +177,6 @@ blockquote {
 }
 
 .nav__item {
-  text-transform: uppercase;
   font-weight: bold;
   display: flex;
   align-items: center;
