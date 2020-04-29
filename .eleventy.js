@@ -2,6 +2,7 @@ const authors = require('./hell/_data/authors.js')
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const filters = require('./_11ty/filters.js')
+const pluginPWA = require('eleventy-plugin-pwa');
 
 module.exports = function(eleventyConfig) {
    // Filters
@@ -33,6 +34,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"./hell/favicon/*": "/"});
   eleventyConfig.addPassthroughCopy("./hell/images");
   eleventyConfig.addPassthroughCopy("./hell/robots.txt");
+
+  eleventyConfig.addPlugin(pluginPWA);
   
   return {
     templateFormats: [
