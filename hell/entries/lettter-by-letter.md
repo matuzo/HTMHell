@@ -70,8 +70,8 @@ Letters are wrapped in `div`s to animate each letter with JavaScript.
     <div class="video"><iframe loading="lazy" width="700" height="394" src="https://www.youtube.com/embed/-Q4xk1QMex0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="VoiceOver demo: Each letter in a heading wrapped in a div"></iframe></div>
     <a href="https://codepen.io/matuzo/pen/vYEbmxp">Code for this demo</a>
 
-1. Try to avoid excessive DOM sizes. Too many DOM nodes and nested DOM elements may harm your page performance.
-1. A large DOM tree results in a large accessibility tree, which may have a bad impact on the performance of assistive technology.
+1. {{ snippets.dom_size }}
+1. {{ snippets.dom_tree }}
 2. The separation of presentation from content is advised. Move styles that don't change dynamically into a CSS file.
 
 </div>
