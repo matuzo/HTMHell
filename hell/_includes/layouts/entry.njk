@@ -12,35 +12,25 @@ og_image: {{ title | slug }}
   {{ content | safe }}
 </div>
 
-{% set currentItemIndex = 0 %}
-
-{% for item in collections.entries %}
-  {% if item.url == page.url %}
-    {% set currentItemIndex = loop.index0 %}
-  {% endif %}
-{% endfor %}
-
-{% set prevItemIndex = currentItemIndex - 1 %}
-{% set nextItemIndex = currentItemIndex + 1 %}
+{% set previousPost = collections.entries | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.entries | getNextCollectionItem(page) %}
 
 <nav aria-label="Select next or previous entry">
   <ol class="page-nav">
-    {% if prevItemIndex >= 0 %}
-      {% set prev = collections.entries[prevItemIndex] %}
+    {% if previousPost %}
       <li class="page-nav__item page-nav__item--prev">
-        <a class="page-nav__link page-nav__link--prev" href="{{ prev.url }}">
+        <a class="page-nav__link page-nav__link--prev" href="{{ previousPost.url }}">
           <div class="page-nav__label">Previous</div>
-          {{ prev.data.title }}
+          {{ previousPost.data.title }}
         </a>
       </li>
     {% endif %}
 
-    {% if nextItemIndex < collections.entries.length %}
-      {% set next = collections.entries[nextItemIndex] %}
+    {% if nextPost %}
       <li class="page-nav__item page-nav__item--next">
-        <a class="page-nav__link page-nav__link--next" href="{{ next.url }}">
+        <a class="page-nav__link page-nav__link--next" href="{{ nextPost.url }}">
           <div class="page-nav__label">Next</div>
-          {{ next.data.title }}
+          {{ nextPost.data.title }}
         </a>
       </li>
     {% endif %}
