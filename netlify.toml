@@ -1,0 +1,10 @@
+[[plugins]]
+package = "netlify-plugin-a11y"
+
+  [plugins.inputs]
+
+  checkPaths = [
+    '/index.html',
+    '/15-letter-by-letter/index.html',
+    '/contribution/index.html'
+  ]
