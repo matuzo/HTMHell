@@ -3,9 +3,7 @@
     <li class="preview">
       <div class="preview__header">
         <h2 class="preview__heading">
-          <a href="{{ post.url | url }}" class="">
-            {{ post.data.title }}
-          </a>
+          {{ post.data.title }}
         </h2>
 
         submitted on <time class="" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> by {% author post.data.author %}
@@ -16,8 +14,10 @@
       {% endhighlight %}
 
       <p class="readmore">
-        <a href="{{ post.url | url }}" aria-hidden="true">
-          Details and tips on how to fix this diabolic code.
+        <span aria-hidden="true">&#8594;</span>
+  
+        <a href="{{ post.url | url }}">
+           Details and tips on how to fix this diabolic code.
         </a>
       </p>
         
