@@ -21,7 +21,7 @@ goodcodeCSS: '.button {
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 

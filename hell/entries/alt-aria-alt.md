@@ -29,7 +29,7 @@ Context: A list of images that link to detail pages.
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 

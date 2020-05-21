@@ -43,7 +43,7 @@ Context: A simple page that displays the availability of a product.
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 

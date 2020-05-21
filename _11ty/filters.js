@@ -31,5 +31,9 @@ module.exports = {
     return beautify_css(value, {
       "indent_size": 2
     })
+  },
+
+  entryNumber: string => {
+    return string.split(' ')[0]
   }
 }

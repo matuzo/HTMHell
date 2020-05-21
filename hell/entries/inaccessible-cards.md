@@ -41,7 +41,7 @@ Context: A list of linked cards, each with heading, image, and teaser text.
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 

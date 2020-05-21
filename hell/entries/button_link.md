@@ -19,7 +19,7 @@ goodcode: '<a href="https://"><img alt="Name of website" src="logo.jpg"></a>'
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 

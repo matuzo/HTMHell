@@ -62,7 +62,7 @@ Letters are wrapped in `div`s to animate each letter with JavaScript.
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 

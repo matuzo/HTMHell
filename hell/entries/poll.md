@@ -66,7 +66,7 @@ goodcode: '<form aria-labelledby="poll-title">
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 
