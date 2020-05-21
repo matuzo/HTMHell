@@ -54,10 +54,7 @@
 </head>
 <body>
   <header class="site-header">
-
-    <div class="site-meta-link">
-    </div>
-
+    <a href="#content" class="skip-link">Skip to content</a>
     <nav class="nav">
       <ol class="nav__items">
         <li class="nav__item"><a href="/contribution" class="nav__link">Contribution</a></li>
@@ -73,7 +70,7 @@
     </nav>
   </header>
 
-  <main class="site-content">
+  <main class="site-content" id="content">
     {{ content | safe }}
   </main>
 
