@@ -3,26 +3,41 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const filters = require('./_11ty/filters.js')
 const pluginPWA = require('eleventy-plugin-pwa');
+const htmlmin = require('html-minifier');
 
-module.exports = function(eleventyConfig) {
-   // Filters
-   Object.keys(filters).forEach(filterName => {
+module.exports = function (eleventyConfig) {
+  // Filters
+  Object.keys(filters).forEach(filterName => {
     eleventyConfig.addFilter(filterName, filters[filterName])
   });
 
   // Shortcodes
-  eleventyConfig.addNunjucksShortcode("author", function(id) {
+  eleventyConfig.addNunjucksShortcode("author", function (id) {
     let authorHTML;
     authors.authors.filter(author => {
       if (author.id === id) {
-        authorHTML = `<a href="${ author.link }" rel="noopener">${ author.name }</a>`;
+        authorHTML = `<a href="${author.link}" rel="noopener">${author.name}</a>`;
       }
     });
     return authorHTML;
   });
 
+  // Transforms
+  eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
+    if (outputPath.endsWith('.html')) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+      return minified;
+    }
+
+    return content;
+  });
+
   // Collections
-  eleventyConfig.addCollection("entries", function(collection) {
+  eleventyConfig.addCollection("entries", function (collection) {
     return collection.getFilteredByGlob("./hell/entries/*.md");
   });
 
@@ -30,13 +45,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
 
-  eleventyConfig.addPassthroughCopy({"./hell/assets": "assets"});
-  eleventyConfig.addPassthroughCopy({"./hell/favicon/*": "/"});
+  eleventyConfig.addPassthroughCopy({ "./hell/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "./hell/favicon/*": "/" });
   eleventyConfig.addPassthroughCopy("./hell/images");
   eleventyConfig.addPassthroughCopy("./hell/robots.txt");
 
   eleventyConfig.addPlugin(pluginPWA);
-  
+
   return {
     templateFormats: [
       "md",

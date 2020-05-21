@@ -29,6 +29,7 @@
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-uglify": "^3.0.2",
+    "html-minifier": "^4.0.0",
     "luxon": "^1.21.3",
     "readable-stream": "^3.4.0"
   }
