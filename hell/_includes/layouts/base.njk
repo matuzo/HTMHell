@@ -45,13 +45,12 @@
       <link rel="stylesheet" href="/assets/style.css" />
     {% else %}
       <link rel="stylesheet" href="/assets/min/style.min.css" />
+      <script>
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("/service-worker.js");
+        }
+      </script> 
     {% endif %}
-
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/service-worker.js");
-      }
-    </script> 
 </head>
 <body>
   <header class="site-header">
