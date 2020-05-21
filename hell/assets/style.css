@@ -367,6 +367,10 @@ blockquote {
 
 /* Entry */
 
+.entry {
+  position: relative;
+}
+
 .entry-header {
   margin-bottom: 2.4rem;
 }
@@ -622,4 +626,45 @@ blockquote {
   .page-nav__link--next {
     padding-left : 20px;
   }
+}
+
+.code_wrapper {
+  position: relative;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #000000;
+  padding: 1.5rem 2rem 1.2rem;
+  border: 5px solid #000000;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.skip-link--inline {
+  padding: 0.5rem;
+  font-size: 1.7rem;
+  top: 6px;
+  transform: translateY(-100%);
+  left: 0;
+}
+
+.skip-link:not(:focus) {
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%); 
+  margin: -1px;
+}
+
+.skip-link:link,
+.skip-link:visited {
+  color: #ffffff;
+  text-decoration: none;
 }

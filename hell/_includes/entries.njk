@@ -9,14 +9,17 @@
         submitted on <time class="" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> by {% author post.data.author %}
       </div>
 
-      {% highlight "html" %}
-        {{ post.data.badcode | pretty | safe }}
-      {% endhighlight %}
+      <div class="code_wrapper">
+        <a href="#post_{{ loop.index }}" class="skip-link skip-link--inline">skip code sample</a>
+        {% highlight "html" %}
+          {{ post.data.badcode | pretty | safe }}
+        {% endhighlight %}
+      </div>
 
       <p class="readmore">
         <span aria-hidden="true">&#8594;</span>
   
-        <a href="{{ post.url | url }}">
+        <a href="{{ post.url | url }}" id="post_{{ loop.index }}">
            Details and tips on how to fix this diabolic code.
         </a>
       </p>
