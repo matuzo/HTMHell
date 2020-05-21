@@ -16,7 +16,7 @@ goodcode: '<a href="/signup" class="button">Sign up</a>'
 ```
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 

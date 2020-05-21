@@ -18,7 +18,7 @@ goodcode_two: '<a href="/login" onclick="modal.open()">Login</a>'
 
 </div>
 
-<div class="section">
+<div class="section" id="issues">
 
 ## Issues and how to fix them
 
