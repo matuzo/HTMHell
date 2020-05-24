@@ -65,8 +65,8 @@ margin: -1px;
 1. Content inside these `div`s is semantically just text. Assistive technology doesn't know that these fake buttons are actually buttons.
 1. {{ snippets.div_click }} {{ snippets.button_click }}
 1. There's no text alternative for the icon.
-1. [Font Awesome advises to hide icons semantically](https://fontawesome.com/v4.7.0/accessibility/) by settings `aria-hidden="true"` on the `<i>` element.
-1. Font Awesome adds unicode content via the `::before` pseudo element. Assistive technology may announce the unicode equivalent, which in this specific example would be “times” since [fa-times](https://fontawesome.com/icons/times) is not a cross but a multiplication sign. (Please note: Talkback and VoiceOver didn't annouce anything in this example.)
+1. {{ snippets.fa_icons }}
+1. {{ snippets.fa_times }}
 1. Bonus: it should be possible to close modals by pressing <kbd>Esc</kbd>.
 </div>
 

@@ -26,7 +26,7 @@ goodcodeCSS: '.button {
 ## Issues and how to fix them
 
 1. By nesting a button inside of a link, you're sending two messages: this is a button, but also this is a link.
-If you're not sure when to use `<a>` or `<button>`, watch [The Links vs. Buttons Showdown](https://www.youtube.com/watch?v=8XjwDq9zG4I) by [Marcy Sutton](https://twitter.com/marcysutton).
+1. {{ snippets.linkvsbutton }}
 </div>
 
 <div class="section">

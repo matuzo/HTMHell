@@ -22,10 +22,9 @@ goodcode_two: '<a href="/login" onclick="modal.open()">Login</a>'
 
 ## Issues and how to fix them
 
-1. The anchor tag is being used as a button instead of a navigational link. Its only purpose is to trigger an action on the same page. An anchor tag should be used for navigation; to create links to other pages, anchor points on the same page or to resources such as PDF files.
-1. In this case, the `href` attribute contains a placeholder value that links to the same page but does not navigate to an anchor point.
-1. Due to the above points, this element has accessibility issues. Browsers and devices that do not support JavaScript will not be able to access the content and functionality on the modal, and screen readers may parse the element incorrectly.
-
+1. {{ snippets.ahref }}
+1. {{ snippets.buttontypebutton }}
+1. Browsers and devices that do not support JavaScript will not be able to access the content in the modal.
 
 </div>
 

@@ -36,7 +36,7 @@ Context: A list of images that link to detail pages.
 1. {{ snippets.aplaceholder }}  
 (<a href="#foot-note1">HTML spec</a>)
 1. {{ snippets.aplaceholder_click }}  
-1. Placeholder links aren't focusable. `tabindex` makes them focusable, but the attribute is another indicator that a proper link would be a better choice here.
+1. {{ snippets.aplaceholder_focus }} `tabindex` makes them focusable, but the attribute is another indicator that a proper link would be a better choice here.
 1. `alt` is not allowed on `div` elements and it has no effect on their semantic meaning.
 1. Avoid `aria` attributes when possible. The `aria-label` attribute on the `div` is redundant, because the `img` already has an accessible name (the value of the  `alt` attribute).
 

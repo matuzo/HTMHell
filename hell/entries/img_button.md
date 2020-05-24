@@ -52,7 +52,7 @@ margin: -1px;
 
 1. The purpose of the `img` element is to display images, not to execute JavaScript.
 1. A click event on a `img` triggers only on click. {{ snippets.button_click }}
-1. There's no text alternative for the image.
+1. {{ snippets.noalt }}
 </div>
 
 <div class="section">
