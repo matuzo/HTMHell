@@ -3,7 +3,7 @@ title: "#20 HTMHell special: close buttons"
 date: 2020-05-23T07:00:00
 permalink: /20-close-buttons/index.html
 layout: layouts/entry.njk
-author: matuzo
+author: mmatuzo
 badcode: '<div class="close"></div>'
 badcodeCSS: '.close::after {
 
