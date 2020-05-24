@@ -47,12 +47,12 @@ Context: A list of linked cards, each with heading, image, and teaser text.
 
 1. You might not need (so many) `<section>`s. Read [Why You Should Choose HTML5 &lt;article&gt; Over &lt;section&gt;](https://www.smashingmagazine.com/2020/01/html5-article-section/) by [Bruce Lawson](https://www.brucelawson.co.uk/) for more details.
 1. {{ snippets.skip_headings }}
-1. The figure element represents content, optionally with a caption, that is self-contained, but in this example there's no content, only a caption.
+1. The figure element represents content, optionally with a caption, that is self-contained, but in this example there’s no content, only a caption.
 1. The image in a card usually isn’t decorative, it conveys information. It should be part of the HTML document and not added via CSS. Background images are not accessible to everyone.
-1. The card is only linked via JavaScript. If there's no proper HTML anchor (`<a href="path/to/page">`), the “link” is inaccessible to screen reader and keyboard users.
-1. The `<h1>` - `<h6>` elements represent introductory headings for their sections. The `<h4>` is flow content and thus technically allowed as a descendent of `figcaption`, but it's better to use it to introduce the card as a whole.
+1. The card is only linked via JavaScript. If there’s no proper HTML anchor (`<a href="path/to/page">`), the “link” is inaccessible to screen reader and keyboard users.
+1. The `<h1>` - `<h6>` elements represent introductory headings for their sections. The `<h4>` is flow content and thus technically allowed as a descendent of `figcaption`, but it’s better to use it to introduce the card as a whole.
 1. The `article` element represents a self-contained composition in a page or site. This could be a newspaper article, an essay or report, a blog or other social media post. For a simple paragraph use `<p>`.
-1. Making accessible cards where the whole card is clickable isn't easy. Read the articles in the [resources](#resources) section for more information.
+1. Making accessible cards where the whole card is clickable isn’t easy. Read the articles in the [resources](#resources) section for more information.
 
 </div>
 

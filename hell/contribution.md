@@ -10,8 +10,8 @@ Did you encounter markup that's worth adding to this prestigious collection? Ple
 ## Rules
 
 * Please only contribute examples you copy from production websites.
-* Remove attributes that don't add any value.
-* Remove any pointers that show where you've copied the code. We don't want to blame anyone.
+* Remove attributes that don’t add any value.
+* Remove any pointers that show where you've copied the code. We don’t want to blame anyone.
 * Only copy code from modern websites.
 
 ## How to contribute

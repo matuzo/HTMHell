@@ -48,10 +48,10 @@ Context: A simple page that displays the availability of a product.
 ## Issues and how to fix them
 
 1. `h1 – h6` elements must not be used to markup subheadings, subtitles, alternative titles and taglines unless intended to be the heading for a new section or subsection.<sup><a href="#resources">1</a></sup>
-1. All `div` elements in this specific example are superfluous. It's likely that they only exist because a front-end framework adds them by default. Use [Fragments in React](https://reactjs.org/docs/fragments.html) or similar techniques in other frameworks to avoid unnecessary markup.
+1. All `div` elements in this specific example are superfluous. It’s likely that they only exist because a front-end framework adds them by default. Use [Fragments in React](https://reactjs.org/docs/fragments.html) or similar techniques in other frameworks to avoid unnecessary markup.
 1. {{ snippets.dom_size }}
 1. {{ snippets.dom_tree }}
-1. Only [phrasing content](https://www.w3.org/TR/html52/dom.html#phrasing-content) is allowed as children and descendants of `h1 – h6` elements. (`h3` and `div` don't fall in the phrasing content category).
+1. Only [phrasing content](https://www.w3.org/TR/html52/dom.html#phrasing-content) is allowed as children and descendants of `h1 – h6` elements. (`h3` and `div` don’t fall in the phrasing content category).
 1. {{ snippets.i_elem }}
 1. {{ snippets.aplaceholder }} <sup><a href="#resources">3</a></sup>
 1. {{ snippets.aplaceholder_click }}

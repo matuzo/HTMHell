@@ -36,7 +36,7 @@ Context: The main navigation of a personal website.
 1. Use `<nav>` for the main navigation, it represents a [landmark](https://www.scottohara.me/blog/2018/03/03/landmarks.html) with links to external or internal pages. Screen reader users may use shortcuts to access the navigation directly or skip it.
 1. Use `<ul>` or `<ol>` to structure related links semantically and visually. Screen readers usually announce the number of items in a list.
 1. If the order of items in the navigation matters, use `<ol>`, otherwise `<ul>`.
-1. {{snippets.div_click }} Use `<a href="">` to link to other pages. It's (more) accessible to keyboard, screen reader, and mouse users than a fake JavaScript-only link.
+1. {{snippets.div_click }} Use `<a href="">` to link to other pages. It’s (more) accessible to keyboard, screen reader, and mouse users than a fake JavaScript-only link.
 
 </div>
 

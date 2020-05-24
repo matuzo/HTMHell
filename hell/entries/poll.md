@@ -70,10 +70,10 @@ goodcode: '<form aria-labelledby="poll-title">
 
 ## Issues and how to fix them
 
-1. Setting form semantics explicitly using the `role` attribute isn't necessary, the semantics are implied in the element.
+1. Setting form semantics explicitly using the `role` attribute isn’t necessary, the semantics are implied in the element.
 1. A form is a landmark. An `aria-labelledby` referring to the `h2` gives the landmark an accessible name. This makes it more useful for navigation.
-1. Setting `role="radiogroup"` isn't necessary, and certainly not twice. If you want to group the element, use a `fieldset` instead.
-1. Don't use `aria-labelledby` to create a relationship between a `radiobutton` and the poll question. `aria-labelledby` is for setting the accessible name. Use a `legend` instead.
+1. Setting `role="radiogroup"` isn’t necessary, and certainly not twice. If you want to group the element, use a `fieldset` instead.
+1. Don’t use `aria-labelledby` to create a relationship between a `radiobutton` and the poll question. `aria-labelledby` is for setting the accessible name. Use a `legend` instead.
 1. To give `radiobutton` an accessible name, put the `span` content in a `label`, and use `for` to create a relationship with the `radiobutton`.
 1. The button is inside the fieldset to create one logical grouping.
 

@@ -30,7 +30,7 @@ Menu
 1. A screen reader may announce this as _trigram for heaven menu_, because ☰ is the unicode character for the [trigram for heaven](https://en.wikipedia.org/wiki/Bagua).
 1. The purpose of the icon is decorative, it should be hidden from screen readers. Consider adding decorative images using background properties in CSS.
 1. {{ snippets.span_click }} {{ snippets.button_click }}
-1. A `span` isn't keyboard focusable, but this element must be focusable, because it's used for opening and closing the main navigation.
+1. A `span` isn’t keyboard focusable, but this element must be focusable, because it’s used for opening and closing the main navigation.
 1. `aria-expanded` must be added to indicate wheather the main navigation is collapsed or not.
 
 </div>

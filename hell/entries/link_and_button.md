@@ -25,7 +25,7 @@ goodcodeCSS: '.button {
 
 ## Issues and how to fix them
 
-1. By nesting a button inside of a link, you're sending two messages: this is a button, but also this is a link.
+1. By nesting a button inside of a link, you’re sending two messages: this is a button, but also this is a link.
 1. {{ snippets.linkvsbutton }}
 </div>
 

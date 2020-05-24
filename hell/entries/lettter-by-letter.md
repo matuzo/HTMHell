@@ -72,7 +72,7 @@ Letters are wrapped in `div`s to animate each letter with JavaScript.
 
 1. {{ snippets.dom_size }}
 1. {{ snippets.dom_tree }}
-2. The separation of presentation from content is advised. Move styles that don't change dynamically into a CSS file.
+2. The separation of presentation from content is advised. Move styles that don’t change dynamically into a CSS file.
 
 </div>
 

@@ -34,8 +34,8 @@ goodcode: '<input type="checkbox" id="accept" required>
 
 ## Issues and how to fix them
 
-1. It's bad practice to nest elements with [activation behavior](https://www.w3.org/TR/html52/editing.html#activation-behavior) (e.g. click).
-1. Users don't expect a new page to open when they click a label.
+1. It’s bad practice to nest elements with [activation behavior](https://www.w3.org/TR/html52/editing.html#activation-behavior) (e.g. click).
+1. Users don’t expect a new page to open when they click a label.
 1. The ability to click a label provides usability and accessibility benefits (larger hit area).
 1. Place links outside the `label` element.
 

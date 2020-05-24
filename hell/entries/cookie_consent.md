@@ -61,10 +61,10 @@ margin: -1px;
 ## Issues and how to fix them
 
 1. The modal is not the first item on the page and focus is not on the modal when the page loads. Keyboard users have to tab through all items on the page to access the cookie consent window.
-1. A `div` isn't keyboard focusable.
-1. Content inside these `div`s is semantically just text. Assistive technology doesn't know that these fake buttons are actually buttons.
+1. A `div` isn’t keyboard focusable.
+1. Content inside these `div`s is semantically just text. Assistive technology doesn’t know that these fake buttons are actually buttons.
 1. {{ snippets.div_click }} {{ snippets.button_click }}
-1. There's no text alternative for the icon.
+1. There’s no text alternative for the icon.
 1. {{ snippets.fa_icons }}
 1. {{ snippets.fa_times }}
 1. Bonus: it should be possible to close modals by pressing <kbd>Esc</kbd>.

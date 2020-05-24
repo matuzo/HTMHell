@@ -21,7 +21,7 @@ goodcode: '<a href="/signup" class="button">Sign up</a>'
 ## Issues and how to fix them
 
 1. The `type` attribute has no effect on the semantics of an `<a>` element.
-1. An anchor may have the `type` attribute, but the value should be a valid [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types). Browsers may consider it, but it's purely advisory.
+1. An anchor may have the `type` attribute, but the value should be a valid [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types). Browsers may consider it, but it’s purely advisory.
 1. If the presence of the `href` attribute makes sense, you most definitely want to use a proper link (`<a>`) and not a button, no matter how the element looks like in your design.
 1. {{ snippets.negative_tabindex }}.
 1. {{ snippets.native_semantics }}
