@@ -1,89 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
- <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}</title>
+    <title>{{ hell.site_title }}
+      {% if title %}
+        -
+        {{ title }}{%endif%}</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d72b2b">
-    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Manuel Matuzović">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d72b2b">
+      <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Manuel Matuzović">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="theme-color" content="#ffffff">
 
-    <!-- Search Engine -->
-    <meta name="description" content="{{ hell.site_description }}">
-    {% set image_path = seo_title or title %}
-    <meta name="image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=test">
-    <!-- Schema.org for Google -->
-    <meta itemprop="name" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
-    <meta itemprop="description" content="{{ hell.site_description }}">
-    <meta itemprop="image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=test">
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
-    <meta name="twitter:description" content="{{ hell.site_description }}">
-    <meta name="twitter:site" content="@mmatuzo">
-    <meta name="twitter:creator" content="@mmatuzo">
-    <meta name="twitter:image:src" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=240210">
-    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta property="og:title" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
-    <meta property="og:description" content="{{ hell.site_description }}">
-    <meta property="og:image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=test">
-    <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
-    <meta property="og:site_name" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
-    <meta property="og:locale" content="en_GB">
-    <meta property="og:type" content="website">
+      <!-- Search Engine -->
+      <meta name="description" content="{{ hell.site_description }}">
+      {% set image_path = seo_title or title %}
+      <meta name="image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=test">
+      <!-- Schema.org for Google -->
+      <meta itemprop="name" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
+      <meta itemprop="description" content="{{ hell.site_description }}">
+      <meta itemprop="image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=test">
+      <!-- Twitter -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
+      <meta name="twitter:description" content="{{ hell.site_description }}">
+      <meta name="twitter:site" content="@mmatuzo">
+      <meta name="twitter:creator" content="@mmatuzo">
+      <meta name="twitter:image:src" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=240210">
+      <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+      <meta property="og:title" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
+      <meta property="og:description" content="{{ hell.site_description }}">
+      <meta property="og:image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=test">
+      <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+      <meta property="og:site_name" content="{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}">
+      <meta property="og:locale" content="en_GB">
+      <meta property="og:type" content="website">
 
-    {% if hell.env == 'development' %}
-      <link rel="stylesheet" href="/assets/prism.css" />
-      <link rel="stylesheet" href="/assets/style.css" />
-    {% else %}
-      <link rel="stylesheet" href="/assets/min/style.min.css" />
-      <script>
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("/service-worker.js");
-        }
-      </script> 
-    {% endif %}
-</head>
-<body>
-  <header class="site-header">
-    <a href="#content" class="skip-link">Skip to content</a>
-    <nav class="nav" aria-label="Main">
-      <ol class="nav__items">
-        <li class="nav__item"><a href="/contribution" class="nav__link">Contribution</a></li>
-        <li class="nav__item"><a href="https://github.com/matuzo/HTMHell" class="nav__link" rel="noopener">Github</a></li>
-        <li class="nav__item"><a href="{{ hell.site_url }}/feed.xml" class="nav__link">Feed</a></li>
-        <li class="nav__item">{% include "twitter_link.njk" %}</li>
-        <li class="nav__item">
-          <a href="/" class="site-logo-link">
-            {% include "logo.njk" %}
-          </a>
-        </li>
-      </ol>
-    </nav>
-  </header>
+      {% if hell.env == 'development' %}
+        <link rel="stylesheet" href="/assets/prism.css"/>
+        <link rel="stylesheet" href="/assets/style.css"/>
+      {% else %}
+        <link rel="stylesheet" href="/assets/min/style.min.css"/>
+        <script>
+          if ("serviceWorker" in navigator) {
+            navigator
+              .serviceWorker
+              .register("/service-worker.js");
+          }
+        </script>
+      {% endif %}
+    </head>
+    <body>
+      <header class="site-header">
+        <a href="#content" class="skip-link">Skip to content</a>
+        <nav class="nav" aria-label="Main">
 
-  <main class="site-content" id="content">
-    {{ content | safe }}
-  </main>
+          <ol class="nav__items">
+            <li class="nav__item">
+              <a href="/contribution" class="nav__link">Contribution</a>
+            </li>
+            <li class="nav__item">
+              <a href="https://github.com/matuzo/HTMHell" class="nav__link" rel="noopener">Github</a>
+            </li>
+            <li class="nav__item">
+              <a href="{{ hell.site_url }}/feed.xml" class="nav__link">Feed</a>
+            </li>
+            <li class="nav__item">{% include "twitter_link.njk" %}</li>
+            <li class="nav__item">
+              <label class="switch">
+                
+                <input id="dark-toggle" type="checkbox">
+               
+                <span class="slider round"></span>
+              </label>
+            </li>
+            <li class="nav__item">
+              <a href="/" class="site-logo-link">
+                {% include "logo.njk" %}
+              </a>
+            </li>
+            
+          </ol>
 
-  <footer class="site-footer">
-    built with <a href="https://www.11ty.dev/" rel="noopener">eleventy</a> and ❤️ in Vienna by <a href="https://twitter.com/mmatuzo" rel="noopener">@mmatuzo</a><br>
-    <small>Twitter icon made by <a href="https://www.flaticon.com/authors/pixel-perfect">Pixel Perfect</a> from www.flaticon.com</small>
-  </footer>
-  
-  {% if hell.env == 'development' %}
-    <script src="/assets/focus-visible.js"></script>
-    <script src="/assets/script.js"></script>
-  {% else %}
-    <script src="/assets/min/script.min.js"></script>
-  {% endif %}
-</body>
-</html>
+        </nav>
+      </header>
+
+      <main class="site-content" id="content">
+        {{ content | safe }}
+      </main>
+
+      <footer class="site-footer">
+        built with
+        <a href="https://www.11ty.dev/" rel="noopener">eleventy</a>
+        and ❤️ in Vienna by
+        <a href="https://twitter.com/mmatuzo" rel="noopener">@mmatuzo</a><br>
+        <small>Twitter icon made by
+          <a href="https://www.flaticon.com/authors/pixel-perfect">Pixel Perfect</a>
+          from www.flaticon.com</small>
+      </footer>
+
+      {% if hell.env == 'development' %}
+        <script src="/assets/focus-visible.js"></script>
+        <script src="/assets/dark-mode-toggle.js"></script>
+        <script src="/assets/script.js"></script>
+      {% else %}
+        <script src="/assets/min/script.min.js"></script>
+      {% endif %}
+    </body>
+  </html>
