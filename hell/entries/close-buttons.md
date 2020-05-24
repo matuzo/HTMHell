@@ -1,7 +1,8 @@
 ---
 title: "#20 HTMHell special: close buttons"
+seo_title: 20-close-buttons
 date: 2020-05-23T07:00:00
-permalink: /20-close-buttons/index.html
+permalink: /{{ seo_title }}/index.html
 layout: layouts/entry.njk
 author: mmatuzo
 badcode: '<div class="close"></div>'
@@ -309,9 +310,9 @@ After less than 2 hours of research, HTMHell presents a collection of 10 differe
 1. {{ snippets.svg}}
 1. Screen readers may announce: “button”.
 
-</div>
-
 You can find all [bad practices on CodePen](https://codepen.io/matuzo/pen/qBOvagg?editors=1100).
+
+</div>
 
 <div class="section">
 
@@ -366,6 +367,9 @@ You can find all [bad practices on CodePen](https://codepen.io/matuzo/pen/qBOvag
 1. {{ snippets.sr_only }}
 1. Screen readers may announce: “Close, button”.
 
+</div>
+<div class="section">
+
 ### Solution 4: A button with hidden text and only visually accessible icon.
 
 ```html
@@ -412,5 +416,3 @@ You can find all [close button best practices on CodePen](https://codepen.io/mat
 1. [The a element](https://html.spec.whatwg.org/#the-a-element)
 1. [The accessibility of placeholder links ](https://www.scottohara.me/note/2019/07/17/placeholder-link.html)
 </div>
-```
-

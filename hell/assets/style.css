@@ -467,6 +467,10 @@ blockquote {
   margin-bottom: 0;
 }
 
+.screenshot .bad > *:not(.language-html) {
+  display: none;
+}
+
 .screenshot .site-content {
   padding: 0;
   max-width: 100%;
