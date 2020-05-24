@@ -42,6 +42,7 @@ pre[class*="language-"] {
 	overflow: auto;
 	border-radius: 0;
 	border: 6px solid	#000;
+	position: relative;
 }
 
 :not(pre) > code[class*="language-"],
@@ -226,4 +227,21 @@ pre[class*="language-"] {
 	.token.variable {
 		color: #7fb5b5;
 	}
+}
+
+pre.language-css::before,
+pre.language-html::before {
+	content: "HTML";
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #000;
+	color: #fff;
+	padding: 0.3rem 0.1rem 0.4rem 0.5rem;
+	font-size: 1.4rem;
+	line-height: 1;
+}
+
+pre.language-css::before {
+	content: "CSS";
 }
