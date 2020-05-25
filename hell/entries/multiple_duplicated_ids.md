@@ -21,11 +21,11 @@ badcode: '
 
 goodcode: '
 <main id="body">
-	<aside id="body_left">
+	<aside id="secondary_content">
 	</aside>
-	<article id="body_middle">
+	<article id="primary_content">
 	</article>
-	<aside id="body_right">
+	<aside id="tertiary_content">
 	</aside>
 </main>'
 ---
@@ -48,6 +48,7 @@ An `id` should be unique no matter on which tag it’s added. Also this code use
 
 1. Replace the current markup with semantic HTML5 tags. This reduces the number of tags and avoids the table-based layout.
 2. Style the new elements by using [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) or [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
+3. For the ID values, more semantic terms should be used.
 
 </div>
 
