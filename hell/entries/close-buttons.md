@@ -156,9 +156,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 ### Issues and how to fix them
 
 1. {{ snippets.timessign }}
-1. {{ snippets.div_semantics }}
-1. {{ snippets.div_click }} {{ snippets.button_click }}
-1. A `div` isn’t keyboard focusable.
+1. See Pattern 1 for details about the `<div>`.
 1. Screen readers may announce: something like “multiplication x” or “times”.
 
 </div>
@@ -180,6 +178,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 1. {{ snippets.fa_icons }}
 1. {{ snippets.fa_times }}
 1. {{ snippets.i_elem }}
+1. See Pattern 1 for details about the `<div>`.
 1. Screen readers may announce: “times”.
 
 </div>
@@ -200,7 +199,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 1. {{ snippets.ahref }}
 1. {{ snippets.buttontypebutton }}
 1. {{ snippets.linkvsbutton }}
-1. {{ snippets.csscontent }}<sup><a href="#resources">1</a></sup>
+1. {{ snippets.csscontent }}<sup><a href="#resources">1</a></sup> {{ snippets.timessign }}
 1. Screen readers may announce: “link, times”.
 
 </div>
@@ -219,13 +218,10 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 ### Issues and how to fix them
 
 1. Nice try, but it’s still a link and not a button.
-1. {{ snippets.ahref }}
-1. {{ snippets.buttontypebutton }}
-1. {{ snippets.linkvsbutton }}
-1. {{ snippets.csscontent }}<sup><a href="#resources">1</a></sup>
+1. See Pattern 4 for details about `<a>` and CSS generated content.
 1. Screen readers may announce: “link, times close”.
 
-</div>
+</div>  
 
 
 <div class="section">
@@ -258,9 +254,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 ### Issues and how to fix them
 
 1. {{ snippets.noalt }}
-1. {{ snippets.aplaceholder }}<sup><a href="#resources">2</a></sup>  
-1. {{ snippets.aplaceholder_click }}  
-1. {{ snippets.aplaceholder_focus }}
+1. See Pattern 6 for details about placeholder links.
 1. Screen readers may announce: “close.png, image.”
 
 </div>
@@ -320,7 +314,7 @@ You can find all [bad practices on CodePen](https://codepen.io/matuzo/pen/qBOvag
 
 <div class="section">
 
-## Good code
+## Alternatives
 
 ### Solution 1: A button with visible text and no icon.
 
