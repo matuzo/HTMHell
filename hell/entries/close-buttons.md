@@ -404,6 +404,11 @@ If you use third party solutions for modals, dialogs, etc., please check how the
 
 You can find all [close button best practices on CodePen](https://codepen.io/matuzo/pen/zYvbmvm?editors=1100).
 
+<blockquote>
+  Using "x" for your close buttons is like using salt in your coffee cause it looks the same as sugar.
+</blockquote>
+<cite><a href="https://twitter.com/mxbck/status/1187446513284325376">Max Böck</a></cite>
+
 </div>
 
 <div class="section">
