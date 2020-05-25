@@ -9,6 +9,10 @@
         submitted on <time class="" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> by {% author post.data.author %}
       </div>
 
+      {% if post.data.teaser  %}
+        {{ post.data.teaser | md | safe }}
+      {% endif %}
+
       <div class="code_wrapper">
         <a href="#post_{{ loop.index }}" class="skip-link skip-link--inline">skip code sample</a>
         {% highlight "html" %}

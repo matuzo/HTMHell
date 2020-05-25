@@ -1,6 +1,16 @@
 ---
 title: "#20 HTMHell special: close buttons"
 seo_title: 20-close-buttons
+teaser: "This first HTMHell special inspects one of the most complicated and most controversial patterns in front-end development:  
+  
+
+🔥 the close button. 🔥   
+  
+
+In modals, ads, and other overlays you often find a button with a close symbol that allows users, or at least some of them, to close the overlay. This functionality is often limited to mouse users, because most implementations of close buttons suck.
+    
+    
+After less than 2 hours of research, HTMHell presents a collection of 10 different bad practices."
 date: 2020-05-23T07:00:00
 permalink: /{{ seo_title }}/index.html
 layout: layouts/entry.njk
@@ -115,13 +125,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 ---
 <div class="section">
 
-This first HTMHell special inspects one of the most complicated and most controversial patterns in front-end development:
-
-🔥 the close button. 🔥 
-
-In modals, ads, and other overlays you often find a button with a close symbol that allows users, or at least some of them, to close the overlay. This functionality is often limited to mouse users, because most implementations of close buttons suck.
-
-After less than 2 hours of research, HTMHell presents a collection of 10 different bad practices.
+{{ teaser }}
 
 ## Pattern 1: div and background image
 
