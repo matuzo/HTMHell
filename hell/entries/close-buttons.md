@@ -176,7 +176,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 
 ### Issues and how to fix them
 
-1. {{ snippets.csscontent }}<sup><a href="#resources">1</a></sup>
+1. {{ snippets.csscontent }}<sup><a href="#resources"><span class="u-hidden">Footnote</span>1</a></sup>
 1. {{ snippets.fa_icons }}
 1. {{ snippets.fa_times }}
 1. {{ snippets.i_elem }}
@@ -201,7 +201,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 1. {{ snippets.ahref }}
 1. {{ snippets.buttontypebutton }}
 1. {{ snippets.linkvsbutton }}
-1. {{ snippets.csscontent }}<sup><a href="#resources">1</a></sup> {{ snippets.timessign }}
+1. {{ snippets.csscontent }}<sup><a href="#resources"><span class="u-hidden">Footnote</span>1</a></sup> {{ snippets.timessign }}
 1. Screen readers may announce: “link, times”.
 
 </div>
@@ -237,7 +237,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 ### Issues and how to fix them
 
 1. Another nice try, but a link without `href` is still not a button.
-1. {{ snippets.aplaceholder }}<sup><a href="#resources">2</a></sup>  
+1. {{ snippets.aplaceholder }}<sup><a href="#resources"><span class="u-hidden">Footnote</span>2</a></sup>  
 1. {{ snippets.aplaceholder_click }}  
 1. {{ snippets.aplaceholder_focus }}
 1. {{ snippets.linkvsbutton }}
