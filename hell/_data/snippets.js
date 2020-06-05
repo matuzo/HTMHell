@@ -3,6 +3,8 @@ module.exports = {
   native_semantics: "Do not change native semantics, unless you really have to.",
   button_click: "A click event on a `button` triggers on click and if the user presses the <kbd>Enter</kbd> or <kbd>Space</kbd> key.",
   div_click: "A click event on a `div` triggers only on click.",
+  div_tabindex: "You don’t need the `tabindex` attribute if you use a `button`. HTML buttons are focusable by default.",
+  div_button: "Setting button semantics explicitly using the `role` attribute isn’t necessary, there’s an element for that (`button`).",
   span_click: "A click event on a `span` triggers only on click.",
   use_button: "If you need a button, use the `<button>` element.",
   buttontypebutton: 'The purpose of the element in this example is to trigger an action on the same page with JavaScript. The `button` element with the type button is more suitable because it has no default behaviour and it’s designed to trigger actions on user input.',
