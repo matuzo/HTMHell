@@ -18,6 +18,7 @@ badcode: '<body>
 </body>'
 goodcode: '<body>
   <div class="cookie_consent modal">
+      <h2 class="sr-only">Cookie notice</h2>
       <p>We use cookies…</p>
       <button class="cookie_consent__ok">OK</button>
       <button class="cookie_consent__close">
