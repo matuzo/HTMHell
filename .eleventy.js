@@ -4,6 +4,9 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const filters = require('./_11ty/filters.js')
 const pluginPWA = require('eleventy-plugin-pwa');
 const htmlmin = require('html-minifier');
+const markdownIt = require('markdown-it');
+const markdownItAnchor = require("markdown-it-anchor");
+const slugify = require("slugify");
 
 module.exports = function (eleventyConfig) {
   // Filters
@@ -40,6 +43,45 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("entries", function (collection) {
     return collection.getFilteredByGlob("./hell/entries/*.md");
   });
+
+	function markdownItSlugify(s) {
+		return slugify(s, { lower: true, remove: /[:’'.`,]/g });
+	}
+
+	let mdIt = markdownIt({
+		html: true,
+		breaks: true,
+		linkify: true
+  })
+  
+	.use(markdownItAnchor, {
+		permalink: true,
+		slugify: markdownItSlugify,
+		permalinkBefore: true,
+    permalinkSymbol: "#",
+    renderPermalink: (slug, opts, state, idx) => {
+      const headingText = state.tokens[idx + 1].children[0].content;
+      const headingHTML= `<span class="u-hidden">${headingText}</span>`;
+
+      const space = () => Object.assign(new state.Token('text', '', 0), { content: ' ' })
+      const linkTokens = [
+        Object.assign(new state.Token('link_open', 'a', 1), {
+          attrs: [
+            ['href', opts.permalinkHref(slug, state)],
+            ...Object.entries(opts.permalinkAttrs(slug, state))
+          ]
+        }),
+        Object.assign(new state.Token('html_block', '', 0), { content:  `<span aria-hidden="true">${opts.permalinkSymbol}</span>` + headingHTML }),
+        new state.Token('link_close', 'a', -1)
+      ]
+    
+      linkTokens.push(space())
+      state.tokens[idx + 1].children.unshift(...linkTokens)
+    },
+		level: [2, 3]
+	});
+
+	eleventyConfig.setLibrary("md", mdIt);
 
   // Plugins
   eleventyConfig.addPlugin(pluginRss);
