@@ -53,32 +53,39 @@
     {% endif %}
 </head>
 <body>
-  <header class="site-header">
-    <a href="#content" class="skip-link">Skip to content</a>
-    <nav class="nav" aria-label="Main">
-      <ol class="nav__items">
-        <li class="nav__item"><a href="/contribution" class="nav__link">Contribution</a></li>
-        <li class="nav__item"><a href="https://github.com/matuzo/HTMHell" class="nav__link" rel="noopener">Github</a></li>
-        <li class="nav__item"><a href="{{ hell.site_url }}/feed.xml" class="nav__link">Feed</a></li>
-        <li class="nav__item">{% include "twitter_link.njk" %}</li>
-        <li class="nav__item">
-          <a href="/" class="site-logo-link">
-            {% include "logo.njk" %}
-          </a>
-        </li>
-      </ol>
-    </nav>
-  </header>
+  <div class="topbanner">
+    <div class="wrapper">
+      <p>HTMHell supports <a href="https://blacklivesmatter.com/" rel="noopener">Black Lives Matter</a>. ✊🏾 Code is always political.</p>
+    </div>
+  </div> 
+  <div class="wrapper">
+    <header class="site-header">
+      <a href="#content" class="skip-link">Skip to content</a>
+      <nav class="nav" aria-label="Main">
+        <ol class="nav__items">
+          <li class="nav__item"><a href="/contribution" class="nav__link">Contribution</a></li>
+          <li class="nav__item"><a href="https://github.com/matuzo/HTMHell" class="nav__link" rel="noopener">Github</a></li>
+          <li class="nav__item"><a href="{{ hell.site_url }}/feed.xml" class="nav__link">Feed</a></li>
+          <li class="nav__item">{% include "twitter_link.njk" %}</li>
+          <li class="nav__item">
+            <a href="/" class="site-logo-link">
+              {% include "logo.njk" %}
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </header>
 
-  <main class="site-content" id="content">
-    {{ content | safe }}
-  </main>
+    <main class="site-content" id="content">
+      {{ content | safe }}
+    </main>
 
-  <footer class="site-footer">
-    built with <a href="https://www.11ty.dev/" rel="noopener">eleventy</a> and ❤️ in Vienna by <a href="https://twitter.com/mmatuzo" rel="noopener">@mmatuzo</a><br>
-    <small>Twitter icon made by <a href="https://www.flaticon.com/authors/pixel-perfect">Pixel Perfect</a> from www.flaticon.com</small>
-  </footer>
-  
+    <footer class="site-footer">
+      built with <a href="https://www.11ty.dev/" rel="noopener">eleventy</a> and ❤️ in Vienna by <a href="https://twitter.com/mmatuzo" rel="noopener">@mmatuzo</a><br>
+      <small>Twitter icon made by <a href="https://www.flaticon.com/authors/pixel-perfect">Pixel Perfect</a> from www.flaticon.com</small>
+    </footer>
+  </div>
+
   {% if hell.env == 'development' %}
     <script src="/assets/focus-visible.js"></script>
     <script src="/assets/script.js"></script>
