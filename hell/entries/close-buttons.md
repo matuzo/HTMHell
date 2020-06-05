@@ -10,7 +10,7 @@ teaser: "This first HTMHell special inspects one of the most complicated and mos
 In modals, ads, and other overlays you often find a button with a close symbol that allows users, or at least some of them, to close the overlay. This functionality is often limited to mouse users, because most implementations of close buttons suck.
     
     
-After less than 2 hours of research, HTMHell presents a collection of 10 different bad practices."
+After less than 2 hours of research, HTMHell presents a collection of 11 different bad practices."
 date: 2020-05-23T07:00:00
 permalink: /{{ seo_title }}/index.html
 layout: layouts/entry.njk
@@ -83,6 +83,8 @@ badcode10: '<button class="close">
     …
   </svg>
 </button>'
+badcode11: '<div role="button" tabindex="0">X</div>'
+
 goodcode: '<button type="button">
 
   Close
@@ -308,6 +310,33 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 1. {{ snippets.svg}}
 1. Screen readers may announce: “button”.
 
+</div>
+
+<div class="section">
+
+## Pattern 11: The good ol' X
+
+```html
+{{ badcode11 | pretty }}
+```
+
+### Issues and how to fix them
+
+1. {{ snippets.div_button }}
+1. {{ snippets.div_tabindex }}
+1. See Pattern 1 for details about the `<div>`.
+1. The letter X is not a close icon.
+1. Screen readers may announce: “X, button”.
+
+<blockquote>
+  Using "x" for your close buttons is like using salt in your coffee cause it looks the same as sugar.
+</blockquote>
+<cite><a href="https://twitter.com/mxbck/status/1187446513284325376">Max Böck</a></cite>
+
+</div>
+
+<div class="section">
+
 You can find all [bad practices on CodePen](https://codepen.io/matuzo/pen/qBOvagg?editors=1100).
 
 </div>
@@ -403,11 +432,6 @@ Sometimes it makes sense to use more descriptive labels like “Close dialog”,
 If you use third party solutions for modals, dialogs, etc., please check how they’ve been implemented before you add them to your site. Don’t rely on others for code quality and accessibility. 
 
 You can find all [close button best practices on CodePen](https://codepen.io/matuzo/pen/zYvbmvm?editors=1100).
-
-<blockquote>
-  Using "x" for your close buttons is like using salt in your coffee cause it looks the same as sugar.
-</blockquote>
-<cite><a href="https://twitter.com/mxbck/status/1187446513284325376">Max Böck</a></cite>
 
 </div>
 
