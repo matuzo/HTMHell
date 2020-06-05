@@ -85,3 +85,10 @@ margin: -1px;
 {{ goodcodeCSS | prettyCSS }}
 ```
 </div>
+
+<div class="section">
+
+  <h2 id="resources">Resources</h2>
+
+  1. [Screen readers and cookie consents](https://www.youtube.com/watch?v=Uaqo4FOI_DY)
+</div>
