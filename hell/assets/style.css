@@ -463,8 +463,11 @@ blockquote {
 .screenshot footer,
 .screenshot .entry-header,
 .screenshot header,
-.screenshot nav {
-  display: none;
+.screenshot nav,
+.screenshot .topbanner,
+pre.language-css::before,
+pre.language-html::before {
+  display: none !important;
 }
 
 .screenshot pre[class*="language-"] {
