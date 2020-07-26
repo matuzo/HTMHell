@@ -61,6 +61,11 @@ module.exports = {
       "link": "https://twitter.com/simevidas"
     },
     {
+      "id": "vavroom",
+      "name": "vavroom",
+      "link": "https://twitter.com/vavroom"
+    },
+    {
       "id": "christophfreyer",
       "name": "Christoph",
       "link": "https://www.christoph-freyer.at/"
