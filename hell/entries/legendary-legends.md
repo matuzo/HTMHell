@@ -8,14 +8,12 @@ badcode: '<button class="panel-heading" tabindex="0" href="#collapse0" aria-expa
     <legend >
         Industries Served
     </legend>
-</Button>'
+</button>'
 goodcode: '<button class="panel-heading" aria-expanded="true">
-    Industries Served
-</button>">
-  <div>
-    <img alt="Browser Wars: The Last Engine" src="thumbnail.jpg">
-  </div>
-</a>'
+
+Industries Served
+
+</button>'
 ---
 <div class="section bad">
 
