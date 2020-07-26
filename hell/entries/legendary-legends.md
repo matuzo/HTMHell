@@ -1,7 +1,8 @@
 ---
 title: "#21 Legendary legend!"
+seo_title: "#21 Legendary legend"
 date: 2020-07-24T07:00:00
-permalink: /{{ title | slug }}/index.html
+permalink: /{{ seo_title | slug }}/index.html
 layout: layouts/entry.njk
 author: vavroom
 badcode: '<button class="panel-heading" tabindex="0" href="#collapse0" aria-expanded="true">
