@@ -142,7 +142,7 @@ goodcode5: '<button type="button" class="close" aria-label="Close">
 
 1. {{ snippets.div_semantics }}
 1. {{ snippets.div_click }} {{ snippets.button_click }}
-1. A `div` isn’t keyboard focusable.
+1. {{ snippets.div_focus }}
 1. There’s no text alternative for the background image.
 1. Screen readers announce: Nothing.
 </div>
