@@ -1,7 +1,8 @@
 ---
 title: "#22 the good ol’ div link"
+seo_title: "22 the good ol div link"
 date: 2020-10-14T07:00:00
-permalink: /{{ title | slug }}/index.html
+permalink: /{{ seo_title | slug }}/index.html
 layout: layouts/entry.njk
 author: mmatuzo
 badcode: '<div>About us</div>'
