@@ -27,20 +27,6 @@ badcode: '<article>
     </svg>
   </a>
 </div>'
-badcodeCSS: '.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
-
-svg {
-  width: .75rem;
-}'
 goodcode: '<section>
   <div>
     <img src="/feature-teaser.png" alt=""/>
@@ -72,12 +58,13 @@ goodcode: '<section>
 
 ## Issues and how to fix them
 
-1. The example code uses an `<article>`. This element is meant for standalone content that can be re-used by itself. If there is anything reusable here, it is the entire "card". More appropriate is a `<section>`.
+1. The example code uses an `<article>`. This element is meant for standalone content that can be re-used by itself. If there is anything reusable here, it is the entire “card”. More appropriate is a `<section>`.
 1. There is a piece of text before the image, with the text image. This seems to be some sort of definition of the role of the element following. When using proper semantic HTML, the HTML-elements already communicate their semantics. Adding text is superfluous and confusing.
 1. The alt-attribute states that image is a teaser for the feature mentioned below. Adding the text teaser does not make it a teasing image. The visual function of the image does not work in code. The image adds nothing of value to the textual content of the card. An empty alt-attribute would have hidden the image (and made clear that it is decorative).
 1. There is a `<span>` with text that is meant to be a heading. Assistive technology can make use of headings in the code. When this card is nested below an `<h3>`, this heading could be an `<h4>` instead.
 1. The main paragraph inside the card is wrapped in a `<div>`. Using a `<p>` would communicate its intentions more clearly.
-1. Read more is not a very descriptive link text. It is especially bad when it's in a list with more links with the same text. The users does not know where this link leads.
+1. “Read more” is not a very descriptive link text. It is especially bad when it’s in a list with more links with the same text. The users does not know where this link leads.
+1. The `<svg>` within the link doesn’t provide additional information and should be hidden from screen readers.
 </div>
 
 <div class="section">
