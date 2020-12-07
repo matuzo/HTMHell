@@ -60,5 +60,6 @@ Check out the [resources section](#resources) at the bottom of this page for mor
 - [11 reasons why placeholders are problematic](https://medium.com/simple-human/10-reasons-why-placeholders-are-problematic-f8079412b960) by [Adam Silver](https://twitter.com/adambsilver)
 - [Don’t Use The Placeholder Attribute](https://www.smashingmagazine.com/2018/06/placeholder-attribute/) by [Eric W. Bailey](https://ericwbailey.design/)
 - [Form Design Quick Fix: Group Form Elements Effectively Using White Space](https://www.nngroup.com/articles/form-design-white-space/)
+- [placeholder - the piss-take label](https://codepen.io/stevef/post/placeholder-the-piss-take-label) by [Steve Faulkner](https://twitter.com/stevefaulkner)
 
 </div>
