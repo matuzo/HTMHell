@@ -69,6 +69,11 @@ module.exports = {
       "id": "christophfreyer",
       "name": "Christoph",
       "link": "https://www.christoph-freyer.at/"
+    },
+    {
+      "id": "andreavaghi",
+      "name": "Andrea",
+      "link": "https://twitter.com/andreavaghi"
     }
   ]
 };
