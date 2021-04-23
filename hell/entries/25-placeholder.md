@@ -1,7 +1,7 @@
 ---
 title: "#25 A link is a button is a link"
 teaser: ""
-date: 2021-04-22T21:00:00
+date: 2021-04-23T21:00:00
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: andreavaghi
@@ -38,8 +38,8 @@ goodcode: '
 1. You don’t need the `tabindex` attribute if you use an `a` tag. HTML hyperlinks are focusable by default.
 2. The `type` attribute on `a` tag is used to hint at the linked URL’s format with a MIME type, eg: `type="image/svg+xml"`
 3. Using `role=link` on an `a` tag is not needed since the you can get that behaviour for free using a standard hyperlink.
-4. {{ negative_tabindex }}
-5. {{ i_elem }}
+4. {{ snippets.negative_tabindex }}
+5. {{ snippets.i_elem }}
 6. While `aria-hidden` can be useful to hide content that is not needed for screen readers (in this case an icon image), it's useful to add an `aria-label` when that content is meaningul for everyone, like declaring that an hyperlink will open in an external tab.
 
 Check out the [resources section](#resources) at the bottom of this page for more.
