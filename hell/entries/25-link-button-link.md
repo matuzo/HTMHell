@@ -47,7 +47,7 @@ Note: We've removed most classes to improve readability.
 
 1. You don’t need the `tabindex` attribute if you use an `a` tag. HTML hyperlinks are focusable by default.
 2. The `type` attribute on `a` tag is used to hint at the linked URL’s format with a MIME type, eg: `type="image/svg+xml"`
-3. Using `role=link` on an `a` tag is not needed since you already get that behaviour for free using a by standard hyperlink (`<a href="">`).
+3. Using `role=link` on an `a` tag is not needed since you already get that behaviour for free by using a standard hyperlink (`<a href="">`).
 4. {{ snippets.negative_tabindex }}
 1. An additional `span` to handle focus isn’t necessary, `a` can do that by itself. 💪🏻
 5. {{ snippets.i_elem }}
