@@ -8,8 +8,10 @@ author: andreavaghi
 badcode: '<a tabindex="0" type="button" href="https://" role="link">
   <span class="focus" tabindex="-1"></span>
   <span>
-    <span>Click</span>
-    <i class="icon icon-external-link" aria-hidden="true" role="img"></i>
+    <span>
+      <span>Click</span>
+      <i class="icon icon-external-link" aria-hidden="true" role="img"></i>
+    </span>
   </span>
 </a>'
 goodcode: '
