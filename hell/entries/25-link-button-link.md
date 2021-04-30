@@ -9,7 +9,7 @@ badcode: '<a tabindex="0" type="button" href="/signup" role="link">
   <span class="focus" tabindex="-1"></span>
   <span>
     <span>
-      <span>Click</span>
+      <span>Sign up</span>
       <i class="icon icon-external-link" aria-hidden="true" role="img"></i>
     </span>
   </span>
@@ -17,14 +17,14 @@ badcode: '<a tabindex="0" type="button" href="/signup" role="link">
 goodcode: '
 <a href="/signup">
 
-  Click  
+  Sign up  
   
   <span class="fa fa-external-link" role="img" aria-label="External link" target="_blank"></span>
 </a>
 '
 goodcode2: '
 <a href="/signup">
-  Click  
+  Sign up  
 </a>
 '
 ---
