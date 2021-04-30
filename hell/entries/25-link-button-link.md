@@ -19,7 +19,9 @@ goodcode: '
 
   Sign up  
   
-  <span class="fa fa-external-link" role="img" aria-label="External link" target="_blank"></span>
+  <span class="fa fa-external-link" role="img" aria-label="External link">
+  
+  </span>
 </a>
 '
 goodcode2: '
