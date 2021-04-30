@@ -48,6 +48,7 @@ goodcode2: '
 3. Using `role=link` on an `a` tag is not needed since the you can get that behaviour for free using a standard hyperlink.
 4. {{ snippets.negative_tabindex }}
 5. {{ snippets.i_elem }}
+1. If you’re using `aria-hidden` on an element, you don’t need to declare a `role`, because the element is inaccessible to screen reader users, anyway.
 6. Icon option 1: While `aria-hidden` can be useful to hide content that is not needed for screen readers (in this case an icon image), it's useful to add an `aria-label` when that content is meaningul for everyone, like declaring that an hyperlink will open in an external tab.
 1. Icon option 2: The icon can be removed, because in the original snippet the link points to a page on the same site that opens in the same tab. The external link icon is intended to inform users that by clicking the link they’re leaving the site.
 
