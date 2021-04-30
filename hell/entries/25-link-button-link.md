@@ -29,6 +29,8 @@ goodcode2: '
 '
 ---
 
+Note: We've removed most classes to improve readability.
+
 <div class="section bad">
 
 ## Bad code
