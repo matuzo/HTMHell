@@ -31,7 +31,9 @@ goodcode2: '
 '
 ---
 
+<div class="section">
 Note: We've removed most classes to improve readability.
+</div>
 
 <div class="section bad">
 
