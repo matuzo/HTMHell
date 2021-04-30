@@ -1,7 +1,7 @@
 ---
 title: "#25 A link is a button is a link"
 teaser: ""
-date: 2021-04-23T21:00:00
+date: 2021-04-30T21:00:00
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: andreavaghi
