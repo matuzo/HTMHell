@@ -15,6 +15,7 @@ module.exports = {
   skip_headings: "Heading levels shouldn’t be skipped. Screen reader users rely on a sound document outline and hierarchy. It helps with navigation and understanding how the page is structured.",
   dom_size: "Try to avoid excessive <abbr title='Document Object Model'>DOM</abbr> sizes. Too many <abbr title='Document Object Model'>DOM</abbr> nodes and nested <abbr title='Document Object Model'>DOM</abbr> elements may harm your page performance.",
   dom_tree: "A large <abbr title='Document Object Model'>DOM</abbr> tree results in a large accessibility tree, which may have a bad impact on the performance of assistive technology.",
+  divspanusage: "Only use extra `div`s and `span`s, if the design demands it.",
   aplaceholder: "If the `<a>` element has no `href` attribute, then the element represents a placeholder for where a link might otherwise have been placed.",
   aplaceholder_click: "If you’re adding a click event to a placeholder link, you probably don’t want to use a placeholder link, but an actual link with an `href` attribute or a `<button>`, depending on what's happening on click.",
   aplaceholder_focus: "Placeholder links aren't focusable.",
