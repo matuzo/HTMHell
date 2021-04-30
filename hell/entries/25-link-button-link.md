@@ -47,6 +47,7 @@ goodcode2: '
 2. The `type` attribute on `a` tag is used to hint at the linked URL’s format with a MIME type, eg: `type="image/svg+xml"`
 3. Using `role=link` on an `a` tag is not needed since the you can get that behaviour for free using a standard hyperlink.
 4. {{ snippets.negative_tabindex }}
+1. An additional `span` to handle focus isn’t necessary, `a` can do that by itself. 💪🏻
 5. {{ snippets.i_elem }}
 1. If you’re using `aria-hidden` on an element, you don’t need to declare a `role`, because the element is inaccessible to screen reader users, anyway.
 6. Icon option 1: While `aria-hidden` can be useful to hide content that is not needed for screen readers (in this case an icon image), it's useful to add an `aria-label` when that content is meaningul for everyone, like declaring that an hyperlink will open in an external tab.
