@@ -5,6 +5,6 @@ permalink: /newsletter-welcome/index.html
 tags:
   footernav
 ---
-You're almost subscribed!  
+# Almost done!
 
-We sent you an email to confirm your address. Click it and you're in! 
+You're almost subscribed! We sent you an email to confirm your address. Click it and you're in! 
