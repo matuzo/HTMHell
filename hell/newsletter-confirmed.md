@@ -6,3 +6,5 @@ tags:
   footernav
 ---
 # Thanks for signing up!
+
+You’ll find the first newsletter in your inbox soon.
