@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>{{ hell.site_title }}{% if title %} - {{ title }}{%endif%}</title>
+    <title>{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -53,21 +53,16 @@
     {% endif %}
 </head>
 <body>
-  <div class="topbanner">
-    <div class="wrapper">
-      <p>HTMHell supports <a href="https://blacklivesmatter.com/" rel="noopener">Black Lives Matter</a>. ✊🏾 Code is always political.</p>
-    </div>
-  </div> 
   <div class="wrapper">
     <header class="site-header">
       <a href="#content" class="skip-link">Skip to content</a>
       <nav class="nav" aria-label="Main">
         <ol class="nav__items">
-          <li class="nav__item"><a href="/contribution" class="nav__link">Contribution</a></li>
-          <li class="nav__item"><a href="https://github.com/matuzo/HTMHell" class="nav__link" rel="noopener">Github</a></li>
-          <li class="nav__item"><a href="{{ hell.site_url }}/feed.xml" class="nav__link">Feed</a></li>
+          {% for item in collections.mainnav %}
+            <li class="nav__item"><a href="{{ item.url }}" class="nav__link" {% if item.url === page.url %}aria-current="page"{% endif %}>{{ item.data.nav_title }}</a></li>
+          {% endfor %}
           <li class="nav__item">{% include "twitter_link.njk" %}</li>
-          <li class="nav__item">
+          <li class="nav__item" aria-hidden="true">
             <a href="/" class="site-logo-link">
               {% include "logo.njk" %}
             </a>
@@ -82,7 +77,15 @@
 
     <footer class="site-footer">
       built with <a href="https://www.11ty.dev/" rel="noopener">eleventy</a> and ❤️ in Vienna by <a href="https://twitter.com/mmatuzo" rel="noopener">@mmatuzo</a><br>
-      <small>Twitter icon made by <a href="https://www.flaticon.com/authors/pixel-perfect">Pixel Perfect</a> from www.flaticon.com</small>
+      <nav class="n" aria-label="Secondary">
+        <ol class="nav-footer">
+          {% for page in collections.footernav %}
+            <li><a href="{{ page.url }}">{{ page.data.title }}</a></li>
+          {% endfor %}
+          <li><a href="https://github.com/matuzo/HTMHell" rel="noopener">Github</a></li>
+          <li><a href="{{ hell.site_url }}/feed.xml">Feed</a></li>
+        </ol>
+      </nav>
     </footer>
   </div>
 

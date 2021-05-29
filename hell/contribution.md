@@ -1,6 +1,8 @@
 ---
 layout: layouts/base.njk
 title: Contribution
+tags:
+  footernav
 ---
 
 # {{ title }}
