@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Newsletter Welcome
-permalink: /newsletter-welcome/index.html
+permalink: /newsletter-confirm/index.html
 tags:
   footernav
 ---
