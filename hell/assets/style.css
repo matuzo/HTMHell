@@ -93,10 +93,19 @@ blockquote::after {
 
 button {
   font-size: 1.6rem;
-  padding: 0.6rem 1.3rem;
-  border-radius: 4px;
-  border: 1px solid #000;
-  background: #fff;
+  padding: 1.3rem 1.7rem 0.9rem;
+  border-radius: 3px;
+  border: 3px solid #d72b2b;
+  background: #000;
+  color: #FFF;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background: #d72b2b;
+  color: #000;
 }
 
 kbd,
@@ -118,6 +127,21 @@ kbd {
 
 blockquote {
   font-style: italic;
+}
+
+label {
+  font-weight: bold;
+}
+
+[type="email"],
+[type="text"] {
+  width: 100%;
+  max-width: 34rem;
+  border: 2px solid #000;
+  font-size: 1.8rem;
+  display: block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 2px;
 }
 
 /* Helper */
@@ -213,8 +237,13 @@ blockquote {
 }
 
 .nav__link.focus-visible,
+.nav__link[aria-current="page"],
 .nav__link:hover {
   color: #000000;
+}
+
+.nav__link[aria-current="page"] {
+  box-shadow: 0 5px 0 0 #000;
 }
 
 @media (min-width: 410px) {
@@ -362,7 +391,7 @@ blockquote {
 
 /* Footer */
 .site-footer {
-  margin: 4.8rem 2rem 2rem;
+  margin: 6.8rem 2rem 2rem;
   max-width: 74rem;
 }
 
@@ -372,6 +401,18 @@ blockquote {
     margin-right: auto;
   }
 }
+
+.nav-footer {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  display: flex;
+}
+
+.nav-footer > * + * {
+  margin-left: 1rem;
+}
+
 /* Section */
 
 .section {
@@ -522,6 +563,7 @@ pre.language-html::before {
     background: #000;
     color: #fff;
   }
+
 
   .site--loaded .site-logo__666 {
     fill: #ffffff;
