@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+title: Newsletter Welcome
+permalink: /newsletter-confirmed/index.html
+tags:
+  footernav
+---
+
+<div class="preview">
+  <h1>Thanks for signing up!</h1>
+
+  <p>
+    You’ll find the first newsletter in your inbox soon. It will look something like this:
+  </p>
+</div>
+
+{% set tip = collections.tips[0] %}
+
+{% if tip.data.processed %}
+  <h2>{{ tip.data.title }}</h2>
+
+  {{ tip.templateContent | safe }}
+{% endif %}
