@@ -1,44 +1,37 @@
 ---
 layout: layouts/base.njk
 title: HTML Tips
-nav_title: Newsletter
+nav_title: Tips
 tags:
   mainnav
 ---
 
-<h1>HTMHell Newsletter</h1>
+<h1>HTML Tips</h1>
 
-<div class="preview">
-  <p>
-    HTMHell isn’t just about bad practices, we also have good practices to share with you. We publish an HTML tip or trick every two weeks on this page, via RSS or directly delivered to your inbox via our newsletter. 
-  </p>
+<ol class="u-list-reset">
+{% for tip in collections.tips %}
+  {% if tip.data.processed %}
+    <li>
+    <h2>Issue #{{ loop.index }} - {{ tip.data.title }}</h2>
+
+    {{ tip.templateContent | safe }}
+
+    {% if tip.data.resources %}
+      <h3>Resources</h3>
+
+      <ul>
+      {% for link in tip.data.resources %}
+        
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+    </li>
+  {% endif %}
+{% endfor %}
 </div>
-
-<div class="preview">
-  <h2>Newsletter Sign-up</h2>
-
-  <p>
-    You’ll receive an e-mail every two weeks containing quick advice for writing semantic HTML. Occasionally we might also inform you about new features on the website, but that shouldn’t happen too often, because I’m really lazy.
-  </p>
-
-<form
-  action="https://buttondown.email/api/emails/embed-subscribe/htmhell"
-  method="post"
->
-  <p>
-    <label for="bd-email">Your email</label>
-    <input type="email" name="email" id="bd-email" />
-  </p>
-  
-  <input type="hidden" value="1" name="embed" />
-	<button type="submit">Subscribe</button>
-</form>
-  
-</div>
-<div class="preview">
-<h2>Tips</h2>
-
-<p>
-  This service is brand new 🔥, we'll publish the first tip soon!
-</p>
-</div>
+</ol>

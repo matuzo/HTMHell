@@ -1,0 +1,27 @@
+---
+title: "Download links"
+processed: true
+description: You can turn a link into a download link by adding the download attribute.
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: HTML specification - The download attribute
+    url: https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-download
+---
+<p>You can turn a hyperlink into a download link by adding the <code>download</code> attribute. Instead of navigating to the document, browsers prompt users to save the file to their disc.</p>
+
+{% highlight "html" %}
+<a href="myfile_hash5474n.pdf" download>
+  Download 
+</a>
+{% endhighlight %}
+
+<p>You can specify a value for the attribute which will be used as the filename for the downloaded file.</p>
+
+{% highlight "html" %}
+<a href="myfile_hash5474n.pdf" download="report.pdf">
+  Download 
+</a>
+{% endhighlight %}
