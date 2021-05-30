@@ -1,0 +1,41 @@
+---
+permalink: feed_tips.xml
+metadata:
+  title: HTMHell Tips & Tricks
+  url: https://htmhell.dev/tips
+  author:
+    name: Manuel Matuzovic
+    email: manuel@matuzo.at
+  feed:
+    subtitle: A collection of HTML tips and tricks.
+    filename: feed_tips.xml
+    path: feed/feed_tips.xml
+    url: https://htmhell.dev/feed_tips.xml
+    id: https://htmhell.dev/tips
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.feed.subtitle }}</subtitle>
+  <link href="{{ metadata.feed.url }}" rel="self"/>
+  <link href="{{ metadata.url }}"/>
+  <updated>{{ collections.entries | rssLastUpdatedDate }}</updated>
+  <id>{{ metadata.feed.id }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ metadata.author.email }}</email>
+  </author>
+  {%- for post in collections.tips %}
+  {% if post.data.processed %}
+    
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | rssDate }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {% endif %}
+  {%- endfor %}
+</feed>
