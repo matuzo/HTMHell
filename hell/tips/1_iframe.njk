@@ -1,0 +1,34 @@
+---
+title: iframe accessibility
+layout: layouts/tip.njk
+processed: true
+description: You can turn a link into a download link by adding the download attribute.
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: Deque University - Be Sure to Provide Titles for Iframes
+    url: https://dequeuniversity.com/tips/provide-iframe-titles
+  - title: Hush Sweet IFrame
+    url: https://html5accessibility.com/stuff/2020/08/20/hush-sweet-iframe/
+  - title: "Know your ARIA: 'Hidden' vs 'None'"
+    url: https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
+---
+<p>
+  iframes should be named, if they contain meaningful content. You can define an accessible name for an <code>iframe</code> using the <code>title</code> attribute. If it’s missing, screen readers might fall back to the value of the <code>name</code> or <code>src</code> attribute, which makes it hard or impossible for users to understand the purpose of the <code>iframe</code>.
+</p>
+
+{% highlight "html" %}
+  <iframe title="Bob Dylan - Visions Of Johanna (Live 1966) YouTube" width="560" height="315" src="https://www.youtube.com/embed/uW9_2r3raHE"></iframe>
+{% endhighlight %}
+
+<!-- teaser -->
+
+<p>If you include an <code>iframe</code> that’s not visible to the user because it’s not meant to be interacted with, hide it from screen reader and keyboard users, too.</p>
+
+{% highlight "html" %}
+  <iframe title="Intentionally hidden" aria-hidden="true" tabindex="-1" src="https://www.mythirdpartyscriptxy.com"></iframe>
+{% endhighlight %}
+
+<p>You can find exemplary use cases for hidden iframes that run in the background in this <a href="https://twitter.com/mmatuzo/status/1399996455021072389">thread on Twitter</a>.</p>
