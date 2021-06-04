@@ -18,21 +18,21 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Search Engine -->
-    <meta name="description" content="{{ hell.site_description }}">
+    <meta name="description" content="{{ description or hell.site_description }}">
     {% set image_path = seo_title or title %}
     <!-- Schema.org for Google -->
     <meta itemprop="name" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
-    <meta itemprop="description" content="{{ hell.site_description }}">
+    <meta itemprop="description" content="{{ description or hell.site_description }}">
     <meta itemprop="image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=010621s">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
-    <meta name="twitter:description" content="{{ hell.site_description }}">
+    <meta name="twitter:description" content="{{ description or hell.site_description }}">
     <meta name="twitter:site" content="@mmatuzo">
     <meta name="twitter:creator" content="@mmatuzo">
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:title" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
-    <meta property="og:description" content="{{ hell.site_description }}">
+    <meta property="og:description" content="{{ description or hell.site_description }}">
     <meta property="og:image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=010621s">
     <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
     <meta property="og:site_name" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
