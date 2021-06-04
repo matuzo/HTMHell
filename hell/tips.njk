@@ -1,35 +1,24 @@
 ---
 layout: layouts/base.njk
-title: HTML Tips
-nav_title: Tips
+title: HTML Tips & Tricks
+nav_title: 'Heaven'
 tags:
   mainnav
 ---
 
-<h1>HTML Tips</h1>
+<h1>{{ title }}</h1>
 
 <ol class="u-list-reset">
-{% for tip in collections.tips %}
+{% for tip in collections.tips | reverse %}
   {% if tip.data.processed %}
-    <li>
-    <h2>Issue #{{ loop.index }} - {{ tip.data.title }}</h2>
+    <li class="preview">
+      <h2>Issue #{{ loop.revindex0 }} - {{ tip.data.title }}</h2>
 
-    {{ tip.templateContent | safe }}
+      {{ tip.templateContent | teaser | safe }}
 
-    {% if tip.data.resources %}
-      <h3>Resources</h3>
-
-      <ul>
-      {% for link in tip.data.resources %}
-        
-        <li>
-          <a href="{{ link.url }}">
-            {{ link.title }}
-          </a>
-        </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
+      <a href="{{ tip.url }}">
+        Continue reading Issue #{{ loop.revindex0 }}
+      </a>
     </li>
   {% endif %}
 {% endfor %}

@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+permalink: /tips/{{ title | slug }}/index.html
+---
+
+<div class="preview">
+  <h1>{{ title }}</h1>
+
+  {{ content | safe }}
+
+  {% if resources %}
+    <h3>Resources</h3>
+
+    <ul>
+    {% for link in resources %}
+      
+      <li>
+        <a href="{{ link.url }}">
+          {{ link.title }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+<h2>Did you enjoy this tip?</h2>
+
+<p>Sign up for the HTMHell newsletter and receive an HTML tip or trick every two weeks via e-mail.</p>
+
+{% include 'newsletter_form.njk' %}
