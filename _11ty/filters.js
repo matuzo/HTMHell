@@ -40,5 +40,9 @@ module.exports = {
   md: value => {
     const md = new MarkdownIt();
     return md.render(value);
+  },
+
+  teaser: content => {
+    return content.split('<!-- teaser -->')[0]
   } 
 }
