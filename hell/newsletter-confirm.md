@@ -2,8 +2,6 @@
 layout: layouts/base.njk
 title: Newsletter Welcome
 permalink: /newsletter-confirm/index.html
-tags:
-  footernav
 ---
 # Almost done!
 
