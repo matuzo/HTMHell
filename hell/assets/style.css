@@ -152,6 +152,10 @@ label {
   border-radius: 2px;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* Helper */
 
 .u-hidden {
