@@ -1,0 +1,80 @@
+---
+title: gifs and reduced motion
+layout: layouts/tip.njk
+processed: true
+description: You can replace animated gifs with jpgs if users prefer reduced motion, using the picture element.
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: Designing Safer Web Animation For Motion Sensitivity
+    url: https://alistapart.com/article/designing-safer-web-animation-for-motion-sensitivity/
+  - title: Revisiting prefers-reduced-motion, the reduced motion media query
+    url: https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+  - title: "Accessibility for Vestibular Disorders: How My Temporary Disability Changed My Perspective"
+    url: https://alistapart.com/article/accessibility-for-vestibular/
+  - title: prefers-reduced-motion on MDN
+    url: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+---
+<p>
+  You can replace animated <code>gif</code>s with <code>jpg</code>s if users prefer reduced motion, using the <code>picture</code> element in combination with the <code>prefers-reduced-motion</code> media feature.
+</p>
+
+{% highlight "html" %}
+<picture>
+  <source srcset="pooh666.gif" media="(prefers-reduced-motion: no-preference)">
+  <img src="pooh666.jpg" alt="Pooh Bear doing knee bends in front of a mirror. Instead of the mirror glass, there’s an illustration of Satan. It looks like Pooh is worshipping the devil."/>
+</picture>
+{% endhighlight %}
+
+<!-- teaser -->
+
+<p>
+  Animations on the web are sometimes annoying, but they may also cause nausea, dizziness, and headaches in some users. For people with vestibular disorders it may even cause pain and make them feel so bad that they have to stop using the computer, needing time to recover. The negative side effects of animations can be terrible, that's why we should serve animation only if users prefer animation or have no preference.
+</p>
+
+<p>
+  In most operating systems <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#user_preferences">users can decide to reduce motion</a> in browsers and apps and we can react to that by querying the <code>prefers-reduced-motion</code> media feature. 
+</p>
+
+<p>
+  We start with a <code>jpg</code> in case the user’s operating system does not provide such an option. 
+</p>
+
+{% highlight "html" %}
+<picture>
+  <img src="pooh666.jpg" alt="Pooh Bear doing knee bends in front of a mirror. Instead of the mirror glass, there’s an illustration of Satan. It looks like Pooh is worshipping the devil."/>
+</picture>
+{% endhighlight %}
+
+<p>
+  Then we replace the <code>jpg</code> with a <code>gif</code> only if the user has no preference for reduced motion.
+</p>
+
+{% highlight "html" %}
+<picture>
+  <source srcset="pooh666.gif" media="(prefers-reduced-motion: no-preference)">
+  <img src="pooh666.jpg" alt="Pooh Bear doing knee bends in front of a mirror. Instead of the mirror glass, there’s an illustration of Satan. It looks like Pooh is worshipping the devil."/>
+</picture>
+{% endhighlight %}
+
+<p>
+  Depending on your preference you should either see a <code>jpg</code> or a <code>gif</code> of Pooh Bear worshipping the lord of HTMHell.
+</p>
+
+<p>
+  <picture>
+    <source srcset="/images/pooh666.gif" media="(prefers-reduced-motion: no-preference)">
+    <img src="/images/pooh666.jpg" alt="Pooh Bear doing knee bends in front of a mirror. Instead of the mirror glass, there’s an illustration of Satan. It looks like Pooh is worshipping the devil."/>
+  </picture>
+</p>
+
+<h3>Animation settings in different operating systems</h3>
+
+<ul>
+  <li>macOS: System Preferences - Accessibility - Display - Reduce Motion</li>
+  <li>iOS: Settings - General - Accessibility - Reduce Motion</li>
+  <li>Android: Settings - Accessibility features - Accessibility - Advanced Visual Effects </li>
+  <li>Windows 10: Settings - Ease of Access - Display - Show animations in Windows.</li>
+</ul>
