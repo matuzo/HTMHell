@@ -9,6 +9,12 @@ date: 2021-01-02
 
 <h1>{{ title }}</h1>
 
+<div class="preview">
+  <p>
+    We publish an HTML tip or trick every week on this page, on our <a href="/feed_tips.xml">RSS</a> feed or directly delivered to your inbox via our <a href="/newsletter#signup">newsletter</a>. 
+  </p>
+</div>
+
 <ol class="u-list-reset">
 {% for tip in collections.tips | reverse %}
   {% if tip.data.processed %}
