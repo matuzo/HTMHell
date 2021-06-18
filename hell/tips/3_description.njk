@@ -1,0 +1,117 @@
+---
+title: page descriptions
+layout: layouts/tip.njk
+processed: true
+description: "You can describe web pages using meta tags. This is important for 3rd party tools, websites, and apps."
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: Making Your Website Shareable on LinkedIn
+    url: https://www.linkedin.com/help/linkedin/answer/46687/making-your-website-shareable-on-linkedin?lang=en
+  - title: Overview of all Twitter Card Tags
+    url: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+  - title: Pinterest Rich Pins
+    url: https://developers.pinterest.com/docs/rich-pins/overview/
+  - title: MOZ What is a meta description?
+    url: https://moz.com/learn/seo/meta-description
+  - title: Create good titles and snippets in Search Results
+    url: https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets
+  - title: Facebook Sharing
+    url: https://developers.facebook.com/docs/sharing/webmasters/
+---
+<p>
+  You can describe web pages using <code>meta</code> tags. This is important for 3rd party tools, websites, and apps. Search engines may use the description in their search results and social media sites in previews when users post a link.
+</p>
+
+{% highlight "html" %}
+<meta name="description" content="HTML, accessibility, performance, and SEO tips, tricks, and best practices.">
+<meta property="og:description" content="HTML, accessibility, performance, and SEO tips, tricks, and best practices.">
+{% endhighlight %}
+
+<!-- teaser -->
+
+<h2>
+  General
+</h2>
+
+<p>
+  Page descriptions are really useful because they can help users understand what a page is about before they click a link. Here are a few things to consider when you describe a page:
+</p>
+
+<ul>
+  <li>
+    Make sure your descriptions are concise and descriptive.
+  </li>
+  <li>
+    Write a unique description for each page and try to include relevant keywords.
+  </li>
+  <li>
+    The length of a description should be somewhere between 50 and ~155 characters (this is where Google truncates the text in search result pages).
+  </li>
+  <li>
+    Search engines usually use the description from the <code>meta</code> tag, but they might not if they think other content on the page is more suitable.
+  </li>
+  <li>
+    Descriptions don't factor into ranking algorithms for web search, but can impact a page's click-through-rate (CTR) which can positively impact a page's ability to rank. 
+  </li>
+</ul>
+
+<h2>
+  Social Media
+</h2>
+
+<p>
+  It’s advised to use the <code>description</code> and <code>og:description</code> meta tag. Facebook, Pinterest and LinkedIn use the <code>description</code> meta tag for their URL previews, if you don't provide a <code>og:description</code>. Twitter ignores the <code>description</code> meta tag and only displays the <code>og:description</code>, but it offers a dedicated <code>twitter:description</code> variation.
+</p>
+
+{% highlight "html" %}
+<!-- Search engines + Fallback for Facebook, Pinterest and LinkedIn -->
+<meta name="description" content="HTML, accessibility, performance, and SEO tips, tricks, and best practices.">
+<!-- Social media sites Like Twitter, Pinterest, Facebook or LinkedIn -->
+<meta property="og:description" content="HTML, accessibility, performance, and SEO tips, tricks, and best practices.">
+<!-- Specific Twitter description -->
+<meta property="twitter:description" content="HTML, accessibility, performance, and SEO tips, tricks, and best practices.">
+{% endhighlight %}
+
+<p>
+  You can test how your page descriptions look like using these scrappers:
+<p>
+
+<ul>
+  <li>
+    <a href="https://cards-dev.twitter.com/validator">
+      Twitter Card validator
+    </a>
+  </li>
+  <li>
+    <a href="https://developers.facebook.com/tools/debug">
+      Facebook Sharing Debugger
+    </a>
+  </li>
+  <li>
+    <a href="https://www.linkedin.com/post-inspector/">
+      LinkedIn Post Inspector
+    </a>
+  </li>
+  <li>
+    <a href="https://developers.pinterest.com/tools/url-debugger/">
+      Pinterest Rich Pins Validator
+    </a>
+  </li>
+  <li>
+    <a href="https://socialsharepreview.com/">
+      Social Media Preview
+    </a>
+  </li>
+  <li>
+    <a href="https://metatags.io/">
+      Meta Tags
+    </a>
+  </li>
+</ul>
+
+<p>
+  These scrapper work for me most of the time, but in a discussion on Twitter Kilian Valkhof pointed out that <a href="https://twitter.com/kilianvalkhof/status/1405835103058763784">the official scrappers are outdated</a>, so make sure you test the result properly.
+</p>
