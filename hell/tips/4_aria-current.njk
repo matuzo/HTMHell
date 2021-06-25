@@ -1,0 +1,84 @@
+---
+title: the current page
+layout: layouts/tip.njk
+processed: true
+description: "You can describe web pages using meta tags. This is important for 3rd party tools, websites, and apps."
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: Aditus - aria-current
+    url: https://www.aditus.io/aria/aria-current/
+  - title: Using the aria-current attribute by Léonie Watson
+    url: https://tink.uk/using-the-aria-current-attribute
+  - title: aria-current (state)
+    url: https://www.w3.org/TR/wai-aria-1.1/#aria-current
+---
+<p>
+  Use the <code>aria-current</code> attribute to highlight the current page in a navigation, both visually and semantically.
+</p>
+
+{% highlight "html" %}
+<nav>
+  <ul>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/about-us" aria-current="page">About us</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+{% endhighlight %}
+
+<!-- teaser -->
+
+<p>
+  If you use a class like <code>.active</code> to highlight the current page within a set of links, only sighted users will be hinted at which page is the current page.
+</p>
+
+{% highlight "html" %}
+<nav>
+  <ul>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/about-us" class="active">About us</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+{% endhighlight %}
+
+{% highlight "css" %}
+.active {
+  font-weight: bold;
+}
+{% endhighlight %}
+
+<p>
+  Instead of a simple class, you can use the <code>aria-current</code> attribute with the <code>page</code> value. The attribute communicates the active page to assistive technology and you can use it to select the link in CSS.
+</p>
+
+{% highlight "html" %}
+<nav>
+  <ul>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/about-us" aria-current="page">About us</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+{% endhighlight %}
+
+{% highlight "css" %}
+[aria-current="page"] {
+  font-weight: bold;
+}
+{% endhighlight %}
+
+<p>
+  Here's a quick demo of this pattern used with TalkBack on Android.
+</p>
+
+<video src="/images/ariacurrent.mp4" controls width="200">
+  <p>Something went wrong, please visit <a href="https://htmhell.dev/tips/the-current-page/">htmhell.dev/tips/the-current-page</a> to view this video.
+</video>
+
+<p>
+  There are more usages for the <code>aria-current</code> attribute. Check out the links below to learn more.
+</p>
