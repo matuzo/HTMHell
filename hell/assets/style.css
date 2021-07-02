@@ -156,6 +156,12 @@ img {
   max-width: 100%;
 }
 
+figcaption {
+  line-height: 1.4;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
 /* Helper */
 
 .u-hidden {
