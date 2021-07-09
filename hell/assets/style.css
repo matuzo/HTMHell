@@ -168,6 +168,11 @@ label {
 
 img {
   max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
 }
 
 figcaption {
