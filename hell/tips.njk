@@ -21,7 +21,7 @@ page__class: heaven
 {% for tip in collections.tips | reverse %}
   {% if tip.data.processed %}
     <li class="preview">
-      <h2>Issue #{{ loop.revindex0 }} - {{ tip.data.title }}</h2>
+      <h2>Issue #{{ tip.data.issue }} - {{ tip.data.title }}</h2>
 
       {{ tip.templateContent | teaser | safe }}
 
