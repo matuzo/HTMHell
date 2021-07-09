@@ -58,7 +58,7 @@
       <nav class="nav" aria-label="Main">
         <ol class="nav__items">
           {% for item in collections.mainnav %}
-            <li class="nav__item"><a href="{{ item.url }}" class="nav__link" {% if item.url === page.url %}aria-current="page"{% endif %}>{{ item.data.nav_title }}</a></li>
+            <li class="nav__item"><a href="{{ item.url }}" class="nav__link" {% if item.url === page.url or (item.url !== '/' and item.url in page.url)  %}aria-current="page"{% endif %}>{{ item.data.nav_title }}</a></li>
           {% endfor %}
           <li class="nav__item">{% include "twitter_link.njk" %}</li>
           <li class="nav__item">
