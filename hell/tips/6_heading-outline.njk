@@ -1,0 +1,84 @@
+---
+title: the document outline
+layout: layouts/tip.njk
+issue: 6
+processed: true
+description: "You can help password managers and browsers (pre)fill password fields by using the autocomplete attribute,...and by doing “other stuff”."
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: "Web Accessibility Tutorials - Headings"
+    url: https://www.w3.org/WAI/tutorials/page-structure/headings/
+  - title: "There Is No Document Outline Algorithm"
+    url: https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html
+  - title: "The Truth about “The Truth About Multiple H1 Tags”"
+    url: https://adrianroselli.com/2013/12/the-truth-about-truth-about-multiple-h1.html
+  - title: "Screen Reader User Survey #9 Results"
+    url: https://webaim.org/projects/screenreadersurvey9/
+
+---
+<p>
+  In May - June 2021, WebAIM surveyed preferences of screen reader users and the results show that most respondents find proper heading structures useful.
+</p>
+
+<a href="https://webaim.org/projects/screenreadersurvey9/#heading">
+<picture>
+  <source srcset="/images/6_piechart.avif" type="image/avif">
+  <img src="/images/6_piechart.jpg" width="700" height="390" alt="Pie chart showing that 52.8% find headings very useful and 32.9% somewhat useful." loading="lazy">
+</picture>
+</a>
+
+<!-- teaser -->
+
+<p>
+  There are several reasons proper heading structures are important:
+</p>
+
+<ul>
+  <li>
+    <p>
+      The headings on a page form the document outline of a page and the document outline tells third-party tools how your page is structured. When you <a href="https://validator.w3.org/#validate_by_uri+with_options">validate a page</a>, you can check “Show outline” under ”More Options“ to list your document outline.
+    </p>
+    <p>
+      <picture>
+        <source srcset="/images/6_validator.avif" type="image/avif">
+        <img src="/images/6_validator.jpg" width="700" height="634" alt="The W3 Validator shows the document outline of the HTMHell tips page. A single h1 followed by several h2s." loading="lazy">
+      </picture>
+    </p>
+  </li>
+  <li>
+    Headings communicate the organization of the content on the page. The <code>&lt;h1&gt;</code> tells users what the page is about. The <code>&lt;h2&gt;</code>s split the page into large sections, <code>&lt;h3&gt;</code> - <code>&lt;h6&gt;</code> structure these larger sections even more.
+  </li>
+  <li>
+    The proper usage of headings helps search engines understand what your page is about and how it's structured.
+  </li>
+  <li>
+    <p>
+      Screen reader users can get an overview of the content on a page by only going through the headings. The software usually announces the content of the headings along with their level (1 - 6). That's why it's important to keep a sound document outline. Skipping headings can be confusing and should be avoided where possible.
+    </p>
+    <p>
+      <figure>
+        <picture>
+          <source srcset="/images/6_voiceover-heading.avif" type="image/avif">
+          <img src="/images/6_voiceover-heading.jpg" width="700" height="453" alt="VoiceOver Rotor on macOS on the HTMHell tips page." loading="lazy">
+        </picture>
+        <figcaption>
+          The VoiceOver rotor on macOS lists all headings on the page with their level and allows users to jump to a selected heading.
+        </figcaption>
+      </figure>
+    </p>
+  </li>
+  <li>
+    Screen readers allow navigation by heading. That means that you can not just go through the headings on a page, but you can select them and jump directly to the position of the selected heading in the DOM and read the site starting from there.
+  </li>
+  <li>
+    Headings also help sighted users understand how a page is structured and how different sections on a page relate to each other.
+  </li>
+</ul>
+
+<p>
+  An advice I like to give my students is to imagine that they're writing a paper for university when they're creating the outline for a web page. A paper always needs a title, and it has just one title (<code>&lt;h1&gt;</code>). There are usually several main chapters in a paper (<code>&lt;h2&gt;</code>) and sometimes there are also subchapters (<code>&lt;h3&gt;</code> - <code>&lt;h6&gt;</code>). It's much better to imagine how the page should be structured than to look at a design and only follow the visual structure. Sometimes it makes sense to add headings to the page that aren't visible in the design to create a sound document outline.
+</p>
+
