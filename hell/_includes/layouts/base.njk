@@ -20,10 +20,6 @@
     <!-- Search Engine -->
     <meta name="description" content="{{ description or hell.site_description }}">
     {% set image_path = seo_title or title %}
-    <!-- Schema.org for Google -->
-    <meta itemprop="name" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
-    <meta itemprop="description" content="{{ description or hell.site_description }}">
-    <meta itemprop="image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=160621">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
