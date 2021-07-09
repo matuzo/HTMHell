@@ -3,7 +3,8 @@ title: the document outline
 layout: layouts/tip.njk
 issue: 6
 processed: true
-description: "You can help password managers and browsers (pre)fill password fields by using the autocomplete attribute,...and by doing “other stuff”."
+description: "In May to June 2021, WebAIM surveyed preferences of screen reader users and the results show that most respondents find proper heading structures useful.
+"
 tags:
   - tips
   - tip_a
@@ -11,24 +12,26 @@ element: a
 resources:
   - title: "Web Accessibility Tutorials - Headings"
     url: https://www.w3.org/WAI/tutorials/page-structure/headings/
+  - title: "Screen Reader User Survey #9 Results"
+    url: https://webaim.org/projects/screenreadersurvey9/
   - title: "There Is No Document Outline Algorithm"
     url: https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html
   - title: "The Truth about “The Truth About Multiple H1 Tags”"
     url: https://adrianroselli.com/2013/12/the-truth-about-truth-about-multiple-h1.html
-  - title: "Screen Reader User Survey #9 Results"
-    url: https://webaim.org/projects/screenreadersurvey9/
 
 ---
 <p>
-  In May - June 2021, WebAIM surveyed preferences of screen reader users and the results show that most respondents find proper heading structures useful.
+  In May to June 2021, WebAIM surveyed <a href="https://webaim.org/projects/screenreadersurvey9">preferences of screen reader users</a> and the results show that most respondents find proper heading structures useful.
 </p>
 
+<p>
 <a href="https://webaim.org/projects/screenreadersurvey9/#heading">
 <picture>
   <source srcset="/images/6_piechart.avif" type="image/avif">
   <img src="/images/6_piechart.jpg" width="700" height="390" alt="Pie chart showing that 52.8% find headings very useful and 32.9% somewhat useful." loading="lazy">
 </picture>
 </a>
+</p>
 
 <!-- teaser -->
 
@@ -39,7 +42,7 @@ resources:
 <ul>
   <li>
     <p>
-      The headings on a page form the document outline of a page and the document outline tells third-party tools how your page is structured. When you <a href="https://validator.w3.org/#validate_by_uri+with_options">validate a page</a>, you can check “Show outline” under ”More Options“ to list your document outline.
+      The headings on a page form the document outline of a page and the document outline tells third-party tools how your page is structured. <br>When you <a href="https://validator.w3.org/#validate_by_uri+with_options">validate a page</a>, you can check “Show outline” under “More Options” to list your document outline.
     </p>
     <p>
       <picture>
@@ -79,6 +82,27 @@ resources:
 </ul>
 
 <p>
-  An advice I like to give my students is to imagine that they're writing a paper for university when they're creating the outline for a web page. A paper always needs a title, and it has just one title (<code>&lt;h1&gt;</code>). There are usually several main chapters in a paper (<code>&lt;h2&gt;</code>) and sometimes there are also subchapters (<code>&lt;h3&gt;</code> - <code>&lt;h6&gt;</code>). It's much better to imagine how the page should be structured than to look at a design and only follow the visual structure. Sometimes it makes sense to add headings to the page that aren't visible in the design to create a sound document outline.
+  An advice I like to give my students is to imagine that they're writing a paper for university when they're creating the outline for a web page. A paper always needs a title, and it has just one title (<code>&lt;h1&gt;</code>). There are usually several main chapters in a paper (<code>&lt;h2&gt;</code>) and sometimes there are also subchapters (<code>&lt;h3&gt;</code> - <code>&lt;h6&gt;</code>).
+</p>
+<p>
+  It's much better to imagine how the page <em>should</em> be structured than to look at a design and only follow visual cues. Sometimes it makes sense to add headings to the page that aren't visible in the design in order to create a sound document outline. You can hide these headings accessibly by using a combination of properties. 
 </p>
 
+{% highlight "html" %}
+<h2 class="sr-only">I'm visually hidden</h2>
+{% endhighlight %}
+
+{% highlight "css" %}
+.sr-only {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+{% endhighlight %}
