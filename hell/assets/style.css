@@ -23,14 +23,28 @@ body {
   }
 }
 
+.h1,
 h1 {
   color: #d72b2b;
   margin-top: 0;
   font-size: 2.8rem;
   line-height: 1.2;
+  display: block;
+  margin-bottom: 0.6em;
+}
+
+.h1 {
+  color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  .h1 {
+    color: #fff;
+  }
 }
 
 @media (min-width: 768px) {
+  .h1,
   h1 {
     font-size: 3.5rem;
   }
@@ -283,6 +297,18 @@ figcaption {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .nav__link.focus-visible,
+  .nav__link[aria-current="page"],
+  .nav__link:hover {
+    color: #fff;
+  }
+
+  .nav__link[aria-current="page"] {
+    box-shadow: 0 5px 0 0 #fff;
+  }
+}
+
 .site-twitter {
   display: inline-block;
 }
@@ -315,6 +341,16 @@ figcaption {
 
 .site-logo {
   display: none;
+}
+
+.site-logo__heaven {
+  opacity: 0;
+  transition: all 0.3s;
+  fill: #d72b2b;
+}
+
+.site-logo__heaven g {
+  fill: #216d99;
 }
 
 @supports(display: grid) {
@@ -355,6 +391,10 @@ figcaption {
   transition-delay: 1.3s;
 }
 
+.site--loaded.heaven .site-logo__heaven {
+  opacity: 1;
+}
+
 .site-logo polygon {
   fill: #d72b2b;
 }
@@ -366,6 +406,12 @@ figcaption {
 @media (min-width: 768px) {
   .site-logo {
     height: 27.4rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-logo {
+    fill: #fff;
   }
 }
 
