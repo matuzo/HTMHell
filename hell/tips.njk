@@ -26,7 +26,7 @@ page__class: heaven
       {{ tip.templateContent | teaser | safe }}
 
       <a href="{{ tip.url }}">
-        Continue reading Issue #{{ loop.revindex0 }}
+        Continue reading Issue #{{ tip.data.issue }}
       </a>
     </li>
   {% endif %}

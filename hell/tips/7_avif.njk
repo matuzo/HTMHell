@@ -1,0 +1,98 @@
+---
+title: the avif image format
+layout: layouts/tip.njk
+issue: 7
+processed: true
+tags:
+  - tips
+  - tip_a
+description: "avif is a fairly new image format, and for me it's one of the most exciting recent additions to web development."
+resources:
+  - title: Squoosh - Convert images in the browser
+    url: https://squoosh.app/
+  - title: Squoosh CLI
+    url: https://www.npmjs.com/package/@squoosh/cli
+  - title: "Web developer's guide to AVIF images"
+    url: https://darekkay.com/blog/avif-images/
+---
+<p>
+  <code>avif</code> is a fairly new image format, and for me it's one of the most exciting recent additions to web development. Why? On a website I recently built, I could reduce the total image size from 1.72MB to 172KB just by converting images to <code>avif</code>.
+</p>
+
+<!-- teaser -->
+
+<p>
+  That sounds too good to be true, so let me start with the bad news: Chrome, Chrome for Android, Opera, Opera Mobile and Samsung Internet are the only browsers to support <code>avif</code> at the moment. Firefox supports it behind a flag.
+</p>
+
+<p>
+  <a href="https://caniuse.com/avif">
+    <picture>
+      <source srcset="/images/7_avif-support.avif" type="image/avif">
+      <img src="/images/7_avif-support.jpg" width="700" height="390" alt="caniuse.com browser support chart for the avif image format" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<p>
+  That’s not terrible, but it isn’t good either. The good news is that we can leverage the built-in progressive enhancement mechanisms of HTML to provide users with fallback image formats in case they’re using a browser that doesn’t suppor <code>avif</code>.
+</p>
+
+<p>
+  The markup for the screenshot above looks like this:
+</p>
+
+{% highlight "html" %}
+<picture>
+  <source srcset="/images/7_avif-support.avif" type="image/avif">
+  <img src="/images/7_avif-support.jpg" width="740" height="251" alt="caniuse.com browser support chart for the avif image format" loading="lazy">
+</picture>
+{% endhighlight %}
+
+<p>
+  We provide browsers with a set of images. The browser goes through this set and stops at the first format it can interpret. Chrome stops at the <code>&lt;source&gt;</code> element because it supports the <code>avif</code> format, Edge skips this line and uses the <code>jpg</code> referenced in the <code>&lt;img&gt;</code> element.
+</p>
+
+<p>
+  You might even stop using <code>jpg</code> altogether because support for the <code>webp</code> image format is pretty good these days. All modern browsers, Safari starting with Big Sur, support the <code>webp</code> format.
+</p>
+
+{% highlight "html" %}
+<picture>
+  <source srcset="/images/7_avif-support.avif" type="image/avif">
+  <img src="/images/7_avif-support.webp" width="740" height="251" alt="caniuse.com browser support chart for the avif image format" loading="lazy">
+</picture>
+{% endhighlight %}
+
+<p>
+  <a href="https://caniuse.com/webp">
+    <picture>
+      <source srcset="/images/7_webp-support.avif" type="image/avif">
+      <img src="/images/7_webp-support.jpg" width="740" height="291" alt="caniuse.com browser support chart for the webp image format" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<h2>Image size comparison</h2>
+
+<p>I took a screenshot of the HTMHell website and compressed it with OxiPNG and converted it to <code>webp</code> and <code>avif</code>.</p>
+
+<ul>
+  <li>
+    <a href="/images/7_example-orig.png">png untouched: 936KB</a>
+  </li>
+  <li>
+    <a href="/images/7_example-comp.png">png compressed: 438KB</a>
+  </li>
+  <li>
+    <a href="/images/7_example.webp">webp: 132KB</a>
+  </li>
+  <li>
+    <a href="/images/7_example.avif">avif: 71KB</a>
+  </li>
+</ul>
+
+<p>
+  Pretty amazing, if you ask me. :)<br>
+  There are already several compression tools out there, but I can recommend the <a href="https://squoosh.app/">Squoosh web app</a>, if you want to get started.
+</p>
