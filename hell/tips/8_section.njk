@@ -1,0 +1,131 @@
+---
+title: the section element
+layout: layouts/tip.njk
+processed: true
+description: "Use the section element to mark up a grouping of related content, typically introduced with a heading."
+issue: 8
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: Accessibility of the section element 
+    url: https://www.scottohara.me/blog/2021/07/16/section.html
+  - title: 4.3.3 The section element
+    url: https://html.spec.whatwg.org/multipage/sections.html#the-section-element
+  - title: Why You Should Choose HTML5 article Over section
+    url: https://www.smashingmagazine.com/2020/01/html5-article-section/
+date: 2021-01-09
+---
+<p>
+  Use the <code>&lt;section&gt;</code> element to mark up a grouping of related content, typically introduced with a heading.
+</p>
+
+<p>
+<figure>
+{% highlight "html" %}
+<h1>Welcome to GOV.UK</h1>
+<section>
+  <h2>Services and information</h2>
+  …
+</section>
+<section>
+  <h2>Departments and policy</h2>
+  …
+</section>
+…
+{% endhighlight %}
+<figcaption>An extract of the gov.uk home page.
+</figure>
+</p>
+
+<!-- teaser -->
+
+<p>
+  It’s not always clear when it’s appropriate to use the <code>&lt;section&gt;</code> element and how to use it properly. I’ve collected some guidelines to help you decide.
+</p>
+
+<h2>Implicit region and exposed role</h2>
+<p>
+  By default, there’s no difference between a <code>&lt;section&gt;</code> and a <code>&lt;div&gt;</code> regarding the semantic information exposed to assistive technology. For a screen reader, the following two code snippets are practically the same:
+</p>
+
+{% highlight "html" %}
+<section>
+  <h2>Services and information</h2>
+  …
+</section>
+{% endhighlight %}
+
+{% highlight "html" %}
+
+<div>
+  <h2>Services and information</h2>
+  …
+</div>
+{% endhighlight %}
+
+<p>
+  Regardless of the information exposed to assistive technology, it still makes sense to use <code>&lt;section&gt;</code> when appropriate. It’s a semantic element that allows us to structure a page and maybe style it accordingly using the <code>section</code> tag selector.
+</p>
+
+<h2><code>div</code> vs. <code>section</code></h2>
+
+<p>
+  <code>&lt;section&gt;</code> is no replacement for the <code>&lt;div&gt;</code> element and must not be used for styling purposes only.
+</p>
+
+<p>
+  The class names in the following code snippet and the fact that the sections are nested in a <code>&lt;header&gt;</code> indicate that their only purpose is to split the header into four columns visually. They’re not important sections of the page.
+</p>
+
+{% highlight "html" %}
+<header class="site-header">
+  <section class="site-header__title"></section>
+  <section class="site-header__logo"></section>
+  <section class="site-header__search"></section>
+  <section class="site-header__nav"></section>
+</header>
+{% endhighlight %}
+
+<p>
+  There’s a useful rule of thumb in the <a href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">HTML specification</a>:
+</P>
+
+<blockquote>
+ A general rule is that the section element is appropriate only if the element’s contents would be listed explicitly in the document’s outline.
+</blockquote>
+
+<p>
+  You can read about the document outline in <a href="/tips/the-document-outline/">Issue #6 - the document outline</a>.
+
+<h2>region landmark</h2>
+
+<p>
+  The <code>&lt;section&gt;</code>’s exposed <code>role</code> and purpose change when you label it using <code>aria-label</code>, <code>aria-labelledby</code> or with the <code>&lt;title&gt;</code> attribute. Labelling it using these attributes turns it into a <a href="https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html">landmark</a>, which exposes a different role (<code>region</code>) and gives screen reader users easier access to the section. (Note: Safari doesn’t expose the <code>region</code> role when named via <code>&lt;title&gt;</code>)
+</p>
+
+{% highlight "html" %}
+<section aria-labelledby="results">
+  <h2 id="results">Results</h2>
+  …
+</section>
+{% endhighlight %}
+
+<p>
+  Other landmarks are, for example, <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> or <code>&lt;footer&gt;</code>, important sections of the page. With that said, only promote a <code>&lt;section&gt;</code> to a landmark if it plays an important part in the current page.
+</p>
+
+<h2>The document outline</h2>
+
+<p>
+  If you have multiple <code>&lt;h1&gt;</code> elements in a page and you’ve nested some of them in <code>&lt;section&gt;</code>s, semantically you still have multiple level 1 headings. The font size of an <code>&lt;h1&gt;</code> nested in a <code>&lt;section&gt;</code> may decrease, but the level exposed to assistive technology is still 1. <a href="https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html">There Is No Document Outline Algorithm</a>.
+</p>
+
+<h2>Conclusion</h2>
+
+<p>
+  If you’re not sure whether to use a <code>&lt;section&gt;</code>, it’s probably best to not bother with it. It’s much more important that you create <a href="/tips/the-document-outline/">a sound document outline</a>.
+</p>
+
+<p>PS: Thanks a lot, <a href="https://twitter.com/scottohara/">Scott</a>, for writing <a href="https://www.scottohara.me/blog/2021/07/16/section.html">Accessibility of the section element</a> which helped me understand the section element much better.
