@@ -4,11 +4,11 @@ permalink: /tips/{{ title | slug }}/index.html
 page__class: heaven
 ---
 
-<div class="preview">
+{# <div class="preview">
   <p>
     <strong class="h1">HTML Tips & Tricks</strong> We publish an HTML tip or trick every week on <a href="/tips">the tips page</a>, on our <a href="/feed_tips.xml">RSS</a> feed or directly delivered to your inbox via our <a href="/newsletter#signup">newsletter</a>. 
   </p>
-</div>
+</div> #}
 
 <div class="preview">
   <h1>Issue #{{ issue }} - {{ title }}</h1>
@@ -16,7 +16,7 @@ page__class: heaven
   {{ content | safe }}
 
   {% if resources %}
-    <h3>Resources</h3>
+    <h2>Resources</h2>
 
     <ul>
     {% for link in resources %}
