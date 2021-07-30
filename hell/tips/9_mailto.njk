@@ -1,0 +1,231 @@
+---
+title: "the mailto: URI scheme"
+permalink: /tips/the-mailto-uri-scheme/
+layout: layouts/tip.njk
+processed: true
+description: "You can pre-fill header fields and the message body, when you link to e-mail addresses."
+issue: 9
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: "The 'mailto' URI Scheme"
+    url: https://datatracker.ietf.org/doc/html/rfc6068#section-2
+  - title: "Creating hyperlinks (MDN)"
+    url: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#e-mail_links
+date: 2021-01-10
+---
+
+<p>
+  You can pre-fill header fields and the message body, when you link to e-mail addresses.
+</p>
+
+<p>
+<figure>
+{% highlight "html" %}
+<a href="mailto:manuel@matuzo.at?subject=HTMHell%20issue%209%20was%20fantastic&body=Thanks,%0D%0AManuel!">
+  manuel@matuzo.at
+</a>
+{% endhighlight %}
+<figcaption>When you click this link, your default e-mail browser should open a new e-mail window with the subject “HTMHell issue 9 was fantastic” and the message “Thanks, Manuel”.</figcaption>
+</figure>
+</p>
+
+<p>
+<a href="mailto:manuel@matuzo.at?subject=HTMHell%20issue%209%20was%20fantastic&body=Thanks,%0D%0AManuel!">
+  manuel@matuzo.at
+</a>
+</p>
+
+<!-- teaser -->
+
+<p>When linking to e-mail addresses, you can provide the subject, recipients, and the e-mail body. You do this by writing the e-mail address followed by a ?, the header name, =, and the header value (see example above).
+
+<h2>Recipients</h2>
+
+<p>
+  There are different ways to link to no, one or multiple e-mail address(es).
+</p>
+
+<h3>mailto: only</h3>
+
+<p>
+  If you don't provide a value for <code>mailto:</code>, your default e-mail client opens a new e-mail window with all fields empty.
+</p>
+
+{% highlight "html" %}
+<a href="mailto:">
+  mailto: only
+</a>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:">
+    mailto: only
+  </a>
+</p>
+
+<h3>mailto: only, with single address</h3>
+
+<p>
+  The “To:” field filled with a single e-mail address.
+</p>
+
+{% highlight "html" %}
+<a href="mailto:manuel@matuzo.at">
+  mailto: only, with single address
+</a>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at">
+    mailto: only, with single address
+  </a>
+</p>
+
+<h3>mailto: only, with multiple addresses</h3>
+
+<p>Separate multiple recipients with a , (comma) and no space between.</p>
+
+{% highlight "html" %}
+<a href="mailto:manuel@matuzo.at,manuel@webclerks.at">
+  mailto: only, with multiple addresses
+</a>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at,manuel@webclerks.at">
+    mailto: only, with multiple addresses
+  </a>
+</p>
+
+<h3>mailto: + <code>to</code> parameter</h3>
+
+<p>
+  You can also define multiple recipients by using the <code>to</code> parameter.
+</p>
+
+{% highlight "html" %}
+<a href="mailto:manuel@matuzo.at?to=manuel@webclerks.at,info@webclerks.at">
+  mailto: + to parameter
+</a>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at?to=manuel@webclerks.at,info@webclerks.at">
+    mailto: + to parameter
+  </a>
+</p>
+
+<h3>mailto: + <code>cc</code> parameter</h3>
+
+<p>
+  The “To:” and “Cc:” field filled with different e-mail addresses.
+</p>
+
+{% highlight "html" %}
+<p>
+  <a href="mailto:manuel@matuzo.at?cc=manuel@webclerks.at">
+    mailto: + cc parameter
+  </a>
+</p>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at?cc=manuel@webclerks.at">
+    mailto: + cc parameter
+  </a>
+</p>
+
+<h3>mailto: + <code>bcc</code> parameter</h3>
+
+<p>
+  The “To:” and “Bcc:” field filled with different e-mail addresses.
+</p>
+
+{% highlight "html" %}
+<p>
+  <a href="mailto:manuel@matuzo.at?bcc=manuel@webclerks.at">
+    mailto: + bcc parameter
+  </a>
+</p>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at?bcc=manuel@webclerks.at">
+    mailto: + bcc parameter
+  </a>
+</p>
+
+<h2>Subject</h2>
+
+<p>
+  You can define a subject by using the <code>subject</code> parameter. Special characters and spaces must be <a href="https://meyerweb.com/eric/tools/dencoder/">url encoded</a>.
+</p>
+
+{% highlight "html" %}
+<p>
+  <a href="mailto:manuel@matuzo.at?subject=This%20is%20a%20subject">
+    mailto: + subject parameter
+  </a>
+</p>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at?subject=This%20is%20a%20subject">
+    mailto: + subject parameter
+  </a>
+</p>
+
+<h2>Body</h2>
+
+<p>
+  You can define a message body by using the <code>body</code> parameter.
+</p>
+
+{% highlight "html" %}
+<p>
+  <a href="mailto:manuel@matuzo.at?body=Hi!">
+    mailto: + body parameter
+  </a>
+</p>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at?body=Hi!">
+    mailto: + body parameter
+  </a>
+</p>
+
+<p>Special characters, line breaks and spaces must be <a href="https://meyerweb.com/eric/tools/dencoder/">url encoded</a></p>
+
+{% highlight "html" %}
+<p>
+  <a href="mailto:manuel@matuzo.at?body=Hi!%0D%0A%0D%0ATom%20%26%20Jerry%20are%20the%20best!">
+    mailto: + body parameter
+  </a>
+</p>
+{% endhighlight %}
+
+<p>
+  <a href="mailto:manuel@matuzo.at?body=Hi!%0D%0A%0D%0ATom%20%26%20Jerry%20are%20the%20best!">
+    mailto: + body parameter with special characters and line breaks
+  </a>
+</p>
+
+<p>It's not possible to add HTML to the message, it's plain text only.</p>
+
+<h2>Additional considerdations</h2>
+
+<ul>
+  <li>
+    Spaces must be encoded with <code>%20</code>.
+  </li>
+  <li>
+    Line breaks must be encoded with <code>%0D%0A</code>.
+  </li>
+  <li>
+    To avoid interoperability problems, the same header value shouldn't be used multiple times (e.g. <code>?to=a@b.at?to=b@c.at</code>)
+  </li>
+</ul>
