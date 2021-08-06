@@ -1,0 +1,97 @@
+---
+title: "reversing ordered lists"
+permalink: /tips/{{ title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "You can reverse ordered lists by using the reversed attribute."
+issue: 10
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: "Reverse ordered lists (matuzo.at)"
+    url: https://www.matuzo.at/blog/reverse-ordered-lists/
+  - title: "Reversed attribute of ordered lists (caniuse.com)"
+    url: https://caniuse.com/ol-reversed
+  - title: "The Ordered List element (MDN)"
+    url: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+date: 2021-01-11
+---
+
+<p>
+  You can reverse ordered lists by using the <code>reversed</code> attribute.
+</p>
+
+<p>
+<figure>
+{% highlight "html" %}
+<ol reversed>
+  <li>Curly Sue (1991)</li>
+  <li>Uncle Buck (1989)</li>
+  <li>She's Having a Baby (1988)</li>
+  <li>Planes, Trains & Automobiles (1987)</li>
+  <li>Ferris Bueller's Day Off (1986)</li>
+  <li>Weird Science (1985)</li>
+  <li>The Breakfast Club (1985)</li>
+  <li>Sixteen Candles (1984)</li>
+</ol>
+{% endhighlight %}
+<figcaption>The reversed attribute numbers items from high to low.</figcaption>
+</figure>
+</p>
+
+<!-- teaser -->
+
+<h2>Ordered lists</h2>
+
+<ol reversed>
+  <li style="margin-bottom: 0">Curly Sue (1991)</li>
+  <li style="margin-bottom: 0">Uncle Buck (1989)</li>
+  <li style="margin-bottom: 0">She's Having a Baby (1988)</li>
+  <li style="margin-bottom: 0">Planes, Trains & Automobiles (1987)</li>
+  <li style="margin-bottom: 0">Ferris Bueller's Day Off (1986)</li>
+  <li style="margin-bottom: 0">Weird Science (1985)</li>
+  <li style="margin-bottom: 0">The Breakfast Club (1985)</li>
+  <li style="margin-bottom: 0">Sixteen Candles (1984)</li>
+</ol>
+
+<p>
+  With the <code>reversed</code> attribute in place, the visual order of list items stays the same, but they are be numbered from high to low.
+</p>
+
+<p>You can also combine the <code>reversed</code> and <code>start</code> attributes to change the number the list counts down from.</p>
+
+{% highlight "html" %}
+<ol reversed start="5">
+  <li>Fifth</li>
+  <li>Fourth</li>
+  <li>Third</li>
+</ol>
+{% endhighlight %}
+
+<ol reversed start="5">
+  <li style="margin-bottom: 0">Fifth</li>
+  <li style="margin-bottom: 0">Fourth</li>
+  <li style="margin-bottom: 0">Third</li>
+</ol>
+
+<h2>Unordered lists</h2>
+
+<p>
+  The attribute has no effect on unordered lists (<code>ul</code>), even if you change the type.
+</p>
+
+{% highlight "html" %}
+<ul reversed type="1">
+  <li>Third</li>
+  <li>Second</li>
+  <li>First</li>
+</ul>
+{% endhighlight %}
+
+<ul reversed type="1">
+  <li style="margin-bottom: 0">Third</li>
+  <li style="margin-bottom: 0">Second</li>
+  <li style="margin-bottom: 0">First</li>
+</ul>
