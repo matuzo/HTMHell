@@ -6,7 +6,7 @@ var concat = require('gulp-concat');
 
 gulp.task('styles', function() {
   return pipeline(
-    gulp.src('./hell/assets/*.css'),
+    gulp.src(['./hell/assets/*.css', '!./hell/assets/print.css']),
     cleanCSS(),
     concat('style.min.css'),
     gulp.dest('./hell/assets/min')
