@@ -1,0 +1,88 @@
+---
+title: "print style sheets"
+permalink: /tips/{{ title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "Improve user experience by providing a print style sheet for your website"
+issue: 11
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: "I totally forgot about print style sheets (matuzo.at)"
+    url: https://www.matuzo.at/blog/i-totally-forgot-about-print-style-sheets/
+  - title: "A Guide To The State Of Print Stylesheets In 2018"
+    url: https://www.smashingmagazine.com/2018/05/print-stylesheets-in-2018/
+date: 2021-01-11
+---
+
+<p>
+  Improve user experience by providing a print style sheet for your website.
+</p>
+
+{% highlight "html" %}
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="print.css" media="print">
+{% endhighlight %}
+
+<!-- teaser -->
+
+<p>
+  One of the most exciting and challenging things about web development is that we can’t predict how users will consume content on our pages. There are different devices, browsers, and input modalities and different ways of accessing and reading content. Some people prefer using the navigation, others like using search. Some people prefer <a href="https://css-tricks.com/reader-mode-the-button-to-beat/">reader mode</a> and others like to print pages.
+</p>
+
+<p>
+  Yes, I know, it’s 2021, but people still have printers and they still like to print pages sometimes. Printed web pages don’t have to be perfect, but we should make sure that the important content on a page is at least accessible when printed on paper. We can do that by providing a print style sheet and including it in HTML. 
+</p>
+
+{% highlight "html" %}
+<link rel="stylesheet" href="print.css" media="print">
+{% endhighlight %}
+
+<p>
+  The styles in this file only apply if users print the page. Note: The file will be downloaded, regardless, but without delaying page rendering. 
+</p>
+
+<h2>Debugging print style sheets</h2>
+
+<p>When debugging print style sheets, we don’t have to print pages with every change we make. Browsers can emulate printing.</p>
+
+<h3>Firefox</h3>
+
+<p>
+  You’ll find an icon that looks like a document or printed page (“Toggle print media simulation for the page”) in the rules panel in Firefox Dev Tools. Clicking it applies the print styles to the page.
+</p>
+
+<a href="/images/11-dev-tools-ff.png">
+  <picture>
+    <source srcset="/images/11-dev-tools-ff.avif" type="image/avif">
+    <img src="/images/11-dev-tools-ff.jpg" width="740" height="469" alt="Firefox Dev Tools Screenshot.">
+  </picture>
+</a>
+
+<h3>Chrome/Edge</h3>
+
+<p>
+  In Chrome/Edge DevTools you can click the button with the three dots (“Customize and control DevTools”), select “More tools”, “Rendering” and finally “print” under “Emulate CSS”.
+</p>
+
+<a href="/images/11-dev-tools-chrome.png">
+  <picture>
+    <source srcset="/images/11-dev-tools-chrome.avif" type="image/avif">
+    <img src="/images/11-dev-tools-chrome.jpg" width="740" height="469" alt="Chrome Dev Tools Screenshot.">
+  </picture>
+</a>
+
+<h3>Safari</h3>
+
+<p>
+  You’ll find an icon that looks like a printer (“Use default media styles”) in the elements panel in Safari Dev Tools. Clicking it applies the print styles to the page.
+</p>
+
+<a href="/images/11-dev-tools-safari.png">
+  <picture>
+    <source srcset="/images/11-dev-tools-safari.avif" type="image/avif">
+    <img src="/images/11-dev-tools-safari.jpg" width="740" height="469" alt="Safari Dev Tools Screenshot.">
+  </picture>
+</a>
