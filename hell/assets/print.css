@@ -1,0 +1,12 @@
+.nav__item:not(:last-child),
+form {
+  display: none;
+}
+
+.preview:not(:last-child) {
+  padding-bottom: 0;
+}
+
+a[href^='http']:not([href*='htmhell.dev']):after {
+  content: ' (' attr(href) ')';
+}
