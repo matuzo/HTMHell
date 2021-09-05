@@ -1,0 +1,200 @@
+---
+title: "crossed out content"
+permalink: /tips/{{ title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "Improve user experience by providing a print style sheet for your website"
+issue: 12
+tags:
+  - tips
+  - tip_a
+element: a
+resources:
+  - title: "Tweaking Text Level Styles"
+    url: https://adrianroselli.com/2017/12/tweaking-text-level-styles.html
+  - title: "Short note on making your mark (more accessible)"
+    url: https://www.tpgi.com/short-note-on-making-your-mark-more-accessible/
+  - title: "A Guide To The State Of Print Stylesheets In 2018"
+    url: https://www.smashingmagazine.com/2018/05/print-stylesheets-in-2018/
+  - title: "Vietnamese Rose Wood Nose Flute"
+    url: https://www.amazon.com/Vietnamese-Rose-Flute-Natural-Finish/dp/B00QOHR5KQ/ref=sr_1_6?dchild=1&keywords=nose+flute&qid=1630681394&sr=8-6
+date: 2021-01-12
+---
+<p>
+  HTML provides us with 2 different ways of identifying crossed out text<span aria-labelledby="note">*</span>, the <code>s</code> and the <code>del</code> element.
+</p>
+
+{% highlight "html" %}
+<h3>Vietnamese Rose Wood Nose Flute</h3>
+<p>
+  The nose flute is the <del>mots</del> <ins>most</ins> beautiful instrument in the world.
+</p>
+<p>
+  <s>Original price: € 19.99</s>
+</p>
+<p>
+  <strong>Special offer: € 9.99!</strong>
+</p>
+{% endhighlight %}
+
+<p id="note">
+  * <mark>“Crossed out”</mark> in terms of its semantic meaning, usually but not necessarily displayed as crossed out text.
+</p>
+
+<!-- teaser -->
+
+<h2>The <code>s</code> element</h2>
+
+<p>
+  Use the <code>s</code> element to highlight contents that are no longer accurate or no longer relevant. A typical example is the old and the new price for a product.
+</p>
+
+{% highlight "html" %}
+<p><s>Original price: € 19.99</s></p>
+<p><strong>Special offer: € 9.99!</strong></p>
+{% endhighlight %}
+
+<p style="margin-bottom: 0"><s>Original price: € 19.99</s></p>
+<p><strong>Special offer: € 9.99!</strong></p>
+
+<p>
+  The important bit here is that you don't display the price alone with no text because not all screen readers announce the <code>s</code> element as such.
+</p>
+
+<p style="margin-bottom: 0"><s>€ 19.99</s></p>
+<p><strong>€ 9.99!</strong></p>
+
+<p>
+<figure>
+{% highlight "html" %}
+<p><s>€ 19.99</s></p>
+<p><strong>€ 9.99!</strong></p>
+{% endhighlight %}
+<figcaption>
+  Screen readers might announce this as “19 Euro point 99 9 Euro point 99” which can confuse and lead to false expectations.
+</figcaption>
+</figure>
+</p>
+
+<p>
+  If you have to display the price only, hide the text visually.
+</p>
+
+{% highlight "css" %}
+.sr-only {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+{% endhighlight %}
+
+{% highlight "html" %}
+<p>
+  <span class="sr-only">Original price: </span><s>€ 19.99</s>
+</p>
+<p>
+  <span class="sr-only">Special offer</span><strong>€ 9.99!</strong>
+</p>
+{% endhighlight %}
+
+<p style="margin-bottom: 0">
+  <span class="u-hidden">Original price: </span><s>€ 19.99</s>
+</p>
+<p>
+  <span class="u-hidden">Special offer</span><strong>€ 9.99!</strong>
+</p>
+
+<p>
+  Steve Faulkner and Adrian Roselli present a different technique involving pseudo elements for making the <code>s</code> element accessible in <a href="https://www.tpgi.com/short-note-on-making-your-mark-more-accessible/">Short note on making your mark (more accessible)</a> and <a href="https://adrianroselli.com/2017/12/tweaking-text-level-styles.html">Tweaking Text Level Styles</a>.
+</p>
+
+<h2>The <code>del</code> element</h2>
+
+<p>
+  Use the <code>del</code> element to highlight a removal from the document. Use the optional <code>cite</code> attribute to link to more information about the edit and the <code>datetime</code> attribute to add the date (and time) of the edit.
+</p>
+
+{% highlight "html" %}
+<p>
+  The nose flute is the <del datetime="2021-09-03T17:42:30">mots</del> <ins datetime="2021-09-03T17:42:36">most</ins> beautiful instrument in the world.
+</p>
+{% endhighlight %}
+
+<p>
+  The nose flute is the <del datetime="2021-09-03T17:42:30">mots</del> <ins datetime="2021-09-03T17:42:36">most</ins> beautiful instrument in the world.
+</p>
+
+<p>
+  Talkback on Android announces this sentence as <em>“The nose flute is the mots deletion most insertion beautiful instrument in the world“</em>, but VoiceOver and other screen readers announce  <em>“The nose flute is the mots most beautiful instrument in the world“</em>. To force screen readers to announce the edit, Adrian and Steve recommend using pseudo elements.
+</p>
+
+<style>
+del::before, del::after, 
+ins::before, ins::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+del::before {
+  content: " [deletion start] ";
+}
+
+del::after {
+  content: " [deletion end] ";
+}
+
+ins::before {
+  content: " [insertion start] ";
+}
+
+ins::after {
+  content: " [insertion end] ";
+}
+</style>
+
+{% highlight "css" %}
+del::before, del::after, 
+ins::before, ins::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+del::before {
+  content: " [deletion start] ";
+}
+
+del::after {
+  content: " [deletion end] ";
+}
+
+ins::before {
+  content: " [insertion start] ";
+}
+
+ins::after {
+  content: " [insertion end] ";
+}
+{% endhighlight %}
+
+<p>
+  Using this technique results in VoiceOver announcing <em>“The nose flute is the deletion start mots deletion end insertion start most insertion end beautiful instrument in the world“</em>.
+</p>
+
+<p>As always, test with your users to find the best solutions for your use case.</p>
