@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+title: Element Index
+description: HTML elements
+nav_title: 'Elements'
+tags:
+  mainnav
+date: 2021-01-04
+---
+<div class="ouija" id="ouija">
+  <ol class="ouija-letters">
+  {% for letter in elements %}
+    <li>
+    {% if letter.elements %}
+      <a href="#{{ letter.label | slug }}"> {{ letter.label }}</a>
+    {% else %}
+      {{ letter.label }}
+    {% endif %}
+    </li>
+  {% endfor %}
+  </ol>
+</div>
+
+{% for letter in elements %}
+  {% if letter.elements %}
+    <h2 id="{{ letter.label | slug }}">{{ letter.label }}</h2>
+    <dl>
+      {% for element in letter.elements %}
+        <dt id="{{ element.name | slug }}">{{ element.name }}</dt>
+        <dd>
+          {{ element.description | md | safe }}
+
+          <p><a href="{{ element.link }}">{{ element.link }}</a></p>
+
+          {% highlight "html" %}
+            {{ element.code | safe }}
+          {% endhighlight %}
+
+
+          {% if element.codepen %}
+            <p><a href="https://codepen.io/matuzo/pen/{{ element.codepen }}?editors=1000">The <b>{{ element.name }}</b> element on CodePen.</a>
+          {% endif %}
+
+          {% if element.froboo %}
+            <p><a href="{{ element.froboo }}">Articles about the <b>{{ element.name }}</b> element.</a>
+          {% endif %}
+
+          {% if collections['tip_' + element.name] | length > 0 %}
+            <p><a href="/tips/tip_{{ element.name }}">Tips for using the <b>{{ element.name }}</b> element</a></p>
+          {% endif %}
+
+        </dd>
+      {% endfor %}
+    </dl>
+  <p>
+    <a href="#ouija">Back to letter selection</a>
+  </p>
+  {% endif %}
+{% endfor %}
