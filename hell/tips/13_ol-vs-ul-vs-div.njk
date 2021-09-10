@@ -1,0 +1,129 @@
+---
+title: "ol vs. ul vs. div"
+seo_title: "ol vs ul vs div"
+permalink: /tips/{{ seo_title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "Improve user experience by providing a print style sheet for your website"
+issue: 13
+tags:
+  - tips
+  - tip_a
+element: a
+date: 2021-01-13
+---
+<p>
+  The difference between using <code>ol</code>, <code>ul</code>, and <code>div</code> for a list of items.
+</p>
+
+{% highlight "html" %}
+<!-- An ordered list -->
+<ol>
+  <li>Clerks (1994)</li>
+  <li>Mallrats (1995)</li>
+  <li>Jay and Silent Bob Strike Back (2001)</li>
+</ol>
+
+<!-- Just text -->
+<div>
+  <div>Clerks (1994)</div>
+  <div>Mallrats (1995)</div>
+  <div>Jay and Silent Bob Strike Back (2001)</div>
+</div>
+{% endhighlight %}
+
+<!-- teaser -->
+<p>
+  Recently someone on Twitter asked <q>Is semantic HTML really that useful?</q>. That's a great question because most people know <em>how</em> to write HTML but not <em>why</em>. In a series of posts, I'll try to explain why semantic HTML is useful. I want to begin with the <code>ol</code> and <code>ul</code> elements.
+</p>
+
+<h2>Why is the <code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code> element useful?</h2>
+
+<ul>
+  <li>Screen readers might announce it as a list of items</li>
+  <li>Screen readers might announce the number of items in the list</li>
+  <li>Screen readers might announce the bullet or number of each item</li>
+  <li>Screen reader users can use shortcuts to jump from list to list on a page</li>
+  <li>It groups related content visually</li>
+  <li>It provides a selector for styling (un)ordered lists in CSS</li>
+</ul>
+
+<h2>Unordered lists</h2>
+
+<p>
+  We use the <code>&lt;ul&gt;</code> element for identifying an element as a group of <var>n</var> items that thematically belong together, listed in no particular order.
+</p>
+
+{% highlight "html" %}
+<h3>Some of my favorite movies directed by Kevin Smith</h3>
+<ul>
+  <li>Jay and Silent Bob Strike Back</li>
+  <li>Mallrats</li>
+  <li>Clerks</li>
+</ul>
+{% endhighlight %}
+
+<p>Here's what you get when you use NVDA with Firefox:</p>
+
+<p>
+<figure>
+<video src="/images/ul_nvda.mp4" controls>
+  <p>Something went wrong, please visit <a href="https://htmhell.dev/tips/ol-vs-ul-vs-div/">htmhell.dev/tips/the-current-page</a> to view this video.
+</video>
+<figcaption>
+NVDA announces “List with 3 items, Bullet Jay and Silent Bob Strike Back, Bullet Mallrats, Bullet Clerks, Out of list”
+</figcaption>
+</figure>
+</p>
+
+<h2>Ordered lists</h2>
+
+<p>
+  We use the <code>&lt;ol&gt;</code> element for identifying an element as a group of <var>n</var> items that thematically belong together, listed in a particular order.
+</p>
+
+{% highlight "html" %}
+<h3>Movies directed by Kevin Smith sorted by release date</h3>
+<ol>
+  <li>Clerks (1994)</li>
+  <li>Mallrats (1995)</li>
+  <li>Jay and Silent Bob Strike Back (2001)</li>
+</ol>
+{% endhighlight %}
+
+
+<p>Here's what you get when you use NVDA with Firefox:</p>
+
+<p>
+<figure>
+<video src="/images/ol_nvda.mp4" controls>
+  <p>Something went wrong, please visit <a href="https://htmhell.dev/tips/ol-vs-ul-vs-div/">htmhell.dev/tips/the-current-page</a> to view this video.
+</video>
+<figcaption>
+NVDA announces “List with 3 items, 1 Clerks, 2 Mallrats, 3 Jay and Silent Bob Strike Back, Out of list”
+</figcaption>
+</figure>
+</p>
+
+<h2>Divs</h2>
+
+<p>
+  If we don't use semantic elements, screen readers just announce a bunch of unrelated strings. This might work, too, but sometimes it's better to provide structure and convey more information.
+</p>
+
+<p>
+<figure>
+<video src="/images/divlist_nvda.mp4" controls>
+  <p>Something went wrong, please visit <a href="https://htmhell.dev/tips/ol-vs-ul-vs-div/">htmhell.dev/tips/the-current-page</a> to view this video.
+</video>
+<figcaption>
+NVDA announces “Jay and Silent Bob Strike Back, Mallrats, Clerks”
+</figcaption>
+</figure>
+</p>
+
+<h2>Styling lists</h2>
+
+<p>
+  Things get a little complicated as soon as we style our lists, but that’s something I’ll cover in another issue. In the meantime, check out <a href="https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html">"Fixing" Lists</a> by Scott O'Hara.
+</p>

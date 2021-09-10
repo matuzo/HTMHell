@@ -71,6 +71,10 @@ ol {
   padding-left: 3rem;
 }
 
+video {
+  max-width: 100%;
+}
+
 @media (min-width: 768px) {
   ol {
     padding-left: 4rem;
