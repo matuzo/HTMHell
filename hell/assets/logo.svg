@@ -39,39 +39,31 @@
   <use href="#h"/>
   <use href="#i"/>
   <use href="#j"/>
-  <g>
-    <use href="#k"/>
-    <use href="#i" transform="translate(-181.7 5.4)"/>
-    <use href="#l"/>
-    <use href="#m"/>
-    <use href="#n"/>
+  <use href="#k"/>
+  <use href="#i" transform="translate(-181.7 5.4)"/>
+  <use href="#l"/>
+  <use href="#m"/>
+  <use href="#n"/>
+  <use href="#o"/>
+  <use href="#p"/>
+  <use href="#m" transform="translate(143.9 -100.8)"/>
+  <use href="#n" transform="translate(143.8 -100.9)"/>
+  <use href="#q"/>
+  <use href="#r"/>
+  <use href="#s"/>
+  <use href="#q" transform="translate(66.5)"/>
+  <g transform="scale(1.7)">
+    <use href="#n" transform="translate(55 -9)"/>
+    <use href="#m" transform="translate(65.6 -8.8)"/>
+    <use href="#m" transform="translate(71 -8.8)"/>
   </g>
-  <g>
-    <use href="#o"/>
-    <use href="#p"/>
-    <use href="#m" transform="translate(143.9 -100.8)"/>
-    <use href="#n" transform="translate(143.8 -100.9)"/>
+  <g transform="rotate(-20 262 122.2)">
+    <use href="#q" transform="matrix(.62 0 0 .62 95.5 -2)"/>
+    <use href="#n" transform="translate(114 -5.5)"/>
+    <use href="#i" transform="translate(-44.6)"/>
+    <use href="#f" transform="translate(100.5 95)"/>
+    <use href="#n" transform="translate(134 -6)"/>
+    <use href="#j" transform="translate(-30.5 -.5)"/>
   </g>
-  <g>
-    <use href="#q"/>
-    <use href="#r"/>
-    <use href="#s"/>
-    <use href="#q" transform="translate(66.5)"/>
-    <g transform="scale(1.7)">
-      <use href="#n" transform="translate(55 -9)"/>
-      <use href="#m" transform="translate(65.6 -8.8)"/>
-      <use href="#m" transform="translate(71 -8.8)"/>
-    </g>
-  </g>
-  <g>
-    <g transform="rotate(-20 262 122.2)">
-      <use href="#q" transform="matrix(.62 0 0 .62 95.5 -2)"/>
-      <use href="#n" transform="translate(114 -5.5)"/>
-      <use href="#i" transform="translate(-44.6)"/>
-      <use href="#f" transform="translate(100.5 95)"/>
-      <use href="#n" transform="translate(134 -6)"/>
-      <use href="#j" transform="translate(-30.5 -.5)"/>
-    </g>
-    <use href="#t"/>
-  </g>
+  <use href="#t"/>
 </svg>
