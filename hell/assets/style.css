@@ -872,3 +872,226 @@ pre.language-html::before {
   margin: 0 auto;
 }
 
+/* Ouija Board */
+.ouija {
+  padding-bottom: 5rem;
+}
+
+.ouija-letters {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  position: relative;
+  width: 400px;
+  transform: rotate(-64deg);
+  height: 400px;
+}
+
+.ouija-letters::before {
+  content: '';
+  position: absolute;
+  background: url(https://www.stockvault.net/data/2020/03/28/274365/preview16.jpg) 50% 50% no-repeat;
+  background-size: contain;
+  width: 600px;
+  height: 420px;
+  transform: rotate(64deg);
+  left: -110px;
+  top: 0;
+}
+
+.ouija-letters li {
+  z-index: 1;
+  font: 2.6rem Monaco, MonoSpace;
+  font-weight: 700;
+  height: 300px;
+  position: absolute;
+  left: 0;
+  top: -10px;
+  transform-origin: bottom center;
+}
+
+.ouija-letters li:focus-within,
+.ouija-letters li:hover {
+  z-index: 2;
+}
+
+.ouija-letters li a {
+  display: inline-block;
+  position: relative;
+}
+
+.ouija-letters li a:focus {
+  outline: none;
+}
+
+.ouija-letters li a:focus::before,
+.ouija-letters li a:hover::before {
+  background-image: url('/assets/ouija.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 120px;
+  height: 160px;
+  content: '';
+  top: -50px;
+  left: -52px;
+  z-index: 1;
+  filter: drop-shadow(1px 4px 3px black);
+}
+
+/* media query for retina */
+@media  (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+  .ouija-letters li a:focus::before {
+    background-image: url('/assets/ouija@2x.png');
+  }
+}
+
+
+.ouija-letters li:nth-child(n + 14) {
+  left: 0;
+  top: 40px;
+  height: 250px;
+}
+
+.ouija-letters li:nth-child(13n + 1) {
+  transform: rotate(9.23077deg);
+}
+
+.ouija-letters li:nth-child(13n + 2) {
+  transform: rotate(18.46154deg);
+}
+
+.ouija-letters li:nth-child(13n + 3) {
+  transform: rotate(27.69231deg);
+}
+
+.ouija-letters li:nth-child(13n + 4) {
+  transform: rotate(36.92308deg);
+}
+
+.ouija-letters li:nth-child(13n + 5) {
+  transform: rotate(46.15385deg);
+}
+
+.ouija-letters li:nth-child(13n + 6) {
+  transform: rotate(55.38462deg);
+}
+
+.ouija-letters li:nth-child(13n + 7) {
+  transform: rotate(64.61538deg);
+}
+
+.ouija-letters li:nth-child(13n + 8) {
+  transform: rotate(73.84615deg);
+}
+
+.ouija-letters li:nth-child(13n + 9) {
+  transform: rotate(83.07692deg);
+}
+
+.ouija-letters li:nth-child(13n + 10) {
+  transform: rotate(92.30769deg);
+}
+
+.ouija-letters li:nth-child(13n + 11) {
+  transform: rotate(101.53846deg);
+}
+
+.ouija-letters li:nth-child(13n + 12) {
+  transform: rotate(110.76923deg);
+}
+
+.ouija-letters li:nth-child(13n) {
+  transform: rotate(120deg);
+}
+
+@media (max-width: 514px) {
+
+  .ouija-letters  {
+    width: 245px;
+    height: 265px;
+    transform: rotate(-34deg);
+  }
+
+  .ouija-letters li:nth-child(n + 10) {
+    left: 0;
+    top: 40px;
+    height: 250px;
+  }
+
+  .ouija-letters li:nth-child(n + 19) {
+    left: 0;
+    top: 95px;
+    height: 195px;
+  }
+  
+  .ouija-letters li:nth-child(9n + 1) {
+    transform: rotate(7deg);
+  }
+  
+  .ouija-letters li:nth-child(9n + 2) {
+    transform: rotate(14deg);
+  }
+  
+  .ouija-letters li:nth-child(9n + 3) {
+    transform: rotate(21deg);
+  }
+  
+  .ouija-letters li:nth-child(9n + 4) {
+    transform: rotate(28deg);
+  }
+  
+  .ouija-letters li:nth-child(9n + 5) {
+    transform: rotate(35deg);
+  }
+  
+  .ouija-letters li:nth-child(9n + 6) {
+    transform: rotate(42deg);
+  }
+  
+  .ouija-letters li:nth-child(9n + 7) {
+    transform: rotate(49deg);
+  }
+  
+  .ouija-letters li:nth-child(9n + 8) {
+    transform: rotate(56deg);
+  }
+  
+  .ouija-letters li:nth-child(9n) {
+    transform: rotate(63deg);
+  }
+  
+  .ouija-letters li:nth-child(19) {
+    transform: rotate(3deg);
+  }
+  
+  .ouija-letters li:nth-child(20) {
+    transform: rotate(12.5deg);
+  }
+  
+  .ouija-letters li:nth-child(21) {
+    transform: rotate(22deg);
+  }
+  
+  .ouija-letters li:nth-child(22) {
+    transform: rotate(31.5deg);
+  }
+  
+  .ouija-letters li:nth-child(23) {
+    transform: rotate(41deg);
+  }
+  
+  .ouija-letters li:nth-child(24) {
+    transform: rotate(50.5deg);
+  }
+  
+  .ouija-letters li:nth-child(25) {
+    transform: rotate(60deg);
+  }
+  
+  .ouija-letters li:nth-child(26) {
+    transform: rotate(70deg);
+  }
+
+}
