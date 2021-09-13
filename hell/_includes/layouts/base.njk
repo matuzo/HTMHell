@@ -49,6 +49,9 @@
     <link rel="stylesheet" href="/assets/print.css" media="print" />
 </head>
 <body>
+  <div style="visibility:hidden; height:0; width:0; overflow:hidden;">
+    {% include '../../assets/sprite.svg' %}
+  </div>
   <div class="wrapper">
     <header class="site-header">
       <a href="#content" class="skip-link">Skip to content</a>
@@ -87,7 +90,6 @@
 
   {% if hell.env == 'development' %}
     <script src="/assets/focus-visible.js"></script>
-    <script src="/assets/script.js"></script>
   {% else %}
     <script src="/assets/min/script.min.js"></script>
   {% endif %}

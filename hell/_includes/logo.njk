@@ -1,4 +1,14 @@
 <span class="u-hidden">HTMHell homepage</span>
-<svg xmlns="http://www.w3.org/2000/svg" height="200" viewBox="0 0 209.7 196.9" class="site-logo" aria-hidden="true">
-  
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 197" class="site-logo" aria-hidden="true">
+    <mask id="p_m">
+        <rect x="0" y="0" width="210" height="197" fill="#fff"/>
+        <use href="#p" fill="#000" stroke="#000" stroke-width="3.5"/>
+    </mask>
+    <use href="#p_c" mask="url('#p_m')"/>
+    <use href="#p"/>
+    <use href="#logo_words"/>
+    <use href="#logo_htmhell"/>
+    {% if page__class == 'heaven' %}
+        <use href="#logo_heaven" class="site-logo__heaven"/>
+    {% endif %}
 </svg>
