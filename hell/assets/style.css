@@ -1,6 +1,6 @@
 /* Base */
 
- * {
+* {
   box-sizing: border-box;
 }
 
@@ -216,6 +216,26 @@ ins {
   background-color: rgba(0, 128, 0, 0.4);
   border-color: green;
   text-decoration: none;
+}
+
+/* Scrollbar theming */
+::-webkit-scrollbar {
+  width: 1.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(127,127,127,.25);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d72b2b;
+  background-clip: content-box;
+  border: 0.25rem solid transparent;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #d72b2b rgba(127,127,127,.25);
 }
 
 /* Helper */
