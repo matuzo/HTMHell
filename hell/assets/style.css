@@ -85,7 +85,7 @@ li {
   margin-bottom: 1.6rem;;
 }
 
-p, pre, blockquote, .cp_embed_wrapper {
+p, pre, blockquote, .cp_embed_wrapper, .u-mb {
   margin: 0 0 2.4rem;
 }
 
@@ -238,6 +238,19 @@ ins {
   padding: 0;
   list-style: none;
 }
+
+.u-df {
+  display: flex;
+} 
+
+.u-gs {
+  gap: 1rem;
+}
+
+.u-fww {
+  flex-wrap: wrap;
+}
+
 
 /* Header */
 
@@ -876,3 +889,6 @@ pre.language-html::before {
   margin: 0 auto;
 }
 
+.h-img-shadow {
+  box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
+}

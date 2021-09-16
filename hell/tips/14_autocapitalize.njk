@@ -1,0 +1,92 @@
+---
+title: "Autocapitalization"
+permalink: /tips/{{ title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "Control how virtual keyboards capitalize words and characters by default"
+issue: 14
+tags:
+  - tips
+  - tip_input
+element: input
+date: 2021-01-13
+resources:
+  - title: "caniuse"
+    url: https://caniuse.com/mdn-api_htmlelement_autocapitalize
+  - title: "HTML spec"
+    url: https://html.spec.whatwg.org/#attr-autocapitalize
+---
+<p>
+  Control how virtual keyboards capitalize words and characters by default.
+</p>
+
+{% highlight "html" %}
+<label for="words">Words</label>
+<input type="text" id="words" autocapitalize="words">
+{% endhighlight %}
+
+<!-- teaser -->
+
+<p>
+  Let’s say you have an input field that demands users to enter text in lowercase letters only. If you focus the field, by default the virtual keyboard starts with uppercase letters. You can improve the experience for some users by changing the default auto-capitalization behaviour. By setting <code>autocapitalize</code> to <code>none</code>, virtual keyboards won’t capitalize letters automatically anymore.
+</p>
+
+{% highlight "html" %}
+<label for="none">All lowercase</label>
+<input type="text" id="none" autocapitalize="none">
+{% endhighlight %}
+
+<div class="u-df u-gs u-fww u-mb">
+  <picture>
+    <source srcset="/images/14_default.avif" type="image/avif">
+    <img src="/images/14_default.jpg" width="365" height="791" alt="The virtual keyboard on Android showing uppercase letters by default." class="h-img-shadow" loading="lazy">
+  </picture>
+  <picture>
+    <source srcset="/images/14_none.avif" type="image/avif">
+    <img src="/images/14_none.jpg" width="365" height="791" alt="The virtual keyboard on Android showing lowercase letters with autocapitalize set to none." class="h-img-shadow" loading="lazy">
+  </picture>
+</div>
+
+<p>
+  The attribute is supported by Safari on iOS and Chrome, Edge and Samsung Internet on Android. The attribute is not supported by Firefox on Android and it has no effect on physical keyboards.</p>
+<p>
+  Besides <code>none</code>, there are three more allowed values:
+</p>
+
+<dl>
+  <dt><code>none</code></dt>
+  <dd>No autocapitalization should be applied (all letters should default to lowercase).</dd>
+
+  <dt><code>characters</code></dt>
+  <dd>All letters should default to uppercase.</dd>
+
+  <dt><code>sentences</code></dt>
+  <dd>The first letter of each sentence should default to a capital letter; all other letters should default to lowercase.</dd>
+
+  <dt><code>words</code></dt>
+  <dd>The first letter of each word should default to a capital letter; all other letters should default to lowercase.</dd>
+
+</dl>
+
+<p>
+  Source: <a href="https://html.spec.whatwg.org/#attr-autocapitalize">6.7.6 Autocapitalization</a>
+</p>
+    
+<div class="u-df u-gs u-fww u-mb">
+  <picture>
+    <source srcset="/images/14_none_exmp.avif" type="image/avif">
+    <img src="/images/14_none_exmp.jpg" width="365" height="791" alt="“a div is not a” written in all lowercase letters." class="h-img-shadow" loading="lazy">
+  </picture>
+  <picture>
+    <source srcset="/images/14_characters_exmp.avif" type="image/avif">
+    <img src="/images/14_characters_exmp.jpg" width="365" height="791" alt="“a div is not a” written in all uppercase letters." class="h-img-shadow" loading="lazy">
+  </picture>
+  <picture>
+    <source srcset="/images/14_sentences_exmpt.avif" type="image/avif">
+    <img src="/images/14_sentences_exmp.jpg" width="365" height="791" alt="“a div is not a” written in lowercase letters except for the first letter of the sentence." class="h-img-shadow" loading="lazy">
+  </picture>
+  <picture>
+    <source srcset="/images/14_words_exmp.avif" type="image/avif">
+    <img src="/images/14_words_exmp.jpg" width="365" height="791" alt="“a div is not a” with every word beginning with a uppercase letter." class="h-img-shadow" loading="lazy">
+  </picture>
+</div>
