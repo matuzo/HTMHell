@@ -1,0 +1,128 @@
+---
+title: "Spell check"
+permalink: /tips/{{ title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "Disable spell check in input, textarea and contenteditable fields"
+issue: 15
+tags:
+  - tips
+  - tip_input
+element: input
+date: 2021-01-15
+resources:
+  - title: "caniuse"
+    url: https://caniuse.com/spellcheck-attribute
+  - title: "HTML spec"
+    url: https://html.spec.whatwg.org/#attr-spellcheck
+---
+<style>
+.demo {
+  margin-bottom: 2rem;
+}
+
+.demo [contenteditable] {
+  border: 1px solid #999;
+  max-width: 210px;
+  padding: 0.2em;
+}
+
+.demo label {
+  display: block;
+  line-height: 1;
+}
+
+.demo div + div {
+  margin-top: 1rem;
+}
+
+.demo strong {
+  line-height: 1;
+  display: block;
+}
+
+</style>
+
+<p>
+  You can disable spell check in input, textarea and contenteditable fields.
+</p>
+
+{% highlight "html" %}
+<label for="msg">Message</label>
+<textarea spellcheck="false" id="msg">HTML is amazzing!</textarea>
+{% endhighlight %}
+
+<!-- teaser -->
+
+<p>
+  <code>spellcheck</code> is an enumerated attribute, so we must provide a value, either “true” or “false”. If no attribute is present, the browser decides whether it checks an element for spelling errors.
+</p>
+
+{% highlight "html" %}
+<div>
+  <label for="msg">Message</label>
+  <input value="HTML is amazzing!" id="msg">
+</div>
+
+<div>
+  <label for="msg2">Message</label>
+  <textarea id="msg2">HTML is amazzing!</textarea>
+</div>
+
+<div>
+  <strong>Message:</strong>
+  <div contenteditable>HTML is amazzing!</div>
+</div>
+{% endhighlight %}
+
+<p>
+  If you click one of the fields below (in some browsers you have to type something), you should see a squiggly, dashed or dotted red line indicating that “amazzing” isn’t spelled correctly. Please note: Results may differ depending on your browser and default language. The attribute is merely a hint, browsers are not required to check for spelling errors.
+</p>
+
+<div class="demo">
+  <div>
+    <label for="msg">Message</label>
+    <input value="HTML is amazzing!" id="msg">
+  </div>
+
+  <div>
+    <label for="msg2">Message</label>
+    <textarea id="msg2">HTML is amazzing!</textarea>
+  </div>
+
+  <div>
+    <strong>Message:</strong>
+    <div contenteditable>HTML is amazzing!</div>
+  </div>
+</div>
+
+<p>We can hint browsers at (not) checking an element for spelling errors.</p>
+
+{% highlight "html" %}
+<div>
+  <label for="msg2">Message</label>
+  <textarea spellcheck="false" id="msg2">HTML is amazzing!</textarea>
+</div>
+{% endhighlight %}
+
+<p>
+  In the following <code>textarea</code> you shouldn't see a squiggly red line because <code>spellcheck</code> is set to “false”.
+</p>
+
+<div class="demo">
+  <div>
+    <label for="msg2">Message</label>
+    <textarea spellcheck="false" id="msg2">HTML is amazzing!</textarea>
+  </div>
+</div>
+
+<p>
+  In the following <code>input</code> field you should see a squiggly red line because <code>spellcheck</code> is set to true.
+</p>
+
+<div class="demo">
+  <div>
+    <label for="msg">Message</label>
+    <input spellcheck="true" value="HTML is amazzing!" id="msg">
+  </div>
+</div>
