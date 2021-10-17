@@ -85,7 +85,7 @@ li {
   margin-bottom: 1.6rem;;
 }
 
-p, pre, blockquote, .cp_embed_wrapper, .u-mb {
+p, pre, blockquote, .cp_embed_wrapper, .u-mb, table {
   margin: 0 0 2.4rem;
 }
 
@@ -216,6 +216,24 @@ ins {
   background-color: rgba(0, 128, 0, 0.4);
   border-color: green;
   text-decoration: none;
+}
+
+
+table {
+  border: 1px solid #000;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  vertical-align: top;
+  border: 1px solid #000;
+  padding: 0.5rem;
+}
+
+caption {
+  text-align: left;
 }
 
 /* Helper */
@@ -891,4 +909,8 @@ pre.language-html::before {
 
 .h-img-shadow {
   box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
+}
+
+.u-oa {
+  overflow: auto;
 }

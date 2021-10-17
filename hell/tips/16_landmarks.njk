@@ -1,0 +1,175 @@
+---
+title: "Landmarks"
+permalink: /tips/{{ title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "Disable spell check in input, textarea and contenteditable fields"
+issue: 16
+tags:
+  - tips
+  - tip_input
+element: input
+date: 2021-01-16
+resources:
+  - title: "4.4.14 The main element"
+    url: https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element
+  - title: "Use Only One main on a Page"
+    url: https://adrianroselli.com/2015/09/use-only-one-main-on-a-page.html
+  - title: "Screen reader survey #9: landmarks"
+    url: https://webaim.org/projects/screenreadersurvey9/#landmarks
+  - title: "W3C ARIA Landmarks Example"
+    url: https://www.w3.org/TR/wai-aria-practices/examples/landmarks/index.html
+  - title: "Accessible Landmarks"
+    url: https://www.scottohara.me/blog/2018/03/03/landmarks.html
+---
+<p>
+  HTML allows us to define so-called landmarks, important areas in a page. They can be really helpful, especially for screen reader users.
+</p>
+
+{% highlight "html" %}
+<body>
+  <!-- banner landmark -->
+  <header>
+    <!-- navigation landmark -->
+    <nav>
+    </nav>
+  </header>
+  <!-- main landmark -->
+  <main>
+    <!-- search landmark -->
+    <form role="search">
+    </form>
+  </main>
+  <!-- contentinfo landmark -->
+  <footer>
+  </footer>
+</body>
+{% endhighlight %}
+
+<!-- teaser -->
+
+<h2>Benefits</h2>
+
+<ol>
+  <li>Landmarks help screen reader users with orientation on the page.</li>
+  <li>Screen reader users may jump from landmark to landmark using keyboard shortcuts.</li>
+  <li>Screen reader users may list all landmarks on a page and select them.</li>
+  <li>Sighted users may add <a href="http://matatk.agrip.org.uk/landmarks/">a browser extension</a> to jump to landmarks by using keyboard shortcuts.</li>
+</ol>
+
+<h2>Landmarks</h2>
+
+<div class="u-oa" tabindex="0">
+  <table width="740">
+    <caption>Landmarks in HTML</caption>
+    <colgroup>
+      <col width="100">
+      <col width="150">
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>ARIA role</th>
+        <th>Conditions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>header</code></td>
+        <td>banner</td>
+        <td>Only in context of the body element, not when it's a descendant of <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, or <code>&lt;section&gt;</code>.</td>
+      </tr>
+      <tr>
+        <td><code>nav</code></td>
+        <td>navigation</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>main</code></td>
+        <td>main</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>section</code></td>
+        <td>region</td>
+        <td>When it has an accessible name using <code>aria-labelledby</code>, <code>aria-label</code> or <code>title</code></td>
+      </tr>
+      <tr>
+        <td><code>form</code></td>
+        <td>form</td>
+        <td>when it has an accessible name using <code>aria-labelledby</code>, <code>aria-label</code> or <code>title</code></td>
+      </tr>
+      <tr>
+        <td><code>form</code></td>
+        <td>search</td>
+        <td>with <code>role="search"</code></td>
+      </tr>
+      <tr>
+        <td><code>aside</code></td>
+        <td>complementary</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>footer</code></td>
+        <td>contentinfo</td>
+        <td>Only in context of the body element, not when it's a descendant of <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, or <code>&lt;section&gt;</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<h2>Tips</h2>
+
+<p>
+  Here are some tips for using landmarks:
+</p>
+
+<ul>
+  <li>
+    If there are multiple <code>navigation</code> landmarks on a page, each should have a unique label (<code>aria-label</code> or <code>aria-labelledby</code>).
+
+
+{% highlight "html" %}
+<body>
+  <header>
+    <nav aria-label="Primary"></nav>
+  </header>
+  <footer>
+    <nav aria-label="Secondary"></nav>
+  </footer>
+</body>
+{% endhighlight %}
+
+  <figure class="u-mb">
+    <picture>
+      <source srcset="/images/16_nav_unlabelled.avif" type="image/avif">
+      <img src="/images/16_nav_unlabelled.jpg" width="700" height="634" alt="banner, navigation, content information, navigation" loading="lazy">
+    </picture> 
+    <figcaption>Landmarks listed in VoiceOver on macOS without labels</figcapton>
+  </figure> 
+
+  <figure>
+    <picture>
+      <source srcset="/images/16_nav_labelled.avif" type="image/avif">
+      <img src="/images/16_nav_labelled.jpg" width="700" height="634" alt="banner, Primary navigation, content information, Secondary navigation" loading="lazy">
+    </picture> 
+    <figcaption>Landmarks listed in VoiceOver on macOS with labels</figcapton>
+  </figure> 
+    
+  </li>
+  <li>Avoid redundancy when labelling navigations. A label like “primary navigation” may be announced as “primary navigation navigation”, just label it “primary".</li>
+  <li>If a navigation landmark has an identical set of links as another navigation landmark on the page, use the same label for each navigation landmark.</li>
+  <li>Don't add too many landmarks to a page. Too many landmarks can make navigation more difficult and confusing.</li>
+  <li>There should be only one <code>banner</code> landmark.</li>
+  <li>There should be only one <code>contentinfo</code> landmark.</li>
+  <li>A document must not have more than one <code>&lt;main&gt;</code> element that does not have the <code>hidden</code> attribute specified. Having more than one visible <code>&lt;main&gt;</code> element can confuse users because screen readers don’t announce the number of <code>main</code> elements.</li>
+  <li>If there are multiple <code>complementary</code> landmarks on a page, each should have a unique label (<code>aria-label</code> or <code>aria-labelledby</code>).</li>
+  <li>If there are multiple <code>form</code> landmarks on a page, each should have a unique label (<code>aria-label</code> or <code>aria-labelledby</code>).</li>
+  <li>Generally, you shouldn't need explicit roles on landmarks with implicit roles. For example, <code>&lt;header&gt;&lt;/header&gt;</code> is sufficient, you don't need <code>&lt;header role="banner"&gt;&lt;/header&gt;</code>.</li>
+  <li>
+    Most landmarks are well supported, but support may vary, especially with form landmarks. It’s advised to test your landmarks with different screen readers and browsers. Some screen readers may intentionally not announce certain landmarks. Don’t worry too much about it, as long as you have a <a href="/tips/the-document-outline/">sound document outline</a>.
+  </li>
+</ul>
+
