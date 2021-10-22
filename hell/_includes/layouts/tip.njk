@@ -23,7 +23,7 @@ page__class: heaven
       
       <li>
         <a href="{{ link.url }}">
-          {{ link.title }}
+          {{ link.title | safe }}
         </a>
       </li>
     {% endfor %}
