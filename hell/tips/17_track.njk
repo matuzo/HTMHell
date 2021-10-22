@@ -1,0 +1,166 @@
+---
+title: "the track element"
+permalink: /tips/{{ title | slug }}/
+layout: layouts/tip.njk
+processed: true
+description: "The track element allows you to specify timed text tracks (e.g. captions or subtitles) for media elements."
+issue: 17
+tags:
+  - tips
+  - tip_input
+element: input
+date: 2021-01-17
+resources:
+  - title: "4.8.11 The track element"
+    url: https://html.spec.whatwg.org/multipage/media.html#the-track-element
+  - title: "&lt;track&gt;: The Embed Text Track element (MDN)"
+    url: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
+  - title: "TextTrack: cuechange event (MDN)"
+    url: https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/cuechange_event
+  - title: "::cue (MDN)"
+    url: https://developer.mozilla.org/en-US/docs/Web/CSS/::cue
+---
+<p>
+  The track element allows you to specify timed text tracks (e.g. captions or subtitles) for media elements. 
+</p>
+
+{% highlight "html" %}
+<video src="workshop_promo.mp4" controls>
+  <track default kind="captions" srclang="en" src="workshop_promo.vtt" label="English">
+  <track kind="subtitles" srclang="de" src="workshop_promo_de.vtt" label="Deutsch">
+  Sorry, your browser doesn't support embedded videos.
+</video>
+{% endhighlight %}
+
+<!-- teaser -->
+
+<p>
+  If you want to provide captions or subtitles for a <code>&lt;video&gt;</code>, you can use the native <code>&lt;track&gt;</code> element in HTML.<br>
+  Here's the result of the above code:
+</p>
+
+<video src="/images/workshop_promo.mp4" controls>
+  <track default kind="captions" srclang="en" src="/images/workshop_promo.vtt" label="English">
+  <track kind="subtitles" srclang="de" src="/images/workshop_promo_de.vtt" label="Deutsch">
+  Sorry, your browser doesn't support embedded videos.
+</video>
+
+<p>
+  Your browser should automatically show captions in English and somewhere in the controls there's should be an additional button that allows you to switch or turn the text track off.
+</p>
+
+<p>There are several attributes you can use with the track element.</p>
+
+<ul>
+  <li>
+    <code>src</code> specifies the path to the <code>.vtt</code> file that contains the text.
+  </li>
+  <li>
+    <code>kind</code> defines the type of text track you're adding.<br>
+    “subtitles” for translations of the spoken content<br>
+    “captions” for a transcript of the audio and important non-verbal information.<br>
+    “descriptions” for textual descriptions of the video content. (<a href="https://twitter.com/pauljadam/status/1090352784564719621">doesn't seem to work in any browser</a>)<br>
+    “chapters” and “metadata” are tracks intended for use from script. Not displayed by the user agent. 
+  </li>
+  <li>
+    <code>label</code> gives a user-readable title for the track, displayed in the video's UI.
+  </li>
+  <li>
+    <code>srclang</code> defines the language of the text track.
+  </li>
+  <li>
+    <code>default</code> defines the default track.
+  </li>
+</ul>
+
+<h2>CSS</h2>
+
+<p>
+  It's possible to style captions and subtitles using CSS. Visit MDN for a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::cue">list of supported properties</a>.
+</p>
+
+{% highlight "css" %}
+::cue {
+  background-color: red;
+}
+{% endhighlight %}
+
+<p>
+  The block below is editable. If you change the value of the <code>background-color</code> property, the color of the cue in the video at the top of the page should change accordingly.
+</p>
+
+<style contenteditable class="u-mb">
+::cue {
+  background-color: black;
+}
+</style>
+
+<h2>JavaScript</h2>
+
+<p>
+  There's a <code>cuechange</code> event in JavaScript that fires when a text track has changed the currently displaying cues. Select the English track (default) and open the console to see it in action while the video is playing.
+</p>
+
+{% highlight "javascript" %}
+let textTrackElem = document.querySelectorAll("track")[0];
+
+textTrackElem.addEventListener("cuechange", (event) => {
+  let cues = event.target.track.activeCues;
+  console.log(cues)
+});
+{% endhighlight %}
+
+<script>
+  let textTrackElem = document.querySelectorAll("track")[0];
+
+  textTrackElem.addEventListener("cuechange", (event) => {
+    let cues = event.target.track.activeCues;
+    console.log(cues[0])
+  });
+</script>
+
+<h2>.vtt</h2>
+
+<p>
+  In case you were wondering how the <code>.vtt</code> file for the English track looks like.
+</p>
+
+<pre>
+WEBVTT
+
+00:00:00.240 --> 00:00:07.040
+Hi! My name is Manuel and if you know me, you know
+that I like to complain about HTML others have
+
+00:00:07.040 --> 00:00:14.880
+written. I post about it on Twitter, I even have a
+website called htmhell.dev where I post bad code,
+
+00:00:14.880 --> 00:00:20.400
+but complaining is not the only thing I can do.
+I can also, and I also like to, share my knowledge
+
+00:00:20.400 --> 00:00:25.440
+and this is why I've teamed up with my friends
+at Smashing Magazine. We've prepared a workshop
+
+00:00:25.440 --> 00:00:31.840
+called “Deep dive on accessibility testing” where
+I show you how I use automatic testing tools,
+
+00:00:31.840 --> 00:00:38.160
+browser extensions and even CSS and JavaScript,
+manual testing, like testing with the keyboard
+
+00:00:38.160 --> 00:00:43.760
+and screen readers, to discover these bad
+things, to discover accessibility issues.
+
+00:00:43.760 --> 00:00:49.520
+If that sounds interesting, it would be great if
+you would join me for my workshop. Below the video
+
+00:00:49.520 --> 00:00:56.560
+you will find a special link with a discounted
+price just for you. I hope to see you soon! Tthanks!
+</pre>
