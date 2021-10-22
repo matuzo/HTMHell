@@ -177,9 +177,14 @@ label {
   border-radius: 2px;
 }
 
+video,
 img {
   max-width: 100%;
   height: auto;
+}
+
+video {
+  width: 100%;
 }
 
 figure {
@@ -234,6 +239,14 @@ td {
 
 caption {
   text-align: left;
+}
+
+style[contenteditable] {
+  border: 1px solid #000;
+  white-space: pre;
+  font-family: monospace;
+  padding: 0.5rem;
+  display: block;
 }
 
 /* Helper */
