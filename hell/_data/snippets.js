@@ -27,5 +27,7 @@ module.exports = {
   csscontent: "Screen readers may announce CSS generated content.",
   noalt: "There’s no text alternative for the image. Screen readers may announce the filename instead.",
   timessign: "✕ doesn’t represent *close* or *crossed out*, it’s the multiplication sign, like in 2 ✕ (times) 2. Don’t use it for close buttons.",
-  svg: "The SVG has no text alternative. Read [Creating Accessible SVGs](https://www.deque.com/blog/creating-accessible-svgs/) by [Carie Fisher](https://cariefisher.com/) to learn how to make SVGs accessible."
+  svg: "The SVG has no text alternative. Read [Creating Accessible SVGs](https://www.deque.com/blog/creating-accessible-svgs/) by [Carie Fisher](https://cariefisher.com/) to learn how to make SVGs accessible.",
+  aria_expanded: "The “button” should indicate whether the element it controls is currently expanded or collapsed (`aria-expanded=\"false\"` if collapsed).",
+  no_text: "There’s no text label."
 }
