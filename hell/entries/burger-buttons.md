@@ -142,7 +142,7 @@ goodcode2: '<button type="button" aria-expanded="false">
 </button>
 '
 goodcode3: '<button type="button" aria-expanded="false">
-  <span class="u-hidden">Menu</span>
+  <span class="sr-only">Menu</span>
   <svg aria-hidden="true">
     …
   </svg>
