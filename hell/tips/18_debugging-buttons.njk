@@ -1,0 +1,212 @@
+---
+title: "Debugging HTML: Accessibility"
+permalink: /tips/debugging-html-accessibility/index.html
+layout: layouts/tip.njk
+processed: true
+description: "You can debug accessibility features of HTML elements using DevTools in Firefox, Chrome, and Edge."
+issue: 18
+tags:
+  - tips
+  - tip_input
+element: input
+date: 2021-01-18
+resources:
+  - title: "Accessibility In Chrome DevTools"
+    url: https://www.smashingmagazine.com/2020/08/accessibility-chrome-devtools/
+  - title: "Understand Website Accessibility with the Firefox Accessibility Inspector"
+    url: https://www.youtube.com/watch?v=7mqqgIxX_NU
+---
+
+<p>
+  You can debug HTML elements using DevTools in Firefox, Chrome, and Edge.
+</p>
+
+<style>
+.btn {
+  all: initial;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.btn:hover {
+  background: transparent;
+}
+
+</style>
+
+<!-- teaser -->
+
+<p>
+  Let’s say your users report that they can’t access the burger button in your navigation using a keyboard or switch device, or they report that they’re confused by the label of the button when they use a screen reader. There are several ways of debugging that using DevTools.
+</p>
+
+<p>First, let’s summarize the requirements for a proper button:</p>
+
+<ul>
+  <li><strong>Label</strong>  - It has a visible text label or text alternative</li>
+  <li><strong>Semantics</strong>  - It has a proper ARIA button role</li>
+  <li><strong>Focus</strong> - You can access it using a keyboard by pressing Tab</li>
+  <li><strong>Events</strong> - You can activate the button by clicking or pressing <kbd>Space</kbd> or <kbd>Enter</kbd></li>
+</ul>
+
+<h2>Chrome Dev Tools - Accessibility pane</h2>
+
+<p>
+  In Chrome or Edge open DevTools, click the Elements tab, select the element  you want to inspect and click the Accessibility tab. The accessibility pane shows you how the element is represented in the accessibility tree, which ARIA attributes it has, and its computed properties.
+</p>
+
+<p>
+  If you inspect the following button in Chrome, here's what you’ll learn about it:
+</p>
+
+<h3>Button 1</h3>
+
+<button aria-label="Navigation" class="btn">
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <rect y="3" width="20" height="2"></rect>
+    <rect y="9" width="20" height="2"></rect>
+    <rect y="15" width="20" height="2"></rect>
+  </svg>
+</button>
+
+<p>
+  <a href="/images/18_chrome1.jpg">
+    <picture>
+      <source srcset="/images/18_chrome1.avif" type="image/avif">
+      <img src="/images/18_chrome1.jpg" width="740" height="463" alt="The virtual keyboard on Android showing uppercase letters by default." class="h-img-shadow" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<ul>
+  <li><strong>Label</strong>  - The button gets its label “Navigation” from the <code>aria-label</code> attribute (<code>Name: "Navigation"</code>)</li>
+  <li><strong>Semantics</strong>  - It has a proper button role (<code>Role: button</code>)</li>
+  <li><strong>Focus</strong> - It’s focusable (<code>Focusable: true</code>)</li>
+</ul>
+
+{% highlight "html" %}
+<button aria-label="Navigation" class="btn">
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <rect y="3" width="20" height="2"></rect>
+    <rect y="9" width="20" height="2"></rect>
+    <rect y="15" width="20" height="2"></rect>
+  </svg>
+</button>
+{% endhighlight %}
+
+<p>
+  Let’s look at another example. This button looks the same, but it's less accessible.
+</p>
+
+<h3>Button 2</h3>
+
+<div type="button" class="btn">
+  <svg class="hamburger" viewBox="0 0 20 20">
+    <g>
+      <rect y="3" width="20" height="2"></rect>
+      <rect y="9" width="20" height="2"></rect>
+      <rect y="15" width="20" height="2"></rect>
+    </g>
+  </svg>
+</div>
+
+<p>
+  <a href="/images/18_chrome2.jpg">
+    <picture>
+      <source srcset="/images/18_chrome2.avif" type="image/avif">
+      <img src="/images/18_chrome2.jpg" width="740" height="463" alt="The virtual keyboard on Android showing uppercase letters by default." class="h-img-shadow" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<ul>
+  <li><strong>Label</strong>  - The button has no label (<code>Name: ""</code>)</li>
+  <li><strong>Semantics</strong>  - Its role is “generic” which means that it doesn't have any semantic meaning (<code>Role: generic</code>)</li>
+  <li><strong>Focus</strong> - It’s not focusable (Missing <code>Focusable</code> property)</li>
+</ul>
+
+{% highlight "html" %}
+<div type="button" class="btn">
+  <svg class="hamburger" viewBox="0 0 20 20">
+    <g>
+      <rect y="3" width="20" height="2"></rect>
+      <rect y="9" width="20" height="2"></rect>
+      <rect y="15" width="20" height="2"></rect>
+    </g>
+  </svg>
+</div>
+{% endhighlight %}
+
+<h2>Firefox Dev Tools - Accessibility panel</h2>
+
+<p>
+  In Firefox, right-click the button and select “Inspect accessibility properties” or open DevTools and click the “Accessibility” tab and find the button in the accessibility tree.
+</p>
+
+<h3>Button 1</h3>
+
+<button aria-label="Navigation" class="btn">
+  <svg viewBox="0 0 20 20" aria-hidden="true">
+    <rect y="3" width="20" height="2"></rect>
+    <rect y="9" width="20" height="2"></rect>
+    <rect y="15" width="20" height="2"></rect>
+  </svg>
+</button>
+
+<p>
+  <a href="/images/18_Firefox1.jpg">
+    <picture>
+      <source srcset="/images/18_Firefox1.avif" type="image/avif">
+      <img src="/images/18_Firefox1.jpg" width="740" height="463" alt="The virtual keyboard on Android showing uppercase letters by default." class="h-img-shadow" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<ul>
+  <li><strong>Label</strong>  - The label of the button is “Navigation” (<code>Name: "Navigation"</code>)</li>
+  <li><strong>Semantics</strong>  - It has a proper pushbutton role (<code>Role: "pushbutton"</code>)</li>
+  <li><strong>Focus</strong> - It’s focusable (the implicit tabindex is 1)</li>
+</ul>
+
+<p>
+  Note 1: Firefox uses a different accessibility API, that’s why the names of roles aren’t the same as in Chrome. <code>pushbutton</code> corresponds to the ARIA role <code>button</code>.
+</p>
+
+<p>
+  Note 2: You can check if an element is focusable by ticking the “Show Tabbing Order” checkbox. If there’s an outline on the element with a numbered arrow pointing to it, it means that it’s focusable. The number represents the tabindex.
+</p>
+
+<h3>Button 2</h3>
+
+<div type="button" class="btn">
+  <svg class="hamburger" viewBox="0 0 20 20">
+    <g>
+      <rect y="3" width="20" height="2"></rect>
+      <rect y="9" width="20" height="2"></rect>
+      <rect y="15" width="20" height="2"></rect>
+    </g>
+  </svg>
+</div>
+
+<p>
+  <a href="/images/18_Firefox2.jpg">
+    <picture>
+      <source srcset="/images/18_Firefox2.avif" type="image/avif">
+      <img src="/images/18_Firefox2.jpg" width="740" height="463" alt="The virtual keyboard on Android showing uppercase letters by default." class="h-img-shadow" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<ul>
+  <li><strong>Label</strong>  - The button has no label  (<code>Name: null</code>)</li>
+  <li><strong>Semantics</strong>  -  Its role is “section” which means that it doesn't have any semantic meaning  (<code>Role: "section"</code>)</li>
+  <li><strong>Focus</strong> - It’s not focusable (No outline and number when pressing “Show Tabbing Order”)</li>
+
+</ul>
+
+
+<p>
+  Note: Just like <code>generic</code> in Chrome, <code>section</code> in Firefox corresponds no ARIA role.
+</p>
