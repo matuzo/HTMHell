@@ -1,0 +1,56 @@
+---
+title: "Debugging HTML: Linting"
+seo_title: "debugging-html-linting"
+permalink: /tips/{{ seo_title }}/index.html
+layout: layouts/tip.njk
+processed: true
+description: "Edge DevTools has a built-in HTML and accessibility linter."
+issue: 19
+tags:
+  - tips
+  - tip_input
+element: input
+date: 2021-01-19
+resources:
+  - title: "Overview of accessibility testing using DevTools"
+    url: https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/accessibility/accessibility-testing-in-devtools
+  - title: "Accessibility-testing features in DevTools"
+    url: https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/accessibility/reference
+---
+
+<p>
+  Edge highlights potential issues in your document directly in the elements panel of DevTools and it lists details and further issues in the issues panel.
+</p>
+
+<!-- teaser -->
+
+<p>
+  One of my favourite features in Edge DevTools is the built-in linter that highlights potential issues in your HTML by marking affected elements with a squiggly yellow line. 
+</p>
+
+<p>
+  <a href="/images/19_edge_elements.jpg">
+    <picture>
+      <source srcset="/images/19_edge_elements.avif" type="image/avif">
+      <img src="/images/19_edge_elements.jpg" width="740" height="463" alt="Edge dev tools screenshot: A demo site with broken html like empty buttons, img without alt, wrong aria roles, missing aria roles, and aria-hidden on focusable elements." class="h-img-shadow" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<p>
+  If you hover over the opening tag, a tooltip with a description of the issue appears. You can right-click it and select “View Issues” to view details about the issue or you can open the issues panel directly (<kbd>CMD</kbd>/<kbd>Ctrl</kbd> + <kbd>Shit</kbd> + <kbd>P</kbd> -> Show Issues) to get a list of all issues found on the page. The data is coming from <a href="https://www.deque.com/axe/">axe</a>, <a href="https://github.com/mdn/browser-compat-data">@mdn/browser-compat-data</a>, and <a href="https://webhint.io/">webhint</a>.</p> 
+  <p>You can also jump from the issues panel directly to the affected element in the elements or sources panel, and there are links to learning resources.</p>
+</p>
+
+<p>
+  <a href="/images/19_edge_elements2.jpg">
+    <picture>
+      <source srcset="/images/19_edge_elements2.avif" type="image/avif">
+      <img src="/images/19_edge_elements2.jpg" width="740" height="463" alt="A list of accessiblity issues in the issues panel. The message '<ul> and <ol> must only directly contain <li>, <script> or <template> elements' expanded." class="h-img-shadow" loading="lazy">
+    </picture>
+  </a>
+</p>
+
+<p>
+  To learn more about this feature, check out the links in the resources section of this page.
+</p>
