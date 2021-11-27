@@ -1,0 +1,195 @@
+---
+layout: layouts/base.njk
+title: HTMHell Advent Calendar
+description: An article, talk, or tool that focuses on HTML every day until Christmas.
+nav_title: Advent Calendar
+tags:
+  mainnav
+date: 2021-01-04
+page__class: calendar
+days:
+  - title: "Accessibility of the section element"
+    url: https://www.scottohara.me/blog/2021/07/16/section.html
+    author: "Scott O'Hara"
+    active: false
+  - title: "Semantics and How to Get Them Right - beyond tellerrand Düsseldorf 2021"
+    url: https://www.youtube.com/watch?v=YG9WQUfH7ZU
+    author: "Hidde de Vries"
+    active: false
+  - title: "HTML Recipes"
+    url: https://htmlrecipes.dev/
+    author: "Stephanie Eckles"
+    active: false
+  - title: "On the &lt;dl&gt;"
+    url: https://benmyers.dev/blog/on-the-dl/
+    author: Ben Myers
+    active: false
+  - title: "My current HTML boilerplate"
+    url: https://www.matuzo.at/blog/html-boilerplate/
+    author: Manuel Matuzovic
+    active: false
+  - title: "HTML De-crapulator"
+    url: https://a11y-tools.com/markup-de-crapulator/index.html
+    author: Ian Lloyd
+    active: false
+  - title: "How A Screen Reader User Surfs The Web"
+    url: https://www.youtube.com/watch?v=OUDV1gqs9GA
+    author: "Leonié Watson & Bruce Lawson"
+    active: false
+  - title: "Accessible SVGs: Perfect Patterns For Screen Reader Users"
+    url: https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/
+    author: "Carie Fisher"
+    active: false
+  - title: "Switch Role Support"
+    url: https://adrianroselli.com/2021/10/switch-role-support.html
+    author: "Adrian Roselli"
+    active: false
+  - title: "HTML Tags Memory Test"
+    url: https://cdpn.io/plfstr/debug/zYqQeRw/ZoABaLbzyGvr
+    author: "Paul Foster"
+    active: false
+  - title: "Not Your Typical Horizontal Rules"
+    url: https://www.sarasoueidan.com/blog/horizontal-rules/
+    author: "Sara Soueidan"
+    active: false
+  - title: "HTML Inputs and Labels: A Love Story"
+    url: https://css-tricks.com/html-inputs-and-labels-a-love-story/
+    author: "Amber Wilson"
+    active: false
+  - title: "HEAD"
+    url: https://github.com/joshbuchea/HEAD
+    author: "Josh Buchea"
+    active: false
+  - title: "HTML: The Inaccessible Parts"
+    url: https://daverupert.com/2020/02/html-the-inaccessible-parts/
+    author: "Dave Rupert"
+    active: false
+  - title: "The 3-Second Frontend Developer Test"
+    url: https://meiert.com/en/blog/the-frontend-developer-test/
+    author: "Jens Oliver Meiert"
+    active: false
+  - title: "Shadow Roots and Inheritance"
+    url: "https://kittygiraudel.com/2021/08/23/shadow-roots-and-inheritance/"
+    author: "Kitty Giraudel"
+    active: false
+  - title: ""
+    url: ""
+    author: ""
+    active: false
+  - title: ""
+    url: ""
+    author: ""
+    active: false
+  - title: ""
+    url: ""
+    author: ""
+    active: false
+  - title: ""
+    url: ""
+    author: ""
+    active: false
+  - title: ""
+    url: ""
+    author: ""
+    active: false
+  - title: ""
+    url: ""
+    author: ""
+    active: false
+  - title: ""
+    url: ""
+    author: ""
+    active: false
+  - title: "The web accessibility basics"
+    url: https://www.marcozehe.de/the-web-accessibility-basics/
+    author: "Marco Zehe"
+    active: false
+---
+
+{% macro day(num) %}
+  <li class="acalendar__day" {% if days[num - 1].active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
+    <div>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].active %}href="{{ days[num - 1].url }}"{% endif %}>{{ num }}</a>
+    </div>
+  </li>
+{% endmacro %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap&text=1234567890" rel="stylesheet"> 
+
+
+<h1>{{ title }}</h1>
+
+<p>Behind each door you’ll find an article, talk, or tool that focuses on HTML.</p>
+
+<div class="preview">
+<ul class="acalendar">
+  {{ day(3) }}
+  {{ day(22) }}
+  {{ day(17) }}
+  {{ day(19) }}
+  {{ day(6) }}
+  {{ day(7) }}
+  {{ day(5) }}
+  {{ day(12) }}
+  {{ day(24) }}
+  {{ day(9) }}
+  {{ day(20) }}
+  {{ day(23) }}
+  {{ day(10) }}
+  {{ day(8) }}
+  {{ day(15) }}
+  {{ day(4) }}
+  {{ day(2) }}
+  {{ day(11) }}
+  {{ day(18) }}
+  {{ day(14) }}
+  {{ day(16) }}
+  {{ day(21) }}
+  {{ day(1) }}
+  {{ day(13) }}
+</ul>
+</div>
+
+{# <h2>Linked resources</h2>
+
+<ol>
+  {% for dayDone in days %}
+    {% if dayDone.active %}
+    <li>
+        <a href="{{ dayDone.url }}">
+          {{ dayDone.title }}
+        </a>
+        by {{ dayDone.author }}
+    </li>
+    {% endif %}
+  {% endfor %}
+</ol> #}
+
+<script>
+  var opened = localStorage.getItem('html_opened') ? JSON.parse(localStorage.getItem('html_opened')) : [];
+
+  setTimeout(() => {
+    if (opened.length) {
+      for (let i = 0; i < opened.length; i++) {
+        if (document.querySelector(`[data-day="${opened[i]}"]`)) {
+          document.querySelector(`[data-day="${opened[i]}"]`).classList.add('acalendar__day--opened')
+        }
+      }
+    }
+  }, 700);
+
+  document.querySelector('.acalendar').addEventListener('click', e => {
+    if (e.target.closest('li').dataset.day) {
+      if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
+        opened.push(e.target.closest('li').dataset.day)
+        localStorage.setItem('html_opened', JSON.stringify(opened))
+      }
+    }
+  });
+
+  function lob(e){if(codes.push(e.key),codes.length>3&&(codes=codes.slice(1)),console.log(codes),3===codes.length&&"6"===codes[0]&&"6"===codes[1]&&"6"===codes[2]){console.log("bingo");const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lobster&family=UnifrakturCook:wght@700&display=swap",e.rel="stylesheet",document.head.appendChild(e),document.body.classList.add("beauty"),document.removeEventListener("keydown",lob)}}var codes=[];document.addEventListener("keydown",lob);
+</script>
+
+{# https://francescoschwarz.com/articles/aesthetics-of-the-invisible/ #}

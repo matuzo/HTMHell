@@ -927,3 +927,83 @@ pre.language-html::before {
 .u-oa {
   overflow: auto;
 }
+
+.acalendar {
+  font-family: UnifrakturCook, sans-serif;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, auto));
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+  grid-auto-rows: 20rem;
+  /* background: url('/assets/pentagramm-red.svg') center center no-repeat; */
+  background-size: 90%;
+  grid-auto-flow: dense;
+}
+
+.beauty * {
+  font-family: "Lobster", UnifrakturCook, sans-serif !important;
+}
+
+.acalendar__day {
+  font-size: 8rem;
+  margin-bottom: 0;
+  /* perspective: 1000px;  */
+  cursor: default;
+}
+
+.acalendar__day[data-day] {
+  cursor: pointer;
+}
+
+.acalendar__day div {
+  border: 2px solid #000;
+  display: flex;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .acalendar__day div {
+    transform-style: preserve-3d;
+    transition: transform .3s linear;
+  }
+}
+
+.acalendar__day[data-day]:focus-within div,
+.acalendar__day[data-day]:hover div,
+.acalendar__day--opened div {
+  transform: rotateY(-180deg);
+}
+
+.acalendar__day span,
+.acalendar__day a {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.acalendar__day span {
+  background: #000 url('/assets/pentagramm-red.svg') center center no-repeat;
+  background-size: contain;
+  color: #fff;
+  padding: 1rem;
+  background-origin: content-box;
+}
+
+.acalendar__day a {
+  transform: translateZ(-1px) translateX(-100%) rotateY(180deg);
+  background: linear-gradient(270deg, #eb1b1b, #620b0b);
+  background: #fff;
+  text-decoration: none;
+  color: #000;
+}
+
+.acalendar__day--opened a:hover {
+  background: #eb1b1b;
+  color: #fff;
+}
