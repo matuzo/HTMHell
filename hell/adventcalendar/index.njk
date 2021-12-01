@@ -8,6 +8,10 @@ tags:
 date: 2021-01-04
 page__class: calendar
 days:
+  - title: "Accessible SVGs: Perfect Patterns For Screen Reader Users"
+    url: https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/
+    author: "Carie Fisher"
+    active: true
   - title: "Accessibility of the section element"
     url: https://www.scottohara.me/blog/2021/07/16/section.html
     author: "Scott O'Hara"
@@ -35,10 +39,6 @@ days:
   - title: "How A Screen Reader User Surfs The Web"
     url: https://www.youtube.com/watch?v=OUDV1gqs9GA
     author: "Leonié Watson & Bruce Lawson"
-    active: false
-  - title: "Accessible SVGs: Perfect Patterns For Screen Reader Users"
-    url: https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/
-    author: "Carie Fisher"
     active: false
   - title: "Switch Role Support"
     url: https://adrianroselli.com/2021/10/switch-role-support.html
@@ -109,7 +109,7 @@ days:
 {% macro day(num) %}
   <li class="acalendar__day" {% if days[num - 1].active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
     <div>
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].active %}href="{{ days[num - 1].url }}"{% endif %}>{{ num }}</a>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].active %}href="/adventcalendar/2021/{{ num }}"{% endif %}>{{ num }}</a>
     </div>
   </li>
 {% endmacro %}
@@ -188,8 +188,8 @@ days:
       }
     }
   });
-
-  function lob(e){if(codes.push(e.key),codes.length>3&&(codes=codes.slice(1)),console.log(codes),3===codes.length&&"6"===codes[0]&&"6"===codes[1]&&"6"===codes[2]){console.log("bingo");const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lobster&family=UnifrakturCook:wght@700&display=swap",e.rel="stylesheet",document.head.appendChild(e),document.body.classList.add("beauty"),document.removeEventListener("keydown",lob)}}var codes=[];document.addEventListener("keydown",lob);
+  function lob(e){if(codes.push(e.key),codes.length>3&&(codes=codes.slice(1)),3===codes.length&&"6"===codes[0]&&"6"===codes[1]&&"6"===codes[2]){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lobster&family=UnifrakturCook:wght@700&display=swap",e.rel="stylesheet",document.head.appendChild(e),document.body.classList.add("beauty"),document.removeEventListener("keydown",lob)}}var codes=[];document.addEventListener("keydown",lob);  
 </script>
 
 {# https://francescoschwarz.com/articles/aesthetics-of-the-invisible/ #}
+{# https://mailchi.mp/197063a30c2d/underlines?e=83956672f1 #}
