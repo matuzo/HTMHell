@@ -29,6 +29,7 @@
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:title" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
     <meta property="og:description" content="{{ description or hell.site_description }}">
+    <meta property="twitter:image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=011221">
     <meta property="og:image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=011221">
     <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
     <meta property="og:site_name" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
