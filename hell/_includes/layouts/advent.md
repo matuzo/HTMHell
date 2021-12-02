@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 ---
-# HTMHell Advent Calendar Day {{ day }}
+# HTMHell Advent Calendar Day {{ date | dayDate }}
 
 {{ content | safe }}
 

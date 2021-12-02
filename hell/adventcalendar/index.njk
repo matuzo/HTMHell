@@ -8,109 +8,13 @@ tags:
   mainnav
 date: 2021-01-04
 page__class: calendar
-days:
-  - title: "Accessible SVGs: Perfect Patterns For Screen Reader Users"
-    url: https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/
-    author: "Carie Fisher"
-    active: true
-  - title: "Web Almanac 2021: Markup"
-    url: "https://almanac.httparchive.org/en/2021/markup"
-    author: ""
-    active: true
-  - title: "Accessibility of the section element"
-    url: https://www.scottohara.me/blog/2021/07/16/section.html
-    author: "Scott O'Hara"
-    active: false
-  - title: "Semantics and How to Get Them Right - beyond tellerrand Düsseldorf 2021"
-    url: https://www.youtube.com/watch?v=YG9WQUfH7ZU
-    author: "Hidde de Vries"
-    active: false
-  - title: "HTML Recipes"
-    url: https://htmlrecipes.dev/
-    author: "Stephanie Eckles"
-    active: false
-  - title: "On the &lt;dl&gt;"
-    url: https://benmyers.dev/blog/on-the-dl/
-    author: Ben Myers
-    active: false
-  - title: "My current HTML boilerplate"
-    url: https://www.matuzo.at/blog/html-boilerplate/
-    author: Manuel Matuzovic
-    active: false
-  - title: "HTML De-crapulator"
-    url: https://a11y-tools.com/markup-de-crapulator/index.html
-    author: Ian Lloyd
-    active: false
-  - title: "How A Screen Reader User Surfs The Web"
-    url: https://www.youtube.com/watch?v=OUDV1gqs9GA
-    author: "Leonié Watson & Bruce Lawson"
-    active: false
-  - title: "Switch Role Support"
-    url: https://adrianroselli.com/2021/10/switch-role-support.html
-    author: "Adrian Roselli"
-    active: false
-  - title: "HTML Tags Memory Test"
-    url: https://cdpn.io/plfstr/debug/zYqQeRw/ZoABaLbzyGvr
-    author: "Paul Foster"
-    active: false
-  - title: "Not Your Typical Horizontal Rules"
-    url: https://www.sarasoueidan.com/blog/horizontal-rules/
-    author: "Sara Soueidan"
-    active: false
-  - title: "HTML Inputs and Labels: A Love Story"
-    url: https://css-tricks.com/html-inputs-and-labels-a-love-story/
-    author: "Amber Wilson"
-    active: false
-  - title: "HEAD"
-    url: https://github.com/joshbuchea/HEAD
-    author: "Josh Buchea"
-    active: false
-  - title: "HTML: The Inaccessible Parts"
-    url: https://daverupert.com/2020/02/html-the-inaccessible-parts/
-    author: "Dave Rupert"
-    active: false
-  - title: "The 3-Second Frontend Developer Test"
-    url: https://meiert.com/en/blog/the-frontend-developer-test/
-    author: "Jens Oliver Meiert"
-    active: false
-  - title: "Shadow Roots and Inheritance"
-    url: "https://kittygiraudel.com/2021/08/23/shadow-roots-and-inheritance/"
-    author: "Kitty Giraudel"
-    active: false
-  - title: ""
-    url: ""
-    author: ""
-    active: false
-  - title: ""
-    url: ""
-    author: ""
-    active: false
-  - title: ""
-    url: ""
-    author: ""
-    active: false
-  - title: ""
-    url: ""
-    author: ""
-    active: false
-  - title: ""
-    url: ""
-    author: ""
-    active: false
-  - title: ""
-    url: ""
-    author: ""
-    active: false
-  - title: "The web accessibility basics"
-    url: https://www.marcozehe.de/the-web-accessibility-basics/
-    author: "Marco Zehe"
-    active: false
 ---
 
 {% macro day(num) %}
-  <li class="acalendar__day" {% if days[num - 1].active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
+  {% set days = collections.advent2021 %}
+  <li class="acalendar__day" {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
     <div>
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].active %}href="/adventcalendar/2021/{{ num }}"{% endif %}>{{ num }}</a>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2021/{{ num }}"{% endif %}>{{ num }}</a>
     </div>
   </li>
 {% endmacro %}

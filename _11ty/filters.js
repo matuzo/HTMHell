@@ -12,6 +12,10 @@ module.exports = {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd, yyyy");
   },
 
+  dayDate: dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("d");
+  },
+
   head: (array, n) => {
     if( n < 0 ) {
       return array.slice(n);
