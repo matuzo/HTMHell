@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}</title>
+    <title>{% if title %}{{ title | e }} - {%endif%}{{ hell.site_title }}</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -22,17 +22,17 @@
     {% set image_path = seo_title or title %}
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
+    <meta name="twitter:title" content="{% if title %}{{ title | e }} - {%endif%}{{ hell.site_title }}">
     <meta name="twitter:description" content="{{ description or hell.site_description }}">
     <meta name="twitter:site" content="@mmatuzo">
     <meta name="twitter:creator" content="@mmatuzo">
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta property="og:title" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
+    <meta property="og:title" content="{% if title %}{{ title | e }} - {%endif%}{{ hell.site_title }}">
     <meta property="og:description" content="{{ description or hell.site_description }}">
     <meta property="twitter:image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=011221s">
     <meta property="og:image" content="{{ hell.site_url }}/images/og/{{ image_path | slug }}.png?s=011221s">
     <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
-    <meta property="og:site_name" content="{% if title %}{{ title }} - {%endif%}{{ hell.site_title }}">
+    <meta property="og:site_name" content="{% if title %}{{ title | e }} - {%endif%}{{ hell.site_title }}">
     <meta property="og:locale" content="en_GB">
     <meta property="og:type" content="website">
 
