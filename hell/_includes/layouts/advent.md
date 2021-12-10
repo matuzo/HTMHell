@@ -7,4 +7,7 @@ layout: layouts/base.njk
 
 **[{{ title }}]({{ url }})** by [{{ author }}]({{ author_web }})
 
-[Back to the calendar](/adventcalendar)
+{% assign nextPost = collections.advent2021 | getNextCollectionItem: page %}
+
+{% if nextPost %} [See what's behind door {{ nextPost.data.date | dayDate }} ]({{ nextPost.url }}) or {% endif %}[go back to the calendar](/adventcalendar)
+
