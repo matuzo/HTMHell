@@ -44,20 +44,20 @@ module.exports = function (eleventyConfig) {
     return collection.getFilteredByGlob("./hell/entries/*.md");
   });
 
-	function markdownItSlugify(s) {
-		return slugify(s, { lower: true, remove: /[:’'.`,]/g });
-	}
+  function markdownItSlugify(s) {
+    return slugify(s, { lower: true, remove: /[:’'.`,]/g });
+  }
 
-	let mdIt = markdownIt({
-		html: true,
-		breaks: true,
-		linkify: true
+  let mdIt = markdownIt({
+    html: true,
+    breaks: true,
+    linkify: true
   })
   
-	.use(markdownItAnchor, {
-		permalink: true,
-		slugify: markdownItSlugify,
-		permalinkBefore: true,
+  .use(markdownItAnchor, {
+    permalink: true,
+    slugify: markdownItSlugify,
+    permalinkBefore: true,
     permalinkSymbol: "#",
     renderPermalink: (slug, opts, state, idx) => {
       const headingText = state.tokens[idx + 1].children[0].content;
@@ -78,10 +78,10 @@ module.exports = function (eleventyConfig) {
       linkTokens.push(space())
       state.tokens[idx + 1].children.unshift(...linkTokens)
     },
-		level: [2, 3]
-	});
+    level: [2, 3]
+  });
 
-	eleventyConfig.setLibrary("md", mdIt);
+  eleventyConfig.setLibrary("md", mdIt);
 
   // Plugins
   eleventyConfig.addPlugin(pluginRss);
