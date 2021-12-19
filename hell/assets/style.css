@@ -426,78 +426,32 @@ style[contenteditable] {
 }
 
 .site-logo {
-  display: none;
+  color: #000;
+  fill: currentColor;
+  min-height: 200px;
 }
 
-.site-logo__heaven {
-  opacity: 0;
-  transition: all 0.3s;
+circle#p_c {
+  stroke: currentColor;
+}
+
+use[href="#p"] {
   fill: #d72b2b;
 }
 
-.site-logo__heaven g {
-  fill: #216d99;
-}
-
-@supports(display: grid) {
-  .site-logo {
-    display: block;
-  }
-}
-
-.site-logo__666 {
-  transition: opacity 0.3s ease-in, fill 0.6s ease-in;
-  fill: #d72b2b;
-  opacity: 0;
-}
-
-.site--loaded .site-logo__666 {
-  opacity: 1;
-  fill: #000;
-}
-
-.site--loaded .site-logo__1 {
-  transition-delay: 0.3s;
-}
-
-.site--loaded .site-logo__2 {
-  transition-delay: 0.5s;
-
-}
-
-.site--loaded .site-logo__3 {
-  transition-delay: 0.7s;
-}
-
-.site--loaded .site-logo__4 {
-  transition-delay: .9s;
-}
-
-.site--loaded .site-logo__5 {
-  transition-delay: 1.3s;
-}
-
-.site--loaded.heaven .site-logo__heaven {
-  opacity: 1;
-}
-
-.site-logo polygon {
-  fill: #d72b2b;
-}
-
-.site-logo:hover polygon {
-  fill: #000000;
+.site-logo:hover use[href="#p"] {
+  fill: currentColor;
 }
 
 @media (min-width: 768px) {
   .site-logo {
-    height: 27.4rem;
+    min-height: 27.4rem;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .site-logo {
-    fill: #fff;
+    color: #fff;
   }
 }
 
@@ -712,11 +666,6 @@ pre.language-html::before {
     border: 1px solid #fff;
     background: #000;
     color: #fff;
-  }
-
-
-  .site--loaded .site-logo__666 {
-    fill: #ffffff;
   }
 
   .site-logo:hover polygon {
