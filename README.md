@@ -15,6 +15,8 @@ A collection of bad practices in HTML, copied from real websites.
 
 ### Basics
 
+**Note:** Please ensure you have [EditorConfig](https://editorconfig.org) installed in your editor before contributing any file changes. It'll help us maintain a consistent use of whitespace in this repo's files.
+
 1. Fork this repo and install the dependencies.
   ```
   npm install

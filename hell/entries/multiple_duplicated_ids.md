@@ -6,27 +6,27 @@ permalink: /{{ title | slug }}/index.html
 
 badcode: '
 <table>
-	<tr id="body">
-		<td id="body">
-			<table id="body">
-				<tr id="body_row">
-					<td id="body_left">…</td>
-					<td id="body_middle">…</td>
-					<td id="body_right">…</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
+  <tr id="body">
+    <td id="body">
+      <table id="body">
+        <tr id="body_row">
+          <td id="body_left">…</td>
+          <td id="body_middle">…</td>
+          <td id="body_right">…</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>'
 
 goodcode: '
 <main id="body">
-	<aside id="secondary_content">
-	</aside>
-	<article id="primary_content">
-	</article>
-	<aside id="tertiary_content">
-	</aside>
+  <aside id="secondary_content">
+  </aside>
+  <article id="primary_content">
+  </article>
+  <aside id="tertiary_content">
+  </aside>
 </main>'
 ---
 
