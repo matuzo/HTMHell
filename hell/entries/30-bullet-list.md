@@ -1,7 +1,7 @@
 ---
 title: "#30 Bullet “list”"
 date: 2022-01-13
-permalink: /{{ title | slug }}/index.html
+permalink: /30-bullet-list/index.html
 layout: layouts/entry.njk
 author: huy_ngo
 badcode: '<p>  
