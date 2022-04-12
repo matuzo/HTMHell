@@ -79,6 +79,11 @@ module.exports = {
       "id": "huy_ngo",
       "name": "Huy Ngo",
       "link": "https://fosstodon.org/@huy_ngo"
+    },
+    {
+      "id": "smellai",
+      "name": "Stefania",
+      "link": "https://github.com/smellai"
     }
   ]
 };
