@@ -4,15 +4,17 @@ title: HTMHell Advent Calendar
 seo_title: adventcalendar
 description: An article, talk, or tool that focuses on HTML every day until Christmas.
 nav_title: Advent Calendar
-date: 2021-01-04
+date: 2022-01-04
 page__class: calendar
+tags:
+  mainnav
 ---
 
 {% macro day(num) %}
-  {% set days = collections.advent2021 %}
+  {% set days = collections.advent2022 %}
   <li class="acalendar__day" {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
     <div>
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2021/{{ num }}"{% endif %}>{{ num }}</a>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2022/{{ num }}"{% endif %}>{{ num }}</a>
     </div>
   </li>
 {% endmacro %}
