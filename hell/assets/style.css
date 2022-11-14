@@ -1056,3 +1056,7 @@ pre.language-html::before {
 .acalendar__day:nth-child(1) { order: 23}
 
 .acalendar__day:nth-child(13) { order: 24}
+
+.code-label {
+  margin-bottom: 0;
+}
