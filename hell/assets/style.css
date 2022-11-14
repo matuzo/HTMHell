@@ -237,6 +237,10 @@ td {
   padding: 0.5rem;
 }
 
+tbody tr:nth-child(odd) {
+  background: #fdf1f1;
+}
+
 caption {
   text-align: left;
 }
