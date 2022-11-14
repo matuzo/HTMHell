@@ -72,7 +72,7 @@ permalink: /adventcalendar/2021/index.html
 </ol> #}
 
 <script>
-  var opened = localStorage.getItem('html_opened') ? JSON.parse(localStorage.getItem('html_opened')) : [];
+  var opened = localStorage.getItem('html_opened_2021') ? JSON.parse(localStorage.getItem('html_opened_2021')) : [];
 
   setTimeout(() => {
     if (opened.length) {
@@ -88,7 +88,7 @@ permalink: /adventcalendar/2021/index.html
     if (e.target.closest('li').dataset.day) {
       if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
         opened.push(e.target.closest('li').dataset.day)
-        localStorage.setItem('html_opened', JSON.stringify(opened))
+        localStorage.setItem('html_opened_2021', JSON.stringify(opened))
       }
     }
   });

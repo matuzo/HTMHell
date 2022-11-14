@@ -1,16 +1,25 @@
 ---
 layout: layouts/base.njk
 ---
-# HTMHell Advent Calendar Day {{ date | dayDate }}
+# {{ title }}
+
+by [{{ author }}]({{ author_web }}) published on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> 
 
 {{ content | safe }}
 
-**[{{ title }}]({{ url }})** by [{{ author }}]({{ author_web }})
+## About {{ author }}
 
-{% assign nextPost = collections.advent2021 | getNextCollectionItem: page %}
-{% assign prevPost = collections.advent2021 | getPreviousCollectionItem: page %}
+{{ author_bio | safe }}
 
-{% if nextPost %} [Go to the next day (door {{ nextPost.data.date | dayDate }})]({{ nextPost.url }}) 
-or {% endif %}{% if prevPost %} [go to the previous day (door {{ prevPost.data.date | dayDate }})]({{ prevPost.url }}) 
+Website/Blog: [ethangardner.com](https://www.ethangardner.com)   
+Twitter: [@{{ author_twitter }}](https://twitter.com/ethangardner)
+
+## More articles
+
+{% assign nextPost = collections.advent2022 | getNextCollectionItem: page %}
+{% assign prevPost = collections.advent2022 | getPreviousCollectionItem: page %}
+
+{% if nextPost %} [Read the next article (day {{ nextPost.data.date | dayDate }})]({{ nextPost.url }}) 
+or {% endif %}{% if prevPost %} [Read the previous article (day {{ prevPost.data.date | dayDate }})]({{ prevPost.url }}) 
 or {% endif %}[go back to the calendar](/adventcalendar)
 
