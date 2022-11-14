@@ -81,8 +81,8 @@ video {
   }
 }
 
-li {
-  margin-bottom: 1.6rem;;
+ol li {
+  margin-bottom: 1.6rem;
 }
 
 p, pre, blockquote, .cp_embed_wrapper, .u-mb, table {
