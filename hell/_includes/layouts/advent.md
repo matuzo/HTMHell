@@ -11,8 +11,12 @@ by [{{ author }}]({{ author_web }}) published on <time datetime="{{ date | htmlD
 
 {{ author_bio | safe }}
 
-Website/Blog: [ethangardner.com](https://www.ethangardner.com)   
+{% if author_web %}
+Website/Blog: [{{ author_web }}](https://www.{{author_web}})   
+{%- endif -%}
+{% if author_twitter %}
 Twitter: [@{{ author_twitter }}](https://twitter.com/ethangardner)
+{%- endif %}
 
 ## More articles
 
