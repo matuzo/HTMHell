@@ -1,0 +1,99 @@
+---
+layout: layouts/base.njk
+title: HTMHell Advent Calendar 2021
+seo_title: adventcalendar
+description: An article, talk, or tool that focuses on HTML every day until Christmas.
+nav_title: Advent Calendar
+date: 2021-01-04
+page__class: calendar
+permalink: /adventcalendar/2021/index.html
+---
+
+{% macro day(num) %}
+  {% set days = collections.advent2021 %}
+  <li class="acalendar__day" {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
+    <div>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2021/{{ num }}"{% endif %}>{{ num }}</a>
+    </div>
+  </li>
+{% endmacro %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap&text=1234567890" rel="stylesheet"> 
+
+
+<h1>{{ title }}</h1>
+
+<p>Behind each door you’ll find an article, talk, or tool that focuses on HTML.</p>
+
+<div class="preview">
+<ul class="acalendar">
+  {{ day(1) }}
+  {{ day(2) }}
+  {{ day(3) }}
+  {{ day(4) }}
+  {{ day(5) }}
+  {{ day(6) }}
+  {{ day(7) }}
+  {{ day(8) }}
+  {{ day(9) }}
+  {{ day(10) }}
+  {{ day(11) }}
+  {{ day(12) }}
+  {{ day(13) }}
+  {{ day(14) }}
+  {{ day(15) }}
+  {{ day(16) }}
+  {{ day(17) }}
+  {{ day(18) }}
+  {{ day(19) }}
+  {{ day(20) }}
+  {{ day(21) }}
+  {{ day(22) }}
+  {{ day(23) }}
+  {{ day(24) }}
+</ul>
+</div>
+
+{# <h2>Linked resources</h2>
+
+<ol>
+  {% for dayDone in days %}
+    {% if dayDone.active %}
+    <li>
+        <a href="{{ dayDone.url }}">
+          {{ dayDone.title }}
+        </a>
+        by {{ dayDone.author }}
+    </li>
+    {% endif %}
+  {% endfor %}
+</ol> #}
+
+<script>
+  var opened = localStorage.getItem('html_opened') ? JSON.parse(localStorage.getItem('html_opened')) : [];
+
+  setTimeout(() => {
+    if (opened.length) {
+      for (let i = 0; i < opened.length; i++) {
+        if (document.querySelector(`[data-day="${opened[i]}"]`)) {
+          document.querySelector(`[data-day="${opened[i]}"]`).classList.add('acalendar__day--opened')
+        }
+      }
+    }
+  }, 700);
+
+  document.querySelector('.acalendar').addEventListener('click', e => {
+    if (e.target.closest('li').dataset.day) {
+      if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
+        opened.push(e.target.closest('li').dataset.day)
+        localStorage.setItem('html_opened', JSON.stringify(opened))
+      }
+    }
+  });
+  function lob(e){if(codes.push(e.key),codes.length>3&&(codes=codes.slice(1)),3===codes.length&&"6"===codes[0]&&"6"===codes[1]&&"6"===codes[2]){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lobster&family=UnifrakturCook:wght@700&display=swap",e.rel="stylesheet",document.head.appendChild(e),document.body.classList.add("beauty"),document.removeEventListener("keydown",lob)}}var codes=[];document.addEventListener("keydown",lob);  
+</script>
+
+{# https://francescoschwarz.com/articles/aesthetics-of-the-invisible/ #}
+{# https://mailchi.mp/197063a30c2d/underlines?e=83956672f1 #}
