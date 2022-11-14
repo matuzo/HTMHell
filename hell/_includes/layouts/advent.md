@@ -3,7 +3,7 @@ layout: layouts/base.njk
 ---
 # {{ title }}
 
-by [{{ author }}]({{ author_web }}) published on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> 
+by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> 
 
 {{ content | safe }}
 
@@ -11,12 +11,9 @@ by [{{ author }}]({{ author_web }}) published on <time datetime="{{ date | htmlD
 
 {{ author_bio | safe }}
 
-{% if author_web %}
-Website/Blog: [{{ author_web }}](https://www.{{author_web}})   
-{%- endif -%}
-{% if author_twitter %}
-Twitter: [@{{ author_twitter }}](https://twitter.com/ethangardner)
-{%- endif %}
+{% for link in author_links %}
+  {{ link.label }}: [{{ link.link_label }}]({{ link.url }})   
+{%- endfor %}
 
 ## More articles
 
