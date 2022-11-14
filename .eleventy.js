@@ -57,26 +57,26 @@ module.exports = function (eleventyConfig) {
   .use(markdownItAnchor, {
     permalink: true,
     slugify: markdownItSlugify,
-    permalinkBefore: true,
+    permalinkBefore: false,
     permalinkSymbol: "#",
     renderPermalink: (slug, opts, state, idx) => {
-      const headingText = state.tokens[idx + 1].children[0].content;
-      const headingHTML= `<span class="u-hidden">${headingText}</span>`;
+      // const headingText = state.tokens[idx + 1].children[0].content;
+      // const headingHTML= `<span class="u-hidden">${headingText}</span>`;
 
-      const space = () => Object.assign(new state.Token('text', '', 0), { content: ' ' })
-      const linkTokens = [
-        Object.assign(new state.Token('link_open', 'a', 1), {
-          attrs: [
-            ['href', opts.permalinkHref(slug, state)],
-            ...Object.entries(opts.permalinkAttrs(slug, state))
-          ]
-        }),
-        Object.assign(new state.Token('html_block', '', 0), { content:  `<span aria-hidden="true">${opts.permalinkSymbol}</span>` + headingHTML }),
-        new state.Token('link_close', 'a', -1)
-      ]
+      // const space = () => Object.assign(new state.Token('text', '', 0), { content: ' ' })
+      // const linkTokens = [
+      //   Object.assign(new state.Token('link_open', 'a', 1), {
+      //     attrs: [
+      //       ['href', opts.permalinkHref(slug, state)],
+      //       ...Object.entries(opts.permalinkAttrs(slug, state))
+      //     ]
+      //   }),
+      //   Object.assign(new state.Token('html_block', '', 0), { content:  `<span aria-hidden="true">${opts.permalinkSymbol}</span>` + headingHTML }),
+      //   new state.Token('link_close', 'a', -1)
+      // ]
     
-      linkTokens.push(space())
-      state.tokens[idx + 1].children.unshift(...linkTokens)
+      // linkTokens.push(space())
+      // state.tokens[idx + 1].children.unshift(...linkTokens)
     },
     level: [2, 3]
   });
