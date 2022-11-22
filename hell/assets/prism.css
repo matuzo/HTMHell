@@ -171,14 +171,13 @@ pre[class*="language-"] {
     font-weight: normal;
   }
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   code[class*="language-"],
   pre[class*="language-"] {
     color: #dedede;
   }
 
-  /* Code blocks */
   pre[class*="language-"] {
     border-color: #dedede;
   }
@@ -227,7 +226,7 @@ pre[class*="language-"] {
   .token.variable {
     color: #7fb5b5;
   }
-}
+} */
 
 pre.language-css::before,
 pre.language-html::before {

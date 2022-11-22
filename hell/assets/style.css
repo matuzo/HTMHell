@@ -41,11 +41,11 @@ h1 {
   color: #000;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .h1 {
     color: #fff;
   }
-}
+} */
 
 @media (min-width: 768px) {
   .h1,
@@ -386,7 +386,7 @@ style[contenteditable] {
     margin-left: 2.5rem;
   }
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   .nav__link.focus-visible,
   .nav__link[aria-current="page"],
@@ -397,7 +397,7 @@ style[contenteditable] {
   .nav__link[aria-current="page"] {
     box-shadow: 0 5px 0 0 #fff;
   }
-}
+} */
 
 .site-twitter {
   display: inline-block;
@@ -499,11 +499,11 @@ style[contenteditable] {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .site-logo {
     fill: #fff;
   }
-}
+} */
 
 /* Content */
 .site-content {
@@ -694,7 +694,7 @@ pre.language-html::before {
   font-weight: bold;
   margin-top: 2rem;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #000000;
@@ -766,7 +766,7 @@ pre.language-html::before {
   a:visited {
     color: #dc6565;
   }
-}
+} */
 
 /* Video */
 
@@ -811,11 +811,11 @@ pre.language-html::before {
   min-height: 50px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .page-nav__link {
     background-image: url('/assets/pentagramm-light.svg');
   }
-}
+} */
 
 .page-nav__link:hover {
   text-decoration: none;
