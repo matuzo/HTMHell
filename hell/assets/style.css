@@ -228,6 +228,7 @@ table {
   border: 1px solid #000;
   text-align: left;
   border-collapse: collapse;
+  width: 100%;
 }
 
 th,
