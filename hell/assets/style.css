@@ -1065,3 +1065,25 @@ pre.language-html::before {
 .code-label {
   margin-bottom: 0;
 }
+
+
+.demo {
+  background: rgb(215 43 43 / 0.08);
+  padding: 1rem;
+  position: relative;
+  border: 2px solid rgba(215, 43, 43, 0.1);
+  margin-bottom: 1em;
+}
+
+.demo::after {
+  background-color: rgba(215, 43, 43, 0.1);
+  content: "demo";
+  color: #000;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  padding: 0.6rem 0.5rem 0.4rem;
+  font-weight: bold;
+  line-height: 1;
+  font-size: 0.9em;;
+}
