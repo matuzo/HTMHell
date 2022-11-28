@@ -1066,6 +1066,10 @@ pre.language-html::before {
   margin-bottom: 0;
 }
 
+.code-label + * {
+  margin-top: 0;
+}
+
 
 [data-demo] {
   background: rgb(215 43 43 / 0.08);
@@ -1205,4 +1209,11 @@ pre.language-html::before {
   .advent2022 .marquee-alternative-3 p {
     animation: marquee-right-to-left 20s linear infinite;
   }
+}
+
+.highlight {
+  background: rgb(215 43 43 / 0.08);
+  padding: 1rem 1rem 0.5rem;
+  line-height: 1.5;
+  font-size: 2rem;
 }
