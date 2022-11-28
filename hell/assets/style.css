@@ -1067,17 +1067,17 @@ pre.language-html::before {
 }
 
 
-.demo {
+[data-demo] {
   background: rgb(215 43 43 / 0.08);
-  padding: 1rem;
+  padding: 3rem 1rem 1rem;
   position: relative;
   border: 2px solid rgba(215, 43, 43, 0.1);
   margin-bottom: 1em;
 }
 
-.demo::after {
+[data-demo]::after {
   background-color: rgba(215, 43, 43, 0.1);
-  content: "demo";
+  content: attr(data-demo);
   color: #000;
   position: absolute;
   inset-block-start: 0;
@@ -1086,4 +1086,121 @@ pre.language-html::before {
   font-weight: bold;
   line-height: 1;
   font-size: 0.9em;;
+}
+
+.advent2022.marquee-alternative {
+  overflow: hidden;
+  width: 100%;
+}
+.advent2022.marquee-alternative p {
+  margin: 0;
+  width: fit-content;
+  /* for accessibility reason the animation starts in a media query below */
+  /* animation: marquee 20s linear infinite; */
+}
+
+@keyframes marquee-right-to-left{
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .advent2022.marquee-alternative p{
+    /* animation: marquee-right-to-left 20s linear infinite; */
+    animation-name: marquee-right-to-left;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+.advent2022.marquee-alternative-2 {
+  overflow: hidden;
+  width: 100%;
+}
+.advent2022.marquee-alternative-2 p {
+  margin: 0;
+  width: fit-content;
+  /* for accessibility reason the animation starts in a media query below */
+  /* animation: marquee 20s linear infinite; */
+}
+
+@keyframes marquee-right-to-left{
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.advent2022.marquee-alternative-2:hover p,
+.advent2022.marquee-alternative-2:focus p{
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .advent2022.marquee-alternative-2 p{
+    /* animation: marquee-right-to-left 20s linear infinite; */
+    animation-name: marquee-right-to-left;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+.advent2022.marquee-container-3 {
+  display: flex;
+  align-items: center;
+  border: 3px solid #000;
+  margin-bottom: 2rem;
+}
+
+.advent2022 .btn-marquee {
+  cursor: pointer;
+  background-color: #fff;
+  border: 0;
+  border-left: 3px solid #000;
+  padding: 1.1rem 1rem;
+  box-shadow: 0 0.5rem 0.5rem -0.125rem #0005;
+}
+
+.advent2022 .btn-marquee:hover,
+.advent2022 .btn-marquee:focus-visible,
+.advent2022 .btn-marquee[aria-pressed="true"]:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+.advent2022 .btn-marquee[aria-pressed="true"] {
+  box-shadow: 0 0.5rem 0.5rem -0.125rem inset #0005;
+}
+
+.advent2022 .marquee-alternative-3 {
+  overflow: hidden;
+  width: 100%;
+}
+
+.advent2022 .marquee-content-3 {
+  margin: 0;
+  width: fit-content;
+}
+
+@keyframes marquee-right-to-left {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .advent2022 .marquee-alternative-3 p {
+    animation: marquee-right-to-left 20s linear infinite;
+  }
 }
