@@ -5,7 +5,7 @@ permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: mmatuzo
 badcode: '<button display="flex" role="button">
-  <svg role="img" viewBox="0 0 13 13" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" height="15px" width="15px" fill="#000" name="close">
+  <svg role="img" viewBox="0 0 13 13" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="15px" width="15px" fill="#000" name="close">
     <title>Close dialog</title>
     <path d="…">
     </path>
