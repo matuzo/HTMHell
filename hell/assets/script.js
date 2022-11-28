@@ -12,3 +12,23 @@ request.onload = function() {
 };
 
 request.send();
+
+// Advent calendar 2022
+let marqueeText = document.querySelector(".marquee-content-3");
+let button = document.querySelector(".btn-marquee");
+
+if (button) {
+  button.addEventListener("click", () => {
+    const isRunning = marqueeText.style.animationPlayState == "running";
+    
+    if (isRunning) {
+      marqueeText.style.animationPlayState = "paused";
+      button.innerText = "Play";
+      button.ariaPressed = "true";
+    } else {
+      marqueeText.style.animationPlayState = "running";
+      button.innerText = "Pause";
+      button.ariaPressed = "false";
+    }
+  });
+}
