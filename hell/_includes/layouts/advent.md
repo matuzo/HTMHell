@@ -30,7 +30,7 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 {% if previousPost %}
 <li class="page-nav__item page-nav__item--prev">
 <a class="page-nav__link page-nav__link--prev" href="{{ previousPost.url }}">
-<div class="page-nav__label">Previous day ({{ nextPost.data.date | dayDate }})</div>
+<div class="page-nav__label">Previous day ({{ previousPost.data.date | dayDate }})</div>
 {{ previousPost.data.title }}
 </a>
 </li>
