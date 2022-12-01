@@ -14,13 +14,8 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 {% for link in author_links %}
   {{ link.label }}: [{{ link.link_label }}]({{ link.url }})   
 {%- endfor %}
-
+<!-- 
 ## More articles
-
-
-
-
-
 
 {% assign previousPost = collections.advent2022 | getPreviousCollectionItem: page %}
 {% assign nextPost = collections.advent2022 | getNextCollectionItem: page %}
@@ -36,7 +31,7 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 </li>
 {% endif %}
 
-{% if nextPost %}
+{% if nextPost and nextPost.data.active%}
 <li class="page-nav__item page-nav__item--next">
 <a class="page-nav__link page-nav__link--next" href="{{ nextPost.url }}">
 <div class="page-nav__label">Next day {{ nextPost.data.date | dayDate }}</div>
@@ -45,4 +40,4 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 </li>
 {% endif %}
 </ol>
-</nav>
+</nav> -->
