@@ -3,7 +3,7 @@ module.exports = {
     {
       "id": "mmatuzo",
       "name": "Manuel",
-      "link": "https://twitter.com/mmatuzo"
+      "link": "https://www.matuzo.at/"
     },
     {
       "id": "schepp",
