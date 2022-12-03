@@ -25,7 +25,7 @@ metadata:
     <name>{{ metadata.author.name }}</name>
     <email>{{ metadata.author.email }}</email>
   </author>
-  {%- for post in collections.advent2022 %}
+  {%- for post in collections.advent2022 | reverse %}
   {% if post.data.active %}
     
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
