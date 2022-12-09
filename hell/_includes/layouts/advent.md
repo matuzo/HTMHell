@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 ---
+{% if active or draft %}
 # {{ title }}
 
 by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> 
@@ -41,3 +42,5 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 {% endif %}
 </ol>
 </nav> -->
+
+{% endif %}
