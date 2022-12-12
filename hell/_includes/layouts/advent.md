@@ -1,6 +1,8 @@
 ---
 layout: layouts/base.njk
 ---
+<div class="advent">
+
 {% if active or draft %}
 # {{ title }}
 
@@ -44,3 +46,5 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 </nav> -->
 
 {% endif %}
+
+</div>

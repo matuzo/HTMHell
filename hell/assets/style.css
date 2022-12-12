@@ -1217,3 +1217,7 @@ pre.language-html::before {
   line-height: 1.5;
   font-size: 2rem;
 }
+
+.advent li {
+  margin-bottom: 0.5em;
+}
