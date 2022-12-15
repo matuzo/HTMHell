@@ -972,11 +972,11 @@ pre.language-html::before {
   border: 2px solid #000;
   display: flex;
   height: 100%;
+  transform-style: preserve-3d;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .acalendar__day div {
-    transform-style: preserve-3d;
     transition: transform .3s linear;
   }
 }
