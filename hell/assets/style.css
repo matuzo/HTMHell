@@ -67,6 +67,11 @@ h4 {
   margin: 0 0 0.3rem;
 }
 
+h5 {
+  margin: 0 0 0.3rem;
+  text-transform: uppercase;
+}
+
 ol {
   padding-left: 3rem;
 }
@@ -149,7 +154,8 @@ code {
   font-size: 1.5rem;
 }
 
-h2 code {
+h2 code,
+h3 code {
   font-size: 0.8em;
 }
 
@@ -1103,14 +1109,40 @@ pre.language-html::before {
   /* animation: marquee 20s linear infinite; */
 }
 
-@keyframes marquee-right-to-left{
-  from {
-    transform: translateX(100vw);
-  }
-  to {
-    transform: translateX(-100%);
+@media only screen and (max-width: 767px) {
+
+  @keyframes marquee-right-to-left{
+    from {
+      transform: translateX(calc(100vw - 6rem));
+    }
+    to {
+      transform: translateX(-100%);
+    }
   }
 }
+
+@media only screen and (min-width: 768px) {
+
+  @keyframes
+  marquee-right-to-left{
+  
+  from {
+  
+  transform: translateX(200%);
+  
+  }
+  
+  to {
+  
+  transform: 
+  translateX(-100%);
+  
+  }
+  
+  }
+  
+  }
+  
 
 @media (prefers-reduced-motion: no-preference) {
   .advent2022.marquee-alternative p{
@@ -1133,14 +1165,6 @@ pre.language-html::before {
   /* animation: marquee 20s linear infinite; */
 }
 
-@keyframes marquee-right-to-left{
-  from {
-    transform: translateX(100vw);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
 
 .advent2022.marquee-alternative-2:hover p,
 .advent2022.marquee-alternative-2:focus p{
@@ -1196,14 +1220,6 @@ pre.language-html::before {
   width: fit-content;
 }
 
-@keyframes marquee-right-to-left {
-  from {
-    transform: translateX(100vw);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .advent2022 .marquee-alternative-3 p {
