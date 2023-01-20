@@ -11,7 +11,10 @@ page__class: heaven
 </div> #}
 
 <div class="preview">
-  <h1>Issue #{{ issue }} - {{ title }}</h1>
+<div class="entry-header">
+  <h1 class="entry-heading">Issue #{{ issue }} - {{ title }}</h1>
+  published on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+</div>
 
   {{ content | safe }}
 
