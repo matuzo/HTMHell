@@ -1,21 +1,21 @@
 ---
 layout: layouts/base.njk
-title: HTMHell Advent Calendar 2023
+title: HTMHell Advent Calendar 2022
 seo_title: adventcalendar
 description: An article, talk, or tool that focuses on HTML every day until Christmas.
 nav_title: Advent Calendar
 date: 2022-01-04
 page__class: calendar
-tags:
-  mainnav
+permalink: /adventcalendar/2022/index.html
 ---
 
 {% macro day(num) %}
   {% set days = collections.advent2022 %}
-  <li class="acalendar__day" {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
-    <div>
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2022/{{ num }}"{% endif %}>{{ num }}</a>
-    </div>
+  {% set day = days[num - 1] %}
+  <li>
+    <a href="{{ day.url }}">
+      {{ day.data.title | safe  }}
+    </a>
   </li>
 {% endmacro %}
 
@@ -27,31 +27,24 @@ tags:
 <h1>{{ title }}</h1>
 
 <p>
-  Last year, I launched the <strong>HTMHell Advent Calendar</strong>, which was a great success. Twenty-four authors worldwide contributed fantastic articles on security, accessibility, UX, and performance. The feedback was phenomenal. That's why we're back this year with 24 new blog posts.
+Last year I published the first HTMHell advent calendar with 24 links to articles about HTML I found on other sites. Since many people enjoyed these posts, I decided to raise the ante and <strong>publish</strong> 24 articles on HTMHell written specifically for the advent calendar.
 </p>
-
 <p>
-  I'll publish them one by one every day starting December 1st.<br> In the meantime, you can check out last year's posts or the first unofficial calendar, which only links to existing articles on other sites.
+24 authors from all over the world (Austria, France, Germany, India, Italy, The Netherlands, UK, USA) gave their best and wrote about accessibility, performance, usability, and security. Starting December 1st, you can read a new article every day until December 24th.
 </p>
-
 <p>
-    <a href="/adventcalendar/2022">
-      HTMHell Advent calendar 2022
-    </a>
-    <br>
-    <a href="/adventcalendar/2021">
-      HTMHell Advent calendar 2021
-    </a>
+Thanks a lot to the authors for writing and <a href="https://ericwbailey.design/">Eric W. Bailey</a> who helped me with reviewing.
 </p>
-
+<p>
+I hope you enjoy reading the posts as much as I did!
+</p>
 <p>
 Yours truly,<br>
 Manuel 🖤
 </p>
 
-<!--
 <div class="preview">
-<ul class="acalendar">
+<ol>
   {{ day(1) }}
   {{ day(2) }}
   {{ day(3) }}
@@ -76,7 +69,7 @@ Manuel 🖤
   {{ day(22) }}
   {{ day(23) }}
   {{ day(24) }}
-</ul>
+</ol>
 </div>
 
 {# <h2>Linked resources</h2>
@@ -120,5 +113,3 @@ Manuel 🖤
 
 {# https://francescoschwarz.com/articles/aesthetics-of-the-invisible/ #}
 {# https://mailchi.mp/197063a30c2d/underlines?e=83956672f1 #}
-
--->

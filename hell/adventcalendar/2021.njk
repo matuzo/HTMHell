@@ -11,10 +11,11 @@ permalink: /adventcalendar/2021/index.html
 
 {% macro day(num) %}
   {% set days = collections.advent2021 %}
-  <li class="acalendar__day" {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
-    <div>
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2021/{{ num }}"{% endif %}>{{ num }}</a>
-    </div>
+  {% set day = days[num - 1] %}
+  <li>
+    <a href="{{ day.url }}">
+      {{ day.data.title | safe  }}
+    </a>
   </li>
 {% endmacro %}
 
@@ -28,7 +29,7 @@ permalink: /adventcalendar/2021/index.html
 <p>Behind each door you’ll find an article, talk, or tool that focuses on HTML.</p>
 
 <div class="preview">
-<ul class="acalendar">
+<ol class="">
   {{ day(1) }}
   {{ day(2) }}
   {{ day(3) }}
@@ -53,7 +54,7 @@ permalink: /adventcalendar/2021/index.html
   {{ day(22) }}
   {{ day(23) }}
   {{ day(24) }}
-</ul>
+</ol>
 </div>
 
 {# <h2>Linked resources</h2>
