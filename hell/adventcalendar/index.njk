@@ -26,6 +26,20 @@ tags:
 
 <h1>{{ title }}</h1>
 
+{% macro day(num) %}
+  {% set days = collections.advent2023 %}
+  {% set day = days[num - 1] %}
+  <li>
+    <a href="{{ day.url }}">
+      {{ day.data.title | safe  }}
+    </a>
+  </li>
+{% endmacro %}
+
+<ol>
+  {{ day(1) }}
+</ol>
+
 <p>
   Last year, I launched the <strong>HTMHell Advent Calendar</strong>, which was a great success. Twenty-four authors worldwide contributed fantastic articles on security, accessibility, UX, and performance. The feedback was phenomenal. That's why we're back this year with 24 new blog posts.
 </p>
