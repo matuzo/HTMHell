@@ -53,7 +53,7 @@ module.exports = function (eleventyConfig) {
     breaks: true,
     linkify: true
   })
-  
+
   .use(markdownItAnchor, {
     permalink: true,
     slugify: markdownItSlugify,
@@ -74,7 +74,7 @@ module.exports = function (eleventyConfig) {
       //   Object.assign(new state.Token('html_block', '', 0), { content:  `<span aria-hidden="true">${opts.permalinkSymbol}</span>` + headingHTML }),
       //   new state.Token('link_close', 'a', -1)
       // ]
-    
+
       // linkTokens.push(space())
       // state.tokens[idx + 1].children.unshift(...linkTokens)
     },
@@ -91,6 +91,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "./hell/favicon/*": "/" });
   eleventyConfig.addPassthroughCopy("./hell/images");
   eleventyConfig.addPassthroughCopy("./hell/robots.txt");
+  eleventyConfig.addPassthroughCopy("./hell/adventcalendar/**/*.!(md)");
 
   eleventyConfig.addPlugin(pluginPWA);
 
@@ -114,4 +115,3 @@ module.exports = function (eleventyConfig) {
     }
   };
 };
-
