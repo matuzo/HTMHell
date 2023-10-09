@@ -3,7 +3,7 @@ title: "Your title"
 layout: layouts/advent.md
 author: "Your name"
 author_bio: "Your author bio"
-date: 2023-12-01
+date: 2023-12-25
 tags: advent2023
 author_links:
   - label: "Blog"
