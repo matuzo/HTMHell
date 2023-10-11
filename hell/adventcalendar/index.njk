@@ -26,6 +26,24 @@ tags:
 
 <h1>{{ title }}</h1>
 
+<style>
+  .status {
+    font-size: 0.9em;
+  }
+
+  .status span {
+    background-color: #dc0000;
+    color: #fff;
+    padding: 0.2em;
+    border-radius: 4px;
+  }
+
+  .status--done span {
+    background-color: #dc0000;
+    color: #fff;
+  }
+</style>
+
 {% macro day(num) %}
   {% set days = collections.advent2023 %}
   {% set day = days[num - 1] %}
@@ -33,6 +51,8 @@ tags:
     <a href="{{ day.url }}">
       {{ day.data.title | safe  }}
     </a>
+    <div class="status">Review 1: <span>{{ day.data.status.review1 or 'open' }}</span></div>
+    <div class="status">Review 2: <span>{{ day.data.status.review2 or 'open' }}</span></div>
   </li>
 {% endmacro %}
 
