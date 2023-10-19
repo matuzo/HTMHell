@@ -1237,3 +1237,22 @@ pre.language-html::before {
 .advent li {
   margin-bottom: 0.5em;
 }
+
+.status {
+  font-size: 0.9em;
+}
+
+.status span {
+  background-color: #dc0000;
+  color: #fff;
+  padding: 0.2em;
+  border-radius: 4px;
+}
+
+.status--done span {
+  background-color: #1e6f06;
+}
+
+.status--reading span {
+  background-color: #206379;
+}

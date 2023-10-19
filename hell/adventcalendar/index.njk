@@ -26,24 +26,6 @@ tags:
 
 <h1>{{ title }}</h1>
 
-<style>
-  .status {
-    font-size: 0.9em;
-  }
-
-  .status span {
-    background-color: #dc0000;
-    color: #fff;
-    padding: 0.2em;
-    border-radius: 4px;
-  }
-
-  .status--done span {
-    background-color: #dc0000;
-    color: #fff;
-  }
-</style>
-
 {% macro day(num) %}
   {% set days = collections.advent2023 %}
   {% set day = days[num - 1] %}
@@ -51,9 +33,10 @@ tags:
     <a href="{{ day.url }}">
       {{ day.data.title | safe  }}
     </a>
-    <div class="status">Manuel: <span>{{ day.data.status.review_manuel or 'open' }}</span></div>
-    <div class="status">Eric: <span>{{ day.data.status.review_eric or 'open' }}</span></div>
-    <div class="status">Saptak: <span>{{ day.data.status.review_eric or 'open' }}</span></div>
+    
+    <div class="status {% if day.data.status.review_manuel == 'done' %}status--done{% endif %} {% if day.data.status.review_manuel == 'reading' %}status--reading{% endif %}">Manuel: <span>{{ day.data.status.review_manuel or 'open' }}</span></div>
+    <div class="status {% if day.data.status.review_eric == 'done' %}status--done{% endif %} {% if day.data.status.review_eric == 'reading' %}status--reading{% endif %}">Eric: <span>{{ day.data.status.review_eric or 'open' }}</span></div>
+    <div class="status {% if day.data.status.review_saptak == 'done' %}status--done{% endif %} {% if day.data.status.review_saptak == 'reading' %}status--reading{% endif %}">Saptak: <span>{{ day.data.status.review_saptak or 'open' }}</span></div>
   </li>
 {% endmacro %}
 
