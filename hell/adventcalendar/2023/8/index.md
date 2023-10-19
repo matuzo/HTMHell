@@ -3,7 +3,7 @@ title: "The road to HTMHell is paved with semantics"
 layout: layouts/advent.md
 author: "Vadim Makeev"
 author_bio: "Frontend developer in love with the Web, browsers, bicycles, and podcasting."
-date: 2023-12-01
+date: 2023-12-08
 tags: advent2023
 author_links:
   - label: "Blog"
