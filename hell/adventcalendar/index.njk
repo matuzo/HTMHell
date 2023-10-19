@@ -51,8 +51,9 @@ tags:
     <a href="{{ day.url }}">
       {{ day.data.title | safe  }}
     </a>
-    <div class="status">Review 1: <span>{{ day.data.status.review1 or 'open' }}</span></div>
-    <div class="status">Review 2: <span>{{ day.data.status.review2 or 'open' }}</span></div>
+    <div class="status">Manuel: <span>{{ day.data.status.review_manuel or 'open' }}</span></div>
+    <div class="status">Eric: <span>{{ day.data.status.review_eric or 'open' }}</span></div>
+    <div class="status">Saptak: <span>{{ day.data.status.review_eric or 'open' }}</span></div>
   </li>
 {% endmacro %}
 

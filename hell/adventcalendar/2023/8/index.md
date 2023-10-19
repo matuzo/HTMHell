@@ -18,8 +18,9 @@ author_links:
 active: true
 intro: "<p>HTML semantics is a nice idea, but does it really make a difference? There’s a huge gap between HTML spec’s good intentions and what browsers and screen readers are willing to implement. Writing semantic markup only because <a href='https://youtu.be/EIBRdBVkDHQ'>the good spec is a spec, and it is good, and it’s a spec</a> is not the worst approach you can take, but it might lead you to HTMHell.<p>"
 status:
-  review1: "open"
-  review2: "open"
+  review_manuel: "open"
+  review_eric: "open"
+  review_saptak: "open"
 ---
 
 HTML semantics is a nice idea, but does it really make a difference? There’s a huge gap between HTML spec’s good intentions and what browsers and screen readers are willing to implement. Writing semantic markup only because [the good spec is a spec, and it is good, and it’s a spec](https://youtu.be/EIBRdBVkDHQ) is not the worst approach you can take, but it might lead you to HTMHell.
