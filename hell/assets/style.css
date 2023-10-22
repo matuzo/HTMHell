@@ -1256,3 +1256,8 @@ pre.language-html::before {
 .status--reading span {
   background-color: #206379;
 }
+
+.status--skipped span {
+  background-color: #b5c1c6;
+  color: #000;
+}

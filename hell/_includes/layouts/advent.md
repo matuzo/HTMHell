@@ -8,9 +8,9 @@ layout: layouts/base.njk
 
 by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> 
 
-<div class="status {% if status.review_manuel == 'done' %}status--done{% endif %} {% if status.review_manuel == 'reading' %}status--reading{% endif %}">Manuel: <span>{{ status.review_manuel or 'open' }}</span></div>
-<div class="status {% if status.review_eric == 'done' %}status--done{% endif %} {% if status.review_eric == 'reading' %}status--reading{% endif %}">Eric: <span>{{ status.review_eric or 'open' }}</span></div>
-<div class="status {% if status.review_saptak == 'done' %}status--done{% endif %} {% if status.review_saptak == 'reading' %}status--reading{% endif %}">Saptak: <span>{{ status.review_saptak or 'open' }}</span></div>
+<div class="status status--{{ status.review_manuel }} ">Manuel: <span>{{ status.review_manuel or 'open' }}</span></div>
+<div class="status status--{{ status.review_eric }} ">Eric: <span>{{ status.review_eric or 'open' }}</span></div>
+<div class="status status--{{ status.review_saptak }} ">Saptak: <span>{{ status.review_saptak or 'open' }}</span></div>
 <br><br>
 
 {{ content | safe }}
