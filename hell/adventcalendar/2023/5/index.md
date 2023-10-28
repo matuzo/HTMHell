@@ -7,36 +7,55 @@ date: 2023-12-05
 tags: advent2023
 active: true
 status:
-  review_manuel: "open"
+  review_manuel: "done"
   review_eric: "open"
   review_saptak: "open"
 ---
 An incomplete and personal account
 
+<!-- Manuel:
+What an entertaining read! You're really great at writing. Although your post is pretty extensive, I enjoyed reading it. Thanks for your contribution!  -->
+
 ![](images/HTMHell%20-%20History.png)
 _Timeline showing the adaptation of each version of HTML, along with other key technology releases, phases in the Web design & development, Web eras, and the dominant browser at the time._
 
-_**Note**  HTML standards are developed first in browsers, so the version might have already became the de facto standard before the official standard document is releaseed._
+<!-- Manuel: please add an alt for the image with to most important details: start and end date, major milestones -->
 
-In the beginning, Tim Berners-Lee created the World Wide Web. This has made a lot of people very angry and , putting all of humanity in constant contact with each other, is viewed by some as a bad move.
+<p class="highlight">
+<strong>Note:</strong> HTML standards are developed first in browsers, so the version might have already became the de facto standard before the official standard document is released.
+</p>
+
+In the beginning, Tim Berners-Lee created the World Wide Web. This has made a lot of people very angry and, putting all of humanity in constant contact with each other, is viewed by some as a bad move.
+<!-- Manue: "is viewed by some as a bad move" <- reference? -->
 
 Before the Web, [the Internet](https://en.wikipedia.org/wiki/Internet) was motes of order in chaos, islands of information segregated by a seemingly impenetrable ocean with no clear and easy path to travel between them. The Internet could, in theory, connect all of humanity, but it needed an easy to use and understandable system for people not so well versed in the vagaries of the command line prompt. The core of that system is the Hypertext Markup Language, and much of humanity uses HTML in some way or form on a daily basis… whether they know it or not.
 
 In 1989, Tim had an idea while working at the [CERN Laboratory in Switzerland](https://en.wikipedia.org/wiki/CERN):
 
-> I just had to take the [hypertext](https://en.wikipedia.org/wiki/Hypertext) idea and connect it to the Transmission Control Protocol TCP [Transmission Control Protocol] and domain name system ideas and—ta-da!—the World Wide Web.
+<blockquote>
+I just had to take the <a href="https://en.wikipedia.org/wiki/Hypertext">hypertext</a> idea and connect it to the Transmission Control Protocol TCP [Transmission Control Protocol] and domain name system ideas and—ta-da!—the World Wide Web.
+</blockquote>
+<!-- Manuel: I know, this isn't a scientific paper, but it'd be intersting to know were you got this quote from. -->
 
-This would be called the _Hypertext Transfer Protocol_, but you probably see it every day as `http://`. Although initially intended as a way to share scientific papers, Burners-Lee quickly realized it would do a lot more than that:
+This would be called the _Hypertext Transfer Protocol_, but you probably see it every day as `http://`. Although initially intended as a way to share scientific papers, Berners-Lee quickly realized it would do a lot more than that:
 
-> I designed it for a social effect — to help people work together — and not as a technical toy.
+
+<blockquote>
+I designed it for a social effect — to help people work together — and not as a technical toy.
+</blockquote>
+<!-- Manuel: Source? -->
 
 His vision has led us to today, where the Web is now the predominant information platform for the planet Earth, and the language he created to create documents, HTML, is used by billions.
 
-Unlike other systems at the time that were making use of the growth of home computers and modems — like [AOL](https://en.wikipedia.org/wiki/AOL)and [Compuserve](https://en.wikipedia.org/wiki/CompuServe) — Burners-Lee provided the World Wide Web as a free and open standard:
+Unlike other systems at the time that were making use of the growth of home computers and modems — like [AOL](https://en.wikipedia.org/wiki/AOL) and [Compuserve](https://en.wikipedia.org/wiki/CompuServe) — Berners-Lee provided the World Wide Web as a free and open standard:
 
-> The web is for everyone. It should be accessible to people with disabilities and be available in whatever language they speak. 
-![_Tim Burners-Lee (left) did **not** invent the Internet. He did invent the Web and HTML._
-_Vinton G Cerf (right) did **not** invent the Web. He and Robert Kahn did invent the Internet._](Tim%20tshirt.png)
+<blockquote>
+The web is for everyone. It should be accessible to people with disabilities and be available in whatever language they speak. 
+</blockquote>
+<!-- Manuel: Source? -->
+
+![_Tim Berners-Lee (left) did **not** invent the Internet. He did invent the Web and HTML._
+_Vinton G Cerf (right) did **not** invent the Web. He and Robert Kahn did invent the Internet._](images/Tim_tshirt.png)
 
 
 ## HTML: The Early Years (1990 – 1991)
@@ -55,15 +74,21 @@ In 1990, this was big stuff!
 
 The first public mention of HTML was an informal CERN document in 1991, listing just 18 tags. There are now around 140. The Web in those early years was just an academic curiosity used by Universities… well, used by tech geeks at a few universities. The HTML tags were so informal that they were really defined more by whatever the person who wrote the Web browser code wanted them to be and they could (and did) just make up their own.
 
-Although there were a few web browsers available, there was one that rose to popularity amongst the tech geeks of the time.  _[Mosaic](https://en.wikipedia.org/wiki/Mosaic_(web_browser))_, released in 1993, was co-created by a young starry eyed student named of [Marc Andreessen](https://en.wikipedia.org/wiki/Marc_Andreessen) at the University of Illinois at Urburna-Champaign. Marc decided it was such a good idea that, in 1994, he released _[Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_Navigator)_ as a consumer product. Free from academic constrains, Netscape could add features and functionality to appeal to non-academics as well as add whatever tags they felt appropriate. These tags that were tags were referred to as HTML+.
+Although there were a few web browsers available, there was one that rose to popularity amongst the tech geeks of the time.  _[Mosaic](https://en.wikipedia.org/wiki/Mosaic_(web_browser))_, released in 1993, was co-created by a young starry eyed student named of [Marc Andreessen](https://en.wikipedia.org/wiki/Marc_Andreessen) at the University of Illinois at Urburna-Champaign. Marc decided it was such a good idea that, in 1994, he released _[Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_Navigator)_ as a consumer product. Free from academic constrains, Netscape could add features and functionality to appeal to non-academics as well as add whatever tags they felt appropriate. These tags were referred to as HTML+.
 
 This freedom led to a lot of growth in what the Web could do with tags for greater styling (remember, CSS is still several years off) and structure. Added during this time were tags we take for granted like tables, forms, and inline images.
 
 This freedom also led to a few really terrible tags, for example Netscape introduced `<blink>`, which, in case you can’t tell, caused the enclosed content to blink on and off. No, you couldn’t control the speed. No, you couldn’t make it stop. The text just blinked on and off… on and off… on and off… and would keep doing that until you left the page.
-![WHATEVER YOU DO, DON’T BLINK!](blink_main.gif)
+![WHATEVER YOU DO, DON’T BLINK!](images/blink_main.gif)
+<!-- Manuel:
+Add proper alt, please -->
+
 Unfortunately, this also meant that if you used tags recognized by one browser there was no guarantee they would be implemented or even included by another. This lead to problems when your web page didn’t display the way you intended. Fortunately, HTML is a very forgiving language, and if the browser didn’t recognize a tag it was supposed to just ignore it completely. Still, imagine if you had set up a data table for your web page. If the user’s browser didn’t recognize the `<table>` tag, all that information becomes an unintelligible mess.
 
 Another problem on the horizon was that there was no guarantee that the different browser makers would agree on what each tag specifically did or even what to call them. One browser might display a `<p>` with the first line indented, while another could require you to add an extra `<p>` or  `<br><br>` to add a space between paragraphs (which actually became the standard we still use today). There was a need for some kind of standard for HTML if the Web was going to grow out of its infancy.
+
+<!-- Manuel:
+That sounds like <br><br> is the current standard  -->
 
 In 1994, Tim started The World Wide Web Consortium, at first to create standards for HTML that could be agreed upon and used by anyone creating browsers and websites.
 
@@ -72,10 +97,11 @@ Netscape would rule the early web until Microsoft, seeing the threat to their de
 More on that in a bit.
 
 ![](images/NSvIE.jpg)
+<!-- Manuel: alt please -->
 
 ### My Own Private HTMHell: Slammin’ Ps
 
-I was first introduced to the Web and HTML in the fall of 1994, when I started at Rensselaer Polytechnic Institute for my Masters in Communication. I’d heard some rumbling about this new fangled Web thingy earlier in the year while working computer tech at another University, but I had my Gopher and that was good enough for me.
+I was first introduced to the Web and HTML in the fall of 1994, when I started at Rensselaer Polytechnic Institute (RPI) for my Masters in Communication. I’d heard some rumbling about this new fangled Web thingy earlier in the year while working computer tech at another University, but I had my Gopher and that was good enough for me.
 
 At RPI, I fell in with a rowdy crowd of Communication PhD and Master students, one of whom had co-authored the first book about the web, _The World Wide Web Unleashed_. 
 
@@ -86,6 +112,9 @@ At the time, being able to display images was still pretty new, and background i
 To create web pages required you to code them using a command line prompt in a terminal. I still get hives at the very mention of using a command line, but I was determined to learn HTML. So, despite my trepidation, I tucked into command line editing. 
 
 To code and write the pages you had to go back and forth between code mode and text mode. In code mode you could add tags but not text. In text mode you could add text but any code would be treated as text. Switching between these modes could take up to 30 seconds to load each time. 
+
+<!-- Manuel:
+hahaha omg that sounds horrible -->
 
 If you forgot to add the `<p>` in code mode or thoughtlessly added them in text mode (which happened painfully often), you had to go back, delete all of the `<p>`s in text mode and reinsert them in code mode which could take a lot of time as the system lumbered between modes — you added the tag and then switched back to go to the next spot to add the next tag. I spent many hours doing that at first.
 
@@ -119,6 +148,7 @@ Although it didn’t last long as a standard, HTML3, brought the standard fully 
 Instead of starting from scratch, the W3C worked to refine the 2.0 standard, releasing  HTML 3.2 (code named _wilbur_ for reasons no one is sure of) in January of 1997 HTML4 was released a little less than twelve months later in December.
 
 By 1997, the Web was beginning to take off as a commercial platform. HTML 3.2 standardized features we take for granted today like tables, text flow around images, and inputs. Crucially, HTML 3.2 was backwards compatible with HTML 2, meaning that older Web pages could be displayed, something that still holds true to today. Although some tags were [depreciated](https://en.wikipedia.org/wiki/Deprecation?wprov=sfti1#) — most notably `<blink>` and `<marque>` to the celebration of many — it secured HTML’s future as a stable standard that could be relied on. In fact, the one serious attempt to move away from the principle of backwards compatibility ended in time waisting disgrace. But we’ll talk more about XHTML2 in a bit.
+<!-- Manuel: :D -->
 
 Although short lived, the [HTML 3.2 recommendation](https://www.w3.org/press-releases/1997/html32-rec/) set the stage for keeping the standard free and open, so that no one company could monopolize or privatize it. Instead, the W3C the took public input and invited experts and company representatives  to help guide its development and approve the final recommendations, another principal the W3C still follows.
 
@@ -130,13 +160,15 @@ This was a time known as the Dot-com Boom.
 
 Before CSS introduced the float element, and long before the flex and grid standards, we used tables to create web page layouts. The `<table>` tag was not conceived for this purpose (it was for presenting tabular information and data) but web designers quickly realized they could repurpose it to create columns and rows for [design grids.](https://en.wikipedia.org/wiki/Grid_(graphic_design)) This allowed us a lot more flexibility and spurred a lot of design innovation.
 
-But tables were for from perfect. Although you could turn off the table cell borders and collapse gaps between them, many people didn’t. So Web design from that time is often typified by clunky ridged gray borders and pixelated background images.
+But tables were far from perfect. Although you could turn off the table cell borders and collapse gaps between them, many people didn’t. So Web design from that time is often typified by clunky ridged gray borders and pixelated background images.
 
 ![](images/https://d3h2k7ug3o5pb3.cloudfront.net/image/2020-05-09/29c74050-91ba-11ea-b860-b51df61e7dd1.png)
 
+<!-- Manuel: alt please -->
+
 ## HTML4: Boom Goes the Web (1997 – 2014)
 
-It was the best of times, it was the worst of times. The HTML4 standard was released and JavaScript and CSS, despite browser inconsistencies, were being adapted to create better designs for a more dynamic Web. HTML4 improved tables and forms, introduced support for CSS and JavaScript, allowed better accessibility features and internationalization, you could embed of external content with the `<iframe>` tag (the much maligned `<frame>` tag was deprecated), and plugins like Flash could be added using the `<embed>` tag.
+It was the best of times, it was the worst of times. The HTML4 standard was released and JavaScript and CSS, despite browser inconsistencies, were being adapted to create better designs for a more dynamic Web. HTML4 improved tables and forms, introduced support for CSS and JavaScript, allowed better accessibility features and internationalization, you could embed external content with the `<iframe>` tag (the much maligned `<frame>` tag was deprecated), and plugins like Flash could be added using the `<embed>` tag.
 
 A gold rush began, with start-up companies springing up like weeds. This period was know as the Dot-Com Boom. Everybody and their brother had an idea for how to make money out of the Web, and they all needed someone who knew HTML. Jobs quickly flourished for Information Architects, Visual Designers, and Programmers. The good times of free gourmet meals at work, video arcade break rooms, and corporate parties on cruise lines seemed like it would never end.
 
@@ -181,6 +213,8 @@ Development of XHTML2 was eventually abandoned in 2009 as interest in a more pro
 ## HTML5: A New Hope (2014 – Now)
 
 ![](images/front-end-stack.png)
+
+<!-- Manuel: alt please -->
 
 Although not officially released as a standard until 2014, HTML5 had already become the de facto standard in Web browsers starting around 2010. Coupled with a developing CSS3 and a mature JavaScript, the Web was poised for a new phase. The rise of mobile devices being used to surf the Web meant that we had to start thinking more and more about how Web pages would look on small screens. Rather than creating a site for desktop/laptop and one for mobile, CSS could be used to change the layout of the HTML in response to the screen size. This became most commonly known as _Responsive Web design_.
 
