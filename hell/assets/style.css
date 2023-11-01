@@ -144,7 +144,7 @@ button:hover {
 
 kbd,
 code {
-  background:rgba(0, 0, 0, 0.1);
+  background:rgba(0, 0, 0, 0.15);
   color:#000;
   padding: 0.2rem 0.3rem 0.3rem;
   border-radius: 0.2rem;
@@ -152,6 +152,15 @@ code {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   line-height: 1;
   font-size: 1.5rem;
+}
+
+a code {
+  background:rgba(0, 0, 255, 0.1);
+  text-decoration: underline;
+}
+
+a:hover code {
+  text-decoration: none;
 }
 
 h2 code,
