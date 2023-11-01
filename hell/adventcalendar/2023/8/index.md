@@ -212,7 +212,7 @@ learn cases" like, how can I as someone who teaches people about a11y do a bette
 "learn who your users are and how they use the web" and "learn how to test your code". or is your point that most people stop at the first
 advice? 
 I believe that you have a really good and important point with your "criticism", but I don't find the argument "it's not worth caring about
-semantics, care about users" unsatisfying because it doesn't of guidance.
+semantics, care about users" unsatisfying because it doesn't offer guidance.
 -->
 
 And you know what? It doesn’t matter if you agree with me on the value of semantics. I’m sure you’ll be making the right decisions. After all, you’ve just read a big rant on HTML in the HTMHell advent calendar.
