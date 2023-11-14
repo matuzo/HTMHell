@@ -1,15 +1,15 @@
 ---
 title: "The Hellish History of HTML"
 layout: layouts/advent.md
-author: "author"
+author: "Jason Cranford Teague"
 author_bio: "<p>bio</p>"
 date: 2023-12-05
 tags: advent2023
 active: true
 status:
   review_manuel: "done"
-  review_eric: "reading"
-  review_saptak: "open"
+  review_eric: "done"
+  review_saptak: "skipped"
 ---
 An incomplete and personal account
 
