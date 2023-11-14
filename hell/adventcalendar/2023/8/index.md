@@ -20,7 +20,7 @@ intro: "<p>HTML semantics is a nice idea, but does it really make a differen
 status:
   review_manuel: "done"
   review_eric: "done"
-  review_saptak: "open"
+  review_saptak: "skipped"
 ---
 
 HTML semantics is a nice idea, but does it really make a difference? There’s a huge gap between HTML spec’s good intentions and what browsers and screen readers are willing to implement. Writing semantic markup only because [the good spec is a spec, and it is good, and it’s a spec](https://youtu.be/EIBRdBVkDHQ) is not the worst approach you can take, but it might lead you to HTMHell.
@@ -75,7 +75,7 @@ For the web standards believers of the old spec, the new one was just a promis
 - Variety of new form elements other than the text ones: dates, emails, numbers, ranges, and colors.
 - Media and interactive elements for video, audio, and graphics.
 
-<!-- Can we link to spec resources for these? This might be a HTML blog, but I bet some of its readers aren't aware of them all. -->
+<!-- Eric: Can we link to spec resources for these? This might be a HTML blog, but I bet some of its readers aren't aware of them all. -->
 
 There was even a logo for semantics in the [HTML 5’s design](https://www.w3.org/html/logo/)!
 
@@ -87,7 +87,7 @@ Apart from extending the list of functional building blocks, the spec added sev
 <i>Boaty McBoatface</i>
 ```
 
-<!-- I love how they tossed boat names in like, "Uhhh, and boat names! Yeah! That too!" 😅 -->
+<!-- Eric: I love how they tossed boat names in like, "Uhhh, and boat names! Yeah! That too!" 😅 -->
 
 Don’t get me wrong, I think HTML 5 significantly advanced the Web, but it has also detached us from reality even further. Especially the idea of an outline algorithm and multiple nested `<h1>` elements that would change the level based on nesting. It was never implemented by any browser but existed in the spec for a long, long time [until finally removed in 2022](https://github.com/whatwg/html/pull/7829).
 
@@ -203,16 +203,13 @@ But I think there’s a better one, relying not only on good intentions but s
 <blockquote>If you care about users, your markup will be fully accessible.‌‌</blockqoute>
 
 <!-- Manuel: 
-"f you care about users" <- but was does that mean?
-I really like how you build up the article. You did a great job of explaining your criticism and how your perspective changed but your
-article fails to offer an alternative. yes, don't believe that "according to spec" means "accessibility"! yes, obessing over stuff the 
-specs says just because it's in the spec is nonsense! yes, we should focus more on users and UX, but how does that contradict with following 
-the spec? I believe you need to elaborate the sentence "But if you decide to follow the spec, please don’t forget to test your code and 
-learn cases" like, how can I as someone who teaches people about a11y do a better job? what better advice can I give them than "learn HTML",
-"learn who your users are and how they use the web" and "learn how to test your code". or is your point that most people stop at the first
+"if you care about users" <- but was does that mean?
+I really like how you build up the article. You did a great job of explaining your criticism and how your perspective changed but your article fails to offer an alternative. 
+yes, don't believe that "according to spec" means "accessibility"! 
+yes, obessing over stuff the specs says just because it's in the spec is nonsense! 
+yes, we should focus more on users and UX, but how does that contradict with following the spec? I believe you need to elaborate the sentence "But if you decide to follow the spec, please don’t forget to test your code and learn cases" like, how can I as someone who teaches people about a11y do a better job? what better advice can I give them than "learn HTML", "learn who your users are and how they use the web" and "learn how to test your code". or is your point that most people stop at the first
 advice? 
-I believe that you have a really good and important point with your "criticism", but I don't find the argument "it's not worth caring about
-semantics, care about users" unsatisfying because it doesn't offer guidance.
+I believe that you have a really good and important point with your "criticism", but I don't find the argument "it's not worth caring about semantics, care about users" unsatisfying because it doesn't offer guidance.
 -->
 
 And you know what? It doesn’t matter if you agree with me on the value of semantics. I’m sure you’ll be making the right decisions. After all, you’ve just read a big rant on HTML in the HTMHell advent calendar.
