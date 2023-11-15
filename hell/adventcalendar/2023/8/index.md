@@ -35,8 +35,8 @@ Back then, I considered HTML a simple set of visual building blocks. It was 
 
 ```html
 <marquee
-behavior="alternate"
-scrollamount="7"
+  behavior="alternate"
+  scrollamount="7"
 ></marquee>
 ```
 </marquee>
