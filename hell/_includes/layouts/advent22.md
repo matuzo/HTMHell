@@ -26,7 +26,7 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 ## More articles
 
 {% assign previousPost = collections.advent2023 | getPreviousCollectionItem: page %}
-{% assign nextPost = collections.advent2023 | getNextCollectionItem: page %}
+{% assign nextPost = collections.advent2022 | getNextCollectionItem: page %}
 
 <nav aria-label="Select next or previous entry">
 <ol class="page-nav">
