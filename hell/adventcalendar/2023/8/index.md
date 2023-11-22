@@ -58,6 +58,12 @@ Back then, I considered HTML a simple set of visual building blocks. It was 
   </button>
 </p>
 
+<script>
+  if (matchMedia('(prefers-reduced-motion)').matches) {
+    document.getElementById('marquee').stop();
+  }
+</script>
+
 That was just the beginning: soon, I needed calendars, popups, icons, etc. It turned out I had to code them myself! And so I did, mainly using divs, spans, and some CSS. Back in the mid-2000s, there weren’t any particular “logical” tags or functional widgets, only the ones you’d find on a typical text editor panel.
 
 But at some point, a trend called “[web standards](https://www.webstandards.org/)” emerged: it suggested to stop using HTML as a set of visual blocks and start thinking about the meaning of the content and wrapping it into appropriate tags: `<table>` only for tabular data, not layout; `<blockquote>` only for quotes, not indentation, etc. The people bringing the web standards gospel were convincing enough, so I joined the movement.
@@ -181,7 +187,7 @@ Following spec’s recommendations with semantic markup might still be a good 
 
 But I think there’s a better one, relying not only on good intentions but seeking a good result.
 
-<blockquote>If you care about users, your markup will be fully accessible.‌‌</blockqoute>
+<blockquote>If you care about users, your markup will be fully accessible.‌‌</blockquote>
 
 <!-- Manuel:
 "if you care about users" <- but was does that mean?
