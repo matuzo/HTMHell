@@ -122,7 +122,8 @@ blockquote::after {
 }
 
 .js-focus-visible .focus-visible {
-  outline: 5px solid #a83636;
+  outline: 4px solid #a83636;
+  outline-offset: 2px;
 }
 
 button {
@@ -939,7 +940,7 @@ pre.language-html::before {
   overflow: auto;
 }
 
-.acalendar {
+.acalendar--calendar {
   font-family: UnifrakturCook, sans-serif;
   list-style: none;
   display: grid;
@@ -953,22 +954,29 @@ pre.language-html::before {
   grid-auto-flow: dense;
 }
 
+.acalendar--title .acalendar__number, 
+.acalendar--calendar .acalendar__title {
+  display: none;
+}
+
+
+
 .beauty * {
   font-family: "Lobster", UnifrakturCook, sans-serif !important;
 }
 
-.acalendar__day {
+.acalendar--calendar > li {
   font-size: 8rem;
   margin-bottom: 0;
   /* perspective: 1000px;  */
   cursor: default;
 }
 
-.acalendar__day[data-day] {
+.acalendar--calendar > li[data-day] {
   cursor: pointer;
 }
 
-.acalendar__day div {
+.acalendar--calendar > li div {
   border: 2px solid #000;
   display: flex;
   height: 100%;
@@ -976,19 +984,19 @@ pre.language-html::before {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .acalendar__day div {
+  .acalendar--calendar > li div {
     transition: transform .3s linear;
   }
 }
 
-.acalendar__day[data-day]:focus-within div,
-.acalendar__day[data-day]:hover div,
-.acalendar__day--opened div {
+.acalendar--calendar > li[data-day]:focus-within div,
+.acalendar--calendar > li[data-day]:hover div,
+.acalendar--calendar > li.opened div {
   transform: rotateY(-180deg);
 }
 
-.acalendar__day span,
-.acalendar__day a {
+.acalendar--calendar > li span,
+.acalendar--calendar > li a {
   height: 100%;
   display: flex;
   width: 100%;
@@ -998,7 +1006,7 @@ pre.language-html::before {
   align-items: center;
 }
 
-.acalendar__day span {
+.acalendar--calendar > li span {
   background: #000 url('/assets/pentagramm-red.svg') center center no-repeat;
   background-size: contain;
   color: #fff;
@@ -1006,7 +1014,7 @@ pre.language-html::before {
   background-origin: content-box;
 }
 
-.acalendar__day a {
+.acalendar--calendar > li a {
   transform: translateZ(-1px) translateX(-100%) rotateY(180deg);
   background: linear-gradient(270deg, #eb1b1b, #620b0b);
   background: #fff;
@@ -1014,59 +1022,88 @@ pre.language-html::before {
   color: #000;
 }
 
-.acalendar__day--opened a:hover {
+.acalendar--calendar > li--opened a:hover {
   background: #eb1b1b;
   color: #fff;
 }
 
 
-.acalendar__day:nth-child(3) { order: 1; }
+.acalendar--calendar > li:nth-child(3) { order: 1; }
 
-.acalendar__day:nth-child(22) { order: 2; }
+.acalendar--calendar > li:nth-child(22) { order: 2; }
 
-.acalendar__day:nth-child(17) { order: 3; }
+.acalendar--calendar > li:nth-child(17) { order: 3; }
 
-.acalendar__day:nth-child(19) { order: 4; }
+.acalendar--calendar > li:nth-child(19) { order: 4; }
 
-.acalendar__day:nth-child(6) { order: 5;}
+.acalendar--calendar > li:nth-child(6) { order: 5;}
 
-.acalendar__day:nth-child(7) { order: 6; }
+.acalendar--calendar > li:nth-child(7) { order: 6; }
 
-.acalendar__day:nth-child(5) { order: 7}
+.acalendar--calendar > li:nth-child(5) { order: 7}
 
-.acalendar__day:nth-child(12) { order: 8}
+.acalendar--calendar > li:nth-child(12) { order: 8}
 
-.acalendar__day:nth-child(24) { order: 9; grid-column: span 2;}
+.acalendar--calendar > li:nth-child(24) { order: 9; grid-column: span 2;}
 
-.acalendar__day:nth-child(9) { order: 10}
+.acalendar--calendar > li:nth-child(9) { order: 10}
 
-.acalendar__day:nth-child(20) { order: 11}
+.acalendar--calendar > li:nth-child(20) { order: 11}
 
-.acalendar__day:nth-child(23) { order: 12}
+.acalendar--calendar > li:nth-child(23) { order: 12}
 
-.acalendar__day:nth-child(10) { order: 13}
+.acalendar--calendar > li:nth-child(10) { order: 13}
 
-.acalendar__day:nth-child(8) { order: 14}
+.acalendar--calendar > li:nth-child(8) { order: 14}
 
-.acalendar__day:nth-child(15) { order: 15}
+.acalendar--calendar > li:nth-child(15) { order: 15}
 
-.acalendar__day:nth-child(4) { order: 16}
+.acalendar--calendar > li:nth-child(4) { order: 16}
 
-.acalendar__day:nth-child(2) { order: 17}
+.acalendar--calendar > li:nth-child(2) { order: 17}
 
-.acalendar__day:nth-child(11) { order: 18}
+.acalendar--calendar > li:nth-child(11) { order: 18}
 
-.acalendar__day:nth-child(18) { order: 19}
+.acalendar--calendar > li:nth-child(18) { order: 19}
 
-.acalendar__day:nth-child(14) { order: 20}
+.acalendar--calendar > li:nth-child(14) { order: 20}
 
-.acalendar__day:nth-child(16) { order: 21}
+.acalendar--calendar > li:nth-child(16) { order: 21}
 
-.acalendar__day:nth-child(21) { order: 22}
+.acalendar--calendar > li:nth-child(21) { order: 22}
 
-.acalendar__day:nth-child(1) { order: 23}
+.acalendar--calendar > li:nth-child(1) { order: 23}
 
-.acalendar__day:nth-child(13) { order: 24}
+.acalendar--calendar > li:nth-child(13) { order: 24}
+
+.acalendar-view {
+  text-align: end;
+}
+
+.acalendar-view h2 {
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-size: 1.6rem;
+}
+
+.acalendar-view p {
+  display: flex;
+  justify-content: end;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.acalendar-view button {
+  line-height: 1;
+  padding: 0.5em 0.8em;
+}
+
+.acalendar-view button:not([aria-pressed="true"]) {
+  background-color: #FFF;
+  color: #d72b2b;
+  color: #000;
+  /* color: #000; */
+}
 
 .code-label {
   margin-bottom: 0;
