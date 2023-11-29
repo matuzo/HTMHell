@@ -117,6 +117,10 @@ blockquote::after {
   content: close-quote;
 }
 
+blockquote>p:only-child {
+  display: inline;
+}
+
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
 }
@@ -1241,6 +1245,10 @@ pre.language-html::before {
   padding: 1rem 1rem 0.5rem;
   line-height: 1.5;
   font-size: 2rem;
+}
+
+.highlight>p:last-child {
+margin-bottom: 0;
 }
 
 .advent li {
