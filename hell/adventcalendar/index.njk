@@ -11,10 +11,20 @@ tags:
 ---
 
 {% macro day(num) %}
-  {% set days = collections.advent2022 %}
-  <li class="acalendar__day" {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
-    <div>
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2022/{{ num }}"{% endif %}>{{ num }}</a>
+  {% set days = collections.advent2023 %}
+  <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
+    <div class="acalendar__number">
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2023/{{ num }}"{% endif %}>{{ num }}</a>
+    </div>
+
+    <div class="acalendar__title">
+      {% if days[num - 1].data.active %}
+      <a href="/adventcalendar/2023/{{ num }}">
+        {{ days[num - 1].data.title }}
+      </a>
+      {% else %}  
+      ???
+      {% endif %}  
     </div>
   </li>
 {% endmacro %}
@@ -31,27 +41,19 @@ tags:
 </p>
 
 <p>
-  I'll publish them one by one every day starting December 1st.<br> In the meantime, you can check out last year's posts or the first unofficial calendar, which only links to existing articles on other sites.
+  Starting December 1st, I'll publish them one by one every day.
 </p>
 
-<p>
-    <a href="/adventcalendar/2022">
-      HTMHell Advent calendar 2022
-    </a>
-    <br>
-    <a href="/adventcalendar/2021">
-      HTMHell Advent calendar 2021
-    </a>
-</p>
+<div class="acalendar-view">
+  <h2>View</h2>
+  <p>
+    <button aria-pressed="true" data-view="calendar">Calendar</button>
+    <button aria-pressed="false" data-view="title">Title</button>
+  </p>
+</div>
 
-<p>
-Yours truly,<br>
-Manuel 🖤
-</p>
-
-<!--
 <div class="preview">
-<ul class="acalendar">
+<ul class="acalendar acalendar--calendar">
   {{ day(1) }}
   {{ day(2) }}
   {{ day(3) }}
@@ -79,29 +81,50 @@ Manuel 🖤
 </ul>
 </div>
 
-{# <h2>Linked resources</h2>
+<script>
+  const preview = document.querySelector('.acalendar-view');
+  const calendar = document.querySelector('.acalendar')
+  preview.addEventListener('click', e => {
+    const clicked = e.target.closest('button')
+    if (clicked) {
+      const active = preview.querySelector('[aria-pressed="true"]')
+      active.setAttribute('aria-pressed', false)
+      clicked.setAttribute('aria-pressed', true)
 
-<ol>
-  {% for dayDone in days %}
-    {% if dayDone.active %}
-    <li>
-        <a href="{{ dayDone.url }}">
-          {{ dayDone.title }}
-        </a>
-        by {{ dayDone.author }}
-    </li>
-    {% endif %}
-  {% endfor %}
-</ol> #}
+      calendar.classList = `acalendar acalendar--${clicked.dataset.view}`
+      localStorage.setItem('html_calendar23view', clicked.dataset.view)
+    }
+  })
+
+  if (localStorage.getItem('html_calendar23view')) {
+    calendar.classList = `acalendar acalendar--${localStorage.getItem('html_calendar23view')}`
+  }
+
+</script>
+
+<p>
+  You can check out last year's posts or the first unofficial calendar, which only links to existing articles on other sites.
+</p>
+
+<p>
+    <a href="/adventcalendar/2022">
+      HTMHell Advent calendar 2022
+    </a>
+    <br>
+    <a href="/adventcalendar/2021">
+      HTMHell Advent calendar 2021
+    </a>
+</p>
+
 
 <script>
-  var opened = localStorage.getItem('html_opened') ? JSON.parse(localStorage.getItem('html_opened')) : [];
+  var opened = localStorage.getItem('html_opened23') ? JSON.parse(localStorage.getItem('html_opened23')) : [];
 
   setTimeout(() => {
     if (opened.length) {
       for (let i = 0; i < opened.length; i++) {
         if (document.querySelector(`[data-day="${opened[i]}"]`)) {
-          document.querySelector(`[data-day="${opened[i]}"]`).classList.add('acalendar__day--opened')
+          document.querySelector(`[data-day="${opened[i]}"]`).classList.add('opened')
         }
       }
     }
@@ -111,7 +134,7 @@ Manuel 🖤
     if (e.target.closest('li').dataset.day) {
       if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
         opened.push(e.target.closest('li').dataset.day)
-        localStorage.setItem('html_opened', JSON.stringify(opened))
+        localStorage.setItem('html_opened23', JSON.stringify(opened))
       }
     }
   });
@@ -120,5 +143,3 @@ Manuel 🖤
 
 {# https://francescoschwarz.com/articles/aesthetics-of-the-invisible/ #}
 {# https://mailchi.mp/197063a30c2d/underlines?e=83956672f1 #}
-
--->
