@@ -44,13 +44,13 @@ tags:
   Starting December 1st, I'll publish them one by one every day.
 </p>
 
-<div class="acalendar-view">
-  <h2>View</h2>
+<fieldset class="acalendar-view">
+  <legend>View</legend>
   <p>
     <button aria-pressed="true" data-view="calendar">Calendar</button>
     <button aria-pressed="false" data-view="title">Title</button>
   </p>
-</div>
+</fieldset>
 
 <div class="preview">
 <ul class="acalendar acalendar--calendar">
@@ -87,17 +87,22 @@ tags:
   preview.addEventListener('click', e => {
     const clicked = e.target.closest('button')
     if (clicked) {
-      const active = preview.querySelector('[aria-pressed="true"]')
-      active.setAttribute('aria-pressed', false)
-      clicked.setAttribute('aria-pressed', true)
-
-      calendar.classList = `acalendar acalendar--${clicked.dataset.view}`
+      updateView(clicked.dataset.view, clicked);
       localStorage.setItem('html_calendar23view', clicked.dataset.view)
     }
   })
 
+  const updateView = (type, button) => {
+    const active = preview.querySelector('[aria-pressed="true"]')
+    active.setAttribute('aria-pressed', false)
+    button.setAttribute('aria-pressed', true)
+    
+    calendar.classList = `acalendar acalendar--${type}`
+  }
+
   if (localStorage.getItem('html_calendar23view')) {
-    calendar.classList = `acalendar acalendar--${localStorage.getItem('html_calendar23view')}`
+    const type = localStorage.getItem('html_calendar23view')
+    updateView(type, document.querySelector(`button[data-view="${type}"]`))
   }
 
 </script>
