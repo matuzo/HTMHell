@@ -33,10 +33,13 @@ tags:
     <a href="{{ day.url }}">
       {{ day.data.title | safe  }}
     </a>
-    
+
+  {% if day.data.status %}
     <div class="status status--{{ day.data.status.review_manuel }}">Manuel: <span>{{ day.data.status.review_manuel or 'open' }}</span></div>
     <div class="status status--{{ day.data.status.review_eric }}">Eric: <span>{{ day.data.status.review_eric or 'open' }}</span></div>
     <div class="status status--{{ day.data.status.review_saptak }}">Saptak: <span>{{ day.data.status.review_saptak or 'open' }}</span></div>
+  {% endif %}
+
   </li>
 {% endmacro %}
 

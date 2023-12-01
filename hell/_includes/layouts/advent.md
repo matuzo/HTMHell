@@ -8,10 +8,12 @@ layout: layouts/base.njk
 
 by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> 
 
+{% if status %}
 <div class="status status--{{ status.review_manuel }} ">Manuel: <span>{{ status.review_manuel or 'open' }}</span></div>
 <div class="status status--{{ status.review_eric }} ">Eric: <span>{{ status.review_eric or 'open' }}</span></div>
 <div class="status status--{{ status.review_saptak }} ">Saptak: <span>{{ status.review_saptak or 'open' }}</span></div>
 <br><br>
+{% endif %}
 
 {{ content | safe }}
 
@@ -25,8 +27,8 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 
 ## More articles
 
-{% assign previousPost = collections.advent2022 | getPreviousCollectionItem: page %}
-{% assign nextPost = collections.advent2022 | getNextCollectionItem: page %}
+{% assign previousPost = collections.advent2023 | getPreviousCollectionItem: page %}
+{% assign nextPost = collections.advent2023 | getNextCollectionItem: page %}
 
 <nav aria-label="Select next or previous entry">
 <ol class="page-nav">
