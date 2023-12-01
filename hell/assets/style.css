@@ -1077,13 +1077,17 @@ pre.language-html::before {
 .acalendar--calendar > li:nth-child(13) { order: 24}
 
 .acalendar-view {
-  text-align: end;
+  border: none;
+  padding: 0;
 }
 
-.acalendar-view h2 {
+.acalendar-view legend {
+  text-align: end;
   text-transform: uppercase;
-  margin-bottom: 0;
   font-size: 1.6rem;
+  font-weight: bold;
+  display: block;
+  width: 100%;
 }
 
 .acalendar-view p {
