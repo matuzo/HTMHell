@@ -2,7 +2,7 @@
 title: "The road to HTMHell is paved with semantics"
 layout: layouts/advent.md
 author: "Vadim Makeev"
-author_bio: "Frontend developer in love with the Web, browsers, bicycles, and podcasting."
+author_bio: "Frontend developer in love with the Web, browsers, bicycles, and podcasting. MDN technical writer, Google Developer Expert."
 date: 2023-12-08
 tags: advent2023
 author_links:
@@ -83,7 +83,7 @@ But then came the [Cambrian explosion](https://en.wikipedia.org/wiki/Cambrian_ex
 
 Just after the failed promise of [XHTML](https://en.wikipedia.org/wiki/XHTML), HTML 5 brought us new hope. Many new elements were added based on existing naming conventions to pave the cow paths. The new spec has challenged browsers for years ahead, from supporting the new parsing algorithm to default styles and accessibility mappings.
 
-For the web standards believers of the old spec, the new one was just a promised land:
+For the Web standards believers of the old spec, the new one was just a promised land:
 
 - [Landmarks](https://developer.mozilla.org/en-US/blog/aria-accessibility-html-landmark-roles/) to mark logical parts like headers, footers, asides, navigations, sections, and articles.
 - Variety of new form elements other than the text ones: [dates](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date), [emails](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email), [numbers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number), [ranges](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range), and [colors](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color).
@@ -150,7 +150,7 @@ There are usually three main obstacles:
 2. Different points of view: for the same reason, automated testing won’t save you from accessibility issues, different user agents might have other points of view on certain platform features.
 3. Actual user experience: browsers call themselves “user agents” for a reason. When a specific platform feature or how developers use it hurts the users, browsers tend to intervene.
 
-For example, the following list won’t be exposed as a list to VoiceOver in Safari only because you decided to disable default counters and implement custom ones via CSS pseudo-elements.
+For example, the following list won’t be exposed as a list to VoiceOver in Safari only because you decided to disable default bullets and implement custom ones via CSS pseudo-elements.
 
 ```html
 <ul style="list-style: none">
@@ -171,28 +171,16 @@ Does it mean we should immediately stop using semantic elements if they don�
 
 There’s also a future-proofing argument that suggests using semantic markup with the hope that someday, browsers will start supporting all those elements they choose to ignore now. I wouldn’t rely on it too much and prefer to focus on what’s important right now.
 
-But if you decide to follow the spec, please don’t forget to test your code and learn cases when semantic markup is less optimal or even harmful for your users, as well as the cases when it’s essential for user experience or just neutral.
-
 I used to be among those people who’d judge the quality of a website based on the number of divs it’s built of. We’d say, “Nah, too many divs, it’s not semantic.” Now I know that **what’s inside of those divs matters the most**. Enough landmarks, headings, links, and buttons would make it good, even if the divs/semantic elements ratio is 1000 to 10. We are _divelopers,_ [as Chris Coyer once said](https://twitter.com/chriscoyier/status/1050456501414838272). Don’t be ashamed of this, wear this name with pride.
 
-## Good result
+## Training wheels
 
-Following spec’s recommendations with semantic markup might still be a good start, and I mostly agree with this idea often expressed by accessibility experts:
+Following spec’s recommendations with semantic markup is still a good start, especially when you treat it as not just the list of available elements. I mostly agree with this idea often expressed by accessibility experts:
 
 <blockquote>If you write semantic markup, it will be mostly accessible.</blockquote>
 
-But I think there’s a better one, relying not only on good intentions but seeking a good result.
+But to me, it sounds like a simple answer to a complex question. The HTML spec might be a good set of training wheels, but at some point, you’ll have to take them off. Not everything can be solved by semantic markup, for example, you’ll need to learn ARIA to create any modern interactive UI. There’s just not enought semantic elements for everything!
 
-<blockquote>If you care about users, your markup will be fully accessible.‌‌</blockquote>
+There are many simple answers waiting for you in the spec or articles praising semantics as the only thing you need. There are even more compromises made in modern frameworks in the name of better developer experience. And they aren’t all wrong! But if you keep your focus on the user experience, on the actual quality of the user interface, you’ll be able to make the right decisions.
 
-<!-- Manuel:
-"if you care about users" <- but was does that mean?
-I really like how you build up the article. You did a great job of explaining your criticism and how your perspective changed but your article fails to offer an alternative.
-yes, don't believe that "according to spec" means "accessibility"!
-yes, obessing over stuff the specs says just because it's in the spec is nonsense!
-yes, we should focus more on users and UX, but how does that contradict with following the spec? I believe you need to elaborate the sentence "But if you decide to follow the spec, please don’t forget to test your code and learn cases" like, how can I as someone who teaches people about a11y do a better job? what better advice can I give them than "learn HTML", "learn who your users are and how they use the web" and "learn how to test your code". or is your point that most people stop at the first
-advice?
-I believe that you have a really good and important point with your "criticism", but I don't find the argument "it's not worth caring about semantics, care about users" unsatisfying because it doesn't offer guidance.
--->
-
-And you know what? It doesn’t matter if you agree with me on the value of semantics. I’m sure you’ll be making the right decisions. After all, you’ve just read a big rant on HTML in the HTMHell advent calendar.
+And you know what? It doesn’t matter if you agree with me on the value of semantics. I’m sure you’ll be fine. After all, you’ve just read a big rant on HTML in the HTMHell advent calendar.
