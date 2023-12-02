@@ -34,7 +34,7 @@ metadata:
     <link href="{{ absolutePostUrl }}"/>
     <updated>{{ post.date | rssDate }}</updated>
     <id>{{ absolutePostUrl }}</id>
-    <content type="html">by {{post.data.author }}&lt;br&gt;{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+    <content type="html">by {{post.data.author }}&lt;br&gt;{% if post.data.interactive %}&lt;p&gt;Hello, my dear friend of RSS! This post contains interactive demos. You may want to read it on the website.&lt;/p&gt;{%endif%}{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
   </entry>
   {% endif %}
   {%- endfor %}
