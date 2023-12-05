@@ -91,6 +91,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "./hell/favicon/*": "/" });
   eleventyConfig.addPassthroughCopy("./hell/images");
   eleventyConfig.addPassthroughCopy("./hell/robots.txt");
+  eleventyConfig.addPassthroughCopy("./hell/adventcalendar/**/*.!(md)");
 
   eleventyConfig.addPlugin(pluginPWA);
 
