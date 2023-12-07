@@ -20,7 +20,7 @@ tags:
     <div class="acalendar__title">
       {% if days[num - 1].data.active %}
       <a href="/adventcalendar/2023/{{ num }}">
-        {{ days[num - 1].data.title }}
+        {{ days[num - 1].data.title | safe }}
       </a>
       {% else %}  
       ???
