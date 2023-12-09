@@ -244,3 +244,7 @@ pre.language-html::before {
 pre.language-css::before {
   content: "CSS";
 }
+
+.token.important, .token.regex {
+  color: #673AB7;
+}
