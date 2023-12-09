@@ -1,6 +1,6 @@
 /* Base */
 
- * {
+* {
   box-sizing: border-box;
 }
 
@@ -115,6 +115,10 @@ blockquote::before {
 }
 blockquote::after {
   content: close-quote;
+}
+
+blockquote>p:only-child {
+  display: inline;
 }
 
 .js-focus-visible :focus:not(.focus-visible) {
@@ -1275,6 +1279,34 @@ pre.language-html::before {
   font-size: 2rem;
 }
 
+.highlight>p:last-child {
+margin-bottom: 0;
+}
+
 .advent li {
   margin-bottom: 0.5em;
+}
+
+.status {
+  font-size: 0.9em;
+}
+
+.status span {
+  background-color: #dc0000;
+  color: #fff;
+  padding: 0.2em;
+  border-radius: 4px;
+}
+
+.status--done span {
+  background-color: #1e6f06;
+}
+
+.status--reading span {
+  background-color: #206379;
+}
+
+.status--skipped span {
+  background-color: #b5c1c6;
+  color: #000;
 }
