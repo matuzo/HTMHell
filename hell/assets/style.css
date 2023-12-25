@@ -167,6 +167,10 @@ code {
   font-size: 1.5rem;
 }
 
+code {
+  white-space: pre-wrap;
+}
+
 h2 code,
 h3 code {
   font-size: 0.8em;
