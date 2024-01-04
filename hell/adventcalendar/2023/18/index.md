@@ -172,7 +172,7 @@ Does it mean we should immediately stop using semantic elements if they don�
 
 There’s also a future-proofing argument that suggests using semantic markup with the hope that someday, browsers will start supporting all those elements they choose to ignore now. I wouldn’t rely on it too much and prefer to focus on what’s important right now.
 
-I used to be among those people who’d judge the quality of a website based on the number of divs it’s built of. We’d say, “Nah, too many divs, it’s not semantic.” Now I know that **what’s inside of those divs matters the most**. Enough landmarks, headings, links, and buttons would make it good, even if the divs/semantic elements ratio is 1000 to 10. We are _divelopers,_ [as Chris Coyer once said](https://twitter.com/chriscoyier/status/1050456501414838272). Don’t be ashamed of this, wear this name with pride.
+I used to be among those people who’d judge the quality of a website based on the number of divs it’s built of. We’d say, “Nah, too many divs, it’s not semantic.” Now I know that **what’s inside of those divs matters the most**. Enough landmarks, headings, links, and buttons would make it good, even if the divs/semantic elements ratio is 1000 to 10. We are _divelopers,_ [as Chris Coyier once said](https://twitter.com/chriscoyier/status/1050456501414838272). Don’t be ashamed of this, wear this name with pride.
 
 ## Training wheels
 
