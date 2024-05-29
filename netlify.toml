@@ -4,3 +4,10 @@
 [[redirects]]
   from = "/22-the-good-ol'-div-link"
   to = "/22-the-good-ol-div-link"
+[[headers]]
+  for = "/feed.xml"
+  [headers.values]
+  cache-control = '''
+  max-age=86400,
+  public'''
+  must-revalidate'''
