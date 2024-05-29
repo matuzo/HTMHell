@@ -8,6 +8,6 @@
   for = "/feed.xml"
   [headers.values]
   cache-control = '''
-  max-age=86400,
+  max-age=172800,
   public,
-  must-revalidate='''
+  must-revalidate'''
