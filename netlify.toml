@@ -9,5 +9,5 @@
   [headers.values]
   cache-control = '''
   max-age=86400,
-  public'''
-  must-revalidate'''
+  public='''
+  must-revalidate='''
