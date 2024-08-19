@@ -84,6 +84,11 @@ module.exports = {
       "id": "smellai",
       "name": "Stefania",
       "link": "https://github.com/smellai"
+    },
+    {
+      "id": "moritzgiessmann",
+      "name": "Moritz Gießmann",
+      "link": "https://moritzgiessmann.de"
     }
   ]
 };
