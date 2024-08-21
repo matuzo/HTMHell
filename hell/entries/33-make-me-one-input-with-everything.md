@@ -10,7 +10,7 @@ goodcode: '<label for="textinput">First name</label>
 	<input type="text" id="textinput">'
 ---
 
-You might have heard the joke about the Dalai Lama who walks into a pizza shop saying “Make me one with everything”. Though the good intentions were there, in the HTML and Accessibility world, less is sometimes more.
+The good intentions were there but in the HTML and Accessibility world, less is sometimes more.
 
 <div class="section bad">
 
@@ -26,11 +26,10 @@ You might have heard the joke about the Dalai Lama who walks into a pizza shop s
 ## Issues and how to fix them
 
 
-1. The `aria-label`, `placeholder`, and `title` attributes all provide similar or identical information ("First name"), leading to redundancy and potential confusion.
-1. The `aria-label` is unnecessary in this context since the input is already correctly labeled by the `<label>` element. This can lead to conflicts or confusion for assistive technology users.
+1. The `aria-label`, `placeholder`, and `title` attributes all provide the same informaton ("First name"), leading to the screenreader reading the same text multiple times.
+1. The `aria-label` is unnecessary since the input is already correctly labeled by the `<label>` element. `<label>` elements should be preferred to `aria-label` since they are also visible to sighted users.
 1. The `title` attribute is not needed here, as the label and placeholder already convey the necessary information. Using title in this context adds unnecessary complexity.
 1. The `placeholder` text should provide a hint / example to the user what kind of input is expected, it should not act as a label or contain the same content.
-1. The `placeholder` may not be accessible to all users, particularly those with visual impairments. It should not be relied upon as the primary means of conveying what the input field is for.
 
 </div>
 
