@@ -1,6 +1,6 @@
 ---
 title: "#33 make me one (input) with everything"
-date: 2024-08-19
+date: 2024-08-27
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: moritzgiessmann
@@ -45,6 +45,7 @@ The good intentions were there but in the HTML and Accessibility world, less is 
 <div class="section">
 
 <h2 id="resources">Resources</h2>
+
 - [`<label>` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 - [`aria-label` on MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 - [`placeholder` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/placeholder)
