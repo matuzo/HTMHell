@@ -1,7 +1,7 @@
 ---
-title: "???"
+title: "They almost got it right: The search input"
 layout: layouts/advent.md
-author: "???"
+author: "Steve Frenzel"
 author_bio: "Short intro about yourself"
 date: 2024-12-24
 author_links:
