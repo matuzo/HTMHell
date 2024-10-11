@@ -57,7 +57,7 @@ But imagine this is in a large codebase with many developers working on it. Cons
 
 Now the count of updates is **not** part of the link's accessible name. Screen readers will not announce it. macOS Voice Control users will not be able to say "click Latest updates three" (you would need to omit the "three", macOS Voice Control requires you to say the accessible name exactly). [macOS Hover Text](https://support.apple.com/guide/mac-help/view-a-larger-version-text-reading-typing-mchlb203bc78/mac) will miss the count as well.
 
-<img alt="The mouse hovering the link with 'Latest updates' in black and underlined, with the number 3 on a red circle to the right. macOS Hover Text's overlay is below with only 'Latest updates' in large type, blue and underlined." src="hovertext.png" width="872" height="258" loading="lazy">
+<img alt="The mouse hovering the link with 'Latest updates' in black and underlined, with the number 3 on a red circle to the right. macOS Hover Text's overlay is below with only 'Latest updates' in large type, blue and underlined." src="hovertext.png" width="872" height="252" loading="lazy">
 
 And it's a failure of [WCAG SC 2.5.3 Label in Name](https://www.w3.org/TR/WCAG22/#label-in-name) to boot.
 
