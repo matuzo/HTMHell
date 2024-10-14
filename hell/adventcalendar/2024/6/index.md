@@ -46,7 +46,7 @@ I did only test those browsers on macOS, and I didn't test with different assist
 
 As is, I'd feel like I was nitpicking by requesting the unnecessary `aria-labelledby` to be removed.
 
-But imagine this is in a large codebase with many developers working on it. Consider how easy it would be for someone tasked with adding a notification badge for example to the link to miss the implications of `aria-labelledby`:
+But imagine this is in a large codebase with many developers working on it. Consider how easy it would be for someone tasked with adding a notification badge to the link, for example, to miss the implications of `aria-labelledby`:
 
 ```html
 <a href="/updates" aria-labelledby="contents">
