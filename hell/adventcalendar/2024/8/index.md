@@ -1,5 +1,5 @@
 ---
-title: "Past HTML, Future HTML"
+title: "Past HTML, Future HTML?"
 layout: layouts/advent.md
 author: "Jens Oliver Meiert"
 author_bio: "Jens Oliver Meiert is a frontend engineering leader and tech author/publisher. He specializes in HTML and CSS optimization and maintainability."
@@ -15,7 +15,7 @@ author_links:
     url: "https://x.com/j9t"
     link_label: "@j9t"
 active: true
-intro: "<p>Appreciating HTML code from the past, to challenge our HTML from the present.</p>"
+intro: "<p>Appreciating HTML code from the past, to challenge HTML from the present.</p>"
 image: "advent_8"
 ---
 
@@ -48,17 +48,17 @@ Consider the following HTML document:
 You will notice a few things:
 
 * The unusual doctype
-* The inconsistency in case for elements (most notably, `<p>` vs. `<P>`)
-* The inconsistency in omitting optional tags (as with the `</p>` and `</li>` end tags, while keeping `</body>` and `</html>`)
+* The inconsistencies in element case (most notably, `<p>` vs. `<P>`)
+* The inconsistencies in omitting optional tags (like dropping `</p>` and `</li>` end tags, but keeping `</body>` and `</html>`)
 
-Yet in many respects, this document structure is better than the code we find on most modern websites (and that is sites, not even apps).
+Yet in some respects, this document structure is better than the code we find on many modern websites (and that is sites, not even apps).
 
 Why? What’s to like about this kind of code?
 
-1. _It’s valid._ If you run this and the respective original page’s code through an HTML conformance checker like [the W3C markup validator](https://validator.w3.org/), the code will validate. This is basic _professional_ work [that we rarely see anymore](https://meiert.com/en/blog/html-conformance-2024/).
+1. _It’s valid._ If you run this and the respective original page’s code through an HTML conformance checker like [the W3C markup validator](https://validator.w3.org/), the code will validate. This is basic _professional_ work [that we don’t see often anymore](https://meiert.com/en/blog/html-conformance-2024/).
 
-2. _It’s focused._ There’s close to no superfluous code. While there’s a little bit more [optional markup](https://meiert.com/en/blog/optional-html/) to be removed, perhaps including the “Author” class, one might rather _add_ code, like the style sheet reference that’s conspicuously missing.
+2. _It’s focused._ There’s close to no superfluous code. While there’s a little bit more [optional markup](https://meiert.com/en/blog/optional-html/) to be removed, as well as perhaps the `Author` class, one might rather _add_ code, like the style sheet reference that’s conspicuously missing.
 
-3. _It’s… open-minded._ These inconsistencies, they may rub us, and we might (and maybe should) prefer a consistent formatting. But that shouldn’t distract from the fact that the code is valid, and that it represents legitimate ways of writing HTML—which does mean [HTML, and not XHTML–HTML](https://css-tricks.com/write-html-the-html-way-not-the-xhtml-way/).
+3. _It’s… open-minded._ These inconsistencies, they may rub us, and we likely prefer a consistent formatting. But that shouldn’t distract from the fact that the code is valid (which includes uppercase tag names), and that it represents legitimate ways of writing HTML (which in this case means [HTML–HTML, and not XHTML–HTML](https://css-tricks.com/write-html-the-html-way-not-the-xhtml-way/)).
 
-So where is this code from? It’s from T.V. Raman’s documentation on [style sheets for spoken renderings](https://www.w3.org/Style/CSS/Speech/speech.html), published on February 12, _1996_. The [1990s](https://frontenddogma.com/topics/1990s/) and [2000s](https://frontenddogma.com/topics/2000s/) are behind us in many respects—and yet in some, they may still be ahead.
+So where is this code from? It’s from [T.V. Raman’s](https://en.wikipedia.org/wiki/T._V._Raman) documentation on [style sheets for spoken renderings](https://www.w3.org/Style/CSS/Speech/speech.html), published on February 12, _1996_. The [1990s](https://frontenddogma.com/topics/1990s/) and [2000s](https://frontenddogma.com/topics/2000s/) are behind us in many areas—and yet in some, they may still be ahead.
