@@ -2,51 +2,188 @@
 title: "The devil is in the &lt;details&gt;"
 layout: layouts/advent.md
 author: "J. Pedro Ribeiro"
-author_bio: "Short intro about yourself"
+author_bio: "J. Pedro Ribeiro is Brazilian frontend developer who loves to build performant sites and apps that deliver great user experience."
 date: 2024-12-23
 author_links:
-  - label: "xy Blog"
-    url: "#"
-    link_label: "your-awesome-website.com/blog"
-  - label: "yx on ABC"
-    url: "https://abc-social-media-site"
-    link_label: "@xy"
+  - label: "Blog"
+    url: "https://jpedroribeiro.com/"
+    link_label: "jpedroribeiro.com"
+  - label: "On X (Twitter)"
+    url: "https://twitter.com/jpedroribeiro"
+    link_label: "@jpedroribeiro"
+  - label: "On LinkedIn"
+    url: "https://www.linkedin.com/in/joaopedroribeiro/"
+    link_label: "LinkedIn"
 active: true
-intro: "<p>Short description of the post</p>"
+intro: "<p> intro goes here?</p>"
 image: "advent_23"
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!
-
-## Lorem ipsum dolor sit amet.
-
-Lorem ipsum dolor sit amet `consectetur` adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!
+Not too long ago, building an accordion component would require you to use a combination of JavaScript and CSS. If you've been around for as long as I have, you might have used a library like [jQuery](https://jqueryui.com/accordion/) or _Mootools_.
+If you went *"vanilla"*, your code would look something like this:
 
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	  <meta charset="utf-8" />
-	  <title>Webpage starter</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
-</html>
+<div class="ex_1">
+  <span>Click here to learn about accordions</span>
+  <p class="hidden">This one needs JavaScript and CSS to work.</span>
+</div>
 ```
 
-## Lorem ipsum dolor sit amet.
+  ```css
+.hidden {
+    display: none; 
+}
+```
 
-* Lorem, ipsum.
-* Lorem, ipsum.
-* Lorem, ipsum.
-* Lorem, ipsum.
+```js 
+document.querySelector(".ex_1 span").addEventListener("click", (e)=>{
+  document.querySelector(".ex_1 p").classList.toggle("hidden");
+});
+```
 
-![image](NSvIE.jpg)
+And it would work as you expected:
+<style>
+.ex_1 {
+  font-family: sans-serif;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background: #efefef;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 32px;
+}
+</style>
+<style>
+.ex_1 span {
+  cursor: pointer;
+}
+</style>
+<style>
+.ex_1 p {
+  margin: 8px 0 0;
+}
+</style>
+<style>
+.ex_1 .hidden {
+  display: none;
+}
+</style>
+<div class="ex_1">
+  <span>→ Click here to learn more about accordions</span>
+  <p class="hidden">This one needs JavaScript and CSS to work. Click the heading again to close it.</p>
+</div>
+<script>
+document.querySelector(".ex_1 span").addEventListener("click", ()=>{
+  document.querySelector(".ex_1 p").classList.toggle("hidden");
+});
+</script>
 
-or
+The more adventurous would hack together some `input` and `label` elements together. With the help of `:checked` and some clever
+CSS selectors, you could achieve the same visual representation as the one above but without the need for JavaScript.
 
-<img src="NSvIE.jpg" width="800" height="161" loading="lazy">
+```html
+<div class="ex_2">
+  <input type="checkbox" id="accordion1">
+  <label for="accordion1">→ Click here to learn even more about accordions</label>
+  <p>This one works without JavaScript, only CSS and HTML!</p>
+</div>
+```
 
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, eligendi nobis impedit perferendis, saepe neque ullam laborum laudantium [recusandae]() expedita distinctio. At accusamus necessitatibus mollitia, quas officia incidunt nisi corrupti.
+```css
+.ex_2 input[type="checkbox"],
+.ex_2 p {
+  display: none;
+}
+
+.ex_2 input[type="checkbox"]:checked + label + p {
+  display: block;
+}
+```
+
+And it would be visually the same as the previous example:
+
+<style>
+.ex_2 input[type="checkbox"],
+.ex_2 p {
+  display: none;
+}
+</style>
+<style>
+.ex_2 input[type="checkbox"]:checked + label + p {
+  display: block;
+}
+</style>
+<style>
+.ex_2 label {
+  cursor: pointer;
+  font-weight: normal;
+}
+</style>
+<div class="ex_2 ex_1">
+  <input type="checkbox" id="accordion1">
+  <label for="accordion1">→ Click here to learn even more about accordions</label>
+  <p>This one works without JavaScript, only CSS and HTML!</p>
+</div>
+
+The disadvantages of both these methods are quite obvious. Not only they're hard to maintain, they're also not very accessible and their reliance on JavaScript makes them not the ideal candidate for a modern web application.
+In summary, another case of [HTMLHell](https://www.htmhell.dev).
+
+
+## Here comes a new challenger
+
+Since 2020, all major browsers [support](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#browser_compatibility) the `<details>` and its companion `<summary>` elements. Combined, they replace the need for JavaScript and CSS hacks to create an accordion component.
+We can simply use:
+
+```html
+<details>
+  <summary>Your heading goes here</summary>
+  <p>Any content you like goes below the summary tag.</p>
+  <p>As many elements as you need.</p>
+</details>
+```
+And it will work just like the previous examples, but with some added benefits:
+* Simpler code ✅
+* Fully accessible ✅
+* Works without JavaScript ✅
+* No need for hacks ✅
+* Fully stylable ✅
+
+As seen below:
+
+<style>
+.styled {
+  border: 1px solid #ccc;
+  background: #efefef;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}</style>
+
+<style>
+.styled summary {
+font-family: sans-serif;
+font-size: 16px;
+  cursor: pointer;
+  font-weight: normal;
+}
+</style>
+
+<style>
+.styled p {
+font-family: sans-serif;
+font-size: 14px;
+  margin: 8px 0;
+}
+</style>
+
+<details class="styled">
+  <summary>Your heading goes here</summary>
+  <p>Any content you like goes below the summary tag.</p>
+  <p>As many elements as you need.</p>
+</details>
+
+All these features allow you to go even further and create more complex components.
+
+Further reading and examples:
+[Code snippets](https://codepen.io/jpedroribeiro/pen/YzmxNYx) | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) | [Can I use](https://caniuse.com/details) | [web.dev](https://web.dev/learn/html/details)
