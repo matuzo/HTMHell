@@ -2,15 +2,15 @@
 title: "A Button in Div’s Clothing: The Gift You Don’t Want"
 layout: layouts/advent.md
 author: "Corina Murg"
-author_bio: "Short intro about yourself"
+author_bio: "Corina is a self-taught developer interested in all things accessibility."
 date: 2024-12-15
 author_links:
-  - label: "xy Blog"
-    url: "#"
-    link_label: "your-awesome-website.com/blog"
-  - label: "yx on ABC"
-    url: "https://abc-social-media-site"
-    link_label: "@xy"
+  - label: "website"
+    url: "https://webforeveryone.us"
+    link_label: "Web for Everyone"
+  - label: "Corina on LinkedIn"
+    url: "https://www.linkedin.com/in/corinamurg/"
+    link_label: "LinkedIn"
 active: true
 intro: "<p>Short description of the post</p>"
 image: "advent_15"
