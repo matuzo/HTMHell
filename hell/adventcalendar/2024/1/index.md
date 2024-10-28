@@ -2,51 +2,60 @@
 title: "A link on a logo in the header, what should the alt-text be?"
 layout: layouts/advent.md
 author: "Rian Rietveld"
-author_bio: "Short intro about yourself"
+author_bio: "Web accessibility specialist and developer from the Netherlands."
 date: 2024-12-01
 author_links:
-  - label: "xy Blog"
-    url: "#"
-    link_label: "your-awesome-website.com/blog"
-  - label: "yx on ABC"
-    url: "https://abc-social-media-site"
-    link_label: "@xy"
+  - label: "Site"
+    url: "https://rianrietveld.com"
+    link_label: "rianrietveld.com"
+  - label: "Social"
+    url: "https://mstdn.io/@rianrietveld"
+    link_label: "@rianrietveld@mstdn.io"
 active: true
-intro: "<p>Short description of the post</p>"
+intro: "<p>An alt text doesn't always only describe what's on the image. How not to confuse screenreader users about where a link lead to. </p>"
 image: "advent_1"
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!
+It's a common pattern to use a logo in the header as a link to the homepage.
+But what should be the alt-text of that image? 
+"the site name" or "homepage" or "logo" or "IMG_123"? Does it even matter?
 
-## Lorem ipsum dolor sit amet.
+Fun fact: the alt text of the image inside a link, will be added to the link text.
 
-Lorem ipsum dolor sit amet `consectetur` adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!
+The problem with linking a logo is that it serves 2 purposes:
 
+- a logo, that tells you which site you are visiting;
+- a link, that leads to the homepage.
+
+So add both that info in the alt text. Explain what's on the image and where the link leads to: "Site name logo, to the homepage".
+
+**Note**: Start the alt text with the visible tekst, then the link will be easier to target for people using voice recognition software.
+
+Let's take as example the logo of my home town Leidschendam-Voorburg.
+
+In code (simplified):
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	  <meta charset="utf-8" />
-	  <title>Webpage starter</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
-</html>
+<a href="/">
+  <img 
+    alt="Leidschendam-Voorburg logo, to the homepage" 
+    src="logo-lv.svg" 
+  />
+</a>
 ```
 
-## Lorem ipsum dolor sit amet.
+Generated HTML: 
 
-* Lorem, ipsum.
-* Lorem, ipsum.
-* Lorem, ipsum.
-* Lorem, ipsum.
+<a href="https://www.lv.nl/en">
+  <img alt="Leidschendam-Voorburg logo, to the homepage" src="logo-lv.svg" width="300" height="76" loading="lazy" style="background-color: #1a194e; padding: 1em;"/>
+</a>
 
-![image](NSvIE.jpg)
+VoiceOver in Safari will announce this as:
+"Link, image, Leidschendam-Voorburg logo, to the homepage".
+<img alt="Screenshot of this VoiceOver output." src="voice-over.png" width="432" height="133" loading="lazy" />
 
-or
+All info is there.
 
-<img src="NSvIE.jpg" width="800" height="161" loading="lazy">
+There is an advantage of using the alt text instead of an aria-label solution. When the connection is slow, the alt text will show up before the image does and already informs all users of the site name and link destination. It's quite robust. 
 
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, eligendi nobis impedit perferendis, saepe neque ullam laborum laudantium [recusandae]() expedita distinctio. At accusamus necessitatibus mollitia, quas officia incidunt nisi corrupti.
+Happy Holidays!
