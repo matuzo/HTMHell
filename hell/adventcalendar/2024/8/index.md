@@ -19,6 +19,11 @@ intro: "<p>Appreciating HTML code from the past, to challenge HTML from the pres
 image: "advent_8"
 ---
 
+<!--
+MM: This piece is definitely different than the others but I like it. It's original and it's totally you.
+The only thing missing for me is the message. You explain why you like it but the post kind of lacks a pargraph that rounds it up. The title it "Past HTML, Future HTML?" _Past_ yeah, but the _future_ part is not coming completely through.
+-->
+
 Consider the following HTML document:
 
 ```html
