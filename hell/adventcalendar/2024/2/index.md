@@ -22,9 +22,9 @@ intro: "<p>Short description of the post</p>"
 image: "advent_2"
 ---
 
-Focus is where the user is on your website. It's what makes it possible to navigate your site with the keyboard or other assistive technologies, and it's how a browser knows which form element you're typing in. it's vital to get right if you want to build good websites.
+Focus is where the user is on your website. It's what makes it possible to navigate your site with the keyboard or other assistive technologies, and it's how a browser knows which form element you're typing in. It's vital to get right if you want to build good websites.
 
-Whenever you're dealing with code that can "steal" focus you have to be aware of how that affects your visitor. So it's not strange that many folks will tell you to leave focus alone, to stay away from `tabindex` and `autofocus`.
+Whenever you're dealing with code that can “steal” focus you have to be aware of how that affects your visitor. So it's not strange that many folks will tell you to leave focus alone, to stay away from `tabindex` and `autofocus`.
 
 All of that advice is good advice: you _should_ be careful when moving the focus away from where it would normally be and where the user would expect it to be, or you'll quickly find yourself in a world of accessibility issues.
 
@@ -38,7 +38,7 @@ As mentioned above, you'll rarely want to use `autofocus`. Messing with people's
 
 But there's a place where `autofocus` shines: On single-purpose pages containing forms.
 
-...which is a bit of an obtuse way to say "login pages", "signup pages", "password reset pages" and "2FA pages", you get the idea.
+...which is a bit of an obtuse way to say “login pages”, “signup pages”, “password reset pages” and “Two-factor authentication (2FA) pages”, you get the idea.
 
 ## Adding Autofocus
 
