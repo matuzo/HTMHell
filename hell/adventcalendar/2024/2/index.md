@@ -33,6 +33,7 @@ But if you start off on the right foot, managing focus is a delightful HTML deta
 ## Autofocus
 
 The `autofocus` attribute can be added to any element to make it **auto**matically **focus**ed on page load, skipping over any other elements that might have been focused before. It can be used on any element because any element can be focusable, for example if it has the `contenteditable` attribute.
+<!-- MM: that sounds like it's ok to put contenteditable on any element. Maybe rephrase to "It can be used on any focusable element". -->
 
 As mentioned above, you'll rarely want to use `autofocus`. Messing with people's focus usually doesn't make them want to use your website more. It will probably make them want to use it less, so don't autofocus your purchase button or search field.
 
@@ -65,6 +66,7 @@ If the user uses assistive technology, it will announce the label and the field,
 Similarly, your password reset page (single field) and signup page (single purpose) will have the same structure and will likewise benefit from
 
 If your login page is followed by a 2fa page, then that `autofocus` is ~~even more useful~~ _vital_.
+<!-- MM: Most scren readers annouce this as "If your login page is followed by a 2fa page, then that autofocus is even more useful vital."-->
 
 Few things are as "throw pc out of the window"-frustrating as frantically typing in that 2fa code as the last few seconds tick away, only to find the field wasn't focused. And now you have to do it all over again.
 
