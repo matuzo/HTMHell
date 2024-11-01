@@ -129,6 +129,12 @@ blockquote>p:only-child {
   display: inline;
 }
 
+.blockquote-no-quotes::before,
+.blockquote-no-quotes::after {
+  content: "";
+}
+
+
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
 }
