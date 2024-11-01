@@ -19,6 +19,7 @@ Would you keep reading? Or recommend the book to others?
 For about [16% of the world’s population](https://www.who.int/news-room/fact-sheets/detail/disability-and-health#:~:text=Key%20facts,1%20in%206%20of%20us.) (roughly the population of China), the web often feels like a maze. People who rely on assistive technologies experience the web like a poorly bound book, one they must tediously navigate page by page rather than simply moving to the next relevant section.
 
 Another example: imagine you’re searching on Google and find the answer on page 2. However, to get there, you first need to enter the [Konami Code](https://de.wikipedia.org/wiki/Konami-Code) to unlock the link. Such hidden navigation elements are, unfortunately, a daily reality for many web users.
+<!-- MM: What exactly do you mean by "hidden navigation". Can you give me an example? -->
 
 While accessible paginations don’t make the entire web accessible, it does ensure that everyone, whether reading a book or browsing the web, can seamlessly turn from page to page and easily find the next part of the story.
 
