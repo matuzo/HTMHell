@@ -15,6 +15,7 @@ active: true
 intro: "<p>Hot reloading is super useful for iterative development, but it requires a fancy dev server. If you don't have one of those, you can put a single tag in your `<head>` to get some of the same effect.</p>"
 image: "advent_19"
 ---
+<!-- SS: I like this hack for refreshing to see the live changes, since I hate complicated build systems and using JS for everything in general. But I feel the article should focus more on indicating that this is a very minimal replacement of hot reloading, that someone can use for their own personal coding workflow. And maybe have a section mentioning the certain factors that might need to be taken into cosnideration while using this approach, for example, using devtools along with this solution can be irritating with continous refresh, or like there are accessibility issues that a teammate using assistive tech for development/QA might face. -->
 
 *In short: put `<meta http-equiv="refresh" content="1">` in your `<head>` element to refresh your page every second, like a makeshift hot reload.*
 
@@ -60,5 +61,7 @@ I usually find that *2 seconds is the sweet spot* for development. Not so fast t
 
 Though I remove these tags after I'm done working, there are legitimate cases where you'd want to leave it in. You might imagine a news feed that reloads itself every minute, or a sports score tracker that reloads every 30 seconds, or a live blog that reloads every 5. No need for JavaScript!
 <!-- MM: Those examples sound horrible for UX and accessibility. To maintain focus and the scroll position, in real life you'd always use JavaScript for that, no? -->
+
+<!-- SS: I always love a good JS alternative, being a developer focused on privacy. But this sounds more like a progressive enhancement situation, and I don't think we should ideally recommend a JS alternative solution which has accessibility issues. -->
 
 Hot reloading is useful, to be sure. But a simple `<meta>` tag can get you most of the way there in a fraction of the fanciness.
