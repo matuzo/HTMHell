@@ -87,6 +87,13 @@ If you have a login form but people can also use social logins (Google, GitHub, 
 
 Instead, keep track of what they use to log in. As soon as you know which one they're using you can store that in a cookie (or localStorage) and focus on the field or button they need to interact with the next time they visit.
 
+<!--
+  KS: I'd like to see you at least note some of the accessibility concerns
+  mentioned at https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_concerns
+  as I think that will help fill out the "When not to use..." section
+  here more faithfully for readers.
+-->
+
 ## Conclusion
 
 So let's get back to the point: `autofocus` is a great way to make your forms more user-friendly, as long as you use it in the right place.

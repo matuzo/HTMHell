@@ -92,3 +92,11 @@ I narrowed my eyes as ChatGPT brightly informed me:
 <blockquote class="blockquote-no-quotes highlight">You're absolutely right again! The `aria-label` attribute is not needed when the button already has a clear, visible text label. The visible text content of a <code>&lt;button&gt;</code> element is automatically accessible to screen readers and other assistive technologies, so there's no need for `aria-label` unless you want to provide an alternative or additional description that's not visible.</blockquote>
 
 Suddenly I knew exactly how Arthur Dent felt, dealing with the [Nutrimatic Drinks Dispenser](https://www.youtube.com/watch?v=eAswvg60FnY) in The Hitchhiker's Guide to the Galaxy. Just like the cup of tea it dispensed to Arthur, the code provided by ChatGPT was, to paraphrase, almost, but not quite, entirely unlike the HTML for an accessible button.
+
+<--
+  KS: Great post. But I think for the sake of readers who might
+  not quite follow, it would be terrific to include the correct
+  HTML-only code here that you've talked through (people have a
+  weird tendency to remember bits of code, even and especially
+  when it's incorrect!)
+-->

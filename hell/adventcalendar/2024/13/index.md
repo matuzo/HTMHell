@@ -17,6 +17,11 @@ image: "advent_13"
 ---
 <!-- MM: Please don't forget to add a short bio in line 5 "author_bio" -->
 <!-- SS: I always love a good article on localization coming from a country with multiple languages -->
+<!--
+  KS: Something strikes me as odd about the phrase "foreign websites."
+  I think you could just rewrite the sentence without it, and go with
+  "...the experience of browsing websites whose content is fully or..."
+-->
 Today, I’d like to talk about the experience of browsing foreign websites, where content is fully or partially in a language different from the user’s native one. This situation is common for users visiting government portals, local service providers, or international marketplaces where essential information may appear in unfamiliar languages. 
 In these cases, users often rely on the browser’s auto-translate feature, which modern browsers offer by default. When you open a page in a different language from your preferred setting, the browser will prompt you to translate it automatically.
 <!-- MM: All browsers? Consider changing it to "which many modern browsers"-->

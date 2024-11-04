@@ -19,6 +19,11 @@ image: "advent_19"
 
 *In short: put `<meta http-equiv="refresh" content="1">` in your `<head>` element to refresh your page every second, like a makeshift hot reload.*
 
+<!--
+  KS: I think it would be helpful to readers if you clarify up front
+  that this is a technique meant for development, not production.
+-->
+
 Hot reloading automatically reloads parts of your page while you work. Change some HTML and see your work instantly! Tweak some CSS and the results are right there! Gone are the days of repeatedly switching to your browser to refresh, because hot reload takes care of it.
 
 It's called "hot" reloading because it's *hot*. It's powerful. Everyone loves it.

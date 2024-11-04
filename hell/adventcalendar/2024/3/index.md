@@ -152,6 +152,12 @@ Add this after our original `@view-transition` rule. Now, if the user's preferen
   }
 } -->
 
+<!--
+  KS: I came here to say the same thing. The advantage of Manuel's
+  approach are numerous, including that you're building the special
+  effects inside of a query, instead of using a query to push back
+  against things that can end up scattered around in a stylesheet.
+-->
 
 
 Finally, take a deeper look at what else the View Transition API can do—this is just the beginning.

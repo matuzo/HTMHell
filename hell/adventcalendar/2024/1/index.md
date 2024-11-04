@@ -60,6 +60,19 @@ VoiceOver in Safari will announce this as:
 
 All info is there.
 
-There is an advantage of using the alt text instead of an `aria-label` solution. When the connection is slow, the alt text will show up before the image does and already informs all users of the site name and link destination. It's quite robust. 
+There is an advantage of using the alt text instead of an `aria-label` solution. When the connection is slow, the alt text will show up before the image does and already informs all users of the site name and link destination. It's quite robust.
+
+<!--
+  KS: Possibly, but following up on Manuel's question about WCAG above,
+  would it not be even more robust to include, say, a heading element
+  that is accessibly hidden from view for sighted users?
+
+  See https://www.w3.org/WAI/WCAG22/Techniques/general/G208.html
+
+  One of the disadvantages of both `alt` and `aria-label` is that they
+  have only the semantics of a plain-text string, whereas other HTML
+  elements (including those pointed at by `aria-labelledby`) can be
+  much more expressive for all users.
+-->
 
 Happy Holidays!
