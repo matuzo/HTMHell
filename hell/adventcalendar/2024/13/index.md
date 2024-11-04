@@ -16,6 +16,7 @@ intro: '<p>In the article I talk about improving user experience on multilingual
 image: "advent_13"
 ---
 <!-- MM: Please don't forget to add a short bio in line 5 "author_bio" -->
+<!-- SS: I always love a good article on localization coming from a country with multiple languages -->
 Today, I’d like to talk about the experience of browsing foreign websites, where content is fully or partially in a language different from the user’s native one. This situation is common for users visiting government portals, local service providers, or international marketplaces where essential information may appear in unfamiliar languages. 
 In these cases, users often rely on the browser’s auto-translate feature, which modern browsers offer by default. When you open a page in a different language from your preferred setting, the browser will prompt you to translate it automatically.
 <!-- MM: All browsers? Consider changing it to "which many modern browsers"-->
@@ -46,6 +47,8 @@ However, automatic translations can sometimes be inaccurate or misleading.
 <p>E-mailadres: grap@test.com</p>
 ```
 
+<!-- SS: I checked this in chrome and seems like the email doesn't get translated. I think verifying this once, and maybe mentioning which browser you saw this behaviour would be good -->
+
 The Dutch word “Grap” means “joke” – a thing that someone says to cause amusement – turning the name into something unintended and causing confusion.
 
 To prevent such misinterpretations, we can use the `translate` attribute with the value `"no"` to disable automatic translation for specific pieces of content:
@@ -72,3 +75,5 @@ With this adjustment, the display remains accurate across languages, preventing 
 ```
 
 However, using the `translate="no"` attribute, which is now part of the HTML specification, is a more robust and reliable approach, ensuring consistency across current and future translation APIs and localization standards.
+
+<!-- SS: Maybe link the "HTML specification" phrase to something like https://www.w3.org/International/questions/qa-translate-flag? -->
