@@ -24,6 +24,8 @@ MM: This piece is definitely different than the others but I like it. It's origi
 The only thing missing for me is the message. You explain why you like it but the post kind of lacks a pargraph that rounds it up. The title it "Past HTML, Future HTML?" _Past_ yeah, but the _future_ part is not coming completely through.
 -->
 
+<!-- SS: I like the post, but I am not very sure about the significance of the title. Maybe if there was an example of present (or future?) HTML that this HTML was challenging. Or maybe an example that looks like a perfectly fine "modern" HTML, but actually fails the 3 points that you have mentioned below you like. -->
+
 Consider the following HTML document:
 
 ```html
