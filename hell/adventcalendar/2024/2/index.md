@@ -21,6 +21,7 @@ active: true
 intro: "<p>Short description of the post</p>"
 image: "advent_2"
 ---
+<!-- SS: The intro for this post seems to be missing -->
 
 Focus is where the user is on your website. It's what makes it possible to navigate your site with the keyboard or other assistive technologies, and it's how a browser knows which form element you're typing in. It's vital to get right if you want to build good websites.
 
@@ -34,6 +35,8 @@ But if you start off on the right foot, managing focus is a delightful HTML deta
 
 The `autofocus` attribute can be added to any element to make it **auto**matically **focus**ed on page load, skipping over any other elements that might have been focused before. It can be used on any element because any element can be focusable, for example if it has the `contenteditable` attribute.
 <!-- MM: that sounds like it's ok to put contenteditable on any element. Maybe rephrase to "It can be used on any focusable element". -->
+
+<!-- SS: I also kind of feel that even though it is possible to make any element focusable and hence can have autofocus, since that is not recommended, and a bad practise, maybe better to avoid mentioning that example. I feel someone who is not aware that this is not a recommended practise might not understand. -->
 
 As mentioned above, you'll rarely want to use `autofocus`. Messing with people's focus usually doesn't make them want to use your website more. It will probably make them want to use it less, so don't autofocus your purchase button or search field.
 
@@ -69,6 +72,8 @@ If your login page is followed by a 2fa page, then that `autofocus` is ~~even mo
 <!-- MM: Most scren readers annouce this as "If your login page is followed by a 2fa page, then that autofocus is even more useful vital."-->
 
 Few things are as "throw pc out of the window"-frustrating as frantically typing in that 2fa code as the last few seconds tick away, only to find the field wasn't focused. And now you have to do it all over again.
+
+<!-- SS: Agreed and definitely a good mention. Though there can be multiple ways of 2FA e.g., push notification, hardware authentication using FIDO2 devices. Might be slightly overcomplicating things but maybe mentioning that 2FA where user has to enter a code, or soemthing similar. -->
 
 Argh!
 
