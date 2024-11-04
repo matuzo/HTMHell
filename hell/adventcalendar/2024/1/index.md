@@ -29,6 +29,7 @@ The problem with linking a logo is that it serves 2 purposes:
 
 So add both that info in the alt text. Explain what's on the image and where the link leads to: "Site name logo, to the homepage".
 <!-- MM: It's a functional image, so do you really need the info "logo"? Are there any benefits of including it? -->
+<!-- SS: Agree with MM on this. I am little wary of adding words like "logo", "image of", etc. in a functional image -->
 
 **Note**: Start the alt text with the visible text, then the link will be easier to target for people using voice recognition software.
 
