@@ -18,7 +18,7 @@ author_links:
     url: "https://t.me/pepelsbey_dev"
     link_label: "@pepelsbey_dev"
 active: true
-intro: "<p>Short description of the post</p>"
+intro: "<p>While there’s no truly native and simple way to build a light/dark color scheme switcher yet, we all try our best to come up with something that puts this quality-of-life feature in users’ hands. Some native HTML options are often overlooked in favor of hacky solutions. Let’s make them well-known and widely used while we wait for the proper built-in one.</p>"
 image: "advent_9"
 ---
 
