@@ -15,6 +15,18 @@ image: "advent_6"
 
 By default, UI components have their accessible name (the programmatically associated label that assistive tech, like screen readers announce) computed from their own contents. That's part of the [spec'd algorithm](https://www.w3.org/TR/accname-1.1/) that browsers implement.
 
+<!-- MM: A simple example + caption whould be great here. Something like:
+<figure class="u-mb">
+
+  ```html
+  <a href="/updates">
+    Latest updates
+  </a>
+  ```
+
+  <figcaption>A link with the accessible name "Latest updates"</figcaption>
+</figure> -->
+
 `aria-labelledby` can be used to point the algorithm somewhere else in the DOM. Or not.
 
 What happens if `aria-labelledby` points within?
@@ -55,6 +67,8 @@ But imagine this is in a large codebase with many developers working on it. Cons
 </a>
 ```
 
+<!-- MM: Wrap in figure and use a caption "A link with the accessible name "Latest updates"" -->
+
 Now the count of updates is **not** part of the link's accessible name. Screen readers will not announce it. macOS Voice Control users will not be able to say "click Latest updates three" (you would need to omit the "three", macOS Voice Control requires you to say the accessible name exactly). [macOS Hover Text](https://support.apple.com/guide/mac-help/view-a-larger-version-text-reading-typing-mchlb203bc78/mac) will miss the count as well.
 
 <img alt="The mouse hovering the link with 'Latest updates' in black and underlined, with the number 3 on a red circle to the right. macOS Hover Text's overlay is below with only 'Latest updates' in large type, blue and underlined." src="hovertext.png" width="872" height="252" loading="lazy">
@@ -66,5 +80,7 @@ So put this link on a heavenly path and drop the `aria-labelledby`! Your future 
 ## Caveats
 
 There are good reasons to point `aria-labelledby` within an element. For example, to [give an accessible name to a region](https://www.w3.org/TR/wai-aria/#example-27) based off of the heading within it.
+
+<!-- MM: To make a case for the usefuleness of the technique, you could also show a code snippet here instead of just linking. -->
 
 I tend to only be wary when the element with `aria-labelledby` is an interactive control (link, button, etc).
