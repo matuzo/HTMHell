@@ -74,5 +74,6 @@ There is an advantage of using the alt text instead of an `aria-label` solution.
   elements (including those pointed at by `aria-labelledby`) can be
   much more expressive for all users.
 -->
+<!-- MM (addition): Although I wouldn't use a heading, it could be interesting to address the visually-hidden text vs. alt question. We just had a dicussion about that last week at a meetup. -->
 
 Happy Holidays!

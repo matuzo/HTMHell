@@ -93,7 +93,7 @@ I narrowed my eyes as ChatGPT brightly informed me:
 
 Suddenly I knew exactly how Arthur Dent felt, dealing with the [Nutrimatic Drinks Dispenser](https://www.youtube.com/watch?v=eAswvg60FnY) in The Hitchhiker's Guide to the Galaxy. Just like the cup of tea it dispensed to Arthur, the code provided by ChatGPT was, to paraphrase, almost, but not quite, entirely unlike the HTML for an accessible button.
 
-<--
+<!--
   KS: Great post. But I think for the sake of readers who might
   not quite follow, it would be terrific to include the correct
   HTML-only code here that you've talked through (people have a
