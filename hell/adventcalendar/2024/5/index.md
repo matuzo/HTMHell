@@ -15,6 +15,8 @@ active: true
 intro: "<p>Matthias reminds you that “Forced Colors Mode” is a thing, and shares some strategies you can apply today.</p>"
 image: "advent24_5"
 ---
+<!-- MM: I really love this post but it fails the actual task for this years edition which was "Instead of a full-length article, I'd love to see your favorite code snippet in HTML and a few words explaining what you like about it."
+I don't think that you have to rewrite it entirely, but could you maybe focus more on HTML? I like the direction you were going with the <button> and <u> examples.  -->
 
 I use Linux on my personal laptop. In the corporate world I’ve been using MacOS for many years, but after my MacBook had deteriorated beyond repair, I opted against replacing it with some shiny Apple silicon. Instead, I wanted a machine where I could run Windows. Not because it’s good, but because I wanted to be able to experience screen readers like Narrator and NVDA. Up to that point I’ve only been using VoiceOver on MacOS/iOS and TalkBack on Android.
 
@@ -64,6 +66,8 @@ This may be an oversimplification, but it’ll do. If you recall how many CSS pr
 ## Why is this important?
 
 According to Microsoft, 4% of Windows users have the feature activated. I wouldn’t be surprised if the number of people using Forced Colors is already on par with those that use Firefox as their browser. So if you care about Firefox (and you should), then you should also care about Forced Colors.
+<!-- MM: 4%? That's much higher than I expected. Do you have a source? Can we link to it? -->
+<!-- MM: That's a strange comparison. Can you put it in absolute numbers instead? That'll make it more tangible. -->
 
 Speaking of Firefox, I’ve been using it as my main browser for years, but it wasn’t until I’ve read Kilian’s article to learn that you can activate Forced Colors Mode in settings under _General > Colors > Manage colors > Override the colors: Always._ Obviously, doing so only affects web sites and not the OS. If you are on team Chrome, you can open DevTools, hit <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type “forced”, and you’ll find the option to _Emulate CSS forced-colors: active._
 
