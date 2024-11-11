@@ -19,19 +19,6 @@ intro: "<p>Appreciating HTML code from the past, to challenge HTML from the pres
 image: "advent_8"
 ---
 
-<!--
-MM: This piece is definitely different than the others but I like it. It's original and it's totally you.
-The only thing missing for me is the message. You explain why you like it but the post kind of lacks a paragraph that rounds it up. The title it "Past HTML, Future HTML?" _Past_ yeah, but the _future_ part is not coming completely through.
--->
-
-<!-- SS: I like the post, but I am not very sure about the significance of the title. Maybe if there was an example of present (or future?) HTML that this HTML was challenging. Or maybe an example that looks like a perfectly fine "modern" HTML, but actually fails the 3 points that you have mentioned below you like. -->
-
-<!--
-  KS: Agreed with Manuel. I'd love to hear the future part, too, including
-  perhaps how the permissive processing of HTML: TLS invites older
-  HTML like this to the party, but where we ought to challenge each
-  other to write leaner, more semantic things whenever possible.
--->
 Consider the following HTML document:
 
 ```html
@@ -74,4 +61,6 @@ Why? What’s to like about this kind of code?
 
 3. _It’s… open-minded._ These inconsistencies, they may rub us, and we likely prefer a consistent formatting. But that shouldn’t distract from the fact that the code is valid (which includes uppercase tag names), and that it represents legitimate ways of writing HTML (which in this case means [HTML–HTML, and not XHTML–HTML](https://css-tricks.com/write-html-the-html-way-not-the-xhtml-way/)).
 
-So where is this code from? It’s from [T.V. Raman’s](https://en.wikipedia.org/wiki/T._V._Raman) documentation on [style sheets for spoken renderings](https://www.w3.org/Style/CSS/Speech/speech.html), published on February 12, _1996_. The [1990s](https://frontenddogma.com/topics/1990s/) and [2000s](https://frontenddogma.com/topics/2000s/) are behind us in many areas—and yet in some, they may still be ahead.
+So where is this code from? It’s from [T.V. Raman’s](https://en.wikipedia.org/wiki/T._V._Raman) documentation on [style sheets for spoken renderings](https://www.w3.org/Style/CSS/Speech/speech.html), published on February 12, _1996_. The [1990s](https://frontenddogma.com/topics/1990s/) and [2000s](https://frontenddogma.com/topics/2000s/) are behind us in many areas—and yet in some, they may still be ahead:
+
+We could learn from this code and take it into the future, because XHTML–HTML may have long been dead if it wasn’t kept on eternal life-support by frameworks that do not use any of the features that HTML (and that is, don’t mind the repetition, [HTML–HTML](https://css-tricks.com/write-html-the-html-way-not-the-xhtml-way/#aa-the-html-way-of-writing-html)) offers us.
