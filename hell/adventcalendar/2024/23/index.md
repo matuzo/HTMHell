@@ -183,7 +183,77 @@ font-size: 14px;
   <p>As many elements as you need.</p>
 </details>
 
-All these features allow you to go even further and create more complex components.
+<details class="styled">
+  <summary>This is the second heading</summary>
+  <p>Any content you like goes below the summary tag.</p>
+  <p>As many elements as you need.</p>
+</details>
+
+<details class="styled">
+  <summary>And the third entry it's here</summary>
+  <p>Any content you like goes below the summary tag.</p>
+  <p>As many elements as you need.</p>
+</details>
+
+On the example above, each `<details>` element works independently of each other. But what if you want them to behave like true accordions, where only one can be opened at a time?
+
+## One More Thing... Exclusive Accordions
+
+Not too long ago, the `name` attribute was added to the `details` element. 
+Similarly to the usage in the [radio input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio), it allows you to group multiple elements together. This means we can have _exclusive_ accordions: when only one can be opened at a time.
+
+The usage is pretty straightforward:
+
+```html
+<details name="group">...</details>
+<details name="group">...</details>
+```
+Give the same `name` attribute to all the `details` elements you want to group together and they'll work as expected:
+<style>
+.styled {
+  border: 1px solid #ccc;
+  background: #efefef;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}</style>
+
+<style>
+.styled summary {
+font-family: sans-serif;
+font-size: 16px;
+  cursor: pointer;
+  font-weight: normal;
+}
+</style>
+
+<style>
+.styled p {
+font-family: sans-serif;
+font-size: 14px;
+  margin: 8px 0;
+}
+</style>
+
+<details name="group" class="styled">
+  <summary>3 separate entries</summary>
+  <p>First block content.</p>
+  <p>End of first block.</p>
+</details>
+<details name="group" class="styled">
+  <summary>Only one can be opened at a time</summary>
+  <p>Second block content.</p>
+  <p>End of second block.</p>
+</details>
+<details name="group" class="styled">
+  <summary>Still, no JS needed!</summary>
+  <p>Third block content.</p>
+  <p>End of third block.</p>
+</details>
+
+## Take it to the next level
+Recently, Chrome 131 [added support](https://developer.chrome.com/blog/styling-details) to new ways you can style both `<details>` and `<summary>` elements. Still early days but the future looks bright!
+Combine these features with some creative styling and you can create really complex components with accessibility and scalability built-in.
 
 Further reading and examples:
 [Code snippets](https://codepen.io/jpedroribeiro/pen/YzmxNYx) | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) | [Can I use](https://caniuse.com/details) | [web.dev](https://web.dev/learn/html/details)
