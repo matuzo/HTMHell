@@ -67,8 +67,7 @@ If the user uses assistive technology, it will announce the label and the field,
 
 Similarly, your password reset page (single field) and signup page (single purpose) will have the same structure and will likewise benefit from
 
-If your login page is followed by a 2fa page, then that `autofocus` is ~~even more useful~~ _vital_.
-<!-- MM: Most scren readers annouce this as "If your login page is followed by a 2fa page, then that autofocus is even more useful vital."-->
+If your login page is followed by a 2fa page, then that `autofocus` is <del aria-hidden="true">even more useful</del> <ins>vital</ins>.
 
 Few things are as "throw pc out of the window"-frustrating as frantically typing in that 2fa code as the last few seconds tick away, only to find the field wasn't focused. And now you have to do it all over again.
 
