@@ -32,10 +32,7 @@ But if you start off on the right foot, managing focus is a delightful HTML deta
 
 ## Autofocus
 
-The `autofocus` attribute can be added to any element to make it **auto**matically **focus**ed on page load, skipping over any other elements that might have been focused before. It can be used on any element because any element can be focusable, for example if it has the `contenteditable` attribute.
-<!-- MM: that sounds like it's ok to put contenteditable on any element. Maybe rephrase to "It can be used on any focusable element". -->
-
-<!-- SS: I also kind of feel that even though it is possible to make any element focusable and hence can have autofocus, since that is not recommended, and a bad practise, maybe better to avoid mentioning that example. I feel someone who is not aware that this is not a recommended practise might not understand. -->
+The `autofocus` attribute can be added to any element to make it **auto**matically **focus**ed on page load, skipping over any other elements that might have been focused before. Any element that can be focusable can also have `autofocus` applied to it, like buttons, links, and form elements.
 
 As mentioned above, you'll rarely want to use `autofocus`. Messing with people's focus usually doesn't make them want to use your website more. It will probably make them want to use it less, so don't autofocus your purchase button or search field.
 
@@ -82,13 +79,6 @@ Even if you have a page with a single purpose, you might not want to add autofoc
 If you have a login form but people can also use social logins (Google, GitHub, and the like) and you don't know which one they'll use don't add an autofocus.
 
 Instead, keep track of what they use to log in. As soon as you know which one they're using you can store that in a cookie (or localStorage) and focus on the field or button they need to interact with the next time they visit.
-
-<!--
-  KS: I'd like to see you at least note some of the accessibility concerns
-  mentioned at https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_concerns
-  as I think that will help fill out the "When not to use..." section
-  here more faithfully for readers.
--->
 
 ## Conclusion
 
