@@ -71,8 +71,6 @@ If your login page is followed by a 2fa page, then that `autofocus` is <del aria
 
 Few things are as "throw pc out of the window"-frustrating as frantically typing in that 2fa code as the last few seconds tick away, only to find the field wasn't focused. And now you have to do it all over again.
 
-<!-- SS: Agreed and definitely a good mention. Though there can be multiple ways of 2FA e.g., push notification, hardware authentication using FIDO2 devices. Might be slightly overcomplicating things but maybe mentioning that 2FA where user has to enter a code, or soemthing similar. -->
-
 Argh!
 
 Some things just get to me.
