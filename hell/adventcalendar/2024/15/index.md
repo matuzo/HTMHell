@@ -15,7 +15,7 @@ active: true
 intro: "<p>With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot the fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can confortably return to and reuse across all their projects.</p>"
 image: "advent_15"
 ---
-
+<!-- MM: Great post, thank you! -->
 
 With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot these fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can confortably return to and reuse across all their projects. More importantly, it encourages them to think beyond the sighted user with a mouse and consider the needs of those who rely on assistive technologies. 
 
@@ -112,6 +112,10 @@ buttonTwo.addEventListener('keydown', function(event) {
     }
 });
 ```
+<!-- MM: Cool, I didn't know that `event.key === ' '` worked -->
+<!-- MM: Is "or" valid JS? -->
+<!-- MM: Shouldn't it say changeColor(event);? Did you test this code? -->
+<!-- MM: That would create a different behavior compared to the native button. A native <button> fires on key down when Enter is pressed and on key up when Space is pressed -->
 
 For developers it might seem tempting to add these missing features one by one. The advice, of course, is that the simpler and more robust solution is to replace the `<div>` with a `<button>`. However, for the sake of exploring what the accessibility tree reveals — or fails to! — we’ll go ahead and add all the necessary code to make this `<div>` fully functional.
 
@@ -124,8 +128,11 @@ Is the retrofitted `div` recognized as a button now? Yes! It has the role `butto
 Is the retrofitted button's tree view different in any way from the one of the genuine button? Yes again!
 
 First, the `DOMNode` property reveals that we started with a div. Then, the `states` array continues to list `selectable text` just like it did for the fake button.
+<!-- MM: But that's not a shortcoming of Firefox. If you disable it (`user-select: none;`) it behaves like the native button and the property goes away. -->
 
 Since we’ve added the keydown events we would not expect any differences betwwen the `actions` arrays, right? Wrong! The updated tree still shows `Click` instead of `Press`. Whether this is a Firefox oversight or a subtle dig at fake buttons (just kidding!), we now have to remember that the absence of `Press` doesn’t mean keydown events won’t work. In fact, `Press` is a specific Firefox keyword. Chromium browsers handle this differently. When keydown events are explicitly added, Chromium’s event listeners include both `click` and `keydown` for the div button. For the genuine button (with built in keydown events!), it would only list `click`!
+<!-- MM: just a reminder to change this accordingly because we don't just have key down but key up events, too -->
+<!-- MM: I'd love to know the difference between Click and Press. I asked a friend at Firefox: https://front-end.social/@matuzo/113473891024615301 If he replies, you may be able to add more info. -->
 
 <img src="./images/Chrome-FakeButton-Fixed.jpg" alt="accessibility tree within Firefox's developer tools, highlighting the properties of a button element built with a div tag. Press and Click are listed under event listeners" width="500" aspect-ratio="745/226" loading="lazy">
 
@@ -151,20 +158,12 @@ You guessed it! If the text is selectable, then we know it likely started as a d
 
 <div style="display: flex; gap: 20px; margin-block:20px; text-align: center">
     
-<button 
-    class="button one" 
-    onclick="changeColor(this)"
-    style="background-color: gray;" 
->
+<button class="button one" onclick="changeColor(this)" style="background-color: gray;">
     Change color ONE
 </button>
 
 <div 
-    class="button one" 
-    onclick="changeColor(this)"
-    style="display: inline-block; background-color: gray;" 
-    tabindex="0"
->
+    class="button one" onclick="changeColor(this)" style="display: inline-block; background-color: gray;"  tabindex="0">
     Change color TWO
 </div>
 
@@ -196,3 +195,4 @@ Note: I only tested this in Chromium and Firefox. To check:
 - With a keyboard (for me it only work in Firefox!): Move focus to the button, or click on it and keep cursor in place. Hold `Shift` and press the right arrow key. If the text highlights, it’s selectable!
 
 So, the next time you're testing a button, remember: if you can select its text, it's probably a div in a button's clothing!
+<!-- MM: Sorry to say that, but I guess this entire chapter needs to be replaced or removed. -->
