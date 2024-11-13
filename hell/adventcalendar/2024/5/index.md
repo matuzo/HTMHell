@@ -79,7 +79,7 @@ Enough of the Sisyphean labor. Let’s do the following instead.
 <a href="https://example.com/good">Link</a>
 ```
 
-In your regular theme, all your button needs is `appearance:none`, and most likely you’d like to inherit the font.
+For styling, all you have to do is inherit the font for buttons, which is what your [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/#six-inherit-fonts-for-form-controls-7) might do anyhow for all form controls.
 
 In Forced Colors Mode, things just work, buttons and links will be shown in proper CSS system colors. **Semantics for the win!**
 
@@ -87,9 +87,7 @@ In Forced Colors Mode, things just work, buttons and links will be shown in prop
 
 I didn’t need to write this article, because common sense exists, right? Then again, there’s a reason why HTMHell.dev exists. (<abbr title="By the way">BTW</abbr>, thanks for having me, it’s been an honor to be part of the [2024 advent calendar](https://htmhell.dev/adventcalendar/2024/) among all those talented people.)
 
-Initially I wrote something else, but it ended up being too long for a calendar entry. Which is why _the original article_ is now [available on my blog](https://cssence.com/2024/forced-colors-mode-strategies/).
-
-If you are up for **actual Forced Colors Mode advice,** may I suggest you read it, and then consider joining my movement to make December <q cite="https://cssence.com/2024/forced-colors-mode-strategies/">the least colorful time of the year</q>.
+Initially I wrote something else, but it ended up being too long for a calendar entry. _The original article_ is now [available on my blog](https://cssence.com/2024/forced-colors-mode-strategies/). If you are up for **actual Forced Colors Mode advice,** may I suggest you read it, and then consider joining my movement to make December <q cite="https://cssence.com/2024/forced-colors-mode-strategies/">the least colorful time of the year</q>.
 
 <section aria-labelledby="resources">
 
@@ -106,6 +104,6 @@ If you are up for **actual Forced Colors Mode advice,** may I suggest you read i
 <ol>
 <li id="fn-1">Some even argue underlined links go against an app-like feel, but let’s not go there. <a href="#ref-fn-1" role="doc-backlink" aria-label="Back to article">↩︎</a></li>
 <li id="fn-2">Look at those CSS functions our Fancy&nbsp;Pants author uses to add color to a link. <a href="#ref-fn-2" role="doc-backlink" aria-label="Back to article">↩︎</a></li>
-<li id="fn-3">And most likely we will still fail. <a href="#ref-fn-3" role="doc-backlink" aria-label="Back to article">↩︎</a></li>
+<li id="fn-3">And it’s very likely that we’ll still fail to do so. <a href="#ref-fn-3" role="doc-backlink" aria-label="Back to article">↩︎</a></li>
 </ol>
 </section>
