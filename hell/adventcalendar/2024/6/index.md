@@ -63,7 +63,7 @@ But imagine this is in a large codebase with many developers working on it. Cons
 ```html
 <a href="/updates" aria-labelledby="contents">
   <span id="contents">Latest updates</span>
-  <span class="notification-badge">{{ updates.length }}</span>
+  <span class="notification-badge">{% raw %}{{ updates.length }}{% endraw %}</span>
 </a>
 ```
 
