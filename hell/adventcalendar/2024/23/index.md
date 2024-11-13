@@ -18,7 +18,7 @@ active: true
 intro: "<p> intro goes here?</p>"
 image: "advent_23"
 ---
-
+<!-- MM: Great post, thank you! -->
 Not too long ago, building an accordion component would require you to use a combination of JavaScript and CSS. If you've been around for as long as I have, you might have used a library like [jQuery](https://jqueryui.com/accordion/) or _Mootools_.
 If you went *"vanilla"*, your code would look something like this:
 
@@ -128,6 +128,7 @@ And it would be visually the same as the previous example:
 
 The disadvantages of both these methods are quite obvious. Not only they're hard to maintain, they're also not very accessible and their reliance on JavaScript makes them not the ideal candidate for a modern web application.
 In summary, another case of [HTMLHell](https://www.htmhell.dev).
+<!-- MM: "The disadvantages of both these methods are quite obvious" <- Not for everyone. Since this is HTMHell, it would be great if you would list the disadvantages of both techniques -->
 
 
 ## Here comes a new challenger
@@ -201,6 +202,8 @@ On the example above, each `<details>` element works independently of each other
 
 Not too long ago, the `name` attribute was added to the `details` element. 
 Similarly to the usage in the [radio input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio), it allows you to group multiple elements together. This means we can have _exclusive_ accordions: when only one can be opened at a time.
+<!-- MM: It would be great if you could address some of the downsides in terms of accessibility. See: https://yatil.net/blog/exclusive-accordions -->
+<!-- MM: Did you have a chance to test this with screen readers? I'd love to know what they annouce. -->
 
 The usage is pretty straightforward:
 
