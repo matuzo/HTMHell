@@ -15,6 +15,8 @@ image: "advent_6"
 
 By default, UI components have their accessible name (the programmatically associated label that assistive tech, like screen readers announce) computed from their own contents. That's part of the [spec'd algorithm](https://www.w3.org/TR/accname-1.1/) that browsers implement.
 
+<!-- SS: Agree with the comments left by MM. No additional comments. -->
+
 <!-- MM: A simple example + caption whould be great here. Something like:
 <figure class="u-mb">
 
