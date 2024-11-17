@@ -13,6 +13,9 @@ intro: "<p>Short description of the post</p>"
 image: "advent_6"
 ---
 
+<!-- KS: Agreed that a more tangible, less spec-sounding intro w/ example
+     would help readers understand where you're going a bit better. -->
+
 By default, UI components have their accessible name (the programmatically associated label that assistive tech, like screen readers announce) computed from their own contents. That's part of the [spec'd algorithm](https://www.w3.org/TR/accname-1.1/) that browsers implement.
 
 <!-- SS: Agree with the comments left by MM. No additional comments. -->

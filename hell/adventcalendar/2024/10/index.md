@@ -63,6 +63,10 @@ The reason I didn’t encounter this behavior before seems to be that I’ve nev
 </form>
 ```
 
+<!-- KS: Be careful about words like 'obviously.' Things that are
+     obvious to you may not be so to readers. I'd like you to call
+     attention to the `hidden` attribute there in particular. -->
+
 This obviously enables *power user mode* and makes the form submit on enter, no questions asked. To extend on the list above:
 
 - `<input type="submit">`: **YES!**, the button doesn’t even have to be visible, it just has to be part of the form.

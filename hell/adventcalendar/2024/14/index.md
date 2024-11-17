@@ -129,6 +129,9 @@ This pagination builds on the principles of the simple pagination. The same reco
 
 * To prevent symbols from being redundantly read aloud by screen readers, SVGs and images are given `aria-hidden="true"`. The link functionality is described exclusively via the aria-label in the `<a>` tag (e.g., "Next Page"), ensuring a clear and precise output for screen readers.
 <!-- MM: Why aria-label and not visually hidden text? -->
+<!-- KS: This is my primary question throughout this post. Text content
+     of `<a>` elements is very well understood as an accessible name,
+     and should be preferred over aria- attributes. -->
 * The alt attribute for images remains empty (`alt=""`) to prevent purely visual images from being unnecessarily read aloud. Since the link’s functionality is already described by the `aria-label`, this avoids redundant information for screen reader users.
 <!-- MM: But instead of the aria-label you could use the alt, no? Why is aria-label better? -->
 <!-- MM: Why the extra aria-hidden=true in the code example? -->

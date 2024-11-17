@@ -62,7 +62,7 @@ Having multiple choice questions, e.g. in a survey, is an ideal example in group
 	<input type="radio" id="today" name="eyes-opened" value="2020 – today" />
 	<label for="today">Between 2020 and today</label><br />
 </fieldset>
-```
+```     
 
 It could also be used to connect fields for a day, a month and a year for individual input fields to select a specific date, as well as hours and minutes to select a time. Or having different fields for a credit card number by splitting them into four digits each. You see, there are many possibilities to use fieldsets, just don’t overuse them – because with many possibilities comes great responsibility – or so.
 <!-- MM: How do I know if I'm overusing? -->

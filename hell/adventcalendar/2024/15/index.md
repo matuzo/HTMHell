@@ -196,3 +196,5 @@ Note: I only tested this in Chromium and Firefox. To check:
 - With a keyboard (for me it only work in Firefox!): Move focus to the button, or click on it and keep cursor in place. Hold `Shift` and press the right arrow key. If the text highlights, it’s selectable!
 
 So, the next time you're testing a button, remember: if you can select its text, it's probably a div in a button's clothing!
+
+<!-- KS: Outstanding, well written post. Thank you! -->
