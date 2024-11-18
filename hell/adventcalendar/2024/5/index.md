@@ -1,8 +1,8 @@
 ---
-title: "Forced Colors Mode Strategies"
+title: "Forced Colors Mode Futility"
 layout: layouts/advent.md
 author: "Matthias Zöchling"
-author_bio: "Matthias is a CSS aficionado, and the Web Accessibility Advocate at [George Labs](https://george-labs.com/), birthplace of the “George” online banking. Being part of the [Design System](https://designsystem.george-labs.com) team, he’s in pursuit of improving the accessibility for ten million customers across six countries, one day at a time. Additionally, he has been writing about _web stuff_ on his own site [for quite a while](https://cssence.com/2024/keep-blogging/). 2024 has been his best blogging year so far, even though things have significantly slowed down after the summer, when his wife gave birth to their third child."
+author_bio: "Matthias is a CSS aficionado, and the Web Accessibility Advocate at [George Labs](https://george-labs.com/), birthplace of the “George” online banking. He’s in pursuit of improving the accessibility for ten million customers across six countries, one day at a time. Additionally, he has been writing about _web stuff_ on his own site [for quite a while](https://cssence.com/2024/keep-blogging/). 2024 has been his best blogging year so far, even though things have significantly slowed down after the summer, when his wife gave birth to their third child."
 date: 2024-12-05
 author_links:
   - label: "Website/Blog"
@@ -12,170 +12,98 @@ author_links:
     url: "https://cssence.com/elsewhere/"
     link_label: "@CSSence"
 active: true
-intro: "<p>Matthias reminds you that “Forced Colors Mode” is a thing, and shares some strategies you can apply today.</p>"
+intro: "<p>Matthias reminds us that “Forced Colors Mode” is a thing, and that it can be used as an entry-level debugging tool.</p>"
 image: "advent24_5"
 ---
-<!-- MM: I really love this post but it fails the actual task for this years edition which was "Instead of a full-length article, I'd love to see your favorite code snippet in HTML and a few words explaining what you like about it."
-I don't think that you have to rewrite it entirely, but could you maybe focus more on HTML? I like the direction you were going with the <button> and <u> examples.  -->
 
-I use Linux on my personal laptop. In the corporate world I’ve been using MacOS for many years, but after my MacBook had deteriorated beyond repair, I opted against replacing it with some shiny Apple silicon. Instead, I wanted a machine where I could run Windows. Not because it’s good, but because I wanted to be able to experience screen readers like Narrator and NVDA. Up to that point I’ve only been using VoiceOver on MacOS/iOS and TalkBack on Android.
+Do you know about [Forced Colors Mode](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/)? If not, there are some [resources](#resources) at the end. If so, did you also know that this accessibility feature can be used as an entry-level debugging tool?
 
-This isn’t a story about screen readers.
+<style>style+p,section:has(#resources) span,section:has(#fns) ol{font-size:smaller}sup{position:relative;top:-.5em;vertical-align:baseline}</style>
 
-Instead, this is a story about Forced Colors, which is another thing I’ve started enjoying after switching to Windows. Did you ever click on _Accessibility > Displays > Increase contrast_ in MacOS, realizing that the effect is barely noticable? Well, unlike the Apple setting, [selecting a Contrast Theme in Windows](https://support.microsoft.com/en-us/windows/change-color-contrast-in-windows-fedc744c-90ac-69df-aed5-c8a90125e696#WindowsVersion=Windows_11) drastically changes the operating system’s appearance.
+**Note:** I’ve created a [CodePen with all the upcoming examples](https://codepen.io/cssence/pen/BaXMNyv), so you can follow along.
 
-<figure style="margin-bottom: 2.4rem"><img src="contrast-themes.webp" alt="In the “Accessibility > Contrast Themes” settings page in Windows 11, there are four predefined themes to choose from. Their names are Aquatic, Desert, Dusk, and Night Sky.">
-<figcaption>You can choose one of the themes, or even create your own. Interestingly, only one of the predefined choices uses dark text on light background.</figcaption>
-</figure>
+## Premise
 
-This accessibility setting was called _High Contrast_ in Windows&nbsp;10, then Microsoft renamed it to _Contrast Themes_ in Windows&nbsp;11. No matter how an operating system calls the feature, on the web we only talk about Forced Colors Mode.
+When the forced colors feature is turned on, colors will be replaced with [CSS System Colors](https://adrianroselli.com/2021/02/whcm-and-system-colors.html#CSS4). Elements like buttons and links get special colors assigned, so wherever improper elements are used, things will fall out of place.
 
-This isn’t a Forced Colors Mode introduction.
+## Bad advice
 
-Instead, I’d like to share my strategies on how to tackle Forced Colors Mode in the real world. I added these strategies to my toolbelt over time, and in doing so, the topic became a first-class citizen among all the other accessibility work I do.
+Okay, surely there’s a way around this, in true HTMHell.dev spirit‽
 
-Why isn’t this an introduction? After all, I even gave such an introduction when I spoke at _CSS in Graz_ earlier this year. Well, to be honest, great introductions are already out there. Kilian Valkhof wrote [Forced colors explained: A practical guide](https://polypane.app/blog/forced-colors-explained-a-practical-guide/) on the Polypane blog. If you are more into video, Kevin Powell (who else?) talks about [Forced colors and CSS](https://youtu.be/yYGLEy7CiT0) on his YouTube channel.
+Let’s use a `<div>` to create a button, and `<u>` to create a link. By doing the latter, our links are already underlined, but we avoid this pesky menu on right-click that feels out of place in our carefully crafted user interface.<sup><a id="ref-fn-1" href="#fn-1" role="doc-noteref" aria-label="Footnote #1">[1]</a></sup>
 
-Here’s an introductory quote from Kilian’s article:
-
-> The main feature is that it **limits and controls the range of colors,** making it easier for users to emphasize content and UI in a way that works for them.  
-> In other words, they force colors.
-
-If this is all news to you, I encourage you to get familiar with Forced Colors before we proceed.
-
-I’ll have some eggnog and wait for you to come back.
-
-_\*Slurp.\*_
-
-Good to go? Great. But to play it safe, let’s do a quick recap, to ensure we are all on the same page.
-
-## In a nutshell
-
-What happens when Forced Colors Mode is active?
-
-* Background colors are removed, and
-* most other colors are replaced, expect for SVG’s `fill` and `stroke`.
-* Only [CSS system colors](https://developer.mozilla.org/en-US/docs/Web/CSS/system-color) are kept.
-* Box and text shadows are removed.
-* Background images based on `url()` are kept.
-* Other background images (e.g. gradients) are removed.
-* A so-called backplate gets drawn behind text to make it more legible.
-
-This may be an oversimplification, but it’ll do. If you recall how many CSS properties can take a color, it becomes clear that this isn’t an exhaustive list.
-
-## Why is this important?
-
-According to Microsoft, 4% of Windows users have the feature activated. I wouldn’t be surprised if the number of people using Forced Colors is already on par with those that use Firefox as their browser. So if you care about Firefox (and you should), then you should also care about Forced Colors.
-<!-- MM: 4%? That's much higher than I expected. Do you have a source? Can we link to it? -->
-<!-- MM: That's a strange comparison. Can you put it in absolute numbers instead? That'll make it more tangible. -->
-
-Speaking of Firefox, I’ve been using it as my main browser for years, but it wasn’t until I’ve read Kilian’s article to learn that you can activate Forced Colors Mode in settings under _General > Colors > Manage colors > Override the colors: Always._ Obviously, doing so only affects web sites and not the OS. If you are on team Chrome, you can open DevTools, hit <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, type “forced”, and you’ll find the option to _Emulate CSS forced-colors: active._
-
-Forced Colors Mode has actually quite some history, it goes back all the way to Internet Explorer 10, when Microsoft introduced their `-ms-high-contrast` media query. Do you remember how we misused the old query to [detect Internet Explorer 10 and 11 in CSS](https://stackoverflow.com/questions/18907131/detecting-ie-version-using-css-capability-feature-detection)? Back then that was the reason I knew about the feature’s existence. Luckily these days are over. If you encounter any kind of outdated documentation, move on. Though certain articles like Adrian Roselli’s [WHCM and System Colors](https://adrianroselli.com/2021/02/whcm-and-system-colors.html) are always worth a read.
-
-The good news is, nowadays you only have to care about the `forced-colors` media query and everything related to it. So let’s dive in.
-
-## How to design for Forced Colors Mode?
-
-You don’t.
-
-<figure style="margin-bottom: 2.4rem">
-<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors#accessibility_concerns" style="margin-bottom: 0">In general, web authors should not be using the forced-colors media feature to create a separate design for users with this feature enabled. Instead, its intended usage is to make small tweaks to improve usability or legibility when the default application of forced colors does not work well for a given portion of a page.</blockquote>
-<figcaption><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors#accessibility_concerns">Accessibility concerns</a> mentioned on MDN’s <code>forced-colors</code> page.</figcaption>
-</figure>
-
-Tweaks become necessary primarily because backgrounds and shadows get removed, therefore we need other means to denote separation and hierarchy. The reduced color palette on the other hand shouldn’t cause trouble, because to be accessible we anyhow cannot convey meaning with color alone.
-
-So we are down to white space and separator lines (borders and outlines). In reality it is only the latter, we don’t want our content to shift around by adding padding/margin in Forced Colors Mode, in other words we should only make use of the white space we already have in place.
-
-If you’ve read [the summary in Kilian’s article](https://polypane.app/blog/forced-colors-explained-a-practical-guide/#in-summary), you’re already off to a good start.
-
-## Strategies
-
-I’m writing this piece for the [HTMHell.dev Advent Calendar](https://htmhell.dev/adventcalendar/2024/), so it’s time to state the obvious: Your `<div role="button">` won’t get the ButtonText system color applied, nor will your onclick-infused `<u tabindex="0">` be shown with LinkText. Instead of using the following strategies to adjust the styling of such nonsense, make sure you have semantic HTML to begin with.
-
-### 1. Do nothing
-
-As mentioned, we should not resort to creating a dedicated stylesheet. Instead, how about we craft our site in a way that just works for our users that have Forced Colors activated?
-
-That would be ideal, and sometimes it’s possible. But quite often, certain tweaks may be necessary.
-
-### 2. Hide in plain sight
-
-Shall we start making small adjustments, but without resorting to a media query just yet?
-
-This is where `transparent` becomes your friend. When used as `background-color`, it behaves as intended, there’s is no background color. However, when used as e.g. `border-color`, `transparent` will be replaced with the text color, so it becomes visible. This means, wherever you use a background color in your regular theme, there’s a chance you also want to add a transparent border or outline.
-
-This strategy would not be complete without the Forced Colors poster child technique concerning the focus ring. TL;DR, never remove the `outline`, only set its color to `transparent`. Then add your regular theme’s fancy focus ring based on box shadow. Yes, the shadow will be removed in Forced Colors, but the outline will take over. (Though personally I’d recommend to just go with `outline`, now that it adheres to `border-radius`.)
-
-```css
-*:focus {
-  /* `outline: none;` 👈 DO NOT do this */
-  outline-color: transparent; /* 👈 do this instead */
-  box-shadow: 0 0 0 .125rem var(--color-focus);
-}
+```html
+<div class="button">“Button”</div>
+<u data-href="https://example.com/very-bad">“Link”</u>
 ```
 
-### 3. Go the extra mile
+Thanks to the `data-href` on the link we know where to go. And yes, this means a little JavaScript will be needed to actually go there. Most likely we anyhow have a Single Page Application, so we’ll stay put.
 
-Eventually we need to implement something specifically for Forced Colors, something that should not leak into our regular theme. Media query `forced-colors` to the rescue! In addition, we can even differentiate between light and dark mode, because `prefers-color-scheme` will report one or the other depending on which contrast theme is selected. We’ll combine or nest our media queries and make adjustments accordingly.
+Now all that is left to be done is style our buttons and add color to our links.<sup><a id="ref-fn-2" href="#fn-2" role="doc-noteref" aria-label="Footnote #2">[2]</a></sup>
+
+```css
+.button { border: .125rem solid; border-radius: .375rem; /* etc. */ }
+u { color: light-dark(oklch(0.43 0.3 264.05), oklch(0.69 0.17 281.16)); }
+```
+
+All good? Sadly no, I’m sure the accessibility police will soon be all over the place.
+
+Fine, let’s make our elements interactive. For brevity, I’m not gonna mention any more JavaScript, but rest assured to make things accessible it no longer requires a little bit, we’ll need a metric fuckton of it.<sup><a id="ref-fn-3" href="#fn-3" role="doc-noteref" aria-label="Footnote #3">[3]</a></sup>
+
+To fix the HTML, I asked artifical “intelligence”, and several prompts later I learned that we need to sprinkle some ARIA roles and tabindexes on top.
+
+```html
+<div role="button" tabindex="0" class="button">“Button”</div>
+<u role="link" tabindex="0" data-href="https://example.com/bad">“Link”</u>
+```
+
+We’re good? Again, no, this is where **Forced Colors Mode** comes in. [No amount of ARIA](https://htmhell.dev/adventcalendar/2022/2/) turns our carefully crafted elements into their semantic counterparts. As such, they all will be displayed in plain CanvasText color.
+
+Alright, let’s manually add those colors, but inside a media query, so they won’t leak into our regular theme.
 
 ```css
 @media (forced-colors: active) {
-  /* theme-independent styles for Forced Colors Mode */
-  @media (prefers-color-scheme: light) {
-    /* styles for themes with dark text on light background */
-  }
-  @media (prefers-color-scheme: dark) {
-    /* styles for themes with light text on dark background */
-  }
+  .button { color: ButtonText; background-color: ButtonFace; }
+  u { color: LinkText; }
 }
 ```
 
-### 4. Use the force
+I was about to ask “Is this it?”, but I just realized we need a database to keep track of all the links that have already been clicked, so we can visually indicate them as `.visited`, ... — I’m gonna stop myself right there.
 
-Next up, we have the `forced-color-adjust` property. If we set it to `none`, we instruct the browser to keep the colors as they are. While this sounds like it would turn the whole Forced Colors idea on its head, the directive has its uses. Imagine a color picker: If all its colors would be set to CanvasText in Forced Colors Mode, the component would make no sense.
+## Good advice
 
-I have another use for the property. Sometimes I want a component to stand out in Forced Colors by inverting the colors. Badges and tooltips come to mind. Instead of displaying them CanvasText on Canvas, I flip them around. Fine, but they are both CSS system colors, as such they remain untouched in Forced Colors Mode. Why do we additionally need `forced-color-adjust`? Well, we don’t, at least not in Firefox. But the Chromiums rightfully go a bit overboard. I’ve mentioned the backplate that “gets drawn behind text to make it more legible”: After inverting the colors, the Chromiums shove a Canvas-colored backplate between our color and background color, so we end up with invisible text, i.e. not legible at all.
+Enough of the Sisyphean labor. Let’s do the following instead.
 
-```css
-@media (forced-colors: active) {
-  .badge {
-    background-color: CanvasText;
-    color: Canvas;
-    forced-color-adjust: none; /* prevent backplate */
-  }
-}
+```html
+<button type="button">Button</button>
+<a href="https://example.com/good">Link</a>
 ```
 
-Keep in mind that preventing the forced color adjustment on an element also affects all of its children. Which is why this should only be done for simple UI elements. Having a link among the children would already be a problem, as the link would then be shown in its regular theme color.
+For styling, all you have to do is inherit the font for buttons, which is what your [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/#six-inherit-fonts-for-form-controls-7) might do anyhow for all form controls.
 
-### 5. Be bold
+In Forced Colors Mode, things just work, buttons and links will be shown in proper CSS system colors. **Semantics for the win!**
 
-We’ve reached the opposite end of doing nothing. Sometimes it’s okay to get creative.
+## Full disclosure
 
-Consider a modal dialog. It is placed on top of other content, so the modal needs a background color. We deemphasize the still visible content around the modal with a backdrop, to visually indicate that the rest of the page is inert. A stark box shadow is attached to the modal to mimic elevation. In Forced Colors Mode we are derived of many of those things. To compensate, we can [add a thick outline around the modal](https://www.smashingmagazine.com/2022/03/windows-high-contrast-colors-mode-css-custom-properties/#styling-the-modal-for-forced-colors-mode).
+I didn’t need to write this article, because common sense exists, right? Then again, there’s a reason why HTMHell.dev exists. (<abbr title="By the way">BTW</abbr>, thanks for having me, it’s been an honor to be part of the [2024 advent calendar](https://htmhell.dev/adventcalendar/2024/) among all those talented people.)
 
-When it comes to the size of separator lines, I tend to use at least ten pixels for modals, three or four for custom dropdowns, two for buttons and one for most other things, like table rows. And whenever I need even more variety, I change the border/outline style to dotted, dashed, or double.
+Initially I wrote something else, but it ended up being too long for a calendar entry. _The original article_ is now [available on my blog](https://cssence.com/2024/forced-colors-mode-strategies/). If you are up for **actual Forced Colors Mode advice,** may I suggest you read it, and then consider joining my movement to make December <q cite="https://cssence.com/2024/forced-colors-mode-strategies/">the least colorful time of the year</q>.
 
-### 6. Know where to stop
+<section aria-labelledby="resources">
 
-We have quite a few system colors at our disposal, and even AccentColor and AccentColorText will hopefully get Baseline support soon. But I urge you to not use these colors beyond their intended purpose, as you may end up confusing people. If you do make an exception, use good judgement. Case in point, I like what Eric W. Bailey did for Forced Colors when [he updated his A11Y Syntax Highlighting](https://ericwbailey.design/published/a11y-syntax-highlighting-has-been-updated/).
+## Resources
 
-Having made it this far, you already know we are not dealing with the [alpha channel](https://developer.mozilla.org/en-US/docs/Glossary/Alpha) of a color in Forced Colors Mode. So it may seem counterintuitive to hear that `opacity` does work. That said, my recommendation would be to not use it, or limit its use to styling `:disabled` controls.
+* [Forced colors explained: A practical guide](https://polypane.app/blog/forced-colors-explained-a-practical-guide/), <span>18min read by Kilian Valkhof</span>
+* [Forced colors and CSS](https://youtu.be/yYGLEy7CiT0), <span>16min video by Kevin Powell</span>
+* [Windows High Contrast Mode, Forced Colors Mode And CSS Custom Properties](https://www.smashingmagazine.com/2022/03/windows-high-contrast-colors-mode-css-custom-properties/#styling-the-modal-for-forced-colors-mode), <span>11min read by Eric W. Bailey</span>
+* [Forced Colors Mode Strategies](https://cssence.com/2024/forced-colors-mode-strategies/), <span>14min read by yours truly</span>
 
-### 7. Over to you
-
-Are you already a Forced Colors Mode expert? Anything you’d like to add? Let me know [on Mastodon](https://mas.to/@CSSence).
-
-## The real world
-
-Web browsers have made a lot of progress in recent years, so much so that we’ve become rather comfortable and assume that things work cross-browser. Sadly, in Forced Colors Mode that is not the case. How long a feature has been with us seems to make no difference. For instance, [the complex but awesome CSS `border-image` property](https://www.smashingmagazine.com/2024/01/css-border-image-property/) is probably not something you want to make use of, as Chromium-based browsers keep actual images and also gradients, but Firefox removes both. New features can also be a breading ground for inconsistencies, the other day I ran into [an issue with `color-mix()`](https://cssence.com/2024/color-mix-in-forced-colors-mode/). How browsers apply the backplate would warrant a dedicated article, expect inconsistencies there too. I could go on.
-
-The cross-browser issues I’ve mentioned imply that **you have to test** in Firefox and at least one of the Chromiums. Until Apple decides to support Forced Colors, don’t fret about Safari. I encourage you to test twice, first with a theme that uses light text on dark background, and then the other way round. In doing so, you’ll be able to spot content that is invisible in just one of the two themes.
-
-## Before you go
-
-When I first selected a contrast theme in Windows, I immediately liked how slick and clean the user interface looked. Contrary to when I’m testing with screen readers, where after prolonged periods of time I end up feeling exhausted, this is something I don’t mind leaving turned on.
-
-Do you use Forced Colors all year around? If not, do you have Windows (or Firefox) nearby? How about you make **December** the month where you have Forced Colors turned on? Maybe you find it as comforting as I do. In that case, the least colorful time of the year can become [the most wonderful time of the year.](https://youtu.be/AN_R4pR1hck)
+</section>
+<section aria-labelledby="fns" class="section">
+<h2 id="fns">Footnotes</h2>
+<ol>
+<li id="fn-1">Some even argue underlined links go against an app-like feel, but let’s not go there. <a href="#ref-fn-1" role="doc-backlink" aria-label="Back to article">↩︎</a></li>
+<li id="fn-2">Look at those CSS functions our Fancy&nbsp;Pants author uses to add color to a link. <a href="#ref-fn-2" role="doc-backlink" aria-label="Back to article">↩︎</a></li>
+<li id="fn-3">And it’s very likely that we’ll still fail to do so. <a href="#ref-fn-3" role="doc-backlink" aria-label="Back to article">↩︎</a></li>
+</ol>
+</section>
