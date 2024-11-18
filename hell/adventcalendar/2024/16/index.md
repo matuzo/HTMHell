@@ -72,3 +72,9 @@ I first learned of this technique through [Heydon Pickering’s Inclusive Compon
 <p class="highlight">
 <strong>Note:</strong> You will not need <code>aria-expanded</code> on the HTML <code>details</code> element. Stateful information is automatically provided through its <code>open</code> attribute. <a href="https://www.scottohara.me/blog/2022/09/12/details-summary.html">See Scott O’Hara for more details on <code>details</code></a>.
 </p>
+
+<!-- KS: Great post, thank you! I wonder if it's worth also introducing
+     the `aria-controls` attribute? That makes the code look a little
+     more readable, and could also help with the poor performance
+     inherent in `*` selectors (since selectors are evaluated right
+     to left). -->

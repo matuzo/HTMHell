@@ -19,6 +19,13 @@ intro: "<p> intro goes here?</p>"
 image: "advent_23"
 ---
 <!-- MM: Great post, thank you! -->
+
+<!-- KS: I think it would be useful to describe what an accordion
+     component is...especially because most of what you're talking
+     about are singleton components that expand or collapse. It's
+     not until you get to the "true accordion" section that you
+     describe what I think of as an accordion component. -->
+     
 Not too long ago, building an accordion component would require you to use a combination of JavaScript and CSS. If you've been around for as long as I have, you might have used a library like [jQuery](https://jqueryui.com/accordion/) or _Mootools_.
 If you went *"vanilla"*, your code would look something like this:
 
@@ -152,6 +159,10 @@ And it will work just like the previous examples, but with some added benefits:
 
 As seen below:
 
+<!-- KS: Here and throughout, I think you can do readers a service
+     by using more descriptive class names that make it easier to
+     cross-reference the function of different structures in the HTML. -->
+
 <style>
 .styled {
   border: 1px solid #ccc;
@@ -260,3 +271,7 @@ Combine these features with some creative styling and you can create really comp
 
 Further reading and examples:
 [Code snippets](https://codepen.io/jpedroribeiro/pen/YzmxNYx) | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) | [Can I use](https://caniuse.com/details) | [web.dev](https://web.dev/learn/html/details)
+
+<!-- KS: Good post overall! Be careful about words like "simple" or
+     "straightforward." That won't be obvious to all readers, who you
+     risk alienating to some degree. -->

@@ -196,3 +196,5 @@ Note: I only tested this in Chromium and Firefox. To check:
 
 So, the next time you're testing a button, remember: if you can select its text, it's probably a div in a button's clothing!
 <!-- MM: Sorry to say that, but I guess this entire chapter needs to be replaced or removed. -->
+
+<!-- KS: Outstanding, well written post. Thank you! -->

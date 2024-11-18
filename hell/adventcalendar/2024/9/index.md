@@ -112,6 +112,9 @@ body {
 
 <aside style="font-size: smaller">
 
+<!-- KS: Thanks for the clarification :) I was wondering where CSS
+     variables might figure into this approach. -->
+
 ⭐ By the way, I use `--color-back` and `--color-text` variables in my demos. It makes it easier to set colors even in a small demo, let alone a bigger project. But to make things easier to read, I chose to set colors directly in code samples.
 
 </aside>
@@ -319,3 +322,5 @@ I bet you saw that coming: you can also force the theme color while switching th
 As all of us did, I learned most of what I know from other people’s posts and articles. I want to say a special thank you to Thomas Steiner for his early articles on color scheme switching: [Prefers-color-scheme: Hello darkness, my old friend](https://web.dev/articles/prefers-color-scheme#dark-mode-but-add-an-opt-out) and [Improved dark mode default styling with the color-scheme](https://web.dev/articles/color-scheme). Please also have a look at Darin Senneff’s [Progressively-enhanced dark mode](https://www.darins.page/articles/progressively-enhanced-dark-mode) and Sara Joy’s [Come to the light-dark() side](https://css-tricks.com/come-to-the-light-dark-side/) articles for a different perspective on the matter. And let’s dream about a better future for color scheme switching while reading Bramus’ [What if you had real control over light mode / dark mode on a per-site basis?](https://www.bram.us/2024/04/13/what-if-you-had-real-control-over-light-mode-dark-mode-on-a-per-site-basis/) article.
 
 <!-- MM: Great work, thanks! Probably too much for the scope of this post, but Roma wrote an article about querying color schemes. You might find it interesting https://blog.kizu.dev/querying-the-color-scheme/ -->
+
+<!-- KS: Agreed, this is really outstanding writing and content. -->

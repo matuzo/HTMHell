@@ -70,3 +70,12 @@ font-size : large;
 margin-bottom : 1em;
 }
 ```
+
+<!-- KS: Great post, thank you! I think you've made a very good case
+     as to why microdata is good for developers. But is there a user
+     benefit that could be made more clear and explicit here? You note
+     that this pattern can be used "without compromising accessibility,"
+     but are there ways in which this helps information to become more
+     accessible? Especially if we're thinking about *accessibility* in
+     broad terms? -->
+
