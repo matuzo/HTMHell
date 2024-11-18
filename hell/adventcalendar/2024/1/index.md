@@ -28,8 +28,6 @@ The problem with linking a logo is that it serves 2 purposes:
 - a link, that leads to the homepage.
 
 So add both that info in the alt text. Explain what's on the image and where the link leads to: "Site name logo, to the homepage".
-<!-- MM: It's a functional image, so do you really need the info "logo"? Are there any benefits of including it? -->
-<!-- SS: Agree with MM on this. I am little wary of adding words like "logo", "image of", etc. in a functional image -->
 
 **Note**: Start the alt text with the visible text, then the link will be easier to target for people using voice recognition software.
 
@@ -46,8 +44,6 @@ In code (simplified):
 </a>
 ```
 
-<!-- MM: Is this a violation of 2.5.3? https://www.w3.org/WAI/WCAG22/quickref/?versions=2.1&showtechniques=253#label-in-name If not, can you address why?-->
-
 Generated HTML: 
 
 <a href="https://www.lv.nl/en">
@@ -60,20 +56,35 @@ VoiceOver in Safari will announce this as:
 
 All info is there.
 
-There is an advantage of using the alt text instead of an `aria-label` solution. When the connection is slow, the alt text will show up before the image does and already informs all users of the site name and link destination. It's quite robust.
+There is an advantage of using the alt text instead of an aria-label solution. When the connection is slow, the alt text will show up before the image does and already informs all users of the site name and link destination. It's quite robust. 
 
-<!--
-  KS: Possibly, but following up on Manuel's question about WCAG above,
-  would it not be even more robust to include, say, a heading element
-  that is accessibly hidden from view for sighted users?
+## Discussion
 
-  See https://www.w3.org/WAI/WCAG22/Techniques/general/G208.html
+### Do I need the word logo? Isn't that redundant, like the word image or picture?
+Yes, in this case the fact that this is a logo tells important info.
 
-  One of the disadvantages of both `alt` and `aria-label` is that they
-  have only the semantics of a plain-text string, whereas other HTML
-  elements (including those pointed at by `aria-labelledby`) can be
-  much more expressive for all users.
--->
-<!-- MM (addition): Although I wouldn't use a heading, it could be interesting to address the visually-hidden text vs. alt question. We just had a dicussion about that last week at a meetup. -->
+Not only for blind users, but for all screenreader users. If you are visually impaired but not totally blind, you may see the image vaguely. With the addition of the word logo, you also know what the image is.
+
+The site name is required, but the logo gives extra context.
+
+### Isn't this a violation of [2.5.3 Label in Name](https://www.w3.org/WAI/WCAG22/quickref/?versions=2.1&showtechniques=253#label-in-name)?
+No, the visible name is in the alt text, which becomes the accessible name of the link. Adding extra context to the link is common practice.
+
+Compare this with the notorious "Read more" link in a card. A common pattern is to use a sr-only CSS class (or equivalent) with additional text:
+`<a href="url">Read more<span class="sr-only"> about cute kitten</a>` .
+
+- You see Read more.
+- You hear Read more about cute kitten.
+
+In our case: 
+
+- You see the site name and logo; the visual position tells the link destination.
+- You hear the site name, the fact it's a logo and the link destination.
+
+The whole visible text should be in the accessible name, but extra information, like the meaning of the image and link destination can be added for context. That way the [purpose of the link](https://www.w3.org/WAI/WCAG22/quickref/#link-purpose-in-context) is explained.
+
+### Why didn't you use an aria-label?
+Of course there are other and also valid solutions. By using plain simple HTML I want to honor the [first rule of ARIA](https://www.w3.org/TR/using-aria/#rule1):
+> If you can use a native HTML element or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.
 
 Happy Holidays!

@@ -16,6 +16,8 @@ intro: "<p>Matthias reminds us that “Forced Colors Mode” is a thing, and tha
 image: "advent24_5"
 ---
 
+<!-- MM: Thank you, great post. For many people forced colors is still uncharted territory. So, I feel like a screenshot here and there would help, e.g. how does the button look like compared to the "button". -->
+
 Do you know about [Forced Colors Mode](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/)? If not, there are some [resources](#resources) at the end. If so, did you also know that this accessibility feature can be used as an entry-level debugging tool?
 
 <style>style+p,section:has(#resources) span,section:has(#fns) ol{font-size:smaller}sup{position:relative;top:-.5em;vertical-align:baseline}</style>
@@ -63,8 +65,14 @@ Alright, let’s manually add those colors, but inside a media query, so they wo
 
 ```css
 @media (forced-colors: active) {
-  .button { color: ButtonText; background-color: ButtonFace; }
-  u { color: LinkText; }
+  .button {
+    color: ButtonText; 
+    background-color: ButtonFace;
+  }
+  
+  u { 
+    color: LinkText;
+  }
 }
 ```
 
@@ -82,6 +90,7 @@ Enough of the Sisyphean labor. Let’s do the following instead.
 For styling, all you have to do is inherit the font for buttons, which is what your [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/#six-inherit-fonts-for-form-controls-7) might do anyhow for all form controls.
 
 In Forced Colors Mode, things just work, buttons and links will be shown in proper CSS system colors. **Semantics for the win!**
+<!-- MM: This also applies to all the other form elements, right? Are there other elements, too? What about details/summary? -->
 
 ## Full disclosure
 

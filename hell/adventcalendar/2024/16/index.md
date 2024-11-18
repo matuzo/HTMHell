@@ -18,7 +18,8 @@ active: true
 intro: "<p>How to get a quick accessibility win by repurposing the logic of applying a conditional class to provide meaningful semantics.</p>"
 image: "advent_16"
 ---
-<!-- Short and on point. No comments from me. :) -->
+<!-- MM: Short and on point. No comments from me. :) -->
+
 Don’t get me wrong. You can keep it if you like it. But you don’t *need* it.
 
 A class selector can allow us to visually show or hide content for disclosure widgets, like a custom select component or dropdown navigation menu. But a disclosure widget is made of two parts:
@@ -78,3 +79,4 @@ I first learned of this technique through [Heydon Pickering’s Inclusive Compon
      more readable, and could also help with the poor performance
      inherent in `*` selectors (since selectors are evaluated right
      to left). -->
+<!-- MM: We already discussed that on GitHub. aria-controls is not necessary and the selector is fine. -->

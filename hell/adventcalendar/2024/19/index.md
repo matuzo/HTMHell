@@ -15,6 +15,7 @@ active: true
 intro: "<p>Hot reloading is super useful for iterative development, but it requires a fancy dev server. If you don't have one of those, you can put a single tag in your `<head>` to get some of the same effect.</p>"
 image: "advent_19"
 ---
+<!-- MM: Great stuff, I really like the idea! :) -->
 <!-- SS: I like this hack for refreshing to see the live changes, since I hate complicated build systems and using JS for everything in general. But I feel the article should focus more on indicating that this is a very minimal replacement of hot reloading, that someone can use for their own personal coding workflow. And maybe have a section mentioning the certain factors that might need to be taken into cosnideration while using this approach, for example, using devtools along with this solution can be irritating with continous refresh, or like there are accessibility issues that a teammate using assistive tech for development/QA might face. -->
 
 *In short: put `<meta http-equiv="refresh" content="1">` in your `<head>` element to refresh your page every second, like a makeshift hot reload.*

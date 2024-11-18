@@ -16,6 +16,7 @@ intro: "<p>With the right CSS makeup and a click event, almost anything can pret
 image: "advent_15"
 ---
 <!-- MM: Great post, thank you! -->
+<!-- KS: Outstanding, well written post. Thank you! -->
 
 With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot these fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can confortably return to and reuse across all their projects. More importantly, it encourages them to think beyond the sighted user with a mouse and consider the needs of those who rely on assistive technologies. 
 
@@ -197,4 +198,3 @@ Note: I only tested this in Chromium and Firefox. To check:
 So, the next time you're testing a button, remember: if you can select its text, it's probably a div in a button's clothing!
 <!-- MM: Sorry to say that, but I guess this entire chapter needs to be replaced or removed. -->
 
-<!-- KS: Outstanding, well written post. Thank you! -->
