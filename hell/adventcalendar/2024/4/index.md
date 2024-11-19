@@ -32,7 +32,7 @@ image: "advent_4"
   }
 </style>
 
-Viewports units on mobile have been a problem for a long time. Using `100vh` is most likely not exactly what you initially expected it to be. To fix this, the CSS Working Group came up with more units over time for you to use. The [dynamic viewport units](https://web.dev/blog/viewport-units) got introduced, which include `svh` and `lvh` which represent 1% of the small and large viewport height respectively.
+[Viewports units](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/viewport-units.md) on mobile have been a problem for a long time. Using `100vh` is most likely not exactly what you initially expected it to be. To fix this, the CSS Working Group came up with more units over time for you to use. The [dynamic viewport units](https://web.dev/blog/viewport-units) got introduced, which include `svh` and `lvh` which represent 1% of the small and large viewport height respectively.
 
 <figure class="u-mb">
   <img src="https://raw.githubusercontent.com/web-platform-tests/interop-2022-viewport/main/explainers/illustrations/viewport-units-mobile-svh%2Blvh--with-icb--mobilesafari.png" width="4001" height="2550" alt="">
@@ -43,7 +43,7 @@ While these units are _fairly_ interoperable at the time of writing – there ar
 
 ## The default viewport resize behavior
 
-When the Virtual Keyboard gets shown on mobile, it gets laid over the content. As a result, the Visual Viewport gets resized but the Layout Viewport - the one that is used to position out `position: fixed` elements – remains unchanged.
+When the Virtual Keyboard gets shown on mobile, it gets laid over the content. As a result, the [Visual Viewport](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/visual-viewport.md) gets resized but the [Layout Viewport](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/layout-viewport.md) - the one that is used to position out `position: fixed` elements – remains unchanged.
 
 <figure class="u-mb">
   <img src="data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'><text x='20' y='35'>TODO</text></svg>" width="4001" height="2550" alt="">
@@ -69,7 +69,7 @@ If you want to know all the details about Viewports, [check out this HTTP 203 ep
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xl9R8aTOW_I?si=5jEnH9fWKF3im80C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-The relevant part for you to know here is that the size of the Initial Containing Block (ICB) is based on the Layout Viewport – more specifically the Small Layout Viewport – and that the Viewport Units are based on the size of the ICB.
+The relevant part for you to know here is that the size of the [Initial Containing Block (ICB)](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/icb.md) is based on the Layout Viewport – more specifically the Small Layout Viewport – and that the Viewport Units are based on the size of the ICB.
 
 If you prefere reading, there are also [a bunch of explainers](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/README.md) for you to review.
 
