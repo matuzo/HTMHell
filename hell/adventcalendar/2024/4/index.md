@@ -71,7 +71,7 @@ If you want to know all the details about Viewports, [check out this HTTP 203 ep
 
 The relevant part for you to know here is that the size of the [Initial Containing Block (ICB)](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/icb.md) is based on the Layout Viewport – more specifically the Small Layout Viewport – and that the Viewport Units are based on the size of the ICB.
 
-If you prefere reading, there are also [a bunch of explainers](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/README.md) for you to review.
+If you prefer reading, there are also [a bunch of explainers](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/README.md) for you to review.
 
 ## The `interactive-widget` keyword in the viewport meta tag
 
