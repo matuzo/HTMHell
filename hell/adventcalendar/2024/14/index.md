@@ -14,6 +14,9 @@ image: "advent_14"
 ---
 <!-- MM: Thanks, Kristin. I like the topic and I like the post. I just have the feeling that you haven't tested both solutions properly with different screen readers. Testing with VO on desktop isn't enough. Generelly, the results it gives differ a lot from NVDA and JAWS and it's far from being the most used SR: https://webaim.org/projects/screenreadersurvey10/#browsercombos
 Please test with other software and adapt the code and descriptions accordingly.  -->
+
+<!-- SS: I really like the topic of the post, but I think the amount of aria- usage in the example code needs/can be reduced. I think MM and KS have already pointed out the detailed changes necessary in the example codes. -->
+
 Imagine you’re reading a book that seems perfect for cozy winter evenings. But as soon as you turn the page, you suddenly find yourself somewhere else, rather than on the next page of the story. Now, you have to painstakingly search through the book to find where the story continues — as if someone had bound the pages in the wrong order.
 Would you keep reading? Or recommend the book to others?
 
