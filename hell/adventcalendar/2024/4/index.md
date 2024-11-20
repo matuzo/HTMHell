@@ -35,8 +35,8 @@ image: "advent_4"
 [Viewports units](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/viewport-units.md) on mobile have been a problem for a long time. Using `100vh` is most likely not exactly what you initially expected it to be. To fix this, the CSS Working Group came up with more units over time for you to use. The [dynamic viewport units](https://web.dev/blog/viewport-units) got introduced, which include `svh` and `lvh` which represent 1% of the small and large viewport height respectively.
 
 <figure class="u-mb">
-  <img src="https://raw.githubusercontent.com/web-platform-tests/interop-2022-viewport/main/explainers/illustrations/viewport-units-mobile-svh%2Blvh--with-icb--mobilesafari.png" width="4001" height="2550" alt="">
-  <figcaption>Two mobile browser visualizations positioned next to each other. One has an element sized to be <code>100svh</code> (left, green) and the other <code>100lvh</code> (right, blue). The dotted red line represents the ICB.</figcaption>
+  <img src="viewports-01.jpg" width="4001" height="2550" alt="">
+  <figcaption>Two mobile browser visualizations positioned next to each other. One has an element sized to be <code>100svh</code> (left, green) and the other <code>100lvh</code> (right, blue). The blue red line represents the Layout Viewport.</figcaption>
 </figure>
 
 While these units are _fairly_ interoperable at the time of writing – there are still some interop issues, mainly related to webviews – there is one big gripe that a lot of people have with it: when the Virtual Keyboard gets shown, these units do not take the presence of that Virtual Keyboard into account. Depending on what you are building, you might want to have these units get resized when the Virtual Keyboard is shown.
@@ -46,8 +46,8 @@ While these units are _fairly_ interoperable at the time of writing – there ar
 When the Virtual Keyboard gets shown on mobile, it gets laid over the content. As a result, the [Visual Viewport](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/visual-viewport.md) gets resized but the [Layout Viewport](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/layout-viewport.md) - the one that is used to position out `position: fixed` elements – remains unchanged.
 
 <figure class="u-mb">
-  <img src="data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'><text x='20' y='35'>TODO</text></svg>" width="4001" height="2550" alt="">
-  <figcaption>Visualizations of a mobile browser with the virtual keyboard opened. The elements that have a height of <code>100svh</code> and <code>100lvh</code> are not affected by it.</figcaption>
+  <img src="viewports-02.jpg" width="4001" height="2550" alt="">
+  <figcaption>Visualization of a mobile browser with the virtual keyboard opened. The elements that have a height of <code>100svh</code> and <code>100lvh</code> are not affected by the virtual keyboard’s presence.</figcaption>
 </figure>
 
 Because the Layout Viewport does not change, the Viewport Units also don’t change. The only thing that changes is the size of the Visual Viewport, wich represents only the visual part that you see on screen.
@@ -57,8 +57,8 @@ _Note: Prior to Chrome 108, Chrome on Android used to resize the Layout Viewport
 What sometimes also happens is that browsers shift the Layout Viewport upwards (or the Visual Viewport downwards depending on how you look at it) in order to keep the focused input at the center of the screen.
 
 <figure class="u-mb">
-  <img src="https://github.com/bramus/viewport-resize-behavior/raw/main/images/10.png" width="4001" height="2550" alt="">
-  <figcaption>Visualization of the Visual Viewport on a page with the Virtual Keyboard shown. On the right, the Layout Viewport got shifted up so that the focused input is centered on the screen.</figcaption>
+  <img src="viewports-03.jpg" width="4001" height="2550" alt="">
+  <figcaption>Visualization of the Visual Viewport <em>(orange dotted outline)</em> on a page with the Virtual Keyboard shown. On the right, the Layout Viewport <em>(blue dashed outline)</em> got shifted up so that the focused input is centered on the screen.</figcaption>
 </figure>
 
 ## Intermezzo
@@ -70,6 +70,11 @@ If you want to know all the details about Viewports, [check out this HTTP 203 ep
 </div>
 
 The relevant part for you to know here is that the size of the [Initial Containing Block (ICB)](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/icb.md) is based on the Layout Viewport – more specifically the Small Layout Viewport – and that the Viewport Units are based on the size of the ICB.
+
+<figure class="u-mb">
+  <img src="viewports-04.jpg" width="4001" height="2550" alt="">
+  <figcaption>Visualization of the Initial Containing Block or ICB for short <em>(red dashed outline)</em>. It’s size is taken from the Small Layout Viewport.</figcaption>
+</figure>
 
 If you prefer reading, there are also [a bunch of explainers](https://github.com/web-platform-tests/interop-2022-viewport/blob/main/explainers/README.md) for you to review.
 
@@ -95,15 +100,15 @@ A fairly new keyword that you can use in the viewport meta tag is `interactive-w
 - `overlays-content`: Do not resize any viewport. This is similar to using the [Virtual Keyboard API](http://brm.us/virtual-keyboard) with `overlaysContent` set to `true`.
 
 <figure class="u-mb">
-  <img src="https://github.com/bramus/viewport-resize-behavior/raw/main/images/19.png" width="4001" height="2550" alt="">
+  <img src="viewports-05.jpg" width="4001" height="2550" alt="">
   <figcaption>The impact of the various values for <code>interactive-widget</code>. The orange dotted box is the Visual Viewport. The blue one is the Layout Viewport. Both resize differently depending on the value of <code>interactive-widget</code>.</figcaption>
 </figure>
 
 By setting `interactive-widget` to `resizes-content`, you can have the Layout Viewport resize. As a result the ICB will also resize, and therefore the Viewport units will also yield different values.
 
 <figure class="u-mb">
-  <img src="https://github.com/bramus/viewport-resize-behavior/raw/main/images/12.png" width="4001" height="2550" alt="">
-  <figcaption>A mobile device showing a page that has <code>interactive-widget</code> set to <code>resizes-content</code>. When the Virtual Keyboard is shown, the Viewport Units get adjusted as well.</figcaption>
+  <img src="viewports-06.jpg" width="4001" height="2550" alt="">
+  <figcaption>Visualization of the impact of setting <code>interactive-widget</code> to <code>resizes-content</code>. When that’s the case and the Virtual Keyboard is shown, the ICB resizes and the Viewport Units get adjusted.</figcaption>
 </figure>
 
 `interactive-widget` is supported in Chrome 108+ and Firefox 132+. If you would like to see this become available in WebKit/Safari, please go give <a href="https://github.com/WebKit/standards-positions/issues/65">https://github.com/WebKit/standards-positions/issues/65</a> a thumbs up.
