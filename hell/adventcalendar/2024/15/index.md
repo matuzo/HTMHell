@@ -57,6 +57,7 @@ Note: I regularly work on a Windows computer and am familiar with the accessibil
 So, what is the view from the accesssibility tree revealing?
 
 - The node has the role `button`, which comes with some privileges: it will be announced as a button by a screen reader, and since buttons support name from content, its text becomes its `accessible name`. So, a screen reader will announce it as `Theme Toggle, button`. Users relying on voice recognition software can activate it by voice command, such as saying `Click Theme Toggle`.
+<!-- SS: Based on the code example and the image, won't it announce `Change color ONE, button` ? Maybe you can update the code example to change the text to Theme Toggle or vice versa? -->
 
 - The `states` array shows that the button is focusable, so we know we can reach it via the `tab` key. 
 
