@@ -42,6 +42,7 @@ Make sure fields inside a `fieldset` are actually connected to each other and re
 <!-- MM: Would you recommend to always put first and last name in a group? They are connected to each other. -->
 <!-- MM: What does a field qualify to "require an identical context"? -->
 <!-- MM: Is slower really the right term you want to use here? Please explain how fieldsets make it _slower_- -->
+<!-- SS: I feel the cautionary note can also be added in the next section, after the Usage example, along with an example of a situation where a fieldset might not be as helpful. -->
 ## Usage examples
 
 Having multiple choice questions, e.g. in a survey, is an ideal example in grouping (input) fields. You can use the `legend` as question and use radio buttons as the answers:
@@ -66,3 +67,4 @@ Having multiple choice questions, e.g. in a survey, is an ideal example in group
 
 It could also be used to connect fields for a day, a month and a year for individual input fields to select a specific date, as well as hours and minutes to select a time. Or having different fields for a credit card number by splitting them into four digits each. You see, there are many possibilities to use fieldsets, just don’t overuse them – because with many possibilities comes great responsibility – or so.
 <!-- MM: How do I know if I'm overusing? -->
+<!-- SS: I feel some example of when you feel a fieldset should not be used or is overused might be good. Also, explaining why you think so. -->
