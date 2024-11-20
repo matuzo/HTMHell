@@ -19,6 +19,7 @@ intro: "<p>How to get a quick accessibility win by repurposing the logic of appl
 image: "advent_16"
 ---
 <!-- MM: Short and on point. No comments from me. :) -->
+<!-- SS: Great post, no comments from me. -->
 
 Don’t get me wrong. You can keep it if you like it. But you don’t *need* it.
 
