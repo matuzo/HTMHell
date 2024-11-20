@@ -12,6 +12,7 @@ active: true
 intro: "<p>Marco uses the example of a tab structure to demonstrate the richness of ARIA</p>"
 image: "advent_17"
 ---
+<!-- SS: I think MM has covered everything I had to say. No additional comments from me. -->
 <!-- MM: I like the post but an issue I have is that it's not clear enough how using ARIA benefits users. You talk about accuracy and the importance of a rich accessibility tree but how is the second example better than the first one for users? Which problems does it solve? -->
 
 One of the first things you learn about ARIA as a developer is the rule ‘Don't use ARIA, use native HTML instead’. This suggests that you don't need to learn ARIA at all and leads to the richness of the language rarely being utilised in its diversity. In fact, the first rule about ARIA in the W3C specification is ‘If you can use a native HTML’, which is a big difference to the rule quoted at the beginning.
