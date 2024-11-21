@@ -25,6 +25,8 @@ image: "advent_23"
      about are singleton components that expand or collapse. It's
      not until you get to the "true accordion" section that you
      describe what I think of as an accordion component. -->
+
+<!-- SS: No additional comments in particular, just reiterating MM and KS points that it would be nice to explain some of the parts and avoid using words like "obvious" and "straightforward" in the articles -->
      
 Not too long ago, building an accordion component would require you to use a combination of JavaScript and CSS. If you've been around for as long as I have, you might have used a library like [jQuery](https://jqueryui.com/accordion/) or _Mootools_.
 If you went *"vanilla"*, your code would look something like this:

@@ -45,6 +45,8 @@ It was on a cold February evening. I had been working on a client project, build
 - A second single-line text input in a *different* form: **YES!**, it’s not about how many inputs are on the page; each form is considered individually.
 - More than one single-line text input in the same form: **NO!** of course not! 😅 This is, according to the discussion mentioned above, aimed at “reducing the risk, on a complex form, of prematurely submitting it while trying to fill it in.“
 
+<!-- SS: I feel some code examples/codepen links for the above conditions would be nice for the users to try in their own browsers -->
+
 <!-- MM: Is that the case in all browsers? -->
 
 The reason I didn’t encounter this behavior before seems to be that I’ve never built a form with *only* one text field; even in a simple chat component, there typically is at least a submit button to send the message. And indeed, adding a submit button magically solves the above problem:
