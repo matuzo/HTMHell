@@ -20,6 +20,9 @@ image: "advent_22"
 ---
 <!-- MM: That's soooo interesting. I love it! The only thing I'd request is that you link to a source for the parsing rules.  -->
 <!-- SS: Great article! I think some links for the parsing rules have been added in the end of the article. -->
+<!-- KS: Agreed with MM. Interesting, and some links to help unfamiliar devs into
+     the parsing portions of the HTML spec (presumably?) would be very welcome
+     here. -->
 
 Setting the colour of text on a webpage is usually a simple affair involving whipping it out the good ol' CSS `color` property. But this is HTMHell, dammit. None of that wishy-washy CSS nonsense here. No siree. We use HTML as the good lord intended and shalln't stray into the sins of cascading sheets lest we end up some non-HTML variant of hell where they define page structure with JavaScript vars.
 
