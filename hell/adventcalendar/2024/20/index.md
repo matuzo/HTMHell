@@ -20,6 +20,10 @@ image: "advent_20"
 
 <!-- SS: Really enjoyed reading this article! Always happy to read more articles tackling web content in different languages. -->
 
+<!-- KS: This is fascinating. Part of me wonders about a little multilingual
+     takeaway for using the `lang` attribute to do a little style switching
+     between languages. But hey, maybe that's your post for next year? :) -->
+
 Since I started to create content in Japanese, I also wanted to learn about traditional setups, like having Japanese text flow from top to bottom, right to left, like you’d see in newspapers or novels. That's when I discovered CSS properties like `writing-mode: vertical-rl` and HTML tags like `<ruby>`, which add [furigana (phonetic guides)](https://en.wikipedia.org/wiki/Furigana) over [kanji characters](https://en.wikipedia.org/wiki/Kanji).
 
 Honestly, I’d never used these properties before and almost forgot they even existed! But now that I’ve dived into them, I’ll break down how you can implement them step-by-step to get that traditional Japanese look.

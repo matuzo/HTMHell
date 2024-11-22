@@ -18,6 +18,11 @@ image: "advent24_5"
 
 <!-- MM: Thank you, great post. For many people forced colors is still uncharted territory. So, I feel like a screenshot here and there would help, e.g. how does the button look like compared to the "button". -->
 <!-- SS: Article looks good. Also, good to see a lot of reference links and codepen. I agree with MM that some screenshots about how things look in forced color mode would be nice. -->
+<!-- KS: Agreed, great article. I think a little bit stronger "don't do this"
+     caution is warranted to save a hapless dev from accidentally replicating
+     your bad example. I think you could also use the Good advice section to
+     better explain why this is a good visual debugging tool (hey, it can even
+     be used by non-developers to spot likely problem elements!) -->
 
 Do you know about [Forced Colors Mode](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/)? If not, there are some [resources](#resources) at the end. If so, did you also know that this accessibility feature can be used as an entry-level debugging tool?
 
