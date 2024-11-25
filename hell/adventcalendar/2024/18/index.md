@@ -24,7 +24,7 @@ image: "advent_18"
 2. A closing sentence -->
 
 ## 📚
-<!-- MM: Is it okay if we replace this with text? -->
+<!-- MM: Is it okay if we replace the emoji with text? -->
 
 Books are the best Christmas presents, especially for us web geeks. (I hope you’ll find a [Web Accessibility Cookbook](https://accessibility-cookbook.com/) in your Christmas stocking, gentle reader.) Unfortunately, [A Book Apart closed](https://abookapart.com/pages/about/) this year. Fortunately, the authors reacquired the rights to their books. 
 <!-- MM: <3 -->
