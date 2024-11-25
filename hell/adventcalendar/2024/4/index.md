@@ -19,12 +19,6 @@ intro: "<p>Control whether the Layout Viewport resizes or not when the Virtual K
 image: "advent_4"
 ---
 
-<!-- MM: Perfect, love it. No comments. -->
-
-<!-- SS: I have only one overall comment which is more of a personal preference. I would love to see key terms like Visual Viewport, Layout Viewport, ICB, etc. hyperlinked to some references where folks can read more about them if possible. -->
-
-<!-- KS: Great post. Agreed with SS on outbound links, though. -->
-
 <style>
   figcaption {
     font-size: 0.8em;
