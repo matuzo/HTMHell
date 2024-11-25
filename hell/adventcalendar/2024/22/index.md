@@ -20,6 +20,7 @@ image: "advent_22"
 ---
 <!-- MM: That's soooo interesting. I love it! The only thing I'd request is that you link to a source for the parsing rules.  -->
 <!-- SS: Great article! I think some links for the parsing rules have been added in the end of the article. -->
+<!-- MM: (edit) Oh, I missed those. Could you maybe link the main source somewhere in the article directly where it makes sense? -->
 <!-- KS: Agreed with MM. Interesting, and some links to help unfamiliar devs into
      the parsing portions of the HTML spec (presumably?) would be very welcome
      here. -->
@@ -113,7 +114,7 @@ So, we know this happens and why. The next task is obviously to have some fun wi
 ## Interesting parsing in the modern era
 
 So, that's all well and good, but it's old news. The `color` and `bgcolor` attributes that permitted our parsing adventures are relics of HTML 4. They're obsolete (though still in active use on a disturbingly high number of websites). That isn't to say quirks like that have disappeared completely though. CSS has its own set of fascinating peculiarities when it comes to handling invalid colour values. Most modern browsers will clamp values rather than reject them outright -– throw rgb(300, -50, 1000) at a browser and it won't fail; it'll helpfully transform it into rgb(255, 0, 255).
-<!-- SS: "though still in active use on a disturbingly high number of websites" --> Can you provide a link with some stats showing this? or this a general observation? -->
+<!-- SS: "though still in active use on a disturbingly high number of websites" -> Can you provide a link with some stats showing this? or this a general observation? -->
 
 The web's foundational principle of forgiveness -– the inherent flexibility that allows "chucknorris" to be parsed as red, even though the reason it does so is old, silly, and unsupported –- hasn't gone anywhere. Modern browsers still bend over backward to make our code work, even when we throw nonsense at them. It doesn't take long to see this forgiveness in action within the cursed examples held within the pages of HTMHell. Each horrifying snippet, each questionable hack, each "it works but why" moment exists because browsers simply refuse to give up on rendering our 'mistakes'.
 
