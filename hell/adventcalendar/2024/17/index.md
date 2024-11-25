@@ -60,7 +60,7 @@ With a little [CSS and JavaScript](https://codepen.io/Meise2000/full/LYwQrZL), y
 ## The dark side of the solution
 
 The above solution may use semantic HTML elements, but these are not mapped in the accessibility tree with sufficient accuracy.
-<!-- MM: What das sufficient accuracy means and how does it affect users? -->
+<!-- MM: What does sufficient accuracy means and how does it affect users? -->
 
 ![image](a11y-tree-1.png)
 
