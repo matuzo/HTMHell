@@ -21,7 +21,7 @@ active: true
 intro: "<p>While there’s no truly native and simple way to build a light/dark color scheme switcher yet, we all try our best to come up with something that puts this quality-of-life feature in users’ hands. Some native HTML options are often overlooked in favor of hacky solutions. Let’s make them well-known and widely used while we wait for the proper built-in one.</p>"
 image: "advent_9"
 ---
-<!-- SS: Great article, nothing else to add apart from the comments that have already been mentioned. -->
+
 It’s getting dark early in Berlin in the winter. It’s not even close to evening, but my OS and all apps have already switched to dark mode. Well, not all of them, unfortunately. And that’s the thing: dark mode has become a quality-of-life feature for many users, and I often try to avoid using apps or websites that haven’t implemented it, especially in the evening. They literally hurt my eyes!
 
 When it comes to color scheme implementations, they range from rather useless ones that require a page reload to more sensible ones that query the `prefers-color-scheme` media feature and apply changes in CSS on the fly:
@@ -119,9 +119,6 @@ body {
 ```
 
 <aside style="font-size: smaller">
-
-<!-- KS: Thanks for the clarification :) I was wondering where CSS
-     variables might figure into this approach. -->
 
 ⭐ By the way, I use `--color-back` and `--color-text` variables in my demos. It makes it easier to set colors even in a small demo, let alone a bigger project. But to make things easier to read, I chose to set colors directly in code samples.
 
@@ -284,8 +281,6 @@ In short, if we force the dark scheme, the `dark.css` gets `media="all"` instead
   </figcaption>
 </figure>
 
-<!-- MM: Consider adding basic styles for [aria-pressed="true"] -->
-
 Given that scheme files containing only variables are relatively small, and browsers download all CSS files anyway (only the priority differs), the switching happens seamlessly. You can check this method in action [on my website](https://pepelsbey.dev/). And if you happen to use Safari or Vivaldi browsers, you might notice something else changing while you switch the schemes.
 
 ## One more thing
@@ -319,7 +314,3 @@ I bet you saw that coming: you can also force the theme color while switching th
 ## Homework
 
 As all of us did, I learned most of what I know from other people’s posts and articles. I want to say a special thank you to Thomas Steiner for his early articles on color scheme switching: [Prefers-color-scheme: Hello darkness, my old friend](https://web.dev/articles/prefers-color-scheme#dark-mode-but-add-an-opt-out) and [Improved dark mode default styling with the color-scheme](https://web.dev/articles/color-scheme). Please also have a look at Darin Senneff’s [Progressively-enhanced dark mode](https://www.darins.page/articles/progressively-enhanced-dark-mode) and Sara Joy’s [Come to the light-dark() side](https://css-tricks.com/come-to-the-light-dark-side/) articles for a different perspective on the matter. And let’s dream about a better future for color scheme switching while reading Bramus’ [What if you had real control over light mode / dark mode on a per-site basis?](https://www.bram.us/2024/04/13/what-if-you-had-real-control-over-light-mode-dark-mode-on-a-per-site-basis/) article.
-
-<!-- MM: Great work, thanks! Probably too much for the scope of this post, but Roma wrote an article about querying color schemes. You might find it interesting https://blog.kizu.dev/querying-the-color-scheme/ -->
-
-<!-- KS: Agreed, this is really outstanding writing and content. -->
