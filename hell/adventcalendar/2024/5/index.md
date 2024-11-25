@@ -18,16 +18,6 @@ image: "advent24_5"
 
 <style>figure{margin-bottom:2.4rem}figure img{aspect-ratio:4;border: 6px solid #000}figcaption,sup,.highlight,section:has(#resources) span,section:has(#fns) ol{font-size:87.5%}.highlight{margin-left:1.5em;padding:1rem;text-wrap:balance}.highlight::before{content:attr(data-icon);content:attr(data-icon) / '';position:absolute;margin-left:calc(-1.5em - 1rem);filter:grayscale()}.highlight em{font-style:inherit;text-transform:uppercase}sup{position:relative;top:-.5em;vertical-align:baseline}</style>
 
-<!-- MM: Thank you, great post. For many people forced colors is still uncharted territory. So, I feel like a screenshot here and there would help, e.g. how does the button look like compared to the "button". -->
-<!-- SS: Article looks good. Also, good to see a lot of reference links and codepen. I agree with MM that some screenshots about how things look in forced color mode would be nice. -->
-<!-- MZ: Good idea, I’ve added two screenshots. -->
-<!-- KS: Agreed, great article. I think a little bit stronger "don’t do this"
-     caution is warranted to save a hapless dev from accidentally replicating
-     your bad example. I think you could also use the Good advice section to
-     better explain why this is a good visual debugging tool (hey, it can even
-     be used by non-developers to spot likely problem elements!) -->
-<!-- MZ: Will do, as in: Done. (Hopefully.) -->
-
 Are you aware of [Forced Colors Mode](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/)? If not, there are some [resources](#resources) at the end. If so, did you also know that this accessibility feature can be used as an entry-level debugging tool?
 
 <figure><img src="htmhell-goes-fcm.webp" alt="Comparing HTMHell.dev: Three screenshots taken in Microsoft Edge browser. Although subtle tweaks could be made, overall the site works really well in Forced Colors Mode.">
@@ -107,8 +97,6 @@ Enough of the Sisyphean labor. Let’s do the following instead.
 For styling, all you have to do is inherit the font for buttons, which is what your [CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/#six-inherit-fonts-for-form-controls-7) might do anyhow for all form controls.
 
 In Forced Colors Mode, things just work, buttons and links will be shown in proper CSS system colors. **Semantics for the win!**<sup><a id="ref-fn-4" href="#fn-4" role="doc-noteref" aria-label="Footnote #4">[4]</a></sup>
-<!-- MM: This also applies to all the other form elements, right? Are there other elements, too? What about details/summary? -->
-<!-- MZ: Well, yes and no, with the notable exception of the `mark` element, other elements are way more subtle, or anyhow displayed in CanvasText color, so it made sense to focus on buttons/links. But point taken, for the curious ones I’ve now added a 4th footnote that links to another CodePen, where readers can learn more. -->
 
 <figure><img src="a-div-is-not-a-button-even-in-fcm.webp" alt="While we eventually can make our fake elements look like the real deal even in Forced Colors Mode, we should avoid all that work and use proper elements instead.">
 <figcaption>The <a href="https://codepen.io/cssence/pen/BaXMNyv">accompanying CodePen</a> in “Night Sky” (top) and “Desert” (bottom) contrast theme.</figcaption>
