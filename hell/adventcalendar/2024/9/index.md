@@ -301,19 +301,10 @@ I bet you saw that coming: you can also force the theme color while switching th
 
 <figure style="margin-bottom: 2.4rem">
 
-![Light and dark color scheme switching](images/safari-light.png)
+![Two Safari windows: one in the light scheme, the other in the dark scheme. The light one has a lime top panel, the dark one has a violet top panel.](images/theme-color.png)
 
 <figcaption>
-  Lime <code>theme-color</code> for the light scheme in Safari.
-</figcaption>
-</figure>
-
-<figure style="margin-bottom: 2.4rem">
-
-![Light and dark color scheme switching](images/safari-dark.png)
-
-<figcaption>
-  Violet <code>theme-color</code> for the dark scheme in Safari.
+  Different top panel colors using the <code>theme-color</code> meta element.
 </figcaption>
 </figure>
 
