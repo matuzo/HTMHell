@@ -91,3 +91,16 @@ I narrowed my eyes as ChatGPT brightly informed me:
 <blockquote class="blockquote-no-quotes highlight">You're absolutely right again! The `aria-label` attribute is not needed when the button already has a clear, visible text label. The visible text content of a <code>&lt;button&gt;</code> element is automatically accessible to screen readers and other assistive technologies, so there's no need for `aria-label` unless you want to provide an alternative or additional description that's not visible.</blockquote>
 
 Suddenly I knew exactly how Arthur Dent felt, dealing with the [Nutrimatic Drinks Dispenser](https://www.youtube.com/watch?v=eAswvg60FnY) in The Hitchhiker's Guide to the Galaxy. Just like the cup of tea it dispensed to Arthur, the code provided by ChatGPT was, to paraphrase, almost, but not quite, entirely unlike the HTML for an accessible button.
+
+If ChatGPt hadn't been trained by indiscriminately hoovering up everything on the web, and if humans hadn't spent the last 30 years creating so many inaccessible buttons for it to hoover up in the first place, then the answer it gave me should have gone a little something like this:
+
+<blockquote class="blockquote-no-quotes highlight">To create an accessible button in HTML (outside of a form), you can use the <code>&lt;button&gt;</code> element like this:</blockquote>
+
+```html
+<button>Accessible name</button>
+```
+
+<blockquote class="blockquote-no-quotes highlight">This element works well with a keyboard: you can focus it using the Tab key and activate it with either the Spacebar or Enter key. When triggered this way, the browser will run any JavaScript tied to the button’s click event. Just make sure to style the button so that its appearance changes when it gets focus, providing clear feedback to users.
+<br>
+For users relying on screen readers or other assistive technologies, the button element is automatically recognized as a button. Just remember to replace "Accessible name" with a descriptive label that fits your button’s function—such as "Search" or "Play."</blockquote>
+
