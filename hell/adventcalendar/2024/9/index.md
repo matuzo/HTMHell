@@ -73,7 +73,15 @@ If you ever fall into the dark scheme rabbit hole, the first thing you’ll lear
 ```
 
 The `light dark` value means that we’re choosing to support both light and dark schemes in our code. The property will be inherited down the document tree, and the browser will enable some default styling for built-in primitives when needed. Thank you, browser!
-<!-- MM: A screenshot of a simple HTML doc in both modes would be great. -->
+
+<figure style="margin-bottom: 2.4rem">
+
+![Two browser windows with the same page: one in the light scheme, the other in the dark scheme. The text on the page says: link is not a button! The link word is a link, the button word is a button. All page elements, including scrollbars, are perfectly aligned with the scheme.](images/color-scheme.png)
+
+<figcaption>
+  Default browser dark styles enabled by the <code>color-scheme: light dark</code> property.
+</figcaption>
+</figure>
 
 When switching your schemes, it’s important to switch the value of this property, too: set `color-scheme: light` on the root along with light styles and the other way around for the dark ones. Remember this, it’ll come in handy later.
 
