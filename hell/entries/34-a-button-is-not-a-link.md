@@ -1,6 +1,6 @@
 ---
 title: "#34 a button is not a link"
-date: 2024-11-17
+date: 2024-11-26
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: moritzgiessmann
