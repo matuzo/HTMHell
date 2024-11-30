@@ -4,7 +4,7 @@ date: 2024-11-26
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: moritzgiessmann
-badcode: '<button type="button" onclick="window.open('https://example.com/other-page')">Link target description</button>'
+badcode: "<button type=\"button\" onclick=\"window.open('https://example.com/other-page')\">Link target description</button>"
 goodcode: '<a href="https://example.com/other-page">Link target description</a>'
 ---
 
