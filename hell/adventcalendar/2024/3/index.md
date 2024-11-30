@@ -11,9 +11,9 @@ author_links:
   - label: "John on Bluesky"
     url: "@johnallsopp.bsky.social"
     link_label: "@johnallsopp"
-active: true
 intro: "<p>A single line of CSS can enable slick multi-page transitions for web applications (and web sites for those who maintain there's a difference), opening up new possibilities for web app architectures, and website experiences.</p>"
 image: "advent24_3"
+tags: advent2024
 ---
 
 A single line of CSS can enable slick multi-page transitions for web applications (and web sites for those who maintain there's a difference), opening up new possibilities for web app architectures, and website experiences. So let’s take a look at View Transitions, why we might want them, and how to get started with just that single line of CSS.

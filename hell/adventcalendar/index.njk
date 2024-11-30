@@ -12,13 +12,6 @@ tags:
 
 <h1>{{ title }}</h1>
 
-<p>Ready for review Saptak and Karl:</p>
-
-<p>Reviewed, waiting for authors response: 6, 10, 13, 14, 15, 16, 17, 18, 19, 20</p>
-<p>Finished, ready for publication: 1, 2, 3, 4, 5, 7, 8, 9, 19</p>
-
-<p>Not merged: 11, 12, 24</p>
-
 {% macro day(num) %}
   {% set days = collections.advent2024 %}
   <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
@@ -44,7 +37,7 @@ tags:
 <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap&text=1234567890" rel="stylesheet"> 
 
 <p>
-  In 2022, I launched the <strong>HTMHell Advent Calendar</strong>, which was a great success. Since then twenty-four authors worldwide contribute fantastic articles on security, accessibility, UX, and performance every year. 
+  In 2022, I launched the <strong>HTMHell Advent Calendar</strong>, which was a great success. Since then, dozens of authors worldwide have contributed fantastic articles on security, accessibility, UX, and performance every year. This year, we're back again with twenty-four more posts.
 </p>
 
 <p>
@@ -130,7 +123,7 @@ tags:
 
 
 <script>
-  var opened = localStorage.getItem('html_opened23') ? JSON.parse(localStorage.getItem('html_opened23')) : [];
+  var opened = localStorage.getItem('html_opened24') ? JSON.parse(localStorage.getItem('html_opened24')) : [];
 
   setTimeout(() => {
     if (opened.length) {
@@ -146,7 +139,7 @@ tags:
     if (e.target.closest('li').dataset.day) {
       if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
         opened.push(e.target.closest('li').dataset.day)
-        localStorage.setItem('html_opened23', JSON.stringify(opened))
+        localStorage.setItem('html_opened24', JSON.stringify(opened))
       }
     }
   });

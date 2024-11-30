@@ -8,9 +8,9 @@ author_links:
   - label: "Marco on LinkedIn"
     url: "https://www.linkedin.com/in/marco-bretschneider-norderstedt/"
     link_label: "LinkedIn"
-active: true
 intro: "<p>Marco uses the example of a tab structure to demonstrate the richness of ARIA</p>"
 image: "advent24_17"
+tags: advent2024
 ---
 <!-- SS: I think MM has covered everything I had to say. No additional comments from me. -->
 <!-- MM: I like the post but an issue I have is that it's not clear enough how using ARIA benefits users. You talk about accuracy and the importance of a rich accessibility tree but how is the second example better than the first one for users? Which problems does it solve? -->

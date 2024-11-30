@@ -14,6 +14,7 @@ author_links:
 active: true
 intro: "<p>An alt text doesn't always only describe what's on the image. How not to confuse screenreader users about where a link lead to. </p>"
 image: "advent24_1"
+tags: advent2024
 ---
 
 It's a common pattern to use a logo in the header as a link to the homepage.

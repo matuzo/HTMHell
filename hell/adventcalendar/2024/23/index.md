@@ -14,9 +14,9 @@ author_links:
   - label: "On LinkedIn"
     url: "https://www.linkedin.com/in/joaopedroribeiro/"
     link_label: "LinkedIn"
-active: true
 intro: "<p> intro goes here?</p>"
 image: "advent24_23"
+tags: advent2024
 ---
 <!-- MM: Great post, thank you! -->
 

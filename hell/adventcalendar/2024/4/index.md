@@ -14,9 +14,9 @@ author_links:
   - label: "Bramus on X"
     url: "https://x.com/bramus"
     link_label: "@bramus"
-active: true
 intro: "<p>Control whether the Layout Viewport resizes or not when the Virtual Keyboard gets shown.</p>"
 image: "advent24_4"
+tags: advent2024
 ---
 
 <style>

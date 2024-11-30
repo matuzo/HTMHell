@@ -14,9 +14,9 @@ author_links:
   - label: "Jens on Twitter/X"
     url: "https://x.com/j9t"
     link_label: "@j9t"
-active: true
 intro: "<p>Appreciating HTML code from the past, to challenge HTML from the present.</p>"
 image: "advent24_8"
+tags: advent2024
 ---
 
 Consider the following HTML document:

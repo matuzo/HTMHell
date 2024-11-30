@@ -8,9 +8,9 @@ author_links:
   - label: "LinkedIn"
     url: "https://www.linkedin.com/in/kristin-r-66306a174/"
     link_label: "@Kristin"
-active: true
 intro: "<p>Imagine the web as a well-bound book, where every page is exactly where you expect it to be—accessible pagination makes that possible. Discover how thoughtful page navigation can open the web to everyone and transform the user experience into a seamless journey.</p>"
 image: "advent24_14"
+tags: advent2024
 ---
 <!-- MM: Thanks, Kristin. I like the topic and I like the post. I just have the feeling that you haven't tested both solutions properly with different screen readers. Testing with VO on desktop isn't enough. Generelly, the results it gives differ a lot from NVDA and JAWS and it's far from being the most used SR: https://webaim.org/projects/screenreadersurvey10/#browsercombos
 Please test with other software and adapt the code and descriptions accordingly.  -->

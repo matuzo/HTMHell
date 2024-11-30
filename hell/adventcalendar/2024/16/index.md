@@ -14,9 +14,9 @@ author_links:
   - label: "Mastodon"
     url: "https://hachyderm.io/@maureenholland"
     link_label: "@maureenholland"
-active: true
 intro: "<p>How to get a quick accessibility win by repurposing the logic of applying a conditional class to provide meaningful semantics.</p>"
 image: "advent24_16"
+tags: advent2024
 ---
 <!-- MM: Short and on point. No comments from me. :) -->
 <!-- SS: Great post, no comments from me. -->

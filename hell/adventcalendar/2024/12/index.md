@@ -11,9 +11,9 @@ author_links:
   - label: "yx on ABC"
     url: "https://abc-social-media-site"
     link_label: "@xy"
-active: true
 intro: "<p>Short description of the post</p>"
 image: "advent24_12"
+tags: advent2024
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!

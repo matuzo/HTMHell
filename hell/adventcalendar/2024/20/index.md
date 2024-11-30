@@ -11,9 +11,9 @@ author_links:
   - label: "yx on ABC"
     url: "https://abc-social-media-site"
     link_label: "@xy"
-active: true
 intro: "<p>Short description of the post</p>"
 image: "advent24_20"
+tags: advent2024
 ---
 <!-- MM: Love it! -->
 <!-- MM: Please send me a short bio (1-2 paragraphs), a short description of the post (1 sentence), and links you want to add to your website, social media, etc. -->

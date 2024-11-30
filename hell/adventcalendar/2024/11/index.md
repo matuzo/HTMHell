@@ -11,9 +11,9 @@ author_links:
   - label: "Mastodon"
     url: "https://bigshoulders.city/@EvanHahn"
     link_label: "@EvanHahn"
-active: true
 intro: "<p>Hot reloading is super useful for iterative development, but it can require fancy tooling. If you don't have that, you can put a single tag in your `<head>` to hack in some of the same effect.</p>"
 image: "advent24_11"
+tags: advent2024
 ---
 
 *In short: put `<meta http-equiv="refresh" content="1">` in your `<head>` element to refresh your page every second. This is a makeshift "hot reload" for development. It's not perfect, but it can be a quick solution!*

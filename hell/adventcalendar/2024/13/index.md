@@ -11,9 +11,9 @@ author_links:
   - label: "X (Twitter)"
     url: "https://x.com/html_diva_en"
     link_label: "@html_diva_en"
-active: true
 intro: '<p>In the article I talk about improving user experience on multilingual websites by using the translate="no" attribute to prevent incorrect translations of names, emails, and technical terms. This simple HTML trick ensures better accessibility and usability for global audiences.</p>'
 image: "advent24_13"
+tags: advent2024
 ---
 
 Today, I’d like to talk about the experience of browsing websites where content is fully or partially in a language different from the user’s native one. This situation is common for users navigating government portals or local service providers in a country where they don't speak the language well, and for international marketplaces, where essential information might appear in unfamiliar language. Or just a user has a different language preference set in their browser because it's convenient for them. In these cases, users often rely on the browser’s auto-translate feature, which many modern browsers offer by default. When you open a page in a different language from your preferred setting, the browser will prompt you to translate it automatically.

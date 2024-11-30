@@ -8,9 +8,9 @@ author_links:
   - label: "Blog"
     url: " https://epiph.yt/en/"
     link_label: "epiph.yt"
-active: true
 intro: "<p> Using fieldsets to group multiple (input) fields into a single one can be an ideal way to provide context to otherwise lonely fields inside a form, enhancing the accessibility of using them.</p>"
 image: "advent24_21"
+tags: advent2024
 ---
 <!-- MM: Thanks for the post. I like it but it lacks 2 things:
 1. What's the actual outcome for screen reader users in detail? What does the software announce and when? Only when I enter the group or with every option? If with every option, how and when?

@@ -8,9 +8,9 @@ author_links:
   - label: "Website"
     url: "https://assistivlabs.com"
     link_label: "assistivlabs.com"
-active: true
 intro: "<p>Short description of the post</p>"
 image: "advent24_6"
+tags: advent2024
 ---
 
 <!-- KS: Agreed that a more tangible, less spec-sounding intro w/ example

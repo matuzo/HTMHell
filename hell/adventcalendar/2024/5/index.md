@@ -11,9 +11,9 @@ author_links:
   - label: "Mastodon & beyond"
     url: "https://cssence.com/elsewhere/"
     link_label: "@CSSence"
-active: true
 intro: "<p>Matthias reminds us that “Forced Colors Mode” is a thing, and that it can be used as an entry-level debugging tool.</p>"
 image: "advent24_5"
+tags: advent2024
 ---
 
 <style>figure{margin-bottom:2.4rem}figure img{aspect-ratio:4;border: 6px solid #000}figcaption,sup,.highlight,section:has(#resources) span,section:has(#fns) ol{font-size:87.5%}.highlight{margin-left:1.5em;padding:1rem;text-wrap:balance}.highlight::before{content:attr(data-icon);content:attr(data-icon) / '';position:absolute;margin-left:calc(-1.5em - 1rem);filter:grayscale()}.highlight em{font-style:inherit;text-transform:uppercase}sup{position:relative;top:-.5em;vertical-align:baseline}</style>
