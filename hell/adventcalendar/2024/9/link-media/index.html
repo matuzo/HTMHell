@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Link media switching — Native HTML light and dark color scheme switching</title>
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#c1f07c">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#9874d3">
+
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" media="(prefers-color-scheme: light)" href="light.css">
+  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="dark.css">
+</head>
+<body>
+  <section class="scheme-switcher" aria-label="Color scheme switcher">
+    <button class="scheme-switcher__button" aria-pressed="false" value="light">
+      Light
+    </button>
+    <button class="scheme-switcher__button" aria-pressed="true" value="auto">
+      Auto
+    </button>
+    <button class="scheme-switcher__button" aria-pressed="false" value="dark">
+      Dark
+    </button>
+  </section>
+  <script src="/adventcalendar/2024/9/link-media/index.js"></script>
+</body>
+</html>
