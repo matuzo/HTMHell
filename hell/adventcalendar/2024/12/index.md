@@ -13,7 +13,7 @@ author_links:
     link_label: "@xy"
 active: true
 intro: "<p>Short description of the post</p>"
-image: "advent_12"
+image: "advent24_12"
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!

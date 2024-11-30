@@ -16,7 +16,7 @@ author_links:
     link_label: "@j9t"
 active: true
 intro: "<p>Appreciating HTML code from the past, to challenge HTML from the present.</p>"
-image: "advent_8"
+image: "advent24_8"
 ---
 
 Consider the following HTML document:

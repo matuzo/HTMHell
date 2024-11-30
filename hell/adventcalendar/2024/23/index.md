@@ -16,7 +16,7 @@ author_links:
     link_label: "LinkedIn"
 active: true
 intro: "<p> intro goes here?</p>"
-image: "advent_23"
+image: "advent24_23"
 ---
 <!-- MM: Great post, thank you! -->
 

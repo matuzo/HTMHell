@@ -16,7 +16,7 @@ author_links:
     link_label: "@vale.rocks"
 active: true
 intro: "<p>An exploration of how legacy HTML color parsing turns random text like 'chucknorris' into valid colours through a fascinating series of cleanup rules and character replacements.</p>"
-image: "advent_22"
+image: "advent24_22"
 ---
 <!-- MM: That's soooo interesting. I love it! The only thing I'd request is that you link to a source for the parsing rules.  -->
 <!-- SS: Great article! I think some links for the parsing rules have been added in the end of the article. -->

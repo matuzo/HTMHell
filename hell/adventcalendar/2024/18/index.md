@@ -16,7 +16,7 @@ author_links:
     link_label: "@RealAlanDalton"
 active: true
 intro: "<p>Books are the best Christmas presents. Let’s use them as an example to see how HTML’s microdata features can convey a lot of programmatically determinable information with little effort.</p>"
-image: "advent_18"
+image: "advent24_18"
 ---
 <!-- MM: Thanks for the post. I really like that you picked microdata. I'm happy with it but two things are missing:
 

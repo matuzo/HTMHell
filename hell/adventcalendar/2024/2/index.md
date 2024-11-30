@@ -19,7 +19,7 @@ author_links:
     link_label: "Polypane.app"
 active: true
 intro: "<p>Autofocus is a great attribute, but you should use it sparingly.</p>"
-image: "advent_2"
+image: "advent24_2"
 ---
 
 Focus is where the user is on your website. It's what makes it possible to navigate your site with the keyboard or other assistive technologies, and it's how a browser knows which form element you're typing in. It's vital to get right if you want to build good websites.

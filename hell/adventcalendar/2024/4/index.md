@@ -16,7 +16,7 @@ author_links:
     link_label: "@bramus"
 active: true
 intro: "<p>Control whether the Layout Viewport resizes or not when the Virtual Keyboard gets shown.</p>"
-image: "advent_4"
+image: "advent24_4"
 ---
 
 <style>
