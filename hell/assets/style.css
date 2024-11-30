@@ -1046,25 +1046,25 @@ pre.language-html::before {
 }
 
 
-.acalendar--calendar > li:nth-child(3) { order: 1; }
+.acalendar--calendar > li:nth-child(7) { order: 1; }
 
 .acalendar--calendar > li:nth-child(22) { order: 2; }
 
 .acalendar--calendar > li:nth-child(17) { order: 3; }
 
-.acalendar--calendar > li:nth-child(19) { order: 4; }
+.acalendar--calendar > li:nth-child(2) { order: 9; }
 
-.acalendar--calendar > li:nth-child(6) { order: 5;}
+.acalendar--calendar > li:nth-child(11) { order: 5;}
 
-.acalendar--calendar > li:nth-child(7) { order: 6; }
+.acalendar--calendar > li:nth-child(3) { order: 6; }
 
-.acalendar--calendar > li:nth-child(5) { order: 7}
+.acalendar--calendar > li:nth-child(16) { order: 7}
 
 .acalendar--calendar > li:nth-child(12) { order: 8}
 
-.acalendar--calendar > li:nth-child(24) { order: 9; grid-column: span 2;}
+.acalendar--calendar > li:nth-child(24) { order: 16; grid-column: span 2;}
 
-.acalendar--calendar > li:nth-child(9) { order: 10}
+.acalendar--calendar > li:nth-child(13) { order: 10}
 
 .acalendar--calendar > li:nth-child(20) { order: 11}
 
@@ -1072,27 +1072,27 @@ pre.language-html::before {
 
 .acalendar--calendar > li:nth-child(10) { order: 13}
 
-.acalendar--calendar > li:nth-child(8) { order: 14}
+.acalendar--calendar > li:nth-child(21) { order: 14}
 
 .acalendar--calendar > li:nth-child(15) { order: 15}
 
-.acalendar--calendar > li:nth-child(4) { order: 16}
+.acalendar--calendar > li:nth-child(4) { order: 19}
 
-.acalendar--calendar > li:nth-child(2) { order: 17}
+.acalendar--calendar > li:nth-child(19) { order: 17}
 
-.acalendar--calendar > li:nth-child(11) { order: 18}
+.acalendar--calendar > li:nth-child(6) { order: 18}
 
-.acalendar--calendar > li:nth-child(18) { order: 19}
+.acalendar--calendar > li:nth-child(18) { order: 4}
 
 .acalendar--calendar > li:nth-child(14) { order: 20}
 
-.acalendar--calendar > li:nth-child(16) { order: 21}
+.acalendar--calendar > li:nth-child(5) { order: 21}
 
-.acalendar--calendar > li:nth-child(21) { order: 22}
+.acalendar--calendar > li:nth-child(8) { order: 22}
 
 .acalendar--calendar > li:nth-child(1) { order: 23}
 
-.acalendar--calendar > li:nth-child(13) { order: 24}
+.acalendar--calendar > li:nth-child(9) { order: 24}
 
 .acalendar-view {
   border: none;
