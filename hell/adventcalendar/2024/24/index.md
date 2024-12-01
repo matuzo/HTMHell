@@ -48,9 +48,9 @@ So what's the issue with this `<input>` element? In theory, having a `placeholde
 
 This could be a big issue for screen reader users. Let's check how different screen readers handle this kind of situation with different browsers.
 
-You can do it yourself here: [O label where art thou (bad code example)](https://codepen.io/stvfrnzl/pen/jENPqxb)
+You can do it yourself here: [The search input: They almost got it right (bad code example)](https://codepen.io/stvfrnzl/pen/jENPqxb)
 
-What I checked was if the placeholder value still gets announced after typing something. I tested on December 1, 2024 using the latest versions of screen readers and browsers.
+What I checked was if the placeholder value still gets announced after typing something. I tested with macOS Sequoia 15.1.1 on December 1, 2024 using the latest versions of screen readers and browsers.
 
 |           | Google Chrome | Mozilla Firefox | Microsoft Edge | Apple Safari |
 | --------- | ------------- | --------------- | -------------- | ------------ |
@@ -61,7 +61,7 @@ What I checked was if the placeholder value still gets announced after typing so
 
 Curious! Except for VoiceOver, all screen readers were able to announce the purpose of the input, even though it didn't have a label and only a placeholder.
 
-So why use a `<label>` anyway? Let's have a closer look at the advantages. All examples can be found (and tested) here: [O label where art thou (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
+So why use a `<label>` anyway? Let's have a closer look at the advantages. All examples can be found (and tested) here: [The search input: They almost got it right (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
 
 ## 1. Good code with explicit label
 
