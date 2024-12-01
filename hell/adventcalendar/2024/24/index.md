@@ -1,5 +1,5 @@
 ---
-title: "O label where art thou"
+title: "The search input: They almost got it right"
 layout: layouts/advent.md
 author: "Steve Frenzel"
 author_bio: "Web developer, accessibility advocate & hot sauce lover! 🔥"
