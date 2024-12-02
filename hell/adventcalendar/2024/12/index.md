@@ -21,6 +21,8 @@ active: true
 intro: "<p>Short description of the post</p>"
 image: "advent24_12"
 ---
+<!-- MM: Great post, thank you! -->
+
 It's almost 2025, so it's time to stop using the `title` attribute everywhere. Images, text, buttons, ... you name it, devs really like to put it on any element in sight. Most of the time, people actually want to create a tooltip. You know, this small information bubble designed to clarify the purpose of otherwise unclear elements. It appears `onFocus` and `onHover` (not `onClick`), has no interactive elements (aka. only plain text), and is attached to existing interactive elements.
 
 ## But why not use `title`?
@@ -30,7 +32,10 @@ If you want a tooltip, a much better, and accessible, option using the `popover`
 
 **Note:** The only place where you should (& must) use the `title` attribute is on an `iFrame`!
 
-<!-- MM: Maybe link to Steve Faulkner post or another resource? -->
+<!-- 
+  MM: Maybe link to Steve Faulkner post or another resource?
+  https://html5accessibility.com/stuff/2021/08/26/named-and-framed/
+ -->
 
 ## How to use `popover`
 
