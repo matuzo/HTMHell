@@ -1,0 +1,40 @@
+*,
+::before,
+::after {
+  transition: background-color 0.2s, color 0.2s;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100svh;
+  display: grid;
+  place-content: center;
+  background-color: var(--color-back);
+  font-size: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+.scheme-switcher {
+  display: flex;
+  padding: 0.125em;
+  width: fit-content;
+  border: 0.125em solid var(--color-text);
+  border-radius: calc(infinity * 1px);
+}
+
+.scheme-switcher__button {
+  margin: 0;
+  padding-block: 0.25em;
+  padding-inline: 0.5em;
+  border: none;
+  border-radius: calc(infinity * 1px);
+  background-color: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+
+  &[aria-pressed='true'] {
+    background-color: var(--color-text);
+    color: var(--color-back);
+  }
+}

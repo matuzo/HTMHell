@@ -1,10 +1,10 @@
 ---
 title: "#34 a button is not a link"
-date: 2024-11-17
+date: 2024-11-26
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
 author: moritzglantz
-badcode: '<button type="button" onclick="window.open('https://example.com/other-page')">Link target description</button>'
+badcode: "<button type=\"button\" onclick=\"window.open('https://example.com/other-page')\">Link target description</button>"
 goodcode: '<a href="https://example.com/other-page">Link target description</a>'
 ---
 

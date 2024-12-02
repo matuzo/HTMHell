@@ -18,10 +18,12 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
   {{ link.label }}: [{{ link.link_label }}]({{ link.url }})   
 {%- endfor %}
 
-## More articles
+{% assign previousPost = collections.advent2024 | getPreviousCollectionItem: page %}
+{% assign nextPost = collections.advent2024 | getNextCollectionItem: page %}
 
-{% assign previousPost = collections.advent2023 | getPreviousCollectionItem: page %}
-{% assign nextPost = collections.advent2023 | getNextCollectionItem: page %}
+{% if previousPost or nextPost.data.active %}
+
+## More articles
 
 <nav aria-label="Select next or previous entry">
 <ol class="page-nav">
@@ -44,6 +46,9 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 {% endif %}
 </ol>
 </nav>
+
+{% endif %}
+
 
 {% endif %}
 
