@@ -3,7 +3,7 @@ title: "#33 make me one (input) with everything"
 date: 2024-08-27
 permalink: /{{ title | slug }}/index.html
 layout: layouts/entry.njk
-author: moritzgiessmann
+author: moritzglantz
 badcode: '<label for="textinput">First name</label>
 	<input type="text" id="textinput" aria-label="First name" placeholder="First name" title="First name">'
 goodcode: '<label for="textinput">First name</label>
