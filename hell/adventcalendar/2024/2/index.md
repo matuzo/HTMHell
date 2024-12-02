@@ -63,7 +63,7 @@ Add autofocus to the first field and your visitor can start typing as soon as th
 
 If the user uses assistive technology, it will announce the label and the field, and then announce that the field is focused.
 
-Similarly, your password reset page (single field) and signup page (single purpose) will have the same structure and will likewise benefit from
+Similarly, your password reset page (single field) and signup page (single purpose) will have the same structure and will likewise benefit from having the first field focused.
 
 If your login page is followed by a 2fa page, then that `autofocus` is <del aria-hidden="true">even more useful</del> <ins>vital</ins>.
 
