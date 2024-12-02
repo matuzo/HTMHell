@@ -86,9 +86,9 @@ module.exports = {
       "link": "https://github.com/smellai"
     },
     {
-      "id": "moritzgiessmann",
+      "id": "moritzglantz",
       "name": "Moritz Gießmann",
-      "link": "https://moritzgiessmann.de"
+      "link": "https://moritzglantz.de"
     }
   ]
 };
