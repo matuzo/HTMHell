@@ -72,7 +72,7 @@ The site name is required, but the logo gives extra context.
 No, the visible name is in the alt text, which becomes the accessible name of the link. Adding extra context to the link is common practice.
 
 Compare this with the notorious "Read more" link in a card. A common pattern is to use a sr-only CSS class (or equivalent) with additional text:
-`<a href="url">Read more<span class="sr-only"> about cute kitten</a>` .
+`<a href="url">Read more<span class="sr-only"> about cute kitten</span></a>` .
 
 - You see Read more.
 - You hear Read more about cute kitten.
