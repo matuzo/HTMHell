@@ -274,6 +274,8 @@ font-size: 14px;
   <p>End of third block.</p>
 </details>
 
+**Note**: It's worth highlighting that exclusive accordion come with some _drawbacks_, including poor UX on keyboard navigation and reduced usability for screen readers. Eric Eggert wrote about [these issues](https://yatil.net/blog/exclusive-accordions), offering some solutions and insights that are worth reading.
+
 ## Take it to the next level
 Recently, Chrome 131 [added support](https://developer.chrome.com/blog/styling-details) to new ways you can style both `<details>` and `<summary>` elements. Still early days but the future looks bright!
 Combine these features with some creative styling and you can create really complex components with accessibility and scalability built-in.
