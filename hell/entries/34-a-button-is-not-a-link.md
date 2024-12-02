@@ -39,6 +39,7 @@ goodcode: '<a href="https://example.com/other-page">Link target description</a>'
 <div class="section">
 
 <h2 id="resources">Resources</h2>
+
 - [`<a>` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
 - [`<button>` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
 - [Buttons vs. Links by Eric Eggert](https://yatil.net/blog/buttons-vs-links)
