@@ -87,7 +87,7 @@ module.exports = {
     },
     {
       "id": "moritzglantz",
-      "name": "Moritz Gießmann",
+      "name": "Moritz Glantz",
       "link": "https://moritzglantz.de"
     }
   ]
