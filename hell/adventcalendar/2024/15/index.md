@@ -28,9 +28,7 @@ So, how do we answer this question? I used to demo the problems using a screen r
 
 No, the message is not to avoid screen readers, but to start with tools that have a gentler learning curve. The tree itself gives developers plenty of clues about how each node may (or may not!) be recognized by assistive tech like screen readers or voice recognition software. And for whatever the tree can’t reveal, keyboard testing can fill in some of the gaps. 
 
-Of course, no tool is perfect, and the accessibility tree does have its limitations. It’s important that we remind developers of them as well.
-
-So, what exactly does this approach entail? 
+Of course, no tool is perfect, and the accessibility tree does have its limitations. It’s important that we remind developers of them as well. So, what exactly does this approach entail? 
 
 ## Build a Genuine Button with a `<button>`
 
@@ -133,7 +131,7 @@ buttonTwo.addEventListener('keyup', function(event) {
 <!-- CM: Many apologies for the extra headache. I went through several iterations of the code examples, and I guess in the end I managed to produce a very eclectic code salad -->
 <!-- CM: Thank you so much MM, I did not know that Space triggers a button on keyup. -->
 
-For developers it might seem tempting to add these missing features one by one. The advice, of course, is that the simpler and more robust solution is to replace the `<div>` with a `<button>`. However, for the sake of exploring what the accessibility tree reveals — or fails to! — we’ll go ahead and add all the necessary code to make this `<div>` fully functional.
+For developers it might seem tempting to add these missing features one by one. The advice, of course, is that the simpler and more robust solution is to replace the `<div>` with a `<button>`. However, for the sake of exploring what the accessibility tree reveals — or fails to! — and the importantce of manual testing, we’ll go ahead and add all the necessary code to make this `div` fully functional.
 
 ## The Accessibility Tree Can Only Do So Much
 
