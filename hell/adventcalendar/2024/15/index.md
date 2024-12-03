@@ -12,13 +12,15 @@ author_links:
     url: "https://www.linkedin.com/in/corinamurg/"
     link_label: "LinkedIn"
 active: true
-intro: "<p>With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot the fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can confortably return to and reuse across all their projects.</p>"
+intro: "<p>With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot the fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can comfortably return to and reuse across all their projects.
+More importantly, it encourages them to think beyond the sighted user with a mouse and consider the needs of those who rely on assistive technologies.
+</p>"
 image: "advent_15"
 ---
 <!-- MM: Great post, thank you! -->
 <!-- KS: Outstanding, well written post. Thank you! -->
 
-With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot these fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can confortably return to and reuse across all their projects. More importantly, it encourages them to think beyond the sighted user with a mouse and consider the needs of those who rely on assistive technologies. 
+With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot these fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can comfortably return to and reuse across all their projects. More importantly, it encourages them to think beyond the sighted user with a mouse and consider the needs of those who rely on assistive technologies. 
 
 ## Really, How Bad Can a Fake Button Be?!
 
@@ -26,7 +28,7 @@ So, how do we answer this question? I used to demo the problems using a screen r
 
 No, the message is not to avoid screen readers, but to start with tools that have a gentler learning curve. The tree itself gives developers plenty of clues about how each node may (or may not!) be recognized by assistive tech like screen readers or voice recognition software. And for whatever the tree can’t reveal, keyboard testing can fill in some of the gaps. 
 
-Using tools that are straightforward makes it more likely that developers will keep coming back to them to build better in the long run. Of course, no tool is perfect, and the accessibility tree does have its limitations. It’s important that we remind developers of them as well.
+Of course, no tool is perfect, and the accessibility tree does have its limitations. It’s important that we remind developers of them as well.
 
 So, what exactly does this approach entail? 
 
@@ -34,7 +36,7 @@ So, what exactly does this approach entail?
 
 ```html
 <button type="button" class="button one">
-    Change color ONE
+    Change Color ONE
 </button>
 ```
 
@@ -51,11 +53,11 @@ buttonOne.addEventListener('click', changeColor);
 
 First, we create a genuine button using the `<button>` tag, and then examine how it appears in the accessibility tree. We focus on the attributes and properties exposed for this node, discussing what each one means in terms of interaction with assistive technologies. At every step, we also test with a keyboard.
 
-Note: I regularly work on a Windows computer and am familiar with the accessibility tree in both Firefox and Chromium browsers. For this exercise, I’ll mostly use Firefox since it offers specific clues about the shortcomings of fake buttons.
-<!-- updated -->
+Note: I regularly work on a Windows computer and am familiar with the accessibility tree in both Firefox and Chromium browsers. For this exercise, I’ll mostly use Firefox since it offers some clues about the shortcomings of fake buttons.
+
 <img src="./images/Firefox-SemanticButton.jpg" alt="accessibility tree within Firefox's developer tools, highlighting the properties of a button element built with a button tag" width="500" aspect-ratio="658/693" loading="lazy">
 
-So, what is the view from the accesssibility tree revealing?
+So, what is the view from the accessibility tree revealing?
 
 - The node has the role `button`, which comes with some privileges: it will be announced as a button by a screen reader, and since buttons support name from content, its text becomes its `accessible name`. So, a screen reader will announce it as `Change Color ONE, button`. Users relying on voice recognition software can activate it by voice command, such as saying `Click Change Color One`.
 <!-- SS: Based on the code example and the image, won't it announce `Change color ONE, button` ? Maybe you can update the code example to change the text to Theme Toggle or vice versa? -->
@@ -70,7 +72,7 @@ Next step: build a fake button.
 ## Build a Fake Button with a `<div>`
 ```html
 <div class="button two">
-    Change color TWO
+    Change Color TWO
 </div>
 ```
 
@@ -83,8 +85,7 @@ We simply attach a click event to a `div`, and with nearly the same CSS as we’
 
 Here’s the view from Firefox’s accessibility tree:
 
-<!-- updated -->
-<img src="./images/Firefox-FakeButtonNotFixed.jpg" alt="accessibility tree within Firefoxes's developer tools, highlighting the properties of a div element used as a button" width="500" aspect-ratio="660/729" loading="lazy">
+<img src="./images/Firefox-FakeButtonNotFixed.jpg" alt="accessibility tree within Firefox's developer tools, highlighting the properties of a div element used as a button" width="500" aspect-ratio="660/729" loading="lazy">
 
 What should we be looking or testing for? The same attributes and behaviors we found for the genuine button:
 - role, 
@@ -98,7 +99,7 @@ Once we make it focusable by adding a `tabindex="0"` we notice something else: w
 
 Firefox is also explicitly warning us about the lack of focus and "interactive semantics", and it's connecting us to MDN for more information. So, what are we still missing? We need:
 - a `keydown` event for activation via `Enter`,
-- a `keyup` event for activation via the `Space` bar, and
+- a `keyup` event for activation via `Space`, and
 - a `button` role to have it announced properly by screen readers, and also to assign it a name based on its content.
 
 Here's what the HTML would look like with all the additions:
@@ -134,34 +135,40 @@ buttonTwo.addEventListener('keyup', function(event) {
 
 For developers it might seem tempting to add these missing features one by one. The advice, of course, is that the simpler and more robust solution is to replace the `<div>` with a `<button>`. However, for the sake of exploring what the accessibility tree reveals — or fails to! — we’ll go ahead and add all the necessary code to make this `<div>` fully functional.
 
-## Don't Give the Impression that the Accessibility Tree is Perfect
+## The Accessibility Tree Can Only Do So Much
 
-Is the retrofitted `div` recognized as a button now? Yes! It has the role `button`, it has a name, and it's focusable.
+Is the retrofitted `div` recognized as a button now? Yes. It has the role `button`, it has a name, and it's focusable.
 
 <!-- updated -->
 <img src="./images/Firefox-FakeButtonFixed.jpg" alt="accessibility tree within Firefox's developer tools, highlighting the properties of button built with a div tag" width="500" aspect-ratio="658/693" loading="lazy">
 
-Is the retrofitted button's tree view different in any way from the one of the genuine button? Yes again!
+Is the retrofitted button's tree view different in any way from the one of the genuine button? Yes again.
 
-First, the `DOMNode` property reveals that we started with a div. 
+First, the `DOMNode` property reminds us that we started with a div. Next, something curious happens within the `actions` array.
 <!-- MM: But that's not a shortcoming of Firefox. If you disable it (`user-select: none;`) it behaves like the native button and the property goes away. -->
-<!-- CM: Thank you MM! I removed the sentence re: selectable property -->
+<!-- CM: Thank you MM! I removed the sentence re: selectable property. It wasn't meant as a critique, but just to highlight the difference between the two. -->
 
-Since we’ve added the `keydown` and `keyup` events we would not expect any differences betwwen the `actions` arrays, right? Wrong! The updated tree still shows `Click` instead of `Press`. Whether this is a Firefox oversight or a subtle dig at fake buttons (just kidding!), we now have to remember that the absence of `Press` doesn’t mean keyboard-triggered events won’t work. In fact, `Press` is a specific Firefox keyword. Chromium browsers handle this differently. 
-<!-- add that there are still diff between genuie and fake versions. Explain Click, maybe ... -->
-When keyboard events are explicitly added, Chromium’s event listeners include `click`, `keydown`, and `keyup` for the div button. For the genuine button, it would only list `click`!
+Since we’ve added the `keydown` and `keyup` events we would not expect any differences between the `actions` arrays of the two buttons, right? Wrong. The updated view still shows `Click` instead of `Press`. It seems that manually adding the keyboard events does not change the action keyword. But is this a Firefox oversight, or just a subtle dig at fake buttons? Just kidding! 
+
+It's worth noting that the Chromium browsers also take the approach of differentiating between the two buttons. They do not display this information as part of the accessibility tree, but separately, under the `Event Listeners` tab in DevTools. For the genuine button, their keyword of choice is `click` and not `Press`, but then, just like Firefox, they treat the div button differently. When keyboard events are explicitly added, Chromium’s event listeners include `click` along with `keydown` and `keyup`. 
 <!-- MM: just a reminder to change this accordingly because we don't just have key down but key up events, too -->
 <!-- MM: I'd love to know the difference between Click and Press. I asked a friend at Firefox: https://front-end.social/@matuzo/113473891024615301 If he replies, you may be able to add more info. -->
+<!-- CM: Manuel, I'm keeping an eye on that conv and happy to update if we have an asnwer before the deadline. I have myself tried -->
 
-
-<!-- updated -->
 <img src="./images/Chrome-FakeButtonFixedEvents.jpg" alt="accessibility tree within Chrome's developer tools, highlighting a button built with a div tag. Click, keydown and keyup are listed under event listeners" width="500" aspect-ratio="670/258" loading="lazy">
+
+The Chromium behavior might be rationalized: in Javascript, the `click` keyword covers various input methods - whether someone uses a mouse, taps on a touchscreen, or presses a key - and that's why the genuine button only lists `click`, but for the div button, since the keyboard events are manually added, they are also listed specifically.
+
+But enough nerding over keywords and browser inconsistencies, as interesting as this detective work might be. The point to make is that on keyboard interactions the browsers send mixed signals, and that testing, in this case keyboard testing, is irreplaceable. (Is this my subtle way of turning your attention away from the fact that I don't have (yet!) an explanation about these inconsistencies? Totally! I've spent time poking around the Firefox and Chromium codebases, but so far the answer remains a mystery.)
+
+Let's end with a keyboard interaction anomaly that only keyboard testing could reveal: while theoretically both buttons are now fitted with proper keyboard support, there's an important difference in how they handle the `keyup` event. The benefit of a `keyup` event is that the user can cancel the action on a button. They can press `Space`, change their mind, move focus away with `Tab`, and release `Space` without triggering the button. When we build our own button from a div, we need extra code to track whether the `Space` key was initially pressed while focused on that button. Without this check, it would incorrectly activate when receiving focus while `Space` is being released, even if `Space` was originally pressed on a different element. And while we add more code to our creation, the browsers will, of course, take good care of the genuine button and gracefully ignore `Space` `keyup` events that don't belong to it. 
+<!-- CM: optional paragraph. Not sure if this anomaly is real or just a symptom of the code I used to implement the keyup event. -->
 
 ### Takeaways for Developers
 
 1. Semantic HTML is powerful. Always consider it first.
 
-2. No tool is perfect, and the accessibility tree is no exception. In this particular case, testing with the keyboard is enough to compensate for its shortcomings, but in other scenarios testing with a screen reader will be necessary. In general, accessibility requires a holistic approach and that we select tools and tests based on the specific functionality we are assessing.
+2. No tool is perfect, and the accessibility tree and the DevTools in general are no exception. Testing is key. In our particular case, testing with the keyboard is enough, but in other scenarios testing with a screen reader will be necessary. In general, accessibility requires a holistic approach and that we select tools and tests based on the specific functionality we are assessing.
 
 ## Wrapping Up
 
@@ -172,4 +179,4 @@ From experience, it can sometimes make developers nervous about their ability to
 What should we encourage developers to focus on, no matter their initial reaction? Know their HTML, consider the needs of different types of users, lean into testing. And ask questions.
 
 <!-- MM: Sorry to say that, but I guess this entire chapter needs to be replaced or removed. -->
-<!-- CM: No problem! -->
+<!-- CM: No problem at all. Removed!-->
