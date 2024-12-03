@@ -155,7 +155,7 @@ It's worth noting that the Chromium browsers also take the approach of different
 
 <img src="./images/Chrome-FakeButtonFixedEvents.jpg" alt="accessibility tree within Chrome's developer tools, highlighting a button built with a div tag. Click, keydown and keyup are listed under event listeners" width="500" aspect-ratio="670/258" loading="lazy">
 
-The Chromium behavior makes sense: when we attach a click handler to a native button, it automatically works for all input methods (mouse, touch, keyboard). That's why it only shows one `click` listener linking to your function. For the div button, since we manually added separate keyboard handlers, DevTools shows links to all three function implementations - one for click and two for keyboard events.
+The Chromium behavior makes sense: when we attach a click handler to a native button, it automatically works for all input methods (mouse, touch, keyboard). That's why it only shows one `click` listener linking to one particular function. For the div button, since we manually added separate keyboard handlers, DevTools shows links to all three function implementations - one for click and two for keyboard events.
 
 But enough nerding over keywords and browser inconsistencies, as interesting as this detective work might be. The point to make is that on keyboard interactions the browsers send mixed signals, and that testing, in this case keyboard testing, is irreplaceable. (Is this my subtle way of turning your attention away from the fact that I don't have (yet!) an explanation about these inconsistencies? Totally! I've spent time poking around the Firefox and Chromium codebases, but so far the answer remains a mystery.)
 
