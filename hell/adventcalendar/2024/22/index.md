@@ -15,9 +15,10 @@ author_links:
     url: "https://bsky.app/profile/vale.rocks"
     link_label: "@vale.rocks"
 active: true
-intro: "<p>An exploration of how legacy HTML color parsing turns random text like 'chucknorris' into valid colours through a fascinating series of cleanup rules and character replacements.</p>"
+intro: "<p>An exploration of how legacy HTML colour parsing turns random text like 'chucknorris' into valid colours through a fascinating series of cleanup rules and character replacements.</p>"
 image: "advent24_22"
 ---
+
 <!-- MM: That's soooo interesting. I love it! The only thing I'd request is that you link to a source for the parsing rules.  -->
 <!-- SS: Great article! I think some links for the parsing rules have been added in the end of the article. -->
 <!-- MM: (edit) Oh, I missed those. Could you maybe link the main source somewhere in the article directly where it makes sense? -->
@@ -28,7 +29,6 @@ image: "advent24_22"
 Setting the colour of text on a webpage is usually a simple affair involving whipping it out the good ol' CSS `color` property. But this is HTMHell, dammit. None of that wishy-washy CSS nonsense here. No siree. We use HTML as the good lord intended and shalln't stray into the sins of cascading sheets lest we end up some non-HTML variant of hell where they define page structure with JavaScript vars.
 
 But HTML isn't great for defining styles -- or at least, it isn't anymore. If we wind back the clocks a few years to HTML versions of old, we find the colour attribute. If you've been around for a while, you've no doubt seen it. Something like this:
-
 
 ```html
 <font color="#d72b2b">HTMHell rules!</font>
@@ -50,12 +50,12 @@ If you go through the effort of loading _that_ up in a browser, you might notice
 
 HTML generally doesn't have an error state, at least not one akin to what would happen if writing something like invalid JavaScript. Browsers are very forgiving when parsing HTML (which explains how people have gotten away with the crimes documented throughout this website) and generally do their best to make up for user error. If you leave a dangling `<div>`, the browser will do its best to close it up and render it out.
 
-This forgiveness is the reason behind the funkiness. Browsers simply try to forge ahead with the invalid value and hope it'll work. The specific parsing works like this:
+This forgiveness is the reason behind the funkiness. Browsers simply try to forge ahead with the invalid value and hope it'll work. In the past web browsers all handled invalid values a bit differently, but now it's all outlined in the ["rules for parsing a legacy color value" part of the HTML spec](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#rules-for-parsing-a-legacy-colour-value). A surmised version of the parsing outlined there is as follows:
 
 1. Initial Cleanup:
 
    - If an octothorpe (#) is located at the start of the value, it's removed.
-   - The color attribute only accepts hexes, so there isn't a point keeping it.
+   - The colour attribute only accepts hexes, so there isn't a point keeping it.
    - Example: "#FF0000" becomes "FF0000".
 
 2. Replace Invalid Characters:
@@ -102,7 +102,7 @@ I've written a small tool over on CodePen that will take any inputted value, bre
 
 ## Some fun examples
 
-So, we know this happens and why. The next task is obviously to have some fun with it. Finding words whose computed colours correlate with them is great fun. For example, 'Sonic' gives us a lovely blue. I've put together a little table of some of these.
+So, we know this happens and why. The next task is obviously to have some fun with it. Finding words whose computed colours correlate with them is great fun. For example, 'Sonic' gives us a lovely blue like the hedgehog. I've put together a little table of some of these coincidental match ups:
 
 <p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="wvLbjpZ" data-pen-title="Word Correlations With HTML Colour Parsing" data-user="OuterVale" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/OuterVale/pen/wvLbjpZ">
@@ -114,13 +114,15 @@ So, we know this happens and why. The next task is obviously to have some fun wi
 ## Interesting parsing in the modern era
 
 So, that's all well and good, but it's old news. The `color` and `bgcolor` attributes that permitted our parsing adventures are relics of HTML 4. They're obsolete (though still in active use on a disturbingly high number of websites). That isn't to say quirks like that have disappeared completely though. CSS has its own set of fascinating peculiarities when it comes to handling invalid colour values. Most modern browsers will clamp values rather than reject them outright -– throw rgb(300, -50, 1000) at a browser and it won't fail; it'll helpfully transform it into rgb(255, 0, 255).
+
 <!-- SS: "though still in active use on a disturbingly high number of websites" -> Can you provide a link with some stats showing this? or this a general observation? -->
+<!-- DC: More of a general observation. It doesn't take long to come across sites that get updates and see use that still adhere to HTML4 stanards. e.g parts of https://jackiechan.com -->
 
 The web's foundational principle of forgiveness -– the inherent flexibility that allows "chucknorris" to be parsed as red, even though the reason it does so is old, silly, and unsupported –- hasn't gone anywhere. Modern browsers still bend over backward to make our code work, even when we throw nonsense at them. It doesn't take long to see this forgiveness in action within the cursed examples held within the pages of HTMHell. Each horrifying snippet, each questionable hack, each "it works but why" moment exists because browsers simply refuse to give up on rendering our 'mistakes'.
 
 The web is built on this foundation of resilience, both in technology and [ethos](https://www.w3.org/blog/2022/a-letter-from-our-ceo-the-web-as-the-ultimate-tool-of-resilience-for-the-world). It's what allows a website from 1996 to still render in a modern browser. It's what lets a page load even when half the CSS is invalid. It's what makes it magic.
 
-I've heard people quip that browsers should be less forgiving and enforce perfection. That allowing jank makes it somehow 'bad'. I think a perfect web would be a boring web. I certainly wouldn't be here writing about here were it 'perfect'. It's about making the web work, no matter what we throw at it, and I wouldn't have it any other way.
+I've heard people quip that browsers should be less forgiving and enforce perfection. That allowing jank makes the web somehow 'bad'. I think a perfect web would be a boring web. I certainly wouldn't be here writing were it 'perfect'. It's about making the web work, no matter what we throw at it, and I wouldn't have it any other way.
 
 After all, in a perfect web, "chucknorris" would just be another error message -– and where's the fun in that?
 
