@@ -18,24 +18,15 @@ active: true
 intro: "<p> intro goes here?</p>"
 image: "advent24_23"
 ---
-<!-- MM: Great post, thank you! -->
-
-<!-- KS: I think it would be useful to describe what an accordion
-     component is...especially because most of what you're talking
-     about are singleton components that expand or collapse. It's
-     not until you get to the "true accordion" section that you
-     describe what I think of as an accordion component. -->
-
-<!-- SS: No additional comments in particular, just reiterating MM and KS points that it would be nice to explain some of the parts and avoid using words like "obvious" and "straightforward" in the articles -->
      
 Not too long ago, building an accordion component would require you to use a combination of JavaScript and CSS. If you've been around for as long as I have, you might have used a library like [jQuery](https://jqueryui.com/accordion/) or _Mootools_.
 If you went *"vanilla"*, your code would look something like this:
 
 
 ```html
-<div class="ex_1">
-  <span>Click here to learn about accordions</span>
-  <p class="hidden">This one needs JavaScript and CSS to work.</span>
+<div class="my-js-accordion">
+  <span>Learn more about accordions</span>
+  <p class="hidden">Accordions encapsulate content under a heading.</span>
 </div>
 ```
 
@@ -46,45 +37,57 @@ If you went *"vanilla"*, your code would look something like this:
 ```
 
 ```js 
-document.querySelector(".ex_1 span").addEventListener("click", (e)=>{
-  document.querySelector(".ex_1 p").classList.toggle("hidden");
+document.querySelectorAll(".my-js-accordion").forEach((accordion)=>{
+  accordion.querySelector("span").addEventListener("click", (e)=>{
+    accordion.querySelector("p").classList.toggle("hidden");
+  });
 });
 ```
 
 And it would work as you expected:
 <style>
-.ex_1 {
+.my-js-accordion {
   font-family: sans-serif;
   font-size: 16px;
   border: 1px solid #ccc;
   background: #efefef;
   padding: 8px;
   border-radius: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 </style>
 <style>
-.ex_1 span {
+.my-js-accordion span {
   cursor: pointer;
 }
 </style>
 <style>
-.ex_1 p {
+.my-js-accordion p {
   margin: 8px 0 0;
 }
 </style>
 <style>
-.ex_1 .hidden {
+.my-js-accordion .hidden {
   display: none;
 }
 </style>
-<div class="ex_1">
-  <span>→ Click here to learn more about accordions</span>
-  <p class="hidden">This one needs JavaScript and CSS to work. Click the heading again to close it.</p>
+<div class="my-js-accordion ex1-js">
+  <span>→ Learn more about accordions</span>
+  <p class="hidden">Accordions encapsulate content under a heading.</p>
+</div>
+<div class="my-js-accordion ex1-js">
+  <span>→ This one was built with JS and CSS</span>
+  <p class="hidden">We needed JavaScript and CSS to make this work. Click the heading again to close it.</p>
+</div>
+<div class="my-js-accordion ex1-js">
+  <span>→ Each accordion on this example works independently</span>
+  <p class="hidden">For any other advanced feature, more JavaScript will be needed.</p>
 </div>
 <script>
-document.querySelector(".ex_1 span").addEventListener("click", ()=>{
-  document.querySelector(".ex_1 p").classList.toggle("hidden");
+document.querySelectorAll(".ex1-js").forEach((accordion)=>{
+  accordion.querySelector("span").addEventListener("click", (e)=>{
+    accordion.querySelector("p").classList.toggle("hidden");
+  });
 });
 </script>
 
@@ -92,20 +95,20 @@ The more adventurous would hack together some `input` and `label` elements toget
 CSS selectors, you could achieve the same visual representation as the one above but without the need for JavaScript.
 
 ```html
-<div class="ex_2">
+<div class="my-css-accordion">
   <input type="checkbox" id="accordion1">
-  <label for="accordion1">→ Click here to learn even more about accordions</label>
-  <p>This one works without JavaScript, only CSS and HTML!</p>
+  <label for="accordion1">→ Learn more about accordions</label>
+  <p>Accordions encapsulate content under a heading.</p>
 </div>
 ```
 
 ```css
-.ex_2 input[type="checkbox"],
-.ex_2 p {
+.my-css-accordion input[type="checkbox"],
+.my-css-accordion p {
   display: none;
 }
 
-.ex_2 input[type="checkbox"]:checked + label + p {
+.my-css-accordion input[type="checkbox"]:checked + label + p {
   display: block;
 }
 ```
@@ -113,37 +116,46 @@ CSS selectors, you could achieve the same visual representation as the one above
 And it would be visually the same as the previous example:
 
 <style>
-.ex_2 input[type="checkbox"],
-.ex_2 p {
+.my-css-accordion input[type="checkbox"],
+.my-css-accordion p {
   display: none;
 }
 </style>
 <style>
-.ex_2 input[type="checkbox"]:checked + label + p {
+.my-css-accordion input[type="checkbox"]:checked + label + p {
   display: block;
 }
 </style>
 <style>
-.ex_2 label {
+.my-css-accordion label {
   cursor: pointer;
   font-weight: normal;
 }
 </style>
-<div class="ex_2 ex_1">
+<div class="my-css-accordion my-js-accordion">
   <input type="checkbox" id="accordion1">
-  <label for="accordion1">→ Click here to learn even more about accordions</label>
-  <p>This one works without JavaScript, only CSS and HTML!</p>
+  <label for="accordion1">→ Learn more about accordions</label>
+  <p>Accordions encapsulate content under a heading.</p>
+</div>
+<div class="my-css-accordion my-js-accordion">
+  <input type="checkbox" id="accordion2">
+  <label for="accordion2">→ This one was built without JavaScript</label>
+  <p>Only CSS and HTML!</p>
+</div>
+<div class="my-css-accordion my-js-accordion">
+  <input type="checkbox" id="accordion3">
+  <label for="accordion3">→ Same looks, same behaviour</label>
+  <p>However, the code is slightly harder to maintain</p>
 </div>
 
-The disadvantages of both these methods are quite obvious. Not only they're hard to maintain, they're also not very accessible and their reliance on JavaScript makes them not the ideal candidate for a modern web application.
+These techniques work but there have some disadvantages: not only they're hard to maintain, they're also not very accessible, and their reliance on JavaScript makes them not the ideal candidate for a modern web application.
 In summary, another case of [HTMLHell](https://www.htmhell.dev).
-<!-- MM: "The disadvantages of both these methods are quite obvious" <- Not for everyone. Since this is HTMHell, it would be great if you would list the disadvantages of both techniques -->
 
 
 ## Here comes a new challenger
 
 Since 2020, all major browsers [support](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#browser_compatibility) the `<details>` and its companion `<summary>` elements. Combined, they replace the need for JavaScript and CSS hacks to create an accordion component.
-We can simply use:
+We use the following syntax:
 
 ```html
 <details>
@@ -153,17 +165,13 @@ We can simply use:
 </details>
 ```
 And it will work just like the previous examples, but with some added benefits:
-* Simpler code ✅
+* Less code ✅
 * Fully accessible ✅
 * Works without JavaScript ✅
 * No need for hacks ✅
 * Fully stylable ✅
 
 As seen below:
-
-<!-- KS: Here and throughout, I think you can do readers a service
-     by using more descriptive class names that make it easier to
-     cross-reference the function of different structures in the HTML. -->
 
 <style>
 .styled {
@@ -215,14 +223,13 @@ On the example above, each `<details>` element works independently of each other
 
 Not too long ago, the `name` attribute was added to the `details` element. 
 Similarly to the usage in the [radio input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio), it allows you to group multiple elements together. This means we can have _exclusive_ accordions: when only one can be opened at a time.
-<!-- MM: It would be great if you could address some of the downsides in terms of accessibility. See: https://yatil.net/blog/exclusive-accordions -->
-<!-- MM: Did you have a chance to test this with screen readers? I'd love to know what they annouce. -->
 
-The usage is pretty straightforward:
+Here is an example of the usage:
 
 ```html
-<details name="group">...</details>
-<details name="group">...</details>
+<details name="my-accordion-group">...</details>
+<details name="my-accordion-group">...</details>
+<details name="my-accordion-group">...</details>
 ```
 Give the same `name` attribute to all the `details` elements you want to group together and they'll work as expected:
 <style>
@@ -267,13 +274,11 @@ font-size: 14px;
   <p>End of third block.</p>
 </details>
 
+**Note**: It's worth highlighting that exclusive accordion come with some _drawbacks_, including poor UX on keyboard navigation and reduced usability for screen readers. Eric Eggert wrote about [these issues](https://yatil.net/blog/exclusive-accordions), offering some solutions and insights that are worth reading.
+
 ## Take it to the next level
 Recently, Chrome 131 [added support](https://developer.chrome.com/blog/styling-details) to new ways you can style both `<details>` and `<summary>` elements. Still early days but the future looks bright!
 Combine these features with some creative styling and you can create really complex components with accessibility and scalability built-in.
 
 Further reading and examples:
 [Code snippets](https://codepen.io/jpedroribeiro/pen/YzmxNYx) | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) | [Can I use](https://caniuse.com/details) | [web.dev](https://web.dev/learn/html/details)
-
-<!-- KS: Good post overall! Be careful about words like "simple" or
-     "straightforward." That won't be obvious to all readers, who you
-     risk alienating to some degree. -->
