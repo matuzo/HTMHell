@@ -7,9 +7,9 @@ date: 2024-12-03
 author_links:
   - label: "John on Mastodon"
     url: "@johnallsopp@indieweb.social"
-    link_label: "@johnallsopp"
+    link_label: "https://indieweb.social/@johnallsopp"
   - label: "John on Bluesky"
-    url: "@johnallsopp.bsky.social"
+    url: "https://bsky.app/profile/johnallsopp.bsky.social"
     link_label: "@johnallsopp"
 intro: "<p>A single line of CSS can enable slick multi-page transitions for web applications (and web sites for those who maintain there's a difference), opening up new possibilities for web app architectures, and website experiences.</p>"
 image: "advent24_3"
