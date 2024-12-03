@@ -148,7 +148,7 @@ And it would be visually the same as the previous example:
   <p>However, the code is slightly harder to maintain</p>
 </div>
 
-These techniques work but there have some disadvantages: not only they're hard to maintain, they're also not very accessible, and their reliance on JavaScript makes them not the ideal candidate for a modern web application.
+These techniques work but there have some disadvantages: not only they're hard to maintain, they're also not accessible, and their reliance on JavaScript makes them not the ideal candidate for a modern web application.
 In summary, another case of [HTMLHell](https://www.htmhell.dev).
 
 
