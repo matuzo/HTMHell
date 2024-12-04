@@ -6,8 +6,8 @@ author_bio: "John Allsopp is a long-time web developer and author. In April 2000
 date: 2024-12-03
 author_links:
   - label: "John on Mastodon"
-    url: "@johnallsopp@indieweb.social"
-    link_label: "https://indieweb.social/@johnallsopp"
+    url: "https://indieweb.social/@johnallsopp"
+    link_label: "@johnallsopp"
   - label: "John on Bluesky"
     url: "https://bsky.app/profile/johnallsopp.bsky.social"
     link_label: "@johnallsopp"
