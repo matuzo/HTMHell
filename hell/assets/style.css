@@ -90,7 +90,7 @@ ol li {
   margin-bottom: 1.6rem;
 }
 
-p, pre, blockquote, .cp_embed_wrapper, .u-mb, table {
+p, pre, blockquote, .cp_embed_wrapper, .u-mb, table, .video {
   margin: 0 0 2.4rem;
 }
 
@@ -128,6 +128,12 @@ blockquote::after {
 blockquote>p:only-child {
   display: inline;
 }
+
+.blockquote-no-quotes::before,
+.blockquote-no-quotes::after {
+  content: "";
+}
+
 
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;

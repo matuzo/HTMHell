@@ -1,7 +1,7 @@
 ---
-title: "Makeshift hot reload"
+title: "???"
 layout: layouts/advent.md
-author: "Evan Hahn"
+author: "Scott Jehl"
 author_bio: "Short intro about yourself"
 date: 2024-12-19
 author_links:
@@ -13,7 +13,7 @@ author_links:
     link_label: "@xy"
 active: true
 intro: "<p>Short description of the post</p>"
-image: "advent_19"
+image: "advent24_19"
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!
