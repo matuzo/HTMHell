@@ -16,7 +16,8 @@ author_links:
     link_label: "Series Eight"
 active: true
 intro: '<p>Why using a preload meta element to preload font files can make them load quicker and smoother</p>'
-image: "advent_24"
+image: "advent24_25"
+tags: advent2024
 ---
 
 Web performance is incredibly important. If you were here for the advent calendar last year you may have already read many of my thoughts on the subject. If not, read [Getting started with Web Performance](/adventcalendar/2023/14/) when you’re done here!
