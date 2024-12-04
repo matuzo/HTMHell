@@ -977,7 +977,9 @@ pre.language-html::before {
   display: none;
 }
 
-
+.acalendar--calendar + h2 {
+  margin-block-start: 4rem;
+}
 
 .beauty * {
   font-family: "Lobster", UnifrakturCook, sans-serif !important;
