@@ -62,8 +62,10 @@ What I checked was if the placeholder value still gets announced after typing so
 
 Curious! Except for VoiceOver, all screen readers were able to announce the purpose of the input, even though it didn't have a label and only a placeholder.
 
-So why use a `<label>` anyway? Let's have a closer look at the advantages. All examples can be found (and tested) here: [The search input: They almost got it right (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
+<!-- MM: Not so curious to me because that's the expected behavior. The fact that VO doesn't announce it looks like a bug to me. Have you checked the webkit bug tracker? -->
 
+So why use a `<label>` anyway? Let's have a closer look at the advantages. All examples can be found (and tested) here: [The search input: They almost got it right (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
+<!-- MM: It's worth mentioning that placeholder are a bad idea in general: https://adamsilver.io/blog/the-problem-with-placeholders-and-what-to-do-instead/ -->
 
 ## 1. Good code with explicit label
 
