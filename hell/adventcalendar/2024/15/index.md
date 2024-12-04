@@ -15,7 +15,7 @@ active: true
 intro: "<p>With the right CSS makeup and a click event, almost anything can pretend to be a button. In accessibility work, we spot the fakes and fix them, but teaching others why and how to do it is just as important. It’s not just about correcting a single mistake; it’s about introducing developers to accessibility concepts and approaches that they can comfortably return to and reuse across all their projects.
 More importantly, it encourages them to think beyond the sighted user with a mouse and consider the needs of those who rely on assistive technologies.
 </p>"
-image: "advent_15"
+image: "advent24_15"
 ---
 <!-- MM: Great post, thank you! -->
 <!-- KS: Outstanding, well written post. Thank you! -->

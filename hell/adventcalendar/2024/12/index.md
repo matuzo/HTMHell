@@ -1,52 +1,75 @@
 ---
-title: "???"
+title: "PSA: Stop using the title attribute as tooltip!"
 layout: layouts/advent.md
 author: "Daniela Kubesch"
-author_bio: "Short intro about yourself"
+author_bio: "<p>Daniela Kubesch is an accessibility engineer who is passionate about user experience and inclusive design. She strongly believes in equality and inclusion and is committed to making digital services accessible. Daniela is also a co-creator of <a href='https://a11yphant.com'>a11yphant.com</a>, a platform that teaches the basics of web accessibility.</p>"
 date: 2024-12-12
 author_links:
-  - label: "xy Blog"
-    url: "#"
-    link_label: "your-awesome-website.com/blog"
-  - label: "yx on ABC"
-    url: "https://abc-social-media-site"
-    link_label: "@xy"
+  - label: "Website/Blog"
+    url: "https://dnikub.dev"
+    link_label: "dnikub.dev"
+  - label: "Mastodon"
+    url: "https://front-end.social/@dnikub"
+    link_label: "front-end.social/@dnikub "
+  - label: "Twitter"
+    url: "https://twitter.com/dnikub"
+    link_label: "@dnikub"
+  - label: "LinkedIn"
+    url: "https://linkedin.com/in/danikubesch"
+    link_label: "danikubesch"
 active: true
 intro: "<p>Short description of the post</p>"
-image: "advent_12"
+image: "advent24_12"
 ---
+<!-- MM: Great post, thank you! -->
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!
+It's almost 2025, so it's time to stop using the `title` attribute everywhere. Images, text, buttons, ... you name it, devs really like to put it on any element in sight. Most of the time, people actually want to create a tooltip. You know, this small information bubble designed to clarify the purpose of otherwise unclear elements. It appears `onFocus` and `onHover` (not `onClick`), has no interactive elements (aka. only plain text), and is attached to existing interactive elements.
 
-## Lorem ipsum dolor sit amet.
+## But why not use `title`?
 
-Lorem ipsum dolor sit amet `consectetur` adipisicing elit. In aperiam alias laborum magnam accusamus accusantium vero. Exercitationem distinctio at quisquam quibusdam rem voluptatum illo, laboriosam natus aperiam sequi, voluptate inventore!
+The `title` attribute is inaccessible. Users of mobile phones and tablets, users of assistive technologies, and keyboard only users cannot interact with it.
+If you want a tooltip, a much better, and accessible, option using the `popover` attribute.
 
+**Note:** The only place where you should (& must) use the `title` attribute is on an `iFrame`!
+
+<!-- 
+  MM: Maybe link to Steve Faulkner post or another resource?
+  https://html5accessibility.com/stuff/2021/08/26/named-and-framed/
+ -->
+
+## How to use `popover`
+
+Firstly, before we get started, it is always better to display clear, permanently visible information. So, if space permits, do not use tooltips. Instead, provide clear labels and sufficient text. This is particularly important for forms!
+
+However, if you wanna go down that path, the `popover` attribute provides a starting point for building popover-like interactions on the web. Its purpose is simply to add 'popover/tooltip behaviour'. So we'll use it to create our custom plain-text tooltip.
+
+To start, we just need an interactive element (like a button) which is used to trigger the tooltip, even when navigating with a keyboard only, and a `<div>` containing the tooltip content.
+
+The `<div>` receives the `popover` attribute, `role='tooltip'` and an `id`. The `<button>` is linked to the tooltip with `aria-describedby`.
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	  <meta charset="utf-8" />
-	  <title>Webpage starter</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
-</html>
+<p>
+    There is a
+    <button
+        type="button"
+        aria-describedby="tooltip">
+        secret
+    </button> to accessible HTML!
+</p>
+
+<div
+    popover
+    role="tooltip"
+    id="tooltip">
+    <div>
+        a div is not a button ✨
+    </div>
+</div>
 ```
 
-## Lorem ipsum dolor sit amet.
+With the help of JavaScript we can display the tooltip by using `.hidePopover()` and `.showPopover()`. It is important to ensure that the tooltip is displayed long enough for the mouse pointer to reach the content of the tooltip (`mouseover`, `mouseout`), in order for users being able to copy the text within the tooltip or read it with magnification software. To open or close the tooltip with keyboard navigation, we must check for `focusin` and `focusout` as well.
 
-* Lorem, ipsum.
-* Lorem, ipsum.
-* Lorem, ipsum.
-* Lorem, ipsum.
+Now all that is left is to use CSS to style the tooltip and ensure that it is correctly positioned. The `:popover-open` pseudo-class, for example, can be used to add styling for when the tooltip is displayed.
 
-![image](NSvIE.jpg)
-
-or
-
-<img src="NSvIE.jpg" width="800" height="161" loading="lazy">
-
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, eligendi nobis impedit perferendis, saepe neque ullam laborum laudantium [recusandae]() expedita distinctio. At accusamus necessitatibus mollitia, quas officia incidunt nisi corrupti.
+And that's it, you just created a custom tooltip!
+Find the detailed code in this [CodePen](https://codepen.io/dnikub/pen/PwYqwJE).

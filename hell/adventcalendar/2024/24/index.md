@@ -19,7 +19,7 @@ author_links:
     link_label: "stevefrenzel.dev"
 active: true
 intro: "<p>A real life example missing the label element and multiple ways to fix it easily.</p>"
-image: "advent_24"
+image: "advent24_24"
 ---
 
 This example is a classic (in a bad way), can cause quite some confusion for users of assistive technology (AT) but is also very easy to fix. It's the `<input>` element missing its dear friend, the `<label>`... 😭
@@ -52,15 +52,22 @@ ANYWAY, what's the issue with this `<input>` element? Let's say you're dependent
 
 All placeholders got replaced with whatever you've typed. You hit the submit button and got an error message: A certain input needs correction. Quickly scanning the `<form>` and its `<input>` elements got tricky because their descriptions are gone now!
 
+<!-- MM: That the value replaces the accessible name is new to me. Can you please add a table with the screen reader/browser pairings you tested with, the way of accessing the field and the results you got? I'm asking because I did a quick test with NVDA in FF and VO in macOS and I get both the value and placeholder when using Tab or the virtual cursor. <input placeholder="Search" value="bla" /> -->
+<!-- MM: The term "descriptions" is confusing because you're referring to the accessible name, right? -->
+
 This will also fail two [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/) success criteria:
 
 ### 1. WCAG 2.0 SC [3.3.2 - Labels or Instructions (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
 
 This criterion requires that labels or instructions are provided when content requires user input. If an input field lacks a visible label, it fails this criterion because users may not understand what information is required.
 
+<!-- MM: Are you sure about that? In my opinion 3.3.2 is about the presence of a label not the technique used or it's styling or placement. Can you please quote the WACG were it says that it has to be visible? -->
+
 ### 2. WCAG 2.0 SC [2.4.6 - Headings and Labels (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)
 
 This criterion states that headings and labels must describe the topic or purpose. Without a label, users cannot identify the purpose of the input field, leading to confusion.
+
+<!-- MM: Are you sure? Because on the Understanding page it says "This Success Criterion does not require headings or labels. This Success Criterion requires that if headings or labels are provided, they be descriptive." -->
 
 Using inputs in combination with the `<label>` element will provide a persistent (visual) cue for any user, no matter what you've typed.
 
@@ -82,6 +89,8 @@ input[type="search"] {
 ```
 
 I've removed the `placeholder` attribute, because we have a persistent input description now. I also got rid of `class` and `data-auto-id`, as they're not relevant for this article.
+
+<!-- MM: Then why include it in the first place? -->
 
 `for="search-input"` of `<label>` is referencing `id="search-input"` of `<input>`, so they're now "connected", if you will. AT should always announce the label of this input, no matter what you've typed.
 

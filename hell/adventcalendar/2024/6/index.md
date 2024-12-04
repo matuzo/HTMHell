@@ -10,7 +10,7 @@ author_links:
     link_label: "assistivlabs.com"
 active: true
 intro: "<p>Short description of the post</p>"
-image: "advent_6"
+image: "advent24_6"
 ---
 
 <!-- KS: Agreed that a more tangible, less spec-sounding intro w/ example
