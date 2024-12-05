@@ -13,14 +13,10 @@ image: "advent24_6"
 tags: advent2024
 ---
 
-<!-- KS: Agreed that a more tangible, less spec-sounding intro w/ example
-     would help readers understand where you're going a bit better. -->
+An accessible name is how UI components are identified to assistive tech. Having a good accessible name is important. If not, negative effects may include screen reader users missing out on vital information, voice control users struggling to interact, and any number of other issues with the assistive technologies that rely on it.
 
-By default, UI components have their accessible name (the programmatically associated label that assistive tech, like screen readers announce) computed from their own contents. That's part of the [spec'd algorithm](https://www.w3.org/TR/accname-1.1/) that browsers implement.
+By default, accessible name is computed from an element's own contents. That's part of the [spec'd algorithm](https://www.w3.org/TR/accname-1.1/) that browsers implement.
 
-<!-- SS: Agree with the comments left by MM. No additional comments. -->
-
-<!-- MM: A simple example + caption whould be great here. Something like:
 <figure class="u-mb">
 
   ```html
@@ -29,20 +25,25 @@ By default, UI components have their accessible name (the programmatically assoc
   </a>
   ```
 
-  <figcaption>A link with the accessible name "Latest updates"</figcaption>
-</figure> -->
+  <figcaption>A link with the accessible name "Latest updates".</figcaption>
+</figure>
 
-`aria-labelledby` can be used to point the algorithm somewhere else in the DOM. Or not.
+There are many ways to change that behavior. The `aria-labelledby` attribute is one which can be used to point the algorithm somewhere else in the DOM. Or not.
 
 What happens if `aria-labelledby` points within?
 
 ## Purgatory
 
-```html
-<a href="/updates" aria-labelledby="contents">
-  <span id="contents">Latest updates</span>
-</a>
-```
+<figure class="u-mb">
+
+  ```html
+  <a href="/updates" aria-labelledby="contents">
+    <span id="contents">Latest updates</span>
+  </a>
+  ```
+
+  <figcaption>A link, still with the accessible name "Latest updates".</figcaption>
+</figure>
 
 ## Testing
 
@@ -65,14 +66,18 @@ As is, I'd feel like I was nitpicking by requesting the unnecessary `aria-labell
 
 But imagine this is in a large codebase with many developers working on it. Consider how easy it would be for someone tasked with adding a notification badge to the link, for example, to miss the implications of `aria-labelledby`:
 
-```html
-<a href="/updates" aria-labelledby="contents">
-  <span id="contents">Latest updates</span>
-  <span class="notification-badge">{% raw %}{{ updates.length }}{% endraw %}</span>
-</a>
-```
 
-<!-- MM: Wrap in figure and use a caption "A link with the accessible name "Latest updates"" -->
+<figure class="u-mb">
+
+  ```html
+  <a href="/updates" aria-labelledby="contents">
+    <span id="contents">Latest updates</span>
+    <span class="notification-badge">{% raw %}{{ updates.length }}{% endraw %}</span>
+  </a>
+  ```
+
+  <figcaption>A link, still with the accessible name "Latest updates".</figcaption>
+</figure>
 
 Now the count of updates is **not** part of the link's accessible name. Screen readers will not announce it. macOS Voice Control users will not be able to say "click Latest updates three" (you would need to omit the "three", macOS Voice Control requires you to say the accessible name exactly). [macOS Hover Text](https://support.apple.com/guide/mac-help/view-a-larger-version-text-reading-typing-mchlb203bc78/mac) will miss the count as well.
 
@@ -86,6 +91,18 @@ So put this link on a heavenly path and drop the `aria-labelledby`! Your future 
 
 There are good reasons to point `aria-labelledby` within an element. For example, to [give an accessible name to a region](https://www.w3.org/TR/wai-aria/#example-27) based off of the heading within it.
 
-<!-- MM: To make a case for the usefuleness of the technique, you could also show a code snippet here instead of just linking. -->
+<figure class="u-mb">
+
+  ```html
+  <dialog aria-labelledby="heading">
+    <h1 id="heading">Save changes?</h1>
+    <p>Do you want to save your work?</p>
+    <button>Cancel</button>
+    <button>Save</button>
+  </a>
+  ```
+
+  <figcaption>A dialog with the accessible name "Save changes?".</figcaption>
+</figure>
 
 I tend to only be wary when the element with `aria-labelledby` is an interactive control (link, button, etc).
