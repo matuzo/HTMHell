@@ -30,6 +30,20 @@ By default, accessible name is computed from an element's own contents. That's p
 
 There are many ways to change that behavior. The `aria-labelledby` attribute is one which can be used to point the algorithm somewhere else in the DOM. Or not.
 
+<figure class="u-mb">
+
+  ```html
+  <h2 id="heading">Latest updates</h2>
+
+  <a href="/updates" aria-labelledby="heading">
+    <svg>…</svg>
+  </a>
+  ```
+
+  <figcaption>A link with the accessible name "Latest updates".</figcaption>
+</figure>
+
+
 What happens if `aria-labelledby` points within?
 
 ## Purgatory
