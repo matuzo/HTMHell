@@ -17,7 +17,7 @@ Would you keep reading? Or recommend the book to others?
 
 For about [16% of the world’s population](https://www.who.int/news-room/fact-sheets/detail/disability-and-health#:~:text=Key%20facts,1%20in%206%20of%20us.) (roughly the population of China), the web often feels like a maze. People who rely on assistive technologies experience the web like a poorly bound book, one they must tediously navigate page by page rather than simply moving to the next relevant section.
 
-Another example: imagine you're searching on Google and find the answer on page 2. However, to get there, you first need to enter the [Konami Code](https://en.wikipedia.org/wiki/Konami_Code) to unlock the link. Such hidden navigation elements are, unfortunately, a daily reality for many web users.  
+Another example: imagine you're searching on Google and find the answer on page 2. However, to get there, you first need to enter the [Konami Code](https://en.wikipedia.org/wiki/Konami_Code) to unlock the link. Such obscured navigation elements are, unfortunately, a daily reality for many web users.  
 On some websites, pagination links are hidden behind inaccessible images without labels, or they use faulty ARIA attributes that make navigation difficult for screenreader users.
 
 While an accessible pagination doesn't make the entire web accessible, it does ensure that everyone, whether reading a book or browsing the web, can seamlessly turn from page to page and easily find the next part of the story.
@@ -68,11 +68,11 @@ Let’s start with a simple example — a pagination that’s perfect for smalle
 - If `<nav>` cannot be used, the root element of the pagination can be assigned `role="navigation"` to ensure assistive technologies interpret the navigation correctly. 
 - Distinct `aria-labels` (e.g. "Pagination of product listings" or "More pages of cookie recipes") help differentiate between navigation areas and provide additional context for the links.
 
-**Using** '`<ul>` **or** `<ol>` **for Flexibility** 
-- A list should always be used to make the page structure accessible. However, screenreaders interpret `<ul>` and `<ol>` differently, which can lead to confusion depending on the context:
+**Using** `<ul>` **or** `<ol>` **for Flexibility** 
+- A list can improve the user experience for screen reader users. However, screenreaders interpret `<ul>` and `<ol>` differently, which can lead to confusion depending on the context:
 	- With a `<ul>` element, a link to the second page might be read as "Bullet, Link, 2," signaling that the pages are considered equal and no strict order is implied.
 	- With an `<ol>` element, the same link might be read as "3, Link, 2," because the position within the list (in this case, the third `<li>` element) is also announced. This can be confusing when the announced number doesn’t match the actual page number in the link, such as in paginations that begin with additional links like “Previous.”
-- For small, sequential navigation, such as a multi-page news article, an `<ol>` is a good choice. Here, the announced order matches the page structure, helping assistive technologies convey the context. For non-linear content, where order doesn’t matter—like pages with multiple Christmas cookie recipes—a `<ul>` remains the better option.
+- For small, sequential navigation, such as a multi-page news article, an `<ol>` is a good choice. Here, the announced order matches the page structure, helping assistive technologies convey the context. For non-linear content, where order doesn’t matter—like pages with multiple Christmas cookie recipes—a `<ul>` can be the better option.
 
 **Proper Deactivation** 
 - A [disabled link](https://www.scottohara.me/blog/2021/05/28/disabled-links.html), such as “Previous” to the first page, should not have an `href` attribute. Since the `disabled` attribute only applies to form controls like `<button>`, `aria-disabled="true"` is used instead.  
