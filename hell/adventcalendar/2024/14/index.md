@@ -30,36 +30,35 @@ Let’s start with a simple example — a pagination that’s perfect for smalle
 
 ```html
 <nav aria-label="More pages of Christmas cookie recipes">
-  <ul>
-    <li>
-      <a aria-disabled="true">Previous</a>
-    </li>
-
-    <li>
-      <a href="#" aria-current="page">1</a>
-    </li>
-
-    <li>
-      <a href="/2/">2</a>
-    </li>
-
-    <li>
-      <a href="/3/">3</a>
-    </li>
-
-    <li>
-      <a href="/4/">4</a>
-    </li>
-
-    <li>
-      <a href="/5/">5</a>
-    </li>
-
-    <li>
-      <a href="/2/" aria-label="Next, Page 2">Next</a>
-    </li>
-
-  </ul>
+  <ul>
+    <li>
+      <a role="link" aria-disabled="true">Previous</a>
+    </li>
+    
+    <li>
+      <a href="#" aria-current="page">1</a>
+    </li>
+    
+    <li>
+      <a href="/2/">2</a>
+    </li>
+    
+    <li>
+      <a href="/3/">3</a>
+    </li>
+    
+    <li>
+      <a href="/4/">4</a>
+    </li>
+    
+    <li>
+      <a href="/5/">5</a>
+    </li>
+    
+    <li>
+      <a href="/2/" aria-label="Next, Page 2">Next</a>
+    </li>
+  </ul>
 </nav>
 ```
 
@@ -69,13 +68,14 @@ Let’s start with a simple example — a pagination that’s perfect for smalle
 - Distinct `aria-labels` (e.g. "Pagination of product listings" or "More pages of cookie recipes") help differentiate between navigation areas and provide additional context for the links.
 
 **Using** `<ul>` **or** `<ol>` **for Flexibility** 
-- A list can improve the user experience for screen reader users. However, screenreaders interpret `<ul>` and `<ol>` differently, which can lead to confusion depending on the context:
+- A list can improve the user experience for screenreader users. However, screenreaders interpret `<ul>` and `<ol>` differently, which can lead to confusion depending on the context:
 	- With a `<ul>` element, a link to the second page might be read as "Bullet, Link, 2," signaling that the pages are considered equal and no strict order is implied.
 	- With an `<ol>` element, the same link might be read as "3, Link, 2," because the position within the list (in this case, the third `<li>` element) is also announced. This can be confusing when the announced number doesn’t match the actual page number in the link, such as in paginations that begin with additional links like “Previous.”
 - For small, sequential navigation, such as a multi-page news article, an `<ol>` is a good choice. Here, the announced order matches the page structure, helping assistive technologies convey the context. For non-linear content, where order doesn’t matter—like pages with multiple Christmas cookie recipes—a `<ul>` can be the better option.
 
 **Proper Deactivation** 
-- A [disabled link](https://www.scottohara.me/blog/2021/05/28/disabled-links.html), such as “Previous” to the first page, should not have an `href` attribute. Since the `disabled` attribute only applies to form controls like `<button>`, `aria-disabled="true"` is used instead.  
+- A [disabled link](https://www.scottohara.me/blog/2021/05/28/disabled-links.html), such as “Previous” to the first page, should not have an `href` attribute. Since the `disabled` attribute only applies to form controls like `<button>`, `aria-disabled="true"` is used instead.
+- Additionally, the `role="link"` attribute should be added to explicitly define the element’s role as a link. An `<a>` element without an `href` attribute does not have a specific default role and is treated inconsistently by assistive technologies. The combination of `aria-disabled="true"` and `role="link"` ensures that the [link is correctly perceived as disabled](https://w3c.github.io/html-aria/#example-communicate-a-disabled-link-with-aria) without being mistakenly interpreted as “clickable.”
 - Alternatively, a `<span>` element can replace the link, e.g. `<span>Previous</span>`. This method is considered a best practice because it simplifies the code and minimizes the use of ARIA attributes. This aligns with the principle that native HTML elements and semantic structures should be preferred to improve code maintainability and clarity. Both approaches are valid as long as they are implemented correctly.
 
 **Intuitive Navigation** 
@@ -112,71 +112,71 @@ This pagination builds on the principles of the simple pagination. The same reco
 
 ```html
 <nav aria-label="More pages of Christmas cookie recipes">
-  <ul>
-    <li>
-      <a href="/1/">
-		<span class="sr-only">First Page</span>
-        <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-          <path d="M14 18l-6-6 6-6L12.59 4 6.59 10 12.59 16 14 18z" />
-          <path d="M20 18l-6-6 6-6L18.59 4 12.59 10 18.59 16 20 18z" />
-        </svg>
-      </a>
-    </li>
+  <ul>
+    <li>
+      <a href="/1/">
+        <span class="sr-only">First Page</span>
+        <svg role="presentation" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+          <path d="M14 18l-6-6 6-6L12.59 4 6.59 10 12.59 16 14 18z" />
+          <path d="M20 18l-6-6 6-6L18.59 4 12.59 10 18.59 16 20 18z" />
+        </svg>
+      </a>
+    </li>
 
-    <li>
-      <a href="/7/">
-        <img src="previous-page-icon.png" alt="Previous Page, Page 7">
-      </a>
-    </li>
+    <li>
+      <a href="/7/">
+        <img src="previous-page-icon.png" alt="Previous Page, Page 7" />
+      </a>
+    </li>
 
-    <li>
-      <span>...</span>
-      <span class="sr-only">skipping pages 1 to 6</span>
-    </li>
+    <li>
+      <span>...</span>
+      <span class="sr-only">skipping pages 1 to 6</span>
+    </li>
 
-    <li>
-      <a href="/7/">7</a>
-    </li>
+    <li>
+      <a href="/7/">7</a>
+    </li>
 
-    <li>
-      <a href="#" aria-current="page">8</a>
-    </li>
+    <li>
+      <a href="#" aria-current="page">8</a>
+    </li>
 
-    <li>
-      <a href="/9/">9</a>
-    </li>
+    <li>
+      <a href="/9/">9</a>
+    </li>
 
-    <li>
-      <span>...</span>
-      <span class="sr-only">skipping pages 10 to 12</span>
-    </li>
+    <li>
+      <span>...</span>
+      <span class="sr-only">skipping pages 10 to 12</span>
+    </li>
 
-    <li>
-      <a href="/9/">
-        <img src="next-page-icon.png" alt="Next Page, Page 9" />
-      </a>
-    </li>
+    <li>
+      <a href="/9/">
+        <img src="next-page-icon.png" alt="Next Page, Page 9" />
+      </a>
+    </li>
 
-    <li>
-      <a href="/12/">
-        <span class="sr-only">Last Page, Page 12</span>
-        <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-          <path d="M10 6l6 6-6 6 1.41 1.41L18.41 12 11.41 4.59 10 6z" />
-          <path d="M4 6l6 6-6 6 1.41 1.41L12.41 12 5.41 4.59 4 6z" />
-        </svg>
-      </a>
-    </li>
-  </ul>
+    <li>
+      <a href="/12/">
+        <span class="sr-only">Last Page, Page 12</span>
+        <svg role="presentation" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+          <path d="M10 6l6 6-6 6 1.41 1.41L18.41 12 11.41 4.59 10 6z" />
+          <path d="M4 6l6 6-6 6 1.41 1.41L12.41 12 5.41 4.59 4 6z" />
+        </svg>
+      </a>
+    </li>
+  </ul>
 </nav>
 ```
 
 **Using SVGs**
 - Icons should always have descriptive text to make their function clear for screenreader users. Instead of describing the SVG itself (e.g. “Double arrow pointing left”), the purpose should be communicated (e.g. “First page”).
-- Using a `<span>` element with the [screenreader-only class .sr-only](https://webaim.org/techniques/css/invisiblecontent/) is considered a best practice. This class hides the text visually for sighted users but makes it accessible to screenreaders. One advantage over using an `aria-label` on the `<a>` element is that the text is read by screenreaders with the correct language and pronunciation.
-	- Example: An English text like “First Page” is read correctly with an English voice when using the `.sr-only` class. However, an `aria-label` text might sometimes be read in the screenreader’s language (e.g. with a German voice and pronunciation), which can sound unnatural and difficult to understand.
-	- The key difference is that `.sr-only` fully exposes the text to screenreaders, while `aria-label` provides metadata that may not always be processed optimally.
+- Using a `<span>` element with the [screenreader-only class .sr-only](https://webaim.org/techniques/css/invisiblecontent/) can be a practical approach. This class hides the text visually for sighted users but makes it accessible to screenreaders. In certain cases, it may have an advantage over using an `aria-label` on the `<a>` element because screenreaders read the text with the correct language and pronunciation preferences.
+	- Tested Behavior: When using NVDA (Version 2024.4) with Chrome (Version 130) and German as the language preference, English text in an `aria-label` was read with a German voice and pronunciation. However, when the text was provided via the `.sr-only` class, it was read correctly with an English voice. This behavior also has been documented in [NVDA GitHub Issue #16285](https://github.com/nvaccess/nvda/issues/16285).
+	- With VoiceOver on macOS, no difference between the two methods was observed.
+	- Note: This has not been tested with JAWS or other screenreaders and may vary depending on the browser and screenreader combination.
 - The `role="presentation"` attribute should be added to SVG elements to prevent some screenreaders from announcing them as standalone elements (e.g. “Link, Image, First page”). This ensures they are interpreted as purely decorative and not announced (e.g. “Link, first page”).
-- The `focusable="false"` attribute on SVG elements prevents them from being focusable via keyboard navigation in certain browsers (e.g. Internet Explorer 11). For images, this attribute is not required, because they are automatically excluded from keyboard navigation.
 
 **Using Images**
 - When an `<img>` element is the only child of a link, the text of the `alt` attribute is automatically read by screenreaders as the link text. Therefore, the `alt` attribute should include a descriptive text that clearly conveys the function of the link (e.g. `alt="Next Page, Page 9"`). This method is a best practice as it is natively supported by screenreaders and requires no additional effort.
@@ -194,3 +194,17 @@ Accessible pagination is more than just a design detail—it provides orientatio
 The semantic HTML elements and ARIA attributes presented here create an accessible structure that remains easy to use across all devices, from desktop to smartphone.
 
 Accessible pagination ensures that all users can navigate the web without "getting lost as if reading a book with pages bound out of order."  This makes the web not only more inclusive but also more accessible for everyone looking to find content efficiently and directly.
+
+## Testing and validation
+
+To ensure the proposed solutions deliver on their promise, I conducted tests in different environments:
+- HTML Validation: The code was tested using the [W3C HTML Validator](https://validator.w3.org/nu/) with no errors or warnings found.
+- Tested on [AssistivLabs](https://assistivlabs.com/), a platform for remote testing of assistive technologies:
+	- Screenreader: NVDA (Version 2024.4)
+	- Browser: Chrome (Version 130)
+- Tested on a real device:
+	- Operating System: macOS 15.1.1
+	- Screenreader: VoiceOver
+	- Browsers: Chrome (Version 131) and Firefox (Version 133)
+
+However, additional testing with other screenreader and browser combinations is recommended to ensure compatibility across a wider range of devices and tools.
