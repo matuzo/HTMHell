@@ -11,6 +11,7 @@ author_links:
 intro: "<p>Short description of the post</p>"
 image: "advent24_6"
 tags: advent2024
+active: true
 ---
 
 An accessible name is how UI components are identified to assistive tech. Having a good accessible name is important. If not, negative effects may include screen reader users missing out on vital information, voice control users struggling to interact, and any number of other issues with the assistive technologies that rely on it.

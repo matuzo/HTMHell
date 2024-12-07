@@ -14,6 +14,7 @@ author_links:
 intro: "<p>Ever wondered what would have happened if Arthur Dent had asked the Nutrimatic Drinks Dispenser for some HTML, instead of a cup of tea?</p>"
 image: "advent24_7"
 tags: advent2024
+active: true
 ---
 
 # Almost, but not quite, entirely unlike...
