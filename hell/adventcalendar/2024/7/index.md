@@ -1,13 +1,10 @@
 ---
-title: "HTMHAIL"
+title: "Almost, but not quite, entirely unlike..."
 layout: layouts/advent.md
 author: "Léonie Watson"
 author_bio: "Accessibility engineer, Director of TetraLogical, Chair of W3C Board of Directors, W3C WebApps co-Chair, writer and speaker, screen reader user, tequila drinker and crime fiction junkie."
 date: 2024-12-07
 author_links:
-  - label: "Mastodon"
-    url: "#"
-    link_label: "your-awesome-website.com/blog"
   - label: "Mastodon"
     url: "https://front-end.social/@tink"
     link_label: "@tink"
@@ -16,8 +13,6 @@ image: "advent24_7"
 tags: advent2024
 active: true
 ---
-
-# Almost, but not quite, entirely unlike...
 
 <blockquote class="blockquote-no-quotes highlight">Can you give me the HTML for an accessible button please?</blockquote>
 
