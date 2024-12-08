@@ -17,6 +17,7 @@ author_links:
 intro: "<p>Appreciating HTML code from the past, to challenge HTML from the present.</p>"
 image: "advent24_8"
 tags: advent2024
+active: true
 ---
 
 Consider the following HTML document:
