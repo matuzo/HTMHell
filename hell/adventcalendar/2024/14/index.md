@@ -29,7 +29,7 @@ Let’s start with a simple example — a pagination that’s perfect for smalle
 ![image](paginationI.jpg)
 
 ```html
-<nav aria-label="More pages of Christmas cookie recipes">
+<nav aria-label="More Christmas cookie recipes">
   <ul>
     <li>
       <a role="link" aria-disabled="true">Previous</a>
@@ -65,7 +65,7 @@ Let’s start with a simple example — a pagination that’s perfect for smalle
 **Clear Page Structure** 
 - The `<nav>` element with a descriptive `aria-label` provides orientation for screenreader users and makes the [page structure](https://www.htmhell.dev/tips/landmarks/) immediately recognizable. 
 - If `<nav>` cannot be used, the root element of the pagination can be assigned `role="navigation"` to ensure assistive technologies interpret the navigation correctly. 
-- Distinct `aria-labels` (e.g. "Pagination of product listings" or "More pages of cookie recipes") help differentiate between navigation areas and provide additional context for the links.
+- Distinct `aria-label`s (e.g. "Pagination of product listings" or "More cookie recipes") help differentiate between navigation areas and provide additional context for the links.
 
 **Using** `<ul>` **or** `<ol>` **for Flexibility** 
 - A list can improve the user experience for screenreader users. However, screenreaders interpret `<ul>` and `<ol>` differently, which can lead to confusion depending on the context:
@@ -96,7 +96,7 @@ This pagination builds on the principles of the simple pagination. The same reco
 ![image](paginationII.jpg)
 
 ```css
-// styles for elements that are only relevant for screenreader users
+/* styles for elements that are only relevant for screenreader users */
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -111,7 +111,7 @@ This pagination builds on the principles of the simple pagination. The same reco
 ```
 
 ```html
-<nav aria-label="More pages of Christmas cookie recipes">
+<nav aria-label="More Christmas cookie recipes">
   <ul>
     <li>
       <a href="/1/">
