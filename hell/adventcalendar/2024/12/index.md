@@ -2,28 +2,19 @@
 title: "HTML and CSS that I didn't even know about before I started creating content in Japanese"
 layout: layouts/advent.md
 author: "Julia Undeutsch"
-author_bio: "Short intro about yourself"
+author_bio: "I am Dev & UX Accessibility Specialist at Atos. After graduating University in Musicology and Japanese Studies in summer 2020, I started learning front-end development and specialized in the topic of web accessibility early on. Since then, I take every opportunity to spread awareness on the topic by regularly creating content in form of writing blog articles and such. I have been certified by IAAP as a Professional in Accessibility Core Competencies (CPACC) in 2022 and got accepted in the Google Developer Expert Program in 2023."
 date: 2024-12-12
 author_links:
-  - label: "xy Blog"
-    url: "#"
-    link_label: "your-awesome-website.com/blog"
-  - label: "yx on ABC"
-    url: "https://abc-social-media-site"
-    link_label: "@xy"
-intro: "<p>Short description of the post</p>"
+  - label: "Blog"
+    url: "https://www.accessibilityfirst.at/"
+    link_label: "accessibilityfirst.at"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/juliaundeutsch/"
+    link_label: "@juliaundeutsch"
+active: true
+intro: "<p>When creating Japanese web content, there are special HTML elements for characters and bidirectional text that are often unknown but significantly improve the display and functionality, which we will now look at in more detail.</p>"
 image: "advent24_12"
-tags: advent2024
 ---
-<!-- MM: Love it! -->
-<!-- MM: Please send me a short bio (1-2 paragraphs), a short description of the post (1 sentence), and links you want to add to your website, social media, etc. -->
-
-<!-- SS: Really enjoyed reading this article! Always happy to read more articles tackling web content in different languages. -->
-
-<!-- KS: This is fascinating. Part of me wonders about a little multilingual
-     takeaway for using the `lang` attribute to do a little style switching
-     between languages. But hey, maybe that's your post for next year? :) -->
-
 Since I started to create content in Japanese, I also wanted to learn about traditional setups, like having Japanese text flow from top to bottom, right to left, like you’d see in newspapers or novels. That's when I discovered CSS properties like `writing-mode: vertical-rl` and HTML tags like `<ruby>`, which add [furigana (phonetic guides)](https://en.wikipedia.org/wiki/Furigana) over [kanji characters](https://en.wikipedia.org/wiki/Kanji).
 
 Honestly, I’d never used these properties before and almost forgot they even existed! But now that I’ve dived into them, I’ll break down how you can implement them step-by-step to get that traditional Japanese look.
@@ -45,8 +36,7 @@ Honestly, I’d never used these properties before and almost forgot they even e
 }
 </style>
 
-<!-- MM: I added this sentence and embedded demo directly in the text. That makes it more tangible. Can you please add the translation? -->
-That's the text we'll work with. It means XXXX:
+That's the text we'll work with. It means "Example of vertical text. Japanese culture is very rich.":
 
 <div class="step0">
   <h1>
@@ -88,7 +78,9 @@ First up, we’ll make the text flow vertically from right to left, top to botto
 `font-size`, `letter-spacing` and `line-height`: Adjust these to make the text readable and nicely spaced.
 
 ## Step 2: Adding Margins for Better Spacing
+
 <!-- MM: Shouldn't this be step 3? Add ruby first and then tweak the styling. -->
+
 When working with vertical text, you can add spacing between blocks with `margin-block`. This CSS property acts like `margin-top` and `margin-bottom` for horizontal text, and `margin-left` and `margin-right` for vertical text.
 
 ```css
@@ -99,8 +91,6 @@ ruby rt {
 ```
 
 The property comes in very handy when working with multiple languages on your website, because it adjusts spacing based on the flow direction of the text.
-
-<!-- SS: Not necessary but I think you can mention logical CSS properties or provide a link to read more about logical CSS properties, since I believe that is what this section is more about? -->
 
 ## Step 3: Adding Furigana with `<ruby>`
 
