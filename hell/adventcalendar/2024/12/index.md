@@ -1,5 +1,5 @@
 ---
-title: "HTML and CSS that I didn't even know about before I started creating content in Japanese"
+title: "HTML and CSS I didn't even know about before I started creating content in Japanese"
 layout: layouts/advent.md
 author: "Julia Undeutsch"
 author_bio: "I am Dev & UX Accessibility Specialist at Atos. After graduating University in Musicology and Japanese Studies in summer 2020, I started learning front-end development and specialized in the topic of web accessibility early on. Since then, I take every opportunity to spread awareness on the topic by regularly creating content in form of writing blog articles and such. I have been certified by IAAP as a Professional in Accessibility Core Competencies (CPACC) in 2022 and got accepted in the Google Developer Expert Program in 2023."
