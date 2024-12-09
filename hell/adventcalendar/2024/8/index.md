@@ -11,9 +11,6 @@ author_links:
   - label: "Jens on Mastodon"
     url: "https://mas.to/@j9t"
     link_label: "@j9t@mas.to"
-  - label: "Jens on Twitter/X"
-    url: "https://x.com/j9t"
-    link_label: "@j9t"
 intro: "<p>Appreciating HTML code from the past, to challenge HTML from the present.</p>"
 image: "advent24_8"
 tags: advent2024
