@@ -67,6 +67,8 @@ Curious! Except for VoiceOver, all screen readers were able to announce the purp
 So why use a `<label>` anyway? Let's have a closer look at the advantages. All examples can be found (and tested) here: [The search input: They almost got it right (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
 <!-- MM: It's worth mentioning that placeholder are a bad idea in general: https://adamsilver.io/blog/the-problem-with-placeholders-and-what-to-do-instead/ -->
 
+<!-- SS: I think explaining a little bit more on why this is a bad code might be good? For example, like MM said, mentioning that just placeholder is a bad idea for many reasons apart from the screenreader table. The table honestly might make someone think that it is not so bad idea, so I feel mentioning explicitly might be good. -->
+
 ## 1. Good code with explicit label
 
 ```html
