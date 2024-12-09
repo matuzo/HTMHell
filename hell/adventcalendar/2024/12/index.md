@@ -80,6 +80,8 @@ The `<div>` receives the `popover` attribute, `role='tooltip'` and an `id`. The 
 
 With the help of JavaScript we can display the tooltip by using `.hidePopover()` and `.showPopover()`. It is important to ensure that the tooltip is displayed long enough for the mouse pointer to reach the content of the tooltip (`mouseover`, `mouseout`), in order for users being able to copy the text within the tooltip or read it with magnification software. To open or close the tooltip with keyboard navigation, we must check for `focusin` and `focusout` as well.
 
+<!-- SS: I know you have attached a codepen, but can the JavaScript code also be added as part of the article, to explain the things you mean by the above paragraph? -->
+
 Now all that is left is to use CSS to style the tooltip and ensure that it is correctly positioned. The `:popover-open` pseudo-class, for example, can be used to add styling for when the tooltip is displayed.
 
 <style>
