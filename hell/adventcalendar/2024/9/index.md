@@ -20,6 +20,7 @@ author_links:
 intro: "<p>While there’s no truly native and simple way to build a light/dark color scheme switcher yet, we all try our best to come up with something that puts this quality-of-life feature in users’ hands. Some native HTML options are often overlooked in favor of hacky solutions. Let’s make them well-known and widely used while we wait for the proper built-in one.</p>"
 image: "advent24_9"
 tags: advent2024
+active: true
 ---
 
 It’s getting dark early in Berlin in the winter. It’s not even close to evening, but my OS and all apps have already switched to dark mode. Well, not all of them, unfortunately. And that’s the thing: dark mode has become a quality-of-life feature for many users, and I often try to avoid using apps or websites that haven’t implemented it, especially in the evening. They literally hurt my eyes!
