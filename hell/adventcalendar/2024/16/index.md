@@ -18,9 +18,6 @@ intro: "<p>How to get a quick accessibility win by repurposing the logic of appl
 image: "advent24_16"
 tags: advent2024
 ---
-<!-- MM: Short and on point. No comments from me. :) -->
-<!-- SS: Great post, no comments from me. -->
-
 Don’t get me wrong. You can keep it if you like it. But you don’t *need* it.
 
 A class selector can allow us to visually show or hide content for disclosure widgets, like a custom select component or dropdown navigation menu. But a disclosure widget is made of two parts:
@@ -74,10 +71,3 @@ I first learned of this technique through [Heydon Pickering’s Inclusive Compon
 <p class="highlight">
 <strong>Note:</strong> You will not need <code>aria-expanded</code> on the HTML <code>details</code> element. Stateful information is automatically provided through its <code>open</code> attribute. <a href="https://www.scottohara.me/blog/2022/09/12/details-summary.html">See Scott O’Hara for more details on <code>details</code></a>.
 </p>
-
-<!-- KS: Great post, thank you! I wonder if it's worth also introducing
-     the `aria-controls` attribute? That makes the code look a little
-     more readable, and could also help with the poor performance
-     inherent in `*` selectors (since selectors are evaluated right
-     to left). -->
-<!-- MM: We already discussed that on GitHub. aria-controls is not necessary and the selector is fine. -->
