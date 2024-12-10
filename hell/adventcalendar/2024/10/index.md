@@ -14,6 +14,7 @@ author_links:
 intro: "<p>Even after more than a decade of working with HTML, I sometimes encounter unexpected quirks, like that weird form that won’t submit.</p>"
 image: "advent24_10"
 tags: advent2024
+active: true
 ---
 It was on a cold February evening. I had been working on a client project, building an order item list—nothing out of the ordinary. To adjust an item’s quantity, the user would open a popup form with a single input field, type a number, and hit enter.
 
