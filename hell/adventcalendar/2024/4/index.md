@@ -31,7 +31,7 @@ active: true
 
 <figure class="u-mb">
   <img src="viewports-01.jpg" width="4001" height="2550" alt="">
-  <figcaption>Two mobile browser visualizations positioned next to each other. One has an element sized to be <code>100svh</code> (left, green) and the other <code>100lvh</code> (right, blue). The blue red line represents the Layout Viewport.</figcaption>
+  <figcaption>Two mobile browser visualizations positioned next to each other. One has an element sized to be <code>100svh</code> (left, green) and the other <code>100lvh</code> (right, blue). The blue dashed outline represents the Layout Viewport.</figcaption>
 </figure>
 
 While these units are _fairly_ interoperable at the time of writing – there are still some interop issues, mainly related to webviews – there is one big gripe that a lot of people have with it: when the Virtual Keyboard gets shown, these units do not take the presence of that Virtual Keyboard into account. Depending on what you are building, you might want to have these units get resized when the Virtual Keyboard is shown.
