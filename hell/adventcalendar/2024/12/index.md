@@ -18,35 +18,25 @@ author_links:
     url: "https://linkedin.com/in/danikubesch"
     link_label: "danikubesch"
 active: true
-intro: "<p>Short description of the post</p>"
+intro: "<p>Images, text, buttons, and more — developers love to add the title attribute to any element in sight, in 99% of cases to create a tooltip. The issue is that the title attribute isn't accessible. But don't worry, the popover attribute has got you covered!</p>"
 image: "advent24_12"
 ---
-<!-- MM: Great post, thank you! After reading your post I had a couple of questions:
 
-1. Does the popover attribute provide any implict semantics?
-2. Is JavaScript a requirement for using popovers?
-3. Why does the tooltip only show on hover and focus and not click?
-4. Is it a good idea to show content automatically on focus?
-5. Is the popover element accessible via the virtual cursor in a screen reader?
-6. Is there feature detection? I'm running on Safari 16.5 and there it doesn't work.
+It's almost 2025, so it's time to stop using the `title` attribute everywhere. Images, text, buttons, ... you name it, devs really like to put it on any element in sight. Most of the time, people actually want to create a tooltip. You know, that little bubble of information designed to clarify the purpose of otherwise unclear elements, that pops up attached to an element when its receives focus or a user hovers their mouse over it.
 
-If would be great if you could answer those in your post.
+The identifying thing about tooltips is that they contain no interactive elements (aka. only plain text), and are always attached to existing interactive elements.
+Whenever you want to add interactive elements inside your information bubble, it's not called _tooltip_, but _toggletip_. Toggletips can contain semantic markup, rich content and interactive elements, and usually only appear when an element is clicked. The great thing about toggletips is that they're accessible on touchscreens and easier to find and recognise for users with low vision.
 
- -->
+So depending on your use case, you need to implement a tooltip or a toggletip.
 
-It's almost 2025, so it's time to stop using the `title` attribute everywhere. Images, text, buttons, ... you name it, devs really like to put it on any element in sight. Most of the time, people actually want to create a tooltip. You know, this small information bubble designed to clarify the purpose of otherwise unclear elements. It appears `onFocus` and `onHover` (not `onClick`), has no interactive elements (aka. only plain text), and is attached to existing interactive elements.
+But let's circle back to the `title` attribute. Often, people use it to create a tooltip. However, this is not the recommended way to go.
 
-## But why not use `title`?
+## But why, I love my `title`!?
 
-The `title` attribute is inaccessible. Users of mobile phones and tablets, users of assistive technologies, and keyboard only users cannot interact with it.
-If you want a tooltip, a much better, and accessible, option using the `popover` attribute.
+It's simple. The `title` attribute is inaccessible. Users of mobile phones and tablets, users of assistive technologies, and keyboard only users cannot interact with it.
+If you want a tooltip, a much better, and accessible, option is using the `popover` attribute.
 
-**Note:** The only place where you should (& must) use the `title` attribute is on an `iframe`!
-
-<!-- 
-  MM: Maybe link to Steve Faulkner post or another resource?
-  https://html5accessibility.com/stuff/2021/08/26/named-and-framed/
- -->
+**Note:** The only place where you should (& must) use the `title` attribute is on an `iframe`! See [Steve Faulkner's post](https://html5accessibility.com/stuff/2021/08/26/named-and-framed/) for more information.
 
 ## How to use `popover`
 
@@ -56,42 +46,86 @@ However, if you wanna go down that path, the `popover` attribute provides a star
 
 To start, we just need an interactive element (like a button) which is used to trigger the tooltip, even when navigating with a keyboard only, and a `<div>` containing the tooltip content.
 
-The `<div>` receives the `popover` attribute, `role='tooltip'` and an `id`. The `<button>` is linked to the tooltip with `aria-describedby`.
+The `<button>` is linked to the tooltip with `aria-describedby`.
+The `<div>` receives the `popover` attribute and an `id`.
+As the `popover` attribute just adds behaviour, not semantics, we need to [add our own role when it makes sense](https://hidde.blog/popover-semantics/). Therefore we add `role='tooltip'` to the `<div>`.
 
 ```html
 <p>
-    There is a
-    <button
-        type="button"
-        aria-describedby="tooltip">
-        secret
-    </button> to accessible HTML!
+  There is a
+  <button type="button" aria-describedby="tooltip">secret</button> to accessible
+  HTML!
 </p>
 
-<div
-    popover
-    role="tooltip"
-    id="tooltip">
-    <div>
-        a div is not a button ✨
-    </div>
+<div popover role="tooltip" id="tooltip">
+  <div>a div is not a button ✨</div>
 </div>
 ```
 
-With the help of JavaScript we can display the tooltip by using `.hidePopover()` and `.showPopover()`. It is important to ensure that the tooltip is displayed long enough for the mouse pointer to reach the content of the tooltip (`mouseover`, `mouseout`), in order for users being able to copy the text within the tooltip or read it with magnification software. To open or close the tooltip with keyboard navigation, we must check for `focusin` and `focusout` as well.
+### Let's make it interactive
 
-<!-- SS: I know you have attached a codepen, but can the JavaScript code also be added as part of the article, to explain the things you mean by the above paragraph? -->
+If we would want to create a _toggletip_, which opens `onClick`, we could simply add `popovertarget="ID"` to the `<button>`, with the `id` of the toggletip.
 
-Now all that is left is to use CSS to style the tooltip and ensure that it is correctly positioned. The `:popover-open` pseudo-class, for example, can be used to add styling for when the tooltip is displayed.
+```html
+There is a 
+<button type="button" aria-describedby="toggletip" popovertarget="toggletip">
+  secret
+</button>
+to accessible HTML!
+
+<div popover id="toggletip">
+  <div>a div is not a button ✨</div>
+</div>
+```
+
+<div class="demo-toggletip">
+
+There is a <button type="button" class="popoverbutton togglebutton" aria-describedby="toggletip" popovertarget="toggletip">secret</button> to accessible HTML!
+
+<div popover id="toggletip">
+  <div class="tooltip-content">a div is not a button ✨</div>
+</div>
+
+</div>
+
+However, if we want our _tooltip_, that is triggered when the interactive element is hovered or focused, we need JavaScript.
+We can display the tooltip by using `.hidePopover()` and `.showPopover()`.
+If `showPopover()` is called on an element with the popover attribute that is currently hidden, the element is added to the top rendering layer.
+
+A tooltip usually disappears when hitting the Escape key or when the mouse is moved away from the interactive element.
+But it's also important to make sure that the tooltip content is reachable with the mouse pointer. That way, users can copy the text or read it with magnification software.
+That's why, with the help of JavaScript, we show the tooltip on `mouseover` of the interactive element and keep it visible when the tooltip itself is hovered (by also listening to `mouseover`).
+With `mouseout` we can hide the tooltip as soon as the mouse leaves either the tooltip or the interactive element that triggered it.
+
+To open or close the tooltip with keyboard navigation, we must listen to the `focusin` and `focusout` events of the button.
+The tooltip must be easy to dismiss (e.g. by pressing the Escape key).
+It's also worth noting that tooltips don't actually get the focus themselves. The focus stays on the element that triggered the tooltip.
+However, it's content is still read to screen reader users and is accessible by the screen readers virtual cursor.
+But remember, in general, if we're showing content automatically when an element receives focus, it's important not to suddenly change context and confuse users.
+
+#### Wait, is this new attribute supported?
+
+Good news! The `popover` attribute is [supported by all modern browsers](https://caniuse.com/?search=popover) with versions released between mid-2023 and 2024 (starting with Safari 17.0, Firefox 125, Chrome 114 and Edge 114).
+
+### Looks bad though
+
+That's why the last thing to do is use CSS to style the tooltip.
+If you want to change how the tooltip looks when it's displayed, you can use the `:popover-open` pseudo-class.
+
+We also need to make sure the tooltip is correctly positioned.
+We can use `position-anchor` and `position-area` for Chrome and Edge, but they're still in the experimental phase, so we need an alternative for other browsers. The simplest option would be to use a library like [Floating UI](https://floating-ui.com/).
 
 <style>
   html {
-    --anchor-name: --tooltip
-}
+    --anchor-name: --tooltip;
+    }
 .popoverbutton {
   font-size: 20px;
   font-family: sans-serif;
   font-weight: 600;
+}
+.demo-toggletip {
+    --anchor-name: --toggletip;
 }
 .popoverbutton {
   all: unset;
@@ -153,7 +187,7 @@ Now all that is left is to use CSS to style the tooltip and ensure that it is co
   <button
     type="button"
     aria-describedby="tooltip"
-    class="popoverbutton">
+    class="popoverbutton js-button">
       secret
   </button> to accessible HTML!
 </p>
@@ -162,15 +196,16 @@ Now all that is left is to use CSS to style the tooltip and ensure that it is co
 <div
      popover
      role="tooltip"
-     id="tooltip">
+     id="tooltip"
+     class="js-content">
   <div class="tooltip-content">
     a div is not a button ✨
   </div>
 </div>
 
 <script>
-  const tooltip = document.querySelector('[popover]');
-const tooltipTrigger = document.querySelector('button');
+  const tooltip = document.querySelector('.js-content');
+const tooltipTrigger = document.querySelector('.js-button');
 const openTooltip = () => {
   tooltip.showPopover()
 };
