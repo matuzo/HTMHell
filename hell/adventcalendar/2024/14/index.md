@@ -11,6 +11,7 @@ author_links:
 intro: "<p>Imagine the web as a well-bound book, where every page is exactly where you expect it to be—accessible pagination makes that possible. Discover how thoughtful page navigation can open the web to everyone and transform the user experience into a seamless journey.</p>"
 image: "advent24_14"
 tags: advent2024
+active: true
 ---
 Imagine you’re reading a book that seems perfect for cozy winter evenings. But as soon as you turn the page, you suddenly find yourself somewhere else, rather than on the next page of the story. Now, you have to painstakingly search through the book to find where the story continues — as if someone had bound the pages in the wrong order.
 Would you keep reading? Or recommend the book to others?
@@ -26,7 +27,7 @@ While an accessible pagination doesn't make the entire web accessible, it does e
 
 Let’s start with a simple example — a pagination that’s perfect for smaller blog pages or product overviews with a limited number of items.
 
-![image](paginationI.jpg)
+![A pagination with a previous button, 5 numbered buttons, and a next button. Illustration.](paginationI.jpg)
 
 ```html
 <nav aria-label="More Christmas cookie recipes">
@@ -93,7 +94,7 @@ Let’s look at a pagination that’s particularly suited for blog pages with ma
 
 This pagination builds on the principles of the simple pagination. The same recommendations for using `<nav>`, `<ul>`, `aria-label`, `aria-current`, and `aria-disabled` apply here as well.
 
-![image](paginationII.jpg)
+![A pagination with a button with two chevrons pointing left, a button with one chevrons pointing left, followed by an ellipsis, 3 numbered buttons (7,8, and 9), another ellipsis, and finally a button with two chevrons pointing right, a button with one chevrons pointing right. Illustration.](paginationII.jpg)
 
 ```css
 /* styles for elements that are only relevant for screenreader users */
