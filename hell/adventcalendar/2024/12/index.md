@@ -11,9 +11,10 @@ author_links:
   - label: "LinkedIn"
     url: "https://www.linkedin.com/in/juliaundeutsch/"
     link_label: "@juliaundeutsch"
-active: true
 intro: "<p>When creating Japanese web content, there are special HTML elements for characters and bidirectional text that are often unknown but significantly improve the display and functionality, which we will now look at in more detail.</p>"
 image: "advent24_12"
+tags: advent2024
+active: true
 ---
 Since I started to create content in Japanese, I also wanted to learn about traditional setups, like having Japanese text flow from top to bottom, right to left, like you’d see in newspapers or novels. That's when I discovered CSS properties like `writing-mode: vertical-rl` and HTML tags like `<ruby>`, which add [furigana (phonetic guides)](https://en.wikipedia.org/wiki/Furigana) over [kanji characters](https://en.wikipedia.org/wiki/Kanji).
 
