@@ -165,3 +165,12 @@ can make a world of difference, ensuring that your features are truly usable by 
 
 Cheers
 Alex
+
+# Resources / Links
+
+- [Unicode Character “Tear-Off Calendar”](https://www.compart.com/en/unicode/U+1F4C6)
+- [comport Unicode Website](https://www.compart.com/en/unicode/)
+- [mdn web docs aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+- [mdn web docs aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden)
+- [WAI-ARIA Standard Guidlines](https://www.w3.org/WAI/standards-guidelines/aria/)
+- [Tailwind CSS Screen Readers (sr-only)](https://tailwindcss.com/docs/screen-readers)
