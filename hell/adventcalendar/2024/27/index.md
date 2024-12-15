@@ -154,3 +154,14 @@ With this approach, you achieve the same result, just with a bit more code.
 Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern. The only
 exception is Internet Explorer. Microsoft has discontinued support for Internet Explorer, and if possible, it should no
 longer be used due to security reasons.
+
+# Conclusion
+
+Ensuring accessibility in web design is more than just a nice-to-have—it’s a necessity. By implementing simple solutions
+like **aria-label** or combining CSS with **aria-hidden**, you can create a user experience that is both aesthetically
+pleasing and accessible for everyone, including those who rely on screen readers. While there may be different
+approaches to solving accessibility challenges, the key is to be mindful of all users' needs. A few small adjustments
+can make a world of difference, ensuring that your features are truly usable by everyone.
+
+Cheers
+Alex
