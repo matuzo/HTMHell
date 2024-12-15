@@ -91,6 +91,7 @@ place the text for the screen reader directly within the button element.
 ![Code snippet showing a button element with a visible text label "Open calendar" inside a span tag, alongside an icon with a calendar emoji.](./button-with-name-alternative.png)
 
 ```html
+
 <button>
   <span>Open Calendar</span>
   <i class="icon">📆</i>
@@ -100,6 +101,7 @@ place the text for the screen reader directly within the button element.
 However, this would make the text visible to sighted users as well. To prevent this, additional CSS is required.
 
 ![Code snippet showing a CSS class with styling instructions to visually hide text while keeping it accessible to screen readers.](./sr-only-css.png)
+
 ```css
 .sr-only {
   position: absolute;
@@ -117,6 +119,7 @@ However, this would make the text visible to sighted users as well. To prevent t
 ![Code snippet showing a button element with an accessible label "Open Calendar" using a visually hidden span element for screen readers and an icon displaying a calendar emoji.](./button-with-name-alternative-with-sr-only.png)
 
 ```html
+
 <button>
   <span class="sr-only">Open Calendar</span>
   <i class="icon">📆</i>
@@ -127,14 +130,17 @@ The CSS ensures that the text inside the span-element is hidden from sighted use
 readers. This approach is so common that well-known CSS libraries like TailwindCSS, Bootstrap, and Material-UI include
 such a class by default.
 
-Since you’re no longer using the attribute **aria-label**, the entire content of the button will be read aloud, including
+Since you’re no longer using the attribute **aria-label**, the entire content of the button will be read aloud,
+including
 the icon — something you want to avoid. ARIA provides an attribute to hide elements from screen readers so that their
-content isn’t read. All you need to do is add the attribute **aria-hidden** with the value “true” to the icon element, which
+content isn’t read. All you need to do is add the attribute **aria-hidden** with the value “true” to the icon element,
+which
 in this case is the “i”-element.
 
 ![Code snippet showing a button element with an accessible label "Open Calendar" using a visually hidden span element for screen readers and an icon displaying a calendar emoji that is hidden for screen readers with aria-hidden.](./button-with-name-alternative-with-sr-only-and-aria-hidden.png)
 
 ```html
+
 <button>
   <span class="sr-only">Open Calendar</span>
   <i class="icon" aria-hidden="true">📆</i>
@@ -142,3 +148,9 @@ in this case is the “i”-element.
 ```
 
 With this approach, you achieve the same result, just with a bit more code.
+
+# Browser compatibility
+
+Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern. The only
+exception is Internet Explorer. Microsoft has discontinued support for Internet Explorer, and if possible, it should no
+longer be used due to security reasons.
