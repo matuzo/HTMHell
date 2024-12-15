@@ -22,3 +22,18 @@ active: true
 intro: "<p>In this article, we explore the accessibility challenges of icon-only buttons, their impact on screen readers, and practical solutions to make them inclusive for all users.</p>"
 image: "advent24_27"
 ---
+
+# Introduction
+Imagine you’re tasked with building a cool new feature for a product. You dive into the work with full energy, and just
+before the deadline, you manage to finish it. Everyone loves your work, and the feature is set to go live the next day.
+A few days later, you receive an email from a user who can’t access the new feature. The user points out that they don’t
+understand what the button does. What do they mean? You review your code, locate the button, and start digging into the
+problem.
+
+![Code snippet showing a button element containing an icon with a calendar emoji. The button lacks accessible labels for screen readers.](./button-without-name.png)
+
+```html
+<button>
+	<i class="icon">📆</i>
+</button>
+```
