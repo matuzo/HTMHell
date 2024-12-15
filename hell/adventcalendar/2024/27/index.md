@@ -24,6 +24,7 @@ image: "advent24_27"
 ---
 
 # Introduction
+
 Imagine you’re tasked with building a cool new feature for a product. You dive into the work with full energy, and just
 before the deadline, you manage to finish it. Everyone loves your work, and the feature is set to go live the next day.
 A few days later, you receive an email from a user who can’t access the new feature. The user points out that they don’t
@@ -33,7 +34,17 @@ problem.
 ![Code snippet showing a button element containing an icon with a calendar emoji. The button lacks accessible labels for screen readers.](./button-without-name.png)
 
 ```html
+
 <button>
-	<i class="icon">📆</i>
+  <i class="icon">📆</i>
 </button>
 ```
+
+# The Problem
+You find some good resources explaining that there are people with disabilities who need to be considered in these
+cases. This is known as accessibility. For example, some individuals have motor impairments and cannot use a mouse. In
+this particular case, the user is visually impaired and relies on assistive technology like a screen reader, which reads
+aloud the content of the website or software. The button you implemented doesn’t have any descriptive text, so only the
+icon is read aloud. In your case, the screen reader says, “Tear-Off Calendar button”. While it describes the appearance
+of the icon, it doesn’t convey the purpose of the button. This information is meaningless to the user. A button should
+always describe what action it will trigger when activated. That’s why we need additional descriptive text.
