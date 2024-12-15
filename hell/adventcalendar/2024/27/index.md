@@ -34,7 +34,6 @@ problem.
 ![Code snippet showing a button element containing an icon with a calendar emoji. The button lacks accessible labels for screen readers.](./button-without-name.png)
 
 ```html
-
 <button>
   <i class="icon">📆</i>
 </button>
@@ -60,20 +59,16 @@ screen readers?
 # The Solution
 
 In HTML, you are allowed to use specific attributes for accessibility, and in this case, the attribute **aria-label** is
-what
-you need. ARIA stands for “Accessible Rich Internet Applications” and is an initiative to make websites and software
-more accessible to people with disabilities.
+what you need. ARIA stands for “Accessible Rich Internet Applications” and is an initiative to make websites and
+software more accessible to people with disabilities.
 
 With **aria-label**, you can assign a descriptive, accessible text to a button without it being visible to sighted
-users.
-The purpose of **aria-label** is to provide a description for interactive elements that lack a visible label or
-descriptive
-text. All you need to do is add the attribute **aria-label** to the button.
+users. The purpose of **aria-label** is to provide a description for interactive elements that lack a visible label or
+descriptive text. All you need to do is add the attribute **aria-label** to the button.
 
 ![Code snippet showing a button element with an accessible aria-label attribute set to "Open calendar". The button contains an icon with a calendar emoji.](./button-with-name.png)
 
 ```html
-
 <button aria-label="Open Calendar">
   <i class="icon">📆</i>
 </button>
@@ -85,13 +80,11 @@ communicates to the user what the button will do when clicked.
 # Alternatives
 
 There is another alternative, though it is a bit more cumbersome to implement. Instead of using the **aria-label**, you
-can
-place the text for the screen reader directly within the button element.
+can place the text for the screen reader directly within the button element.
 
 ![Code snippet showing a button element with a visible text label "Open calendar" inside a span tag, alongside an icon with a calendar emoji.](./button-with-name-alternative.png)
 
 ```html
-
 <button>
   <span>Open Calendar</span>
   <i class="icon">📆</i>
@@ -119,7 +112,6 @@ However, this would make the text visible to sighted users as well. To prevent t
 ![Code snippet showing a button element with an accessible label "Open Calendar" using a visually hidden span element for screen readers and an icon displaying a calendar emoji.](./button-with-name-alternative-with-sr-only.png)
 
 ```html
-
 <button>
   <span class="sr-only">Open Calendar</span>
   <i class="icon">📆</i>
@@ -131,16 +123,13 @@ readers. This approach is so common that well-known CSS libraries like TailwindC
 such a class by default.
 
 Since you’re no longer using the attribute **aria-label**, the entire content of the button will be read aloud,
-including
-the icon — something you want to avoid. ARIA provides an attribute to hide elements from screen readers so that their
-content isn’t read. All you need to do is add the attribute **aria-hidden** with the value “true” to the icon element,
-which
-in this case is the “i”-element.
+including the icon — something you want to avoid. ARIA provides an attribute to hide elements from screen readers so
+that their content isn’t read. All you need to do is add the attribute **aria-hidden** with the value “true” to the icon
+element, which in this case is the “i”-element.
 
 ![Code snippet showing a button element with an accessible label "Open Calendar" using a visually hidden span element for screen readers and an icon displaying a calendar emoji that is hidden for screen readers with aria-hidden.](./button-with-name-alternative-with-sr-only-and-aria-hidden.png)
 
 ```html
-
 <button>
   <span class="sr-only">Open Calendar</span>
   <i class="icon" aria-hidden="true">📆</i>
