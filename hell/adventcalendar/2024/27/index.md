@@ -56,3 +56,28 @@ Okay, you understand the problem now and agree that it should be fixed. However,
 the button. For design and aesthetic reasons, sighted users should only see the icon. Is there a way to keep the button
 “icon-only” while still providing a meaningful, descriptive text for users who rely on assistive technologies like
 screen readers?
+
+# The Solution
+
+In HTML, you are allowed to use specific attributes for accessibility, and in this case, the attribute **aria-label** is
+what
+you need. ARIA stands for “Accessible Rich Internet Applications” and is an initiative to make websites and software
+more accessible to people with disabilities.
+
+With **aria-label**, you can assign a descriptive, accessible text to a button without it being visible to sighted
+users.
+The purpose of **aria-label** is to provide a description for interactive elements that lack a visible label or
+descriptive
+text. All you need to do is add the attribute **aria-label** to the button.
+
+![Code snippet showing a button element with an accessible aria-label attribute set to "Open calendar". The button contains an icon with a calendar emoji.](./button-with-name.png)
+
+```html
+
+<button aria-label="Open Calendar">
+  <i class="icon">📆</i>
+</button>
+```
+
+With this adjustment, the screen reader will now announce “Open calendar”, completely ignoring the icon. This clearly
+communicates to the user what the button will do when clicked.
