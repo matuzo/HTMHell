@@ -41,6 +41,7 @@ problem.
 ```
 
 # The Problem
+
 You find some good resources explaining that there are people with disabilities who need to be considered in these
 cases. This is known as accessibility. For example, some individuals have motor impairments and cannot use a mouse. In
 this particular case, the user is visually impaired and relies on assistive technology like a screen reader, which reads
@@ -48,3 +49,10 @@ aloud the content of the website or software. The button you implemented doesn�
 icon is read aloud. In your case, the screen reader says, “Tear-Off Calendar button”. While it describes the appearance
 of the icon, it doesn’t convey the purpose of the button. This information is meaningless to the user. A button should
 always describe what action it will trigger when activated. That’s why we need additional descriptive text.
+
+# The Challenge
+
+Okay, you understand the problem now and agree that it should be fixed. However, you don’t want to add visible text to
+the button. For design and aesthetic reasons, sighted users should only see the icon. Is there a way to keep the button
+“icon-only” while still providing a meaningful, descriptive text for users who rely on assistive technologies like
+screen readers?
