@@ -144,7 +144,8 @@ blockquote>p:only-child {
   outline-offset: 2px;
 }
 
-button {
+button,
+.button {
   font-size: 1.6rem;
   padding: 1.3rem 1.7rem 0.9rem;
   border-radius: 3px;
@@ -159,6 +160,10 @@ button {
 button:hover {
   background: #d72b2b;
   color: #000;
+}
+
+.button {
+  display: inline-block;
 }
 
 kbd,
