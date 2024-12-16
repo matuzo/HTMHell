@@ -22,7 +22,7 @@ intro: "<p>A real life example missing the label element and multiple ways to fi
 image: "advent24_24"
 ---
 
-This example is a classic (in a bad way), can cause quite some confusion for users of assistive technology (AT) but is also very easy to fix. It's the `<input>` element missing its dear friend, the `<label>`... 😭
+This example is a classic - in a bad way - and can cause quite some confusion for users of assistive technology (AT). But it's also very easy to fix! It's the `<input>` element missing its dear friend, the `<label>`... 😭
 
 ## Bad code
 
@@ -59,11 +59,46 @@ What I checked was if the placeholder value still gets announced after typing so
 | Narrator  | Yes           | Yes             | Yes            | n/a          |
 | VoiceOver | No            | Yes             | No             | No           |
 
+Only VoiceOver had issues announcing announcing the `placeholder` attribute (except when using Firefox), which might be a bug! This issue has been mentioned back in 2017 for iOS at [WebKit Bugzilla](https://bugs.webkit.org/show_bug.cgi?id=170334) and I wonder how long it's been present again on MacOS since then...
 
-Curious! Except for VoiceOver, all screen readers were able to announce the purpose of the input, even though it didn't have a label and only a placeholder.
+<!-- MM: Not so curious to me because that's the expected behavior. The fact that VO doesn't announce it looks like a bug to me. Have you checked the webkit bug tracker? -->
 
-So why use a `<label>` anyway? Let's have a closer look at the advantages. All examples can be found (and tested) here: [The search input: They almost got it right (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
+<!-- SF: Updated it! -->
 
+<!-- MM: "So why use a `<label>` anyway?" sounds like the fact that VO doesn't announce it doesn't matter. I'd rather say "that that's a good reason to not rely on it, and  here are some other reasons:"… <- And here you list why it's so bad. -->
+<!-- MM: It's worth mentioning that placeholder are a bad idea in general: https://adamsilver.io/blog/the-problem-with-placeholders-and-what-to-do-instead/ -->
+
+<!-- SS: I think explaining a little bit more on why this is a bad code might be good? For example, like MM said, mentioning that just placeholder is a bad idea for many reasons apart from the screenreader table. The table honestly might make someone think that it is not so bad idea, so I feel mentioning explicitly might be good. -->
+
+<!-- SF: Thanks for the link, this helped a lot! I hope you're happy with it now? If you need to do minor adjustments, please feel free to do them. I don't think I'll have time to do a third revision because of work and private stuff.  -->
+
+## Advantages of using `<label>` instead of `placeholder`
+
+Even though almost all screen readers in this list seem to handle a missing `<label>` and a present `label` attribute well, there are still many reasons why you should do it the other way around:
+
+### Reduce cognitive load
+
+Having a form with many inputs, no labels and only placeholders will make it very hard to remember the required information. This lacking clarity can place a huge burden on people having trouble to recall many things at once.
+
+It will also make it harder to check against the requirements of the inputs, as the placeholder acting as a hint has been replaced with what you've typed. Therefore errors will be harder to fix, as you can't easily check against the requirement anymore.
+
+Using a descriptive `<label>` can avoid these issues, as it's persistent.
+
+### Avoid flaky browser and screen reader support
+
+Some older browsers might hide the placeholder text once the input is focused. And as you read earlier, some screen readers might have issues with a `placeholder` instead of a `<label>`.
+
+Using a descriptive `<label>` can avoid these issues, as it has [great browser support](https://caniuse.com/mdn-html_elements_label) and will be [recognized by screen readers](https://a11ysupport.io/tech/html/label_element) as well.
+
+### Increase touch target size
+
+A `placeholder` is inside the text input. When using a mouse, this will be the only area you can click to focus this input. People with tremors might have a hard time doing that, depending on the size of the inputs and how close they're to each other.
+
+Using a descriptive `<label>` can avoid these issues, as clicking it will focus the input.
+
+For more reasons why, check out Adam Silver's article listed under [Further reading](#further-reading).
+
+Enough of the theory, let's check out some working examples! You can find them here: [The search input: They almost got it right (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
 
 ## 1. Good code with explicit label
 
@@ -159,3 +194,4 @@ And wrapping an input inside a `<form role="search">` or the `<search>` landmark
 - [`<input>`: The HTML Input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
 - [`<search>`: The generic search element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search)
 - [Accessibility Support: Will your code work with assistive technologies?](https://a11ysupport.io/)
+- [The problem with placeholders and what to do instead](https://adamsilver.io/blog/the-problem-with-placeholders-and-what-to-do-instead/)
