@@ -1,5 +1,5 @@
 ---
-title: "O label where art thou"
+title: "The search input: They almost got it right"
 layout: layouts/advent.md
 author: "Steve Frenzel"
 author_bio: "Web developer, accessibility advocate & hot sauce lover! 🔥"
@@ -22,16 +22,12 @@ image: "advent24_24"
 tags: advent2024
 ---
 
-This example is a classic (in a bad way), can cause quite some confusion for users of assistive technology (AT) but is also very easy to fix. It's the `<input>` element missing its dear friend, the `<label>`... 😭
+This example is a classic - in a bad way - and can cause quite some confusion for users of assistive technology (AT). But it's also very easy to fix! It's the `<input>` element missing its dear friend, the `<label>`... 😭
 
 ## Bad code
 
 ```html
-<input
-  placeholder="Search"
-  data-auto-id="searchinput-desktop"
-  class="_input_1f3oz_13"
-/>
+<input placeholder="Search" />
 ```
 
 It's not relevant for this article, but here's the "button" to submit the content of the `<input>`:
@@ -48,21 +44,52 @@ It's not relevant for this article, but here's the "button" to submit the conten
 
 The cherry on top: It's not even wrapped inside a `<form>` element, so it's very likely that the submit is handled via JavaScript. 🍒
 
-ANYWAY, what's the issue with this `<input>` element? Let's say you're dependent on a screen reader and you have to fill out a form with dozens of inputs like that.
+So what's the issue with this `<input>` element? In theory, having a `placeholder` instead of a `<label>` element is only a temporary solution! Once you've typed something, the placeholder gets replaced with whatever you've typed.
 
-All placeholders got replaced with whatever you've typed. You hit the submit button and got an error message: A certain input needs correction. Quickly scanning the `<form>` and its `<input>` elements got tricky because their descriptions are gone now!
+This could be a big issue for screen reader users. Let's check how different screen readers handle this kind of situation with different browsers.
 
-This will also fail two [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/) success criteria:
+You can do it yourself here: [The search input: They almost got it right (bad code example)](https://codepen.io/stvfrnzl/pen/jENPqxb)
 
-### 1. WCAG 2.0 SC [3.3.2 - Labels or Instructions (Level A)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
+What I checked was if the placeholder value still gets announced after typing something. I tested with macOS Sequoia 15.1.1 on December 1, 2024 using the latest versions of screen readers and browsers.
 
-This criterion requires that labels or instructions are provided when content requires user input. If an input field lacks a visible label, it fails this criterion because users may not understand what information is required.
+|           | Google Chrome | Mozilla Firefox | Microsoft Edge | Apple Safari |
+| --------- | ------------- | --------------- | -------------- | ------------ |
+| JAWS      | Yes           | Yes             | Yes            | n/a          |
+| NVDA      | Yes           | Yes             | Yes            | n/a          |
+| Narrator  | Yes           | Yes             | Yes            | n/a          |
+| VoiceOver | No            | Yes             | No             | No           |
 
-### 2. WCAG 2.0 SC [2.4.6 - Headings and Labels (Level AA)](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)
+Only VoiceOver had issues announcing announcing the `placeholder` attribute (except when using Firefox), which might be a bug! This issue has been mentioned back in 2017 for iOS at [WebKit Bugzilla](https://bugs.webkit.org/show_bug.cgi?id=170334) and I wonder how long it's been present again on MacOS since then...
 
-This criterion states that headings and labels must describe the topic or purpose. Without a label, users cannot identify the purpose of the input field, leading to confusion.
+<!-- MM: Not so curious to me because that's the expected behavior. The fact that VO doesn't announce it looks like a bug to me. Have you checked the webkit bug tracker? -->
 
-Using inputs in combination with the `<label>` element will provide a persistent (visual) cue for any user, no matter what you've typed.
+## Advantages of using `<label>` instead of `placeholder`
+
+Even though almost all screen readers in this list seem to handle a missing `<label>` and a present `label` attribute well, there are still many reasons why you should do it the other way around:
+
+### Reduce cognitive load
+
+Having a form with many inputs, no labels and only placeholders will make it very hard to remember the required information. This lacking clarity can place a huge burden on people having trouble to recall many things at once.
+
+It will also make it harder to check against the requirements of the inputs, as the placeholder acting as a hint has been replaced with what you've typed. Therefore errors will be harder to fix, as you can't easily check against the requirement anymore.
+
+Using a descriptive `<label>` can avoid these issues, as it's persistent.
+
+### Avoid flaky browser and screen reader support
+
+Some older browsers might hide the placeholder text once the input is focused. And as you read earlier, some screen readers might have issues with a `placeholder` instead of a `<label>`.
+
+Using a descriptive `<label>` can avoid these issues, as it has [great browser support](https://caniuse.com/mdn-html_elements_label) and will be [recognized by screen readers](https://a11ysupport.io/tech/html/label_element) as well.
+
+### Increase touch target size
+
+A `placeholder` is inside the text input. When using a mouse, this will be the only area you can click to focus this input. People with tremors might have a hard time doing that, depending on the size of the inputs and how close they're to each other.
+
+Using a descriptive `<label>` can avoid these issues, as clicking it will focus the input.
+
+For more reasons why, check out Adam Silver's article listed under [Further reading](#further-reading).
+
+Enough of the theory, let's check out some working examples! You can find them here: [The search input: They almost got it right (good code examples)](https://codepen.io/stvfrnzl/pen/VYZLjLR)
 
 ## 1. Good code with explicit label
 
@@ -71,7 +98,11 @@ Using inputs in combination with the `<label>` element will provide a persistent
 <input id="search-input" name="search" type="search" />
 ```
 
-This common approach provides a visual cue for the `<input>` element and can be processed by AT. The `<input>` is now of `type="search"`, which should expose it as "searchbox" in the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree).
+This common approach provides a visual cue for the `<input>` element and can be processed by AT.
+
+The `<input>` is now of `type="search"`, which should expose it as "searchbox" in the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree).
+
+Clicking the label will also focus the input. This is a nice helper for sighted users and people with motor disabilities, as the target area for clicking has been increased.
 
 Additionally, you can target this input now with CSS! This way you can check yourself that you implemented semantic and accessible HTML:
 
@@ -80,8 +111,6 @@ input[type="search"] {
   /* Your code */
 }
 ```
-
-I've removed the `placeholder` attribute, because we have a persistent input description now. I also got rid of `class` and `data-auto-id`, as they're not relevant for this article.
 
 `for="search-input"` of `<label>` is referencing `id="search-input"` of `<input>`, so they're now "connected", if you will. AT should always announce the label of this input, no matter what you've typed.
 
@@ -113,8 +142,8 @@ Still no visual cue, but whenever we change the `<button>` name, the accessible 
 
 ```html
 <label>
+  Search:
   <input type="search" name="search" />
-  Search
 </label>
 ```
 
@@ -146,9 +175,9 @@ When people are traversing the [DOM](https://developer.mozilla.org/en-US/docs/We
 
 All in all, this wasn't a very complex or time consuming fix and it will help people a lot to locate and use the search input on your website. Different approaches are possible, like using an implicit or explicit label, or even no visual label at all!
 
-I personally like to use an explicit label, as it's a common pattern AND it's something you could target with CSS. Don't use an `<input>` element without a `<label>` or `aria-label`, as it will not only fail two WCAG success criteria, but it can also make it much harder for AT users to find and use it.
+I personally like to use an explicit label, as it's a common pattern AND it's something you could target with CSS. Don't use an `<input>` element without a `<label>` or `aria-label`, as it comes with plenty of benefits for you and your users.
 
-And wrapping this input inside a `<form role="search">` or the `<search>` landmark will provide an extra hint for them, which could make it even easier to get there. So don't forget to always pair `<input>` with a `<label>`, they belong together and are the ultimate couple! ❤️
+And wrapping an input inside a `<form role="search">` or the `<search>` landmark will provide an extra hint for them, which could make it even easier to get there. So don't forget to always pair `<input>` with a `<label>`, they belong together and are the ultimate couple! ❤️
 
 ## Further reading
 
@@ -156,3 +185,4 @@ And wrapping this input inside a `<form role="search">` or the `<search>` landma
 - [`<input>`: The HTML Input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
 - [`<search>`: The generic search element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search)
 - [Accessibility Support: Will your code work with assistive technologies?](https://a11ysupport.io/)
+- [The problem with placeholders and what to do instead](https://adamsilver.io/blog/the-problem-with-placeholders-and-what-to-do-instead/)
