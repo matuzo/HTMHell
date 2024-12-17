@@ -63,15 +63,6 @@ Only VoiceOver had issues announcing announcing the `placeholder` attribute (exc
 
 <!-- MM: Not so curious to me because that's the expected behavior. The fact that VO doesn't announce it looks like a bug to me. Have you checked the webkit bug tracker? -->
 
-<!-- SF: Updated it! -->
-
-<!-- MM: "So why use a `<label>` anyway?" sounds like the fact that VO doesn't announce it doesn't matter. I'd rather say "that that's a good reason to not rely on it, and  here are some other reasons:"… <- And here you list why it's so bad. -->
-<!-- MM: It's worth mentioning that placeholder are a bad idea in general: https://adamsilver.io/blog/the-problem-with-placeholders-and-what-to-do-instead/ -->
-
-<!-- SS: I think explaining a little bit more on why this is a bad code might be good? For example, like MM said, mentioning that just placeholder is a bad idea for many reasons apart from the screenreader table. The table honestly might make someone think that it is not so bad idea, so I feel mentioning explicitly might be good. -->
-
-<!-- SF: Thanks for the link, this helped a lot! I hope you're happy with it now? If you need to do minor adjustments, please feel free to do them. I don't think I'll have time to do a third revision because of work and private stuff.  -->
-
 ## Advantages of using `<label>` instead of `placeholder`
 
 Even though almost all screen readers in this list seem to handle a missing `<label>` and a present `label` attribute well, there are still many reasons why you should do it the other way around:

@@ -1,5 +1,5 @@
 ---
-title: "Grouping (input) fields"
+title: "Grouping form fields"
 layout: layouts/advent.md
 author: "Matthias Kittsteiner"
 author_bio: " Matthias is a passionate full stack web developer and responsible for the technical aspects on more than 1.000 websites, including performance, reliability, accessibility and functionality. That’s why he is very interested in many things around the web, and has a big focus on building inclusive web applications and websites."
@@ -9,43 +9,60 @@ author_links:
     url: " https://epiph.yt/en/"
     link_label: "epiph.yt"
 active: true
-intro: "<p> Using fieldsets to group multiple (input) fields into a single one can be an ideal way to provide context to otherwise lonely fields inside a form, enhancing the accessibility of using them.</p>"
+intro: "<p> Using fieldsets to group multiple form fields into a single one can be an ideal way to provide context to otherwise lonely fields inside a form, enhancing the accessibility of using them.</p>"
 image: "advent24_21"
 ---
-<!-- MM: Thanks for the post. I like it but it lacks 2 things:
-1. What's the actual outcome for screen reader users in detail? What does the software announce and when? Only when I enter the group or with every option? If with every option, how and when?
-2. When exactly mustn't I use them and why.
--->
 
 When I first stumbled upon `fieldset` and `legend`, I didn’t know much about HTML and especially not about accessibility. Everything I noticed was the special way a `legend` is displayed inside a `fieldset` – or rather: alongside the border of a `fieldset`. 
-<!-- MM: If you want to, we could display a simple fieldset example here so that everyone knows what you're talking about.
-edit: Or even better, put it in the What is a `fieldset` section. -->
+
 Fast forward to (kind of) today: while working on a contact form, I first could get my hands on this element and learned more about it.
 
 ## What is a `fieldset`?
 
-Every so often I’m surprised how well chosen names in HTML are. `fieldset` is no exception here. It’s basically a list of (input) fields, creating a group of all fields inside of it, a set of fields. As for the `legend`, it is used as caption of the `fieldset` (and ultimately a caption for the (input) field group).
-<!-- MM: Why (input) in parentheses? What are the other fields? Is the a better term to describe all of them? Like "form elements" maybe? -->
-<!-- MM: The fieldset is the group!? -->
+Every so often I’m surprised how well chosen names in HTML are. `fieldset` is no exception here. It’s basically a list of form fields (inputs, selects, textareas). It groups all fields inside of it, and makes it a set of fields. And the `legend` is used as caption of the `fieldset` (and ultimately it becomes a caption for all of the grouped form fields).
+
+A simple example of a `fieldset` looks like this:
+
+```html
+<fieldset>
+  <legend>Date</legend>
+  <label for="date-month">Month</label>
+  <input name="date[month]" type="number" id="date-month">
+  <label for="date-day">Day</label>
+  <input name="date[day]" type="number" id="date-day">
+  <label for="date-year">Year</label>
+  <input name="date[year]" type="number" id="date-year">
+</fieldset>
+```
+
+Which results in this:
+
+![A fieldset with the group name “Date” and three fields for month, day and year](fieldset-example.png)
+
+If you can see the image, you may notice the special default design for a `fieldset`: It has a border, that is party interrupted by the `legend`. Something, that is not the easiest to achieve with other elements with CSS only. However, in the wild, you won’t often see it like this.
 
 ## Why does it matter?
 
-While for users capable of browsing websites visually, a `fieldset` often stays hidden, except for maybe displaying the `legend` as caption for a group of fields, it’s a whole different story for e.g. users required to use a screen reader. For every field inside the `fieldset`, the screen reader announces that it is part of a group on the one hand, and also the caption of the group on the other hand. It makes sure that the user is always aware that the current active field is part of a specific group.
-<!-- MM: There are also non-blind scren reader users. -->
-<!-- MM: How's the fieldset hidden? It's super prominent. The border, padding, placement, etc. of the legend. I'd rephrase this and highlight both benefits, the visual and semantic grouping. -->
-<!-- MM: Please don't use the on one hand on the other hand phrasing. It makes it sound like the arguments are in opposition. -->
-Additionally, by using the `disabled` attribute, you can easily disable a whole group of fields within the `fieldset`. Feels a little bit like magic. Such disabled fields are neither editable (they ignore inputs completely), nor will they be submit in a form.
-<!-- MM: Just checking: Have you tested this with different screen reader/browser pairings? -->
-One note though: think about it first before using it. 
-<!-- MM: I mean, yeah, that's generally a good advice. ;) -->
-Make sure fields inside a `fieldset` are actually connected to each other and require an identical context whatsoever. Otherwise, it just makes filling them slower as it should be.
-<!-- MM: Would you recommend to always put first and last name in a group? They are connected to each other. -->
-<!-- MM: What does a field qualify to "require an identical context"? -->
-<!-- MM: Is slower really the right term you want to use here? Please explain how fieldsets make it _slower_- -->
-<!-- SS: I feel the cautionary note can also be added in the next section, after the Usage example, along with an example of a situation where a fieldset might not be as helpful. -->
+While for users capable of browsing websites visually, a `fieldset` often stays hidden, since the default styling usually is changed. Only the `legend` is visible as caption for a group of fields. For screen reader users, it’s a whole different story if they use it to navigate through the content via keyboard. For every field inside the `fieldset`, the screen reader announces that it is part of a group as well as the caption. It makes sure that the user is always aware of the context of the group and that the current active field is part of a specific group.
+
+VoiceOver for example will announce the `fieldset` as “Date, group”:
+
+![VoiceOver announcing a fieldset as “Date, group”](fieldset-voiceover-group.png)
+
+When navigating to the first form field “month”, VoiceOver will announce it as “Month, incrementable edit text number field, Date, Date, group”
+
+![VoiceOver announcing a field “month” inside a fieldset as “Month, incrementable edit text number field, Date, Date, group”](fieldset-voiceover-group-input.png)
+
+
+Additionally, by using the `disabled` attribute, you can easily disable a whole group of fields within the `fieldset`. Feels a little bit like magic. Such disabled fields are neither editable (they ignore user inputs completely), nor will they be submit in a form.
+
+One note though: think about it first before using it. That is also true for a `fieldset` as a whole.
+
+Make sure fields inside a `fieldset` are actually connected to each other and even require an identical context. Otherwise, it just makes filling them slower as it should be, since the value of the `legend` will always be announced to screen reader users (in case of VoiceOver users often even twice). Use it only if the connected fields are not self-explaining if they are used alone, if you can’t properly edit a field the right way without knowing about the context of the group. While connecting multiple fields to enter a date with month/day/year actually will tell you (by a properly set `legend`) that you’re about to fill out a date, connecting two fields for first and last name won’t have any positive effect, since they can be filled correctly by their own without knowing that the other field exists.
+
 ## Usage examples
 
-Having multiple choice questions, e.g. in a survey, is an ideal example in grouping (input) fields. You can use the `legend` as question and use radio buttons as the answers:
+Having multiple choice questions, e.g. in a survey, is an ideal example in grouping form fields. You can use the `legend` as question and radio buttons as the answers:
 
 ```html
 <fieldset>
@@ -65,6 +82,7 @@ Having multiple choice questions, e.g. in a survey, is an ideal example in group
 </fieldset>
 ```     
 
-It could also be used to connect fields for a day, a month and a year for individual input fields to select a specific date, as well as hours and minutes to select a time. Or having different fields for a credit card number by splitting them into four digits each. You see, there are many possibilities to use fieldsets, just don’t overuse them – because with many possibilities comes great responsibility – or so.
-<!-- MM: How do I know if I'm overusing? -->
-<!-- SS: I feel some example of when you feel a fieldset should not be used or is overused might be good. Also, explaining why you think so. -->
+It could also be used to connect fields for a day, a month and a year for individual input fields to select a specific date (as seen in the first example), as well as hours and minutes to select a time (if native date and time pickers aren't an option). Or you could have different fields for a credit card number by splitting them into four digits each. You see, there are many possibilities to use `fieldset` elements, just don’t overuse them – because with many possibilities comes great responsibility – or so.
+
+Make also sure to always test your `fieldset` elements with a screen reader to see whether adding a context in such a way is useful. This will make it easier to distinguish whether you should use a `fieldset` or better use non-connected single form fields.
+
