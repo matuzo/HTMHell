@@ -11,6 +11,7 @@ author_links:
 intro: "<p>Marco uses the example of a selected navigation entry to demonstrate the richness of ARIA</p>"
 image: "advent24_17"
 tags: advent2024
+active: true
 ---
 
 Can you remember the day you first learnt about ARIA? Maybe the first fact you learnt about [ARIA was the first rule](https://www.w3.org/TR/using-aria/#NOTES) “Don't use ARIA, use native HTML instead“ - and so did I.
@@ -57,7 +58,7 @@ The information that the second entry in the navigation references the currently
 
 ## A better approach
 
-By using ARIA, we can influence how the browser builds the accessibility tree. Specifically, ARIA provides the `aria-current` attribute for labelling the currently active page.
+By using ARIA, we can influence how the browser builds the accessibility tree. Specifically, ARIA provides the `aria-current` attribute for highlighting the currently active page.
 
 ```html
 <nav>
@@ -114,16 +115,8 @@ Once again, we can use the `aria-invalid` attribute as a CSS hook for styling. A
 
 By using ARIA, we can influence the accessibility tree and enrich it with information that the browser cannot derive from native HTML. Screen reader vendors can use the information to create a better user experience for people who rely on assistive technologies.
 
-The accessibility tree is built up of nodes that are typified by ARIA roles. 
-<!-- MM: Bist du dir sicher, dass das stimmt? Was heißt typified?-->
-The [WAI ARIA specification](https://www.w3.org/TR/wai-aria-1.2/#roles_categorization) recognises around 90 different ARIA roles. They were defined because there is a sensible use for each of them. 
-<!-- MM: Kennst du sie alle so gut, dass du das sagen kannst? -->
-By using native HTML, however, only half of these roles are met. 
-<!-- MM: Was meinst du mit "are met"? -->
-We can use the `role` attribute to influence the types of the nodes in the accessibility tree and achieve the entire spectrum - if it is appropriate for the use case. 
-<!-- MM: Was meinst du mit "achieve the entire spectrum"? -->
-Ignoring ARIA and ‘only’ using native HTML means that we are only using just under half of the richness that the accessibility tree provides...
-<!-- MM: Der Satz passt besser nach dem nächsten Absatz, finde ich.  -->
+The accessibility tree is built up of nodes that are typified by ARIA roles. The [WAI ARIA specification](https://www.w3.org/TR/wai-aria-1.2/#roles_categorization) recognises around 90 different ARIA roles. They were defined because there is a sensible use for each of them.  By using native HTML, however, only half of these roles are met.  We can use the `role` attribute to influence the types of the nodes in the accessibility tree and achieve the entire spectrum - if it is appropriate for the use case.  Ignoring ARIA and ‘only’ using native HTML means that we are only using just under half of the richness that the accessibility tree provides.
+
 I still don't know exactly when I heard about ARIA for the first time. But I can name the exact day when I had my wait a minute moment. Today, I know that the [first rule of ARIA](https://www.w3.org/TR/using-aria/#rule1) is often abbreviated and a crucial detail of the rule is lost. Certain things cannot be expressed semantically in HTML at all and if ARIA offers a possibility here, we should make use of it.
 
 Perhaps we should see ARIA as a counterpart to CSS. While we use CSS to enrich our HTML document for sighted users (progressive enhancement), we can use ARIA to enrich the accessibility tree for non-sighted users.
