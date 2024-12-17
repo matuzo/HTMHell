@@ -93,9 +93,16 @@ And, a final example of a product listing, which has a list of technical specs:
 ## Accessibility
 
 With this markup in place, assistive technology such as screen readers will expose a list role, the total count of term/definition groups, and offer some navigation options.
+<!-- MM: Is this true for all common screen readers? Did you test this? If no, can you?
+Also, maybe you'll find more info here:
+https://benmyers.dev/blog/on-the-dl/
+https://a11ysupport.io/tech/html/dl_element
+-->
 
 If the design doesn't include visible labels, you can at least include them as visually hidden text for assistive technology users.
 
 ## Wrapping up
 
 The `<dl>` is a versatile element that unfortunately doesn't get much use. The next time you're building out a design, look for opportunities where the underrated Description List is a good fit.
+
+<!-- MM: "unfortunately doesn't get much use". Now I'm wondering if there's data to back this claim. It's not important. It would just be interesting. Maybe there's something in th web alamanc? https://almanac.httparchive.org/en/2024/markup#top-elements -->
