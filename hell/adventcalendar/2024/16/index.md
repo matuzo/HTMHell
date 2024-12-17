@@ -17,6 +17,7 @@ author_links:
 intro: "<p>How to get a quick accessibility win by repurposing the logic of applying a conditional class to provide meaningful semantics.</p>"
 image: "advent24_16"
 tags: advent2024
+active: true
 ---
 Don’t get me wrong. You can keep it if you like it. But you don’t *need* it.
 
