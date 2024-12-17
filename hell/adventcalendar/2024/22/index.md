@@ -1,123 +1,224 @@
 ---
-title: "My favourite colour is Chuck Norris red"
+title: "PSA: Stop using the title attribute as tooltip!"
 layout: layouts/advent.md
-author: "Declan Chidlow"
-author_bio: "Front-end developer, designer, dabbler, and avid user of the superpowered information superhighway."
+author: "Daniela Kubesch"
+author_bio: "<p>Daniela Kubesch is an accessibility engineer who is passionate about user experience and inclusive design. She strongly believes in equality and inclusion and is committed to making digital services accessible. Daniela is also a co-creator of <a href='https://a11yphant.com'>a11yphant.com</a>, a platform that teaches the basics of web accessibility.</p>"
 date: 2024-12-22
 author_links:
-  - label: "Website"
-    url: "https://vale.rocks"
-    link_label: "vale.rocks"
-  - label: "Fediverse"
-    url: "https://fedi.vale.rocks/vale"
-    link_label: "@vale@fedi.vale.rocks"
-  - label: "Bluesky"
-    url: "https://bsky.app/profile/vale.rocks"
-    link_label: "@vale.rocks"
-intro: "<p>An exploration of how legacy HTML colour parsing turns random text like 'chucknorris' into valid colours through a fascinating series of cleanup rules and character replacements.</p>"
+  - label: "Website/Blog"
+    url: "https://dnikub.dev"
+    link_label: "dnikub.dev"
+  - label: "Mastodon"
+    url: "https://front-end.social/@dnikub"
+    link_label: "front-end.social/@dnikub "
+  - label: "Twitter"
+    url: "https://twitter.com/dnikub"
+    link_label: "@dnikub"
+  - label: "LinkedIn"
+    url: "https://linkedin.com/in/danikubesch"
+    link_label: "danikubesch"
+intro: "<p>Images, text, buttons, and more — developers love to add the title attribute to any element in sight, in 99% of cases to create a tooltip. The issue is that the title attribute isn't accessible. But don't worry, the popover attribute has got you covered!</p>"
 image: "advent24_22"
 tags: advent2024
 ---
 
-Setting the colour of text on a webpage is usually a simple affair involving whipping it out the good ol' CSS `color` property. But this is HTMHell, dammit. None of that wishy-washy CSS nonsense here. No siree. We use HTML as the good lord intended and shalln't stray into the sins of cascading sheets lest we end up some non-HTML variant of hell where they define page structure with JavaScript vars.
+It's almost 2025, so it's time to stop using the `title` attribute everywhere. Images, text, buttons, ... you name it, devs really like to put it on any element in sight. Most of the time, people actually want to create a tooltip. You know, that little bubble of information designed to clarify the purpose of otherwise unclear elements, that pops up attached to an element when its receives focus or a user hovers their mouse over it.
 
-But HTML isn't great for defining styles -- or at least, it isn't anymore. If we wind back the clocks a few years to HTML versions of old, we find the colour attribute. If you've been around for a while, you've no doubt seen it. Something like this:
+The identifying thing about tooltips is that they contain no interactive elements (aka. only plain text), and are always attached to existing interactive elements.
+Whenever you want to add interactive elements inside your information bubble, it's not called _tooltip_, but _toggletip_. Toggletips can contain semantic markup, rich content and interactive elements, and usually only appear when an element is clicked. The great thing about toggletips is that they're accessible on touchscreens and easier to find and recognise for users with low vision.
+
+So depending on your use case, you need to implement a tooltip or a toggletip.
+
+But let's circle back to the `title` attribute. Often, people use it to create a tooltip. However, this is not the recommended way to go.
+
+## But why, I love my `title`!?
+
+It's simple. The `title` attribute is inaccessible. Users of mobile phones and tablets, users of assistive technologies, and keyboard only users cannot interact with it.
+If you want a tooltip, a much better, and accessible, option is using the `popover` attribute.
+
+**Note:** The only place where you should (& must) use the `title` attribute is on an `iframe`! See [Steve Faulkner's post](https://html5accessibility.com/stuff/2021/08/26/named-and-framed/) for more information.
+
+## How to use `popover`
+
+Firstly, before we get started, it is always better to display clear, permanently visible information. So, if space permits, do not use tooltips. Instead, provide clear labels and sufficient text. This is particularly important for forms!
+
+However, if you wanna go down that path, the `popover` attribute provides a starting point for building popover-like interactions on the web. Its purpose is simply to add 'popover/tooltip behaviour'. So we'll use it to create our custom plain-text tooltip.
+
+To start, we just need an interactive element (like a button) which is used to trigger the tooltip, even when navigating with a keyboard only, and a `<div>` containing the tooltip content.
+
+The `<button>` is linked to the tooltip with `aria-describedby`.
+The `<div>` receives the `popover` attribute and an `id`.
+As the `popover` attribute just adds behaviour, not semantics, we need to [add our own role when it makes sense](https://hidde.blog/popover-semantics/). Therefore we add `role='tooltip'` to the `<div>`.
 
 ```html
-<font color="#d72b2b">HTMHell rules!</font>
+<p>
+  There is a
+  <button type="button" aria-describedby="tooltip">secret</button> to accessible
+  HTML!
+</p>
+
+<div popover role="tooltip" id="tooltip">
+  <div>a div is not a button ✨</div>
+</div>
 ```
 
-<font color="#d72b2b">HTMHell rules!</font>
+### Let's make it interactive
 
-If we render that in a browser, we get some text in the lovely HTMHell red. That's great. That's what we'd expect. Next we'll choose another colour. Something a bit different. Let's try 'chucknorris'.
+If we would want to create a _toggletip_, which opens `onClick`, we could simply add `popovertarget="ID"` to the `<button>`, with the `id` of the toggletip.
 
 ```html
-<font color="chucknorris">But... Chuck Norris isn't a colour.</font>
+There is a 
+<button type="button" aria-describedby="toggletip" popovertarget="toggletip">
+  secret
+</button>
+to accessible HTML!
+
+<div popover id="toggletip">
+  <div>a div is not a button ✨</div>
+</div>
 ```
 
-<font color="chucknorris">But... Chuck Norris isn't a colour.</font>
+<div class="demo-toggletip">
 
-If you go through the effort of loading _that_ up in a browser, you might notice it makes the text red. Why?
+There is a <button type="button" class="popoverbutton togglebutton" aria-describedby="toggletip" popovertarget="toggletip">secret</button> to accessible HTML!
 
-## Some funny character parsing
+<div popover id="toggletip">
+  <div class="tooltip-content">a div is not a button ✨</div>
+</div>
 
-HTML generally doesn't have an error state, at least not one akin to what would happen if writing something like invalid JavaScript. Browsers are very forgiving when parsing HTML (which explains how people have gotten away with the crimes documented throughout this website) and generally do their best to make up for user error. If you leave a dangling `<div>`, the browser will do its best to close it up and render it out.
+</div>
 
-This forgiveness is the reason behind the funkiness. Browsers simply try to forge ahead with the invalid value and hope it'll work. In the past web browsers all handled invalid values a bit differently, but now it's all outlined in the ["rules for parsing a legacy color value" part of the HTML spec](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#rules-for-parsing-a-legacy-colour-value). A surmised version of the parsing outlined there is as follows:
+However, if we want our _tooltip_, that is triggered when the interactive element is hovered or focused, we need JavaScript.
+We can display the tooltip by using `.hidePopover()` and `.showPopover()`.
+If `showPopover()` is called on an element with the popover attribute that is currently hidden, the element is added to the top rendering layer.
 
-1. Initial Cleanup:
+A tooltip usually disappears when hitting the Escape key or when the mouse is moved away from the interactive element.
+But it's also important to make sure that the tooltip content is reachable with the mouse pointer. That way, users can copy the text or read it with magnification software.
+That's why, with the help of JavaScript, we show the tooltip on `mouseover` of the interactive element and keep it visible when the tooltip itself is hovered (by also listening to `mouseover`).
+With `mouseout` we can hide the tooltip as soon as the mouse leaves either the tooltip or the interactive element that triggered it.
 
-   - If an octothorpe (#) is located at the start of the value, it's removed.
-   - The colour attribute only accepts hexes, so there isn't a point keeping it.
-   - Example: "#FF0000" becomes "FF0000".
+To open or close the tooltip with keyboard navigation, we must listen to the `focusin` and `focusout` events of the button.
+The tooltip must be easy to dismiss (e.g. by pressing the Escape key).
+It's also worth noting that tooltips don't actually get the focus themselves. The focus stays on the element that triggered the tooltip.
+However, it's content is still read to screen reader users and is accessible by the screen readers virtual cursor.
+But remember, in general, if we're showing content automatically when an element receives focus, it's important not to suddenly change context and confuse users.
 
-2. Replace Invalid Characters:
+#### Wait, is this new attribute supported?
 
-   - Any non-hexadecimal characters (anything not 0-9 or A-F/a-f) are removed and replaced with '0'.
-   - Example: 'abcxyz123' becomes 'abc000123'.
+Good news! The `popover` attribute is [supported by all modern browsers](https://caniuse.com/?search=popover) with versions released between mid-2023 and 2024 (starting with Safari 17.0, Firefox 125, Chrome 114 and Edge 114).
 
-3. Standardise Length:
+### Looks bad though
 
-   - While the string's length is 0 or not divisible by 3, append '0'.
-   - Examples:
-     - "F" becomes "F00" (padded to length 3).
-     - "FFFF" becomes "FFFF00" (padded to length 6).
-     - "FFFFFF0" becomes "FFFFFF000" (padded to length 9).
+That's why the last thing to do is use CSS to style the tooltip.
+If you want to change how the tooltip looks when it's displayed, you can use the `:popover-open` pseudo-class.
 
-4. Split into Red, Green, and Blue:
+We also need to make sure the tooltip is correctly positioned.
+We can use `position-anchor` and `position-area` for Chrome and Edge, but they're still in the experimental phase, so we need an alternative for other browsers. The simplest option would be to use a library like [Floating UI](https://floating-ui.com/).
 
-   - The first third becomes the red value.
-   - The second third becomes the green value.
-   - The last third becomes the blue value.
-   - Example: "FFFFFF000" becomes ["FFF", "FFF", "000"].
+<style>
+  html {
+    --anchor-name: --tooltip;
+    }
+.popoverbutton {
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+.demo-toggletip {
+    --anchor-name: --toggletip;
+}
+.popoverbutton {
+  all: unset;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  border-bottom: 1px dashed #000;
+  anchor-name: var(--anchor-name);
+  font-weight: bold;
+}
+.popoverbutton:hover {
+  background: transparent;
+}
+[popover] {
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  position-anchor: var(--anchor-name);
+  position-area: var(--popover-inset-area, block-start);
+  opacity: 0;
+}
+[popover]:popover-open {
+    opacity: 1;
+}
+.tooltip-content {
+  position: relative;
+  text-align: center;
+  line-height: 1.2;
+  max-inline-size: max-content;
+  background-color: #0a0a0a;
+  color: #f2f2f2;
+  border: 2px solid #f2f2f2;
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+.tooltip-content:after {
+  font-size: 20px;
+  content: "";
+  position: absolute;
+  bottom: -25%;
+  left: 45%;
+  transform: rotate(180deg);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 1.25rem;
+  height: 0.75rem;
+  background-color: #0a0a0a;
+}
+</style>
 
-5. Handle Length:
-
-   - If any component is longer than 8 characters, remove the characters from the left until it's 8 characters long.
-     - Example: "123456789" → "23456789"
-   - While the length is greater than 2, and all components start with '0', remove the leading '0' from each component.
-     - Example: ["000F", "000F", "000F"] becomes ["00F", "00F", "00F"] which then becomes ["0F", "0F", "0F"].
-   - If length is still greater then 2 keep only the first 2 characters of each component.
-     - Example: ["ABC", "DEF", "123"] becomes ["AB", "DE", "12"].
-
-6. Putting It Together:
-   - Get the final red, blue, and green components, then put them together in that order to create the colour.
-   - Example: ["AB", "DE", "12"] becomes ABDE12.
-
-I've written a small tool over on CodePen that will take any inputted value, break down the processing step by step, and output the colour as it would be handled. Go have a bit of fiddle!
-
-<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="yLmKBpN" data-pen-title="Legacy HTML Colour Parsing Demo" data-user="OuterVale" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/OuterVale/pen/yLmKBpN">
-  Legacy HTML Colour Parsing Demo</a> by Declan Chidlow (<a href="https://codepen.io/OuterVale">@OuterVale</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p>
+  There is a
+  <!-- interactive element triggering the tooltip -->
+  <button
+    type="button"
+    aria-describedby="tooltip"
+    class="popoverbutton js-button">
+      secret
+  </button> to accessible HTML!
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-## Some fun examples
+<!-- The custom tooltip -->
+<div
+     popover
+     role="tooltip"
+     id="tooltip"
+     class="js-content">
+  <div class="tooltip-content">
+    a div is not a button ✨
+  </div>
+</div>
 
-So, we know this happens and why. The next task is obviously to have some fun with it. Finding words whose computed colours correlate with them is great fun. For example, 'Sonic' gives us a lovely blue like the hedgehog. I've put together a little table of some of these coincidental match ups:
+<script>
+  const tooltip = document.querySelector('.js-content');
+const tooltipTrigger = document.querySelector('.js-button');
+const openTooltip = () => {
+  tooltip.showPopover()
+};
+const closeTooltip = () => {
+  tooltip.hidePopover()
+};
+tooltipTrigger.addEventListener('mouseover', openTooltip);
+tooltip.addEventListener('mouseover', openTooltip);
+tooltipTrigger.addEventListener('mouseout', closeTooltip);
+tooltip.addEventListener('mouseout', closeTooltip);
+tooltipTrigger.addEventListener('focusin', openTooltip);
+tooltipTrigger.addEventListener('focusout', closeTooltip);
+</script>
 
-<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="wvLbjpZ" data-pen-title="Word Correlations With HTML Colour Parsing" data-user="OuterVale" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/OuterVale/pen/wvLbjpZ">
-  Word Correlations With HTML Colour Parsing</a> by Declan Chidlow (<a href="https://codepen.io/OuterVale">@OuterVale</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-## Interesting parsing in the modern era
-
-So, that's all well and good, but it's old news. The `color` and `bgcolor` attributes that permitted our parsing adventures are relics of HTML 4. They're obsolete (though still in active use on a disturbingly high number of websites). That isn't to say quirks like that have disappeared completely though. CSS has its own set of fascinating peculiarities when it comes to handling invalid colour values. Most modern browsers will clamp values rather than reject them outright -– throw rgb(300, -50, 1000) at a browser and it won't fail; it'll helpfully transform it into rgb(255, 0, 255).
-
-The web's foundational principle of forgiveness -– the inherent flexibility that allows "chucknorris" to be parsed as red, even though the reason it does so is old, silly, and unsupported –- hasn't gone anywhere. Modern browsers still bend over backward to make our code work, even when we throw nonsense at them. It doesn't take long to see this forgiveness in action within the cursed examples held within the pages of HTMHell. Each horrifying snippet, each questionable hack, each "it works but why" moment exists because browsers simply refuse to give up on rendering our 'mistakes'.
-
-The web is built on this foundation of resilience, both in technology and [ethos](https://www.w3.org/blog/2022/a-letter-from-our-ceo-the-web-as-the-ultimate-tool-of-resilience-for-the-world). It's what allows a website from 1996 to still render in a modern browser. It's what lets a page load even when half the CSS is invalid. It's what makes it magic.
-
-I've heard people quip that browsers should be less forgiving and enforce perfection. That allowing jank makes the web somehow 'bad'. I think a perfect web would be a boring web. I certainly wouldn't be here writing were it 'perfect'. It's about making the web work, no matter what we throw at it, and I wouldn't have it any other way.
-
-After all, in a perfect web, "chucknorris" would just be another error message -– and where's the fun in that?
-
-## Resources
-
-- [Sam's Place - A little rant about Microsoft Internet Explorer's color parsing](http://scrappy-do.blogspot.com/2004/08/little-rant-about-microsoft-internet.html)
-- [HTML Standard](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#rules-for-parsing-a-legacy-colour-value)
-- [Why does HTML think "chucknorris" is a color?](https://stackoverflow.com/q/8318911)
+And that's it, you just created a custom tooltip!
+Find the detailed code in this [CodePen](https://codepen.io/dnikub/pen/PwYqwJE).
