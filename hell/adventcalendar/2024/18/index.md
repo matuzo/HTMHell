@@ -17,6 +17,7 @@ author_links:
 intro: "<p>Books are the best Christmas presents. Let’s use them as an example to see how HTML’s microdata features can convey a lot of programmatically determinable information with little effort.</p>"
 image: "advent24_18"
 tags: advent2024
+active: true
 ---
 
 ## Dive into marking up books
