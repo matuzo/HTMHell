@@ -47,21 +47,6 @@ function changeColor(event) {
 const buttonOne = document.querySelector('.button.one');
 buttonOne.addEventListener('click', changeColor);
 ```
-<p>
-<button type="button" class="button one">
-    Change Color ONE
-</button>
-</p>
-
-<script>
-    function changeColor(event) {
-    const element = event.currentTarget; 
-    const currentColor = getComputedStyle(element).backgroundColor;
-    element.style.backgroundColor = currentColor === 'rgb(0, 128, 0)' ? 'rgb(58, 58, 242)' : 'rgb(0, 128, 0)';
-}
-const buttonOne = document.querySelector('.button.one');
-buttonOne.addEventListener('click', changeColor);
-</script>
 
 First, we create a genuine button using the `<button>` tag, and then examine how it appears in the accessibility tree. We focus on the attributes and properties exposed for this node, discussing what each one means in terms of interaction with assistive technologies. At every step, we also test with a keyboard.
 
@@ -90,17 +75,6 @@ Next step: build a fake button.
 const buttonTwo = document.querySelector('.button.two');
 buttonTwo.addEventListener('click', changeColor);
 ```
-
-<p>
-<div class="button two">
-    Change Color TWO
-</div>
-</p>
-
-<script>
-    const buttonTwo = document.querySelector('.button.two');
-    buttonTwo.addEventListener('click', changeColor);
-</script>
 
 We simply attach a click event to a `div`, and with nearly the same CSS as we’d use for a genuine button, we create something a sighted user will recognize as a button.
 
