@@ -20,6 +20,7 @@ layout: layouts/advent.md
 date: 2024-12-19
 image: "advent24_19"
 tags: advent2024
+active: true
 ---
 A couple years back, I was in a window seat on a flight from Amsterdam to New York. The weather was gray and drizzly as the plane took off, but as it punched through the clouds a very different scene revealed itself. Out my window, it looked like a [Maxfield Parrish](https://en.wikipedia.org/wiki/Maxfield_Parrish) painting brought to life. And the plane's speed made it appear to scroll by with this uncanny effect, like a parallax effect that used the wrong easing function. Mesmerizing! I pulled out my phone and recorded a couple of videos.
 
