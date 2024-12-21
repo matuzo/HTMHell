@@ -17,6 +17,7 @@ author_links:
 intro: "<p>An exploration of how legacy HTML colour parsing turns random text like 'chucknorris' into valid colours through a fascinating series of cleanup rules and character replacements.</p>"
 image: "advent24_20"
 tags: advent2024
+active: true
 ---
 
 Setting the colour of text on a webpage is usually a simple affair involving whipping it out the good ol' CSS `color` property. But this is HTMHell, dammit. None of that wishy-washy CSS nonsense here. No siree. We use HTML as the good lord intended and shalln't stray into the sins of cascading sheets lest we end up some non-HTML variant of hell where they define page structure with JavaScript vars.

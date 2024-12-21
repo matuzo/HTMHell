@@ -10,6 +10,8 @@ author_links:
     link_label: "epiph.yt"
 intro: "<p> Using fieldsets to group multiple form fields into a single one can be an ideal way to provide context to otherwise lonely fields inside a form, enhancing the accessibility of using them.</p>"
 image: "advent24_21"
+tags: advent2024
+active: true
 ---
 
 When I first stumbled upon `fieldset` and `legend`, I didn’t know much about HTML and especially not about accessibility. Everything I noticed was the special way a `legend` is displayed inside a `fieldset` – or rather: alongside the border of a `fieldset`. 
@@ -38,7 +40,7 @@ Which results in this:
 
 ![A fieldset with the group name “Date” and three fields for month, day and year](fieldset-example.png)
 
-If you can see the image, you may notice the special default design for a `fieldset`: It has a border, that is party interrupted by the `legend`. Something, that is not the easiest to achieve with other elements with CSS only. However, in the wild, you won’t often see it like this.
+In the image you see the default design for a `fieldset`: It has a border, that is partly interrupted by the `legend`. Something, that is not the easiest to achieve with other elements with CSS only. However, in the wild, you won’t often see it like this.
 
 ## Why does it matter?
 
