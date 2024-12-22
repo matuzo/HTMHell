@@ -2,7 +2,7 @@
 title: "The underrated &lt;dl&gt; element"
 layout: layouts/advent.md
 author: "David Luhr"
-author_bio: "David Luhr is an independent consultant who helps teams of all sizes with accessible design and development. He is passionate about creating a more responsible web for everyone, eliminating waste, and creating free educational content through his [Build UX YouTube channel](https://www.youtube.com/@buildux)."
+author_bio: "David Luhr is a senior design engineer focused on accessible design and development. He is passionate about creating a more responsible web for everyone, eliminating waste, and creating free educational content through his [Build UX YouTube channel](https://www.youtube.com/@buildux)."
 date: 2024-12-26
 author_links:
   - label: "Personal website and blog"
@@ -15,14 +15,14 @@ author_links:
     url: "https://www.linkedin.com/in/davidluhr/"
     link_label: "linkedin.com/in/davidluhr"
 active: true
-intro: "<p>David demonstrates how to apply test-driven development techniques to test HTML across browsers with an accessibility-first workflow.</p>"
+intro: "<p>The Description List element is useful for many common visual design patterns, but is unfortunately underutilized.</p>"
 image: "advent24_26"
 tags: advent2024
 ---
 
-The Description List (`<dl>`) element is underrated.
+The [Description List (`<dl>`) element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl) is useful for many common visual design patterns, but is unfortunately underutilized.
 
-It's used to group terms with their definitions, but is also a great fit for many common visual design patterns that have a key/value structure, such as product attributes or cards that have several supporting details.
+It was originally intended to group terms with their definitions, but it's also a great fit for other content that has a key/value structure, such as product attributes or cards that have several supporting details.
 
 Developers often mark up these patterns with overused heading or table semantics, or neglect semantics entirely. With the Description List (`<dl>`) element and its dedicated Description Term (`<dt>`) and Description Definition (`<dd>`) elements, we can improve the semantics and accessibility of these design patterns.
 
@@ -92,17 +92,21 @@ And, a final example of a product listing, which has a list of technical specs:
 
 ## Accessibility
 
-With this markup in place, assistive technology such as screen readers will expose a list role, the total count of term/definition groups, and offer some navigation options.
+With this markup in place, [common screen readers will convey important semantic and navigational information](https://a11ysupport.io/tech/html/dl_element). In my testing, NVDA on Windows and VoiceOver on MacOS conveyed a list role, the count of list items, your position in the list, and the boundaries of the list. TalkBack on Android only conveyed the term and definition roles of the `<dt>` and `<dd>` elements, respectively.
 <!-- MM: Is this true for all common screen readers? Did you test this? If no, can you?
 Also, maybe you'll find more info here:
 https://benmyers.dev/blog/on-the-dl/
 https://a11ysupport.io/tech/html/dl_element
 -->
+<!-- DL: I added my testing experience above. Thank you for providing these links. I added a link to Ben's article at the end as further reading. We coincidentally had very similar content, so I revised the intro sentence to avoid overlapping with Ben's intro. -->
 
-If the design doesn't include visible labels, you can at least include them as visually hidden text for assistive technology users.
+If the design doesn't include visible labels, you can at least include them as visually hidden text for assistive technology users. But, I always advocate to visually display them if possible.
 
 ## Wrapping up
 
-The `<dl>` is a versatile element that unfortunately doesn't get much use. The next time you're building out a design, look for opportunities where the underrated Description List is a good fit.
+The `<dl>` is a versatile element that unfortunately doesn't get much use. In over a decade of coding, I've almost never encountered it in existing codebases. It also doesn't appear anywhere in the top HTML elements lists in [the Web Almanac 2024](https://almanac.httparchive.org/en/2024/markup#element-diversity) or [an Advanced Web Ranking study of over 11.3 million pages](https://www.advancedwebranking.com/seo/html-study). The next time you're building out a design, look for opportunities where the underrated Description List is a good fit.
 
 <!-- MM: "unfortunately doesn't get much use". Now I'm wondering if there's data to back this claim. It's not important. It would just be interesting. Maybe there's something in th web alamanc? https://almanac.httparchive.org/en/2024/markup#top-elements -->
+<!-- DL: I added the Web Almanac link and linked another wide-scale study, as well as a mention of personal experience. -->
+
+To go deeper, be sure to check out this [article by Ben Myers on the `<dl>` element](https://benmyers.dev/blog/on-the-dl/).
