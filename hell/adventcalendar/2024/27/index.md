@@ -104,6 +104,18 @@ An alternative is the attribute **aria-label**, which you can assign a descripti
 
 With this adjustment, the screen reader will now announce “Open calendar,” completely ignoring the icon. This clearly communicates to the user what the button will do when clicked.
 
+## Which Option Should You Use?
+
+At first glance, the aria-label approach might seem like the smarter choice. It requires less code, reducing the likelihood of errors, and looks cleaner overall, potentially improving code readability.
+
+However, the first option is actually the better choice. There are several reasons for this that may not be immediately obvious:
+
+- Some browsers do not translate aria-label
+- It is difficult to copy aria-label content or otherwise manipulated it as text
+- aria-label content will not show up if styles fail to load
+
+These are just a few of the many reasons why you should be cautious when using the aria-label attribute. These points, along with others, are discussed in detail in the excellent article "[aria-label is a Code Smell](https://ericwbailey.website/published/aria-label-is-a-code-smell)" by [Eric Bailey](https://github.com/ericwbailey/ericwbailey.website).
+
 ## Browser compatibility
 
 Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern.
