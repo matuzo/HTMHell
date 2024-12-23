@@ -53,7 +53,7 @@ First, you need to give the button a descriptive name so that a screen reader ca
 </button>
 ```
 
-The problem now is that the button’s name becomes visible, which goes against the design guidelines. To prevent this, additional CSS is required.
+The problem now is that the button’s name becomes visible, which goes against your design guidelines. To prevent this, additional CSS is required.
 
 ```css
 .sr-only {
