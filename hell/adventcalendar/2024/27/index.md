@@ -23,32 +23,6 @@ intro: "<p>In this article, we explore the accessibility challenges of icon-only
 image: "advent24_27"
 ---
 
-<!-- MM: Great post. I don't have much to say except that your post isn't critical enough of aria-label. I'd love to read why you prefer aria-label over .sr-only because for me it's the other way around. 
-
-* it can be a problem with translation tools https://heydonworks.com/article/aria-label-is-a-xenophobe/ https://adrianroselli.com/2019/11/aria-label-does-not-translate.html
-* devs like to forget that content can also com from attributes which often causes aria-label to contain wrong or untraslated content (based on my experience)
-* when css doesn't load aria-label doesn't become visible unline .sr-only
-
-Some posts about the topic:
-
-https://adrianroselli.com/2020/01/my-priority-of-methods-for-labeling-a-control.html
-https://ericwbailey.website/published/aria-label-is-a-code-smell/
-https://www.tpgi.com/context-is-king-long-live-the-king/
-
-And generally I'd advocate for showing text. Hidden text is problematic.
-
-* The only users who will know it is there are screen reader users.
-* It is not visible. 
-* It does not help the click/tap size of the control. 
-* It is not available to voice users to select a control. 
-* It cannot be copied.
-
-(Copied from https://adrianroselli.com/2020/01/my-priority-of-methods-for-labeling-a-control.html)
-
- -->
-
-<!-- MM: Can we remove the screenshots since we already have the snippets in text? Doesn't look as nice but text is more accessible and the page loads faster. -->
-
 ## Introduction
 
 Imagine you’re tasked with building a cool new feature for a product. You dive into the work with full energy, and just before the deadline, you manage to finish it. Everyone loves your work, and the feature is set to go live the next day.
@@ -132,8 +106,6 @@ With this approach, you achieve the same result, just with a bit more code.
 ## Browser compatibility
 
 Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern. The only exception is Internet Explorer. Microsoft has discontinued support for Internet Explorer, and if possible, it should no longer be used due to security reasons.
-
-<!-- MM: IE is no longer a concern. I'd remove the last two sentences -->
 
 ## Conclusion
 
