@@ -121,6 +121,8 @@ The “[First Rule of ARIA Use](https://www.w3.org/TR/using-aria/#firstrule)” 
 
 If you can use a native HTML element or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.
 
+Even though the first approach also uses an ARIA attribute, it is more acceptable because **aria-hidden** only hides an element from screen readers. In contrast, **aria-label** overrides the standard HTML behavior for handling descriptive names. For this reason, following this principle, **aria-hidden** is preferable to **aria-label** in this case.
+
 ## Browser compatibility
 
 Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern.
