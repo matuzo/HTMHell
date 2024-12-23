@@ -141,3 +141,5 @@ Alex
 - [mdn web docs aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden)
 - [WAI-ARIA Standard Guidlines](https://www.w3.org/WAI/standards-guidelines/aria/)
 - [Tailwind CSS Screen Readers (sr-only)](https://tailwindcss.com/docs/screen-readers)
+- [aria-label is a Code Smell](https://ericwbailey.website/published/aria-label-is-a-code-smell)
+- [First Rule of ARIA Use](https://www.w3.org/TR/using-aria/#firstrule)
