@@ -116,6 +116,12 @@ However, the first option is actually the better choice. There are several reaso
 
 These are just a few of the many reasons why you should be cautious when using the aria-label attribute. These points, along with others, are discussed in detail in the excellent article "[aria-label is a Code Smell](https://ericwbailey.website/published/aria-label-is-a-code-smell)" by [Eric Bailey](https://github.com/ericwbailey/ericwbailey.website).
 
+## The First Rule of ARIA Use
+
+The “[First Rule of ARIA Use](https://www.w3.org/TR/using-aria/#firstrule)” states:
+
+If you can use a native HTML element or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.
+
 ## Browser compatibility
 
 Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern.
