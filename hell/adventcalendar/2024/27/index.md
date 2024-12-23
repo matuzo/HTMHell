@@ -105,7 +105,7 @@ With this approach, you achieve the same result, just with a bit more code.
 
 ## Browser compatibility
 
-Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern. The only exception is Internet Explorer. Microsoft has discontinued support for Internet Explorer, and if possible, it should no longer be used due to security reasons.
+Both **aria-label** and **aria-hidden** are supported by all modern browsers and can be used without concern.
 
 ## Conclusion
 
