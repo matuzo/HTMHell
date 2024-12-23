@@ -96,8 +96,7 @@ The attribute **aria-hidden** hides elements from screen readers so that their c
 An alternative is the attribute **aria-label**, which you can assign a descriptive, accessible text to a button without it being visible to sighted users. The purpose of **aria-label** is to provide a description for interactive elements that lack a visible label or descriptive text. All you need to do is add the attribute **aria-label** to the button. The attribute **aria-hidden** and the span-Element can be deleted.
 
 ```html
-<button>
-  <span>Open Calendar</span>
+<button aria-label="Open Calendar">
   <i class="icon">📆</i>
 </button>
 ```
