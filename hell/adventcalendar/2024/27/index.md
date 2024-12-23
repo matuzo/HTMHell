@@ -128,7 +128,7 @@ Both **aria-label** and **aria-hidden** are supported by all modern browsers and
 
 ## Conclusion
 
-Ensuring accessibility in web design is more than just a nice-to-have—it’s a necessity. By implementing simple solutions like **aria-label** or combining CSS with **aria-hidden**, you can create a user experience that is both aesthetically pleasing and accessible for everyone, including those who rely on screen readers. While there may be different approaches to solving accessibility challenges, the key is to be mindful of all users' needs. A few small adjustments can make a world of difference, ensuring that your features are truly usable by everyone.
+Ensuring accessibility in web design is more than just a nice-to-have—it’s a necessity. By implementing simple solutions like combining CSS with **aria-hidden**, you can create a user experience that is both aesthetically pleasing and accessible for everyone, including those who rely on screen readers. While there may be different approaches to solving accessibility challenges, the key is to be mindful of all users' needs. A few small adjustments can make a world of difference, ensuring that your features are truly usable by everyone.
 
 Cheers
 Alex
