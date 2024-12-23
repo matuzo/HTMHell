@@ -44,21 +44,7 @@ Okay, you understand the problem now and agree that it should be fixed. However,
 
 ## The Solution
 
-In HTML, you are allowed to use specific attributes for accessibility, and in this case, the attribute **aria-label** is what you need. ARIA stands for [“Accessible Rich Internet Applications”](https://www.w3.org/TR/wai-aria/) and is an initiative to make websites and software more accessible to people with disabilities.
-
-With **aria-label**, you can assign a descriptive, accessible text to a button without it being visible to sighted users. The purpose of **aria-label** is to provide a description for interactive elements that lack a visible label or descriptive text. All you need to do is add the attribute **aria-label** to the button.
-
-```html
-<button aria-label="Open Calendar">
-  <i class="icon">📆</i>
-</button>
-```
-
-With this adjustment, the screen reader will now announce “Open calendar”, completely ignoring the icon. This clearly communicates to the user what the button will do when clicked.
-
-## Alternatives
-
-There is another alternative, though it is a bit more cumbersome to implement. Instead of using the **aria-label**, you can place the text for the screen reader directly within the button element.
+First, you need to give the button a descriptive name so that a screen reader can announce it.
 
 ```html
 <button>
@@ -67,7 +53,7 @@ There is another alternative, though it is a bit more cumbersome to implement. I
 </button>
 ```
 
-However, this would make the text visible to sighted users as well. To prevent this, additional CSS is required.
+The problem now is that the button’s name becomes visible, which goes against the design guidelines. To prevent this, additional CSS is required.
 
 ```css
 .sr-only {
@@ -92,7 +78,11 @@ However, this would make the text visible to sighted users as well. To prevent t
 
 The CSS ensures that the text inside the span-element is hidden from sighted users but remains readable for screen readers. This approach is so common that well-known CSS libraries like TailwindCSS, Bootstrap, and Material-UI include such a class by default.
 
-Since you’re no longer using the attribute **aria-label**, the entire content of the button will be read aloud, including the icon — something you want to avoid. ARIA provides an attribute to hide elements from screen readers so that their content isn’t read. All you need to do is add the attribute **aria-hidden** with the value “true” to the icon element, which in this case is the “i”-element.
+Although the text of the buttons is not visible anymore, the entire content of the button will be read aloud, including the icon — something you want to avoid.
+
+In HTML you are allowed to use specific attributes for accessibility, and in this case, the attribute **aria-hidden** is what you need. ARIA stands for “Accessible Rich Internet Applications” and is an initiative to make websites and software more accessible to people with disabilities.
+
+The attribute **aria-hidden** hides elements from screen readers so that their content isn’t read. All you need to do is add the attribute **aria-hidden** with the value “true” to the icon element, which in this case is the “i”-element.
 
 ```html
 <button>
@@ -101,7 +91,18 @@ Since you’re no longer using the attribute **aria-label**, the entire content 
 </button>
 ```
 
-With this approach, you achieve the same result, just with a bit more code.
+## Alternative
+
+An alternative is the attribute **aria-label**, which you can assign a descriptive, accessible text to a button without it being visible to sighted users. The purpose of **aria-label** is to provide a description for interactive elements that lack a visible label or descriptive text. All you need to do is add the attribute **aria-label** to the button. The attribute **aria-hidden** and the span-Element can be deleted.
+
+```html
+<button>
+  <span>Open Calendar</span>
+  <i class="icon">📆</i>
+</button>
+```
+
+With this adjustment, the screen reader will now announce “Open calendar,” completely ignoring the icon. This clearly communicates to the user what the button will do when clicked.
 
 ## Browser compatibility
 
