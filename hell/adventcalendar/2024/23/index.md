@@ -17,6 +17,7 @@ author_links:
 intro: "<p> intro goes here?</p>"
 image: "advent24_23"
 tags: advent2024
+active: true
 ---
      
 Not too long ago, building an accordion component would require you to use a combination of JavaScript and CSS. If you've been around for as long as I have, you might have used a library like [jQuery](https://jqueryui.com/accordion/) or _Mootools_.

@@ -20,6 +20,7 @@ author_links:
 intro: "<p>Images, text, buttons, and more — developers love to add the title attribute to any element in sight, in 99% of cases to create a tooltip. The issue is that the title attribute isn't accessible. But don't worry, the popover attribute has got you covered!</p>"
 image: "advent24_22"
 tags: advent2024
+active: true
 ---
 
 It's almost 2025, so it's time to stop using the `title` attribute everywhere. Images, text, buttons, ... you name it, devs really like to put it on any element in sight. Most of the time, people actually want to create a tooltip. You know, that little bubble of information designed to clarify the purpose of otherwise unclear elements, that pops up attached to an element when its receives focus or a user hovers their mouse over it.
