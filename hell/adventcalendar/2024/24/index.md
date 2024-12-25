@@ -20,7 +20,7 @@ author_links:
 active: true
 intro: "<p>A real life example missing the label element and multiple ways to fix it easily.</p>"
 image: "advent24_24"
-tags:
+tags: advent2024
 ---
 
 This example is a classic - in a bad way - and can cause quite some confusion for users of assistive technology (AT). But it's also very easy to fix! It's the `<input>` element missing its dear friend, the `<label>`... 😭
