@@ -1,5 +1,5 @@
 ---
-title: "Preloading fonts for web performance with link rel=”preload”"
+title: 'Preloading fonts for web performance with link rel="preload"'
 layout: layouts/advent.md
 author: "Alistair Shepherd"
 author_bio: "Alistair is a Front End Developer, working the full range of the web but particularly focusing on accessibility, performance and privacy. He works at the agency Series Eight as Lead Developer, building creative websites, ecommerce stores and web apps. He blogs and speaks about performance and making the web simpler."
