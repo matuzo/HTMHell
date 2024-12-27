@@ -29,8 +29,8 @@ When it comes to color scheme implementations, they range from rather useless on
 
 ```css
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 
   @media (prefers-color-scheme: dark) {
     background-color: #000000;
@@ -51,8 +51,8 @@ Currently, there’s no way to directly override a user’s OS preference if you
 
 ```css
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 
   [data-scheme='dark'] & {
     background-color: #000000;
