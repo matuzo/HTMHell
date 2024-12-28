@@ -20,6 +20,7 @@ author_links:
     link_label: "linkedin.com"
 intro: "<p>Discover how to enhance website performance with prefetching, prerendering, and the Speculation Rules API.</p>"
 image: "advent24_28"
+active: true
 ---
 
 Everybody loves fast websites, and everyone despises slow ones even more. Site speed significantly contributes to the overall user experience (UX), determining whether it feels positive or negative. To ensure the fastest possible page load times, it’s crucial to design with performance in mind. However, performance optimization is an art form in itself. While implementing straightforward techniques like file compression or proper cache headers is relatively easy, achieving deeper optimizations can quickly become complex.
