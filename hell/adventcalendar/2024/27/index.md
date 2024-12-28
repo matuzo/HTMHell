@@ -20,6 +20,7 @@ author_links:
     link_label: "Github"
 intro: "<p>In this article, we explore the accessibility challenges of icon-only buttons, their impact on screen readers, and practical solutions to make them inclusive for all users.</p>"
 image: "advent24_27"
+active: true
 ---
 
 ## Introduction
