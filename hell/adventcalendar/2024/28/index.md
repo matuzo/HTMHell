@@ -27,7 +27,7 @@ Everybody loves fast websites, and everyone despises slow ones even more. Site s
 
 But what if, instead of solely trying to accelerate the loading process, we triggered it earlier—without the user noticing?
 
-One way to achieve this is by prefetching pages the user might navigate to next using `<link rel="prefetch">` tags. These tags are typically embedded in your HTML, but they can also be generated dynamically via JavaScript, based on a heuristic of your choice. Alternatively, you can send them as an [HTML `Link` header](https://www.debugbear.com/blog/resource-hints-rel-preload-prefetch-preconnect#resource-hints-in-http-headers) if you lack access to the HTML code but can modify the server configuration. Browsers will take note of the prefetch directives and fetch the referenced pages as needed.
+One way to achieve this is by prefetching pages the user might navigate to next using `<link rel="prefetch">` tags. These tags are typically embedded in your HTML, but they can also be generated dynamically via JavaScript, based on a heuristic of your choice. Alternatively, you can send them as an [HTTP `Link` header](https://www.debugbear.com/blog/resource-hints-rel-preload-prefetch-preconnect#resource-hints-in-http-headers) if you lack access to the HTML code but can modify the server configuration. Browsers will take note of the prefetch directives and fetch the referenced pages as needed.
 
 <aside class="info">
 
