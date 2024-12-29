@@ -35,7 +35,7 @@ author_links:
   - label: "Bluesky"
     url: "https://bsky.app/profile/twogrey.bsky.social"
     link_label: "twogrey.bsky.social"
-image: "advent24_28"
+image: "advent24_29"
 active: true
 ---
 
