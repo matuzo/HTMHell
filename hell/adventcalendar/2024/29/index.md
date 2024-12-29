@@ -36,6 +36,7 @@ author_links:
     url: "https://bsky.app/profile/twogrey.bsky.social"
     link_label: "twogrey.bsky.social"
 image: "advent24_28"
+active: true
 ---
 
 I think we all know the `<datalist>` element (and if you don’t, it’s ok). It holds a list of `<option>` elements, offering suggested choices for its associated input field. 
