@@ -89,6 +89,11 @@ module.exports = {
       "id": "moritzglantz",
       "name": "Moritz Glantz",
       "link": "https://moritzglantz.de"
+    },
+    {
+      "id": "annedrtlf",
+      "name": "Anne Drotleff",
+      "link": "https://linkedin.com/in/anne-kathrin-drotleff-016a991a8"
     }
   ]
 };
