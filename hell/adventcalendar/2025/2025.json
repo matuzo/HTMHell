@@ -1,0 +1,5 @@
+{
+  "tags": ["advent", "advent2025"],
+  "active": true,
+  "layout": "layouts/advent.md"
+}

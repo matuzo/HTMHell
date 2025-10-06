@@ -1,27 +1,24 @@
 ---
 layout: layouts/base.njk
-title: HTMHell Advent Calendar 2025
-seo_title: adventcalendar2025
+title: HTMHell Advent Calendar 2024
+seo_title: adventcalendar2024
 description: An article, talk, or tool that focuses on HTML every day until Christmas.
-nav_title: Advent Calendar
 date: 2022-01-04
 page__class: calendar
-tags:
-  mainnav
 ---
 
 <h1>{{ title }}</h1>
 
 {% macro day(num) %}
-  {% set days = collections.advent2025 %}
-  <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 25 %}style="grid-column: span 2"{% endif %}>
+  {% set days = collections.advent2024 %}
+  <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
     <div class="acalendar__number">
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2025/{{ num }}"{% endif %}>{{ num }}</a>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2024/{{ num }}"{% endif %}>{{ num }}</a>
     </div>
 
     <div class="acalendar__title">
       {% if days[num - 1].data.active %}
-      <a href="/adventcalendar/2025/{{ num }}">
+      <a href="/adventcalendar/2024/{{ num }}">
         {{ days[num - 1].data.title | safe }}
       </a>
       by {{ days[num - 1].data.author }}
@@ -81,6 +78,17 @@ tags:
 </ol>
 </div>
 
+<h2>Bonus articles</h2>
+
+<ol class="acalendar acalendar--title" start="25">
+
+{{ day(25) }}
+{{ day(26) }}
+{{ day(27) }}
+{{ day(28) }}
+{{ day(29) }}
+
+</ol>
 
 <script>
   const preview = document.querySelector('.acalendar-view');
@@ -89,7 +97,7 @@ tags:
     const clicked = e.target.closest('button')
     if (clicked) {
       updateView(clicked.dataset.view, clicked);
-      localStorage.setItem('html_calendar25view', clicked.dataset.view)
+      localStorage.setItem('html_calendar24view', clicked.dataset.view)
     }
   })
 
@@ -101,8 +109,8 @@ tags:
     calendar.classList = `acalendar acalendar--${type}`
   }
 
-  if (localStorage.getItem('html_calendar25view')) {
-    const type = localStorage.getItem('html_calendar25view')
+  if (localStorage.getItem('html_calendar24view')) {
+    const type = localStorage.getItem('html_calendar24view')
     updateView(type, document.querySelector(`button[data-view="${type}"]`))
   }
 
@@ -113,10 +121,6 @@ tags:
 </p>
 
 <p>
-    <a href="/adventcalendar/2024">
-      HTMHell Advent calendar 2024
-    </a>
-    <br>
     <a href="/adventcalendar/2023">
       HTMHell Advent calendar 2023
     </a>
@@ -132,7 +136,7 @@ tags:
 
 
 <script>
-  var opened = localStorage.getItem('html_opened25') ? JSON.parse(localStorage.getItem('html_opened25')) : [];
+  var opened = localStorage.getItem('html_opened24') ? JSON.parse(localStorage.getItem('html_opened24')) : [];
 
   setTimeout(() => {
     if (opened.length) {
@@ -148,7 +152,7 @@ tags:
     if (e.target.closest('li').dataset.day) {
       if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
         opened.push(e.target.closest('li').dataset.day)
-        localStorage.setItem('html_opened25', JSON.stringify(opened))
+        localStorage.setItem('html_opened24', JSON.stringify(opened))
       }
     }
   });
