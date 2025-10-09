@@ -76,10 +76,11 @@ Before discussing each point in details, don't you think this is just beautiful?
 
 Now let's go over the list of issues I mentioned earlier one more time, but this time, let's talk about why they're not actually causing any issues:
 
-1. Quirks mode can lead to weird rendering issues, sure, but it's still implemented in browsers.
+1. Sure, quirks mode can lead to weird rendering issues if you don't know that you're using it, but it's still implemented in browsers and perfectly ok to use.
 
-   _TODO: give some history on what it is, and why it's different, also show how much it's still used today._
-   https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Quirks_mode_and_standards_mode
+   Even if quirks mode was added for [historical reasons](https://quirks.spec.whatwg.org/#history), to support web pages that were made before the CSS specification was fully fleshed, the code in browser engines which detects the document mode and renders it accordingly is here to stay.
+
+   _TODO: show how to detect quirks mode in devtools._
 
 1. The `<head>` tag can definitely be omitted. Neither the [HTML specification](https://html.spec.whatwg.org/multipage/semantics.html#the-head-element), nor browser implementations require the tag to be present.
 
@@ -92,20 +93,20 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
    In fact, here are other similar attributes: `alinkColor`, `vlinkColor`, _TODO: add others, and detail what they do._
    These presentational attributes act as 0-specificity CSS properties. _TODO: add more content here._
 
-1. The `<marquee>` element still animates text in browsers. In fact, if you want to go crazy with it, try this snippet:
+1. The `<marquee>` element still animates text in browsers. In fact, if you want to go crazy with it, try nesting two `<marquee>` elements, like this:
 
    ```html
    <marquee
       direction="down"
-      width="250"
+      width="200"
       height="200"
-      behavior="alternate"
-      class="outlined">
+      behavior="alternate">
       <marquee behavior="alternate">This text will bounce</marquee>
     </marquee>
    ```
-   _TODO: show a GIF or live embed of what it looks like._
-   _TODO: Point to a codepen, or something else, which scrolls text via CSS instead, and respects user motion preferences._
+
+   Take a look at [the example on codepen](https://codepen.io/captainbrosset/pen/dPGvrMQ?editors=1100).
+
 
 1. Using `<b>` and `<i>` is perfectly valid. They used to be meant for making the text bold and italic, hence their names. But they were deprecated in HTML4, and the meaning of the tags was changed to mean something else. The `<b>` tag now means _bring attention_ and the `<i>` tag now means _idiomatic text_.
 
@@ -136,17 +137,39 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
    In order to ensure that as much of the web as possible was supported across all browsers, and do this in a simple way (i.e. without having to reverse engineer how other browsers did things), it was easier to just support how other browsers did things.
    _TODO: find more details about the specific `<b><i></b></i>` history here. Chris Wilson is, I think, responsible for this, and this was done on purpose, to match authors intent._
 
-1. Missing closing tags are fine. The HTML parser is able to close them on its own, most of the time.
+1. Missing end tags are fine. The HTML parser is able to close most of them on its own.
 
-   _TODO: give more complex examples of cases where missing tags are auto-closed, mid-document._
-   _TODO: a whole lot of examples here: https://html.spec.whatwg.org/multipage/syntax.html#optional-tags_
+   For example, a list item doesn't need to be closed if what follows is another list item or the end of the list. So, this works fine:
 
-   You might already be using this without realizing it. The `<meta>` and `<link>` for example, do not require closing tags, nor do they need to be self-closed with `/>`.
+   ```html
+   <ul>
+     <li>Item 1
+     <li>Item 2
+     <li>Item 3
+   </ul>
+   ```
+
+   The same is true for paragraphs. You can omit the closing `</p>` tag if what follows is another paragraph, a heading, a list, and a whole lot of other elements:
+
+   ```html
+   <section>
+     <p>This is a paragraph
+     <p>This is another paragraph
+     <h2>This is a heading</h2>
+     <p>This is yet another paragraph
+   </section>
+   ```
+
+   You can find out more about these examples, and others, in the [Optional tags section of the HTML spec](https://html.spec.whatwg.org/multipage/syntax.html#optional-tags).
+
+   Also, think about it, you're probably already using this without realizing. Have you ever closed a `<img>`, `<input>`, or `<link>` tag? Probably not, and that's fine. The HTML spec defines a whole lot of elements which don't require closing tags: `<base>`, `<link>`, `<meta>`, `<hr>`, `<br>`, `<source>`, `<img>`, `<input>`, and others.
 
 ## So, what's the moral of the story?
 
 HTML can be very forgiving, and browsers implement things that may seem obscure or weird, but they do so for a very good reason: backward compatibility!
 
-The web is the only platform where sites that were written years ago can still work fine today. This isn't to say that things never get removed, they do, and probably more often than you realize, but the web is still very much backward compatible.
+The web is the only platform where sites that were written years ago can still work fine today. This isn't to say that things never get removed though, they do, and probably more often than you realize. Remember AppCache, WebSQL, module import assertions, or special rules that apply to the font-size of `<h1>` elements when nested inside certain elements?
+
+
 
 This is both a blessing and a curse. The fact that so much of the languages we use are so forgiving and time-enduring made the web what it is today. A welcoming platform that doesn't take so much effort to get used to, and kind of just works. But, this also means that old features and bad practices can linger on for a long time and, if they're used by many sites and users, can't really ever be removed.
