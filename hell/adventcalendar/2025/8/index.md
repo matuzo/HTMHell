@@ -57,7 +57,7 @@ Here's what's wrong with it:
 
    Plus, if you really must animate scrolling text, then please use the [`prefers-reduced-motion` media query](https://developer.mozilla.org/docs/Web/CSS/@media/prefers-reduced-motion) to respect user preferences.
 
-1. The `<b>` and `<i>` tags look like they're used for styling used for styling. That's wrong, right?
+1. The `<b>` and `<i>` tags look like they're used for styling. That's wrong, right?
 
    More on that later.
 
@@ -78,9 +78,11 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
 1. Sure, quirks mode can lead to weird rendering issues if you don't know that you're using it, but it's still implemented in browsers and perfectly ok to use.
 
-   Even if quirks mode was added for [historical reasons](https://quirks.spec.whatwg.org/#history), to support web pages that were made before the CSS specification was fully fleshed, the code in browser engines which detects the document mode and renders it accordingly is here to stay.
+   Even if quirks mode was added for [historical reasons](https://quirks.spec.whatwg.org/#history), to support web pages that were made before the CSS specification was fully fleshed out, the code in browser engines which detects the document mode and renders it accordingly is here to stay. There really is no reason for browsers to ever remove it, unless, one day, all quirks mode documents disappear from the web.
 
-   _TODO: show how to detect quirks mode in devtools._
+   Judging by Chrome's [QuirksModeDocument use counter](https://chromestatus.com/metrics/feature/timeline/popularity/2034), showing that about 30% of page loads in Chrome use quirks mode, I don't think that's going to happen anytime soon. I think a lot of these page loads are due to ads creating iframes without a proper `DOCTYPE`, but still, that's a lot of pages.
+
+   If you're encountering weird rendering issues that you can't explain, double check that you have a `DOCTYPE` in your HTML document. You can also run the following line of code in the browser console: `document.compatMode`. If it returns `BackCompat`, then you're in quirks mode.
 
 1. The `<head>` tag can definitely be omitted. Neither the [HTML specification](https://html.spec.whatwg.org/multipage/semantics.html#the-head-element), nor browser implementations require the tag to be present.
 
@@ -88,10 +90,13 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
    In fact, you can also omit `<html>` and `<body>` tags too. Personally, I commonly use this to quickly test things out in the browser. Instead of creating a new HTML file on my computer, which takes a bit more time, I just type some HTML in the address bar directly. For example: `data:text/html,<div>something`. No `<html>`, no `<head>`, no `<body>` elements.
 
-1. `marginheight`, `marginwidth`, `bgcolor`, or `text` are deprecated presentational attributes. But, even if they're deprecated and discouraged, they're still implemented in browsers, for backward compatibility reasons.
+1. `marginheight`, `marginwidth`, `bgcolor`, or `text` are deprecated _presentational attributes_. But, even if they're deprecated and discouraged, they're still implemented in browsers, for backward compatibility reasons.
 
-   In fact, here are other similar attributes: `alinkColor`, `vlinkColor`, _TODO: add others, and detail what they do._
-   These presentational attributes act as 0-specificity CSS properties. _TODO: add more content here._
+   In fact, here are other similar attributes: `bgColor`, `fgColor`, `linkColor`, `alinkColor`, and `vlinkColor`.
+   
+   If you're as old as I am, you might have used these attributes a long time ago, perhaps when creating sites in FrontPage or Dreamweaver.
+   
+   Anyway, these presentational attributes act as 0-specificity CSS properties, which means that any CSS property you set in a stylesheet will override them.
 
 1. The `<marquee>` element still animates text in browsers. In fact, if you want to go crazy with it, try nesting two `<marquee>` elements, like this:
 
@@ -118,24 +123,19 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
    If there's no semantic aspect to the piece of text you want to make bold or italic, don't use `<b>` or `<i>`, use CSS `font-weight` and `font-style` instead.
 
-1. Misnested tags are perfectly valid in HTML.
+1. Misnested tags can sometimes happen in HTML, and when it does, the page doesn't break!
 
-   The following markup: `<b><i></b></i>`, creates the following DOM tree:
+   That's the beauty of HTML once again. If you're coming from an XML background, you might be surprised by the forgiveness of HTML. But, in the vast majority of cases, HTML parers just figure things out on their own and get you what you want.
 
-   ```
-   ⌊_ b
-   |  |
-   |  ⌊_ i
-   |
-   ⌊_ i
-   ```
+   In our example, the markup is `<b><i></b></i>`, which feels obviously wrong because the closing `</b>` tag should appear after the closing `</i>` tag, to respect nesting. This particular markup creates the following DOM tree: 
 
-   This is even specified in the HTML spec: the previous example is taken care of by _the adoption agency algorithm_ that's described in the spec. _TODO: maybe describe a little more, and link to the relevant part of the spec._
+   * b
+     * i
+   * i
 
-   It doesn't mean you should do this. It's still important to create correctly nested HTML markup. But there are historical reasons for such misnesting to work. Back in the early days, different browser engines would parse HTML in different ways, which meant that HTML documents didn't always lead to the same DOM tree in different browsers.
-
-   In order to ensure that as much of the web as possible was supported across all browsers, and do this in a simple way (i.e. without having to reverse engineer how other browsers did things), it was easier to just support how other browsers did things.
-   _TODO: find more details about the specific `<b><i></b></i>` history here. Chris Wilson is, I think, responsible for this, and this was done on purpose, to match authors intent._
+   This behavior is actually specified in the HTML spec, and called the _adoption agency algorithm_. I think we owe it to [Chris Wilson](https://cwilso.com/) for thinking about this in the first place. Chris, if you ever find traces of old discussions about this, or care to write the backstory, I would be very interested!
+   
+   Of course, I'm not saying you should do this. It's still important to create correctly nested HTML markup. But there are historical reasons for things like this to work. You have to remember that, back in the early days, browser engines didn't always agree on how to parse and render HTML. So, in order to ensure that as much of the web as possible was supported across all browsers, it was sometimes easier to just support how other browsers did things. And that's how things like misnested tags ended up being supported.
 
 1. Missing end tags are fine. The HTML parser is able to close most of them on its own.
 
