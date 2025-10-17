@@ -89,6 +89,11 @@ module.exports = {
       "id": "moritzglantz",
       "name": "Moritz Glantz",
       "link": "https://moritzglantz.de"
+    },
+    {
+      "id": "stevebarnett",
+      "name": "Steve Barnett",
+      "link": "https://human-centred.nz/"
     }
   ]
 };
