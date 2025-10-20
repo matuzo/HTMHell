@@ -199,4 +199,4 @@ Or micro-manage break behavior with `white-space`:
 
 (We can even apply hyphenation and truncation via CSS, but these present their own challenges. See [my justified text explorations](https://cloudfour.com/thinks/justified-text-better-than-expected/) and [some classic truncation wisdom from Karen McGrane](https://css-tricks.com/embracing-asymmetrical-design/).)
 
-Content that calls for a semantic break is rare, but real: It’s good to understand your HTML options for that scenario. But once you’ve plopped in _one_ quick `<br>`, its immediacy makes it tempting to overuse. Resist the urge, and embrace the accessibility, power and maintainability of CSS alternatives. Your audience and your project’s future maintainers will be happy you did!
+Content that calls for a semantic break is rare, but real: It’s good to understand your HTML options for that scenario. But once you’ve plopped in _one_ quick `<br>`, its immediacy makes it tempting to overuse. Resist the urge, write good markup, and embrace the accessibility, power and maintainability of CSS alternatives. Your audience and your project’s future maintainers will be happy you did!
