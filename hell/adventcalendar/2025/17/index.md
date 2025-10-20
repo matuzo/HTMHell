@@ -160,8 +160,10 @@ Or keep key phrases wrapping as one:
 
 ```html
 <p>
-  "Come Together" by
-  <span style="display: inline-block;"> The Beatles </span>
+  “Come Together” by
+  <span style="display: inline-block;">
+    The Beatles
+  </span>
 </p>
 ```
 
