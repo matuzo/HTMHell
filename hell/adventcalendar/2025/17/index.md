@@ -32,7 +32,7 @@ So it makes sense that HTML provides a few options for managing mid-content brea
 - The “soft hyphen” character, `&shy;`
 - The “non-breaking space” character, `&nbsp;`
 
-Let’s “break” down (nyuk, nyuk) those techniques:What they do, when they’re appropriate, and alternatives to consider.
+Let’s “break” down (nyuk, nyuk) those techniques: What they do, when they’re appropriate, and alternatives to consider.
 
 ## The “break” element, `<br>`
 
@@ -40,13 +40,13 @@ Let’s “break” down (nyuk, nyuk) those techniques:What they do, when they�
 
 The `<br>` (“break”) element is for those rare exceptions.
 
-For example, a `<br>` can force a break between lines of poetry or song:
+For example, a `<br>` can force a break between lines of poetry or song (apologies to [Linkin Park](https://en.wikipedia.org/wiki/One_Step_Closer_(Linkin_Park_song))):
 
 ```html
 <p>
-  Words fall from dry palms<br>
-  A backspace key, overused<br>
-  My deadline draws near
+  Everything you say to me<br>
+  (Takes me one step closer to the edge)<br>
+  (And I’m about to break)
 </p>
 ```
 
@@ -71,13 +71,13 @@ You wouldn’t want to use `<wbr>` for most text: There’s no hyphenation or an
 For example, the slashes in a URL or directory path:
 
 ```html
-https://htmhell.dev<wbr>/adventcalendar<wbr>/2025<wbr>/7<wbr>/index.html
+https://htmhell.dev<wbr>/adventcalendar<wbr>/2025<wbr>/17<wbr>/index.html
 ```
 
 Or dot notation in an object chain:
 
 ```html
-grandparent<wbr>.parent<wbr>.child<wbr>.grandchild
+namespace<wbr>.class<wbr>.object<wbr>.property
 ```
 
 `<wbr>` should only be used to signify clear break points: You should _not_ attempt to auto-insert `<wbr>` elements willy-nilly as a form of general overflow avoidance. It is also a poor choice for any list-like content, such as breadcrumb navigation.
@@ -113,17 +113,17 @@ The hyphenation makes `&shy;` more suitable for typical prose than `<wbr>`. That
 - Breaking up a word between two lines, hyphenated or not, can be challenging for many readers.
 - While hyphenation has a long and rich typographic history, its readability has always been highly dependent on the size, layout and justification of the overall text.
 
-I occasionally find `&shy;` helpful when I’m writing and notice a word flowing in a particularly troublesome way. I’d consider frequent usage a signal to simplify my verbiage or refresh my design.
+I occasionally find `&shy;` helpful when I’m writing and notice a word flowing in a particularly troublesome way. I’d consider frequent usage a signal to simplify my verbiage or tweak my design.
 
 ## The “non-breaking space” character, `&nbsp;`
 
 Normally, whitespace characters are the most reliable indication of a line break opportunity. The `&nbsp;` character openly _defies_ that convention, applying a space that is, much like Kimmy Schmidt, _unbreakable_:
 
 ```html
-Hello&nbsp;world
+Keep&nbsp;it&nbsp;together
 ```
 
-The non-breaking space is just one of [many whitespace characters](https://en.wikipedia.org/wiki/Whitespace_character#Unicode) that will prevent a string from breaking as you’d normally expect.
+(The non-breaking space is just one of [many whitespace characters](https://en.wikipedia.org/wiki/Whitespace_character#Unicode) that will prevent a string from breaking as you’d normally expect.)
 
 As useful as that sounds, `&nbsp;` and its cousins should be considered a last resort. They don’t play very well with other techniques for managing breaking and text flow, and they’re virtually impossible to style without additional selectors or [truly epic hacks](https://css-tricks.com/modifying-specific-letters-with-css-and-javascript/).
 
