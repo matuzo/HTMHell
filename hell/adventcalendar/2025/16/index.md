@@ -1,5 +1,5 @@
 ---
-title: "Something something about the Invoker Commands API"
+title: "Controlling dialogs and popovers with the Invoker Commands API"
 author: "Aubrey Sambor"
 author_bio: "Aubrey Sambor is a front-end developer and accessibility advocate. She's one of the organizers of [A11yTalks](https://a11ytalks.com), a monthly virtual meetup featuring speakers and conversations around digital accessibility. She loves CSS, fountain pens, knitting, coffee, and sushi."
 date: 2025-12-16
@@ -105,10 +105,12 @@ detailsElement.addEventListener("command", (event) => {
 });
 ```
 ## Looking ahead
-Want to learn what's coming next for the Invoker Commands API? The authors of the API have created an [explainer document](https://open-ui.org/components/future-invokers.explainer/) with potential future enhancements to the API, including commands to open, close, or toggle a `<details>` element, a command to open a native HTML date picker, and commands to play, pause, and mute HTML `<audio>` and `<video>` elements. Users can also [submit an issue](https://github.com/openui/open-ui/issues) to add other commands that are not yet implemented—go forth and add your ideas!
+Want to learn what's coming next for the Invoker Commands API? The authors of the API have created an [explainer document](https://open-ui.org/components/future-invokers.explainer/) with potential future enhancements to the API, including commands to open, close, or toggle a `<details>` element, a command to open a native HTML date picker, and commands to play, pause, and mute HTML `<audio>` and `<video>` elements.
+
+Unfortunately, the Invoker Commands API is not widely supported across all modern browsers just yet—as of late 2025, the Invoker Commands API is available in Chrome and Edge as of version 135, Opera as of version 120, Firefox as of version 144, and Safari Technology Preview. However, if older browsers need to be supported, you're in luck as there's a [polyfill](https://github.com/keithamus/invokers-polyfill) created by the API author. Users can also [submit an issue](https://github.com/openui/open-ui/issues) to add other commands that are not yet implemented—go forth and add your ideas!
 
 ## Conclusion
-The Invoker Commands API is a great new addition to HTML, making writing popovers and dialogs easier to write and maintain using minimal or no JavaScript. It's sadly not widely supported across all modern browsers just yet—as of late 2025, the Invoker Commands API is available in Chrome and Edge as of version 135, Opera as of version 120, Firefox as of version 144, and Safari Technology Preview. However, if older browsers need to be supported, you're in luck as there's a [polyfill](https://github.com/keithamus/invokers-polyfill) created by the API author. 
+The Invoker Commands API is a great new addition to HTML, making writing popovers and dialogs easier to write and maintain using minimal or no JavaScript.
 
 ## Further reading
 * [Can native web APIs replace custom components in 2025?](https://blog.logrocket.com/can-native-web-apis-replace-custom-components-2025/#invoker-commands)
