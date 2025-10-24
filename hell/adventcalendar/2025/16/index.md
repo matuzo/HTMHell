@@ -46,9 +46,8 @@ As of late 2025 the following commands are supported within the API, which right
 This is a basic example of how to use the Invoker Commands API with a `<dialog>` element. One button fires the `show-modal` command when it is clicked, and within the `<dialog>`, another button fires the `close` command to close the dialog. No JavaScript necessary, it's all built in for you!
 
 ```html
-<button commandfor="my-fancy-dialog" command="show-modal" aria-haspopup="dialog">Open dialog</button>
-<dialog id="my-fancy-dialog" aria-labelledby="my-fancy-heading">
-  <h2 id="my-fancy-heading">My fancy dialog</h2>
+<button commandfor="my-fancy-dialog" command="show-modal">Open dialog</button>
+<dialog id="my-fancy-dialog">
   <p>Dialog content</p>
   <button commandfor="my-fancy-dialog" command="close">Close dialog</button>
 </dialog>
@@ -58,9 +57,8 @@ This is a basic example of how to use the Invoker Commands API with a `<dialog>`
 To use the `request-close` command, a bit of JavaScript is needed. First, use the same code as above, but change the command on the button inside the `<dialog>` from `close` to `request-close`:
 
 ```html
-<button commandfor="my-fancy-dialog" command="show-modal" aria-haspopup="dialog">Open dialog</button>
-<dialog id="my-fancy-dialog" aria-labelledby="my-fancy-heading">
-  <h2 id="my-fancy-heading">My fancy dialog</h2>
+<button commandfor="my-fancy-dialog" command="show-modal">Open dialog</button>
+<dialog id="my-fancy-dialog">
   <p>Dialog content</p>
   <button commandfor="my-fancy-dialog" command="request-close">Close dialog</button>
 </dialog>
