@@ -14,7 +14,7 @@ intro: "<p>The ghost of ARIA past. Don't add ARIA for ChatGPT Atlas, you don't n
 image: "advent25_10"
 ---
 
-<p><span role="img" aria-label="Accessibility Freedom Beaver"♿☮️🦫</span> sez: [Know your Standards](https://html5accessibility.com/stuff/2020/11/24/know-your-standards/)</p>
+<p><span role="img" aria-label="Accessibility Freedom Beaver">♿☮️🦫</span> sez: [Know your Standards](https://html5accessibility.com/stuff/2020/11/24/know-your-standards/)</p>
 
 ## 1st Rule of ARIA
 The **first rule** originally appeared in 2012 [Notes on using ARIA](https://www.tpgi.com/html5-accessibility-chops-using-aria-notes/), it was then moved to a new home [Using ARIA](https://w3c.github.io/using-aria/#rule1).
