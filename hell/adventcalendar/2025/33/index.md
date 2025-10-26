@@ -1,14 +1,20 @@
 ---
-title: "Abbreviations done right: &lt;abbr&gt;"
-author: "Your Name"
-author_bio: "Your short bio"
-date: 2025-01-01
+title: "Abbreviations done right: The &lt;abbr&gt; element and why not use it"
+author: "Alexander Muzenhardt"
+author_bio: "Alex is a skilled Frontend Developer with a career spanning back to 2015. Since joining cit GmbH in 2019, Alex has specialized in accessibility, crafting inclusive and user-friendly digital experiences that ensure seamless web engagement for everyone."
+date: 2025-01-02
 author_links:
-  - label: "Site"
-    url: "https://linktoyourblog123.com"
-    link_label: "linktoyourblog123.com"
-intro: "<p>Short introductory text</p>"
-image: "advent25_32"
+  - label: "Website"
+    url: "https://alexmuzenhardt.de/"
+    link_label: "Website Alex Muzenhardt"
+  - label: "Alex on LinkedIn"
+    url: "https://www.linkedin.com/in/alexmuzenhardt/"
+    link_label: "LinkedIn"
+  - label: "Alex on Github"
+    url: "https://github.com/alexmuzenhardt"
+    link_label: "Github"
+intro: "<p>A deep dive into why the &lt;abbr&gt; element is not the accessibility win it claims to be — and how to handle abbreviations the right way instead.</p>"
+image: "advent25_33"
 ---
 Some text.
 Some text.
