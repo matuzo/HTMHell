@@ -19,7 +19,7 @@ image: "advent25_10"
 ## 1st Rule of ARIA
 The **first rule** originally appeared in 2012 [Notes on using ARIA](https://www.tpgi.com/html5-accessibility-chops-using-aria-notes/), it was then moved to a new home [Using ARIA](https://w3c.github.io/using-aria/#rule1).
 
-It's not really a **rule**, in any formal sense. I just made it up. It has remained unchanged for 14 years, but it remains relevant today.
+It's not really a **rule** in any formal sense; I just made it up. It has remained unchanged for 14 years but remains relevant today.
 
 <blockquote>
 **First Rule of ARIA Use**
