@@ -1,7 +1,7 @@
 ---
-title: "Why you should (mostly) choose the b/i tags over strong/em for better accesibility"
+title: "Why you should (mostly) choose the b/i tags over strong/em for better accessibility"
 author: "Jelmer de Maat"
-author_bio: "I am a developer from the Netherlands focussing on accessbility and performance."
+author_bio: "I am a developer from the Netherlands focussing on accessibility and performance."
 date: 2025-01-01
 author_links:
   - label: "Mastodon"
@@ -97,6 +97,6 @@ So, answering the previous question comes down to reconsidering your intentions 
 - A subtitle below another heading
 - A "read more" label in a news teaser
 
-Most of the times, the answer will be: no. You don't want to emphasize, you want to style. You should use the `<b>` and `<i>` tags, or apply custom styling.
+Most of the time, the answer will be: no. You don't want to emphasize, you want to style. You should use the `<b>` and `<i>` tags, or apply custom styling.
 
 This does definitely not mean `<strong>` and `<em>` should never be used. Especially inside written content like articles and blogs, there may be cases where you certainly mean to emphasize. You can definitely still do that. Even if it is mostly ignored by screen readers (you can still [enable it](https://www.tpgi.com/screen-readers-support-for-text-level-html-semantics/#:~:text=All%20are%20off%20by%20default%2C%20but%20can%20be%20enabled%20though%20user%20settings.) if you want), it may still be of value to other text processing systems that recognize HTML. Just don't over-use it.
