@@ -58,6 +58,6 @@ A popular use case for ARIA is custom elements, to appreciate what you need to d
 ## Last words
 We [already know](https://webaim.org/projects/million/#aria):
 <blockquote>Increased ARIA usage on pages was associated with higher detected errors. The more ARIA attributes that were present, the more detected accessibility errors could be expected.</blockquote>
-Do not introduce more ARIA into your code in an effort to please the knowledge ghouls of OpenAI and their [new browser](https://html5accessibility.com/stuff/2025/10/23/atlas-ableism/) Although you wouldn't know it from the [_bumpf_ OpenAI published](https://adrianroselli.com/2025/10/openai-aria-and-seo-making-the-web-worse.html) - **It is not needed** 
+Do not introduce more ARIA into your code in an effort to please the knowledge ghouls of OpenAI and their [new browser](https://html5accessibility.com/stuff/2025/10/23/atlas-ableism/) Although you wouldn't know it from the [_bumpf_ OpenAI published](https://adrianroselli.com/2025/10/openai-aria-and-seo-making-the-web-worse.html) - **It is not needed**.
 
 and a merry fucking xmas to all!
