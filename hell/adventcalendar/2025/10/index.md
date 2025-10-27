@@ -40,8 +40,7 @@ source: [Using ARIA](https://w3c.github.io/using-aria/#rule1)
 </blockquote>
 When I first wrote the first rule there were many new features in HTML, many of which had not had their accessibility support (or support in general) wired up. Which is why I started documenting support for new features back in 2010 ([HTML5Accessibility.com WayBack Machine snapshot October 2010](https://web.archive.org/web/20101011095344/http://www.html5accessibility.com/)) Last time I checked back in [August 2020](https://html5accessibility.com/), things were looking much better. So these days there is little to no need to use ARIA to supplement native HTML semantics, the browsers do it for you _mostly_. In fact the **unecessary use of ARIA** is a HTML conformance error as defined in the [ARIA in HTML](https://w3c.github.io/html-aria/#docconformance) specification.
 
-<blockquote>visual design constraints rule out the use of a particular native element, because the element cannot be styled as required
-</blockquote>
+> visual design constraints rule out the use of a particular native element, because the element cannot be styled as required
 In 2025 the opportunity for a front end developer to craft visual UI that meets the needs of their bosses is much improved. CSS and browser implementations continue to be enhanced to make it possible.
 
 <blockquote>the feature is not currently available in [HTML](https://html.spec.whatwg.org/multipage/)
