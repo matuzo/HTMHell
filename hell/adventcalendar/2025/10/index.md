@@ -49,7 +49,11 @@ In 2025 the opportunity for a front end developer to craft visual UI that meets 
 This is still a valid reason for building stuff from HTML elements that carry little or no semantics, then adding ARIA to convey meaning robustly and interoperably to people that make use of assistive technology to render web content understandable. But valid _less so_ as many of the features that are routinely foisted upon users are now available as native HTML, for example, [dialogs](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element) and [disclosures](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)
 
 ## What ARIA does not do
-The good thing about using HTML elements is they have operability built in: **ARIA does not**. Please read [What ARIA still does not do](https://html5accessibility.com/stuff/2024/07/15/what-aria-still-does-not-do/) for details. A popular use case for ARIA is custom elements, to appreciate what you need to do to make them accessible, the [Web Components punch list](https://www.tpgi.com/web-components-punch-list/) may be helpful.
+
+The good thing about using HTML elements is they have operability built in: **ARIA does not**.
+For example, a `<button>`-element is automatically included in the taborder and will have eventlisteners attached, an element with `role="button"` will _not_ have those charactaristics by default.
+Please read [What ARIA still does not do](https://html5accessibility.com/stuff/2024/07/15/what-aria-still-does-not-do/) for details.
+A popular use case for ARIA is custom elements, to appreciate what you need to do to make them accessible, the [Web Components punch list](https://www.tpgi.com/web-components-punch-list/) may be helpful.
 
 ## Last words
 We [already know](https://webaim.org/projects/million/#aria):
