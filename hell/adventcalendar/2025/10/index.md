@@ -42,8 +42,7 @@ When I first wrote the first rule there were many new features in HTML, many of 
 > visual design constraints rule out the use of a particular native element, because the element cannot be styled as required
 In 2025 the opportunity for a front end developer to craft visual UI that meets the needs of their bosses is much improved. CSS and browser implementations continue to be enhanced to make it possible.
 
-<blockquote>the feature is not currently available in [HTML](https://html.spec.whatwg.org/multipage/)
-</blockquote>
+> the feature is not currently available in [HTML](https://html.spec.whatwg.org/multipage/)
 This is still a valid reason for building stuff from HTML elements that carry little or no semantics, then adding ARIA to convey meaning robustly and interoperably to people that make use of assistive technology to render web content understandable. But valid _less so_ as many of the features that are routinely foisted upon users are now available as native HTML, for example, [dialogs](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element) and [disclosures](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)
 
 ## What ARIA does not do
