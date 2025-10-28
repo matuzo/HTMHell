@@ -37,7 +37,7 @@ I find it endlessly humorous that the old HTML Wiki's [example section for the t
 
 In the olden days, people used 'frames'. Not iframes mind you, just frames. You can think of their usage vaguely like the HTML imports we have now... Wait, what do you mean we still don't have HTML imports?
 
-I digress. This was long before single-page applications (SPAs) or anything of that nature, but were widely used as a way to aid navigation without needing to reload the page. You could have a navigation frame that persisted while the content frame changed.
+I digress. This was a time long before single-page applications (SPAs) or anything of that nature. Frames were widely used as a way to aid navigation without needing to reload the page. You could have a navigation frame that persisted while the content frame changed.
 
 `<frame>` is more or less the same as our modern `<iframe>`, though we use iframes much more for embedding than page layout. `<frameset>` holds these frames, so you could write something like `<frameset cols="50%, 50%">` to have two frames next to each other.
 
