@@ -107,7 +107,7 @@ You can add a `form` attribute to form-associated elements like `<input>`, `<but
 
 Something to keep in mind is that the `form` atttribute only works for the current element, not its children. So if you have a `<fieldset>` with a `form` attribute, the inputs inside it will not be associated with the form unless they also have a `form` attribute.
 
-Another thing to keep in mind is that you can remove an element from a form by giving it a `form` attribute that points to a different form, or to no form at all (by giving it an empty string). Here's an example that [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/form#associating_with_a_non-ancestor_form) gives us:
+Another thing to keep in mind is that you can remove an element from a form by giving it a `form` attribute that points to a different form, or to no form at all (by giving it an empty string). Here's [an example from MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/form#associating_with_a_non-ancestor_form):
 
 ```html
 <form id="externalForm"></form>
