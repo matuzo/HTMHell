@@ -119,7 +119,7 @@ Another thing to keep in mind is that you can remove an element from a form by g
 
 Even though the label will focus that input, the input will be submitted with `externalForm` and not for `internalForm`.
 
-Like the advice for labels, keeping form-associated elements inside their forms is generally easier to manage. The above might be useful design-wise when you have a wizard across multiple steps that each have their own form, but you want a submit button always visible across the steps.
+Like the advice for labels, keeping form-associated elements inside their forms is generally easier to manage. The above might be useful design-wise when you have a wizard across multiple steps that each have their own form, but you want a submit button that's always visible across the steps.
 
 ### `list` on `<input>`
 
