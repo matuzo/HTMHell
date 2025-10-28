@@ -2,7 +2,7 @@
 title: "Accessible by Design: The Role of the 'lang' Attribute"
 author: "Todd Libby"
 author_bio: "Current desert nomad, lobster aficionado, long-time developer, founder of RouteReady, and W3C Invited Expert."
-date: 2025-12-66
+date: 2025-12-06
 author_links:
   - label: "Site"
     url: "https://toddl.dev"
@@ -35,7 +35,7 @@ When you forget this attribute, you&apos;re not just missing a semantic tag—yo
 
 ## There Is Data Here and You Should Read It
 
-The [WebAIM Million Report](https://webaim.org/projects/million/) is an accessibility report done by WebAIM every year and it is an accessibility evaluation of the top one million homepages on the internet. 2025 marked the seventh year this has been done and the results are not surprising.
+The [WebAIM Million Report](https://webaim.org/projects/million/) is an accessibility report done by WebAIM every year and it&apos;s an accessibility evaluation of the top one million homepages on the internet. 2025 marked the seventh year this has been done and the results are not surprising.
 
 ### Let&apos;s show the data for the language attribute.
 
@@ -49,11 +49,14 @@ As with the rest of the items in the data, it has been a common theme the last s
 
 A numerical look shows the data is still trending to the **same six problems** in the report. So why is it that these issues are the ones that stay in the top six&quest;
 
-[!The WebAIM Million report showing the percentage of top million websites tested and the percentage of those with issues starting with low contrast of text at seventy-nine point one percent followed by missing alternative text for images at fifty-five point five percent, missing form input labels at forty-eight point two percent, empty links at forty-five point four percent, empty buttons at twenty-nine point six percent, and finally missing language attribute at fifteen point eight percent. ](https://res.cloudinary.com/colabottles/image/upload/v1760556179/images/webaim-million-1.png)
+<figure>
+[!The WebAIM Million report showing the percentage of top million websites tested and the percentage of those with issues.](https://res.cloudinary.com/colabottles/image/upload/v1760556179/images/webaim-million-1.png)
+<figcaption>The WebAIM Million Report showing low contrast of text at 79.1% followed by missing alternative text for images at 55.5%, missing form input labels at 48.2%, empty links at 45.4%, empty buttons at 29.6%, and finally missing language attribute at 15.8%.</figcaption>
+</figure>
 
 ## What Happens When the Language is Missing? The Wrong Voice Problem
 
-The main device affected by a missing `lang` tag is the screen reader. Screen readers are essential tools that read web content aloud for people who are blind or have low vision.
+The main group affected by a missing `lang` tag is the screen reader user. Screen readers are essential tools that read web content aloud. They&apos;re mainly used by people who are blind, have low vision or for those that use text-to-speech. They are also used by people that find reading difficult for other reasons, this is a common practice with people with ADHD (Adult attention-Deficit/Hyperactivity Disorder).
 
 Screen readers don't just use one voice&semi; they use specialized software packages for each language. This software knows the pronunciation rules, rhythm, and stress for English, French, Japanese, etc.
 
@@ -83,7 +86,7 @@ If your website fails this check, it is officially considered inaccessible.
 
 ## How It Affects Other Tools
 
-The lang attribute helps more than just screen readers&colon;
+The `lang` attribute helps more than just screen readers&colon;
 
 ### 1. Braille Displays
 A refreshable braille display translates text into small patterns of raised bumps. Different languages use different contraction rules in braille (called Grade 2 braille). If the language is not set, the braille translator might use the wrong rules, turning clear text into meaningless gibberish for the braille reader.
@@ -108,7 +111,9 @@ In this code, the screen reader switches to the French voice for the quote and t
 
 ## How to Set the Language in Modern Web Frameworks
 
-In modern websites built with tools like React, Vue, or Angular, you usually don&apos;t touch the main HTML file very often. Since these tools mostly control the content inside the `<body>` tag, you have to know where to find the root template file to set the `lang` attribute correctly.
+In modern websites built with tools like React, Vue, or Angular, you usually don&apos;t touch the main HTML file very often. Since these tools mostly control the content inside the `<body>` tag, you have to know where to find the root template file to set the `lang` attribute correctly. for example,
+
+React uses the file, `public/index.html`. Therefore you would directly place the attribute in the `<html>` tag in that file.
 
 ### Here&apos;s a simple guide for the most popular frameworks&colon;
 
@@ -141,6 +146,6 @@ For most simple apps (React, Angular, plain HTML), you will open your main `inde
 ## Conclusion
 The `lang` attribute is a tiny line of code that provides **universal access to your content**. It&apos;s arguably the easiest, fastest, and most impactful accessibility fix you can make on any website.
 
-By correctly setting the language, you ensure that screen readers, braille displays, and translation tools have the fundamental information they need to do their jobs correctly. It&apos;s a simple commitment that makes the web better for everyone.
+By correctly setting the language, you ensure that everyone has equal access to your content. Regardless of whether they use a screen reader, braille display, or translation tool to do so, their tools have the fundamental information they need to do their jobs correctly. It&apos;s a simple commitment that makes the web better for everyone.
 
 Don&apos;t let a missing two-letter code turn your content into a foreign language for your users and don&apos;t be afraid to use it or add it in&excl;
