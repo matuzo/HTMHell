@@ -1,5 +1,5 @@
 ---
-title: "Idrefs: What they are and how to use them"
+title: "IDREFs: What they are and how to use them"
 author: "Kilian Valkhof"
 author_bio: "Web developer and creator of Polypane.app, the browser for developers."
 date: 2025-12-05
@@ -29,14 +29,14 @@ But what if it can't infer the relationship? While your Firefox, Chrome or Polyp
 
 Additionally, this association only works when the input is nested inside the label. If you wanted to have the label and input be siblings, for example for styling purposes, then that implicit association is lost.
 
-To solve this, we can use the `idref` you probably already know, the `for` atribute on the `<label>` element:
+To solve this, we can use the `IDREF` you probably already know, the `for` atribute on the `<label>` element:
 
 ```html
 <label for="email-input"> Email address </label>
 <input type="email" id="email-input" />
 ```
 
-Now we're _explicitly_ associating the label with the input, by referencing the input's `id` from the label's `for` attribute. That's all an `idref` really is: a reference to another element's `id`.
+Now we're _explicitly_ associating the label with the input, by referencing the input's `id` from the label's `for` attribute. That's all an `IDREF` really is: a reference to another element's `id`.
 
 Note, there's also nothing keeping you from using the `for` attribute and nesting both at the same time:
 
@@ -47,19 +47,19 @@ Note, there's also nothing keeping you from using the `for` attribute and nestin
 </label>
 ```
 
-Now you know what an `idref` is! In HTML there are many other places where you can use `idref`s to create explicit relationships between elements, many of which are ARIA attributes that help with accessibility and with describing more complex relationships than HTML can express. We'll get to those in a bit, because there's more to be said about `idrefs` themselves.
+Now you know what an `IDREF` is! In HTML there are many other places where you can use `IDREF`s to create explicit relationships between elements, many of which are ARIA attributes that help with accessibility and with describing more complex relationships than HTML can express. We'll get to those in a bit, because there's more to be said about `IDREF`s themselves.
 
 ## IDs need to be unique
 
-In a well-structured HTML document, each `id` is only used once. This is important for `idref`s to work properly, since the browser or assistive technology needs to be able to find the single right element when following an `idref`. If there are multiple elements with the same `id`, this can lead to unexpected behavior.
+In a well-structured HTML document, each `id` is only used once. This is important for `IDREF`s to work properly, since the browser or assistive technology needs to be able to find the single right element when following an `IDREF`. If there are multiple elements with the same `id`, this can lead to unexpected behavior.
 
 Making sure IDs are unique can be tricky: you might have multiple forms on a page that reuse the same naming, or another repeated structure that requires ARIA attributes. When that happens, consider a programmatic way to generate unique IDs, for example by prefixing them with the component name.
 
 ## IDs need to exist
 
-This might seem obvious, but the majority of issues that occur around `idrefs` is that the referenced ID simply doesn't exist in the document. This can happen when you make a typo in the `id` or `idref`, or when you remove an element but forget to update the references to it.
+This might seem obvious, but the majority of issues that occur around `IDREF`s is that the referenced ID simply doesn't exist in the document. This can happen when you make a typo in the `id` or `IDREF`, or when you remove an element but forget to update the references to it.
 
-Linters and validators can help catch these issues, as can browser developer tools that highlight broken references. In Polypane, for example, broken `idref`s are [highlighted in the Element panel](https://polypane.app/docs/elements-panel/#idrefs), making it easy to spot and fix them.
+Linters and validators can help catch these issues, as can browser developer tools that highlight broken references. In Polypane, for example, broken `IDREF`s are [highlighted in the Element panel](https://polypane.app/docs/elements-panel/#idrefs), making it easy to spot and fix them.
 
 ![Polypane's Element panel highlighting a broken for attribute](/images/advent2025/idrefs/idrefs.png)
 
@@ -77,9 +77,9 @@ document.querySelectorAll("[for]").forEach((label) => {
 });
 ```
 
-## Other HTML idref attributes
+## Other HTML IDREF attributes
 
-HTML has quite a few attributes that use `idref`s to create relationships between elements, including some _very_ new ones.
+HTML has quite a few attributes that use `IDREF`s to create relationships between elements, including some _very_ new ones.
 
 ### The `for` attribute on `<label>` elements
 
@@ -157,11 +157,11 @@ When you have complex tables where header cells might have subheaders, you can u
 </table>
 ```
 
-And here we also introduce the concept of multiple `idref`s in a single attribute. Some `idref` attributes can reference _multiple_ IDs by separating them with spaces. In this case, the first data cell is associated with both the "First" and "Name" headers. When browsers now announce the cell, they can include the text of both headers in the announcement.
+And here we also introduce the concept of multiple `IDREF`s in a single attribute. Some `IDREF` attributes can reference _multiple_ IDs by separating them with spaces. In this case, the first data cell is associated with both the "First" and "Name" headers. When browsers now announce the cell, they can include the text of both headers in the announcement.
 
-### New HTML `idref` attributes: `popovertarget`, `commandfor`, `anchor`.
+### New HTML `IDREF` attributes: `popovertarget`, `commandfor`, `anchor`.
 
-HTML is in the process of getting several new functionalities that make it easier to create declarative interactive components like popups and tooltips. To help with those, new `idref` attributes are being added.
+HTML is in the process of getting several new functionalities that make it easier to create declarative interactive components like popups and tooltips. To help with those, new `IDREF` attributes are being added.
 
 `popovertarget` can be added to a button to associate it with a popup element that has the `popover` attribute. That way the popover is shown when the button is activated. For a more in-depth explanation, check out [PSA: Stop using the title attribute as tooltip!](https://www.htmhell.dev/adventcalendar/2024/22/) from last year's advent calendar.
 
@@ -195,11 +195,11 @@ _To learn more about these, keep an eye on upcoming articles in this advent cale
 
 Lastly, the `anchor` attribute will let you declaratively specify which element a popover or tooltip should be anchored to. Currently this is something you have to specify with CSS, but it can be much easier to reference an ID instead. Unfortunately [it's not supported yet](https://caniuse.com/mdn-html_global_attributes_anchor).
 
-## ARIA idref attributes
+## ARIA IDREF attributes
 
 All of which brings us to ARIA. ARIA is a set of attributes designed to add semantics, relationships and behaviors to HTML where the native elements and attributes fall short. They're not the first thing you should reach for, but there are many things where HTML alone can't express what you need.
 
-Many ARIA attributes are `idref` attributes that allow you to create explicit relationships between elements.
+Many ARIA attributes are `IDREF` attributes that allow you to create explicit relationships between elements.
 
 ### Descriptive relationships
 
@@ -294,16 +294,16 @@ Lastly, `aria-flowto` is used to indicate a logical reading order between elemen
 
 `aria-flowto` can also reference multiple IDs. In that case, the assistive technology can give the user a choice of which element to navigate to next.
 
-### Do you need ARIA idrefs?
+### Do you need ARIA IDREFs?
 
 As you can see from the descriptions above, the ARIA attributes get increasingly more esoteric and complex. Things like `aria-labelledby` and `aria-controls` can be useful in many situations, but others like `aria-owns` and `aria-flowto` are only needed for specific use cases. When you think you need ARIA it's often better to take a step back and consider if you can achieve your goal with native HTML elements and attributes.
 
 It's also important to note that none of these ARIA attributes bring any behavior on their own: they only describe relationships. This can help assistive technologies understand the structure of your page, but you'll still have to implement the actual behavior. For example, `<button aria-expanded="false" aria-controls="my-menu">` will not automatically show and hide that menu element or move the focus into it. You have to implement the show/hide behavior and focus management. The ARIA attributes just tell the browser that this button controls that menu and whether it's expanded or not.
 
-## Idrefs and how to use them
+## IDREFs and how to use them
 
-IDrefs let you create explicit relationships between elements in your HTML where they otherwise might not exist. Some of them give you additional behaviors, like how the `for` attribute on a label makes clicking the label focus the input, or how the `list` attribute on an input shows a dropdown of options from a datalist.
+`IDREF`s let you create explicit relationships between elements in your HTML where they otherwise might not exist. Some of them give you additional behaviors, like how the `for` attribute on a label makes clicking the label focus the input, or how the `list` attribute on an input shows a dropdown of options from a datalist.
 
-Other `idref` attributes, especially in ARIA, are used to describe relationships that help assistive technologies understand the structure and purpose of your content better. If you also want those to show certain behaviors, it's your job to implement those.
+Other `IDREF` attributes, especially in ARIA, are used to describe relationships that help assistive technologies understand the structure and purpose of your content better. If you also want those to show certain behaviors, it's your job to implement those.
 
-Whenever you use idrefs, make sure that the referenced IDs exists, and that you test their usage with the browsers and assistive technologies your users use.
+Whenever you use `IDREF`s, make sure that the referenced IDs exists, and that you test their usage with the browsers and assistive technologies your users use.
