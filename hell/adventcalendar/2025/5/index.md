@@ -53,7 +53,7 @@ Now you know what an `idref` is! In HTML there are many other places where you c
 
 In a well-structured HTML document, each `id` is only used once. This is important for `idref`s to work properly, since the browser or assistive technology needs to be able to find the single right element when following an `idref`. If there are multiple elements with the same `id`, this can lead to unexpected behavior.
 
-Making sure IDs are unique can be tricky: you might have multiple forms on a page that you reuse the same naming for, or another repeated structure that requires ARIA attributes. When that happens, consider a programmatic way to generate unique IDs, for example by prefixing them with the component name.
+Making sure IDs are unique can be tricky: you might have multiple forms on a page that reuse the same naming, or another repeated structure that requires ARIA attributes. When that happens, consider a programmatic way to generate unique IDs, for example by prefixing them with the component name.
 
 ## IDs need to exist
 
