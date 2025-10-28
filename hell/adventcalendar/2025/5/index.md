@@ -123,7 +123,7 @@ Like the advice for labels, keeping form-associated elements inside their forms 
 
 ### `list` on `<input>`
 
-If you have an input element, you can use the `list` attribute to associate it with a `<datalist>` element that contains predefined options for that input to have it show a dropdown and autocomplete with those options:
+If you have an `<input>` element, you can use the `list` attribute to associate it with a `<datalist>` element that contains predefined options for that input to have it show a dropdown and autocomplete with those options:
 
 ```html
 <input list="browsers" name="browser-choice" id="browser-choice" />
