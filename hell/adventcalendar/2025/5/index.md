@@ -163,13 +163,13 @@ And here we also introduce the concept of multiple `idref`s in a single attribut
 
 HTML is in the process of getting several new functionalities that make it easier to create declarative interactive components like popups and tooltips. To help with those, new `idref` attributes are being added.
 
-`popovertarget` can be added to a button to associate it with a popup element that has the `popover` attribute. This way, when the button is clicked, the popover is shown. For a more in-depth explanation, check out [PSA: Stop using the title attribute as tooltip!](https://www.htmhell.dev/adventcalendar/2024/22/) from last year's advent calendar.
+`popovertarget` can be added to a button to associate it with a popup element that has the `popover` attribute. That way the popover is shown when the button is activated. For a more in-depth explanation, check out [PSA: Stop using the title attribute as tooltip!](https://www.htmhell.dev/adventcalendar/2024/22/) from last year's advent calendar.
 
 While `popovertarget` always toggles the popover, the `commandfor` attribute, also for buttons, lets you specify the `command`, which can be things like `show-popover` or `hide-popover`. This way you can add a close button inside the popover itself. `commandfor` can also be used to open and close `<dialog>` elements declaratively (with `show-dialog` and `hide-dialog` as `command` values).
 
 _To learn more about these, keep an eye on upcoming articles in this advent calendar!_
 
-Lastly, the `anchor` attribute is not supported yet, but will let you declaratively specify which element a popover or tooltip should be anchored to. Currently, this is something you have to specify with CSS, but it can be much easier to reference an ID instead.
+Lastly, the `anchor` attribute will let you declaratively specify which element a popover or tooltip should be anchored to. Currently this is something you have to specify with CSS, but it can be much easier to reference an ID instead. Unfortunately [it's not supported yet](https://caniuse.com/mdn-html_global_attributes_anchor).
 
 ## ARIA idref attributes
 
@@ -237,13 +237,13 @@ The difference between `aria-owns` and `aria-controls` is subtle: `aria-owns` is
 
 Lastly, `aria-flowto` is used to indicate a logical reading order between elements that doesn' follow the visual ordering of elements (for example, you have a `order` CSS property changing the visual order). This can help assistive technologies navigate the content in a way that makes sense.
 
-Aria-owns does not change the browsers default behavior, where the tab order follows the DOM structure. Assistive technologies can instead use the `aria-flowto` relationships to offer the user a way to navigate content in the suggested order.
+`aria-owns` doesn't change the browser's default behavior, where the tab order follows the DOM structure. Assistive technologies can instead use the `aria-flowto` relationships to offer the user a way to navigate content in the suggested order.
 
 `aria-flowto` can also reference multiple IDs. In that case, the assistive technology can give the user a choice of which element to navigate to next.
 
 ### Do you need ARIA idrefs?
 
-AS you can see from the descriptions above, the ARIA attributes get increasingly more esoteric and complex. Things like `aria-labelledby` and `aria-controls` can be useful in many situations, but others like `aria-owns` and `aria-flowto` are only needed in very specific use cases. When you encounter a situation, it's often better to take a step back and see if there is a simpler way to achieve your goal using native HTML elements and attributes first.
+As you can see from the descriptions above, the ARIA attributes get increasingly more esoteric and complex. Things like `aria-labelledby` and `aria-controls` can be useful in many situations, but others like `aria-owns` and `aria-flowto` are only needed for specific use cases. When you think you need ARIA it's often better to take a step back and consider if you can achieve your goal with native HTML elements and attributes.
 
 It's also important to note that none of these ARIA attributes bring any behavior on their own: they only describe relationships. This can help assistive technologies understand the structure of your page, but you'll still have to implemen the actual behavior that, for example, shows and hides the menu when the button is clicked, and correctly moves the focus into that menu.
 
