@@ -57,7 +57,7 @@ The e**x**a**mp**le element, `<xmp>`, is like our modern `<pre>`, but doesn't in
 
 `<plaintext>` is a funny one. It does what it says on the tin – that is, tells the browser to interpret everything after it as plain text. Of course, this means that any potential closing tag is _also_ interpreted as plain text and therefore not parsed by the browser. Once opened, you cannot close a `<plaintext>`. The rest of the file becomes plaintext for eternity and whatever comes after. It was deprecated in HTML 2 and made invalid in HTML 4, so most modern browsers just interpret it the same as a `<pre>`. The modern approach is to serve content with a MIME type of `text/plain`.
 
-## Spacer
+## spacer
 
 Before the modern days of flexbox and grid and even floats, we laid things out with tables. Like cavepeople.
 
