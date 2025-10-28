@@ -97,7 +97,7 @@ These will all focus the same input, and their combinined text will be used as t
 
 ### `form` on form-associated elements
 
-You can add a `form` attribute to form-associated elements like `<input>`, `<button>`, `<select>`, `<fieldset>` and `<textarea>` to associate them with any `<form>` element on your page, even if they are not nested inside that form:
+You can add a `form` attribute to form-associated elements like `<input>`, `<button>`, `<select>`, `<fieldset>` and `<textarea>` to associate them with a specific `<form>` element on your page, even if they are not nested inside that form:
 
 ```html
 <form id="signup-form">...</form>
