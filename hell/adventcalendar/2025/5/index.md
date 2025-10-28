@@ -93,7 +93,7 @@ A neat trick that `for` has: you can link as many labels as you want to a single
 <label for="email-input"> required </label>
 ```
 
-These will all focus the same input, and their combinined text will be used as the accessible name for the input: `Email address required`. Of course, that's the _theory_. In practice, support for multiple labels per input is inconsistent and assistive technologies may use all, but they also might use just the first or the last one ([source](https://github.com/dequelabs/axe-core/issues/689#issuecomment-490176712)). So while it's valid HTML, you're better off sticking to a single label per input for now.
+These will all focus the same input, and their combinined text will be used as the accessible name for the input: `Email address required`. Of course, that's the _theory_. In practice, support for inputs with multiple labels is inconsistent. Some assistive technologies will use all labels but some only use the first or the last one ([source](https://github.com/dequelabs/axe-core/issues/689#issuecomment-490176712)). So while it's valid HTML, you're better off sticking to a single label per input for now.
 
 ### `form` on form-associated elements
 
