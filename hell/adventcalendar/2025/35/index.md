@@ -81,7 +81,7 @@ It is a hard element to get much info about, and it seems I'm not alone in think
 
 ## isindex
 
-`<isindex>` is a particularly interesting part of the old web, because it represents, perhaps more than other tags shown here, a very different vision of HTML semantics. It was a way to define a search box that would submit queries directly to the server. You'd write something like:
+`<isindex>` is a particularly interesting part of the old web because, perhaps more than any other tag shown here, it reflects a very different vision of HTML semantics. It was a way to define a search box that would submit queries directly to the server. You'd write something like:
 
 `<isindex prompt="Enter your search term here:">`
 
