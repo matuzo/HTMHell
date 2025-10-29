@@ -22,7 +22,7 @@ The stacking context defines the order things are placed in the third dimension,
 
 An element can only be re-layered within the same stacking context. While `z-index` is the tool to do it, the failure happens due to a change in stacking contexts. This can happen in a few ways, such as a fixed or sticky positioned element, or combining position absolute or relative along with a z-index, among others [as listed on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Stacking_context).
 
-A modern web feature is the “[top layer,](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer)” which is guaranteed to be the top-most layer above any other stacking context. It spans the entire viewport, although elements existing in the top layer may have smaller visible dimensions.
+A modern web feature is the “[top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer),” which is guaranteed to be the top-most layer above any other stacking context. It spans the entire viewport, although elements existing in the top layer may have smaller visible dimensions.
 
 Promoting an element to the top layer breaks it free of any stacking context it may otherwise exist within.
 
@@ -76,7 +76,7 @@ If you thought clicking the popover was working, it’s in fact not, even though
 
 So, while the popover was dismissed, the “Retry” button was _not_ actually clicked, meaning any associated event listener was not triggered.
 
-You also likely skipped creating an automated test to check your alert functionality specifically when a dialog was open. But even if you did test that case, the automated test may have had a false positive because it triggered a programmatic click on the toast button. That pseudo click was falsely getting around the issue created from the dialog causing the page to be inert.
+Even if you created an automated test to check your alert functionality specifically when a dialog was open, the automated test may have had a false positive because it triggered a programmatic click on the toast button. That pseudo click was falsely getting around the issue created from the dialog causing the page to be inert.
 
 ## Regaining popover access
 
@@ -99,10 +99,10 @@ What we’ve learned is that you will need to work out a mechanism to launch pop
 
 Alternatively, you could opt to supress background page popovers until the dialog closes. This may not be ideal if notifications require timely interaction, or if the dialog contents have the potential to trigger a toast.
 
-Another issue you may need to handle for besides visibility and interactivity is if the popover needs to outlive the dialog. As in, it needs to remain open - perhaps to keep waiting for the user to take action - once the dialog is closed.
+Another issue you may need to handle for, besides visibility and interactivity, is if the popover needs to outlive the dialog. As in, it needs to remain open - perhaps to keep waiting for the user to take action - once the dialog is closed.
 
 While I am a huge proponent of using native platform features, and I think popover in particular is an incredible feature, sometimes conflict points can’t be entirely avoided. In fact, you may have already had to contend with a similar conflict against the inert behavior of a modal dialog. So, this article may mostly be a warning to not entirely rip out your previous custom popover architecture _if_ you have this potential issue of displaying background popovers and modal dialogs simultaneously.
 
-If this is an issue that currently or may in the future affect your work, keep an eye on [this HTML issue](https://github.com/whatwg/html/issues/9936).
+If this is an issue that currently, or may in the future affect your work, keep an eye on [this HTML issue where solutions are being discussed](https://github.com/whatwg/html/issues/9936).
 
 <script async src="https://public.codepenassets.com/embed/index.js"></script>
