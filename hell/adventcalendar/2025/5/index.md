@@ -215,7 +215,7 @@ This works, but aria-label comes with some downsides. For example, it's easy to 
 
 ```html
 <button aria-label="Move to trash"> <!-- oops! -->
-  <span aria-hidden>🔃 Revert</span>
+  <span aria-hidden="true">🔃 Revert</span>
 </button>
 ```
 
