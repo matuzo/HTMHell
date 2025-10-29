@@ -29,7 +29,7 @@ But what if it can't infer the relationship? While your Firefox, Chrome or Polyp
 
 Additionally, this association only works when the input is nested inside the label. If you wanted to have the label and input be siblings, for example for styling purposes, then that implicit association is lost.
 
-To solve this, we can use the `IDREF` you probably already know, the `for` atribute on the `<label>` element:
+To solve this, we can use the `IDREF` you probably already know, the `for` attribute on the `<label>` element:
 
 ```html
 <label for="email-input"> Email address </label>
