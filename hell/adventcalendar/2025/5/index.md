@@ -159,7 +159,7 @@ When you have complex tables where header cells might have subheaders, you can u
 
 And here we also introduce the concept of multiple `IDREF`s in a single attribute. Some `IDREF` attributes can reference _multiple_ IDs by separating them with spaces. In this case, the first data cell is associated with both the "First" and "Name" headers. When browsers now announce the cell, they can include the text of both headers in the announcement.
 
-### New HTML `IDREF` attributes: `popovertarget`, `commandfor`, `anchor`.
+### New HTML `IDREF` attributes: `popovertarget`, `commandfor`, `anchor` and `interestfor`
 
 HTML is in the process of getting several new functionalities that make it easier to create declarative interactive components like popups and tooltips. To help with those, new `IDREF` attributes are being added.
 
@@ -189,7 +189,17 @@ The default action for `popovertarget` is to toggle the popover when the button 
 </dialog>
 ```
 
-`popovertarget` works in all browsers, while `commandfor` is still lacking support in Safari.
+Lastly, `interestfor` is similar to `commandfor`, but is used when a user "expresses interest" in an element, for example by hovering over it or focusing it. The use case here is to show tooltips or hint popovers when the user hovers or focuses an element.
+
+```html
+<button interestfor="my-tooltip">I'm a button!</button>
+
+<div id="my-tooltip" popover="hint">The button does nothing.</div>
+```
+
+For more on `interestfor`, check out the OpenUI explainer on [interest invokers](https://open-ui.org/components/interest-invokers.explainer/).
+
+`popovertarget` works in all browsers, while `commandfor` is still lacking support in Safari. `interestfor` is still very new and only supported in Chromium 142 and newer.
 
 _To learn more about these, keep an eye on upcoming articles in this advent calendar!_
 
@@ -282,7 +292,9 @@ You can use `aria-activedescendant` (in combination with `aria-controls`) on the
 
 `aria-owns` is used to create a parent-child relationship between elements that are not nested in the DOM. When for some reason your DOM can't be structured in a way that makes sense visually or semantically (for example, you need to use a "portal" in some Javascript frameworks),`aria-owns` will let you "rewrite" the accessibility tree as if the elements were nested. Any elements that are inside the element are listed first, and then the elements you refernece in `aria-owns` are added as children after that.
 
-Keep in mind that when you use `aria-owns`, all the regular rules about HTML still apply: You can't nest an interactive element inside another interactive element, and some elements can only have specific types of children. Because of this, giving a specific example for `aria-owns` will always feel a little contrived. I'm going to try anyway. Here's how you would structure a combobox where the list of options needs to be rendered elsewhere, for example to break out of a container with `overflow:hidden`:
+Keep in mind that when you use `aria-owns`, all the regular rules about HTML still apply: You can't nest an interactive element inside another interactive element, and some elements can only have specific types of children. Because of this, giving a specific example for `aria-owns` will always feel a little contrived. I'm going to try anyway.
+
+Here's how you would structure a combobox where the list of options needs to be elsewhere in the DOM, for example to break out of a container with `overflow:hidden`:
 
 ```html
 <label for="combobox-input">Choose an option:</label>
@@ -309,9 +321,9 @@ Keep in mind that when you use `aria-owns`, all the regular rules about HTML sti
 
 Note that we use both `aria-controls` and `aria-owns` here. `aria-controls` indicates that the div controls the listbox, while `aria-owns` indicates that the listbox should be a child of the div in the accessibility tree. `aria-owns` describes a _structural_ relationship, while `aria-controls` describes a _functional_ relationship.
 
-Lastly, `aria-flowto` is used to indicate a logical reading order between elements that doesn't follow the visual ordering of elements, which can happen when using the `order` CSS property to change the visual order, or when you position elements with `position: absolute`. Using `aria-flowto` can help assistive technologies navigate the content in a way that makes sense.
+`aria-owns` on its own doesn't change the browser's default behavior, where the tab order follows the DOM structure. Assistive technologies can instead use the `aria-flowto` relationships to offer the user a way to navigate content in the suggested order.
 
-`aria-owns` doesn't change the browser's default behavior, where the tab order follows the DOM structure. Assistive technologies can instead use the `aria-flowto` relationships to offer the user a way to navigate content in the suggested order.
+In other words, `aria-flowto` is used to indicate a logical reading order between elements that doesn't follow the visual ordering of elements. That can happen when they're in different places in the DOM, or when you've changed the visual order with the `order` CSS property, or by absolute positioning elements. Using `aria-flowto` can help assistive technologies navigate the content in a way that makes sense.
 
 `aria-flowto` can also reference multiple IDs. In that case, the assistive technology can give the user a choice of which element to navigate to next.
 
