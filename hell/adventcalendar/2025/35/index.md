@@ -53,7 +53,7 @@ While they absolutely shouldn't be used anymore, unlike much of what this articl
 
 The e**x**a**mp**le element, `<xmp>`, is like our modern `<pre>`, but doesn't interpret special characters like `<`, `>`, or `&`. With `<pre>`, we often need to escape these values to avoid Unwanted Shenanigans™.
 
-`<listing>` is yet another step in presenting code on a page. It was intended as a way to display text on a page as typed but never got proper support and became obsolete with HTML5. Modern browsers handle it the same as `<pre>`.
+`<listing>` is yet another step in presenting code on a page. It aimed to display text exactly as the author wrote it, preserving whitespace and formatting, but never got proper support and became obsolete with HTML5. Modern browsers handle it the same as `<pre>`.
 
 `<plaintext>` is a funny one. It does what it says on the tin – that is, tells the browser to interpret everything after it as plain text. Of course, this means that any potential closing tag is _also_ interpreted as plain text and therefore not parsed by the browser. Once opened, you cannot close a `<plaintext>`. The rest of the file becomes plaintext for eternity and whatever comes after. It was deprecated in HTML 2 and made invalid in HTML 4, so most modern browsers just interpret it the same as a `<pre>`. The modern approach is to serve content with a MIME type of `text/plain`.
 
