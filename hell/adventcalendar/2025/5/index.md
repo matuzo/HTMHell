@@ -224,7 +224,7 @@ It is often better to use `aria-labelledby` to give an element its accessible na
 ```html
 <div class="photo">
     <button aria-labelledby="trash-label photo-label">
-        <span aria-hidden class="icon">🗑</span>
+        <span aria-hidden="true" class="icon">🗑</span>
         <span id="trash-label" class="visually-hidden">Delete</span>
     </button>
     <span id="photo-label">IMG_0512.jpg</span>
