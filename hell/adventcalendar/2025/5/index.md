@@ -207,7 +207,7 @@ A common use case for ARIA is to make sure that elements have an accessible name
 
 ```html
 <button aria-label="Move to trash">
-  <span aria-hidden class="icon">🗑</span>
+  <span aria-hidden="true" class="icon">🗑</span>
 </button>
 ```
 
