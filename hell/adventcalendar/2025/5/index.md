@@ -25,7 +25,7 @@ Take the following HTML for example:
 
 Here, the `<label>` element is associated with the `<input>` element because the input is nested inside of the label, and the browser now knows to offer additional behavior: when the user clicks on the label, the input will be focused. That's not behavior that you had to specify with an onclick handler, the browser just infers it from the relationship between the elements.
 
-But what if it can't infer the relationship? While your Firefox, Chrome or Polypane browser can all figure this out, some assistive technologies can't. Both Dragon Naturally Speaking and VoiceOver on macOS have trouble associating labels with inputs when they are nested, according to [a11ysupport tests](https://a11ysupport.io/tests/html_label_element_implicit). So while clicking the label will focus the input, giving the voice command "Focus Email address" might not work. That said, support might have improved since the tests were last conducted: My editor Zoë tested this in Safari 26.0.1 on macOS 15.7.1 where it now works. Make sure to test before relying on this behavior!
+But what if it can't infer the relationship? While your Firefox, Chrome or [Polypane browser](https://polypane.app) can all figure this out, some assistive technologies can't. Both Dragon Naturally Speaking and VoiceOver on macOS have trouble associating labels with inputs when they are nested, according to [a11ysupport tests](https://a11ysupport.io/tests/html_label_element_implicit). So while clicking the label will focus the input, giving the voice command "Focus Email address" might not work. That said, support might have improved since the tests were last conducted: My editor Zoë tested this in Safari 26.0.1 on macOS 15.7.1 where it now works. Make sure to test before relying on this behavior!
 
 Additionally, this association only works when the input is nested inside the label. If you wanted to have the label and input be siblings, for example for styling purposes, then that implicit association is lost.
 
@@ -93,7 +93,7 @@ A neat trick that `for` has: you can link as many labels as you want to a single
 <label for="email-input"> required </label>
 ```
 
-These will all focus the same input, and their combinined text will be used as the accessible name for the input: `Email address required`. Of course, that's the _theory_. In practice, support for inputs with multiple labels is inconsistent. Some assistive technologies will use all labels but some only use the first or the last one ([source](https://github.com/dequelabs/axe-core/issues/689#issuecomment-490176712)). So while it's valid HTML, you're better off sticking to a single label per input for now.
+These will all focus the same input, and their combinined text will be used as the accessible name for the input: `Email address required`. Of course, that's the _theory_. In practice, support for inputs with multiple labels is inconsistent. Some assistive technologies will use all labels but some only use the first or the last one (see [ this research](https://github.com/dequelabs/axe-core/issues/689#issuecomment-490176712) done by Deque). So while it's valid HTML, you're better off sticking to a single label per input for now.
 
 ### The `form` attribute on form-associated elements
 
@@ -178,7 +178,7 @@ The default action for `popovertarget` is to toggle the popover when the button 
 </div>
 ```
 
-`commandfor` does the same as popovertarget, but can also be used to open and close `<dialog>` elements declaratively with `show-modal` and `close` as `command` values. 
+`commandfor` does the same as popovertarget, but can also be used to open and close `<dialog>` elements declaratively with `show-modal` and `close` as `command` values.
 
 ```html
 <button commandfor="my-dialog" command="show-modal">Open dialog</button>
@@ -214,7 +214,8 @@ A common use case for ARIA is to make sure that elements have an accessible name
 This works, but aria-label comes with some downsides. For example, it's easy to miss: a common issue accessibility auditors find is that a button's HTML is copied for another purpose, but the original aria-label is not updated to reflect the new purpose. Browsers also have issues with automatic translations of aria-labels, since they are not part of the visible text on the page.
 
 ```html
-<button aria-label="Move to trash"> <!-- oops! -->
+<button aria-label="Move to trash">
+  <!-- oops! -->
   <span aria-hidden="true">🔃 Revert</span>
 </button>
 ```
@@ -223,12 +224,12 @@ It is often better to use `aria-labelledby` to give an element its accessible na
 
 ```html
 <div class="photo">
-    <button aria-labelledby="trash-label photo-label">
-        <span aria-hidden="true" class="icon">🗑</span>
-        <span id="trash-label" class="visually-hidden">Delete</span>
-    </button>
-    <span id="photo-label">IMG_0512.jpg</span>
-    <img src="IMG_0512.jpg" alt="Sydney Opera House at sunset">
+  <button aria-labelledby="trash-label photo-label">
+    <span aria-hidden="true" class="icon">🗑</span>
+    <span id="trash-label" class="visually-hidden">Delete</span>
+  </button>
+  <span id="photo-label">IMG_0512.jpg</span>
+  <img src="IMG_0512.jpg" alt="Sydney Opera House at sunset" />
 </div>
 ```
 
@@ -262,18 +263,9 @@ Here, the button is indicating that it controls the visibility of the `nav` elem
 
 To account for even more complex structures, `aria-controls` can also reference multiple IDs, allowing a single control to manage several elements at once.
 
-`aria-owns` is used to create a parent-child relationship between elements that are not nested in the DOM, think of a chat widget button and the chat window that opens when you click it. The button and chat window might be siblings in the DOM, but you can use `aria-owns` to indicate that the button "owns" the chat window:
+`aria-activedescendant` is used to indicate which element within a _composite widget_ is currently active. An example of a composite widget is a combobox: a UI component that combines a text input with a list of options: You can type in the text input to filter the options, fill in freeform content or use the arrow keys to navigate the options. For a reference implementation look at the [combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) in the WAI-ARIA Authoring Practices. Getting a combobox right is tricky,
 
-```html
-<button aria-owns="chat-window">Open chat</button>
-<div id="chat-window" hidden>...</div>
-```
-
-This helps assistive technologies understand the relationship between the button and the chat window, even though they are not nested. Like `aria-controls`, `aria-owns` can also reference multiple IDs to establish ownership over several elements.
-
-The difference between `aria-owns` and `aria-controls` is subtle: `aria-owns` is used to indicate a specific hierarchy, While `aria-controls` indicates a functional relationship.
-
-`aria-activedescendant` is used to indicate which element within a _composite widget_ is currently active. For example, in a combobox, which is like a select that also lets you type in it (or: a combination of an text input and a listbox), you can use `aria-activedescendant` (in combination with `aria-control`) on the input to indicate which option in the listbox is currently selected:
+You can use `aria-activedescendant` (in combination with `aria-controls`) on the input to indicate which option in the listbox is currently selected:
 
 ```html
 <input
@@ -281,18 +273,49 @@ The difference between `aria-owns` and `aria-controls` is subtle: `aria-owns` is
   aria-activedescendant="option-2"
   aria-controls="options-list"
 />
-<ul id="options-list" role="listbox">
+<ul id="options-list" role="listbox" aria-label="options">
   <li id="option-1" role="option">Option 1</li>
   <li id="option-2" role="option">Option 2</li>
   <li id="option-3" role="option">Option 3</li>
 </ul>
 ```
 
+`aria-owns` is used to create a parent-child relationship between elements that are not nested in the DOM. When for some reason your DOM can't be structured in a way that makes sense visually or semantically (for example, you need to use a "portal" in some Javascript frameworks),`aria-owns` will let you "rewrite" the accessibility tree as if the elements were nested. Any elements that are inside the element are listed first, and then the elements you refernece in `aria-owns` are added as children after that.
+
+Keep in mind that when you use `aria-owns`, all the regular rules about HTML still apply: You can't nest an interactive element inside another interactive element, and some elements can only have specific types of children. Because of this, giving a specific example for `aria-owns` will always feel a little contrived. I'm going to try anyway. Here's how you would structure a combobox where the list of options needs to be rendered elsewhere, for example to break out of a container with `overflow:hidden`:
+
+```html
+<label for="combobox-input">Choose an option:</label>
+<div
+  aria-controls="floating-list"
+  aria-owns="floating-list"
+  aria-expanded="false"
+>
+  <input
+    id="combobox-input"
+    type="text"
+    aria-autocomplete="list"
+    aria-activedescendant=""
+  />
+</div>
+
+<!-- elsewhere in the dom to avoid stacking context clipping -->
+<ul id="floating-list" role="listbox" aria-label="options">
+  <li role="option" id="option-1">Option 1</li>
+  <li role="option" id="option-2">Option 2</li>
+  <li role="option" id="option-3">Option 3</li>
+</ul>
+```
+
+Note that we use both `aria-controls` and `aria-owns` here. `aria-controls` indicates that the div controls the listbox, while `aria-owns` indicates that the listbox should be a child of the div in the accessibility tree. `aria-owns` describes a _structural_ relationship, while `aria-controls` describes a _functional_ relationship.
+
 Lastly, `aria-flowto` is used to indicate a logical reading order between elements that doesn't follow the visual ordering of elements, which can happen when using the `order` CSS property to change the visual order, or when you position elements with `position: absolute`. Using `aria-flowto` can help assistive technologies navigate the content in a way that makes sense.
 
 `aria-owns` doesn't change the browser's default behavior, where the tab order follows the DOM structure. Assistive technologies can instead use the `aria-flowto` relationships to offer the user a way to navigate content in the suggested order.
 
 `aria-flowto` can also reference multiple IDs. In that case, the assistive technology can give the user a choice of which element to navigate to next.
+
+As with all things ARIA, `aria-flowto` is a last resort: it's better to structure your HTML in a way that follows a logical reading order without needing to override it with ARIA. This is doubly true for `aria-flowto` because [support in browsers and assistive technologies is limited](https://a11ysupport.io/tech/aria/aria-flowto_attribute): only the JAWS screen reader supports it at the moment.
 
 ### Do you need ARIA IDREFs?
 
