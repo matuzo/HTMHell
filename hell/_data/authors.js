@@ -93,7 +93,7 @@ module.exports = {
     {
       "id": "annedrtlf",
       "name": "Anne Drotleff",
-      "link": "https://linkedin.com/in/anne-kathrin-drotleff-016a991a8"
+      "link": "https://www.anne-drotleff.de"
     }
   ]
 };
