@@ -134,9 +134,7 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
    In our example, the markup is `<b><i></b></i>`, which feels obviously wrong because the closing `</b>` tag should appear after the closing `</i>` tag, to respect nesting. This particular markup creates the following DOM tree: 
 
-   * b
-     * i
-   * i
+   ![A diagram representation of the resulting DOM tree. The first <b> node contains the text node Hello, following by a nested <i> node, which contains the text node HTML. The <b> node is then followed by a sibling <i> node which contains a text node World!](./misnested-tags-dom.png)
 
    This behavior is actually specified in the HTML spec, and called the _adoption agency algorithm_. I think we owe it to [Chris Wilson](https://cwilso.com/) for thinking about this in the first place. Chris, if you ever find traces of old discussions about this, or care to write the backstory, I would be very interested!
    
