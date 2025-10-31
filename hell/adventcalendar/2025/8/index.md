@@ -38,12 +38,16 @@ Here's what's wrong with it:
 
 1. The document is in _quirks mode_ because it lacks a proper [`DOCTYPE` preamble](https://developer.mozilla.org/docs/Glossary/Doctype).
 
-   If you've never heard of quirks mode, then you're probably lucky enough to have started your web development career after it was an important thing to know about. Suffice to say it's weird. Here are some of the ways quirks mode impacts HTML documents:
+   If you've never heard of quirks mode, then you're probably lucky enough to have started your web development career after it was an important thing to know about. Suffice to say it's weird. Here are some of the ways quirks mode impacts (or impacted) HTML documents:
 
-   * The box model behaves differently, which affects layout and spacing.
-   * Some CSS properties don't really work as you'd expect.
-   * Certain inline elements don't vertically align the way you think they should.
+   * The box model used to behave differently in older browsers, which affected layout and spacing. For example, in quirks mode, Internet Explorer included the padding and borders in the element's total width and height. Today, all browsers apply width and height to the content box of an element by default, unless you change the `box-sizing` CSS property.
+
+     ![A diagram showing the difference between the box model in quirks mode and standards mode.](./box-sizing-differences.png)
+
    * Font sizes don't inherit on table elements.
+   * Certain inline elements, such as images, don't vertically align the way you think they should when they're the only element inside a block-level container.
+
+   You can see a live example of some of these quirks on my site at [Quirks mode vs Standards mode](https://patrickbrosset.com/lab/quirksmode/).
 
 1. The `<head>` tag is missing, which means the document has no `<title>` either, which is bad for accessibility and UX in general
 
