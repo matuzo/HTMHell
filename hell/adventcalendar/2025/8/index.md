@@ -45,9 +45,11 @@ Here's what's wrong with it:
    * Certain inline elements don't vertically align the way you think they should.
    * Font sizes don't inherit on table elements.
 
-1. The `<head>` tag is missing, which means the document has no `<title>` either, which is bad for accessibility.
+1. The `<head>` tag is missing, which means the document has no `<title>` either, which is bad for accessibility and UX in general
 
    A common thing that assistive technology users do is read the title of a page first to know if they want to spend more time reading the page's content. Without a descriptive title, folks are forced to start reading more of the content to know if that's what they were looking for in the first place, which is time-consuming and potentially confusing.
+
+   In addition, a title is also useful for SEO purposes, is displayed in browser tabs, used when bookmarking pages, and more.
 
 1. The `<body>` tag uses deprecated attributes: `marginheight`, `marginwidth`, `bgcolor`, and `text`.
 
@@ -78,9 +80,7 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
 1. Sure, quirks mode can lead to weird rendering issues if you don't know that you're using it, but it's still implemented in browsers and perfectly ok to use.
 
-   Even if quirks mode was added for [historical reasons](https://quirks.spec.whatwg.org/#history), to support web pages that were made before the CSS specification was fully fleshed out, the code in browser engines which detects the document mode and renders it accordingly is here to stay. There really is no reason for browsers to ever remove it, unless, one day, all quirks mode documents disappear from the web.
-
-   Judging by Chrome's [QuirksModeDocument use counter](https://chromestatus.com/metrics/feature/timeline/popularity/2034), showing that about 30% of page loads in Chrome use quirks mode, I don't think that's going to happen anytime soon. I think a lot of these page loads are due to ads creating iframes without a proper `DOCTYPE`, but still, that's a lot of pages.
+   Even if quirks mode was added for [historical reasons](https://quirks.spec.whatwg.org/#history), to support web pages that were made before the CSS specification was fully fleshed out, the code in browser engines which detects the document mode and renders it accordingly is here to stay. There really is no reason for browsers to ever remove it, unless one day, all quirks mode documents were to disappear from the web. This seems highly unlikely though. Judging by Chrome's [QuirksModeDocument usage metric](https://chromestatus.com/metrics/feature/timeline/popularity/2034), about 30% of all page loaded in Chrome still use quirks mode! A bunch of the sites that are listed on that usage metric as using quirks mode appear to be using it from iframes created to display ads. Still, that's a lot of page loads.
 
    If you're encountering weird rendering issues that you can't explain, double check that you have a `DOCTYPE` in your HTML document. You can also run the following line of code in the browser console: `document.compatMode`. If it returns `BackCompat`, then you're in quirks mode.
 
@@ -112,6 +112,7 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
    Take a look at [the example on codepen](https://codepen.io/captainbrosset/pen/dPGvrMQ?editors=1100).
 
+   For an accessible alternative, see Daniela Kubesch's article [Get that marquee ✨AeStHeTiC✨](https://www.htmhell.dev/adventcalendar/2022/15/).
 
 1. Using `<b>` and `<i>` is perfectly valid. They used to be meant for making the text bold and italic, hence their names. But they were deprecated in HTML4, and the meaning of the tags was changed to mean something else. The `<b>` tag now means _bring attention_ and the `<i>` tag now means _idiomatic text_.
 
@@ -169,7 +170,5 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 HTML can be very forgiving, and browsers implement things that may seem obscure or weird, but they do so for a very good reason: backward compatibility!
 
 The web is the only platform where sites that were written years ago can still work fine today. This isn't to say that things never get removed though, they do, and probably more often than you realize. Remember AppCache, WebSQL, module import assertions, or special rules that apply to the font-size of `<h1>` elements when nested inside certain elements?
-
-
 
 This is both a blessing and a curse. The fact that so much of the languages we use are so forgiving and time-enduring made the web what it is today. A welcoming platform that doesn't take so much effort to get used to, and kind of just works. But, this also means that old features and bad practices can linger on for a long time and, if they're used by many sites and users, can't really ever be removed.
