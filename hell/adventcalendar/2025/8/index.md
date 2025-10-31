@@ -38,7 +38,7 @@ Here's what's wrong with it:
 
 1. The document is in _quirks mode_ because it lacks a proper [`DOCTYPE` preamble](https://developer.mozilla.org/docs/Glossary/Doctype).
 
-   If you've never heard of quirks mode, then you're probably lucky enough to have started your web development areer after it was an important thing to know about. Suffice to say it's weird. Here are some of the ways quirks mode impacts HTML documents:
+   If you've never heard of quirks mode, then you're probably lucky enough to have started your web development career after it was an important thing to know about. Suffice to say it's weird. Here are some of the ways quirks mode impacts HTML documents:
 
    * The box model behaves differently, which affects layout and spacing.
    * Some CSS properties don't really work as you'd expect.
@@ -72,7 +72,7 @@ Well, yes and no:
 * No: if you send this to the [W3C HTML validator](https://validator.w3.org/nu/), it'll be pretty angry at you and will list the errors I mentioned earlier.
 * But also, yes: the resulting page just loads and works fine in browsers.
 
-Before discussing each point in details, don't you think this is just beautiful? HTML is so self-correcting that making a browser fail only by using HTML is really hard to achieve, and HTML that looks like it was written two decades ago still works! I mean, take a look at [www.spacejam.com](https://www.spacejam.com/1996/), [this old bar website](https://www.thecrystalcornerbar.com/), or even [the very first web page that was ever created](https://info.cern.ch/hypertext/WWW/TheProject.html).
+Before discussing each point in details, don't you think this is just beautiful? HTML is so self-correcting that making a browser fail only by using HTML is really hard to achieve, and HTML that looks like it was written two decades ago still works! I mean, take a look at [spacejam.com](https://www.spacejam.com/1996/), [this old bar website](https://www.thecrystalcornerbar.com/), or even [the very first web page that was ever created](https://info.cern.ch/hypertext/WWW/TheProject.html).
 
 Now let's go over the list of issues I mentioned earlier one more time, but this time, let's talk about why they're not actually causing any issues:
 
@@ -135,7 +135,7 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
    This behavior is actually specified in the HTML spec, and called the _adoption agency algorithm_. I think we owe it to [Chris Wilson](https://cwilso.com/) for thinking about this in the first place. Chris, if you ever find traces of old discussions about this, or care to write the backstory, I would be very interested!
    
-   Of course, I'm not saying you should do this. It's still important to create correctly nested HTML markup. But there are historical reasons for things like this to work. You have to remember that, back in the early days, browser engines didn't always agree on how to parse and render HTML. So, in order to ensure that as much of the web as possible was supported across all browsers, it was sometimes easier to just support how other browsers did things. And that's how things like misnested tags ended up being supported.
+   Of course, I'm not saying you should do this. It's still important to create correctly nested HTML markup. But there are historical reasons for things like this to work. Back in the early days, browser engines didn't always agree on how to parse and render HTML. So, in order to ensure that as much of the web as possible was supported across all browsers, it was sometimes easier to just support how other browsers did things. And that's how things like misnested tags ended up being supported.
 
 1. Missing end tags are fine. The HTML parser is able to close most of them on its own.
 
