@@ -51,7 +51,6 @@ In 2025 the opportunity for a front end developer to craft visual UI that meets 
 > the feature is not currently available in [HTML](https://html.spec.whatwg.org/multipage/)
 
 This is still a valid reason for building stuff from HTML elements that carry little or no semantics, then adding ARIA to convey meaning robustly and interoperably to people that make use of assistive technology to render web content understandable. But valid _less so_ as many of the features that are routinely foisted upon users are now available as native HTML, for example, [dialogs](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element) and [disclosures](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)
-![Screenshot 2025-10-26 154714](https://github.com/user-attachments/assets/fc2619b5-2d46-456f-85bd-b599f947325d)
 
 
 ## What ARIA does not do
