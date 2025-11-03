@@ -1,5 +1,5 @@
 ---
-title: "Web Feeds and Where to Find Them"
+title: "The Wonderful World of Web Feeds"
 author: "Maureen Holland"
 author_bio: "Lead front-end web developer at silverorange.com. Passionate about accessibility, performance, and biking around Scotland."
 date: 2025-12-15
@@ -17,8 +17,6 @@ intro: "<p>Web feeds are incredible! And a bit confusing! Why are the feed links
 image: "advent25_15"
 ---
 
-## Web Feeds
-
 Web feeds are incredible! And a bit confusing! Why are the feed links often called “RSS feeds”? And why is this “RSS feed” in an <code>atom.xml</code> file… hang on, what is <code>feed.json</code> for?  What are they even feeding into anyway?
 
 Let’s start by addressing the confusing parts. Web feeds are often referred to as “RSS feeds” because RSS is the oldest and most common format.
@@ -35,9 +33,6 @@ There is no third party with questionable motives pushing extra feeds into your 
 Blog platforms like [WordPress](https://codex.wordpress.org/Customizing_Feeds) and [Ghost](https://ghost.org/integrations/custom-rss/) provide web feeds out-of-the-box while static site generators like [11ty](https://www.11ty.dev/docs/plugins/rss/) offer plugins to help generate feeds. Reader applications like [Feedbin](https://feedbin.com/home), [NetNewsWire](https://netnewswire.com/), and [NewsBlur](https://www.newsblur.com/) have no proprietary control over your feed list. If you want to leave, you can take your feeds with you by exporting them to an [OPML](https://opml.org/spec2.opml) (Outline Processor Markup Language) file. 
 
 This is the self-curated, standards-based web I want.
-
-
-## Where to Find Them
 
 A very basic feed looks like this: https://maureenholland.ca/magpie/feed.xml
 
