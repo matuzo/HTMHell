@@ -273,15 +273,20 @@ Here, the button is indicating that it controls the visibility of the `nav` elem
 
 To account for even more complex structures, `aria-controls` can also reference multiple IDs, allowing a single control to manage several elements at once.
 
-`aria-activedescendant` is used to indicate which element within a _composite widget_ is currently active. An example of a composite widget is a combobox: a UI component that combines a text input with a list of options: You can type in the text input to filter the options, fill in freeform content or use the arrow keys to navigate the options. For a reference implementation look at the [combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) in the WAI-ARIA Authoring Practices. Getting a combobox right is tricky,
+`aria-activedescendant` is used to indicate which element within a _composite widget_ is currently active. An example of a composite widget is a combobox: a UI component that combines a text input with a list of options: You can type in the text input to filter the options, fill in freeform content or use the arrow keys to navigate the options. For a reference implementation look at the [combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) in the WAI-ARIA Authoring Practices. Getting a combobox right is tricky, so make sure to read that guide if you're building one!
 
 You can use `aria-activedescendant` (in combination with `aria-controls`) on the input to indicate which option in the listbox is currently selected:
 
 ```html
 <input
   type="text"
-  aria-activedescendant="option-2"
+  role="combobox"
+  aria-autocomplete="list"
+  aria-haspopup="listbox"
+  aria-expanded="false"
   aria-controls="options-list"
+
+  aria-activedescendant="option-2"
 />
 <ul id="options-list" role="listbox" aria-label="options">
   <li id="option-1" role="option">Option 1</li>
@@ -298,15 +303,15 @@ Here's how you would structure a combobox where the list of options needs to be 
 
 ```html
 <label for="combobox-input">Choose an option:</label>
-<div
-  aria-controls="floating-list"
-  aria-owns="floating-list"
-  aria-expanded="false"
->
+<div aria-owns="floating-list">
   <input
     id="combobox-input"
     type="text"
+    role="combobox"
     aria-autocomplete="list"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-controls="floating-list"
     aria-activedescendant=""
   />
 </div>
