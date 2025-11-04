@@ -14,7 +14,7 @@ intro: "<p>Robin explains why building an ePub might be both easier and harder t
 image: "advent25_11"
 ---
 
-ePub: the [specification](https://www.w3.org/TR/epub-33/) you always knew you wanted yet never knew how to use. You get to take your knowledge of the web, and use it to produce little self-contained sets of documents that can be freely distributed as a single file ready for reading on extremely low-power devices, and they even reflow to fit any screen.
+[ePub](https://www.w3.org/TR/epub-33/) is the W3C standard for ebooks. It lets you take your knowledge of the web, and use it to produce little self-contained sets of documents that can be freely distributed as a single file ready for reading on extremely low-power devices, and they even reflow to fit any screen.
 
 Yet while I said that you can use your knowledge of the web to build ePubs, the technology in use is twisted in unforeseen ways, and you might have to unlearn the things you think you knew. Prepare yourself…
 
@@ -22,17 +22,15 @@ Yet while I said that you can use your knowledge of the web to build ePubs, the 
 
 ePubs, at their core, use HTML, just like the websites we build every day. Except, well, there’s a big asterisk after that. Let’s dive into the differences.
 
-A few decades ago XML emerged from the pit. XML – an attempt at an extensible standard for expressing marked up data – could be used for documents, data transfer, and a bunch of other things, and people genuinely liked it (or, much like AI today, pretended to for job security). They liked it so much that a concerted effort was started to take the nascent HTML and rebuild it on top of XML. This project had a name you might have heard of: XHTML.
+A few decades ago [XML](https://www.w3.org/TR/xml/) emerged from the pit. XML – an extensible standard for expressing marked up data – could be used for documents, data transfer, and a bunch of other things, and people genuinely liked it (or, much like AI today, pretended to for job security). They liked it so much that a concerted effort was started to take HTML and rebuild it on top of XML. This project had a name you might have heard of: [XHTML](https://www.w3.org/TR/xhtml11/).
 
-XHTML was broadly a flop for a handful of reasons. First, most people didn’t care about extensibility of their markup language, as browsers broadly didn’t support natively any of the standard options available at the time. Second, XML requires a document to be syntactically correct: any mistake in your XHTML and you were met with the dreaded yellow screen of death. Third, because a document needed to be correct and complete to be processed there was no streaming rendering, which on the slow connections of the time was painful. (You could serve your XHTML as HTML, but then you got no benefit for no reward, and was broadly pointless.)
+XHTML didn’t work out, for a number of reasons. The extensibility of XML turned out to not be useful when browsers didn’t support even common extensions. Then there was the problem of fragility: any syntax problems with your XHTML and your users would get a blank screen. If those two problems weren’t enough, XHTML was slower in practice because the browser needed to wait to download the entire document before doing anything else.
 
-These days XHTML hangs around on just a handful of sites. The HTML spec actually still has an [XHTML formulation](https://html.spec.whatwg.org/#html-vs-xhtml), but it sounds very much like it would like it to go away. But there is one place where XHTML still rules the roost: ePub.
+But there is one place where XHTML still rules the roost: ePub. ePub books are, at their heart, a collection of XHTML documents (now using [the XHTML flavour of the HTML Living Standard](https://html.spec.whatwg.org/#html-vs-xhtml)). This means that:
 
-ePub books are, at their heart, a collection of XHTML documents. This means that:
-
-1. You need to have valid, syntactically correct XML markup. If you don’t, your e-reader will complain. This means self-closing tags, correct namespaces, XML attributes in the XML namespace (`xml:lang`), and so on.
-2. You can include other XML languages directly into your XHTML by adding namespaces.
-3. We unlock the the `epub` namespace, which adds additional functionality to your ePub in e-readers.
+1. Valid, syntactically correct XML markup is needed. Without that, your e-reader will complain. This means self-closing tags, correct namespaces, XML attributes in the XML namespace (`xml:lang`), and so on.
+2. Other XML languages can be included directly into XHTML by adding namespaces.
+3. The `epub` namespace is unlocked, which adds additional functionality to your ePub in e-readers.
 
 We’ll come back to that…
 
@@ -113,7 +111,10 @@ As well as these ePub semantic vocabulary, we also have things like the [Z39.98-
 
 ## Want to try this all out?
 
-Writing an ePub isn’t exactly hard, but there’s some scaffolding necessary to get to a workable structure. I’d personally recommend starting with [the Standard Ebooks toolset](https://github.com/standardebooks/tools) as it can create an unbranded ePub and has a bunch of compatibility tooling built in. But to get you started, I’ve prepared [a copy of this blog post as an ePub](htmhell-2025-12-11.epub) ready for your favourite e-reader (assuming it’s modern: I haven’t included any compatibility hacks).
+Writing an ePub isn’t exactly hard, but there’s some scaffolding necessary to get to a workable structure. You need a [`container.xml` file](https://www.w3.org/TR/epub-33/#sec-container-metainf-container.xml) in a `META-INF` directory that points at [a package file](https://www.w3.org/TR/epub-33/#sec-package-doc). The package file contains a bunch of metadata about your ePub, including [a manifest](https://www.w3.org/TR/epub-33/#sec-pkg-manifest) of the XHTML files in your book (for example, different chapters), and [a spine](https://www.w3.org/TR/epub-33/#sec-pkg-spine) describing the order they should be shown to the reader. You then add your XHTML files, reference them in the manifest and spine, and finally zip the whole directory up into a single archive and rename it to a <code>.epub</code>.
 
-If you want to inspect the contents you just need to know one thing: an ePub is a zip file. If you rename it to have a `.zip` at the end you’ll be able to expand it to see the contents. The markup can be found in `src/epub/text`; I hope you have fun poking at it (preferably with pitchforks).
+To get you started, I’ve prepared [a copy of this blog post as an ePub](htmhell-2025-12-11.epub) ready for your favourite e-reader (assuming it’s modern: I haven’t included any compatibility hacks). To inspect the contents we just need to unzip it; try renaming the file to have a `.zip` at the end and opening it with your favourite unarchiver. The markup can be found in `src/epub/text`.
 
+If you want to create your own ePubs I’d personally recommend starting with [the Standard Ebooks toolset](https://github.com/standardebooks/tools): it can create unbranded ePubs and has a bunch of compatibility tooling built in. Once installed, you can create a directory with the requisite scaffolding with `se create-draft --white-label`, and then build that into an ePub with `se build`.
+
+I hope you have fun putting your own ebooks together! It’s a useful new skill that reuses a lot of your existing knowledge.
