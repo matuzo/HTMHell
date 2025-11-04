@@ -32,7 +32,7 @@ So it makes sense that HTML provides a few options for managing mid-content brea
 - The “soft hyphen” character, `&shy;`
 - The “non-breaking space” character, `&nbsp;`
 
-Let’s “break” down (nyuk, nyuk) those techniques: What they do, when they’re appropriate, and alternatives to consider.
+Let’s “break” down ([nyuk, nyuk](https://www.youtube.com/watch?v=AKtwlHV1-O8)) those techniques: What they do, when they’re appropriate, and alternatives to consider.
 
 ## The “break” element, `<br>`
 
@@ -54,9 +54,9 @@ Or within an address:
 
 ```html
 <address>
-  Portland Japanese Garden<br>
-  611 SW Kingston Ave.<br>
-  Portland, Oregon 97205
+  Breakside Brewery<br>
+  1570 NW 22nd Ave.<br>
+  Portland, Oregon 97210
 </address>
 ```
 
@@ -106,18 +106,17 @@ p {
 }
 ```
 
-(Why do either of those things? No idea. But you can!)
-
 The hyphenation makes `&shy;` more suitable for typical prose than `<wbr>`. That said, hyphenation in general is a bit of a minefield:
 
+- It doesn't work well in every language.
 - Breaking up a word between two lines, hyphenated or not, can be challenging for many readers.
-- While hyphenation has a long and rich typographic history, its readability has always been highly dependent on the size, layout and justification of the overall text.
+- While hyphenation has a long and rich typographic history, its readability has always been highly dependent on the size, layout and justification of the overall text. Dynamic content and responsive containers make it that much tougher to get right.
 
 I occasionally find `&shy;` helpful when I’m writing and notice a word flowing in a particularly troublesome way. I’d consider frequent usage a signal to simplify my verbiage or tweak my design.
 
 ## The “non-breaking space” character, `&nbsp;`
 
-Normally, whitespace characters are the most reliable indication of a line break opportunity. The `&nbsp;` character openly _defies_ that convention, applying a space that is, much like Kimmy Schmidt, _unbreakable_:
+Normally, whitespace characters are the most reliable indication of a line break opportunity. The `&nbsp;` character openly _defies_ that convention, applying a space that is, much like [Kimmy Schmidt](https://en.wikipedia.org/wiki/Unbreakable_Kimmy_Schmidt), _unbreakable_:
 
 ```html
 Keep&nbsp;it&nbsp;together
@@ -131,7 +130,7 @@ As useful as that sounds, `&nbsp;` and its cousins should be considered a last r
 
 If you’ve followed along to this point, you may notice a pattern: These techniques all have pretty limited use cases!
 
-- `<br>` for poems and addresses
+- `<br>` for the rare break that's actually part of the content (poems, addresses, etc.)
 - `<wbr>` for weird run-on strings
 - `&shy;` for very occasional hyphenation in prose
 - `&nbsp;` when you must avoid a break at all cost
