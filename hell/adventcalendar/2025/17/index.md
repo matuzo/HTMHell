@@ -108,7 +108,7 @@ p {
 
 The hyphenation makes `&shy;` more suitable for typical prose than `<wbr>`. That said, hyphenation in general is a bit of a minefield:
 
-- It doesn't work well in every language.
+- It doesn’t work well in every language.
 - Breaking up a word between two lines, hyphenated or not, can be challenging for many readers.
 - While hyphenation has a long and rich typographic history, its readability has always been highly dependent on the size, layout and justification of the overall text. Dynamic content and responsive containers make it that much tougher to get right.
 
@@ -130,7 +130,7 @@ As useful as that sounds, `&nbsp;` and its cousins should be considered a last r
 
 If you’ve followed along to this point, you may notice a pattern: These techniques all have pretty limited use cases!
 
-- `<br>` for the rare break that's actually part of the content (poems, addresses, etc.)
+- `<br>` for the rare break that’s actually part of the content (poems, addresses, etc.)
 - `<wbr>` for weird run-on strings
 - `&shy;` for very occasional hyphenation in prose
 - `&nbsp;` when you must avoid a break at all cost
