@@ -28,12 +28,13 @@ Behold this magnificient HTML document:
 
 To try it in your browser, copy the following line and paste it into the address bar:
 
-`data:text/html,<html><body marginheight=150 marginwidth=300 bgcolor=black text=white><marquee><b>Hello <i>HTML</b> World!</i></marquee>`
+```
+data:text/html,<html><body marginheight=150 marginwidth=300 bgcolor=black text=white><marquee><b>Hello <i>HTML</b> World!</i></marquee>
+```
 
 ## What's wrong with it?
 
 Everything? I mean, this HTML looks like it was written in 1998!
-
 
 1. The document is in _quirks mode_ because it lacks a proper [`DOCTYPE` preamble](https://developer.mozilla.org/docs/Glossary/Doctype).
 
