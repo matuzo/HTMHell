@@ -119,7 +119,7 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
 1. Using `<b>` and `<i>` is perfectly valid. They used to be meant for making the text bold and italic, hence their names. But they were deprecated in HTML4, and the meaning of the tags was changed to mean something else. The `<b>` tag now means _bring attention_ and the `<i>` tag now means _idiomatic text_.
 
-   `<b>` is now used to markup keywords, product names, or other spans of text whose typical presentation would be boldfaced, but not including any special importance.
+   `<b>` is now used to mark up keywords, product names, or other spans of text whose typical presentation would be boldfaced, but not including any special importance.
 
    `<i>` is now used to markup text that is set off from the normal prose for readability reasons.
 
