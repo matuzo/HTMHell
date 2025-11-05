@@ -121,7 +121,7 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
    `<b>` is now used to mark up keywords, product names, or other spans of text whose typical presentation would be boldfaced, but not including any special importance.
 
-   `<i>` is now used to markup text that is set off from the normal prose for readability reasons.
+   `<i>` is now used to mark up text that is set off from the normal prose for readability reasons.
 
    More semantic tag names have since been invented too: `<strong>`, `<em>`, or `<mark>`, which convey slightly different semantics.
 
