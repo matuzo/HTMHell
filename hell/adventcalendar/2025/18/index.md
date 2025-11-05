@@ -37,7 +37,7 @@ This is an issue because when things that are headings aren't marked up as headi
 
 ### How to fix it
 
-Stop using CSS and start using HTML. Instead of using a `<p>` or `<span>` or `<div>` element, use a heading element at the right level to give it semantic structure: from `<h1>` to `<h6>`.
+Stop using CSS and start using HTML. Instead of using a `<p>` or `<span>` or `<div>` element, use a heading element at the right level to give it semantic structure: from `<h1>` to `<h6>`. If we have some big and bold text that introduces or describes the content that follows, it should probably be a heading.
 
 ## Headings do not reflect the content structure
 
