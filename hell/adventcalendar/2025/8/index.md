@@ -34,7 +34,6 @@ To try it in your browser, copy the following line and paste it into the address
 
 Everything? I mean, this HTML looks like it was written in 1998!
 
-Here's what's wrong with it:
 
 1. The document is in _quirks mode_ because it lacks a proper [`DOCTYPE` preamble](https://developer.mozilla.org/docs/Glossary/Doctype).
 
