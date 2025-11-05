@@ -63,6 +63,7 @@ The list of headings should read a bit like a table of contents for the page.
 
 There are other aspects of wonkiness that may occur. Keep a watch for these too!
 
+- **Heading text that doesn't make sense.** The heading text should describe and introduce the content that follows it.
 - **No headings at all on the page.** There's probably some text that should be a heading.
 - **`<h1>` shenanigans: no `<h1>` element, or multiple `<h1>` elements.** Just one `<h1>` element, please! It should describe the topic or purpose of page.
 - **Skipped heading levels**, for example: jumping from an `<h2>` element to an `<h4>` element. Keep the nesting and order correct: `<h3>` elements for subsections of a section with an `<h2>` heading.
@@ -75,6 +76,8 @@ The big three issues we started with all fall under [Web Content Accessibility G
 - "Headings do not reflect the content structure" are "If it looks nested and order, it must be nested and ordered in code too"
 
 When we spot these issue in the course of an [Accessibility Assessment](https://intopia.digital/services/accessibility-usability-testing/), we usually log them as Medium Severity: it causes problems or frustrations for users.
+
+Headings that aren't descriptive fall under [WCAG Success Criteria 2.4.6 Headings and Labels (AA)](https://www.w3.org/TR/WCAG22/#headings-and-labels). These are usually Medium Severity too.
 
 ## Use your head(ings)
 
