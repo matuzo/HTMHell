@@ -48,11 +48,13 @@ It would be desirable to configure different error handling methods using HTML. 
 
 ## Inconsistent browser support
 
-Browser vendors apparently couldn’t agree on giving form elements consistent capabilities and appearance. It’s obvious to integrate the color pickers of the respective operating systems for the color picker. However, these cannot be styled and offer different features. While the usability may be familiar to users, for web developers and their clients, this inconsistency is a nightmare. Android and iOS replace the HTML date picker with their own widget. That’s great. But on desktop, the appearance is completely different and cannot be influenced.
+The standard doesn't give form elements consistent capabilities and appearance. I don't know whether browser vendors weren't willing to agree on this or if they didn't see any necessity. Consistency in usability, feature set and apperance would be helpful for both users and developers/designers. It seems obvious and easy to integrate the color pickers of the respective operating systems for the color picker control. However, these cannot be styled and offer different features. Android and iOS replace the HTML date picker with their own widget. That’s great. But on desktop, the appearance is completely different and cannot be influenced. While the usability may be familiar to users, for web developers and their clients, this inconsistency is a nightmare. 
 
-The number input offers increment/decrement arrows in one browser but not in another. The usefulness of these arrows is debatable. The date field is only read aloud [by the iOS native screen reader](https://tetralogical.github.io/screen-reader-HTML-support/lookup/lookup.html#input-date)) when a date is already present; it is not announced as a date field. The email input is announced [by no screen reader](https://tetralogical.github.io/screen-reader-HTML-support/lookup/lookup.html#input-email). If browser vendors are leading the standardization of these features, I expect better coordination and consistent implementation.
+The number input offers increment/decrement arrows in one browser but not in another. The usefulness of these arrows is debatable. The date field is only read aloud [by the iOS native screen reader](https://tetralogical.github.io/screen-reader-HTML-support/lookup/lookup.html#input-date)) when a date is already present; it is not announced as a date field. The email input is announced [only by Voice Over on MacOS](https://tetralogical.github.io/screen-reader-HTML-support/lookup/lookup.html#input-email) as an email-field. Others don't specify the semantic, JAWS seems to ignore it. If browser vendors are leading the standardization of these features, I expect better coordination and consistent implementation.
 
-## Partially Miserable Styling
+Semantic information should be transported to screenreaders. Otherwise the new semantic field is only half baked. It is more a text input with an integrated regex, triggering an onscreen keyboard. Both last features could have been achieved otherwise without having an explicit email-field.
+
+## Partially Miserable Styling Options
 
 Styling form elements is a major challenge that often ends in failure. Frequently, the form element itself is hidden and instead the label element is styled. Or the form element is hidden and replaced via JavaScript with a construction of DIVs and/or lists, which can then be freely styled.
 
@@ -66,9 +68,11 @@ At CSSDay 2025 in Amsterdam, Tim Nguyen presented the Working Draft "[CSS Form C
 
 If forms do not gain more styling options in the near future, we will not be able to move away from [JavaScript-based date pickers](https://open-ui.org/components/datepicker.research/) anytime soon. But what’s the point of having the right element if we have to replace it with a custom construct at the first opportunity because we otherwise have no sufficient styling options? Standards are supposed to help us and make the web better.
 
+[Interop 2025](https://wpt.fyi/interop-2025) had no aspects for designing better forms. Maybe some aspects will make it to Interop 2026. [The selection process](https://github.com/web-platform-tests/interop/blob/main/2026/selection-process.md) should be finished when this article is published.
+
 ## Lack of Further Development
 
-We are missing important form elements. These have to be simulated using JavaScript. In recent years, standardizers could and should have filled this gap. For me it is not satisfying to say that we now have all the building blocks at our disposal to combine them into new elements using JavaScript. The Web Components API would serve as the basis. If you take this argument to its logical conclusion, we could reduce HTML to just the span element. We would then create the rest of the elements as web components, enriched with attributes (including ARIA). That can’t seriously be the goal.
+We are missing important form elements. These have to be simulated using JavaScript. In recent years, standardizers could and should have filled this gap. In my view it is not satisfying to say that we now have all the building blocks at our disposal to combine them into new elements using JavaScript. The Web Components API would serve as the basis. If you take this argument to its logical conclusion, we could reduce HTML to just the span element. We would then create the rest of the elements as web components, enriched with attributes (including ARIA). That can’t seriously be the goal.
 
 In my view, HTML elements are browser-specific web components. They have the great advantage that they do not require JavaScript because they are built directly into the browser. They are also the same for all end users and devices. A non-standardized form element, on the other hand, exists in many variants, on different technical bases, and in varying quality and implementation.
 
@@ -82,5 +86,17 @@ The same applies to the range slider with more than one value. Open UI also offe
 
 ## A New Wave of Innovation Is Needed
 
-WHATWG and W3C demonstrated at the beginning of the millennium that they are capable of innovation. After two decades, it is time to revive this spirit and take HTML to a new level. Modern websites have very little to do with the original idea of HTML. The W3C should respond with new elements and paradigms. The document analogy should stand alongside interactive applications as equals. The more that is standardized in this regard, the better it is for the industry. And end users will also benefit from consistently high-quality websites.
+This article is a very rough overview of the state of forms. My main demands for innovation are:
+
+1. We need more complex form fields as standard elements, such as a combobox.
+2. We need a range input with multiple handles.
+3. We need much better styling opportunities for every form element. The new stylable select shows the right direction. 
+4. Form validation should be controlled by HTML-attributes instead of JavaScript. It's styling should be easy and consistent between browsers.
+5. Screenreaders should communicate form semantic without flaws.
+
+The innovation of forms should be part of a much larger innovation. WHATWG and W3C demonstrated at the beginning of the millennium that they are capable of such an innovation. After two decades, it is time to revive this spirit and take HTML to a new level. Websites aren't always the strict documents as they were invented for. The usual starting page of a news site has little in common with the  original idea of HTML. Those pages  usually consist mainly of headlines accompanied by a huge amount of images and some short text bites. The startpage of the New York Times presents teasers without headlines. This shows that there is no safe common ground for developers creating such a page type. 
+
+Modern Websites and especially Webapps need a new paradigm. The evolved far beyond the inventor's idea and it won't stop evolving.
+
+The W3C should respond with new elements and paradigms. The document analogy should stand alongside interactive applications as equals. The more that is standardized in this regard, the better it is for the industry. And end users will also benefit from consistently high-quality websites.
 
