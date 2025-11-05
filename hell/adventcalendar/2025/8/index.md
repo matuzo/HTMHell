@@ -26,7 +26,7 @@ Behold this magnificient HTML document:
     </marquee>
 ```
 
-To try it in your browser, copy the following line and paste it into the address bar:
+To try it in your browser, copy the following line and paste it into the address bar of your browser:
 
 ```
 data:text/html,<html><body marginheight=150 marginwidth=300 bgcolor=black text=white><marquee><b>Hello <i>HTML</b> World!</i></marquee>
@@ -76,15 +76,19 @@ Everything? I mean, this HTML looks like it was written in 1998!
 Well, yes and no:
 
 * No: if you send this to the [W3C HTML validator](https://validator.w3.org/nu/), it'll be pretty angry at you and will list the errors I mentioned earlier.
-* But also, yes: the resulting page just loads and works fine in browsers.
+* But also, yes: the resulting page just loads and works fine in browsers. See for yourself:
+
+![A browser window showing the live webpage, which has a black background, and the phrase Hello HTML World! in white.](./browser-rendering.png)
 
 Before discussing each point in details, don't you think this is just beautiful? HTML is so self-correcting that making a browser fail only by using HTML is really hard to achieve, and HTML that looks like it was written two decades ago still works! I mean, take a look at [spacejam.com](https://www.spacejam.com/1996/), [this old bar website](https://www.thecrystalcornerbar.com/), or even [the very first web page that was ever created](https://info.cern.ch/hypertext/WWW/TheProject.html).
 
-Now let's go over the list of issues I mentioned earlier one more time, but this time, let's talk about why they're not actually causing any issues:
+Now let's go over the list of issues I mentioned earlier one more time, but this time, let's talk about why they're not actually causing any problems:
 
 1. Sure, quirks mode can lead to weird rendering issues if you don't know that you're using it, but it's still implemented in browsers and perfectly ok to use.
 
-   Even if quirks mode was added for [historical reasons](https://quirks.spec.whatwg.org/#history), to support web pages that were made before the CSS specification was fully fleshed out, the code in browser engines which detects the document mode and renders it accordingly is here to stay. There really is no reason for browsers to ever remove it, unless one day, all quirks mode documents were to disappear from the web. This seems highly unlikely though. Judging by Chrome's [QuirksModeDocument usage metric](https://chromestatus.com/metrics/feature/timeline/popularity/2034), about 30% of all page loaded in Chrome still use quirks mode! A bunch of the sites that are listed on that usage metric as using quirks mode appear to be using it from iframes created to display ads. Still, that's a lot of page loads.
+   Even if quirks mode was added for [historical reasons](https://quirks.spec.whatwg.org/#history), to support web pages that were made before the CSS specification was fully fleshed out, the code in browser engines, which detects the document mode and renders it accordingly, is here to stay.
+   
+   There really is no reason for browsers to ever remove it, unless one day, all quirks mode documents were to disappear from the web. This seems highly unlikely though. Judging by Chrome's [QuirksModeDocument usage metric](https://chromestatus.com/metrics/feature/timeline/popularity/2034), about 30% of all page loaded in Chrome still use quirks mode! A bunch of the sites that are listed on that usage metric page appear to be using it from iframes created to display ads. Still, that's a lot of page loads.
 
    If you're encountering weird rendering issues that you can't explain, double check that you have a `DOCTYPE` in your HTML document. You can also run the following line of code in the browser console: `document.compatMode`. If it returns `BackCompat`, then you're in quirks mode.
 
@@ -130,7 +134,7 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
 1. Misnested tags can sometimes happen in HTML, and when it does, the page doesn't break!
 
-   That's the beauty of HTML once again. If you're coming from an XML background, you might be surprised by the forgiveness of HTML. But, in the vast majority of cases, HTML parers just figure things out on their own and get you what you want.
+   That's the beauty of HTML once again. If you're coming from an XML background, you might be surprised by the forgiveness of HTML. But, in the vast majority of cases, HTML parsers just figure things out on their own and get you what you want.
 
    In our example, the markup is `<b><i></b></i>`, which feels obviously wrong because the closing `</b>` tag should appear after the closing `</i>` tag, to respect nesting. This particular markup creates the following DOM tree: 
 
@@ -165,7 +169,9 @@ Now let's go over the list of issues I mentioned earlier one more time, but this
 
    You can find out more about these examples, and others, in the [Optional tags section of the HTML spec](https://html.spec.whatwg.org/multipage/syntax.html#optional-tags).
 
-   Also, think about it, you're probably already using this without realizing. Have you ever closed a `<img>`, `<input>`, or `<link>` tag? Probably not, and that's fine. The HTML spec defines a whole lot of elements which don't require closing tags: `<base>`, `<link>`, `<meta>`, `<hr>`, `<br>`, `<source>`, `<img>`, `<input>`, and others.
+   Also, think about it, you're probably already using this without realizing it. Have you ever closed a `<img>`, `<input>`, or `<link>` tag? Probably not, and that's fine. The HTML spec defines a whole lot of elements which don't require closing tags: `<base>`, `<link>`, `<meta>`, `<hr>`, `<br>`, `<source>`, `<img>`, `<input>`, and others.
+
+   [XHTML](https://www.w3.org/TR/xhtml1/) attempted to change this by requiring all tags to be closed, and conforming to XML syntax rules, but that never really caught on. Sure, HTML is weird, but it's also what powers billions of web pages today. There isn't really a reason to try and change te nature of HTML.
 
 ## So, what's the moral of the story?
 
@@ -173,4 +179,4 @@ HTML can be very forgiving, and browsers implement things that may seem obscure 
 
 The web is the only platform where sites that were written years ago can still work fine today. This isn't to say that things never get removed though, they do, and probably more often than you realize. Remember AppCache, WebSQL, module import assertions, or special rules that apply to the font-size of `<h1>` elements when nested inside certain elements?
 
-This is both a blessing and a curse. The fact that so much of the languages we use are so forgiving and time-enduring made the web what it is today. A welcoming platform that doesn't take so much effort to get used to, and kind of just works. But, this also means that old features and bad practices can linger on for a long time and, if they're used by many sites and users, can't really ever be removed.
+This is both a blessing and a curse. The fact that so much of the languages we use are so forgiving and time-enduring made the web what it is today: a welcoming platform that doesn't take so much effort to get used to, and kind of just works. But, this also means that old features and bad practices can linger on for a long time and, if they're used by many sites and users, can't really ever be removed.
