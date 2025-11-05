@@ -27,7 +27,7 @@ This is an issue because when things are marked up as headings that are not head
 
 ### How to fix it
 
-Stop using HTML and start using CSS. Instead of using a heading element, using a `<p>` or `<span>` or  `<div>` element and use CSS to make it big and bold. Noice.
+Stop using HTML and start using CSS. Instead of using a heading element, using a `<p>` or `<span>` or  `<div>` element and use CSS to make it big and bold.
 
 ## Text *should* be a heading
 
