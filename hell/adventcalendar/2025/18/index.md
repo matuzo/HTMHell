@@ -25,6 +25,18 @@ Ah, this one's a real classic! When we have some big and bold text, for Design R
 
 This is an issue because when things are marked up as headings that are not headings, it makes the page harder to understand. For example: users of assistive technology like screen readers hear things read as headings of section that are not headings.
 
+### An example
+
+Let's say we have a page explaining colours, RGB-style. We might have headings marked up as follows.
+
+- `<h1>`Colours
+  - `<h2>`Red
+  - `<h2>`Green
+    - `<h3>`Your new favourite colour!
+  - `<h2>`Blue
+
+In this case "Your new favourite colour!" is just some big text, designed to be eye-catching. It's not the start of a section of content.
+
 ### How to fix it
 
 Stop using HTML and start using CSS. Instead of using a heading element, using a `<p>` or `<span>` or  `<div>` element and use CSS to make it big and bold.
@@ -34,6 +46,17 @@ Stop using HTML and start using CSS. Instead of using a heading element, using a
 Now let's come from the other side. We look at a design and see some bold text with some big, some bigger, some biggest. Sweet! We fling down a bunch of `<div>` elements, add some styles and we're done. It looks just like the design, chef's kiss, and so on. But here's the thing: this text looks like a heading, but doesn't have any semantics.
 
 This is an issue because when things that are headings aren't marked up as headings, it makes the page harder to understand. For example: screen readers won't announce it as a heading with its level, making it hard to understand the content and structure when listening to all the headings.
+
+### An example
+
+Let's say we have a page explaining what the web is made of. We might have some big bold text marked up as follows.
+
+- `<h1>`The world wide web
+  - `<h2>`HTML
+  - `<p>`CSS
+  - `<h2>`JavaScript
+
+In this case "CSS" isn't just a paragraph. It's the start of a section of content.
 
 ### How to fix it
 
