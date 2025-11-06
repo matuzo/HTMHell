@@ -88,3 +88,12 @@ Make sure that:
 - text that functions as a heading is marked up as a heading
 - text that does not function as a heading is not marked up as a heading
 - headings reflect the content structure
+
+### Useful tools
+
+Two of my favourite ways to visualising headings are:
+
+- the Headings bookmarklet at [Accessibility Bookmarklets](https://accessibility-bookmarklets.org/install.html)
+- the Headings toggle (in Ad hoc tools) of the [Accessibility Insights for Web](https://accessibilityinsights.io/docs/web/overview/) extension.
+
+Both of them add annotation-like boxes and text, making it easier scroll through and visually spot weird heading things.
