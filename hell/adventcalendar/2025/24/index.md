@@ -1,7 +1,7 @@
 ---
 title: "Styling by Language: Using the lang Attribute for Multilingual Design"
 author: "Julia Undeutsch"
-author_bio: "I am Dev & UX Accessibility Specialist at Atos. After graduating University in Musicology and Japanese Studies in summer 2020, I started learning front-end development and specialized in the topic of web accessibility early on. I have been certified by IAAP as a Professional in Accessibility Core Competencies (CPACC) and Web Accessibility Specialist and got accepted in the Google Developer Expert Program in 2023."
+author_bio: "I am Dev & UX Accessibility Specialist at Atos. After graduating University in Musicology and Japanese Studies in summer 2020, I started learning front-end development and specialized in the topic of web accessibility early on. I have been certified by IAAP as a Certified Professional in Web Accessibility (CPWA) and got accepted in the Google Developer Expert Program in 2023."
 date: 2025-12-24
 author_links:
   - label: "Blog"
@@ -46,6 +46,8 @@ image: "advent25_24"
 ## When East Meets West (on the Same Page)
 
 If you’ve ever built a bilingual English – Japanese website, you know the struggle. English uses letters with ascenders, descenders, and varying widths. Japanese, on the other hand, mixes three scripts: [kanji](https://en.wikipedia.org/wiki/Kanji), [hiragana](https://en.wikipedia.org/wiki/Hiragana), and [katakana](https://en.wikipedia.org/wiki/Katakana), each forming balanced, square-like characters.
+
+Already last year, I told you about a special HTML element that you can use to style this scripts. Read my post [HTML and CSS I didn't even know about before I started creating content](https://www.htmhell.dev/adventcalendar/2024/12/).
 
 This is not usually a big problem if the entire page is in one language. But when Latin letters are mixed with Japanese characters, as is increasingly the case, the font becomes more difficult to handle.
 
