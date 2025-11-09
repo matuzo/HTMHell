@@ -120,7 +120,7 @@ document.addEventListener("click", (event) => {
 To achieve light dismiss on non-modal dialogs is trickier unfortunately, as they have no backdrop to play with.
 
 <p class="highlight">💡
-  We hope for some light at the end of the tunnel with regards light dismiss with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy">`closedby` property</a>, please feel free to poke any friendly Safari developers you might know! Then it could look like the below:
+  There is some light at the end of the dismiss tunnel with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy">`closedby` property</a>, please feel free to poke any friendly Safari developers you might know! Then it could look as simple as the below:
 </p>
   <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="myVNLmb" data-pen-title="Dialogs with light dismiss (closedby)" data-editable="true" data-user="sarajw" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
       <span>See the Pen <a href="https://codepen.io/sarajw/pen/myVNLmb">
