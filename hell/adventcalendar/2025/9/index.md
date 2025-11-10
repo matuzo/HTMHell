@@ -11,7 +11,7 @@ intro: "<p>The dialog element has been available across browsers since March 202
 image: "advent25_9"
 ---
 
-Suffering modal woes? Positioning, backdrops, focus trapping, z-index - Oof.
+Suffering modal woes? Positioning, backdrops, focus trapping, z-index — Oof.
 
 Just as I was, some of you may have been coding a lot of these functions into a `<div>` by hand with CSS and JavaScript, or using a library to handle them for you.
 
@@ -19,13 +19,59 @@ Either way, things are getting simpler and more declarative all the time - and w
 
 To those of you new to building on the web, this is for you too, as you lucky things get to skip the old ways :)
 
-## Meet `<dialog>`.
+## Meet <button id="openMeetDialog">&lt;dialog&gt;</button>
+
+<dialog id="meetDialog" closedby="any">
+  <p>
+    Hello 👋
+    <br>Nice to meet you!
+  </p>
+  <form method="dialog">
+    <button>Close</button>
+  </form>
+</dialog>
 
 The [dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog) has been available across browsers since March 2022, and allows you to pop a little overlay on your page - a common variant is known as a modal - and it has a whole bunch of abilities built in, with further useful facets still being added.
 
+```html
+<dialog id="meetDialog">
+  <p>
+    Hello 👋
+    <br />Nice to meet you!
+  </p>
+  <form method="dialog">
+    <button>Close</button>
+  </form>
+</dialog>
+```
+
 ## Modal and non-modal
 
-We're probably more familiar with the modal variety of dialog, intended to (hopefully only briefly) stop you interacting with the page under it. But there are also plenty of non-modal dialogs to be seen around the web, for example toast notifications.
+We're probably more familiar with the modal variety of dialog, intended to (hopefully only briefly) stop you interacting with the page under it. But there are also plenty of non-modal dialogs to be seen around the web, for example <button id="openToastDialog">toast</button> notifications.
+
+<dialog
+  id="toastDialog"
+  closedby="any"
+  style="
+    margin: 0;
+    border: 0.25em solid saddlebrown;
+    background-color: burlywood;
+    border-radius: 2em 2em 0.5em 0.5em;
+    rotate: 10deg;
+    position: fixed;
+    left: 3em;
+    bottom: 3em;
+    z-index: 10;
+  "
+>
+  <p>
+    Pop! Do I look
+    <br> a little burned?
+  </p>
+  <form method="dialog">
+    <button>Close</button>
+  </form>
+</dialog>
 
 Dialogs can give us both modal and non-modal variants, depending on how we open them. In the case of more than one dialog being opened, the most recently opened dialog will appear on top.
 
@@ -85,7 +131,7 @@ You're probably already trying to close the dialogs by clicking away, which is a
 
 This isn't available by default, but can be coded in with CSS and JS.
 
-With thanks to [Chris Ferdinandi](https://gomakethings.com/revisiting-how-to-dismiss-native-html-dialog-elements-when-the-backdrop-is-clicked/) and [Konnor Rogers](https://bsky.app/profile/konnorrogers.com/post/3lxczan6dh22b), the following code works well for _modal_ dialogs only, through the magic of the [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::backdrop):
+With thanks to [Chris Ferdinandi](https://gomakethings.com/revisiting-how-to-dismiss-native-html-dialog-elements-when-the-backdrop-is-clicked/) and [Konnor Rogers](https://bsky.app/profile/konnorrogers.com/post/3lxczan6dh22b) for the inspiration, I find the following code works well for **modal** dialogs only, through the magic of the [`::backdrop`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::backdrop):
 
 ```css
 /* disallow pointer events on the backdrop, so they
@@ -102,7 +148,7 @@ document.addEventListener("click", (event) => {
   // return if none open
   if (!openDialogs) return;
 
-  // check for clicks on documentElement, having been passed through the backdrop
+  // check for clicks on documentElement, passed through the backdrop
   if (event.target === document.documentElement) {
     // close the open dialogs
     openDialogs.forEach((dialog) => dialog.close());
@@ -117,24 +163,35 @@ document.addEventListener("click", (event) => {
       </p>
       <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
-To achieve light dismiss on non-modal dialogs is trickier unfortunately, as they have no backdrop to play with.
-
 <p class="highlight">💡
-  There is some light at the end of the dismiss tunnel with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy">`closedby` property</a>, please feel free to poke any friendly Safari developers you might know! Then it could look as simple as the below:
+  You may have spotted we selected <code>dialog[open]</code> in the JS above.
+  <br>
+  <br>Yes, open dialogs do get <code>open</code> added as an attribute, and it is <em>possible</em> to toggle this to open and close a dialog, but it is <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/open">not recommended</a>. It will always open as a non-modal dialog when done in this way, and may lead to confused or missing <code>close</code> events.
 </p>
-  <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="myVNLmb" data-pen-title="Dialogs with light dismiss (closedby)" data-editable="true" data-user="sarajw" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-      <span>See the Pen <a href="https://codepen.io/sarajw/pen/myVNLmb">
-  Dialogs with light dismiss (closedby)</a> by Sara (<a href="https://codepen.io/sarajw">@sarajw</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-      </p>
-      <script async src="https://public.codepenassets.com/embed/index.js"></script>
+
+To achieve light dismiss on non-modal dialogs is trickier unfortunately, as they have no backdrop to play with...
+
+But there is some light at the end of the dismiss tunnel with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy">`closedby`</a> property, which is very nearly available across the big browsers - so please feel free to poke any friendly Safari developers you might know! Then it could look as simple as the below:
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="myVNLmb" data-pen-title="Dialogs with light dismiss (closedby)" data-editable="true" data-user="sarajw" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+    <span>See the Pen <a href="https://codepen.io/sarajw/pen/myVNLmb">
+Dialogs with light dismiss (closedby)</a> by Sara (<a href="https://codepen.io/sarajw">@sarajw</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
 ## (Some) styling built in
 
-Apart from limiting the Pirate lorem ipsum text width and centering it, no other custom styling has occurred in the above demos. By default, the 'normal' dialog has no backdrop, while the modal dialog does, and is centered vertically as well as horizontally on the page.
+Apart from limiting the piratey lorem ipsum text width and centering it, no other custom styling has occurred in the CodePen demos.
 
-- using dialog[open]
-- ::backdrop
+By default, the normal dialog has no backdrop, while the modal dialog's `::backdrop` has a subtle transparent grey, and the dialog itself is centered vertically as well as horizontally on the page.
+
+I am going to stand on the shoulders of giants here, and suggest some places you can go to look at amazing dialog CSS styling and animation:
+
+- [Have a dialog by Adam Argyle at nerdy.dev](https://nerdy.dev/have-a-dialog)
+- [Getting Creative With HTML Dialog by Andy Clarke at css-tricks.com](https://css-tricks.com/getting-creative-with-html-dialog/)
+- [Animating the Dialog Element by Matthew Morete at frontendmasters.com](https://frontendmasters.com/blog/animating-dialog/)
+
 - ways to freeze the background, pitfalls
 
 ## Accessibility
@@ -148,3 +205,12 @@ Apart from limiting the Pirate lorem ipsum text width and centering it, no other
   <a href="/"> Hello World </a>
 </h1>
 ```
+
+<script>
+  const meetDialogButton = document.getElementById("openMeetDialog");
+  const meetDialog = document.getElementById("meetDialog");
+  meetDialogButton.addEventListener("click", () => meetDialog.showModal());
+  const toastDialogButton = document.getElementById("openToastDialog");
+  const toastDialog = document.getElementById("toastDialog");
+  toastDialogButton.addEventListener("click", () => toastDialog.show());
+</script>
