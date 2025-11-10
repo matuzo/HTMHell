@@ -20,11 +20,17 @@ intro: "<p>Sometimes, a tiny detail can make or break the experience for million
 image: "advent25_6"
 ---
 
-Let&apos;s face it, in web development, we focus on making things for ourselves and if _it works on our computer, it must work everywhere&excl; Right&quest;_ I used to see it rarely when a developer or framework would have the `lang` attribute used in their work.
+When starting a project. Whether it is an application, a mobile app or site, or just a website in general I still see an alarming number of examples where the language attribute is not included in the `<html>` element. Not the `!DOCTYPE`, but the element directly after the DOCTYPE.
 
-I see it more these days, but there are still the issues of accessibility education, new developers entering the field who aren&apos;t aware, framework authors that just don&apos;t make their work accessible, or developers in general not making things accessible.
+I have audited many sites and many frameworks in the past, I have noticed an alarming omission right from the outset when developers are building sites or applications. Especially in the mobile space and let&apos;s face it, in web development we focus on making things for ourselves and if _it works on our computer, it must work everywhere&excl; Right&quest;_
 
-**But sometimes, a tiny detail can make or break the experience for millions of users.** One of these tiny, powerful details is the `lang` attribute in your HTML.
+I see it more prevalent these days. There are surveys out and the issue of accessibility education in university or boot camps still lacks. New developers entering the field who aren&apos;t aware, framework authors that just don&apos;t know, understand, or they just don&apos;make their work accessible.
+
+I am here to discuss the importance of the language attribute in your code.
+
+## The Attribute and the Importance of the Language Used
+
+**Sometimes, a tiny detail can make or break the experience for millions of users.** One of these tiny, powerful details is the `lang` attribute in your HTML.
 
 The `lang` attribute is a simple piece of code that tells _web browsers and screen readers_ what human language your page is written in. For example&colon;
 
@@ -80,7 +86,7 @@ This single small mistake transforms your helpful website into a frustrating, un
 
 Using the `lang` attribute isn't just a friendly suggestion&semi; it&apos;s a **core requirement** for making your website accessible.
 
-The _Web Content Accessibility Guidelines (WCAG)_ is the international standard for web accessibility. WCAG **Success Criterion 3.1.1 (Language of Page)** states that the language of the page must be clear to the computer. This is a level &lsquo;A&rsquo; requirement, which means it&apos;s mandatory for basic accessibility.
+The _[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG22/ "The Web Content Accessibility Guidelines")_ are the international standard for web accessibility. WCAG **[Success Criterion 3.1.1 (Language of Page)](https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html "Success Criteria 3.1.1 - Language of Page")** states that the language of the page must be clear to the computer. This is a level &lsquo;A&rsquo; requirement, which means it&apos;s mandatory for basic accessibility.
 
 If your website fails this check, it is officially considered inaccessible.
 
@@ -89,10 +95,38 @@ If your website fails this check, it is officially considered inaccessible.
 The `lang` attribute helps more than just screen readers&colon;
 
 ### 1. Braille Displays
+
 A refreshable braille display translates text into small patterns of raised bumps. Different languages use different contraction rules in braille (called Grade 2 braille). If the language is not set, the braille translator might use the wrong rules, turning clear text into meaningless gibberish for the braille reader.
 
 ### 2. Automated Translation
-When a user relies on tools like Google Translate or a browser&apos;s built-in translation feature, telling the tool the source language (the language you wrote it in) ensures a much more accurate translation. If the source language is unclear, the translation quality drops sharply.
+
+When a user relies on tools like Google Translate or a browser&apos;s built-in translation feature, telling the tool the source language (the language you wrote it in) ensures a much more accurate translation. If the source language is unclear, the translation quality drops sharply. [https://www.matuzo.at/blog/lang-attribute/](An example can be found here).
+
+### 3. Quotation Marks
+
+The `lang` attribute helps the browser and other user agents select the correct typographical glyphs for quotation marks, especially when it comes to when the `<q>` and `<blockquote>` elements are used (when styled using CSS generated content such as `content: open-quote`). For example:
+
+- In English `lang="en"`, quotes are typically &ldquo;double quotes&rdquo;.
+
+- In German `lang="de"`, they are often rendered as &bdquo;low-9 quotes&#8223;.
+
+- In French `lang="fr"`, they use &laquo; guillemets &raquo;.
+
+While less related to _visual_ quotation marks, providing the correct language helps assistive technologies **pronounce** the surrounding text accurately, ensuring a fluid and comprehensible reading experience.
+
+Not providing the correct language may cause browsers to default to the user's system language or a neutral setting for quotation marks  which may not match the document's language which results in incorrect or confusing typography (e.g., using English quote marks for German language).
+
+Without a declared language, a screen reader may attempt to read the text using incorrect phonetic rules, voice, and accent. Which makes the content sound like gibberish and can make it incomprehensible for users who rely on audio output.
+
+### 4. Hyphenation
+
+Proper hyphenation is entirely language-dependent. Hyphenation rules can be complex and unique to each language. when CSS is used, `hyphens: auto`, the browser or user agent relies on the `lang` attribute to load the appropriate hyphenation dictionary and apply correct linguistic rules which can improve text flow and readability. Especially in justified or narrow columns.
+
+For example, a long compound word in German, `lang="de"`, will be broken according to German rules such as **Rechtsschutzversicherungsgesellschaften** (which means, insurance companies providing legal protection).
+
+Most browsers do not provide automatic hyphenation if the language is not declared. This can not only lead to unsightly text blocks with excessive white space between words, but also horizontal scrolling or overflow on mobile devices which severely impacts readability and layout stability.
+
+If the browser attempts to guess the language or uses the wrong default, it could apply the incorrect hyphenation rules, which breaks words in places that are linguistically wrong, which, in turn, confuses the reader.
 
 ## What About Pages with Two Languages?
 
@@ -144,6 +178,7 @@ For most simple apps (React, Angular, plain HTML), you will open your main `inde
 ```
 
 ## Conclusion
+
 The `lang` attribute is a tiny line of code that provides **universal access to your content**. It&apos;s arguably the easiest, fastest, and most impactful accessibility fix you can make on any website.
 
 By correctly setting the language, you ensure that everyone has equal access to your content. Regardless of whether they use a screen reader, braille display, or translation tool to do so, their tools have the fundamental information they need to do their jobs correctly. It&apos;s a simple commitment that makes the web better for everyone.
