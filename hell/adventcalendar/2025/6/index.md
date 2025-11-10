@@ -20,9 +20,9 @@ intro: "<p>Sometimes, a tiny detail can make or break the experience for million
 image: "advent25_6"
 ---
 
-When starting a project. Whether it is an application, a mobile app or site, or just a website in general I still see an alarming number of examples where the language attribute is not included in the `<html>` element. Not the `!DOCTYPE`, but the element directly after the DOCTYPE.
+When starting a project. Whether it is an application, a mobile app or site, or just a website in general I still see an alarming number of examples where the language attribute is not included in the `<html>` element.
 
-I have audited many sites and many frameworks in the past, I have noticed an alarming omission right from the outset when developers are building sites or applications. Especially in the mobile space and let&apos;s face it, in web development we focus on making things for ourselves and if _it works on our computer, it must work everywhere&excl; Right&quest;_
+I have noticed an alarming omission right from the outset when developers are building sites or applications. Especially in the mobile space and let&apos;s face it, in web development we focus on making things for ourselves and if _it works on our computer, it must work everywhere&excl; Right&quest;_
 
 I see it more prevalent these days. There are surveys out and the issue of accessibility education in university or boot camps still lacks. New developers entering the field who aren&apos;t aware, framework authors that just don&apos;t know, understand, or they just don&apos;make their work accessible.
 
