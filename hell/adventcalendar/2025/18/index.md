@@ -114,7 +114,7 @@ Make sure that:
 
 ### Useful tools
 
-Two of my favourite ways to visualising headings are:
+Two of my favourite ways to visualise headings are:
 
 - the Headings bookmarklet at [Accessibility Bookmarklets](https://accessibility-bookmarklets.org/install.html)
 - the Headings toggle (in Ad hoc tools) of the [Accessibility Insights for Web](https://accessibilityinsights.io/docs/web/overview/) extension.
