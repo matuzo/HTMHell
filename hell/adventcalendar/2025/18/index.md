@@ -32,10 +32,10 @@ Let's say we have a page explaining colours, RGB-style. We might have headings m
 - `<h1>`Colours
   - `<h2>`Red
   - `<h2>`Green
-    - `<h3>`Your new favourite colour!
+    - `<h3>`Make it pop!
   - `<h2>`Blue
 
-In this case "Your new favourite colour!" is just some big text, designed to be eye-catching. It's not the start of a section of content.
+In this case "Make it pop!" is just some big text, designed to be eye-catching. It's not the start of a section of content.
 
 ### How to fix it
 
