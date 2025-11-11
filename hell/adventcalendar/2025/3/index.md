@@ -14,9 +14,9 @@ intro: "<p>The Speculation Rules API is becoming even better with improved mobil
 image: "advent25_3"
 ---
 
-The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculation_Rules_API) allows you to speed up future navigations by prefetching or even prerendering URLS in advance of a user actually clicking a link. When the link is clicked, the speculation is used and the user experiences a faster load than if no speculation was used.
+The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculation_Rules_API) allows you to speed up future navigations by prefetching or even prerendering URLS in advance of a user actually clicking a link. When the link is clicked, the speculation is used, and the user experiences a faster load than if no speculation was used.
 
-[https://schepp.dev/](Schepp) covered [the API in last year's post](/adventcalendar/2024/28/) and discussed the `eagerness` value which allowed you to, for example, hover over a link to speculatively prerender it with the simple addition of this rule to your HTML:
+[Schepp](https://schepp.dev/) covered [the API in last year's post](/adventcalendar/2024/28/) and discussed the `eagerness` value which allowed you to, for example, hover over a link to speculatively prerender it with the simple addition of this rule to your HTML:
 
 ```html
 <script type="speculationrules">
@@ -29,21 +29,21 @@ The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculati
 </script>
 ```
 
-This hover technique is common functionality offered by libraries, plugins and frameworks but now this is baked right into the browser. Chromium-based browsers only for now but it is being worked on by Safari and Firefox, and as a progressive enhancement nothing is broken on non-supporting browsers — they just don't benefit from the performance improvement.
+This hover technique is a common functionality offered by libraries, plugins, and frameworks, but now this is baked right into the browser. Chromium-based browsers only for now, but it is being worked on by Safari and Firefox, and as a progressive enhancement, nothing is broken on non-supporting browsers — they just don't benefit from the performance improvement.
 
-Using mouse hover as a signal works well on desktop, but what about mobile where "hover" is not a really a thing? At least in browser terms — I'm sure many of us have hovered over a link with out fingers but as that is not detected by the browser as an event, we can't act upon it.
+Using mouse hover as a signal works well on desktop, but what about mobile, where "hover" is not really a thing? At least in browser terms — I'm sure many of us have hovered over a link without fingers, but as that is not detected by the browser as an event, we can't act upon it.
 
-Well solving that is just one of many improvements the API has seen in the last year that we'll cover in this post.
+Well, solving that is just one of many improvements the API has seen in the last year that we'll cover in this post.
 
 ## Improved mobile viewport heuristics
 
 Since hover does not exist, we have updated the `eagerness: moderate` on mobile to instead look at the following heuristics:
 
 - Anchor links within 30% vertical distance from the previous pointer down.
-- Anchor links at least 0.5x as big as the largest anchor in the viewport.
+- Anchor links at least 0.5× as big as the largest anchor in the viewport.
 - The browser waits 500 milliseconds after the user stopped scrolling.
 
-The aim of this is to try to avoid, as much as possible, over-speculating links users are less likely to click on. For example, because they are still scrolling, or they are very small links (terms and conditions and the like!).
+The aim is to avoid, as much as possible, over-speculating links that users are less likely to click. For example, because they are still scrolling, or they are very small links (terms and conditions and the like!).
 
 You can see this in action in the following video where the [Web Almanac](https://almanac.httparchiv.org) prerenders same-origin links with `moderate` eagerness:
 
