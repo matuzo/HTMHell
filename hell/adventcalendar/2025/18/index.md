@@ -17,7 +17,7 @@ image: "advent25_18"
 
 We can make our pages easier to understand by using headings to give our pages a clear shape. Our users might visually scan the page, use an extension or bookmarklet to list the headings, navigate using assistive technology like a screen reader, or ask AI for a summary of the page. High quality headings can make things better for everyone.
 
-In my day job as a Digital Accessibility Consultant, there are a couple of ways that I've seen things go a bit... wonky. Let's go through the three most common ways, and how to fix them.
+In my day job as a Digital Accessibility Consultant, there are a couple of ways that I've seen things go a bit... wonky. Let's go through the three most common issues, and how to fix them.
 
 ## Text *should not* be a heading
 
