@@ -86,10 +86,9 @@ The list of headings should read a bit like a table of contents for the page.
 
 There are other aspects of wonkiness that may occur. Keep a watch for these too!
 
-- **Heading text that doesn't make sense.** The heading text should describe and introduce the content that follows it.
-- **No headings at all on the page.** There's probably some text that should be a heading.
+- **Heading text that doesn't describe the content that follows.** The words of the heading must introduce the section.
 - **`<h1>` shenanigans: no `<h1>` element, or multiple `<h1>` elements.** Just one `<h1>` element, please! It should describe the topic or purpose of page.
-- **Skipped heading levels**, for example: jumping from an `<h2>` element to an `<h4>` element. Keep the nesting and order correct: `<h3>` elements for subsections of a section with an `<h2>` heading.
+- **Skipped heading levels**, for example: jumping from an `<h2>` element to an `<h4>` element, without an `<h3>` between them. Keep the nesting and order correct: `<h3>` elements for subsections of a section with an `<h2>` heading.
 
 ## Accessibility nerd corner
 
