@@ -72,7 +72,7 @@ As well as the improvements to the `moderate` eagerness, the `eager` value has a
 
 On desktop, `moderate` rules trigger after a 10 millisecond hover, and on mobile we consider ALL links in the viewport after the user has stopped scrolling for 100 milliseconds, rather than the more restrictive set of heuristics above.
 
-One common technique is to prefetch with `eager` and then upgrade to a `prerender` with `moderate` when you have more signals that the users may click on the link:
+One common technique is to prefetch the HTML document with `eager` value  as that  is often relatively cheap. Then upgrade this `prefetch` to a full `prerender` on `moderate` when you have more signals that the users may click on the link, and so think it's worthwhile to speculatively start to render the page in full, as prerender has more costs including downloading subresources and using memory and CPU needed to render the page.
 
 ```html
 <script type="speculationrules">
