@@ -23,7 +23,7 @@ In my day job as a Digital Accessibility Consultant, there are a couple of ways 
 
 Ah, this one's a real classic! When we have some big and bold text, for Design Reasons, we sometimes take a bit of a shortcut and mark it up as a heading. Let's say an `<h2>`, because it seems about the right size, or that’s what it says in the design file. But here's the thing: this text doesn't introduce or describe the content that follows. It just "needs" to be big for the look of it. 
 
-This is an issue because when things are marked up as headings that are not headings, it makes the page harder to understand. For example: users of assistive technology like screen readers hear things read as headings of section that are not headings.
+This is an issue because when things are marked up as headings that are not headings, it makes the page harder to understand. Users of assistive technology like screen readers hear things read as headings of section that are not headings.
 
 ### An example
 
@@ -45,7 +45,7 @@ Stop using HTML and start using CSS. Instead of using a heading element, using a
 
 Now let's come from the other side. We look at a design and see some bold text with some big, some bigger, some biggest. Sweet! We fling down a bunch of `<div>` elements, add some styles and we're done. It looks just like the design, chef's kiss, and so on. But here's the thing: this text looks like a heading, but doesn't have any semantics.
 
-This is an issue because when things that are headings aren't marked up as headings, it makes the page harder to understand. For example: screen readers won't announce it as a heading with its level, making it hard to understand the content and structure when listening to all the headings.
+This is an issue because when text is marked up as a heading even though it isn’t one, it makes the page harder to understand. Screen readers won't announce it as a heading with its level, making it hard to understand the content and structure when listening to all the headings.
 
 ### An example
 
