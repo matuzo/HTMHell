@@ -60,19 +60,19 @@ You can see this in action in the following video where the [Web Almanac](https:
   }
 </script>
 
-In the video you can see as you scroll down the page, links are being successfully prerendered ready for the user to browse to the page.
+In the video, you can see that as you scroll down the page, links are being successfully prerendered, ready for the user to browse to the page.
 
-<p class="highlight"><strong>Note:</strong> Speculating has a cost. To both your users, and for sites with potential increased traffic and and resulting infrastructure usage. Always weigh those costs with the benefit to the user.</p>
+<p class="highlight"><strong>Note:</strong> Speculating has a cost. To both your users and for sites with potential increased traffic and resulting infrastructure usage. Always weigh those costs against the benefit to the user.</p>
 
-To conserve memory Chrome keeps up to two speculations in memory at a time. As the users scrolls further and new links — which are more likely to be click on — enter the viewport the old prerenders are cancelled. Should these links be re-speculated (for example, but the user scroll back up), then they will be fetched from the HTTP cache and so prerender even faster.
+To conserve memory, Chrome keeps up to two speculations in memory at a time. As the user scrolls further and new links — which are more likely to be clicked on — enter the viewport, the old prerenders are cancelled. Should these links be re-speculated (for example, but the user scrolls back up), then they will be fetched from the HTTP cache and so prerender even faster.
 
 ## `eager` eagerness improvements
 
-As well as the improvements to the `moderate` eagerness, the `eager` value has also been recently changed to offer an option somewhere between `immediate` (where loinks are speculated as soon as possible) and `moderate`.
+As well as the improvements to the `moderate` eagerness, the `eager` value has also been recently changed to offer an option somewhere between `immediate` (where links are speculated as soon as possible) and `moderate`.
 
-For desktop, `moderate` rules will trigger after a 10 millisecond hover, and for mobile we consider ALL links in the viewport after the user has stopped scrolling for 100 milliseconds rather than the more restrictive set of heuristics above.
+On desktop, `moderate` rules trigger after a 10 millisecond hover, and on mobile we consider ALL links in the viewport after the user has stopped scrolling for 100 milliseconds, rather than the more restrictive set of heuristics above.
 
-One common technique is to prefetch with `eager` and then upgrade to a `prerender` with `moderate` when you have more signals the users may click on the link:
+One common technique is to prefetch with `eager` and then upgrade to a `prerender` with `moderate` when you have more signals that the users may click on the link:
 
 ```html
 <script type="speculationrules">
@@ -93,17 +93,17 @@ In addition you can also restrict the links considered for speculating using the
 
 ## Further improvements to the API
 
-I'll close out with a sneak peak into the future as one further improvement being worked on is a middle group between the `prefetch` and `prerender`. This is useful for those sites concerned with any negative impact with fully prerendering a page.
+I'll close out with a sneak peek into the future, as one further improvement being worked on is a middle group between the `prefetch` and `prerender`. This is useful for those sites concerned with any negative impact with fully prerendering a page.
 
-A new **Prender Until Script** option is currently available behind a flag in Chrome (`chrome://flags/#prerender-until-script`). Like it's name suggests, will start prerendering a page but then pause when it encounters a synchronous `<script>` element. Scripts with the `async` or `defer` attribute (or `module` scripts which are `defer` by default) will be downloaded but not executed.
+A new **Prender Until Script** option is currently available behind a flag in Chrome (`chrome://flags/#prerender-until-script`). As its name suggests, it will start prerendering a page, but pause when it encounters a synchronous `<script>` element. Scripts with the `async` or `defer` attribute (or `module` scripts which are `defer` by default) will be downloaded but not executed.
 
 This means:
 
 - Pages without any JavaScript can be fully prerendered.
 - Pages with only async/deferred JavaScript can be fully prerendered, with JavaScript executed on navigation.
-- Pages with only sync `<script>` JavaScript can start prerender but pause before any `<script>` causes any intended consequences. They will continue to download subresources (thanks to the [preload scanner](https://web.dev/articles/preload-scanner)) so still have a big performance benefit over `prefetch`.
+- Pages with only sync `<script>` JavaScript can start prerender, but pause before any `<script>` causes any intended consequences. They will continue to download subresources (thanks to the [preload scanner](https://web.dev/articles/preload-scanner)), so they still have a significant performance benefit over `prefetch`.
 
-After enabling the flag, you can use this new mode in exactly the same way as `preftech` and `prerender`:
+After enabling the flag, you can use this new mode in exactly the same way as `prefetch` and `prerender`:
 
 ```html
 <script type="speculationrules">
@@ -116,8 +116,8 @@ After enabling the flag, you can use this new mode in exactly the same way as `p
 </script>
 ```
 
-This enhancement should be released next year, but in the mean time have a place and <a href="https://bsky.app/profile/tunetheweb.com">let me know</a> how you get on! 
+This enhancement should be released next year, but in the meantime, have a place and <a href="https://bsky.app/profile/tunetheweb.com">let me know</a> how you get on! 
 
 ## Conclusion
 
-The Speculation Rules API continues to improve with new options and features to help site owners deliver fast, HTML-driven, websites! With our first signs of cross-browser adoption of the API, I'd speculate (boom! boom!) 2026 will be another bumper year so the API — and for users of sites that implement it.
+The Speculation Rules API continues to improve with new options and features to help site owners deliver fast, HTML-driven websites! With our first signs of cross-browser adoption of the API, I'd speculate (boom! boom!) 2026 will be another bumper year for the API and for users of sites that implement it.
