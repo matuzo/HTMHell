@@ -94,8 +94,8 @@ There are other aspects of wonkiness that may occur. Keep a watch for these too!
 
 The big three issues we started with all fall under [Web Content Accessibility Guidelines Success Criteria 1.3.1 Info and Relationships (A)](https://www.w3.org/TR/WCAG22/#info-and-relationships): "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text."
 
-- "Text should not be a heading" and "Text should be a heading" are "If it looks like a thing, it must be the thing in code too"
-- "Headings do not reflect the content structure" are "If it looks nested and order, it must be nested and ordered in code too"
+- The "Text should not be a heading" and "Text should be a heading" issues are about the information.
+- The "Headings do not reflect the content structure" issue is about structure and relationships.
 
 When we spot these issue in the course of an [Accessibility Assessment](https://intopia.digital/services/accessibility-usability-testing/), we usually log them as Medium Severity: it causes problems or frustrations for users.
 
