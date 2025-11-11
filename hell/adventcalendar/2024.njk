@@ -13,7 +13,7 @@ page__class: calendar
   {% set days = collections.advent2024 %}
   <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
     <div class="acalendar__number">
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2024/{{ num }}"{% endif %}>{{ num }}</a>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2024/{{ num }}/"{% endif %}>{{ num }}</a>
     </div>
 
     <div class="acalendar__title">
