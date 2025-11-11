@@ -43,7 +43,7 @@ Stop using HTML and start using CSS. Instead of using a heading element, using a
 
 ## Text *should* be a heading
 
-Now let's come from the other side. We look at a design and see some bold text with some big, some bigger, some biggest. Sweet! We fling down a bunch of `<div>` elements, add some styles and we're done. It looks just like the design, chef's kiss, and so on. But here's the thing: this text looks like a heading, but doesn't have any semantics.
+Now let's come from the other side. We look at a design and see some bold text. Some big, some bigger, some biggest. Sweet! We fling down a bunch of `<div>` elements, add some styles and we're done. It looks just like the design, chef's kiss, and so on. But here's the thing: this text looks like a heading, but doesn't have any semantics.
 
 This is an issue because when text is marked up as a heading even though it isn’t one, it makes the page harder to understand. Screen readers won't announce it as a heading with its level, making it hard to understand the content and structure when listening to all the headings.
 
