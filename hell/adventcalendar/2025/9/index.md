@@ -73,7 +73,7 @@ We're probably more familiar with the modal variety of dialog, intended to (hope
   </form>
 </dialog>
 
-Dialogs can give us both modal and non-modal variants, depending on how we open them. In the case of more than one dialog being opened, the most recently opened dialog will appear on top.
+Dialogs can give us both modal and non-modal variants, depending on how we open them. In the case of more than one dialog being opened (assuming no close action happening on the previous dialogs), the most recently opened dialog will appear on top.
 
 ## Opening with JS
 
@@ -182,7 +182,7 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 
 ## (Some) styling built in
 
-Apart from limiting the piratey lorem ipsum text width and centering it, no other custom styling has occurred in the CodePen demos.
+Apart from limiting the piratey _lorem ipsum_ column width and centering it, no other custom styling has occurred in the CodePen demos.
 
 By default, the normal dialog has no backdrop, while the modal dialog's `::backdrop` has a subtle transparent grey, and the dialog itself is centered vertically as well as horizontally on the page.
 
@@ -192,19 +192,65 @@ I am going to stand on the shoulders of giants here, and suggest some places you
 - [Getting Creative With HTML Dialog by Andy Clarke at css-tricks.com](https://css-tricks.com/getting-creative-with-html-dialog/)
 - [Animating the Dialog Element by Matthew Morete at frontendmasters.com](https://frontendmasters.com/blog/animating-dialog/)
 
-- ways to freeze the background, pitfalls
+## Scrollin', scrollin', scrollin'...
+
+That by default the website under your modal is still scrollable may or may not bother you. It bothers _me_!
+
+There are ways and means to stop that happening, thankfully.
+
+A classic and elegant way made possible with the sort-of-new-but-well-supported [`:has()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has) pseudo-class and [`scrollbar-gutter`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scrollbar-gutter) property is the following:
+
+```css
+/* Check whether any dialogs are open */
+html:has(dialog[open]) {
+  /* Poof! No more scrolling! */
+  overflow: hidden;
+  /* keep the scrollbar width */
+  scrollbar-gutter: stable;
+}
+```
+
+The `scrollbar-gutter` property keeps the text on the page from reflowing with a jerk, when it suddenly becomes one scrollbar-width wider as the rest of the page beyond the viewport is hidden.
+
+<p class="highlight">💡
+  If you have both non-modal and modal dialogs on your page, you may want to make sure this selector only triggers on open _modal_ dialogs.
+</p>
+
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="OPMzjBY" data-pen-title="Modal dialog with scroll-stop" data-editable="true" data-user="sarajw" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+      <span>See the Pen <a href="https://codepen.io/sarajw/pen/OPMzjBY">
+  Modal dialog with scroll-stop</a> by Sara (<a href="https://codepen.io/sarajw">@sarajw</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+      </p>
+      <script async src="https://public.codepenassets.com/embed/index.js"></script>
+
+You've may have noticed - if you can see a scrollbar - that the scrollbar gutter isn't taking on the backdrop style. Yeah. Go ahead and comment out the `scrollbar-gutter: stable;` line in the CSS, and open/close the modal a few times - see whether the scrollbar appearing and disappearing bothers you more. It might not - but it bothers _me_!
+
+Reinstate `scrollbar-gutter: stable;`, then scroll down a little in the CSS of the above CodePen and uncomment the following:
+
+```css
+dialog[open]::backdrop {
+  background-color: transparent;
+  backdrop-filter: blur(0.25rem);
+}
+```
+
+Here I've dropped the default shading of the `::backdrop` and applied a blur instead - meaning the gutter blends in, assuming the gutter and page are both the same colour. You might even have some fun with seeing how the scrollbars change with `color-scheme`...
+
+Honestly though, different browsers and OSes and dark and light modes and device types make scroll bars look different all over the place.
+
+On a MacBook whether you even _see_ the scrollbar when you're not actively scrolling depends on whether you have an external pointing device connected or not! So many people now browse the web with mobile devices, where the scrollbars and gutters are largely hidden - so it likely isn't worth spending too much effort trying to "fix" this. Trust me. Don't waste your time on it, I've wasted enough for both of us!
 
 ## Accessibility
 
-- focus concerns
+While a lot of this just works for everyone, there is some discussion about where to put the focus, when a user opens a modal. For a sighted user with a pointing device, you probably don't notice where the focus lands - but it's very important if you're a screen reader user, as the focus determines where in a document the reader lands and begins reading from.
 
-<p class="highlight"><strong>Note:</strong> Some text.</p>
+I heartily recommend reading [Where to Put Focus When Opening a Modal Dialog](https://adrianroselli.com/2025/06/where-to-put-focus-when-opening-a-modal-dialog.html?Theme=Light) by Adrian Roselli to help you decide where the focus will land on your dialog. Then read [O dialog focus, where art thou?](https://www.matuzo.at/blog/2023/focus-dialog/) to help you consistently get it where you want it.
 
-```html
-<h1>
-  <a href="/"> Hello World </a>
-</h1>
-```
+<p class="highlight">
+  If you read the MDN page on dialogs and are bothered by <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#attributes">this warning about <code>tabindex</code> on <code>&lt;dialog&gt;</code></a>, you may either take Adrian or Manuel's word that it's OK, or you can enjoy this deep dive into <a href="https://www.matuzo.at/blog/2025/whats-an-interactive-element">What's an interactive element?</a>. Enjoy!
+</p>
+
+## Dialogs discovered
 
 <script>
   const meetDialogButton = document.getElementById("openMeetDialog");
