@@ -78,7 +78,8 @@ I like to start from the page as a whole and work my way down.
 2. What are the sections of the page? The name of each section should be in an `<h2>` element, at the start of the section.
 3. What (if any) are the subsections of each section? The name of each subsection should be in an `<h3>` element, at the start of the subsection.
 4. What (if any) are the sub-subsections of each subsection? The name of each sub-subsection should be in an `<h4>` element, at the start of the sub-subsection.
-5. And so on, down to an `<h6>` element. Although if you've reached an `<h6>` element, it might be worth reviewing the content and seeing if there's Too Much Stuff there!
+
+And we keep going, down to an `<h6>` element. Although if you've reached an `<h6>` element, it might be worth reviewing the content and seeing if there's Too Much Stuff there!
 
 The list of headings should read a bit like a table of contents for the page.
 
