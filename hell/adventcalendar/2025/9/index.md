@@ -223,7 +223,7 @@ The `scrollbar-gutter` property keeps the text on the page from reflowing with a
       </p>
       <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
-You've may have noticed - if you can see a scrollbar - that the scrollbar gutter isn't taking on the backdrop style. Yeah. Go ahead and comment out the `scrollbar-gutter: stable;` line in the CSS, and open/close the modal a few times - see whether the scrollbar appearing and disappearing bothers you more. It might not - but it bothers _me_!
+You've may have noticed - if you can see a scrollbar - that the scrollbar gutter isn't taking on the backdrop style. Yeah. Go ahead and comment out the `scrollbar-gutter: stable;` line in the CSS, open/close the modal a few times, and see whether the scrollbar appearing and disappearing bothers you more. It might not - but it bothers _me_!
 
 Reinstate `scrollbar-gutter: stable;`, then scroll down a little in the CSS of the above CodePen and uncomment the following:
 
@@ -251,6 +251,12 @@ I heartily recommend reading [Where to Put Focus When Opening a Modal Dialog](ht
 </p>
 
 ## Dialogs discovered
+
+I hope this has been enough to convince you that its worth using dialogs, if you aren't already, or maybe you've found a couple of interesting tidbits you otherwise werent aware of.
+
+HTML is still changing and improving - it's not at all archaic or just there to provide divs into which we can inject all the things with JavaScript (though of course you can still do that, just please inject accessible elements)!
+
+Feel free to contact me on the social medias to start a, uh, dialog.
 
 <script>
   const meetDialogButton = document.getElementById("openMeetDialog");
