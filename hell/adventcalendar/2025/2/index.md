@@ -420,4 +420,4 @@ But again, for this to really have any effect, several things must come together
 
 So we can conclude: It is important to know about `<plaintext>`. But if we follow tried and tested security rules (for example the [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)), we will remain safe from this ancient evil.
 
-_I’d like to thank [Tom Schuster](https://hachyderm.io/@evilpie), Christian Vogl, and Daniela Strehl for valuable input to this article and [Elise Hein](https://github.com/elisehein) for an extremely helpful review._
+_I’d like to thank [Tom Schuster](https://hachyderm.io/@evilpie), Christian Vogl, and Daniela Strehl for valuable input to this article and [Elise Hein](https://elisehe.in/) for an extremely helpful review._
