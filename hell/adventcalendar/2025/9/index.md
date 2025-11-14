@@ -125,7 +125,7 @@ document.querySelector("dialog").requestClose();
 
 This [`requestClose()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/requestClose) is a newly available addition, allowing access to the [cancel event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/cancel_event), otherwise thrown before the [close event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event) when exiting a modal with the `Esc` key. This may be useful to create _"are you sure?"_ type interactions. (Please do so with care if you must! We'll have no deceptive patterns here..)
 
-### Light dimissal
+### Light dismissal
 
 You're probably already trying to close the dialogs by clicking away, which is a common pattern and is often referred to as _light dismiss_.
 
