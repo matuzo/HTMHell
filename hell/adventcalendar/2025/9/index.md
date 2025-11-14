@@ -54,9 +54,12 @@ We're probably more familiar with the modal variety of dialog, intended to (hope
   closedby="any"
   style="
     margin: 0;
-    border: 0.25em solid saddlebrown;
+    border-width: 0.25em 1em 1em 0.25em;
+    border-style: solid;
+    border-radius: 1.5em 2em 0.5em 1em;
+    border-color: saddlebrown;
     background-color: burlywood;
-    border-radius: 2em 2em 0.5em 0.5em;
+    box-shadow: 1em 1em 1.5em -0.5em #8888;
     rotate: 10deg;
     position: fixed;
     left: 3em;
@@ -143,8 +146,8 @@ dialog::backdrop {
 
 ```js
 document.addEventListener("click", (event) => {
-  // find any open dialogs
-  const openDialogs = document.querySelectorAll("dialog[open]");
+  // find any open modal dialogs
+  const openDialogs = document.querySelectorAll("dialog[open]:modal");
   // return if none open
   if (!openDialogs) return;
 
@@ -169,7 +172,9 @@ document.addEventListener("click", (event) => {
   <br>Yes, open dialogs do get <code>open</code> added as an attribute, and it is <em>possible</em> to toggle this to open and close a dialog, but it is <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/open">not recommended</a>. It will always open as a non-modal dialog when done in this way, and may lead to confused or missing <code>close</code> events.
 </p>
 
-To achieve light dismiss on non-modal dialogs is trickier unfortunately, as they have no backdrop to play with...
+I am selecting `:modal` dialogs only in the code and demonstration above - but you can omit this if you want the click-away to also close any _non_-modal dialogs that happen to be open at the same time.
+
+To achieve light dismiss on non-modal dialogs alone is trickier unfortunately, as they have no backdrop to play with...
 
 But there is some light at the end of the dismiss tunnel with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy">`closedby`</a> property, which is very nearly available across the big browsers - so please feel free to poke any friendly Safari developers you might know! Then it could look as simple as the below:
 
@@ -201,8 +206,8 @@ There are ways and means to stop that happening, thankfully.
 A classic and elegant way made possible with the sort-of-new-but-well-supported [`:has()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has) pseudo-class and [`scrollbar-gutter`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scrollbar-gutter) property is the following:
 
 ```css
-/* Check whether any dialogs are open */
-html:has(dialog[open]) {
+/* Check whether any modal dialogs are open */
+html:has(dialog[open]:modal) {
   /* Poof! No more scrolling! */
   overflow: hidden;
   /* keep the scrollbar width */
@@ -213,7 +218,7 @@ html:has(dialog[open]) {
 The `scrollbar-gutter` property keeps the text on the page from reflowing with a jerk, when it suddenly becomes one scrollbar-width wider as the rest of the page beyond the viewport is hidden.
 
 <p class="highlight">💡
-  If you have both non-modal and modal dialogs on your page, you may want to make sure this selector only triggers on open _modal_ dialogs.
+  If you have both non-modal and modal dialogs on your page, be sure to use <code>:modal</code> in your selector so this only triggers on open <em>modal</em> dialogs.
 </p>
 
 <p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="OPMzjBY" data-pen-title="Modal dialog with scroll-stop" data-editable="true" data-user="sarajw" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
@@ -234,7 +239,7 @@ dialog[open]::backdrop {
 }
 ```
 
-Here I've dropped the default shading of the `::backdrop` and applied a blur instead - meaning the gutter blends in, assuming the gutter and page are both the same colour. You might even have some fun with seeing how the scrollbars change with `color-scheme`...
+Here I've dropped the default shading of the `::backdrop` and applied a blur instead - meaning the gutter blends in, assuming the gutter and page are both the same colour. You might even have some fun seeing how the scrollbars change with [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme)...
 
 Honestly though, different browsers and OSes and dark and light modes and device types make scroll bars look different all over the place.
 
@@ -247,16 +252,16 @@ While a lot of this just works for everyone, there is some discussion about wher
 I heartily recommend reading [Where to Put Focus When Opening a Modal Dialog](https://adrianroselli.com/2025/06/where-to-put-focus-when-opening-a-modal-dialog.html?Theme=Light) by Adrian Roselli to help you decide where the focus will land on your dialog. Then read [O dialog focus, where art thou?](https://www.matuzo.at/blog/2023/focus-dialog/) to help you consistently get it where you want it.
 
 <p class="highlight">
-  If you read the MDN page on dialogs and are bothered by <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#attributes">this warning about <code>tabindex</code> on <code>&lt;dialog&gt;</code></a>, you may either take Adrian or Manuel's word that it's OK, or you can enjoy this deep dive into <a href="https://www.matuzo.at/blog/2025/whats-an-interactive-element">What's an interactive element?</a>. Enjoy!
+  If you read the MDN page on dialogs and are bothered by <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#attributes">this warning about <code>tabindex</code> on <code>&lt;dialog&gt;</code></a>, you may either take Adrian or Manuel's word that it's OK, or you can enjoy Manuel's deep dive into <a href="https://www.matuzo.at/blog/2025/whats-an-interactive-element">What's an interactive element?</a>. Enjoy!
 </p>
 
 ## Dialogs discovered
 
-I hope this has been enough to convince you that its worth using dialogs, if you aren't already, or maybe you've found a couple of interesting tidbits you otherwise werent aware of.
+I hope this has been enough to convince you that it's worth using dialogs, if you aren't already, or maybe you've found a couple of interesting tidbits you otherwise weren't aware of.
 
-HTML is still changing and improving - it's not at all archaic or just there to provide divs into which we can inject all the things with JavaScript (though of course you can still do that, just please inject accessible elements)!
+HTML is still changing and improving - it's not at all archaic or just there to provide &lt;div&gt;s into which we can inject all the things with JavaScript (though of course you can still do that, just please inject accessible elements)!
 
-Feel free to contact me on the social medias to start a, uh, dialog.
+Feel free to contact me on the [social medias](https://sarajoy.dev/#find) to start a, uh, dialog.
 
 <script>
   const meetDialogButton = document.getElementById("openMeetDialog");
