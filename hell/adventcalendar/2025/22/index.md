@@ -92,7 +92,7 @@ Inspired by this newfound responsibility, authors open the lexicon of HTML eleme
 </section>
 ```
 
-To be fair, this is to be expected of anyone learning a new language, however, a problem on the web is that authors delude themselves into thinking that they are “writing semantic HTML,” therefore gaining all of the benefits that are understood to come with that like accessibility, and they never advance past that stage.
+To be fair, this is to be expected of anyone learning a new language. However, a problem on the web is that authors delude themselves into thinking that they are “writing semantic HTML,” therefore gaining all of the benefits that are understood to come with that like accessibility, and they never advance past that stage.
 
 It’s like when my own child confidently declares, after learning a handful of words in Japanese, “I know Japanese.” It’s cute and I’m not going to argue with it, because they’re a child.
 
@@ -133,7 +133,7 @@ Tag names are not enough for us to understand what an element is for. We need to
 
 ### Why follow the HTML Standard?
 
-Now, I’m not your god and neither is the HTML Standard. You don’t have to follow it if you don’t want to. If you choose to use HTML elements for how you perceive them, there will more than likely be undesirable consequences that you cannot control. Consequences like assistive technologies not working well with your documents which can also lead to legal consequences if there are accessibility laws where you live. Who knows? If you don’t follow the HTML Standard, maybe your documents might just end up [in hell](https://www.htmhell.dev/).
+I’m not your god, and neither is the HTML Standard – but if you choose to use HTML elements for how you perceive them, things break in ways you can’t control. Assistive tech, legal requirements, user expectations... it all hinges on the platform’s actual definitions. Ignore them and, well, your documents might just end up [in hell](https://www.htmhell.dev/).
 
 ### Some elements are “more semantic” than others
 
