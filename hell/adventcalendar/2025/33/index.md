@@ -35,7 +35,7 @@ So you start using `<abbr>` everywhere. However, after a while you get feedback 
 Why? According to MDN, you did everything right.
 
 # The problem with abbr
-The biggest problem with the `<abbr>` element is that it behaves completely inconsistently across browsers, and some assistive technologies do not read parts of it at all.  
+The biggest problem with the `<abbr>` element is that its `title` attribute behaves completely inconsistently across browsers, and some assistive technologies do not read parts of it at all.
 Adrian Roselli has already run extensive tests on his blog article “[Using abbr Element with title Attribute](https://adrianroselli.com/2024/01/using-abbr-element-with-title-attribute.html#Testing)” showing that the `title` attribute on `<abbr>` elements is not announced by assistive technologies.
 
 On top of that, the `title` attribute is a problem on touch devices — there is simply no way to access it on a smartphone. It only appears on hover, and hover does not exist on touchscreens.
