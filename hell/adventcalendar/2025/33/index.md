@@ -30,7 +30,7 @@ So, the first thing you do: you look up “abbreviations in HTML” and land str
 ```
 
 Perfect. Exactly what you were looking for. Semantic, accessible — what could go wrong?  
-So you start using `<abbr>` everywhere, only to get immediate feedback telling you what your abbreviations mean *and* an accessibility report complaining about … those very same abbreviations.
+So you start using `<abbr>` everywhere. However, after a while you get feedback from people asking what those abbreviations mean *and* an accessibility report complaining about … those very same abbreviations.
 
 Why? According to MDN, you did everything right.
 
