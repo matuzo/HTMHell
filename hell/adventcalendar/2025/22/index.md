@@ -180,7 +180,7 @@ Since the latter anchor element has an `href` attribute, it is considered a link
 
 ### Naming affects implicit semantics
 
-A popular favourite among those first starting out with semantic HTML is the `<section>` element. While [the abuses of this element can be extensive](https://www.htmhell.dev/10-section-is-no-replacement-for-div/), what is generally never realized is that it is semantically insignicant if it is not named.
+A popular favourite among those first starting out with semantic HTML is the `<section>` element. While [the abuses of this element can be extensive](https://www.htmhell.dev/10-section-is-no-replacement-for-div/), what is never realized is that it has no ARIA semantics if it is not named.
 
 ```html
 <section>
@@ -191,7 +191,13 @@ A popular favourite among those first starting out with semantic HTML is the `<s
 </section>
 ```
 
-With that said, please do not go name _all_ of your `<section>` elements! If they were meant to be named, then the browser would do this for you. Often adding more landmarks makes it more difficult to identify what’s important on a page.
+With that said, please do not go name _all_ of your `<section>` elements!
+
+A labelled `<section>` element will have [the `region` ARIA role][aria-region]. This is what’s called a <dfn><i>landmark</i></dfn>. [Landmarks](https://tetralogical.com/blog/2022/03/18/landmarks/) are important sections of a document that a user might benefit from easy access to.
+
+The problem here is that everything is a landmark, then nothing is a landmark.
+
+It can be easy to think that labelling your `<section>` elements filling a requirement for using them, but that is not the case here. Both the meaning of the tag name and the HTML definition of a `<section>` element is way more generic than the `region` ARIA role. Before you label your `<section>`  elements ensure they make sense as regions, otherwise, you’ll likely be making it more difficult to find what’s important on a page.
 
 ### Context affects implicit semantics
 
@@ -348,3 +354,5 @@ We’ve learned that:
 [html-aria]: https://w3c.github.io/html-aria/
 [html-aam]: https://w3c.github.io/html-aam/
 [aria]: https://w3c.github.io/aria/
+
+[aria-region]: https://w3c.github.io/aria/#region
