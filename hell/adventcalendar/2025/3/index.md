@@ -93,9 +93,11 @@ In addition you can also restrict the links considered for speculating using the
 
 ## Further improvements to the API
 
-I'll close out with a sneak peek into the future, as one further improvement being worked on is a middle group between the `prefetch` and `prerender`. This is useful for those sites concerned with any negative impact with fully prerendering a page.
+I'll close out with a sneak peek into the future, as one further improvement being worked on is a middle ground between the `prefetch` and `prerender`. This is useful for those sites concerned with any unintended consequences with fully prerendering a page.
 
-A new **Prender Until Script** option is currently available behind a flag in Chrome (`chrome://flags/#prerender-until-script`). As its name suggests, it will start prerendering a page, but pause when it encounters a synchronous `<script>` element. Scripts with the `async` or `defer` attribute (or `module` scripts which are `defer` by default) will be downloaded but not executed.
+Executing JavaScript may trigger analytics, change state, or cause other changes that should not happen until the page is actually viewed. While it is possible to [make JavaScript prerender-aware](https://developer.chrome.com/docs/web-platform/prerender-pages#detect-prerender-in-javascript), or [holdback scripts until the page is navigated to](https://developer.chrome.com/docs/web-platform/prerender-pages#hold-back-other-content), this can involve a lot of efforts, particularly for large sites with lots of dependencies managed by many teams.
+
+To help with this, a new **Prender Until Script** option is currently available behind a flag in Chrome (`chrome://flags/#prerender-until-script`). As its name suggests, it will start prerendering a page, but pause when it encounters a synchronous `<script>` element. Scripts with the `async` or `defer` attribute (or `module` scripts which are `defer` by default) will be downloaded but not executed until the page is navigated to.
 
 This means:
 
