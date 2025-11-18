@@ -21,7 +21,7 @@ Last year I inflicted upon you the cursed knowledge of [HTML's legacy colour par
 
 The truth is, HTML is getting old, folks. The initial release was 1993, 32 years ago. It certainly isn't decrepit, but it does have a storied past – a couple of missteps, tabloid scandals, and unflattering paparazzi photos. That's why I'm so glad you're joining us here today to peruse some of these bad haircuts of HTML's youth.
 
-In the HTML Living Standard there are explicit considerations for what are called [non-conforming features](https://html.spec.whatwg.org/multipage/obsolete.html#non-conforming-features). To quote the standard, "Elements in the following list are entirely obsolete, and must not be used by authors". Thus, I shall issue the disclaimer not to use these lest WHATWG show up at my door.
+In the HTML Living Standard there are explicit considerations for what are called [non-conforming features](https://html.spec.whatwg.org/multipage/obsolete.html#non-conforming-features). To quote the standard, <q>Elements in the following list are entirely obsolete, and must not be used by authors</q>. Thus, I shall issue the disclaimer not to use these lest WHATWG show up at my door.
 
 `<marquee>` is perhaps the most famous of all, second only to `<blink>`, which was never standardised. Daniela Kubesch [wrote about the `marquee` tag and implementing it in a modern way](https://www.htmhell.dev/adventcalendar/2022/15/) previously, so I'll leave that to them.
 
