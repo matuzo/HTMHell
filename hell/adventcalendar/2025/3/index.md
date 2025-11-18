@@ -116,7 +116,7 @@ After enabling the flag, you can use this new mode in exactly the same way as `p
 </script>
 ```
 
-This enhancement should be released next year, but in the meantime, have a place and <a href="https://bsky.app/profile/tunetheweb.com">let me know</a> how you get on! 
+This enhancement should be released next year. In the meantime, have a play and <a href="https://bsky.app/profile/tunetheweb.com">let me know</a> how you get on! 
 
 ## Conclusion
 
