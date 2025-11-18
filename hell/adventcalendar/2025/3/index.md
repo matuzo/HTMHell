@@ -62,7 +62,7 @@ You can see this in action in the following video where the [Web Almanac](https:
 
 In the video, you can see that as you scroll down the page, links are being successfully prerendered, ready for the user to browse to the page.
 
-<p class="highlight"><strong>Note:</strong> Speculating has a cost. To both your users and for sites with potential increased traffic and resulting infrastructure usage. Always weigh those costs against the benefit to the user.</p>
+<p class="highlight"><strong>Note:</strong> Speculating has a cost. To both your users and for sites with potential increased traffic and resulting infrastructure usage. Always weigh those costs against the benefit to the user. Additionally, the are risks for more complex sites for speculating. See the <a href="https://developer.chrome.com/docs/web-platform/implementing-speculation-rules">Guide to implementing speculation rules for more complex sites</a> for more information.</p>
 
 To conserve memory, Chrome keeps up to two speculations in memory at a time. As the user scrolls further and new links — which are more likely to be clicked on — enter the viewport, the old prerenders are cancelled. These links can be re-speculated, for example, when the user scrolls back up, in which case they can be fetched from the HTTP cache. That way, they prerender even faster.
 
