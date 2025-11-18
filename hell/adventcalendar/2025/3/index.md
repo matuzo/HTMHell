@@ -14,7 +14,7 @@ intro: "<p>The Speculation Rules API is becoming even better with improved mobil
 image: "advent25_3"
 ---
 
-The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculation_Rules_API) allows you to speed up future navigations by prefetching or even prerendering URLS in advance of a user actually clicking a link. When the link is clicked, the speculation is used, and the user experiences a faster load than if no speculation was used.
+The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculation_Rules_API) allows you to speed up future navigations by prefetching or even prerendering URLs in advance of a user actually clicking a link. When the link is clicked, the speculation is used, and the user experiences a faster load than if no speculation was used.
 
 [Schepp](https://schepp.dev/) covered [the API in last year's post](/adventcalendar/2024/28/) and discussed the `eagerness` value which allowed you to, for example, hover over a link to speculatively prerender it with the simple addition of this rule to your HTML:
 
@@ -68,9 +68,9 @@ To conserve memory, Chrome keeps up to two speculations in memory at a time. As 
 
 ## `eager` eagerness improvements
 
-As well as the improvements to the `moderate` eagerness, the `eager` value has also been recently changed to offer an option somewhere between `immediate` (where links are speculated as soon as possible) and `moderate`.
+The `eager` value has also been changed. It now offers an option somewhere between `immediate`, where links are speculated as soon as possible, and `moderate`.
 
-On desktop, `moderate` rules trigger after a 10 millisecond hover, and on mobile we consider ALL links in the viewport after the user has stopped scrolling for 100 milliseconds, rather than the more restrictive set of heuristics above.
+On desktop, `moderate` rules trigger after a 10 millisecond hover. On mobile, we consider _all_ links in the viewport after the user has stopped scrolling for 100 milliseconds, rather than the more restrictive set of heuristics above.
 
 One common technique is to prefetch the HTML document with `eager` value  as that  is often relatively cheap. Then upgrade this `prefetch` to a full `prerender` on `moderate` when you have more signals that the users may click on the link, and so think it's worthwhile to speculatively start to render the page in full, as prerender has more costs including downloading subresources and using memory and CPU needed to render the page.
 
