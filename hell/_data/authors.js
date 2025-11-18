@@ -89,6 +89,11 @@ module.exports = {
       "id": "moritzglantz",
       "name": "Moritz Glantz",
       "link": "https://moritzglantz.de"
+    },
+    {
+      "id": "todd",
+      "name": "Todd Libby",
+      "link": "https://toddl.dev"
     }
   ]
 };
