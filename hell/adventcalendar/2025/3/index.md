@@ -120,4 +120,8 @@ This enhancement should be released next year. In the meantime, have a play and 
 
 ## Conclusion
 
-The Speculation Rules API continues to improve with new options and features to help site owners deliver fast, HTML-driven websites! With our first signs of cross-browser adoption of the API, I'd speculate (boom! boom!) 2026 will be another bumper year for the API and for users of sites that implement it.
+The Speculation Rules API continues to improve with new options and features to help site owners deliver fast, HTML-driven websites!
+
+We've even [added speculation rules to this site](https://github.com/matuzo/HTMHell/pull/225). As a light, static, HTML-driven site, it's the perfect type of site for this API. It was already a very fast site, but the addition of this API should make it even faster, especially on slower networks.
+
+Finally, with our first signs of cross-browser adoption of the API, I'd speculate (boom! boom!) 2026 will be another bumper year for the API and for users of sites that implement it.
