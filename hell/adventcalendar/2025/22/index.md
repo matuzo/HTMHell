@@ -133,7 +133,7 @@ Tag names are not enough for us to understand what an element is for. We need to
 
 ### Why follow the HTML Standard?
 
-I’m not your god, and neither is the HTML Standard – but if you choose to use HTML elements for how you perceive them, things break in ways you can’t control. Assistive tech, legal requirements, user expectations... it all hinges on the platform’s actual definitions. Ignore them and, well, your documents might just end up [in hell](https://www.htmhell.dev/).
+I’m not your god, and neither is the HTML Standard—but if you choose to use HTML elements for how you perceive them, things break in ways you can’t control. Assistive tech, legal requirements, user expectations... it all hinges on the platform’s actual definitions. Ignore them and, well, your documents might just end up [in hell](https://www.htmhell.dev/).
 
 ### Some elements are “more semantic” than others
 
