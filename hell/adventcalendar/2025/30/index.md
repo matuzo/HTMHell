@@ -42,7 +42,7 @@ This type of semantics can be compared to formatting a text document in Word. Yo
 </div>
 ```
 
-It's still "semantic HTML" (because every HTML element has a meaning!), yet it's not especially useful. And yes, we can style it in any imaginable way (I bet we can even make it do the can-can with a bit of CSS magic) – but it's still just a bunch of `<div>`s [without any intrinsic meaning](https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element):
+It's still "semantic HTML" (because every HTML element has a meaning!), yet it's not especially useful. And yes, we can style it in any imaginable way (I bet we can even make it do the [can-can](https://en.wikipedia.org/wiki/Can-can) with a bit of CSS magic) – but it's still just a bunch of `<div>`s [without any intrinsic meaning](https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element):
 
 > The `div` element has no special meaning at all.
 
