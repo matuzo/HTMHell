@@ -26,7 +26,7 @@ First, let's go over the difference between a dialog and a popover. Hidde de Vri
 * By default, dialog must be explicitly closed, either by taking an action within the dialog or closing via a close button. A popover can be lightly dismissed by clicking outside of the popover.
 * A dialog can either be modal or non-modal, while a popover is always non-modal by design. As of late 2025 the Invoker Commands API only has a built-in command for a modal dialog, so I will be focusing on modal dialogs only in this post.
 * Dialogs have a built in backdrop functionality to tint the background a different color, while popovers shouldn't use a backdrop in most cases.
-* A dialog is an HTML element with a role of `dialog`, while a popover is considered an attribute and does not come with a role.
+* A dialog is an HTML element with a role of `dialog`, while a popover is considered an attribute and needs a role to be added depending on the popover's context. See [Hidde de Vrie's post on popover semantics](https://hidde.blog/popover-semantics/) to learn more about potential roles to add to your popover!
 
 ## The `command` and `commandfor` attributes
 The Invoker Commands API introduces two new attributes to the `<button>` element—`command` and `commandfor`.  The `commandfor` attribute acts as a connector between the `<button>` controlling the functionality and the element that the command acts upon, while `command` contains the action that should be taken on the element.
