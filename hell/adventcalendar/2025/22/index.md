@@ -135,17 +135,27 @@ Tag names are not enough for us to understand what an element is for. We need to
 
 I’m not your god, and neither is the HTML Standard—but if you choose to use HTML elements for how you perceive them, things break in ways you can’t control. Assistive tech, legal requirements, user expectations... it all hinges on the platform’s actual definitions. Ignore them and, well, your documents might just end up [in hell](https://www.htmhell.dev/).
 
-### Some elements are “more semantic” than others
+### But what about ARIA? Can’t I just use that instead?
 
-Something that’s important to understand about semantic HTML is that, while HTML may define all of its elements, not all elements are meaningful for assistive technologies. With that said, you can spend a lot of time writing valid, semantically correct HTML and accomplish absolutely nothing for what makes semantic HTML the most valuable: [making the web for everyone](https://www.w3.org/TR/w3c-vision/#vision-web).
+[Accessible Rich Internet Applications][aria], more commonly known by the acronym ARIA, is a set of roles and attributes that can be used in HTML to add accessibility related semantics to web content.
 
-Beyond the tag name and even HTML semantics, there’s another invisible layer of semantics that we need to understand to write semantic HTML well: implicit ARIA semantics.
+It can be tempting to think that we don’t need semantic HTML, instead we can just sprinkle our <i>divitis</i> with <em>holy</em> ARIA roles and attributes. Well, while this can improve the accessibility of that hoard of elements, we’re likely breaking [the first rule of ARIA usage](https://www.w3.org/TR/using-aria/#firstrule): don’t use ARIA if you don’t need to.
 
-## Implicit ARIA semantics
+```html
+<div role=button>accept div as your lord and saviour</div>
+```
 
-You may be familiar with [ARIA (Accessible Rich Internet Applications)][aria]. ARIA is a set of roles and attributes that can be used in HTML to add accessibility related semantics to web content.
+Many semantic HTML elements have what’s called <i>implicit ARIA semantics</i>. These are ARIA roles and properties that the browser has mapped for us. Instead of needing to explicitly write out the ARIA semantics for an element each time you use it, we can use semantic HTML elements as a shorthand for these.
 
-[The first rule of ARIA usage](https://www.w3.org/TR/using-aria/#firstrule) is: don’t use ARIA if you don’t need to. Why? Because many semantic HTML elements and attributes have what’s called implicit ARIA semantics—as well as the built-in functionality necessary for those semantics.
+```html
+<button>This machine kills fascists</button>
+```
+
+Beyond simply being a shorthand for a set of ARIA semantics, built-in HTML elements also include the necessary functionality and presentation that would be expected of an element bearing such semantics. In many cases, this means that you don’t need to write any JavaScript for your HTML to work as expected. Using JavaScript in lieu of built-in HTML functionality is wasteful and error prone, degrading the usability of your website.
+
+Now that we understand the folly ignoring the first rule of ARIA usage, let’s turn our attention to <i>implicit ARIA semantics</i> and how they work in semantic HTML.
+
+## The implicit ARIA semantics of HTML
 
 Along with the definitions for each element, the HTML standard includes accessibility considerations for both authors (i.e. you and I) and implementors (i.e. the people implementing the elements in browsers). The linked document for authors is called [“ARIA in HTML”][html-aria] and the one for implementors is called [“HTML Accessibility API Mappings” (HTML-AAM)][html-aam]. The each of these links will jump to the relevant bits for the element in question.
 
