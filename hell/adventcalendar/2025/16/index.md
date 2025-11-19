@@ -13,7 +13,7 @@ author_links:
 intro: "<p>Short introductory text</p>"
 image: "advent25_16"
 ---
-The [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) adds a new attribute to the `<button>` element to control interactive elements on the page such as popovers and modal dialogs without having to write JavaScript. Dialogs have been available in all modern browsers since March 2022, and the Popover API is available in all modern browsers as of January 2025.
+The [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) adds new attributes to the `<button>` element to control interactive elements on the page such as popovers and modal dialogs without having to write JavaScript. Dialogs have been available in all modern browsers since March 2022, and the Popover API is available in all modern browsers as of January 2025.
 
 Until now, users wanting to implement the `<dialog>` element needed to write their own JavaScript to power the show and hide functionality using the `HTMLDialogElement` interface, while the Popover API and Invoker Commands API for popovers work identically by using `HTMLElement` attributes to show, hide, or toggle the popover.
 
