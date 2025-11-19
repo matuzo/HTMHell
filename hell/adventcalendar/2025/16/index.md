@@ -23,7 +23,7 @@ Why should you use this new API, and what benefits does it bring?
 First, let's go over the difference between a dialog and a popover. Hidde de Vries [wrote a blog post in 2022](https://hidde.blog/dialog-modal-popover-differences/) detailing the differences, but in short:
 
 * Dialogs usually contain an action to take, such as agreeing to text or choosing an option. Popovers usually display short-lived information such as a date picker or toast notification.
-* A dialog must be explicitly closed, either by taking an action within the dialog or closing via a close button, while a popover can be lightly dismissed by clicking outside of the popover.
+* By default, dialog must be explicitly closed, either by taking an action within the dialog or closing via a close button. A popover can be lightly dismissed by clicking outside of the popover.
 * A dialog can either be modal or non-modal, while a popover is always non-modal by design. As of late 2025 the Invoker Commands API only has a built-in command for a modal dialog, so I will be focusing on modal dialogs only in this post.
 * Dialogs have a built in backdrop functionality to tint the background a different color, while popovers shouldn't use a backdrop in most cases.
 * A dialog is an HTML element with a role of `dialog`, while a popover is considered an attribute and does not come with a role.
