@@ -61,35 +61,54 @@ To avoid <i>divitis</i>, authors are often encouraged to use <i>semantic HTML</i
 
 Inspired by this newfound responsibility, authors open the lexicon of HTML elements and begin to compose… _absolute gibberish._
 
-<!-- Copied from Hell #29 -->
-
 ```html
-<section>
-  <aside>
-    <div>
-      <section>
-        <header>
-          <a href="/">
-            <img src="logo.svg" alt="Logo">
-          </a>
-        </header>
-        <main>
-          <a href="/services">Services</a>
-          <a href="/products">Products</a>
-          <a href="/aboutus">Aboutus</a>
-        </main>
-        <footer></footer>
-      </section>
-    </div>
-  </aside>
-  <section>
-    <footer></footer>
-    <main>
-      <h1>Welcome to Hell</h1>
-    </main>
-    <footer></footer>
-  </section>
-</section>
+<my-card>
+  <header>
+    <section>
+      <h1>divs suck</h1>
+      <h2>and so do classes</h2>
+    </section>
+  </header>
+  <main>
+    <section>who needs classes when you have semantic HTML. combine elements however you’d like to explore new possibilities.</section>
+  </main>
+  <footer>
+    <section>
+      <nav>
+        <a href="/hell">
+          <button>
+            <label>I have no class</label>
+          </button>
+        </a>
+      </nav>
+    </section>
+  </footer>
+</my-card>
+
+<my-card>
+  <header>
+    <section>
+      <h1>replace all your divs with sections</h1>
+      <h2>they’re so semantic</h2>
+    </section>
+  </header>
+  <main>
+    <section>
+    whenever I don’t know what element to choose, section is there for me. section is my best friend forever.
+    </section>
+  </main>
+  <footer>
+    <section>
+      <nav>
+        <a href="/hell">
+          <button>
+            <label>become semantic with sections</label>
+          </button>
+        </a>
+      </nav>
+    </section>
+  </footer>
+</my-card>
 ```
 
 To be fair, this is to be expected of anyone learning a new language. However, a problem on the web is that authors delude themselves into thinking that they are “writing semantic HTML,” therefore gaining all of the benefits that are understood to come with that like accessibility, and they never advance past that stage.
