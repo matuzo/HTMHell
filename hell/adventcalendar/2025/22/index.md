@@ -153,7 +153,7 @@ Many semantic HTML elements have what’s called <i>implicit ARIA semantics</i>.
 
 Beyond simply being a shorthand for a set of ARIA semantics, built-in HTML elements also include the necessary functionality and presentation that would be expected of an element bearing such semantics. In many cases, this means that you don’t need to write any JavaScript for your HTML to work as expected. Using JavaScript in lieu of built-in HTML functionality is wasteful and error prone, degrading the usability of your website.
 
-Now that we understand the folly ignoring the first rule of ARIA usage, let’s turn our attention to <i>implicit ARIA semantics</i> and how they work in semantic HTML.
+Now that we understand the folly of ignoring the first rule of ARIA usage, let’s turn our attention to <i>implicit ARIA semantics</i> and how they work in semantic HTML.
 
 ## The implicit ARIA semantics of HTML
 
