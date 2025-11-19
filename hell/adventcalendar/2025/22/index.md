@@ -1,7 +1,7 @@
 ---
 title: "Semantics beyond the tag name"
 author: "Nathan Knowler"
-author_bio: "HTML and CSS writer living in [Winnipeg](https://www.youtube.com/watch?v=AjqgTtl3YBQ). Passionate about accessiblity, progressive enhancement, and web components. Probably can be found in a mosh pit."
+author_bio: "HTML and CSS writer living in [Winnipeg](https://www.youtube.com/watch?v=AjqgTtl3YBQ). Passionate about accessibility, progressive enhancement, and web components. Probably can be found in a mosh pit."
 date: 2025-12-22
 author_links:
   - label: "Site"
@@ -98,7 +98,7 @@ It’s like when my own child confidently declares, after learning a handful of 
 
 You’re likely not a child though, so I will tell it to you straight: _this is not cute._
 
-Once you’ve recovered from that devestating realization, we can proceed.
+Once you’ve recovered from that devastating realization, we can proceed.
 
 To actually write semantic HTML, we need to know what elements mean beyond just what we infer from their tag names and how to use them. So, how do we find that out?
 
