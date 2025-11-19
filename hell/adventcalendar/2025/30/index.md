@@ -89,7 +89,7 @@ It's just a text. More importantly, the image is missing, due to its empty `alt`
 
 <img src="./a11y-article.png" alt="The whole bio is wrapped in the article, the &quot;Comandeer&quot; is correctly identified as a heading, the image has a description of &quot;A photo of smiling Comandeer&quot; and the &quot;Proud HTML Expert&quot; is marked up as a paragraph.">
 
-Thanks to that, the screen reader can successfully transform the page content into voice and inform the user where the articles, headings, and other elements are. It would not only allow the user to fully understand the page (similarly to how the non-screen-reader user perceived the visual version of the page) but also allow the screen reader to provide better ways of navigating the page, e.g., by [jumping to headings](https://webaim.org/projects/screenreadersurvey10/#finding).
+Thanks to that, the screen reader can successfully transform the page content into voice or braille and inform the user where the articles, headings, and other elements are. It would not only allow the user to fully understand the page (similarly to how the non-screen-reader user perceived the visual version of the page) but also allow the screen reader to provide better ways of navigating the page, e.g., by [jumping to headings](https://webaim.org/projects/screenreadersurvey10/#finding).
 
 In other words, caring about semantics is caring for the user!
 
