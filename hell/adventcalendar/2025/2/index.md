@@ -70,15 +70,19 @@ try {
 
 How ended this seemingly fringe feature up in all mainstream browsers? It was indeed there from the very beginning of HTML as this [historic W3C document](https://www.w3.org/History/19921103-hypertext/hypertext/WWW/MarkUp/Tags.html) from 1992 proves:
 
-> **Plaintext**
->
-> This tag indicates that all following text is to be taken litterally [!], up to the end of the file. Plain text is designed to be represented in the same way as example XMP text, with fixed width character and significant line breaks. Format:
->
-> ```html
-> <PLAINTEXT>
-> ```
->
-> This tag allows the rest of a file to be read efficiently without parsing. Its presence is an optimisation. There is no closing tag.
+<blockquote class="blockquote-no-quotes">
+
+**Plaintext**
+
+This tag indicates that all following text is to be taken litterally [!], up to the end of the file. Plain text is designed to be represented in the same way as example XMP text, with fixed width character and significant line breaks. Format:
+
+```html
+<PLAINTEXT>
+```
+
+</blockquote>
+
+This tag allows the rest of a file to be read efficiently without parsing. Its presence is an optimisation. There is no closing tag.
 
 This also tells us the reason for its invention. Back at the time Sir Tim Berners-Lee’s high-end NeXT PC that he used to write the first web browser had a quarter of the power of a hand-me-down 2009 smartphone. It was important to optimize wherever you could.
 
@@ -178,7 +182,7 @@ Document.parseHTML(TEST_STRING, { sanitizer: { removeElements: []}}).body.innerH
 
 **Code:**
 
-```sh
+```bash
 echo -n "$TEST_STRING" | tidy
 ```
 
@@ -293,7 +297,7 @@ Symfony’s sanitizer has a fascinating way of moving tags around. Interesting, 
 
 **Code:**
 
-```sh
+```bash
 echo -n "$TEST_STRING" | xmllint --html -
 ```
 
