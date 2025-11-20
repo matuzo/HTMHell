@@ -20,7 +20,8 @@ The web is full of many different and interesting approaches for representing fo
 
 Let's take the famous Pythagorean Theorem as an example.
 
-<section style="margin-bottom: 2rem" >
+<section style="margin-bottom: 2rem" aria-labelledby="section-0-heading">
+  <h2 id="section-0-heading">Pythagorean Theorem</h2>
   <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
       <mi>a</mi>
@@ -76,14 +77,13 @@ Anyway, with this approach, the accessibility tree shows good semantics.
 We could enhance this by adding an <code>aria-label</code> to a wrapper that provides some information about the following formula, especially when it's a well-known one. By using a <code>section</code> with an <code>aria-label</code>, we automatically insert a region into the accessibility tree.
 
 ```html
-<section aria-label="Pythagorean Theorem">
-  <math xmlns="http://www.w3.org/1998/Math/MathML">
-    ...
-  </math>
+<section aria-labelledby="section-1-heading">
+  <h2 id="section-1-heading">Pythagorean Theorem</h2>
+  <math xmlns="http://www.w3.org/1998/Math/MathML"> ... </math>
 </section>
 ```
 
-Alternatively, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>role="math"</code></a> from the ARIA specification. With that, even if you use an image or non-semantic HTML, you can still achieve accessibility. As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">Mozilla page about <code>role="math"</code></a>, we could have:
+As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics to screen reader users even when we rely on images or non-semantic HTML. As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
 
 ```html
 <div role="math" aria-label="a^{2} + b^{2} = c^{2}">
@@ -97,6 +97,8 @@ Alternatively, we also have the <a href="https://developer.mozilla.org/en-US/doc
 
 ## The future of MathML
 
+<p class="highlight"><strong><abbr title="too long; didn't read">TL;DR:</abbr></strong> MathML Core is what browsers implement today; MathML 4 is the broader language evolving around it.</p>
+
 Before we look ahead, it's useful to understand where MathML comes from and why there's both a 'Core' and a 'version 4' in development.
 
 As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/).
@@ -106,14 +108,23 @@ On another note, at the time of this writing, there is [a Working Draft for Math
 ```html
 <math>
   <mrow intent="equals(power(a,2)+power(b,2),power(c,2))">
-    <msup><mi>a</mi><mn>2</mn></msup><mo>+</mo>
-    <msup><mi>b</mi><mn>2</mn></msup><mo>=</mo>
-    <msup><mi>c</mi><mn>2</mn></msup>
+    <msup>
+      <mi>a</mi>
+      <mn>2</mn>
+    </msup>
+    <mo>+</mo>
+    <msup>
+      <mi>b</mi>
+      <mn>2</mn>
+    </msup>
+    <mo>=</mo>
+    <msup>
+      <mi>c</mi>
+      <mn>2</mn>
+    </msup>
   </mrow>
 </math>
 ```
-
-<p class="highlight"><strong><abbr title="too long; didn't read">TL;DR:</abbr></strong> MathML Core is what browsers implement today; MathML 4 is the broader language evolving around it..</p>
 
 ## Conclusion
 
