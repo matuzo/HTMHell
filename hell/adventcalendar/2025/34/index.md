@@ -2,7 +2,7 @@
 title: "Why you should choose &lt;b&gt; and &lt;i&gt; over strong/em for better accesibility "
 author: "Your Name"
 author_bio: "Your short bio"
-date: 2025-01-01
+date: 2026-01-01
 author_links:
   - label: "Site"
     url: "https://linktoyourblog123.com"

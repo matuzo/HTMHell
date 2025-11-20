@@ -2,7 +2,7 @@
 title: "Abbreviations done right: The &lt;abbr&gt; element and why not use it"
 author: "Alexander Muzenhardt"
 author_bio: "Alex is a skilled Frontend Developer with a career spanning back to 2015. Since joining cit GmbH in 2019, Alex has specialized in accessibility, crafting inclusive and user-friendly digital experiences that ensure seamless web engagement for everyone."
-date: 2025-01-02
+date: 2026-01-02
 author_links:
   - label: "Website"
     url: "https://alexmuzenhardt.de/"
