@@ -93,9 +93,7 @@ Inspired by this newfound responsibility, authors open the lexicon of HTML eleme
     </section>
   </header>
   <main>
-    <section>
-    whenever I don’t know what element to choose, section is there for me. section is my best friend forever.
-    </section>
+    <section>whenever I don’t know what element to choose, section is there for me. section is my best friend forever.</section>
   </main>
   <footer>
     <section>
@@ -133,19 +131,19 @@ Beyond the definition, the standard also includes rules and guidance for usage:
 
 > A <dfn>hierarchically correct `main` element</dfn> is one whose ancestor elements are limited to `html`, `body`, `div`, `form` without an accessible name, and autonomous custom elements. Each `main` element must be a hierarchically correct `main` element.
 
-From these descriptions, we can gather that using the `<main>` element for the main content of a card component that’s meant to be used many times throughout a document would be incorrect:
+From these descriptions, we can gather that using the `<main>` element for the main content of a card component, which can be used multiple times like the ones in the earlier “gibberish” example, would be incorrect:
 
 ```html
-<div class=card>
-  <main>
-    First card
-  </main>
-</div>
-<div class=card>
-  <main>
-    Second card
-  </main>
-</div>
+<my-card>
+  <header><!-- … --></header>
+  <main><!-- first card main content --></main>
+  <footer><!-- … --></footer>
+</my-card>
+<my-card>
+  <header><!-- … --></header>
+  <main><!-- second card main content --></main>
+  <footer><!-- … --></footer>
+</my-card>
 ```
 
 Tag names are not enough for us to understand what an element is for. We need to adopt HTML’s own definitions for semantic elements.
