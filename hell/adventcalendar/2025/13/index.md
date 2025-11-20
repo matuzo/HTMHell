@@ -22,6 +22,7 @@ Let's take the famous Pythagorean Theorem as an example.
 
 <section style="margin-bottom: 2rem" aria-labelledby="section-0-heading">
   <h2 id="section-0-heading">Pythagorean Theorem</h2>
+  <p>Next, you have the visual representation of the formula together with the MathML code.</p>
   <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
       <mi>a</mi>
@@ -91,9 +92,21 @@ As an alternative to using MathML to convey mathematical meaning in simple examp
 </div>
 ```
 
+<div style="margin-bottom: 2rem;" role="math" aria-label="a^{2} + b^{2} = c^{2}">
+  a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
+</div>
+
 ```html
 <img src="pythagorean_theorem.gif" alt="a^{2} + b^{2} = c^{2}" role="math" />
 ```
+
+Let's compare how these two approaches (MathML or alternatives) are announced in different screen readers:
+
+| Screen reader + browser  | MathML                                                                            | Alternatives (Image/Element with math role)                                                                                              |
+| ------------------------ | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| NVDA + Firefox           |                                                                                   |                                                                                                                                          |
+| VoiceOver + Safari (Mac) | a squared + b squared = c squared, with 5 items, maths                            | not read, just announces with 6 items maths                                                                                              |
+| VoiceOver + Safari (iOS) | a squared plus b squared equals c squared, Math, end, Pythagorean Theorem, region | a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket |
 
 ## The future of MathML
 
