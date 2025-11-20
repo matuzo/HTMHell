@@ -207,7 +207,7 @@ Since the latter anchor element has an `href` attribute, it is considered a link
 
 ### Naming affects implicit semantics
 
-A popular favourite among those first starting out with semantic HTML is the `<section>` element. While [the abuses of this element can be extensive](https://www.htmhell.dev/10-section-is-no-replacement-for-div/), what is never realized is that it has no ARIA semantics if it is not named.
+A popular favourite among those first starting out with semantic HTML is the `<section>` element. What is often never realized is that it has no valuable ARIA semantics if it is not named (i.e. its implicit role is `generic`). This makes it not much different than using a `<div>` (i.e. its implicit role is also `generic`).
 
 ```html
 <section>
@@ -220,11 +220,26 @@ A popular favourite among those first starting out with semantic HTML is the `<s
 
 With that said, please do not go name _all_ of your `<section>` elements!
 
+```html
+<section aria-labelledby=section-1-label>
+  <h1 id=section-1-label>Top one hundred reason I love sections</h1>
+  <p>…</p>
+</section>
+<section aria-labelledby=section-2-label>
+  <h2 id=section-2-label>Section is whatever I want it to be</h2>
+  <p>…</p>
+</section>
+<section aria-labelledby=section-3-label>
+  <h2 id=section-3-label>Section is my friend</h2>
+  <p>…</p>
+</section>
+```
+
 A labelled `<section>` element will have [the `region` ARIA role][aria-region]. This is what’s called a <dfn><i>landmark</i></dfn>. [Landmarks](https://tetralogical.com/blog/2022/03/18/landmarks/) are important sections of a document that a user might benefit from easy access to.
 
 The problem here is that everything is a landmark, then nothing is a landmark.
 
-It can be easy to think that labelling your `<section>` elements filling a requirement for using them, but that is not the case here. Both the meaning of the tag name and the HTML definition of a `<section>` element is way more generic than the `region` ARIA role. Before you label your `<section>`  elements ensure they make sense as regions, otherwise, you’ll likely be making it more difficult to find what’s important on a page.
+It can be easy to think that labelling your `<section>` elements filling a requirement for using them, but that is not the case here. Both the meaning of the tag name and the HTML definition of a `<section>` element is way more generic than the `region` ARIA role. Before you label your `<section>`  elements ensure they make sense as regions, otherwise, you’ll likely be making it more difficult to find what’s important on a page. If you’re already using [a good heading structure](https://tetralogical.com/blog/2022/02/28/headings/) throughout your document, that is good enough for what you’re likely trying to do.
 
 ### Context affects implicit semantics
 
