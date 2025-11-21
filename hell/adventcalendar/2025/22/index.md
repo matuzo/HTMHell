@@ -360,13 +360,15 @@ When you create custom elements, you become responsible for communicating their 
 
 I highly recommend using HTML itself as a model for how you build custom elements. In many ways, that might mean thinking less like an author and more like an implementor or a specification writer. “How do I create elements for others to use?” Implicit semantics are an important part of that because they allow you to [put other authors first](https://www.w3.org/TR/design-principles/#priority-of-constituencies).
 
-## Test it in a browser
+## Test, test, test
 
 In the same way that you can spend a whole lot of time writing valid, semantic HTML that has no implicit ARIA semantics, you can also spend a whole lot of time on writing HTML according to the specifications that actually isn’t implemented in any browser or that is implemented incorrectly in browsers. This is why testing is vital.
 
-Testing might look like checking what ARIA roles and properties are computed for elements in a browser’s developer tools. It also might look like actually using assistive technologies such as screen readers or voice control. It is very helpful to understand how assistive technology users experience various elements.
+Testing might look like checking what ARIA roles and properties are computed for elements in a browser’s developer tools ([use the accessibility tree in Chrome/Edge and Firefox](https://devtoolstips.org/tips/en/see-accessibility-tree/) or [Accessibility section of the Node Panel in Safari’s Web Inspector](https://webkit.org/web-inspector/elements-tab/#node-panel)). It also might look like actually using assistive technologies such as screen readers or voice control. It is very helpful to understand how assistive technology users experience various elements and so seeking real feedback is invaluable to the testing process. Just make sure to show anyone you do involve that you value their time and labour.
 
 Testing helps us understand what is valuable and what we should focus on. I can spend a whole lot of time trying to perfectly mark up all of my words using [text-level semantics][html-text-level-semantics], but then realize through testing that I’ve delivered little to no semantic value to assistive technology users.
+
+Courses such as [Sara Soueidan’s Practical Accessibility](https://practical-accessibility.today) or [Marcy Sutton’s Testing Accessibility](https://testingaccessibility.com) are great resources for those wanting to get started with testing various assistive technologies.
 
 ## Go forth and actually write semantic HTML
 
