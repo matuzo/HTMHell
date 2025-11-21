@@ -16,7 +16,7 @@ image: "advent25_13"
 
 Maybe it has happened to you that you wanted to write some formulas in HTML to display them on a website, and even though there are multiple ways to do it, accessibility is often not considered in the process. How the formula is read by screen readers is crucial to ensure that we don't leave anyone behind.
 
-The web is full of many different and interesting approaches for representing formulas. In reality, [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually the best option to solve this problem, even if it wasn’t originally designed for the web. A big plus is that it has its own syntax, MathML provides various elements that give the correct semantics to the different parts of a formula.
+The web is full of many different and interesting approaches for representing formulas. To say some, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTX, we could unicode math, Canvas/WebGL or even just simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options to do this task, even if it wasn’t originally designed for the web. Some of its own advantages are that it has its own syntax, MathML provides various elements that give the correct semantics to the different parts of a formula, has good screen reader support, requires no JavaScript dependencies and it can be used beyond the browser as we can do in EPUB or braille/math speech tooling. 
 
 Let's take the famous Pythagorean Theorem as an example.
 
