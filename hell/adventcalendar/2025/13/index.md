@@ -96,8 +96,11 @@ As an alternative to using MathML to convey mathematical meaning in simple examp
   a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
 </div>
 
+
+<img width="150" alt="a^{2} + b^{2} = c^{2}" src="./pythagorean-theorem.png" role="math" />
+
 ```html
-<img src="pythagorean_theorem.gif" alt="a^{2} + b^{2} = c^{2}" role="math" />
+<img src="pythagorean_theorem.png" alt="a^{2} + b^{2} = c^{2}" role="math" />
 ```
 
 Let's compare how these two approaches (MathML or alternatives) are announced in different screen readers:
@@ -112,11 +115,7 @@ Let's compare how these two approaches (MathML or alternatives) are announced in
 
 <p class="highlight"><strong><abbr title="too long; didn't read">TL;DR:</abbr></strong> MathML Core is what browsers implement today; MathML 4 is the broader language evolving around it.</p>
 
-Before we look ahead, it's useful to understand where MathML comes from and why there's both a 'Core' and a 'version 4' in development.
-
-As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/).
-
-On another note, at the time of this writing, there is [a Working Draft for MathML 4](https://www.w3.org/TR/mathml4/), the next version of MathML. This version aims to be the next "full" spec that extends Core. It keeps the bigger feature set (e.g., Content MathML) and adds, among others, the <code>intent</code> attribute so authors can guide screen-reader speech. With it, we'll be able to do something like this:
+First, we are going to focus on there MathML comes from and why there's both a 'Core' and a 'version 4' in development. As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Historically, the full MathML spec was broad and partly underspecified for browsers, which led to uneven or incomplete implementations across engines. MathML Core therefore narrows the language to the subset that can be precisely defined on top of the Web Platform, improving testability and cross-browser interoperability. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/). On another note, at the time of this writing, there is [a Working Draft for MathML 4](https://www.w3.org/TR/mathml4/), the next version of MathML. This version aims to be the next "full" spec that extends Core. It keeps the bigger feature set (e.g., Content MathML) and adds, among others, the <code>intent</code> attribute so authors can guide screen-reader speech. With it, we'll be able to do something like this:
 
 ```html
 <math>
