@@ -109,6 +109,8 @@ Inspired by this newfound responsibility, authors open the lexicon of HTML eleme
 </my-card>
 ```
 
+Now, this might not seem like gibberish on the surface—it might actually seem like it makes a lot of sense. The problems will become more apparent throughout this post. We cannot simply use HTML elements based on their tag names and expect them to translate to anything actually meaningful.
+
 To be fair, this is to be expected of anyone learning a new language. However, a problem on the web is that authors delude themselves into thinking that they are “writing semantic HTML,” therefore gaining all of the benefits that are understood to come with that like accessibility, and they never advance past that stage.
 
 It’s like when my own child confidently declares, after learning a handful of words in Japanese, “I know Japanese.” It’s cute and I’m not going to argue with it, because they’re a child.
