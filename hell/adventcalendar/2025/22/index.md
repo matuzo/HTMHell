@@ -241,7 +241,7 @@ A labelled `<section>` element will have [the `region` ARIA role][aria-region]. 
 
 The problem here is that everything is a landmark, then nothing is a landmark.
 
-It can be easy to think that labelling your `<section>` elements filling a requirement for using them, but that is not the case here. Both the meaning of the tag name and the HTML definition of a `<section>` element is way more generic than the `region` ARIA role. Before you label your `<section>`  elements ensure they make sense as regions, otherwise, you’ll likely be making it more difficult to find what’s important on a page. If you’re already using [a good heading structure](https://tetralogical.com/blog/2022/02/28/headings/) throughout your document, that is good enough for what you’re likely trying to do.
+It can be easy to think that labelling your `<section>` elements satisfies the requirement for using them, but that is not the case here. Both the meaning of the tag name and the HTML definition of a `<section>` element is way more generic than the `region` ARIA role. Before you label your `<section>`  elements ensure they make sense as regions, otherwise, you’ll likely be making it more difficult to find what’s important on a page. If you’re already using [a good heading structure](https://tetralogical.com/blog/2022/02/28/headings/) throughout your document, that is good enough for what you’re likely trying to do.
 
 ### Context affects implicit semantics
 
