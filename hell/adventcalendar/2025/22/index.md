@@ -291,7 +291,7 @@ The `<header>` and `<footer>` elements are examples of context being an importan
 
 Sometimes an element’s implicit semantics are informed by a combination of the factors that we’ve explored so far. Consider the `<aside>` element.
 
-In the following situations, the `<aside>` element’s implicit role is `complementary` because it’s scoped to the `<body>` element or the `<main>` element:
+In the following situations, the `<aside>` element’s implicit role is `complementary` (a landmark) because it’s scoped to the `<body>` element or the `<main>` element:
 
 ```html
 <body>
@@ -314,6 +314,7 @@ In the following situations, the `<aside>` element’s implicit role is `complem
   </main>
 </body>
 ```
+
 If you mark up your blog posts with an `<article>` element which is sectioning content, then unnamed `<aside>` elements have the `generic` role.
 
 ```html
@@ -333,7 +334,7 @@ The only way to make this element have the `complementary` role is to use `aria-
   <h1>Some article</h1>
   <p>Some content, blah, blah, blah…
   <aside aria-labelledby=complementary-label>
-    <p><span id=complementary-label>Failed attempted</span> at complementary.
+    <p><span id=complementary-label>Failed attempt</span> at complementary.
   </aside>
 </article>
 ```
