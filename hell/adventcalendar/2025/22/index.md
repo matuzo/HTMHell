@@ -245,7 +245,7 @@ It can be easy to think that labelling your `<section>` elements filling a requi
 
 ### Context affects implicit semantics
 
-HTML elements can have different implicit semantics when used in different contexts.
+HTML elements can have different implicit ARIA semantics when used in different contexts.
 
 For example, the `<header>` and `<footer>` elements have an important meaning for documents when used outside of the `<main>` element or any other sectioning content element.
 
@@ -259,9 +259,15 @@ For example, the `<header>` and `<footer>` elements have an important meaning fo
 
 In this scenario, the `<header>` element’s implicit ARIA role is `banner` and the `<footer>` element’s implicit ARIA role is `contentinfo`. Documents should only have one of each of these landmarks.
 
-That does not mean that you cannot use both of these elements in other places within your document, however, if they contain content that should be described by either of those roles, then you likely need to restructure your markup.
+That does not mean that you cannot use either of these elements in other places within your document. When we review [the definition of a `<header>` element](https://html.spec.whatwg.org/multipage/sections.html#the-header-element) it says:
 
-As of 2025, when used inside of the `<main>` element or [sectioning content](https://html.spec.whatwg.org/multipage/dom.html#sectioning-content), `<header>` and `<footer>` elements have been mapped to new ARIA roles: [`sectionheader`](https://w3c.github.io/aria/#sectionheader) and [`sectionfooter`](https://w3c.github.io/aria/#sectionfooter).
+> “The `header` element represents a group of introductory or navigational aids.”
+
+That implies much broader usage than [the definition of the `banner` role](https://w3c.github.io/aria/#banner):
+
+> “A `landmark` that contains mostly site-oriented content, rather than page-specific content.”
+
+Until 2025, when used inside of the `<main>` element or [sectioning content](https://html.spec.whatwg.org/multipage/dom.html#sectioning-content), `<header>` and `<footer>` elements were mapped with a `generic` role which means they didn’t have any value for accessibility purposes. After relatively recent changes to the latest ARIA spec and HTML-AAM drafts, in these contexts they have been mapped to new ARIA roles: [`sectionheader`](https://w3c.github.io/aria/#sectionheader) and [`sectionfooter`](https://w3c.github.io/aria/#sectionfooter).
 
 ```html
 <body>
@@ -277,7 +283,9 @@ As of 2025, when used inside of the `<main>` element or [sectioning content](htt
 </body>
 ```
 
-As of writing, this change has only been implemented in Chromium and WebKit-based browsers. [Gecko has yet to implement them](https://bugzilla.mozilla.org/show_bug.cgi?id=1893684). As these are new roles, the support from assistive technologies will likely be non-existent or quite limited.
+As of writing, these changes have been implemented in Chromium-based browsers and Safari. [Firefox has yet to implement them](https://bugzilla.mozilla.org/show_bug.cgi?id=1893684). With that said, as these roles are new, the support from assistive technologies will likely be non-existent or quite limited.
+
+The `<header>` and `<footer>` elements are examples of context being an important factor for implicit ARIA semantics. At first, only specific usage was used for setting the landmark roles. Now, later on, the broader usage allowed of these elements in other contexts can be exposed semantically.
 
 ### A combinations of these factors affect implicit semantics
 
