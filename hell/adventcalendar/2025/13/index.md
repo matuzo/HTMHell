@@ -84,6 +84,15 @@ We could enhance this by adding an <code>aria-label</code> to a wrapper that pro
 </section>
 ```
 
+<details>
+  <summary>VoiceOver + Safari (Mac)</summary>
+  a squared + b squared = c squared, with 5 items, maths
+</details>
+<details>
+  <summary>VoiceOver + Safari (iOS)</summary>
+  a squared plus b squared equals c squared, Math, end, Pythagorean Theorem, region
+</details>
+
 As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics to screen reader users even when we rely on images or non-semantic HTML. As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
 
 ```html
@@ -92,24 +101,37 @@ As an alternative to using MathML to convey mathematical meaning in simple examp
 </div>
 ```
 
-<div style="margin-bottom: 2rem;" role="math" aria-label="a^{2} + b^{2} = c^{2}">
-  a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
-</div>
-
-
-<img width="150" alt="a^{2} + b^{2} = c^{2}" src="./pythagorean-theorem.png" role="math" />
+<details>
+  <summary>Markup</summary>
+  <div style="margin-bottom: 2rem;" role="math" aria-label="a^{2} + b^{2} = c^{2}">
+    a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
+  </div>
+</details>
+<details>
+  <summary>VoiceOver + Safari (Mac)</summary>
+  not read, just announces with 6 items maths
+</details>
+<details style="margin-bottom: 2rem;" >
+  <summary>VoiceOver + Safari (iOS)</summary>
+  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket
+</details>
 
 ```html
 <img src="pythagorean_theorem.png" alt="a^{2} + b^{2} = c^{2}" role="math" />
 ```
 
-Let's compare how these two approaches (MathML or alternatives) are announced in different screen readers:
-
-| Screen reader + browser  | MathML                                                                            | Alternatives (Image/Element with math role)                                                                                              |
-| ------------------------ | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| NVDA + Firefox           |                                                                                   |                                                                                                                                          |
-| VoiceOver + Safari (Mac) | a squared + b squared = c squared, with 5 items, maths                            | not read, just announces with 6 items maths                                                                                              |
-| VoiceOver + Safari (iOS) | a squared plus b squared equals c squared, Math, end, Pythagorean Theorem, region | a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket |
+<details>
+  <summary>Markup</summary>
+  <img width="150" alt="a^{2} + b^{2} = c^{2}" src="./pythagorean-theorem.png" role="math" />
+</details>
+<details>
+  <summary>VoiceOver + Safari (Mac)</summary>
+  maths
+</details>
+<details style="margin-bottom: 2rem;">
+  <summary>VoiceOver + Safari (iOS)</summary>
+  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket
+</details>
 
 ## The future of MathML
 
