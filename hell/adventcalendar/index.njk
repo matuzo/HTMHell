@@ -16,7 +16,7 @@ tags:
   {% set days = collections.advent2025 %}
   <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 25 %}style="grid-column: span 2"{% endif %}>
     <div class="acalendar__number">
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2025/{{ num }}"{% endif %}>{{ num }}</a>
+      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2025/{{ num }}/"{% endif %}>{{ num }}</a>
     </div>
 
     <div class="acalendar__title">
@@ -130,19 +130,19 @@ tags:
 </p>
 
 <p>
-    <a href="/adventcalendar/2024">
+    <a href="/adventcalendar/2024/">
       HTMHell Advent calendar 2024
     </a>
     <br>
-    <a href="/adventcalendar/2023">
+    <a href="/adventcalendar/2023/">
       HTMHell Advent calendar 2023
     </a>
     <br>
-    <a href="/adventcalendar/2022">
+    <a href="/adventcalendar/2022/">
       HTMHell Advent calendar 2022
     </a>
     <br>
-    <a href="/adventcalendar/2021">
+    <a href="/adventcalendar/2021/">
       HTMHell Advent calendar 2021
     </a>
 </p>

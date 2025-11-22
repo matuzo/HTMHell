@@ -2,7 +2,7 @@
 title: "HTML Input Validation is Good"
 author: "Wes Goulet"
 author_bio: "A guy who likes to make things on the web.  Microsoft/Salesforce alum.  Big fan of PWAs, SSGs, web standards, and simple/boring code."
-date: 2025-12-31
+date: 2026-01-02
 author_links:
   - label: "Site"
     url: "https://goulet.dev"
