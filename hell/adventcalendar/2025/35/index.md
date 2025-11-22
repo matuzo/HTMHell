@@ -1,7 +1,7 @@
 ---
 title: "HTML Input Validation is (maybe) Good"
 author: "Wes Goulet"
-author_bio: "I like to make things on the web.  Microsoft/Salesforce alum.  Big fan of PWAs, SSGs, web standards, and simple/boring code."
+author_bio: "Maker of (hopefully) useful things on the web.  Microsoft/Salesforce alum.  Big fan of PWAs, SSGs, web standards, and simple/boring code."
 date: 2026-01-02
 author_links:
   - label: "Site"
