@@ -247,9 +247,9 @@ On a MacBook whether you even _see_ the scrollbar when you're not actively scrol
 
 ## Accessibility
 
-While a lot of this just works for everyone, there is some discussion about where to put the focus, when a user opens a modal. For a sighted user with a pointing device, you probably don't notice where the focus lands - but it's very important if you're a screen reader user, as the focus determines where in a document the reader lands and begins reading from.
+As it opens, by default the focus will land on either the whole dialog, or if it has one, the first focusable element (whether it's a close button or not). A sighted user with a pointing device will probably not tend to notice where the focus lands - but it's very important as a screen reader user, as the focus determines where in a document the reader lands and begins reading from.
 
-I heartily recommend reading [Where to Put Focus When Opening a Modal Dialog](https://adrianroselli.com/2025/06/where-to-put-focus-when-opening-a-modal-dialog.html?Theme=Light) by Adrian Roselli to help you decide where the focus will land on your dialog. Then read [O dialog focus, where art thou?](https://www.matuzo.at/blog/2023/focus-dialog/) to help you consistently get it where you want it.
+In case of needing the focus to land somewhere specific for your use case, I heartily recommend reading [Where to Put Focus When Opening a Modal Dialog](https://adrianroselli.com/2025/06/where-to-put-focus-when-opening-a-modal-dialog.html?Theme=Light) by Adrian Roselli to help you decide where the focus will land on your dialog. Then read [O dialog focus, where art thou?](https://www.matuzo.at/blog/2023/focus-dialog/) to help you consistently get it where you want it.
 
 <p class="highlight">
   If you read the MDN page on dialogs and are bothered by <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#attributes">this warning about <code>tabindex</code> on <code>&lt;dialog&gt;</code></a>, you may either take Adrian or Manuel's word that it's OK, or you can enjoy Manuel's deep dive into <a href="https://www.matuzo.at/blog/2025/whats-an-interactive-element">What's an interactive element?</a>. Enjoy!
