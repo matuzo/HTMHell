@@ -76,7 +76,7 @@ We're probably more familiar with the modal variety of dialog, intended to (hope
   </form>
 </dialog>
 
-Dialogs can give us both modal and non-modal variants, depending on how we open them. In the case of more than one dialog being opened (assuming no close action happening on the previous dialogs), the most recently opened dialog will appear on top.
+The `dialog` element gives us both modal and non-modal variants, depending on how we open them. In the case of more than one dialog being opened (assuming no close action happening on the previous dialogs), the most recently opened dialog will appear on top.
 
 ## Opening with JS
 
@@ -99,7 +99,7 @@ document.querySelector("dialog").showModal();
   There is a declarative method available to <a href="">invoke</a> dialogs, but for now I will stick to what is currently available across the main browsers.
 </p>
 
-In the CodePen below, both kinds of dialog opening method are available. You'll notice that you can still interact with the Open Modal button after having opened the dialog, but not vice-versa. The modal can be closed with the Esc key, the normal modal cannot.
+In the CodePen below, both kinds of dialog opening method are available. You'll notice that you can still interact with the Open Modal button after having opened the dialog, but not vice-versa. The modal can be closed with the Esc key, the non-modal dialog cannot.
 
 <p class="codepen" data-height="300" data-default-tab="js,result" data-slug-hash="ZYQvJQG" data-pen-title="Dialogs!" data-editable="true" data-user="sarajw" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
       <span>See the Pen <a href="https://codepen.io/sarajw/pen/ZYQvJQG">
@@ -130,7 +130,7 @@ This [`requestClose()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDia
 
 ### Light dismissal
 
-You're probably already trying to close the dialogs by clicking away, which is a common pattern and is often referred to as _light dismiss_.
+You're probably already trying to close the dialogs by clicking outside of them, which is a common pattern and is often referred to as [_light dismiss_](https://html.spec.whatwg.org/dev/interactive-elements.html#dialog-light-dismiss).
 
 This isn't available by default, but can be coded in with CSS and JS.
 
@@ -189,7 +189,7 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 
 Apart from limiting the piratey _lorem ipsum_ column width and centering it, no other custom styling has occurred in the CodePen demos.
 
-By default, the normal dialog has no backdrop, while the modal dialog's `::backdrop` has a subtle transparent grey, and the dialog itself is centered vertically as well as horizontally on the page.
+By default, the non-modal dialog has no backdrop, while the modal dialog's `::backdrop` has a subtle transparent grey, and the dialog itself is centered vertically as well as horizontally on the page.
 
 I am going to stand on the shoulders of giants here, and suggest some places you can go to look at amazing dialog CSS styling and animation:
 
@@ -228,7 +228,7 @@ The `scrollbar-gutter` property keeps the text on the page from reflowing with a
       </p>
       <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
-You've may have noticed - if you can see a scrollbar - that the scrollbar gutter isn't taking on the backdrop style. Yeah. Go ahead and comment out the `scrollbar-gutter: stable;` line in the CSS, open/close the modal a few times, and see whether the scrollbar appearing and disappearing bothers you more. It might not - but it bothers _me_!
+You may have noticed - if you can see a scrollbar - that the scrollbar gutter isn't taking on the backdrop style. Yeah. Go ahead and comment out the `scrollbar-gutter: stable;` line in the CSS, open/close the modal a few times, and see whether the scrollbar appearing and disappearing bothers you more. It might not - but it bothers _me_!
 
 Reinstate `scrollbar-gutter: stable;`, then scroll down a little in the CSS of the above CodePen and uncomment the following:
 
