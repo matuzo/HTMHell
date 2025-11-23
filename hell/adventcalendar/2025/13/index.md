@@ -16,7 +16,7 @@ image: "advent25_13"
 
 Maybe it has happened to you that you wanted to write some formulas in HTML to display them on a website, and even though there are multiple ways to do it, accessibility is often not considered in the process. How the formula is read by screen readers is crucial to ensure that we don't leave anyone behind.
 
-The web is full of many different and interesting approaches for representing formulas. To say some, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTX, we could unicode math, Canvas/WebGL or even just simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options to do this task, even if it wasn’t originally designed for the web. Some of its own advantages are that it has its own syntax, MathML provides various elements that give the correct semantics to the different parts of a formula, has good screen reader support, requires no JavaScript dependencies and it can be used beyond the browser as we can do in EPUB or braille/math speech tooling. 
+The web is full of many different and interesting approaches for representing formulas. To say some, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTX, we could unicode math, Canvas/WebGL or even just simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options to do this task, even if it wasn’t originally designed for the web. Some of its own advantages are that it has its own syntax, MathML provides various elements that give the correct semantics to the different parts of a formula, has good screen reader support, requires no JavaScript dependencies and it can be used beyond the browser as we can do in EPUB or braille/math speech tooling.
 
 Let's take the famous Pythagorean Theorem as an example.
 
@@ -68,14 +68,252 @@ Unlike plain HTML with <code>sup</code> or <code>span</code>, which only describ
 - <code>mn</code> is a mathematical number, like <strong>2</strong>.
 - <code>mo</code> is a mathematical operator, such as <strong>+</strong> or <strong>=</strong>.
 
-<p class="highlight"><strong>Note:</strong> This is only one way to display the formula. If you're interested in how to actually prove it, Mozilla has a very detailed page about <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Guides/Proving_the_Pythagorean_theorem">proving the Pythagorean theorem with MathML</a>.</p>
+Other alternatives, like the ones mentioned above, may offer similar capabilities, but they typically rely on an assistive or hidden MathML layer. In practice, MathML remains the only web-standard markup that expresses mathematical roles natively in the DOM.
 
-Anyway, with this approach, the accessibility tree shows good semantics.
+With this approach, the accessibility tree shows good semantics and VoiceOver knows well what to do.
 
 <img alt="Accessibility tree view of a MathML formula showing nested semantic elements. The tree includes nodes such as MathMLMath, MathMLSup, MathMLIdentifier, MathMLNumber, and MathMLOperator, representing the structure of the equation a² + b² = c²." src="./mathml-a11y-tree.png" 
 />
 
-We could enhance this by adding an <code>aria-label</code> to a wrapper that provides some information about the following formula, especially when it's a well-known one. By using a <code>section</code> with an <code>aria-label</code>, we automatically insert a region into the accessibility tree.
+<details>
+  <summary>VoiceOver + Safari (Mac)</summary>
+  a squared + b squared = c squared, with 5 items, maths
+</details>
+<details style="margin-bottom: 2rem;">
+  <summary>VoiceOver + Safari (iOS)</summary>
+  a squared plus b squared equals c squared, Math
+</details>
+
+Let's see maybe a more complicate case. Instead of just the way to display the formula, let's see how to actually prove it and how that will be read for the screen reader users.
+
+```html
+<math display="block">
+  <semantics>
+    <mtable>
+      <!-- Step one -->
+      <mtr>
+        <mtd>
+          <msup>
+            <mrow>
+              <mo>(</mo>
+              <mi>a</mi>
+              <mo>+</mo>
+              <mi>b</mi>
+              <mo>)</mo>
+            </mrow>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <mn>4</mn>
+          <mo>⋅</mo>
+          <mo>(</mo>
+          <mfrac>
+            <mn>1</mn>
+            <mn>2</mn>
+          </mfrac>
+          <mi>a</mi>
+          <mi>b</mi>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <!-- Step two -->
+      <mtr>
+        <mtd>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <mn>2</mn>
+          <mi>a</mi>
+          <mi>b</mi>
+          <mo>+</mo>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <mn>2</mn>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mtd>
+      </mtr>
+      <!-- Step three -->
+      <mtr>
+        <mtd>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+      </mtr>
+    </mtable>
+
+    <annotation encoding="application/x-tex">
+      \begin{aligned} (a + b)^2 &= c^2 + 4 \cdot \left( \frac{1}{2} ab \right)
+      \\ a^2 + 2ab + b^2 &= c^2 + 2ab \\ a^2 + b^2 &= c^2 \end{aligned}
+    </annotation>
+  </semantics>
+</math>
+```
+
+<math style="margin-bottom: 2rem;" display="block">
+  <semantics>
+    <mtable>
+      <!-- Step one -->
+      <mtr>
+        <mtd>
+          <msup>
+            <mrow>
+              <mo>(</mo>
+              <mi>a</mi>
+              <mo>+</mo>
+              <mi>b</mi>
+              <mo>)</mo>
+            </mrow>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <mn>4</mn>
+          <mo>⋅</mo>
+          <mo>(</mo>
+          <mfrac>
+            <mn>1</mn>
+            <mn>2</mn>
+          </mfrac>
+          <mi>a</mi>
+          <mi>b</mi>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <!-- Step two -->
+      <mtr>
+        <mtd>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <mn>2</mn>
+          <mi>a</mi>
+          <mi>b</mi>
+          <mo>+</mo>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <mn>2</mn>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mtd>
+      </mtr>
+      <!-- Step three -->
+      <mtr>
+        <mtd>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+        </mtd>
+      </mtr>
+    </mtable>
+
+  </semantics>
+</math>
+
+This proof example just added several MathML elements that go beyond simple identifiers and operators. Each of these adds meaning to the expression, which is why assistive technologies can navigate the structure so precisely. For example:
+
+- <code>mtable</code>, <code>mtr</code> and <code>mts</code>: these directly mirror HTML's <code>table</code>, <code>tr</code> and <code>td</code> but are math-specific. They tell the accessibility tree: "this is a mathematical table with aligned steps," not just a generic layout table. Screen readers can move row-by-row, so each step of the proof becomes navigable.
+
+- <code>mrow</code>: groups expressions together. For example <code>(a + b)</code> is wrapped in an <code>mrow</code> to indicate that the parentheses and the interior form a single unit before exponentiation.
+
+- <code>mfrac</code>: defines an actual mathematical fraction, not just text with a slash. This allows speech engines to say "one half" instead of "one over two" depending on preferences and locale.
+
+- <code>semantics</code>: this is key. It wraps the expression and lets you attach alternative meanings or encodings. Assistive technologies prefer the first child (your visual MathML), but can fall back to the annotation if needed.
+
+- <code>annotation</code>: stores auxiliary information. In this case, the TeX version of the proof. It does not affect the visual rendering in the browser. Instead, it's metadata for tools that consume MathML, like converters, EPUB readers, or braille translators.
+
+Check out how this will be announced by some screen readers!
+
+<details>
+  <summary>VoiceOver + Safari (Mac)</summary>
+  Table start, Row 1, Column 1, ( a + b ) squared, Row 1, Column 2, =, Row 1, Column 3, c squared + 4 · ( fraction start, 1 over 2, end of fraction, a b ), Row 2, Column 1, a squared + 2 a b + b squared, Row 2, Column 2, =, Row 2, Column 3, c squared + 2 a b, Row 3, Column 1, a squared + b squared, Row 3, Column 2, =, Row 3, Column 3, c squared, table end, maths
+</details>
+<details style="margin-bottom: 2rem;" >
+  <summary>VoiceOver + Safari (iOS)</summary>
+  1 table, table start, Row 1, Column 1, a plus b squared, Row 1, Column 2, equals, Row 1, Column 3, c squared plus 4 dot fraction start 1 over 2, end of fraction, a b, Row 2, Column 1, a squared plus 2 a b plus b squared, Row 2, Column 2, equals, Row 2, Column 3, c squared plus 2 a b, Row 3, Column 1, a squared plus b squared, Row 3, Column 2, equals, Row 3, Column 3, c squared, table end, Math
+</details>
+
+<p style="margin-top: 2rem;" class="highlight"><strong>Note:</strong> If you want to deepen in the topic, Mozilla has a very detailed page about <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Guides/Proving_the_Pythagorean_theorem">proving the Pythagorean theorem with MathML</a>.</p>
+
+## Some A11y Enhancements
+
+We could enhance this by adding an <code>aria-label</code> to a wrapper that provides some information about the following formula, especially when it's a well-known one. By using a <code>section</code> with an <code>aria-label</code> or <code>aria-labelledby</code> together with another element giving the accessible name, we automatically insert a region into the accessibility tree.
 
 ```html
 <section aria-labelledby="section-1-heading">
@@ -84,16 +322,11 @@ We could enhance this by adding an <code>aria-label</code> to a wrapper that pro
 </section>
 ```
 
-<details>
-  <summary>VoiceOver + Safari (Mac)</summary>
-  a squared + b squared = c squared, with 5 items, maths
-</details>
-<details>
-  <summary>VoiceOver + Safari (iOS)</summary>
-  a squared plus b squared equals c squared, Math, end, Pythagorean Theorem, region
-</details>
+## Conveying mathematical meaning with ARIA
 
-As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics to screen reader users even when we rely on images or non-semantic HTML. As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
+As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it did not show to give good results when using VoiceOver on Mac, for example.
+
+As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
 
 ```html
 <div role="math" aria-label="a^{2} + b^{2} = c^{2}">
@@ -109,11 +342,11 @@ As an alternative to using MathML to convey mathematical meaning in simple examp
 </details>
 <details>
   <summary>VoiceOver + Safari (Mac)</summary>
-  not read, just announces with 6 items maths
+  not read, just announces "with 6 items, maths"
 </details>
 <details style="margin-bottom: 2rem;" >
   <summary>VoiceOver + Safari (iOS)</summary>
-  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket
+  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
 </details>
 
 ```html
@@ -126,12 +359,14 @@ As an alternative to using MathML to convey mathematical meaning in simple examp
 </details>
 <details>
   <summary>VoiceOver + Safari (Mac)</summary>
-  maths
+  not read, just announces "maths"
 </details>
 <details style="margin-bottom: 2rem;">
   <summary>VoiceOver + Safari (iOS)</summary>
-  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket
+  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
 </details>
+
+In practice, using the math role helps assistive technologies understand that the content is mathematical, but it still doesn’t provide enough semantic detail for them to announce the expression as accurately as MathML does.
 
 ## The future of MathML
 
