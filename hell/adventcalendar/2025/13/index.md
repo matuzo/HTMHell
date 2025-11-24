@@ -14,9 +14,9 @@ intro: "<p>Math on the web has always been a visual and accessibility challenge.
 image: "advent25_13"
 ---
 
-Maybe it has happened to you that you wanted to write some formulas in HTML to display them on a website, and even though there are multiple ways to do it, accessibility is often not considered in the process. How the formula is read by screen readers is crucial to ensure that we don't leave anyone behind.
+Maybe it has happened to you that you wanted to write some formulas in HTML to display on a website, and even though there are multiple ways to do it, accessibility is often not considered in the process. How the formula is read by screen readers is crucial to ensure that we don't leave anyone behind. And the main assistive technologies are in different stages, as we will see.
 
-The web is full of many different and interesting approaches for representing formulas. To say some, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTX, we could unicode math, Canvas/WebGL or even just simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options to do this task, even if it wasn’t originally designed for the web. Some of its own advantages are that it has its own syntax, MathML provides various elements that give the correct semantics to the different parts of a formula, has good screen reader support, requires no JavaScript dependencies and it can be used beyond the browser as we can do in EPUB or braille/math speech tooling.
+The web is full of many different and interesting approaches for representing formulas. To name a few, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTX, we could Unicode math, Canvas/WebGL or even simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options for this task, even if it wasn’t originally designed for the web. Some of its advantages are that it has its own syntax, MathML provides various elements that give the correct semantics to the different parts of a formula, has good screen reader support, requires no JavaScript dependencies and it can be used beyond the browser, as in EPUB or braille/math speech tooling.
 
 Let's take the famous Pythagorean Theorem as an example.
 
@@ -75,16 +75,25 @@ With this approach, the accessibility tree shows good semantics and VoiceOver kn
 <img alt="Accessibility tree view of a MathML formula showing nested semantic elements. The tree includes nodes such as MathMLMath, MathMLSup, MathMLIdentifier, MathMLNumber, and MathMLOperator, representing the structure of the equation a² + b² = c²." src="./mathml-a11y-tree.png" 
 />
 
-<details>
-  <summary>VoiceOver + Safari (Mac)</summary>
-  a squared + b squared = c squared, with 5 items, maths
-</details>
-<details style="margin-bottom: 2rem;">
-  <summary>VoiceOver + Safari (iOS)</summary>
-  a squared plus b squared equals c squared, Math
-</details>
+However, and this is something we will see through the whole article, screen reader support for the <code>math</code> tag is differently depending on the assistive technology. VoiceOver seems to be doing a pretty good job, [JAWS also makes it easy for both speech and braille](https://www.freedomscientific.com/training/teachers/accessing-math-content-with-jaws-and-fusion/), and [NVDA needs an add-on to make it work called MathCat](https://github.com/nvaccess/nvda/issues/17667) because if not, the <code>math</code> tag will be ignored. A major pull request ([#18323](https://github.com/nvaccess/nvda/pull/18323)) was merged on 17 November 2025 which integrates MathCAT into NVDA core, meaning users won’t have to find/install a separate add-on to handle math.
 
-Let's see maybe a more complicate case. Instead of just the way to display the formula, let's see how to actually prove it and how that will be read for the screen reader users.
+<section aria-labelledby="example-formula">
+  <h3 id="example-formula">How screen readers interpret the formula</h3>
+  <details>
+    <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
+    region eigh squared plus b squared is equal to c squared space
+  </details>
+  <details>
+    <summary>VoiceOver + Safari (Mac)</summary>
+    a squared + b squared = c squared, with 5 items, maths
+  </details>
+  <details style="margin-bottom: 2rem;">
+    <summary>VoiceOver + Safari (iOS)</summary>
+    a squared plus b squared equals c squared, Math
+  </details>
+</section>
+
+Let's look at a more complicated case. Instead of just the way to display the formula, let's see how to actually prove it and how that will be announced by screen readers.
 
 ```html
 <math display="block">
@@ -298,18 +307,31 @@ This proof example just added several MathML elements that go beyond simple iden
 
 - <code>annotation</code>: stores auxiliary information. In this case, the TeX version of the proof. It does not affect the visual rendering in the browser. Instead, it's metadata for tools that consume MathML, like converters, EPUB readers, or braille translators.
 
-Check out how this will be announced by some screen readers!
+Check out how this is announced by different screen readers!
 
-<details>
-  <summary>VoiceOver + Safari (Mac)</summary>
-  Table start, Row 1, Column 1, ( a + b ) squared, Row 1, Column 2, =, Row 1, Column 3, c squared + 4 · ( fraction start, 1 over 2, end of fraction, a b ), Row 2, Column 1, a squared + 2 a b + b squared, Row 2, Column 2, =, Row 2, Column 3, c squared + 2 a b, Row 3, Column 1, a squared + b squared, Row 3, Column 2, =, Row 3, Column 3, c squared, table end, maths
-</details>
-<details style="margin-bottom: 2rem;" >
-  <summary>VoiceOver + Safari (iOS)</summary>
-  1 table, table start, Row 1, Column 1, a plus b squared, Row 1, Column 2, equals, Row 1, Column 3, c squared plus 4 dot fraction start 1 over 2, end of fraction, a b, Row 2, Column 1, a squared plus 2 a b plus b squared, Row 2, Column 2, equals, Row 2, Column 3, c squared plus 2 a b, Row 3, Column 1, a squared plus b squared, Row 3, Column 2, equals, Row 3, Column 3, c squared, table end, Math
-</details>
+<section aria-labelledby="example-proof">
+  <h3 id="example-proof">How screen readers interpret the proof</h3>
+  <details>
+  <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
+  3 lines
+  line 1 open paren eigh plus b close paren squared is equal to c squared plus 4 times 1 half eigh b
 
-<p style="margin-top: 2rem;" class="highlight"><strong>Note:</strong> If you want to deepen in the topic, Mozilla has a very detailed page about <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Guides/Proving_the_Pythagorean_theorem">proving the Pythagorean theorem with MathML</a>.</p>
+line 2 eigh squared plus 2 eigh b plus b squared is equal to c squared plus 2 eigh b
+
+line 3 eigh squared plus b squared is equal to c squared
+
+  </details>
+  <details>
+    <summary>VoiceOver + Safari (Mac)</summary>
+    Table start, Row 1, Column 1, ( a + b ) squared, Row 1, Column 2, =, Row 1, Column 3, c squared + 4 · ( fraction start, 1 over 2, end of fraction, a b ), Row 2, Column 1, a squared + 2 a b + b squared, Row 2, Column 2, =, Row 2, Column 3, c squared + 2 a b, Row 3, Column 1, a squared + b squared, Row 3, Column 2, =, Row 3, Column 3, c squared, table end, maths
+  </details>
+  <details style="margin-bottom: 2rem;" >
+    <summary>VoiceOver + Safari (iOS)</summary>
+    1 table, table start, Row 1, Column 1, a plus b squared, Row 1, Column 2, equals, Row 1, Column 3, c squared plus 4 dot fraction start 1 over 2, end of fraction, a b, Row 2, Column 1, a squared plus 2 a b plus b squared, Row 2, Column 2, equals, Row 2, Column 3, c squared plus 2 a b, Row 3, Column 1, a squared plus b squared, Row 3, Column 2, equals, Row 3, Column 3, c squared, table end, Math
+  </details>
+</section>
+
+<p style="margin-top: 2rem;" class="highlight"><strong>Note:</strong> If you want to deepen your understanding in the topic, Mozilla has a very detailed page about <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Guides/Proving_the_Pythagorean_theorem">proving the Pythagorean theorem with MathML</a>.</p>
 
 ## Some A11y Enhancements
 
@@ -322,9 +344,11 @@ We could enhance this by adding an <code>aria-label</code> to a wrapper that pro
 </section>
 ```
 
+Also, for users who zoom the browser up to 400%, we might want to add a `max-width: 100%` and `overflow-x: auto`, so that the formula remains readable, does not break the page and we allow horizontal scrolling only inside the math block, and not at the entire page level.
+
 ## Conveying mathematical meaning with ARIA
 
-As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it did not show to give good results when using VoiceOver on Mac, for example.
+As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it does not tend to give good results with VoiceOver on macOS, for example.
 
 As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
 
@@ -334,37 +358,51 @@ As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibil
 </div>
 ```
 
-<details>
-  <summary>Markup</summary>
-  <div style="margin-bottom: 2rem;" role="math" aria-label="a^{2} + b^{2} = c^{2}">
-    a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
-  </div>
-</details>
-<details>
-  <summary>VoiceOver + Safari (Mac)</summary>
-  not read, just announces "with 6 items, maths"
-</details>
-<details style="margin-bottom: 2rem;" >
-  <summary>VoiceOver + Safari (iOS)</summary>
-  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
-</details>
+<section aria-labelledby="example-div">
+  <h3 id="example-div">Markup with a div with the math role and how screen readers interpret it</h3>
+  <details>
+    <summary>Markup</summary>
+    <div style="margin-bottom: 2rem;" role="math" aria-label="a^{2} + b^{2} = c^{2}">
+      a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
+    </div>
+  </details>
+  <details>
+    <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
+  just announce the markup, line by line
+  </details>
+  <details>
+    <summary>VoiceOver + Safari (Mac)</summary>
+    not read, just announces "with 6 items, maths"
+  </details>
+  <details style="margin-bottom: 2rem;" >
+    <summary>VoiceOver + Safari (iOS)</summary>
+    a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
+  </details>
+</section>
 
 ```html
 <img src="pythagorean_theorem.png" alt="a^{2} + b^{2} = c^{2}" role="math" />
 ```
 
-<details>
-  <summary>Markup</summary>
-  <img width="150" alt="a^{2} + b^{2} = c^{2}" src="./pythagorean-theorem.png" role="math" />
-</details>
-<details>
-  <summary>VoiceOver + Safari (Mac)</summary>
-  not read, just announces "maths"
-</details>
-<details style="margin-bottom: 2rem;">
-  <summary>VoiceOver + Safari (iOS)</summary>
-  a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
-</details>
+<section aria-labelledby="example-img">
+  <h3 id="example-img">Markup with a img with the math role and how screen readers interpret it</h3>
+  <details>
+    <summary>Markup</summary>
+    <img width="150" alt="a^{2} + b^{2} = c^{2}" src="./pythagorean-theorem.png" role="math" />
+  </details>
+  <details>
+    <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
+  just announce the markup
+  </details>
+  <details>
+    <summary>VoiceOver + Safari (Mac)</summary>
+    not read, just announces "maths"
+  </details>
+  <details style="margin-bottom: 2rem;">
+    <summary>VoiceOver + Safari (iOS)</summary>
+    a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
+  </details>
+</section>
 
 In practice, using the math role helps assistive technologies understand that the content is mathematical, but it still doesn’t provide enough semantic detail for them to announce the expression as accurately as MathML does.
 
@@ -372,7 +410,7 @@ In practice, using the math role helps assistive technologies understand that th
 
 <p class="highlight"><strong><abbr title="too long; didn't read">TL;DR:</abbr></strong> MathML Core is what browsers implement today; MathML 4 is the broader language evolving around it.</p>
 
-First, we are going to focus on there MathML comes from and why there's both a 'Core' and a 'version 4' in development. As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Historically, the full MathML spec was broad and partly underspecified for browsers, which led to uneven or incomplete implementations across engines. MathML Core therefore narrows the language to the subset that can be precisely defined on top of the Web Platform, improving testability and cross-browser interoperability. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/). On another note, at the time of this writing, there is [a Working Draft for MathML 4](https://www.w3.org/TR/mathml4/), the next version of MathML. This version aims to be the next "full" spec that extends Core. It keeps the bigger feature set (e.g., Content MathML) and adds, among others, the <code>intent</code> attribute so authors can guide screen-reader speech. With it, we'll be able to do something like this:
+First, we are going to focus on where MathML comes from and why there's both a 'Core' and a 'version 4' in development. As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Historically, the full MathML spec was broad and partly underspecified for browsers, which led to uneven or incomplete implementations across engines. MathML Core therefore narrows the language to the subset that can be precisely defined on top of the Web Platform, improving testability and cross-browser interoperability. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/). On another note, at the time of this writing, there is [a Working Draft for MathML 4](https://www.w3.org/TR/mathml4/), the next version of MathML. This version aims to be the next "full" spec that extends Core. It keeps the larger feature set (e.g., Content MathML) and adds, among others, the <code>intent</code> attribute so authors can guide screen-reader speech. With it, we'll be able to do something like this:
 
 ```html
 <math>
@@ -398,3 +436,5 @@ First, we are going to focus on there MathML comes from and why there's both a '
 ## Conclusion
 
 As [browser support for MathML continues to evolve](https://caniuse.com/mathml), previous fallback solutions like [mathml.css](https://github.com/fred-wang/mathml.css) are no longer necessary. MathML Core, and soon MathML 4, allow us to express both the visual and semantic meaning of mathematical content without sacrificing accessibility along the way.
+
+Screen-reader support is also steadily improving. Each assistive technology handles MathML in its own way, but the overall trajectory is positive. VoiceOver offers consistent navigation and speech for many common patterns across macOS and iOS. JAWS, especially when paired with Fusion, provides rich support for both speech and braille. And NVDA, which historically required an add-on, is now moving toward a built-in MathCAT integration, making MathML speech and braille support more accessible out of the box for Windows users.
