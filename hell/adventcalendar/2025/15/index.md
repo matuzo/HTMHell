@@ -13,11 +13,11 @@ author_links:
   - label: "Mastodon"
     url: "https://hachyderm.io/@maureenholland"
     link_label: "@maureenholland"
-intro: "<p>Web feeds are incredible! And a bit confusing! This post offers a peek behind the curtain of what makes a web feed and delights in the fact RSS Autodiscovery means you don’t need to know anything about that to subscribe</p>"
+intro: "<p>Web feeds are incredible! And a bit confusing! This post offers a peek behind the curtain of what makes a web feed and delights in the fact RSS Autodiscovery means you don’t need to know anything about that to subscribe.</p>"
 image: "advent25_15"
 ---
 
-Web feeds are incredible! And a bit confusing! Why are the feed links often called “RSS”? And why is this “RSS” feed in an <code>atom.xml</code> file… hang on, what is <code>feed.json</code> for?  What are they even feeding into anyway?
+Web feeds are incredible! And a bit confusing! Why are the feed links often called “RSS”? And why is this “RSS” feed in an <code>atom.xml</code> file… hang on, what is <code>feed.json</code> for? What are they even feeding into anyway?
 
 To start, web feeds are often referred to as “RSS” because RSS is the oldest format. [RSS](https://www.rssboard.org/rss-specification) stands for Really Simple Syndication. It is an XML-based specification for web content syndication ([including podcasts](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)).
 
