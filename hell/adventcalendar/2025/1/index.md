@@ -10,7 +10,7 @@ author_links:
   - label: "Mastodon"
     url: "https://front-end.social/@5t3ph"
     link_label: "@5t3ph"
-intro: "<p>A sneaky accessibility conflict can arise when trying to use modal dialogs with the popover API. Learn about the conflict and how to resolve it.</p>"
+intro: "<p>A sneaky accessibility conflict can arise when trying to use modal dialogs with the Popover API. Learn about the conflict and how to resolve it.</p>"
 image: "advent25_1"
 ---
 
@@ -28,7 +28,7 @@ Promoting an element to the top layer breaks it free of any stacking context it 
 
 Although the top layer directly addresses a CSS-related issue, there is currently no property available to promote an element to the top layer. Instead, certain elements and conditions gain access to the top layer, including native dialogs via `showModal()` and elements designated as popovers.
 
-The [popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) is a newly available HTML feature that enables you to create declarative non-modal overlay elements. The ability to escape any stacking context by gaining top layer access is usually a desirable feature of choosing the popover API. However, there’s a sneaky potential conflict to be aware of before hastily opting for this native upgrade.
+The [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) is a newly available HTML feature that enables you to create declarative non-modal overlay elements. The ability to escape any stacking context by gaining top layer access is usually a desirable feature of choosing the Popover API. However, there’s a sneaky potential conflict to be aware of before hastily opting for this native upgrade.
 
 ## Setting the scene
 
@@ -36,7 +36,7 @@ Picture this, the web, 2025: your web app includes a notification service that d
 
 Usually these toast notifications are for real-time alerts of things like a successful save, or errors such as a failed form submit. They are sometimes time limited, or include a dismissal mechanism like a close button. Sometimes they include an additional action, such as to “Retry” for re-submitting a failed workflow.
 
-Since your app is hip to the times, you’ve recently decided to upgrade the toasts to use the popover API. This enables you to place the toast component anywhere in the app structure, and not have to hack around stacking context issues. After all, toasts absolutely must appear over everything else, so the top layer access afforded via popovers makes sense!
+Since your app is hip to the times, you’ve recently decided to upgrade the toasts to use the Popover API. This enables you to place the toast component anywhere in the app structure, and not have to hack around stacking context issues. After all, toasts absolutely must appear over everything else, so the top layer access afforded via popovers makes sense!
 
 You ship the enhancement, proud of your work.
 
@@ -62,7 +62,7 @@ If you are able to click on the popover, you may think it’s at least working w
 
 ## Why the toast popover is unreachable
 
-While top layer allows beating out standard stacking contexts, items that exist within the top layer create their own layering order. The most recently added top layer item appears over previous top layer items. This is why the toast was visually appearing over the dialog’s backdrop.
+While top layer allows beating out standard stacking contexts, items that exist within the top layer are still affected by layering order. The most recently added top layer item appears over previous top layer items. This is why the toast was visually appearing over the dialog’s backdrop.
 
 So if the popover is _visually_ available, why is it unreachable via keyboard or a screen reader’s virtual cursor?
 
@@ -97,7 +97,7 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 
 What we’ve learned is that you will need to work out a mechanism to launch popovers from within dialogs if your website or app has the possibility of both displaying at once, and they have independent timelines.
 
-Alternatively, you could opt to supress background page popovers until the dialog closes. This may not be ideal if notifications require timely interaction, or if the dialog contents have the potential to trigger a toast.
+Alternatively, you could opt to suppress background page popovers until the dialog closes. This may not be ideal if notifications require timely interaction, or if the dialog contents have the potential to trigger a toast.
 
 Another issue you may need to handle for, besides visibility and interactivity, is if the popover needs to outlive the dialog. As in, it needs to remain open - perhaps to keep waiting for the user to take action - once the dialog is closed.
 
