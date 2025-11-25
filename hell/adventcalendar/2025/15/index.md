@@ -90,7 +90,9 @@ This is not required but can be helpful if your site has a lot of frequently upd
 <link rel="alternate" type="application/rss+xml" title="TIL" href="https://example.com/til.xml">
 ```
 
-## What now?
+## Wrapping Up
+
+I started subscribing to web feeds after reading [Tim Kadlec’s Investing in RSS](https://timkadlec.com/remembers/2023-02-23-investing-in-rss/). When I’m online, at some point, I will be checking my feed reader for a bit of inspiration. It’s a form of self-care to step out of the daily grind and step into someone else’s brain for a while. As much as I’ve learned from the articles I’ve read, it’s the feeling I’ve had reading them that I remember most, that spark of connection or revelation. If I’ve been offline for a while, the unread notifications can pile up, so I also consider it a form of self-care to select “Mark all as read.” 
 
 If you’re already a fan of web feeds, check you’ve made it easy for others to find your feed with autodiscovery. If you’re new to web feeds, pick a reader and try it out for a month. Then switch to a different one, <em>just because you can</em>.
 
