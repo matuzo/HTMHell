@@ -164,7 +164,7 @@ There are also other ways to make HTML more developer-friendly. One of the bette
 ```html
 <div class="card"></div>
 <!-- vs -->
-<card-></card->
+<the-card></the-card>
 ```
 
 We would also need to add a little bit of CSS:
