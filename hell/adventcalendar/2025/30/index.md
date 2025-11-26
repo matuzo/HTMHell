@@ -159,6 +159,24 @@ I'm using a [BEM-like](https://getbem.com/) naming convention here to indicate t
 
 <p class="highlight"><strong>Note:</strong> It can be argued that most of these classes are redundant, repeating the information already provided by RDFa. Yet I tend to treat BEM not as a naming convention but as a <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL (Domain Specific Language)</a> for creating component-based applications. However, that's a story for another time.</p>
 
+There are also other ways to make HTML more developer-friendly. One of the better (at least in my opinion) is to [use custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to replace plain old `<div>`s:
+
+```html
+<div class="card"></div>
+<!-- vs -->
+<card-></card->
+```
+
+We would also need to add a little bit of CSS:
+
+```css
+:not(:defined) {
+  display: block;
+}
+```
+
+It ensures that custom elements are displayed as block elements (that is, like `<div>`s) because by default, they’re displayed inline (like `<span>`s).
+
 ## Fourth semantics?
 
 Yet another elephant looms on the horizon… There is no doubt that we live in the AI era. [LLMs (Large Language Models)](https://en.wikipedia.org/wiki/Large_language_model) are everywhere around us, and they are yet another kind of machine that can understand HTML. But hey, they are _language models_, finally our technology has advanced enough to be able to fully grasp the beauty of Web 3.0!
