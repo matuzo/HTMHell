@@ -16,13 +16,13 @@ image: "advent25_13"
 
 Maybe it has happened to you that you wanted to write some formulas in HTML to display on a website, and even though there are multiple ways to do it, accessibility is often not considered in the process. How the formula is read by screen readers is crucial to ensure that we don't leave anyone behind. And the main assistive technologies are in different stages, as we will see.
 
-The web is full of many different and interesting approaches for representing formulas. To name a few, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTX, we could Unicode math, Canvas/WebGL or even simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options for this task, even if it wasn’t originally designed for the web. Some of its advantages are that it has its own syntax, MathML provides various elements that give the correct semantics to the different parts of a formula, has good screen reader support, requires no JavaScript dependencies and it can be used beyond the browser, as in EPUB or braille/math speech tooling.
+The web is full of many different and interesting approaches for representing formulas. To name a few, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTeX, we can use Unicode math, Canvas/WebGL or even simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options for this task, even if it wasn’t initially designed for the web. Some of its advantages are that it has its own syntax, MathML, which provides various elements that give the correct semantics to the different parts of a formula, it has good screen reader support, works without JavaScript dependencies, and can be used beyond the browser, as in EPUB or braille/math speech tooling.
 
 Let's take the famous Pythagorean Theorem as an example.
 
 <section style="margin-bottom: 2rem" aria-labelledby="section-0-heading">
   <h2 id="section-0-heading">Pythagorean Theorem</h2>
-  <p>Next, you have the visual representation of the formula together with the MathML code.</p>
+  <p>The following example is a visual representation of the formula together with the MathML code.</p>
   <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
       <mi>a</mi>
@@ -75,7 +75,7 @@ With this approach, the accessibility tree shows good semantics and VoiceOver kn
 <img alt="Accessibility tree view of a MathML formula showing nested semantic elements. The tree includes nodes such as MathMLMath, MathMLSup, MathMLIdentifier, MathMLNumber, and MathMLOperator, representing the structure of the equation a² + b² = c²." src="./mathml-a11y-tree.png" 
 />
 
-However, and this is something we will see through the whole article, screen reader support for the <code>math</code> tag is differently depending on the assistive technology. VoiceOver seems to be doing a pretty good job, [JAWS also makes it easy for both speech and braille](https://www.freedomscientific.com/training/teachers/accessing-math-content-with-jaws-and-fusion/), and [NVDA needs an add-on to make it work called MathCat](https://github.com/nvaccess/nvda/issues/17667) because if not, the <code>math</code> tag will be ignored. A major pull request ([#18323](https://github.com/nvaccess/nvda/pull/18323)) was merged on 17 November 2025 which integrates MathCAT into NVDA core, meaning users won’t have to find/install a separate add-on to handle math.
+However, as we will see throughout the article, screen reader support for the <code>math</code> tag varies across assistive technologies. VoiceOver seems to be doing a pretty good job, [JAWS also makes it easy for both speech and braille](https://www.freedomscientific.com/training/teachers/accessing-math-content-with-jaws-and-fusion/), and [NVDA needs an add-on to make it work called MathCat](https://github.com/nvaccess/nvda/issues/17667) because if not, the <code>math</code> tag will be ignored. A major pull request ([#18323](https://github.com/nvaccess/nvda/pull/18323)) was merged on 17 November 2025 which integrates MathCAT into NVDA core, meaning users won’t have to find/install a separate add-on to handle math.
 
 <section aria-labelledby="example-formula">
   <h3 id="example-formula">How screen readers interpret the formula</h3>
@@ -93,7 +93,7 @@ However, and this is something we will see through the whole article, screen rea
   </details>
 </section>
 
-Let's look at a more complicated case. Instead of just the way to display the formula, let's see how to actually prove it and how that will be announced by screen readers.
+Let's look at a more complicated case. Instead of just displaying the formula, let's see how to actually prove it and how screen readers will announce it.
 
 ```html
 <math display="block">
@@ -348,7 +348,7 @@ Also, for users who zoom the browser up to 400%, we might want to add a `max-wid
 
 ## Conveying mathematical meaning with ARIA
 
-As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it does not tend to give good results with VoiceOver on macOS, for example.
+As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it does not give good results with VoiceOver on macOS, for example.
 
 As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
 
@@ -410,7 +410,7 @@ In practice, using the math role helps assistive technologies understand that th
 
 <p class="highlight"><strong><abbr title="too long; didn't read">TL;DR:</abbr></strong> MathML Core is what browsers implement today; MathML 4 is the broader language evolving around it.</p>
 
-First, we are going to focus on where MathML comes from and why there's both a 'Core' and a 'version 4' in development. As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Historically, the full MathML spec was broad and partly underspecified for browsers, which led to uneven or incomplete implementations across engines. MathML Core therefore narrows the language to the subset that can be precisely defined on top of the Web Platform, improving testability and cross-browser interoperability. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/). On another note, at the time of this writing, there is [a Working Draft for MathML 4](https://www.w3.org/TR/mathml4/), the next version of MathML. This version aims to be the next "full" spec that extends Core. It keeps the larger feature set (e.g., Content MathML) and adds, among others, the <code>intent</code> attribute so authors can guide screen-reader speech. With it, we'll be able to do something like this:
+As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Historically, the full MathML spec was broad and partly underspecified for browsers, which led to uneven or incomplete implementations across engines. MathML Core therefore narrows the language to the subset that can be precisely defined on top of the Web Platform, improving testability and cross-browser interoperability. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/). On another note, at the time of this writing, there is [a Working Draft for MathML 4](https://www.w3.org/TR/mathml4/), the next version of MathML. This version aims to be the next "full" spec that extends Core. It keeps the larger feature set (e.g., Content MathML) and adds, among others, the <code>intent</code> attribute so authors can guide screen-reader speech. With it, we'll be able to do something like this:
 
 ```html
 <math>
