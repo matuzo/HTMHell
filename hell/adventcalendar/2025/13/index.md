@@ -348,7 +348,7 @@ Also, for users who zoom the browser up to 400%, we might want to add a `max-wid
 
 ## Conveying mathematical meaning with ARIA
 
-As an alternative to using MathML to convey mathematical meaning in simple examples, we also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it does not give good results with VoiceOver on macOS, for example.
+We also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it does not give good results with VoiceOver on macOS, for example.
 
 As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
 
