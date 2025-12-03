@@ -31,7 +31,7 @@ The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculati
 
 This hover technique is a common functionality offered by libraries, plugins, and frameworks, but now this is baked right into the browser. Chromium-based browsers only for now, but it is being worked on by Safari and Firefox, and as a progressive enhancement, nothing is broken on non-supporting browsers — they just don't benefit from the performance improvement.
 
-Using mouse hover as a signal works well on desktop, but what about mobile, where "hover" is not really a thing? At least in browser terms — I'm sure many of us have hovered over a link without fingers, but as that is not detected by the browser as an event, we can't act upon it.
+Using mouse hover as a signal works well on desktop, but what about mobile, where "hover" is not really a thing? At least in browser terms — I'm sure many of us have hovered over a link with our finger, but as that is not detected by the browser as an event, we can't act upon it.
 
 Well, solving that is just one of many improvements the API has seen in the last year that we'll cover in this post.
 
