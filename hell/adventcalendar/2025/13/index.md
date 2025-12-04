@@ -368,7 +368,7 @@ As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibil
   </details>
   <details>
     <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-  just announces the markup
+  just announces the text
   </details>
   <details>
     <summary>VoiceOver + Safari (Mac)</summary>
@@ -392,7 +392,7 @@ As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibil
   </details>
   <details>
     <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-  just announces the markup
+  just announces the text
   </details>
   <details>
     <summary>VoiceOver + Safari (Mac)</summary>
