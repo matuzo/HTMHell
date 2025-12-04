@@ -81,7 +81,7 @@ However, as we will see throughout the article, screen reader support for the <c
   <h3 id="example-formula">How screen readers interpret the formula</h3>
   <details>
     <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-    region eigh squared plus b squared is equal to c squared space
+    region a squared plus b squared is equal to c squared space
   </details>
   <details>
     <summary>VoiceOver + Safari (Mac)</summary>
@@ -314,11 +314,11 @@ Check out how this is announced by different screen readers!
   <details>
   <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
   3 lines
-  line 1 open paren eigh plus b close paren squared is equal to c squared plus 4 times 1 half eigh b
+  line 1 left parenthesis a plus b right parenthesis squared is equal to c squared plus 4 times 1 half a b
 
-line 2 eigh squared plus 2 eigh b plus b squared is equal to c squared plus 2 eigh b
+line 2 a squared plus 2 a b plus b squared is equal to c squared plus 2 a b
 
-line 3 eigh squared plus b squared is equal to c squared
+line 3 a squared plus b squared is equal to c squared
 
   </details>
   <details>
@@ -368,7 +368,7 @@ As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibil
   </details>
   <details>
     <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-  just announce the markup, line by line
+  just announces the markup
   </details>
   <details>
     <summary>VoiceOver + Safari (Mac)</summary>
@@ -392,7 +392,7 @@ As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibil
   </details>
   <details>
     <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-  just announce the markup
+  just announces the markup
   </details>
   <details>
     <summary>VoiceOver + Safari (Mac)</summary>
