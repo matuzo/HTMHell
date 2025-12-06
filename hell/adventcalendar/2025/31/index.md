@@ -1,16 +1,15 @@
+---
 title: "HTML Input Validation is (maybe) Good"
 author: "Wes Goulet"
 author_bio: "Maker of (hopefully) useful things on the web. Microsoft/Salesforce alum. Big fan of PWAs, SSGs, web standards, and simple/boring code."
 date: 2026-01-02
 author_links:
-
-- label: "Site"
-  url: "https://goulet.dev"
-  link_label: "goulet.dev"
-  intro: "<p>Built-in HTML input validation makes a good foundation for simple client-side validation. It just needs a little extra to make it accessible.</p>"
-  image: "advent25_31"
-  canonical: "https://goulet.dev/posts/html-input-validation-is-good/"
-
+  - label: "Site"
+    url: "https://goulet.dev"
+    link_label: "goulet.dev"
+    intro: "<p>Built-in HTML input validation makes a good foundation for simple client-side validation. It just needs a little extra to make it accessible.</p>"
+    image: "advent25_31"
+    canonical: "https://goulet.dev/posts/html-input-validation-is-good/"
 ---
 
 I think of client-side validation as a progressive enhancement for your users. You have to validate user input on the server (you can't trust what comes from the client), but some validation on the client makes for a nice UX. But that doesn't have to mean lots of JS code or using some validation library on your client. You can get pretty far with the browser's built-in HTML input validation. And then you can layer a little bit of JS on top of that to make it even better.
@@ -86,7 +85,7 @@ Related to all this, [a recent update to WCAG](https://github.com/w3c/wcag/pull/
 
 I originally wrote this post to point out that native form validation is good enough (lean on the browser!) and that's all you need. But after reading about the accessibility issues, I think the right answer is using native form validation as the foundation, and then adding a bit of JS to make it more accessible.
 
-The "bit of JS" we'll use is the Constraint Validation API, which is the JavaScript interface for HTML form validation. It allows you to programmatically check if a form field is valid, get validation messages, and customize how errors are displayed to users. For example, you can check if an input is valid:
+We'll use the Constraint Validation API, which is the JavaScript interface for HTML form validation. It allows you to programmatically check if a form field is valid, get validation messages, and customize how errors are displayed to users. For example, you can check if an input is valid:
 
 ```javascript
 const element = document.getElementById("program_name");
@@ -100,7 +99,7 @@ const element = document.getElementById("program_name");
 console.log(element.validationMessage); // returns the error message if invalid
 ```
 
-We'll use the Constraint Validation API to create your own error messages that are properly associated with form fields. Here's a simple example:
+We'll use the Constraint Validation API to create our own error messages that are properly associated with form fields. Here's a simple example:
 
 ```html
 <form id="my-form">
@@ -124,7 +123,9 @@ const form = document.getElementById("my-form");
 const input = document.getElementById("program_name");
 const errorMessage = document.getElementById("program_name-error");
 
-// IMPORTANT: set this attribute in JS, that way it's a progressive enhancement (ie: if JS isn't available the native form validation will still work).
+// IMPORTANT: set this attribute in JS, that way it's a
+// progressive enhancement (ie: if JS isn't available the
+// native form validation will still work).
 form.setAttribute("novalidate", "");
 
 function validateInput() {
@@ -171,6 +172,6 @@ In this example:
 
 This [post by Cloud Four](https://cloudfour.com/thinks/progressively-enhanced-form-validation-part-2-layering-in-javascript/) spells out a more complete solution in detail. (If you mainly support evergreen browsers then I wouldn't worry too much about the first part "Removing invalid styles on page load for all browsers" since Chrome has shipped support for `:user-invalid` for [a couple years now](https://caniuse.com/wf-user-pseudos).)
 
-So native HTML form validation is a good starting point, but it's not enough on its own if you care about accessibility. The good news is you can use the Constraint Validation API to layer on accessible error messages with a bit of JavaScript. That way you get the browser's validation working as a baseline, and then enhance it to be accessible when JS is available.
+So native HTML form validation is a good starting point, but it's not enough on its own due to accessibility issues. You can use the Constraint Validation API to layer on accessible error messages with a bit of JavaScript. That way you get the browser's validation working as a baseline, and then enhance it to be accessible when JS is available.
 
-> Thanks to [Manuel](https://matuzo.at/) for reviewing this post and pointing out the accessibility issues with native form validation. I started out thinking the browser gives me all I need for client-side form validation, but learned that the browser provides a good start, but it's not enough by itself.
+> Thanks to [Manuel](https://matuzo.at/) for reviewing this post and pointing out the accessibility issues with native form validation.
