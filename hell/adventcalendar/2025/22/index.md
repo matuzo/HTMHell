@@ -176,7 +176,7 @@ Now that we understand the folly of ignoring the first rule of ARIA usage, let�
 
 ## The implicit ARIA semantics of HTML
 
-Along with the definitions for each element, the HTML standard includes accessibility considerations for both authors (i.e. you and I) and implementors (i.e. the people implementing the elements in browsers). The linked document for authors is called [“ARIA in HTML”][html-aria] and the one for implementors is called [“HTML Accessibility API Mappings” (HTML-AAM)][html-aam]. The each of these links will jump to the relevant bits for the element in question.
+Along with the definitions for each element, the HTML standard includes accessibility considerations for both authors (i.e. you and I) and implementors (i.e. the people implementing the elements in browsers). The linked document for authors is called [“ARIA in HTML”][html-aria] and the one for implementors is called [“HTML Accessibility API Mappings” (HTML-AAM)][html-aam].
 
 Both of these include what the implicit ARIA semantics are for HTML elements and attributes. “ARIA in HTML” is more geared towards authors: it includes both rules and recommendations for ARIA attribute usage with HTML. HTML-AAM includes specifics of how elements should be mapped to various accessibility APIs including, but not limited to, ARIA.
 
