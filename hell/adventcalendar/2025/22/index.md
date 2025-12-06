@@ -158,7 +158,7 @@ I’m not your god, and neither is the HTML Standard—but if you choose to use 
 
 [Accessible Rich Internet Applications][aria], more commonly known by the acronym ARIA, is a set of roles and attributes that can be used in HTML to add accessibility related semantics to web content.
 
-It can be tempting to think that we don’t need semantic HTML, instead we can just sprinkle our <i>divitis</i> with <em>holy</em> ARIA roles and attributes. Well, while this can improve the accessibility of that hoard of elements, we’re likely breaking [the first rule of ARIA usage](https://www.w3.org/TR/using-aria/#firstrule): don’t use ARIA if you don’t need to.
+It can be tempting to think that we don’t need semantic HTML, instead we can just sprinkle our <i>divitis</i> with <em>holy</em> ARIA roles and attributes. While, yes, this can improve the accessibility of that hoard of elements, we’re likely breaking [the first rule of ARIA usage](https://www.w3.org/TR/using-aria/#firstrule): don’t use ARIA if you don’t need to.
 
 ```html
 <div role=button>accept div as your lord and saviour</div>
