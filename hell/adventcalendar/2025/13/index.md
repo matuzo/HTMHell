@@ -93,6 +93,10 @@ However, as we will see throughout the article, screen reader support for the <c
   </details>
 </section>
 
+<video style="margin-bottom: 1rem;" title="How VoiceOver interprets the formula on Safari" controls width="904" height="680">
+  <source src="pythagorean-theorem.mp4" type="video/mp4">
+</video>
+
 Let's look at a more complicated case. Instead of just displaying the formula, let's see how to actually prove it and how screen readers will announce it.
 
 ```html
@@ -331,7 +335,11 @@ line 3 a squared plus b squared is equal to c squared
   </details>
 </section>
 
-<p style="margin-top: 2rem;" class="highlight"><strong>Note:</strong> If you want to deepen your understanding in the topic, Mozilla has a very detailed page about <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Guides/Proving_the_Pythagorean_theorem">proving the Pythagorean theorem with MathML</a>.</p>
+<video style="margin-bottom: 1rem;" title="How VoiceOver interprets the proof formula on Safari" controls width="904" height="680">
+  <source src="pythagorean-theorem-proof.mp4" type="video/mp4">
+</video>
+
+<p style="margin-top: 1rem;" class="highlight"><strong>Note:</strong> If you want to deepen your understanding in the topic, Mozilla has a very detailed page about <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Guides/Proving_the_Pythagorean_theorem">proving the Pythagorean theorem with MathML</a>.</p>
 
 ## Some A11y Enhancements
 
