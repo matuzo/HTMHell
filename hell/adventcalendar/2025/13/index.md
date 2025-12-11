@@ -1,448 +1,96 @@
 ---
-title: "A11y Considerations in Math on the Web"
-author: "Manuel Sánchez"
-author_bio: "Accessibility specialist and game developer at [DIE ZEIT](https://www.zeit.de/spiele/index). Currently creating [The Runic Edda](https://www.therunicedda.com), a solo game blending storytelling, Viking history, and fun. I am driven by curiosity, creativity, and the belief that technology should welcome everyone."
+title: "Hell is other people's markup"
+author: "Ian Lloyd (Lloydi)"
+author_bio: "Ian Lloyd, better known as Lloydi, is a principal accessibility consultant at TetraLogical. He's been building tools to help diagnose and understand accessibility issues for years, but really wishes he didn't have to."
 date: 2025-12-13
 author_links:
-  - label: "Web"
-    url: "https://www.manuelsanchezdev.com"
-    link_label: "manuelsanchezdev.com"
-  - label: "Bluesky"
-    url: "https://bsky.app/profile/manuelsanchezdev.com"
-    link_label: "@manuelsanchezdev.com"
-intro: "<p>Math on the web has always been a visual and accessibility challenge. In this article, we learn how to make structures understandable for assistive technologies by using today's MathML Core.</p>"
+  - label: "Site"
+    url: "https://a11y-tools.com"
+    link_label: "a11y tools"
+  - label: "BlueSky"
+    url: "https://bsky.app/profile/lloydi.com"
+    link_label: "@lloydi.com"
+  - label: "Mastodon"
+    url: "https://mastodon.social/@lloydi"
+    link_label: "@lloydi"
+intro: "<p>Other people's markup can be hell to decipher at times: bloated, unnecessarily complicated and really not easy to grasp the structure of at a glance. What if there were a tool that could give you the distilled version of any markup in an instant? Well, there is, and Lloydi is here to tell you all about it.</p>"
 image: "advent25_13"
 ---
+[HTMLHell](https://www.htmhell.dev) started as a site that showed some of the finest, and by that I mean most **awful**, examples of crimes against markup the world has to offer (and how these crimes can be put right). We’ve all seen some shit, man. But somewhere along the line, Manuel started [HTML Heaven](https://www.htmhell.dev/tips/), covering decent markup and clever techniques. It's a good mix of dark and light, yin and yang. And what I wanted to cover in my offering to this annual advent calendar sits firmly in the middle. I can't prevent you from witnessing markup that makes you want to gouge your eyes out with rusty soup spoons, but I may have a solution that helps you understand what you can see in the browser a little more easily.
 
-Maybe it has happened to you that you wanted to write some formulas in HTML to display on a website, and even though there are multiple ways to do it, accessibility is often not considered in the process. How the formula is read by screen readers is crucial to ensure that we don't leave anyone behind. And the main assistive technologies are in different stages, as we will see.
+Before I continue, it might be worth explaining a bit about what I do in my day-to-day role to provide context about why this all came about. 
 
-The web is full of many different and interesting approaches for representing formulas. To name a few, we have TeX/LaTeX source rendered in the browser in different ways, like MathJax or KaTeX, we can use Unicode math, Canvas/WebGL or even simple PNG/JPG or SVG pictures. However, using native [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) is usually one of the best options for this task, even if it wasn’t initially designed for the web. Some of its advantages are that it has its own syntax, MathML, which provides various elements that give the correct semantics to the different parts of a formula, it has good screen reader support, works without JavaScript dependencies, and can be used beyond the browser, as in EPUB or braille/math speech tooling.
+I carry out accessibility audits for multiple clients at [TetraLogical](https://tetralogical.com/about/) (or [assessments](https://tetralogical.com/services/assessments/) as we refer to them internally). When I encounter something that doesn't behave as it should when trying to navigate using a keyboard, or doesn't sound right when using a screen reader, the first thing I need to check is what is the markup (HTML) behind the elements with issues. Typically, that means right-clicking on the part of the screen where the problem exists and looking at the **Elements** tab in the browser's built-in DevTools feature. I'm also likely to need to check the **Accessibility** panel in DevTools to see what that markup exposes to assistive technology users.
 
-Let's take the famous Pythagorean Theorem as an example.
+Here's a supoer simple example of TetraLogical's website, showing details of the top navigation element:
 
-<section style="margin-bottom: 2rem" aria-labelledby="section-0-heading">
-  <h2 id="section-0-heading">Pythagorean Theorem</h2>
-  <p>The following example is a visual representation of the formula together with the MathML code.</p>
-  <math xmlns="http://www.w3.org/1998/Math/MathML">
-    <msup>
-      <mi>a</mi>
-      <mn>2</mn>
-    </msup>
-    <mo>+</mo>
-    <msup>
-      <mi>b</mi>
-      <mn>2</mn>
-    </msup>
-    <mo>=</mo>
-    <msup>
-      <mi>c</mi>
-      <mn>2</mn>
-    </msup>
-  </math>
-</section>
+![The Elements panel is showing, as well as the Accessibility panel. The header navigation, implemented as a `nav` element shows clean, simple markup and also reveals its navigation role and its accessible name in the Accessibility panel](DevTools-with-elements-and-accessibility-panels-information-highlighted.png)
 
-```html
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <msup>
-    <mi>a</mi>
-    <mn>2</mn>
-  </msup>
-  <mo>+</mo>
-  <msup>
-    <mi>b</mi>
-    <mn>2</mn>
-  </msup>
-  <mo>=</mo>
-  <msup>
-    <mi>c</mi>
-    <mn>2</mn>
-  </msup>
-</math>
-```
+* What I hope to see whan I check the markup showing in DevTools: semantic markup that provides structure/meaning to what is rendered on the page (as in the example above).
+* What I increasingly find: non-semantic markup that is often heavily nested, stuffed full of attributes, and which usually requires multiple steps to expand each node to get the full picture.
 
-Unlike plain HTML with <code>sup</code> or <code>span</code>, which only describe presentation, MathML defines each role explicitly:
+A few years back, I created a tool that was very much borne out of frustration while doing an audit of a very well known web site. Everything that I checked was just an [absolute WALL of attribute-laden markup](https://www.tpgi.com/seeing-the-wood-for-the-trees-demystifying-markup-in-2021/).
+![Example of some markup that is almost impossible to decipher because it is completely overloaded with CSS classes and other attributes](markup-de-wall-of-tags-and-attributes.png)
 
-- <code>math</code> represents the entire mathematical expression.
-- <code>msup</code> defines a superscript relationship (a base and an exponent).
-- <code>mi</code> is a mathematical identifier, typically a variable such as <strong>a</strong>, <strong>b</strong>, or <strong>c</strong>.
-- <code>mn</code> is a mathematical number, like <strong>2</strong>.
-- <code>mo</code> is a mathematical operator, such as <strong>+</strong> or <strong>=</strong>.
+The markup might have been structurally fine, but it really took some effort to discern that that was the case. I had to go through various passes to work out what I was actually looking at to be able to make sense of things. The frustration led me to create the [HTML De-crapulator](https://a11y-tools.com/markup-de-crapulator/), a tool that I would use many, many times in audits that I carried out for years after. But ... I still felt it could be more useful.
 
-Other alternatives, like the ones mentioned above, may offer similar capabilities, but they typically rely on an assistive or hidden MathML layer. In practice, MathML remains the only web-standard markup that expresses mathematical roles natively in the DOM.
+The HTML De-Crapulator can provide many ways to simplify markup, such as:
 
-With this approach, the accessibility tree shows good semantics and VoiceOver knows well what to do.
+* Removing specific attributes
+* Abbreviating specific attributes
+* Removing empty tags
+* Removing framework-specific comment tags
 
-<img alt="Accessibility tree view of a MathML formula showing nested semantic elements. The tree includes nodes such as MathMLMath, MathMLSup, MathMLIdentifier, MathMLNumber, and MathMLOperator, representing the structure of the equation a² + b² = c²." src="./mathml-a11y-tree.png" 
-/>
+![The HTML De-Crapulator interface, showing the input, some filtering options and the generated output](de-crapulator.png)
 
-However, as we will see throughout the article, screen reader support for the <code>math</code> tag varies across assistive technologies. VoiceOver seems to be doing a pretty good job, [JAWS also makes it easy for both speech and braille](https://www.freedomscientific.com/training/teachers/accessing-math-content-with-jaws-and-fusion/), and [NVDA needs an add-on to make it work called MathCat](https://github.com/nvaccess/nvda/issues/17667) because if not, the <code>math</code> tag will be ignored. A major pull request ([#18323](https://github.com/nvaccess/nvda/pull/18323)) was merged on 17 November 2025 which integrates MathCAT into NVDA core, meaning users won’t have to find/install a separate add-on to handle math.
+Most of the time, pressing the 'Check (almost) all of the above' button did the bulk of what is needed to strip selected markup to its bare bones. *Most of the time* ... Inevitably, with each new site I had to check, I'd find a new collection of custom attributes or tagnames that the tool didn't have in its defaults, so I'd have to customise again and again. The tool does take out a lot of the manual work required to clean up the markup, but I was still finding it to not be as quick as it could be.
+What do I want? I want to look at how a given part of the page is built, quickly. Yet *this* still doesn't feel all that speedy to me:
 
-<section aria-labelledby="example-formula">
-  <h3 id="example-formula">How screen readers interpret the formula</h3>
-  <details>
-    <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-    region a squared plus b squared is equal to c squared space
-  </details>
-  <details>
-    <summary>VoiceOver + Safari (Mac)</summary>
-    a squared + b squared = c squared, with 5 items, maths
-  </details>
-  <details style="margin-bottom: 2rem;">
-    <summary>VoiceOver + Safari (iOS)</summary>
-    a squared plus b squared equals c squared, Math
-  </details>
-</section>
+1. Right click on an element on the page
+2. Select **Inspect**
+3. Right click on the node revealed in the **Elements** panel in Dev tools
+4. Copy the Outer HTML
+5. Go to the HTML De-Crapulator and paste
+6. Try the **Check (almost) all of the above** button and see what the results are
+7. Get frustrated by the remnants still there that I really don't care about
+8. Refine, refine, refine until I have the cleaned up markup just so
 
-<video style="margin-bottom: 1rem;" title="How VoiceOver interprets the formula on Safari" controls width="904" height="680">
-  <source src="pythagorean-theorem.mp4" type="video/mp4">
-</video>
+I just wanted to get the markup that **matters**, quickly. What do I mean by markup that matters?
 
-Let's look at a more complicated case. Instead of just displaying the formula, let's see how to actually prove it and how screen readers will announce it.
+* Anything that exposes the `role` of an element to assistive technology users
+* Anything that exposes the state of an element to assistive technology users
+* Any attribute that may affect the focusability of an element
 
-```html
-<math display="block">
-  <semantics>
-    <mtable>
-      <!-- Step one -->
-      <mtr>
-        <mtd>
-          <msup>
-            <mrow>
-              <mo>(</mo>
-              <mi>a</mi>
-              <mo>+</mo>
-              <mi>b</mi>
-              <mo>)</mo>
-            </mrow>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-        <mtd>
-          <mo>=</mo>
-        </mtd>
-        <mtd>
-          <msup>
-            <mi>c</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <mn>4</mn>
-          <mo>⋅</mo>
-          <mo>(</mo>
-          <mfrac>
-            <mn>1</mn>
-            <mn>2</mn>
-          </mfrac>
-          <mi>a</mi>
-          <mi>b</mi>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-      <!-- Step two -->
-      <mtr>
-        <mtd>
-          <msup>
-            <mi>a</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <mn>2</mn>
-          <mi>a</mi>
-          <mi>b</mi>
-          <mo>+</mo>
-          <msup>
-            <mi>b</mi>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-        <mtd>
-          <mo>=</mo>
-        </mtd>
-        <mtd>
-          <msup>
-            <mi>c</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <mn>2</mn>
-          <mi>a</mi>
-          <mi>b</mi>
-        </mtd>
-      </mtr>
-      <!-- Step three -->
-      <mtr>
-        <mtd>
-          <msup>
-            <mi>a</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <msup>
-            <mi>b</mi>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-        <mtd>
-          <mo>=</mo>
-        </mtd>
-        <mtd>
-          <msup>
-            <mi>c</mi>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-      </mtr>
-    </mtable>
+Anything else is just noise. With that in mind, a few months back I came up with the [1-Click De-Crapulator](https://a11y-tools.com/bookmarklets/#one-click-decrapulator).
 
-    <annotation encoding="application/x-tex">
-      \begin{aligned} (a + b)^2 &= c^2 + 4 \cdot \left( \frac{1}{2} ab \right)
-      \\ a^2 + 2ab + b^2 &= c^2 + 2ab \\ a^2 + b^2 &= c^2 \end{aligned}
-    </annotation>
-  </semantics>
-</math>
-```
+![Maybe make this one decorative with empty alt?](one-click-decrapulator.png)
 
-<math style="margin-bottom: 2rem;" display="block">
-  <semantics>
-    <mtable>
-      <!-- Step one -->
-      <mtr>
-        <mtd>
-          <msup>
-            <mrow>
-              <mo>(</mo>
-              <mi>a</mi>
-              <mo>+</mo>
-              <mi>b</mi>
-              <mo>)</mo>
-            </mrow>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-        <mtd>
-          <mo>=</mo>
-        </mtd>
-        <mtd>
-          <msup>
-            <mi>c</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <mn>4</mn>
-          <mo>⋅</mo>
-          <mo>(</mo>
-          <mfrac>
-            <mn>1</mn>
-            <mn>2</mn>
-          </mfrac>
-          <mi>a</mi>
-          <mi>b</mi>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-      <!-- Step two -->
-      <mtr>
-        <mtd>
-          <msup>
-            <mi>a</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <mn>2</mn>
-          <mi>a</mi>
-          <mi>b</mi>
-          <mo>+</mo>
-          <msup>
-            <mi>b</mi>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-        <mtd>
-          <mo>=</mo>
-        </mtd>
-        <mtd>
-          <msup>
-            <mi>c</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <mn>2</mn>
-          <mi>a</mi>
-          <mi>b</mi>
-        </mtd>
-      </mtr>
-      <!-- Step three -->
-      <mtr>
-        <mtd>
-          <msup>
-            <mi>a</mi>
-            <mn>2</mn>
-          </msup>
-          <mo>+</mo>
-          <msup>
-            <mi>b</mi>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-        <mtd>
-          <mo>=</mo>
-        </mtd>
-        <mtd>
-          <msup>
-            <mi>c</mi>
-            <mn>2</mn>
-          </msup>
-        </mtd>
-      </mtr>
-    </mtable>
+How does it work? You run the script (as a bookmarklet or you can use [the version in the Chrome extension](https://chromewebstore.google.com/detail/a11y-tools-bookmarklets/fedddpaapeedmkanpenidomfbebacgoa) if you prefer) and then do the following:
 
-  </semantics>
-</math>
+1. Click on the thing you want to get simplified markup for
+2. That's it. There is no step 2
 
-This proof example just added several MathML elements that go beyond simple identifiers and operators. Each of these adds meaning to the expression, which is why assistive technologies can navigate the structure so precisely. For example:
+OK, so there *sort of* is a step 2 ... if you need it, and that's to copy the markup that's presented. But essentially, with one click you can see the markup for the selected node in a super-simplified format, ready to copy and paste if you choose to.
 
-- <code>mtable</code>, <code>mtr</code> and <code>mts</code>: these directly mirror HTML's <code>table</code>, <code>tr</code> and <code>td</code> but are math-specific. They tell the accessibility tree: "this is a mathematical table with aligned steps," not just a generic layout table. Screen readers can move row-by-row, so each step of the proof becomes navigable.
+![With the 1-Click De-Crapulator running, you hover over the part of the page that you want to inspect, and it shows a border around the current node, as well as an information panel that provides info about the current HTML tag](1-selecting-HTML-node.png)
 
-- <code>mrow</code>: groups expressions together. For example <code>(a + b)</code> is wrapped in an <code>mrow</code> to indicate that the parentheses and the interior form a single unit before exponentiation.
+![The tool shows the cleaned up markup in a dialog with buttons that read 'Close', 'Pick again', Flatten' and 'Show Original'](2-decrapulated-markup.png)
 
-- <code>mfrac</code>: defines an actual mathematical fraction, not just text with a slash. This allows speech engines to say "one half" instead of "one over two" depending on preferences and locale.
+At a glance, you can understand the structure of the item that you selected. All classes and trivial attributes are jettisoned. Only those that may have an impact on how the page is exposed to assistive technology users remain (text alternatives, states, `ARIA-*` attributes, `id` attributes ... but only where something else is referencing that element and needs it otherwise all the `id`s are stripped).
 
-- <code>semantics</code>: this is key. It wraps the expression and lets you attach alternative meanings or encodings. Assistive technologies prefer the first child (your visual MathML), but can fall back to the annotation if needed.
+Went too far? You can also quickly switch between the original markup with all attributes intact, should you want to make a quick comparison.
 
-- <code>annotation</code>: stores auxiliary information. In this case, the TeX version of the proof. It does not affect the visual rendering in the browser. Instead, it's metadata for tools that consume MathML, like converters, EPUB readers, or braille translators.
+![The same dialog but showing the original markup, indented. The 'Show original' button is indicated as pressed with a change of colour and a tick](3-original-markup.png)
 
-Check out how this is announced by different screen readers!
+Didn't go far enough? Perhaps you're seeing endless levels of `<div>` nesting that really isn't contributing to meaning or structure? You have the option of flattening it. Here's the before version:
 
-<section aria-labelledby="example-proof">
-  <h3 id="example-proof">How screen readers interpret the proof</h3>
-  <details>
-  <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-  3 lines
-  line 1 left parenthesis a plus b right parenthesis squared is equal to c squared plus 4 times 1 half a b
+![Example of markup with multiple layers of nested DIV elements](4-flattened-markup-before.png)
 
-line 2 a squared plus 2 a b plus b squared is equal to c squared plus 2 a b
+And here is the after:
 
-line 3 a squared plus b squared is equal to c squared
+![The same markup but with all needless nested DIV elements removed, showing the much more simplified structure](5-flattened-markup-after.png)
 
-  </details>
-  <details>
-    <summary>VoiceOver + Safari (Mac)</summary>
-    Table start, Row 1, Column 1, ( a + b ) squared, Row 1, Column 2, =, Row 1, Column 3, c squared + 4 · ( fraction start, 1 over 2, end of fraction, a b ), Row 2, Column 1, a squared + 2 a b + b squared, Row 2, Column 2, =, Row 2, Column 3, c squared + 2 a b, Row 3, Column 1, a squared + b squared, Row 3, Column 2, =, Row 3, Column 3, c squared, table end, maths
-  </details>
-  <details style="margin-bottom: 2rem;" >
-    <summary>VoiceOver + Safari (iOS)</summary>
-    1 table, table start, Row 1, Column 1, a plus b squared, Row 1, Column 2, equals, Row 1, Column 3, c squared plus 4 dot fraction start 1 over 2, end of fraction, a b, Row 2, Column 1, a squared plus 2 a b plus b squared, Row 2, Column 2, equals, Row 2, Column 3, c squared plus 2 a b, Row 3, Column 1, a squared plus b squared, Row 3, Column 2, equals, Row 3, Column 3, c squared, table end, Math
-  </details>
-</section>
+Of course, you really are messing with the original markup here, but for the noble reasons of making it understandable and simplified. To save you having to explain each and every time that you simplified the markup when writing up an issue, the tool also wraps the output with Markdown block code backticks and an explanatory phrase that should work for almost every scenario: "Simplified HTML (with some attributes/features removed for clarity)". 
 
-<video style="margin-bottom: 1rem;" title="How VoiceOver interprets the proof formula on Safari" controls width="904" height="680">
-  <source src="pythagorean-theorem-proof.mp4" type="video/mp4">
-</video>
+As with the original full-fat HTML De-Crapulator, this won't address the root of the problem: namely, developers producing shoddy markup. But if you spend much of your day trying to decipher and remediate other people's markup, which can be hell, this tool can save you a lot of fuss and bother in getting to the bottom of the issue.
 
-<p style="margin-top: 1rem;" class="highlight"><strong>Note:</strong> If you want to deepen your understanding in the topic, Mozilla has a very detailed page about <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Guides/Proving_the_Pythagorean_theorem">proving the Pythagorean theorem with MathML</a>.</p>
-
-## Some A11y Enhancements
-
-We could enhance this by adding an <code>aria-label</code> to a wrapper that provides some information about the following formula, especially when it's a well-known one. By using a <code>section</code> with an <code>aria-label</code> or <code>aria-labelledby</code> together with another element giving the accessible name, we automatically insert a region into the accessibility tree.
-
-```html
-<section aria-labelledby="section-1-heading">
-  <h2 id="section-1-heading">Pythagorean Theorem</h2>
-  <math xmlns="http://www.w3.org/1998/Math/MathML"> ... </math>
-</section>
-```
-
-Also, for users who zoom the browser up to 400%, we might want to add a `max-width: 100%` and `overflow-x: auto`, so that the formula remains readable, does not break the page and we allow horizontal scrolling only inside the math block, and not at the entire page level.
-
-## Conveying mathematical meaning with ARIA
-
-We also have the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role"><code>math</code> role</a> from the ARIA specification. With that, we can communicate the mathematical semantics even when we rely on images or non-semantic HTML. However, it does not give good results with VoiceOver on macOS, for example.
-
-As shown on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/math_role">MDN page for the <code>math</code> role</a>, we could have:
-
-```html
-<div role="math" aria-label="a^{2} + b^{2} = c^{2}">
-  a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
-</div>
-```
-
-<section aria-labelledby="example-div">
-  <h3 id="example-div">Markup with a div with the math role and how screen readers interpret it</h3>
-  <details>
-    <summary>Markup</summary>
-    <div style="margin-bottom: 2rem;" role="math" aria-label="a^{2} + b^{2} = c^{2}">
-      a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
-    </div>
-  </details>
-  <details>
-    <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-  just announces the text
-  </details>
-  <details>
-    <summary>VoiceOver + Safari (Mac)</summary>
-    not read, just announces "with 6 items, maths"
-  </details>
-  <details style="margin-bottom: 2rem;" >
-    <summary>VoiceOver + Safari (iOS)</summary>
-    a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
-  </details>
-</section>
-
-```html
-<img src="pythagorean_theorem.png" alt="a^{2} + b^{2} = c^{2}" role="math" />
-```
-
-<section aria-labelledby="example-img">
-  <h3 id="example-img">Markup with a img with the math role and how screen readers interpret it</h3>
-  <details>
-    <summary>Markup</summary>
-    <img width="150" alt="a^{2} + b^{2} = c^{2}" src="./pythagorean-theorem.png" role="math" />
-  </details>
-  <details>
-    <summary>NVDA + Firefox (Windows with MathCAT add-on)</summary>
-  just announces the text
-  </details>
-  <details>
-    <summary>VoiceOver + Safari (Mac)</summary>
-    not read, just announces "maths"
-  </details>
-  <details style="margin-bottom: 2rem;">
-    <summary>VoiceOver + Safari (iOS)</summary>
-    a caret left curly bracket 2 right curly bracket plus b caret left curly bracket 2 right curly bracket equals c caret left curly bracket, Math
-  </details>
-</section>
-
-In practice, using the math role helps assistive technologies understand that the content is mathematical, but it still doesn’t provide enough semantic detail for them to announce the expression as accurately as MathML does.
-
-## The future of MathML
-
-<p class="highlight"><strong><abbr title="too long; didn't read">TL;DR:</abbr></strong> MathML Core is what browsers implement today; MathML 4 is the broader language evolving around it.</p>
-
-As I mentioned at the beginning, the origin of MathML was not the web, it was more of a general-purpose specification for browsers, office suites, computer algebra systems, EPUB readers, and LaTeX-based generators, [as stated in Mozilla](https://developer.mozilla.org/en-US/docs/Web/MathML). MathML Core arose from the need to make it work with web standards, including HTML, CSS, DOM, and JavaScript. Historically, the full MathML spec was broad and partly underspecified for browsers, which led to uneven or incomplete implementations across engines. MathML Core therefore narrows the language to the subset that can be precisely defined on top of the Web Platform, improving testability and cross-browser interoperability. Since June 2025, MathML Core has been a [Candidate Recommendation Snapshot](https://www.w3.org/TR/2025/CR-mathml-core-20250624/). On another note, at the time of this writing, there is [a Working Draft for MathML 4](https://www.w3.org/TR/mathml4/), the next version of MathML. This version aims to be the next "full" spec that extends Core. It keeps the larger feature set (e.g., Content MathML) and adds, among others, the <code>intent</code> attribute so authors can guide screen-reader speech. With it, we'll be able to do something like this:
-
-```html
-<math>
-  <mrow intent="equals(power(a,2)+power(b,2),power(c,2))">
-    <msup>
-      <mi>a</mi>
-      <mn>2</mn>
-    </msup>
-    <mo>+</mo>
-    <msup>
-      <mi>b</mi>
-      <mn>2</mn>
-    </msup>
-    <mo>=</mo>
-    <msup>
-      <mi>c</mi>
-      <mn>2</mn>
-    </msup>
-  </mrow>
-</math>
-```
-
-## Conclusion
-
-As [browser support for MathML continues to evolve](https://caniuse.com/mathml), previous fallback solutions like [mathml.css](https://github.com/fred-wang/mathml.css) are no longer necessary. MathML Core, and soon MathML 4, allow us to express both the visual and semantic meaning of mathematical content without sacrificing accessibility along the way.
-
-Screen-reader support is also steadily improving. Each assistive technology handles MathML in its own way, but the overall trajectory is positive. VoiceOver offers consistent navigation and speech for many common patterns across macOS and iOS. JAWS, especially when paired with Fusion, provides rich support for both speech and braille. And NVDA, which historically required an add-on, is now moving toward a built-in MathCAT integration, making MathML speech and braille support more accessible out of the box for Windows users.
