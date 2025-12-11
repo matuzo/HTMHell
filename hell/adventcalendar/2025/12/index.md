@@ -12,6 +12,7 @@ author_links:
     link_label: "@manuelsanchezdev.com"
 intro: "<p>Math on the web has always been a visual and accessibility challenge. In this article, we learn how to make structures understandable for assistive technologies by using today's MathML Core.</p>"
 image: "advent25_12"
+active: true
 ---
 
 Maybe it has happened to you that you wanted to write some formulas in HTML to display on a website, and even though there are multiple ways to do it, accessibility is often not considered in the process. How the formula is read by screen readers is crucial to ensure that we don't leave anyone behind. And the main assistive technologies are in different stages, as we will see.

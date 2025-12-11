@@ -59,7 +59,7 @@ q[xml|lang] { … }
 
 As mentioned earlier, namespace support means that other XML-compatible markup languages can be incorporated directly into your XHTML document. These could be just additional semantic attributes, or even new elements. Obviously to get anything useful out of them you need e-reader support, but that’s present in a few cases. Let’s take a look at a couple.
 
-You might actually be familiar with MathML, as it’s [supported in HTML5](https://html.spec.whatwg.org/#mathml). The way you use it in HTML is that there’s a broad agreement that the contents of the MathML spec will just work when used in HTML. Adding a basic MathML equation using standard MathML tags (`math`, `mi`, `mo`, `mn`, and so on) to your normal HTML document ends up looking something like <math alttext="n + 1"><mi>n</mi><mo>+</mo><mn>1</mn></math>.
+You might actually be familiar with [MathML](/adventcalendar/2025/12/), as it’s [supported in HTML5](https://html.spec.whatwg.org/#mathml). The way you use it in HTML is that there’s a broad agreement that the contents of the MathML spec will just work when used in HTML. Adding a basic MathML equation using standard MathML tags (`math`, `mi`, `mo`, `mn`, and so on) to your normal HTML document ends up looking something like <math alttext="n + 1"><mi>n</mi><mo>+</mo><mn>1</mn></math>.
 
 But in XHTML (because it’s an XML language) there’s a standard integration process for any XML language you want to bring in. First, you define your MathML namespace against the root element:
 
