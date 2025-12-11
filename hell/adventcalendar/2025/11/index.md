@@ -12,6 +12,7 @@ author_links:
     link_label: "front-end.social/@robinwhittleton"
 intro: "<p>Robin explains why building an ePub might be both easier and harder than you’d think.</p>"
 image: "advent25_11"
+active: true
 ---
 
 [ePub](https://www.w3.org/TR/epub-33/) is the W3C standard for ebooks. It lets you take your knowledge of the web, and use it to produce little self-contained sets of documents that can be freely distributed as a single file ready for reading on extremely low-power devices, and they even reflow to fit any screen.
