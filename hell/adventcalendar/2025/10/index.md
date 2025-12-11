@@ -1,9 +1,9 @@
 ---
 title: "a11y freedom beaver"
 author: "Steve Faulkner"
-author_bio: "Accessibility is Political
-I have done stuff on the web for a period of time, some of which I am pleased with
-I also sell Web Standards leisurewear"
+author_bio: "Accessibility is Political.<br>
+I have done stuff on the web for a period of time, some of which I am pleased with.<br>
+I also sell Web Standards leisurewear."
 date: 2025-12-10
 author_links:
   - label: "HTML Accessibility"
@@ -12,29 +12,34 @@ author_links:
 intro: "<p>The ghost of ARIA past. Don't add ARIA for ChatGPT Atlas, you don't need to. 
 </p>"
 image: "advent25_10"
+active: true
 ---
 
 <span role="img" aria-label="Accessibility Freedom Beaver">♿☮️🦫</span> sez: [Know your Standards](https://html5accessibility.com/stuff/2020/11/24/know-your-standards/)
 
-![SAY 'ARIA TAG'
-AGAIN
-Side profile pic of Adrian looking menacing with a mouse cursor 'tattoo' below his eye](https://github.com/user-attachments/assets/bab8c885-0635-4a0c-82b7-ccb3004c1b95)
+
+<p><img src="https://github.com/user-attachments/assets/bab8c885-0635-4a0c-82b7-ccb3004c1b95" alt="SAY 'ARIA TAG' AGAIN Side profile pic of Adrian looking menacing with a mouse cursor 'tattoo' below his eye" width="297" height="398"></p>
 
 ## 1st Rule of ARIA
 The **first rule** originally appeared in 2012 [Notes on using ARIA](https://www.tpgi.com/html5-accessibility-chops-using-aria-notes/), it was then moved to a new home [Using ARIA](https://w3c.github.io/using-aria/#rule1).
 
 It's not really a **rule** in any formal sense; I just made it up. It has remained unchanged for 14 years but remains relevant today.
 
+<blockquote class="blockquote-no-quotes">
 
->**First Rule of ARIA Use**
->
->If you can use a native HTML element [HTML](https://html.spec.whatwg.org/multipage/) or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.
->
->**Under what circumstances may this not be possible?**
->
->* If the feature is available in [HTML](https://html.spec.whatwg.org/multipage/) but it is not implemented or it is implemented, but accessibility support is not
->* If the visual design constraints rule out the use of a particular native element, because the element cannot be styled as required
->* If the feature is not currently available in [HTML](https://html.spec.whatwg.org/multipage/)
+
+**First Rule of ARIA Use**
+
+If you can use a native HTML element [HTML](https://html.spec.whatwg.org/multipage/) or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.
+
+**Under what circumstances may this not be possible?**
+
+* If the feature is available in [HTML](https://html.spec.whatwg.org/multipage/) but it is not implemented or it is implemented, but accessibility support is not
+* If the visual design constraints rule out the use of a particular native element, because the element cannot be styled as required
+* If the feature is not currently available in [HTML](https://html.spec.whatwg.org/multipage/)
+
+</blockquote>
+
 
 source: <cite>[Using ARIA](https://w3c.github.io/using-aria/#rule1)</cite>
 

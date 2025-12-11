@@ -9,6 +9,7 @@ author_links:
     link_label: "sarajoy.dev"
 intro: "<p>The dialog element has been available across browsers since March 2022, but can still do with some re-introducing as people look to move out of libraries and back onto the web platform.</p>"
 image: "advent25_9"
+active: true
 ---
 
 Suffering modal woes? Positioning, backdrops, focus trapping, z-index — Oof.
@@ -96,7 +97,7 @@ document.querySelector("dialog").showModal();
 ```
 
 <p class="highlight">💡
-  There is a declarative method available to <a href="">invoke</a> dialogs, but for now I will stick to what is currently available across the main browsers.
+  There is a declarative method available to <a href="/adventcalendar/2025/7/">invoke</a> dialogs, but for now I will stick to what is currently available across the main browsers.
 </p>
 
 In the CodePen below, both kinds of dialog opening method are available. You'll notice that you can still interact with the Open Modal button after having opened the dialog, but not vice-versa. The modal can be closed with the Esc key, the non-modal dialog cannot.

@@ -15,6 +15,7 @@ author_links:
     link_label: "@patrickbrosset.com"
 intro: "<p>Short introductory text</p>"
 image: "advent25_8"
+active: true
 ---
 Behold this magnificient HTML document:
 
@@ -28,7 +29,7 @@ Behold this magnificient HTML document:
 
 To try it in your browser, copy the following line and paste it into the address bar of your browser:
 
-```
+```bash
 data:text/html,<html><body marginheight=150 marginwidth=300 bgcolor=black text=white><marquee><b>Hello <i>HTML</b> World!</i></marquee>
 ```
 

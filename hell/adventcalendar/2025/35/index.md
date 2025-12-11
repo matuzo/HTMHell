@@ -2,7 +2,7 @@
 title: "The HTML Elements Time Forgot"
 author: "Declan Chidlow"
 author_bio: "Front-end developer, designer, writer, and avid user of the superpowered information superhighway."
-date: 2025-01-02
+date: 2026-01-02
 author_links:
   - label: "Website"
     url: "https://vale.rocks"
