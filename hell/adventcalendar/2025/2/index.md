@@ -12,6 +12,7 @@ author_links:
     link_label: "@boldewyn@mastodon.social"
 intro: "<p>There are unspeakable horrors in the depth of the HTML standard. We will take one of them today and unmystify it for our own use.</p>"
 image: "advent25_2"
+active: true
 ---
 
 Deep down in the dark voids of HTML specs long gone sleeps a terrifying thing. Imagine, if you will, a DOM node so mighty, that it can change the `content-type` of parts of the document. An HTML element that makes the parser tremble and withdraw, and that cannot be stopped even by its own end tag.

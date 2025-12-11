@@ -1,5 +1,5 @@
 ---
-title: "HTML that can now replace JS"
+title: "The three semantics of HTML"
 author: "Your Name"
 author_bio: "Your short bio"
 date: 2025-12-28

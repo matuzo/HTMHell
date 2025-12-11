@@ -81,9 +81,9 @@ tags:
 </ol>
 </div>
 
-<h2>Bonus articles</h2>
+{# <h2>Bonus articles</h2> #}
 
-<ol class="acalendar acalendar--title" start="25">
+{# <ol class="acalendar acalendar--title" start="25">
 
 {{ day(25) }}
 {{ day(26) }}
@@ -97,7 +97,7 @@ tags:
 {{ day(34) }}
 {{ day(35) }}
 
-</ol>
+</ol> #}
 
 <script>
   const preview = document.querySelector('.acalendar-view');
@@ -161,14 +161,20 @@ tags:
     }
   }, 700);
 
-  document.querySelector('.acalendar').addEventListener('click', e => {
-    if (e.target.closest('li').dataset.day) {
-      if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
-        opened.push(e.target.closest('li').dataset.day)
-        localStorage.setItem('html_opened25', JSON.stringify(opened))
+  if (document.querySelector('.acalendar')) {
+    document.querySelector('.acalendar').addEventListener('click', e => {
+      if (e.target.closest('li').dataset.day) {
+        if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
+          opened.push(e.target.closest('li').dataset.day)
+          localStorage.setItem('html_opened25', JSON.stringify(opened))
+        }
+
+        if (e.target.closest('li').querySelector('a')) {
+          e.target.closest('li').querySelector('a').click();
+        }
       }
-    }
-  });
+    });
+  }
   function lob(e){if(codes.push(e.key),codes.length>3&&(codes=codes.slice(1)),3===codes.length&&"6"===codes[0]&&"6"===codes[1]&&"6"===codes[2]){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lobster&family=UnifrakturCook:wght@700&display=swap",e.rel="stylesheet",document.head.appendChild(e),document.body.classList.add("beauty"),document.removeEventListener("keydown",lob)}}var codes=[];document.addEventListener("keydown",lob);  
 </script>
 

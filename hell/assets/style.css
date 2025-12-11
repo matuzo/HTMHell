@@ -57,6 +57,7 @@ h1 {
 h2 {
   margin: 0 0 1.6rem;
   font-size: 2.6rem;
+  line-height: 1.3;
 }
 
 h3 {
@@ -88,10 +89,6 @@ video {
 
 ol li {
   margin-bottom: 1.6rem;
-}
-
-p, pre, blockquote, .cp_embed_wrapper, .u-mb, table, .video {
-  margin: 0 0 2.4rem;
 }
 
 a:link {
@@ -147,7 +144,7 @@ blockquote>p:only-child {
 button,
 .button {
   font-size: 1.6rem;
-  padding: 1.3rem 1.7rem 0.9rem;
+  padding: 1rem 1.2rem 0.9rem;
   border-radius: 3px;
   border: 3px solid #d72b2b;
   background: #000;
@@ -155,6 +152,7 @@ button,
   font-family: inherit;
   font-weight: bold;
   letter-spacing: 1px;
+  line-height: 1;
 }
 
 button:hover {
@@ -194,7 +192,43 @@ blockquote {
 
 label {
   font-weight: bold;
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
 }
+
+input, textarea {
+  border: 2px solid;
+  padding: 0.3em 0.6em;
+  font: inherit;
+  font-size: 0.9em;
+}
+
+input {
+  width: min(30rem, 100%);
+}
+textarea {
+  width: min(50rem, 100%);
+  display: block;
+}
+
+.desc {
+  display: block;
+  line-height: 1.2;
+}
+
+:root {
+  --color-status-ok: oklch(0.51 0.18 142.59 / 0.77); 
+  --color-status-nok: oklch(0.51 0.18 35.59 / 0.77); 
+}
+
+[aria-invalid="true"] {
+  border-color: var(--color-status-nok);  
+}
+
+
 
 [type="email"],
 [type="text"] {
@@ -1328,4 +1362,71 @@ margin-bottom: 0;
 .status--skipped span {
   background-color: #b5c1c6;
   color: #000;
+}
+
+p, pre, blockquote, .cp_embed_wrapper, .u-mb, table, .video, figure {
+  margin: 0 0 2.4rem;
+}
+
+.comments {
+  --message-wrapper: 1.5rem;
+}
+
+.comment {
+  background: oklch(0.57 0.21 26.99 / 0.05);
+  padding: var(--message-wrapper);
+  border-radius: 0.15em;
+  margin-block-end: 3rem;
+  font-style: revert;
+}
+
+.comment::after,
+.comment::before {
+  display: none;
+}
+
+.subcomment {
+  background: oklch(0.57 0.21 113.01 / 0.05);
+}
+
+.comments, .advent-nav {
+  margin-top: 6rem;
+}
+
+.comment-name {
+  font-weight: bold;
+  display: inline-block;
+  font-size: 1.8rem;
+}
+
+.comment-message {
+  display: none;
+  background: var(--color-status-ok);
+  border-radius: 2px;
+  color: #fff;
+  padding: var(--message-wrapper);
+  line-height: 1.5;
+  margin-block-end: 1em;
+}
+
+.comment-message p {
+  margin: 0;
+}
+
+.comment-message-nok {
+  background: var(--color-status-nok);
+}
+
+.comment-message-ok,
+.comment-message-nok {
+  display: block;
+}
+
+.js-results [data-id] {
+  margin-inline-start: 4rem;
+}
+
+.reply {
+  font-size: 1.4rem;
+  border-width: 0px;
 }

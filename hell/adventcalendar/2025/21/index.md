@@ -1,96 +1,164 @@
 ---
-title: "Hell is other people's markup"
-author: "Ian Lloyd (Lloydi)"
-author_bio: "Ian Lloyd, better known as Lloydi, is a principal accessibility consultant at TetraLogical. He's been building tools to help diagnose and understand accessibility issues for years, but really wishes he didn't have to."
+title: "Styling by Language: Using the lang Attribute for Multilingual Design"
+author: "Julia Undeutsch"
+author_bio: "I am Dev & UX Accessibility Specialist at Atos. After graduating University in Musicology and Japanese Studies in summer 2020, I started learning front-end development and specialized in the topic of web accessibility early on. I have been certified by IAAP as a Certified Professional in Web Accessibility (CPWA) and got accepted in the Google Developer Expert Program in 2023."
 date: 2025-12-21
 author_links:
-  - label: "Site"
-    url: "https://a11y-tools.com"
-    link_label: "a11y tools"
-  - label: "BlueSky"
-    url: "https://bsky.app/profile/lloydi.com"
-    link_label: "@lloydi.com"
-  - label: "Mastodon"
-    url: "https://mastodon.social/@lloydi"
-    link_label: "@lloydi"
-intro: "<p>Other people's markup can be hell to decipher at times: bloated, unnecessarily complicated and really not easy to grasp the structure of at a glance. What if there were a tool that could give you the distilled version of any markup in an instant? Well, there is, and Lloydi is here to tell you all about it.</p>"
+  - label: "Blog"
+    url: "https://www.accessibilityfirst.at/"
+    link_label: "Accessibility First Blog"
+intro: "<p>The <code>lang</code> attribute isn’t just for accessibility—it can also help you design elegantly across languages that look and feel very different. English and Japanese are a great example: two writing systems with unique visual rhythms, spacing needs, and font personalities.</p>"
 image: "advent25_21"
 ---
-[HTMLHell](https://www.htmhell.dev) started as a site that showed some of the finest, and by that I mean most **awful**, examples of crimes against markup the world has to offer (and how these crimes can be put right). We’ve all seen some shit, man. But somewhere along the line, Manuel started [HTML Heaven](https://www.htmhell.dev/tips/), covering decent markup and clever techniques. It's a good mix of dark and light, yin and yang. And what I wanted to cover in my offering to this annual advent calendar sits firmly in the middle. I can't prevent you from witnessing markup that makes you want to gouge your eyes out with rusty soup spoons, but I may have a solution that helps you understand what you can see in the browser a little more easily.
 
-Before I continue, it might be worth explaining a bit about what I do in my day-to-day role to provide context about why this all came about. 
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-I carry out accessibility audits for multiple clients at [TetraLogical](https://tetralogical.com/about/) (or [assessments](https://tetralogical.com/services/assessments/) as we refer to them internally). When I encounter something that doesn't behave as it should when trying to navigate using a keyboard, or doesn't sound right when using a screen reader, the first thing I need to check is what is the markup (HTML) behind the elements with issues. Typically, that means right-clicking on the part of the screen where the problem exists and looking at the **Elements** tab in the browser's built-in DevTools feature. I'm also likely to need to check the **Accessibility** panel in DevTools to see what that markup exposes to assistive technology users.
+  :lang(en) {
+  font-family: "Nunito Sans", sans-serif;
+  }
 
-Here's a supoer simple example of TetraLogical's website, showing details of the top navigation element:
+  :lang(ja) {
+    font-family: "Noto Sans JP", sans-serif;
+  }
 
-![The Elements panel is showing, as well as the Accessibility panel. The header navigation, implemented as a `nav` element shows clean, simple markup and also reveals its navigation role and its accessible name in the Accessibility panel](DevTools-with-elements-and-accessibility-panels-information-highlighted.png)
+  p.adjust:lang(ja) {
+    font-weight: 300;
+  }
 
-* What I hope to see whan I check the markup showing in DevTools: semantic markup that provides structure/meaning to what is rendered on the page (as in the example above).
-* What I increasingly find: non-semantic markup that is often heavily nested, stuffed full of attributes, and which usually requires multiple steps to expand each node to get the full picture.
+  span.adjust:lang(en) {
+    font-weight: 400;
+  }
 
-A few years back, I created a tool that was very much borne out of frustration while doing an audit of a very well known web site. Everything that I checked was just an [absolute WALL of attribute-laden markup](https://www.tpgi.com/seeing-the-wood-for-the-trees-demystifying-markup-in-2021/).
-![Example of some markup that is almost impossible to decipher because it is completely overloaded with CSS classes and other attributes](markup-de-wall-of-tags-and-attributes.png)
+  h2.adjust:lang(ja) {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
 
-The markup might have been structurally fine, but it really took some effort to discern that that was the case. I had to go through various passes to work out what I was actually looking at to be able to make sense of things. The frustration led me to create the [HTML De-crapulator](https://a11y-tools.com/markup-de-crapulator/), a tool that I would use many, many times in audits that I carried out for years after. But ... I still felt it could be more useful.
+  h2.adjust span:lang(en) {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.06em;
+    letter-spacing: 0;
+    vertical-align: -0.03em;
+  }
+</style>
 
-The HTML De-Crapulator can provide many ways to simplify markup, such as:
+## When East Meets West (on the Same Page)
 
-* Removing specific attributes
-* Abbreviating specific attributes
-* Removing empty tags
-* Removing framework-specific comment tags
+If you’ve ever built a bilingual English – Japanese website, you know the struggle. English uses letters with ascenders, descenders, and varying widths. Japanese, on the other hand, mixes three scripts: [kanji](https://en.wikipedia.org/wiki/Kanji), [hiragana](https://en.wikipedia.org/wiki/Hiragana), and [katakana](https://en.wikipedia.org/wiki/Katakana), each forming balanced, square-like characters.
 
-![The HTML De-Crapulator interface, showing the input, some filtering options and the generated output](de-crapulator.png)
+Already last year, I told you about a special HTML element that you can use to style this scripts. Read my post [HTML and CSS I didn't even know about before I started creating content](https://www.htmhell.dev/adventcalendar/2024/12/).
 
-Most of the time, pressing the 'Check (almost) all of the above' button did the bulk of what is needed to strip selected markup to its bare bones. *Most of the time* ... Inevitably, with each new site I had to check, I'd find a new collection of custom attributes or tagnames that the tool didn't have in its defaults, so I'd have to customise again and again. The tool does take out a lot of the manual work required to clean up the markup, but I was still finding it to not be as quick as it could be.
-What do I want? I want to look at how a given part of the page is built, quickly. Yet *this* still doesn't feel all that speedy to me:
+This is not usually a big problem if the entire page is in one language. But when Latin letters are mixed with Japanese characters, as is increasingly the case, the font becomes more difficult to handle.
 
-1. Right click on an element on the page
-2. Select **Inspect**
-3. Right click on the node revealed in the **Elements** panel in Dev tools
-4. Copy the Outer HTML
-5. Go to the HTML De-Crapulator and paste
-6. Try the **Check (almost) all of the above** button and see what the results are
-7. Get frustrated by the remnants still there that I really don't care about
-8. Refine, refine, refine until I have the cleaned up markup just so
+That means:
 
-I just wanted to get the markup that **matters**, quickly. What do I mean by markup that matters?
+- Japanese text usually needs more line height to breathe.
+- Kanji often appear denser and more detailed than Latin letters.
+- Western fonts can feel too “light” next to Japanese text.
 
-* Anything that exposes the `role` of an element to assistive technology users
-* Anything that exposes the state of an element to assistive technology users
-* Any attribute that may affect the focusability of an element
+This is where the `lang` attribute becomes your best friend. And he brings a plus one: CSS.
 
-Anything else is just noise. With that in mind, a few months back I came up with the [1-Click De-Crapulator](https://a11y-tools.com/bookmarklets/#one-click-decrapulator).
+## Let the Language Drive the Design
 
-![Maybe make this one decorative with empty alt?](one-click-decrapulator.png)
+```html
+<p lang="en">Welcome to Starbucks.</p>
+<p lang="ja">スターバックスへようこそ。</p>
+```
 
-How does it work? You run the script (as a bookmarklet or you can use [the version in the Chrome extension](https://chromewebstore.google.com/detail/a11y-tools-bookmarklets/fedddpaapeedmkanpenidomfbebacgoa) if you prefer) and then do the following:
+```css
+:lang(en) {
+  font-family: "Nunito Sans", sans-serif;
+}
 
-1. Click on the thing you want to get simplified markup for
-2. That's it. There is no step 2
+:lang(ja) {
+  font-family: "Noto Sans JP" sans-serif;
+}
+```
 
-OK, so there *sort of* is a step 2 ... if you need it, and that's to copy the markup that's presented. But essentially, with one click you can see the markup for the selected node in a super-simplified format, ready to copy and paste if you choose to.
+<p lang="en">Welcome to Starbucks.</p>
+<p lang="ja">スターバックスへようこそ。</p>
 
-![With the 1-Click De-Crapulator running, you hover over the part of the page that you want to inspect, and it shows a border around the current node, as well as an information panel that provides info about the current HTML tag](1-selecting-HTML-node.png)
+Here, the English text uses **Nunito**, which has friendly, rounded shapes. The Japanese version pairs quite good with **Noto Sans JP (Google Fonts)**, which was designed specifically as a typeface for all writing systems around the world. Since the content is separate, both fonts appear suitable and visually balanced.
+Read more about the [Noto: A typeface for the world](https://fonts.google.com/noto/specimen/Noto+Sans+JP) project.
 
-![The tool shows the cleaned up markup in a dialog with buttons that read 'Close', 'Pick again', Flatten' and 'Show Original'](2-decrapulated-markup.png)
+## Font Weight and Visual Balance
 
-At a glance, you can understand the structure of the item that you selected. All classes and trivial attributes are jettisoned. Only those that may have an impact on how the page is exposed to assistive technology users remain (text alternatives, states, `ARIA-*` attributes, `id` attributes ... but only where something else is referencing that element and needs it otherwise all the `id`s are stripped).
+However, when both writing systems are mixed together, which is common in the Japanese language today, typographical mismatches become noticeable. Meaning, When mixing languages, a font weight of `400` for Japanese might look visually heavier than `400` in Latin text because kana systems are more complex in shape.
 
-Went too far? You can also quickly switch between the original markup with all attributes intact, should you want to make a quick comparison.
+```html
+<p lang="ja"><span lang="en">Starbucks</span>へようこそ。</p>
+```
 
-![The same dialog but showing the original markup, indented. The 'Show original' button is indicated as pressed with a change of colour and a tick](3-original-markup.png)
+<p lang="ja"><span lang="en">Starbucks</span>へようこそ。</p>
 
-Didn't go far enough? Perhaps you're seeing endless levels of `<div>` nesting that really isn't contributing to meaning or structure? You have the option of flattening it. Here's the before version:
+You can correct this by slightly adjusting weights between languages:
 
-![Example of markup with multiple layers of nested DIV elements](4-flattened-markup-before.png)
+```css
+:lang(en) {
+  font-weight: 400;
+}
 
-And here is the after:
+:lang(ja) {
+  font-weight: 300;
+}
+```
 
-![The same markup but with all needless nested DIV elements removed, showing the much more simplified structure](5-flattened-markup-after.png)
+<p lang="ja" class="adjust"><span lang="en" class="adjust">Starbucks</span>へようこそ。</p>
 
-Of course, you really are messing with the original markup here, but for the noble reasons of making it understandable and simplified. To save you having to explain each and every time that you simplified the markup when writing up an issue, the tool also wraps the output with Markdown block code backticks and an explanatory phrase that should work for almost every scenario: "Simplified HTML (with some attributes/features removed for clarity)". 
+This subtle change keeps both scripts visually balanced without the Japanese text looking darker. But if you look more closely and highlight the text, you will notice that the default line height of the whole text is slightly different, due to the different fonts used. And the whole thing becomes even more challenging when kanji characters are mixed in with the text.
 
-As with the original full-fat HTML De-Crapulator, this won't address the root of the problem: namely, developers producing shoddy markup. But if you spend much of your day trying to decipher and remediate other people's markup, which can be hell, this tool can save you a lot of fuss and bother in getting to the bottom of the issue.
+## Kanji: Density and Design
 
+Kanji are logographic characters—each one carries meaning, not just sound. Because they’re compact but information-dense, large blocks of kanji can look heavier.
+
+```html
+<h2 lang="en">Apple unveils the new iPhone 17 Pro.</h2>
+<h2 lang="ja">
+  <span lang="en">Apple</span>が新型<span lang="en">iPhone 17 Pro</span>を発表。
+</h2>
+```
+
+<h2 lang="en">Apple unveils the new iPhone 17 Pro.</h1>
+<h2 lang="ja">
+  <span lang="en">Apple</span>が新型<span lang="en">iPhone 17 Pro</span>を発表。
+</h2>
+
+You can help readability with
+
+- generous `line-height` (1.7–1.9)
+- slightly looser letter spacing (`letter-spacing: 0.05em`)
+- a not too heavy `font-weight`
+- avoiding `all-caps` Latin text near kanji — caps feel bulky by comparison
+
+```css
+:lang(ja) {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+:lang(en) {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.06em; /* +5% larger than Japanese */
+  letter-spacing: 0;
+  vertical-align: -0.03em; /* align baseline slightly */
+}
+```
+
+<h2 lang="ja" class="adjust"><span lang="en">Apple</span>が新型<span lang="en">iPhone 17 Pro</span>を発表。</h2>
+
+When styled this way, the English and Japanese text sit naturally on the same line — adjusting the English spans with a slightly larger font size and a small `vertical-align` nudge raises their baseline just enough to match the Japanese characters. The result feels balanced in both weight and rhythm — one cohesive headline, not two scripts stitched together.
+
+<p class="highlight"><strong>Bonus Tip: Variable Fonts!</strong> Google’s <a href="https://fonts.google.com/knowledge/glossary/variable_fonts">Variable Fonts</a> make it even easier to fine-tune weight and width dynamically between scripts. If you use <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings">font-variation-settings</a></code>, you can ensure text looks balanced across both languages at every viewport size.</p>
+
+## Takeaway
+
+Multilingual design isn’t just about translation — it’s about typographic empathy. English and Japanese each have their own rhythm, density, and shape language. Using the `lang` attribute with the right fonts helps you respect both, creating an experience that feels natural to all readers.
+
+Next time you use different scripts on your page, don’t just think about switching words. Think about switching _style_, and let your typography speak both languages fluently.
+
+## Resources
+
+- [Noto: A typeface for the world](https://fonts.google.com/noto)
+- [Variable Fonts](https://fonts.google.com/knowledge/glossary/variable_fonts)

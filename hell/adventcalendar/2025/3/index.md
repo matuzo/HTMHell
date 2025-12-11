@@ -12,6 +12,7 @@ author_links:
     link_label: "@tunetheweb@mastodon.social"
 intro: "<p>The Speculation Rules API is becoming even better with improved mobile support, and a few other improvements to help speed up your websites.</p>"
 image: "advent25_3"
+active: true
 ---
 
 The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculation_Rules_API) allows you to speed up future navigations by prefetching or even prerendering URLs in advance of a user actually clicking a link. When the link is clicked, the speculation is used, and the user experiences a faster load than if no speculation was used.
@@ -31,7 +32,7 @@ The [Speculation Rules API](https://developer.mozilla.org/docs/Web/API/Speculati
 
 This hover technique is a common functionality offered by libraries, plugins, and frameworks, but now this is baked right into the browser. Chromium-based browsers only for now, but it is being worked on by Safari and Firefox, and as a progressive enhancement, nothing is broken on non-supporting browsers — they just don't benefit from the performance improvement.
 
-Using mouse hover as a signal works well on desktop, but what about mobile, where "hover" is not really a thing? At least in browser terms — I'm sure many of us have hovered over a link without fingers, but as that is not detected by the browser as an event, we can't act upon it.
+Using mouse hover as a signal works well on desktop, but what about mobile, where "hover" is not really a thing? At least in browser terms — I'm sure many of us have hovered over a link with our fingers, but as that is not detected by the browser as an event, we can't act upon it.
 
 Well, solving that is just one of many improvements the API has seen in the last year that we'll cover in this post.
 

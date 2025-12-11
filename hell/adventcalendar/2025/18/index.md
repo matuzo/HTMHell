@@ -1,123 +1,113 @@
 ---
-title: "Giving pages a clear shape by using headings"
-author: "Steve Barnett"
-author_bio: "Steve Barnett is a human-centred front-end developer and user experience designer living in Aotearoa New Zealand. He helps software teams have happier customers by making more user-friendly software. That means making sites that everyone can use, regardless of their device, the network they’re on, or any disabilities they might have."
+title: "Forms are a badly designed part of HTML"
+author: "Jens Grochtdreis"
+author_bio: Jens works as a frontend developer for <a href="https://www.swr.de">public radio and tv</a> in Germany. He founded the Webkrauts (the German webstandards movement) in 2005 for evangelising webstandards and better coding for a modern web."
 date: 2025-12-18
 author_links:
-  - label: "Personal website"
-    url: "https://human-centred.nz/"
-    link_label: "human-centred.nz"
-  - label: "Where I work"
-    url: "https://intopia.digital/"
-    link_label: "Intopia"
-intro: "<p>The three most common ways that headings go wonky, and how to fix them!</p>"
+  - label: "blog"
+    url: "https://css-weblog.de"
+    link_label: "My German weblog, mostly about CSS."
+  - label: "Bluesky"
+    url: "https://bsky.app/profile/jensgro.bsky.social"
+    link_label: "jensgro.bsky.social"    
+  - label: "Mastodon"
+    url: "https://mastodon.social/@jensgro"
+    link_label: "@jensgro@mastodon.social"
+  - label: "Codepen"
+    url: "https://codepen.io/jensgro"
+    link_label: "jensgro"
+intro: "<p>Forms, huge or compact, are one of the important building blocks of the web. Without forms the web would be a one-way street. With HTML5 we received an optimized set of form elements. HTML5 turned into a Recommendation in 2014. But until now web developers have to struggle with forms.</p>"
 image: "advent25_18"
 ---
 
+Forms were likely one of the reasons why browser vendors joined forces in the WHATWG in 2004. They felt that HTML standardization was heading into the wrong direction and wanted more practical relevance. While this may be an oversimplification, if true, it highlights the failure of the WHATWG (i.e., the browser vendors) and, subsequently, the W3C. Although the newly standardized form elements and features all point into the right direction, they are incomplete and unfinished. The fact that this is still the case, even more than ten years after HTML5 became a recommendation, is alarming. I will concentrate in this article on forms and especially on missing elements, inconsistent behaviour and the problems with styling.
 
-We can make our pages easier to understand by using headings to give our pages a clear shape. Our users might visually scan the page, use an extension or bookmarklet to list the headings, navigate using assistive technology like a screen reader, or ask AI for a summary of the page. High quality headings can make things better for everyone.
+## New Form Elements
 
-In my day job as a Digital Accessibility Consultant, there are a couple of ways that I've seen things go a bit... wonky. Let's go through the three most common issues, and how to fix them.
+The WHATWG introduced several new form elements and attributes into the HTML specification, e.g. the email input, telephone input, date field, and range slider. Most of these are simply new types of the input element. This approach was clever — a great example of progressive enhancement. If a browser hasn’t implemented a particular input type yet, a plain text field serves as a fallback. Developers can then use JavaScript if needed. However, when the new elements are supported, JavaScript becomes unnecessary.
 
-## Text *should not* be a heading
+This progressive-enhancement model works well for simple inputs. So these new elements are intentionally very simple – essentially shortcuts for single-value fields. They combine regular expressions for validation, an ARIA role, and sometimes trigger a specialized virtual keyboard on mobile phones and tablets. They are similar to web components based on the input element, but are integrated directly into the browser, so no JavaScript is needed for the element to appear. And because they are standardized, the code is consistent across implementations. 
 
-Ah, this one's a real classic! When we have some big and bold text, for Design Reasons, we sometimes take a bit of a shortcut and mark it up as a heading. Let's say an `<h2>`, because it seems about the right size, or that’s what it says in the design file. But here's the thing: this text doesn't introduce or describe the content that follows. It just "needs" to be big for the look of it. 
+Combinations of different form elements have unfortunately not been considered at all. As examples, I would like to mention the [combobox](https://open-ui.org/components/combobox.explainer/) and the [range slider](https://open-ui.org/components/enhanced-range-input.explainer/).
 
-This is an issue because when things are marked up as headings that are not headings, it makes the page harder to understand. Users of assistive technology like screen readers hear things read as headings of section that are not headings.
+### The Combobox
 
-### An example
+The [combobox](https://component.gallery/components/combobox/) is a combination of a select and a search field. Fluent UI provides a [combobox component](https://fluentsite.z22.web.core.windows.net/0.66.2/maximize/dropdown-example-search-multiple-shorthand/false), as does [Ant Design](https://ant.design/~demos/select-demo-multiple). In both cases, only the search field is a form field. The select is simulated by a list in Fluent, while Ant Design uses a div. The selected options are displayed as (fake) buttons using span and svg elements. This has little to do with actual forms.
 
-Let's say we have a page explaining colours, RGB-style. We might have headings marked up as follows.
+<figure>
+  <img src="combobox-github.png" alt="A button has opend ea layer which is in essence a combination of an input-field with search-icon and a select element." loading="lazy" width="306" height="372">
+  <figcaption>The combobox (called select-panel) from the <a href="https://primer.style/product/components/select-panel/">Github-design system</a>.</figcaption>
+</figure>
 
-- `<h1>`Colours
-  - `<h2>`Red
-  - `<h2>`Green
-    - `<h3>`Make it pop!
-  - `<h2>`Blue
+<figure>
+  <img src="combobox-ant-design.png" alt="Combobox showing a select with two marked entries. These entries are as well represented as clickable tags inside a formfield where you could type for new tags/entries." loading="lazy" width="407" height="385">
+  <figcaption>The combobox from the design-system of <a href="https://ant.design/~demos/select-demo-multiple">ant-design</a>.</figcaption>
+</figure>
 
-In this case "Make it pop!" is just some big text, designed to be eye-catching. It's not the start of a section of content.
+### The Enhanced Range Element
 
-### How to fix it
+The [range element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range) can unfortunately only represent a single value. The frequently needed [range slider](https://open-ui.org/components/slider.research/) for two or more values (e.g. for shopping portals) does not exist. You'll have to build it yourself. The well-known [noUiSlider](https://refreshless.com/nouislider/) simulates the slider for one or more values consistently with a div. At least ARIA attributes are used throughout. The same goes with the version by [Quasar](https://quasar.dev/vue-components/range/). No form elements were harmed. It’s a pity that this obvious use case was not standardized.
 
-Stop using HTML and start using CSS. Instead of using a heading element, using a `<p>` or `<span>` or  `<div>` element and use CSS to make it big and bold.
+## Built-in Validation
 
-## Text *should* be a heading
+Standardizing validation in the browser was a smart idea. There are built-in regex rules for validation, which can be manually overridden. Validation is controlled via attributes and a standardized JavaScript API, which is great. In practice, however, you quickly run into details that aren’t flexibly solved. This leads to custom solutions using JavaScript.
 
-Now let's come from the other side. We look at a design and see some bold text. Some big, some bigger, some biggest. Sweet! We fling down a bunch of `<div>` elements, add some styles and we're done. It looks just like the design, chef's kiss, and so on. But here's the thing: this text looks like a heading, but doesn't have any semantics.
+There is no simple, built-in way to collect all error messages and display them at the top or bottom of the form without JavaScript. Nor is there a way to communicate the total number of errors to the user. Error messages at the element itself are shown via a popup, which cannot be styled or repositioned. For any improvements in usability and clearer communication, you'll need JavaScript. While this is done through a unified API, it still isn’t possible with plain HTML.
 
-This is an issue because when text is marked up as a heading even though it isn’t one, it makes the page harder to understand. People using bookmarklets or browser extensions to list headings won't see this text in the list of headings.
+HTML needs better built-in options for handling errors. We should be able to control this with attributes, not JavaScript. The less JavaScript is needed, the faster the page will be.
 
+## Inconsistent browser support
 
-### An example
+Form elements don't have standardized, consistent capabilities or appearance. I don't know whether browser vendors weren't willing to align on this or simply didn't see the need. Either way, consistent usability, features, and appearance would help both users and developers. For example, browsers hook into the operating system's built-in color picker, which seems sensible – but these pickers can’t be styled and differ in functionality. Android and iOS replace the HTML date picker with their own native widget, which is great on mobile. But on desktop, each browser presents a completely different UI, and none of it is customizable. 
 
-Let's say we have a page explaining what the web is made of. We might have some big bold text marked up as follows.
+The number input offers increment/decrement arrows in one browser but not in another. The usefulness of these arrows is debatable. The date field is only read aloud [by the native screen reader on iOS](https://tetralogical.github.io/screen-reader-HTML-support/lookup/lookup.html#input-date)) when a date is already present; it is not announced as a date field. The email input is announced as an email field [only by Voice Over on MacOS](https://tetralogical.github.io/screen-reader-HTML-support/lookup/lookup.html#input-email). Other screen readers don't announce the semantics. If browser vendors are leading the standardization of these features, I expect better coordination and consistent implementation.
 
-- `<h1>`The world wide web
-  - `<h2>`HTML
-  - `<p>`CSS
-  - `<h2>`JavaScript
+Semantic information needs to be exposed to screen readers. Without that, the new input type feels only half-baked – basically just a text input with built-in validation and a tailored onscreen keyboard. And both of those could have been achieved without introducing a dedicated email input.
 
-In this case "CSS" isn't just a paragraph. It's the start of a section of content.
+Inconsistent behaviour and appearance may or may not irritate users. It mostly irritates developers, designers and their clients. Inconsistency is a nightmare if you want to provide a seamless and identical look and feel of your page/application through the differnet devices and browsers. It might as well irritate users if the form looks very different on a smartphone and a notebook.
 
-### How to fix it
+## Partially Miserable Styling Options
 
-Stop using CSS and start using HTML. Instead of using a `<p>` or `<span>` or `<div>` element, use a heading element at the right level to give it semantic structure: from `<h1>` to `<h6>`. If we have some big and bold text that introduces or describes the content that follows, it should probably be a heading.
+Styling form elements is a major challenge that often ends in failure. Developers frequently hide the native control and style the label instead – or hide the control entirely and replace it with a JavaScript-driven construction of divs or lists that can be freely styled.
 
-## Headings do not reflect the content structure
+Fundamentally, styling form elements is miserable. This is why [58% of participants](https://2024.stateofhtml.com/en-US/features/forms/) in the "State of HTML 2024" survey identified styling as by far the biggest pain point with forms.
 
-Okay, we've sorted out text that should and shouldn't be a heading: only things that are structural headings are marked as headings. Hooray! There's one more snag that we might hit: when the headings are in a weird order. For example: let's say we have a page listing edible things. We mark up `<h3>`Fruit`</h3>` as a section, and then `<h2>`Apples`</h2>` as a sub-section of Fruit. Maybe we've done this because that's what the styles in the design file suggest. But here's the thing: it's wonky because the headings don't represent the hierarchical relationships. 
+Browser vendors are currently more active in CSS than in HTML, so there’s a faint glimmer of hope on the horizon. Chromium has introduced the customizable select, based on an [Open UI proposal](https://open-ui.org/components/customizableselect/), and Brecht deRuyte has dedicated a [series of articles](https://utilitybend.com/blog/the-customizable-select-part-one-history-trickery-and-styling-the-select-with-css) on the new, fantastic possibilities.
 
-This is an issue because users of assistive technology like screen readers use headings to understand how each section of the page relates to each other and the page as a whole. When the headings are wonky, the shape of the page is harder to understand.
+It’s a start, but the broader problem remains: all controls hidden inside the browser’s shadow DOM need consistent, standardized structure so they can be styled reliably. At CSSDay 2025, Tim Nguyen presented the Working Draft “[CSS Form Control Styling Level 1](https://www.w3.org/TR/2025/WD-css-forms-1-20250325/)” – early work, but promising. I hope it matures quickly and finds its way into browsers.
 
-### How to fix it
+Without meaningful progress here, we’ll be stuck with [JavaScript-based date pickers](https://open-ui.org/components/datepicker.research/) and other custom controls for the foreseeable future. What’s the point of having a native element if we have to replace it at the first opportunity because we can’t style it?
 
-Use HTML to give the headings the correct nesting and ordering. Use CSS to make them look appropriately sized and shiny.
+[Interop 2025](https://wpt.fyi/interop-2025) didn’t include any focus on form controls. Hopefully some proposals make it into Interop 2026 once the [selection process](https://github.com/web-platform-tests/interop/blob/main/2026/selection-process.md) concludes (hopefully by the time this article is published). 
 
-I like to start from the page as a whole and work my way down.
+## Lack of Further Development
 
-1. What’s the topic or purpose of this page? That text should be in an `<h1>` element near the top of the page.
-2. What are the sections of the page? The name of each section should be in an `<h2>` element, at the start of the section.
-3. What (if any) are the subsections of each section? The name of each subsection should be in an `<h3>` element, at the start of the subsection.
-4. What (if any) are the sub-subsections of each subsection? The name of each sub-subsection should be in an `<h4>` element, at the start of the sub-subsection.
+We are still missing important form elements, and developers have to simulate them with JavaScript. Standardizers could have addressed these gaps in recent years. They didn't. Could it be that they think that we already have all the "building blocks" needed – that developers can simply assemble new controls using JavaScript and Web Components? 
 
-And we keep going, down to an `<h6>` element. Although if you've reached an `<h6>` element, it might be worth reviewing the content and seeing if there's Too Much Stuff there!
+Taken to its logical extreme, this argument would reduce HTML to a handful of primitive elements. Everything else would be rebuilt as custom components, each with its own attributes, ARIA wiring, and implementation quirks. That can’t seriously be the goal.
 
-The list of headings should read a bit like a table of contents for the page.
+In my view, HTML elements are, in a sense, browser-specific web components, but with some crucial advantages: they do not require JavaScript, and they behave the same for all end users and devices. Non-standard controls, on the other hand, come in dozens of variations, built on different foundations, and with varying quality. Standardization exists precisely so we don’t all have to reinvent them.
 
-## Other weird heading things
+## Hope Is Rising
 
-There are other aspects of wonkiness that may occur. Keep a watch for these too!
+The lack of standardization leads to many different approaches to the same problem. What they have in common is that they have little or nothing to do with actual form elements.
 
-- **Heading text that doesn't describe the content that follows.** The words of the heading must introduce the section. Ask your friendly Content writer for help!
-- **`<h1>` shenanigans: no `<h1>` element, or multiple `<h1>` elements.** Just one `<h1>` element, please! It should describe the topic or purpose of page.
-- **Skipped heading levels**, for example: jumping from an `<h2>` element to an `<h4>` element, without an `<h3>` between them. Keep the nesting and order correct: `<h3>` elements for subsections of a section with an `<h2>` heading.
+Fortunately, practitioners have come together in the "[Open UI](https://open-ui.org/)" community group to advance the standardization of HTML and CSS. They describe several features that are missing as standards in HTML. For the combobox, Open UI has created [a proposal](https://open-ui.org/components/combobox.explainer/). I hope it will be implemented in browsers and standardized soon.
 
-## Accessibility nerd corner
+The same applies to the range slider with more than one value. Open UI also offers a great idea for a long-overdue [extension of the standard](https://open-ui.org/components/enhanced-range-input.explainer/).
 
-The big three issues we started with all fall under [Web Content Accessibility Guidelines Success Criteria 1.3.1 Info and Relationships (A)](https://www.w3.org/TR/WCAG22/#info-and-relationships): "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text."
+## A New Wave of Innovation Is Needed
 
-- The "Text should not be a heading" and "Text should be a heading" issues are about the information.
-- The "Headings do not reflect the content structure" issue is about structure and relationships.
+This article is a very rough overview of the state of forms. My main demands for innovation are:
 
-When we spot these issue in the course of an [Accessibility Assessment](https://intopia.digital/services/accessibility-usability-testing/), we usually log them as Medium Severity: it causes problems or frustrations for users.
+1. We need more complex form fields as standard elements, such as a combobox.
+2. We need a range input with multiple handles.
+3. We need much better styling opportunities for every form element. The new stylable select shows the right direction. 
+4. Form validation should be controlled by HTML-attributes instead of JavaScript. It's styling should be easy and consistent between browsers.
+5. Screenreaders should communicate form semantic without flaws.
 
-Headings that aren't descriptive fall under [WCAG Success Criteria 2.4.6 Headings and Labels (AA)](https://www.w3.org/TR/WCAG22/#headings-and-labels). These are usually Medium Severity too.
+The innovation of forms should be part of a much larger initiative. WHATWG and W3C demonstrated at the beginning of the millennium that this is possible. After two decades, it is time to revive this spirit and take HTML to a new level. We’ve seen hints of this recently – elements like `<dialog>`, the popover API, and renewed work on customizable form controls show that the platform can still evolve in meaningful ways. But these feel like isolated wins rather than part of a broader push.
 
-## Use your head(ings)
+Modern websites no longer fit the document-centric model HTML was created for. A typical news homepage mixes headlines, images, teasers, and interactive elements in ways the original spec never anticipated. The New York Times even present teasers without headlines at all. This diversity shows how little shared foundation there is for developers today – and why HTML needs a broader, more coordinated evolution beyond isolated improvements. 
 
-Using headings to give our pages a clear shape makes them easier to understand.
-
-Make sure that:
-
-- text that functions as a heading is marked up as a heading
-- text that does not function as a heading is not marked up as a heading
-- headings reflect the content structure
-
-### Useful tools
-
-Two of my favourite ways to visualise headings are:
-
-- the Headings bookmarklet at [Accessibility Bookmarklets](https://accessibility-bookmarklets.org/install.html)
-- the Headings toggle (in Ad hoc tools) of the [Accessibility Insights for Web](https://accessibilityinsights.io/docs/web/overview/) extension.
-
-Both of them add annotation-like boxes and text, making it easier scroll through and visually spot weird heading things.
+Modern Websites and especially Webapps need a new paradigm. They evolved far beyond the inventor's idea and it won't stop evolving. The W3C should respond with new elements and paradigms. The document analogy should stand alongside interactive applications as equals. The more that is standardized in this regard, the better it is for the industry. And end users will also benefit from consistently high-quality websites.

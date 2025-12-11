@@ -1,203 +1,163 @@
 ---
-title: "Them’s the Breaks"
-author: "Tyler Sticka"
-author_bio: "Tyler Sticka is a creative director, designer, writer and artist from Portland, Oregon. He works with organizations to create and ship expressive, powerful and performant web applications and experiences. He co-owns Cloud Four, a tight-knit web design and development consultancy with an outsized impact. The browser is his favorite design tool, and he loves to draw."
+title: "Don't leave the screen reader hungry"
+intro: "<p>Screen readers don’t always announce what’s visually on screen. This article explores that gap - through the medium of burritos.</p>"
+author: "Geri Reid"
+author_bio: "Geri is an accessibility and design systems nerd from London. As design and accessibility lead on design systems at News UK and Lloyds Banking Group, she helped some of the UK’s largest media and banking brands to design at scale. She is currently Lead Accessibility Specialist at Just Eat Takeaway. "
 date: 2025-12-17
 author_links:
-  - label: "Tyler’s homepage and blog"
-    url: "https://tylersticka.com"
-    link_label: "tylersticka.com"
-  - label: "Tyler’s company, Cloud Four"
-    url: "https://cloudfour.com"
-    link_label: "cloudfour.com"
-  - label: "Follow Tyler on Mastodon"
-    url: "https://social.lol/@tylersticka"
-    link_label: "@tylersticka@social.lol"
-intro: "<p>Tyler walks through several HTML options for managing mid-content line breaks: How they work, when they’re appropriate, and alternatives to consider.</p>"
+  - label: "Website"
+    url: "https://gerireid.com/"
+    link_label: "gerireid.com"
+  - label: "Bluesky"
+    url: "https://bsky.app/profile/gerireid.com"
+    link_label: "@gerireid.com"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/gerireid"
+    link_label: "@gerireid.com"
 image: "advent25_17"
 ---
 
-On the web, it’s easy to take line breaks for granted.
+{{ intro }}
 
-We get them for free between our headings, paragraphs, list items, `<div>` elements and more. We display them as-is in our code snippets thanks to `<pre>`. And most magically of all, our browsers insert breaks _automatically_ where lines of text (or other text-like “inline” elements) would otherwise outgrow their container.
+## The burrito you can't order
 
-But sometimes, that isn’t enough.
+A customer complained they couldn't order a burrito. "The menu advertises burritos, but my screen reader won't let me order one!"
 
-Some words are too long and continuous to break automatically. Some words can be “orphaned” onto their own, lonely line. Occasionally, our content demands an overt break; more often, our designs call for their addition or removal.
+I was baffled. The menu was about as Mexican as a Yorkshire pudding. There was no mention of a burrito. 
 
-So it makes sense that HTML provides a few options for managing mid-content breaks. Some famously overused, others less known or understood:
-
-- The “break” element, `<br>`
-- The “word break opportunity” element, `<wbr>`
-- The “soft hyphen” character, `&shy;`
-- The “non-breaking space” character, `&nbsp;`
-
-Let’s “break” down ([nyuk, nyuk](https://www.youtube.com/watch?v=AKtwlHV1-O8)) those techniques: What they do, when they’re appropriate, and alternatives to consider.
-
-## The “break” element, `<br>`
-
-99% of the time, line breaks in text that are truly _meaningful_ to your content will justify a new paragraph, list item, `<div>` or other block element.
-
-The `<br>` (“break”) element is for those rare exceptions.
-
-For example, a `<br>` can force a break between lines of poetry or song (apologies to [Linkin Park](https://en.wikipedia.org/wiki/One_Step_Closer_(Linkin_Park_song))):
+After a lot of searching, I discovered someone had dropped an emoji into the heading:
 
 ```html
-<p>
-  Everything you say to me<br>
-  (Takes me one step closer to the edge)<br>
-  (And I’m about to break)
-</p>
+<h2>Sandwiches 🌯</h2>
 ```
 
-Or within an address:
+Visually, it looked decorative and *kind of like a sandwich*. But screen readers don't read an emoji as decoration, they announce its <a href="https://unicode.org/emoji/charts/full-emoji-list.html">Unicode character name</a>. So screen reader users heard: "Sandwiches, Burrito."
 
-```html
-<address>
-  Breakside Brewery<br>
-  1570 NW 22nd Ave.<br>
-  Portland, Oregon 97210
-</address>
-```
+That little emoji isn't just sitting in your markup looking pretty. It's making promises your website can't keep. One tiny flourish in your heading tag and suddenly your sandwich bar sounds like a taqueria.
 
-And… that’s pretty much it. As commonplace as `<br>` is, it’s rarely preferable to more semantic HTML.
+## What's on the menu?
 
-## The “word break opportunity” element, `<wbr>`
+What I'm highlighting here is screen readers don't consistently announce what you see visually on the screen. This article explores the gap between what HTML gives you for free and what you need to supply yourself. 
 
-The `<wbr>` element is `<br>`’s less famous, more introverted cousin. It inserts a break _only_ when the text will overflow and the browser can’t find a “break opportunity” (whitespace) of its own.
+I've made some quick reference tables to demonstrate how popular screen readers JAWS, NVDA, and VoiceOver handle elements, showing where HTML does the work and where you need to add stuff in addition.
 
-You wouldn’t want to use `<wbr>` for most text: There’s no hyphenation or anything to indicate where breaks occur. But it can be useful when a string has predictable breakpoints that aren’t spaces.
+Documenting and recording screen reader requirements is also problematic, so it sometimes falls through the gaps between design and code. I’ve got some ideas to help solve this.
 
-For example, the slashes in a URL or directory path:
+### You hungry? 
 
-```html
-https://htmhell.dev<wbr>/adventcalendar<wbr>/2025<wbr>/17<wbr>/index.html
-```
+Since you're probably craving Mexican food by now, we're going to frame this through the medium of burritos. Put your apron on, taquero - it's time to get cooking!
 
-Or dot notation in an object chain:
+Let’s imagine the browser is your tortilla: it holds everything together. HTML adds some fillings by default. For a successful burrito, you need the right toppings. The trick is knowing which toppings to add and when to stop.
 
-```html
-namespace<wbr>.class<wbr>.object<wbr>.property
-```
+## What you get for free (the fillings)
 
-`<wbr>` should only be used to signify clear break points: You should _not_ attempt to auto-insert `<wbr>` elements willy-nilly as a form of general overflow avoidance. It is also a poor choice for any list-like content, such as breadcrumb navigation.
+Like a burrito that comes with rice, beans and your choice of protein, semantic HTML automatically packs the essentials into your tortilla. Correctly marked-up headings, links, buttons, lists, form controls, and tables are announced by default. And like a burrito starts with a good tortilla, screen readers work best when paired with their preferred browser: 
 
-## The “soft hyphen” character, `&shy;`
+- JAWS with Chrome on Windows
+- NVDA with Firefox or Chrome on Windows
+- VoiceOver with Safari on Apple
 
-The `&shy;`(“soft hyphen”) character reference (`&#173;` for the Unicode stans) functions a lot like `<wbr>`, except a hyphen is inserted just before the break:
+Here's how JAWS, NVDA and VoiceOver screen readers announce for me using their default settings (I've included my testing specs in the footer). Use this as a guide. Your announcements might differ slightly based on verbosity and device settings, browser and software version. The way you navigate also changes what you hear. For example, using a heading shortcut key may produce a different announcement than letting the screen reader read through linearly.
 
-```html
-anti&shy;dis&shy;establishmen&shy;taria&shy;nism
-```
+The exact announcement doesn't really matter. 
 
-`&shy;` is also surprisingly configurable via CSS. You can replace the hyphens with a character of your choice:
+What matters is knowing what you get for free and when you have to add something to get meaningful announcements. 
 
-```css
-p {
-  hyphenate-character: "⋯";
-}
-```
+<div class="u-oa" tabindex="0" role="region" aria-label="Exemplary announcements">
 
-Or disable them entirely:
 
-```css
-p {
-  hyphens: none;
-}
-```
+| Element                                                                        | JAWS says                                                | NVDA says                                                     | Mac OS VoiceOver says                                                                  | Annotation                                                                     |
+| ------------------------------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `<h1>Burritos</h1>`                                                            | “Burritos, Heading level 1”                              | “Burritos, Heading level 1”                                   | “Heading level 1, Burritos”                                                            | No extras needed. Use correct heading levels for structure.                    |
+| `<button>Checkout</button>`                                                    | “Checkout button”                                        | “Checkout, button”                                            | “Checkout, button”                                                                     | No extras needed.              |
+| `<a href="burrito.html">Order burrito</a>`                                     | “Order burrito, link”                                    | “Order burrito, link”                                         | “link, Order burrito”                                                                  | No extras needed. Just make sure the link text makes sense out of context.     |
+| `<ul> <li>Burrito</li> <li>Taco</li> </ul>`                                    | “List of 2 items. Bullet Burrito. Bullet Taco. List end” | “List with 2 items. Bullet Burrito. Bullet Taco. Out of list” | “List 2 items.&#xA;Bullet Burrito, 1 of 2. &#xA;Bullet Taco, 2 of 2.&#xA;End of list.” | No extra needed. |
+| `<label for=name">Name</label> <input id="name" type="text">`                  | “Name, edit”                                             | “Name, edit”                                                  | “Name, edit text”                                                                      | No extra needed.                                                               |
+| `<input id="cheese" type="checkbox"> <label for="cheese">Extra cheese</label>` | “Extra cheese, check box, not checked”                   | “Check box, not checked, Extra cheese”                        | “Extra cheese, unticked, tick box”                                                     | No extra needed.                                                               |
+| `<button disabled>Not taking orders</button>`                                  | “Order, button, unavailable”                             | “Button unavailable, Order”                                   | “Order, dimmed, button”                                                                | No extra needed. Visually appears disabled, not focusable.                     |
 
-The hyphenation makes `&shy;` more suitable for typical prose than `<wbr>`. That said, hyphenation in general is a bit of a minefield:
+</div>
 
-- It doesn’t work well in every language.
-- Breaking up a word between two lines, hyphenated or not, can be challenging for many readers.
-- While hyphenation has a long and rich typographic history, its readability has always been highly dependent on the size, layout and justification of the overall text. Dynamic content and responsive containers make it that much tougher to get right.
+## What you must supply (the toppings)
 
-I occasionally find `&shy;` helpful when I’m writing and notice a word flowing in a particularly troublesome way. I’d consider frequent usage a signal to simplify my verbiage or tweak my design.
+Here’s where you roll up your sleeves. These elements stay silent or may not announce as you’d expect until you add the right toppings.
 
-## The “non-breaking space” character, `&nbsp;`
+<div class="u-oa" tabindex="0" role="region" aria-label="Exemplary announcements with missings attributes">
 
-Normally, whitespace characters are the most reliable indication of a line break opportunity. The `&nbsp;` character openly _defies_ that convention, applying a space that is, much like [Kimmy Schmidt](https://en.wikipedia.org/wiki/Unbreakable_Kimmy_Schmidt), _unbreakable_:
+| Element                                                   | JAWS says                                | NVDA says                               | Mac OS VoiceOver says               | Annotation                                                                  |
+| --------------------------------------------------------- | ---------------------------------------- | --------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------- |
+| `<img src="burrito.png">`                                 | "Unlabelled graphic"                     | "Unlabelled graphic"                    | “Unlabelled image” or "burrito.png" | Add alt text describing the image. Or use `alt=""` if decorative.           |
+| `<button><svg>burrito svg icon</svg></button>`       | “unlabelled button”                      | “button”                                | “button”                            | Add accessible name via `aria-label` or `aria-labelledby`.                  |
+| `<iframe src="#"></iframe>`                      | “frame”, or “frame 2 of 4” if multiple                                 | “frame”, or “frame 2 of 4” if multiple                                 | “frame”                             | Add a descriptive `title` for context.                                        |
 
-```html
-Keep&nbsp;it&nbsp;together
-```
+</div>
 
-(The non-breaking space is just one of [many whitespace characters](https://en.wikipedia.org/wiki/Whitespace_character#Unicode) that will prevent a string from breaking as you’d normally expect.)
+The trick: add the toppings that matter, but don't overload the burrito. An overstuffed burrito can fall into your lap, potentially ruining a first date.
 
-As useful as that sounds, `&nbsp;` and its cousins should be considered a last resort. They don’t play very well with other techniques for managing breaking and text flow, and they’re virtually impossible to style without additional selectors or [truly epic hacks](https://css-tricks.com/modifying-specific-letters-with-css-and-javascript/).
+## Edge cases and oddities (HTMHell's Kitchen)
 
-## Gently Apply Your Breaks
+These ingredients look tasty but behave unpredictably under heat. Use with caution or your markup might fall apart.
 
-If you’ve followed along to this point, you may notice a pattern: These techniques all have pretty limited use cases!
+<div class="u-oa" tabindex="0" role="region" aria-label="Exemplary oddities">
 
-- `<br>` for the rare break that’s actually part of the content (poems, addresses, etc.)
-- `<wbr>` for weird run-on strings
-- `&shy;` for very occasional hyphenation in prose
-- `&nbsp;` when you must avoid a break at all cost
+| Element                                                                | JAWS says                                          | NVDA says                                          | Mac OS VoiceOver says | Annotation                                                                                                                        |
+| ---------------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `<strong>Burrito!</strong>`                                            | "Burrito"                                          | "Burrito"                                          | "Burrito"             | Emphasis not reliably spoken on default verbosity settings. Don't rely on for meaning.                                            |
+| `<em>Spicy</em>`                                                       | "Spicy"                                            | "Spicy"                                            | "Spicy"               | Emphasis not reliably spoken on default verbosity settings. Don't rely on for meaning.                                            |
+| `£8 <s>£10</s>`                                                        | "£8 strikethough deletion £10"                     | "£8 deleted £10"                                   | "£8 £10" or "£8 deletion £10"             | Strikeout not reliably announced.                                                           |
+| `<sup>2</sup> / <sub>2</sub>`                                          | "2, 2"                                             | "2, 2"                                             | "2, 2"                | Not read as superscript or subscript.                                                       |
+| `<hr>`                                                                 | "separator"                                        | "separator"                                        | Silent                | Don't rely on for meaning. Add `aria-label` if the separation needs context.                                                      |
+| `<abbr title="Street Provisions In Corn-based Envelopes">SPICE</abbr>` | "SPICE, Street Provisions In Corn-based Envelopes" | "Spice"                                            | "Spice"               | Full title not reliably announced. Spell out abbreviation in text.                                                                |
+| 🌯                                                                     | "Burrito"                                          | "Burrito"                                          | "Burrito"             | Emojis announce their [Unicode name](https://unicode.org/emoji/charts/full-emoji-list.html). For decorative use, add `aria-hidden`. |
 
-For other mid-content break scenarios, your best bet is CSS!
+</div>
 
-With `display`, we can stack inline elements as if they were blocks:
+## Help! My burrito is busted!
 
-```html
-<p style="display: grid;">
-  <span>Ms. Boop Squanklin,</span>
-  <span>Beloved Activist &amp; Icon</span>
-</p>
-```
+- If you're second-guessing what should announce, TetraLogical recently released a [detailed guide to screen reader announcements](https://github.com/TetraLogical/screen-reader-HTML-support?tab=readme-ov-file) along with an [HTML Element test file](https://stevefaulkner.github.io/AT-browser-tests/)  you can run your screen reader over to test elements in isolation.
 
-Or flow block elements together:
+- If you’re looking for video examples of how elements and components announce, check out the [HTML section of atomica11y](https://www.atomica11y.com/accessible-web/). 
 
-```html
-<hgroup style="display: flex; flex-wrap: wrap; column-gap: 1ch;">
-  <h1>Heading</h1>
-  <p>Subtitle</p>
-</hgroup>
-```
+- If you work on a Mac and need to test on Windows screen readers, try [AssistivLabs](https://assistivlabs.com/) or set up an [emulator like UTM](https://getutm.app/). You can run NVDA for free and JAWS has a free 40 minute developer mode which is sufficient for testing. [40% of the screen reader market uses JAWS](https://webaim.org/projects/screenreadersurvey10/#primary) so if you only test on VoiceOver you might miss issues.
 
-Or keep key phrases wrapping as one:
+## Documenting screen reader requirements
 
-```html
-<p>
-  “Come Together” by
-  <span style="display: inline-block;">
-    The Beatles
-  </span>
-</p>
-```
+If you're building a website, you need a consistent way to document screen reader announcements. Don't leave it up to chance. Current design tools don't have space for accessibility information and much of it is non-visual, so it easily gets overlooked during implementation.
 
-We can encourage long strings to wrap more aggressively with `overflow-wrap`:
+### Documenting with design annotation kits
 
-```css
-p {
-  overflow-wrap: anywhere;
-  /* or */
-  overflow-wrap: break-word;
-  /* or */
-  word-break: break-all;
-}
-```
+Visual annotation kits for Figma, Sketch or Penpot offer a solution. There are plenty of excellent open-source examples shared in community files that you can tailor to your organisation's needs. If you're looking for inspiration, Jan Maarten and Daniel Henderson-Ede did a talk showcasing how [different design teams annotate for accessibility](https://www.youtube.com/live/O1GmngpGokU?si=Y6uxWmX1Z6pxfRDD) at this year's Inclusive Design 24.
 
-Rescue typographic orphans with `text-wrap`:
+As a designer, I find it helpful to pair with an engineer and mark up design files together to capture all the accessibility requirements. 
 
-```css
-p {
-  text-wrap: balance;
-  /* or */
-  text-wrap: pretty;
-}
-```
+A problem with sticky note annotations is that they often die in design files once development begins. Developers don't revisit design files, designers move on and the accessibility details you've spent time documenting get lost. Even if they are used effectively in implementation, you end up rewriting a similar set of notes for subsequent projects.
 
-Or micro-manage break behavior with `white-space`:
+### Documenting with text
 
-```css
-.yolo-single-line {
-  white-space: nowrap;
-}
-```
+Text-based documentation in machine-readable formats (YAML, JSON, markdown tables, or structured specifications) solves this. Instead of static notes trapped in design files, if you record your annotations as text you can create queryable records that travel. Think of it like your restaurant having a digital ordering system instead of handwritten tickets. The kitchen gets the exact burrito order every time, with all the special instructions intact. 
 
-(We can even apply hyphenation and truncation via CSS, but these present their own challenges. See [my justified text explorations](https://cloudfour.com/thinks/justified-text-better-than-expected/) and [some classic truncation wisdom from Karen McGrane](https://css-tricks.com/embracing-asymmetrical-design/).)
+These formats also unlock AI integration through tools like RAG or MCP servers. When a developer asks an AI assistant about a component, it can surface the exact accessibility requirements. You could even structure these specs to generate automated test criteria.
 
-Content that calls for a semantic break is rare, but real: It’s good to understand your HTML options for that scenario. But once you’ve plopped in _one_ quick `<br>`, its immediacy makes it tempting to overuse.
+The long game: shift to living documentation that can be queried on demand. Some clever folks like Nathan Curtis have already started ​to explore ways to [record specs with data](https://medium.com/@nathanacurtis/components-as-data-2be178777f21).
 
-Resist the urge, write good markup, and embrace the accessibility, power and maintainability of CSS alternatives. Your audience and your project’s future maintainers will be happy you did!
+## Let's wrap up! 🌯
+
+- HTML gives you a tortilla full of free fillings: headings, lists, buttons, form controls, tables. However, some elements require you to add a topping to make them meaningful. 
+
+- Document which toppings are needed so they don't get lost between design and development. Without clear documentation, developers have to guess at the requirements or skip them entirely, leaving accessibility as an afterthought rather than an integral part of the build.
+
+Remember that a good burrito, like good markup, is about knowing which toppings to add and when to stop. Get it right and your screen reader users get a memorable burrito. Get it wrong and they're left with a stain on their shirt. 
+
+### About Geri Reid
+
+Geri is an accessibility and design systems nerd from London. As design and accessibility lead on design systems at News UK and Lloyds Banking Group, she helped some of the UK’s largest media and banking brands to design at scale. She is currently Lead Accessibility Specialist at Just Eat Takeaway. 
+
+- Blog: [gerireid.com](https://gerireid.com)
+- Bluesky: [@gerireid.com](https://bsky.app/profile/gerireid.com)
+- LinkedIn: [@gerireid](https://www.linkedin.com/in/gerireid/)
+
+#### Screen reader testing on:
+
+- JAWS (2025) with Chrome Version 140.0.7339.128 (Official Build) (64-bit) on Windows 11
+- NVDA (2025) with Chrome Version 140.0.7339.128 (Official Build) (64-bit) on Windows 11
+- VoiceOver (2025) with Safari Version 26.0.1 on Mac, Sequoia 15.7.1
