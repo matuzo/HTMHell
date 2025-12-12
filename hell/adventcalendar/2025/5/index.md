@@ -12,6 +12,7 @@ author_links:
     link_label: "polypane.app"
 intro: "<p>Specifing the right relationships between elements is a key part of building websites well. Often these relationships are implicit and depend on the source order or structure, such as a heading followed by a paragraph or a list element inside of a `<nav>`. And while this gets you far, there are times when you need to be more explicit about the relationships between elements.</p>"
 image: "advent25_5"
+active: true
 ---
 
 Take the following HTML for example:
@@ -105,7 +106,7 @@ You can add a `form` attribute to form-associated elements like `<input>`, `<but
 <button form="signup-form">Sign up</button>
 ```
 
-Something to keep in mind is that the `form` atttribute only works for the current element, not its children ([source](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/form#non-inheritance_of_the_form_attribute). If you have a `<fieldset>` with a `form` attribute, the inputs inside it will not be associated with the form unless they also have a `form` attribute.
+Something to keep in mind is that the `form` atttribute [only works for the current element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/form#non-inheritance_of_the_form_attribute), not its children. If you have a `<fieldset>` with a `form` attribute, the inputs inside it will not be associated with the form unless they also have a `form` attribute.
 
 Another thing to keep in mind is that you can remove an element from a form by giving it a `form` attribute that points to a different form, or to no form at all (by giving it an empty string). Here's [an example from MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/form#associating_with_a_non-ancestor_form):
 

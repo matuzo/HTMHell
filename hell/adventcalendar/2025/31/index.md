@@ -1,177 +1,98 @@
 ---
-title: "HTML Input Validation is (maybe) Good"
-author: "Wes Goulet"
-author_bio: "Maker of (hopefully) useful things on the web. Microsoft/Salesforce alum. Big fan of PWAs, SSGs, web standards, and simple/boring code."
-date: 2026-01-02
+title: "Abbreviations done right: The &lt;abbr&gt; element and why not use it"
+author: "Alexander Muzenhardt"
+author_bio: "Alex is a skilled Frontend Developer with a career spanning back to 2015. Since joining cit GmbH in 2019, Alex has specialized in accessibility, crafting inclusive and user-friendly digital experiences that ensure seamless web engagement for everyone."
+date: 2025-12-31
 author_links:
-  - label: "Site"
-    url: "https://goulet.dev"
-    link_label: "goulet.dev"
-    intro: "<p>Built-in HTML input validation makes a good foundation for simple client-side validation. It just needs a little extra to make it accessible.</p>"
-    image: "advent25_31"
-    canonical: "https://goulet.dev/posts/html-input-validation-is-good/"
+  - label: "Website"
+    url: "https://alexmuzenhardt.de/"
+    link_label: "Website Alex Muzenhardt"
+  - label: "Alex on LinkedIn"
+    url: "https://www.linkedin.com/in/alexmuzenhardt/"
+    link_label: "LinkedIn"
+  - label: "Alex on Github"
+    url: "https://github.com/alexmuzenhardt"
+    link_label: "Github"
+intro: "<p>A deep dive into why the &lt;abbr&gt; element is not the accessibility win it claims to be — and how to handle abbreviations the right way instead.</p>"
+image: "advent25_31"
 ---
 
-I think of client-side validation as a progressive enhancement for your users. You have to validate user input on the server (you can't trust what comes from the client), but some validation on the client makes for a nice UX. But that doesn't have to mean lots of JS code or using some validation library on your client. You can get pretty far with the browser's built-in HTML input validation. And then you can layer a little bit of JS on top of that to make it even better.
+# Abbreviations done right: The `<abbr>` element and why not use it
 
-Let's take a look at a text input. You can use `pattern`, `minlength` and `maxlength` to provide constraints. You can use `title` to provide error message. You can conditionally style invalid input with `:user-invalid`.
+# Introduction
+Abbreviations are great. They save time and space, make things efficient and tidy, and can even improve readability. But with the wrong technique, these abbreviations can turn into hell when it comes to accessibility.
 
-## Example
-
-```html
-<label for="program_name">Name of program</label>
-<input
-  type="text"
-  id="program_name"
-  minlength="3"
-  maxlength="20"
-  pattern="[a-zA-Z0-9]+"
-  title="Only alphabetical and numerical characters are accepted"
-  required
-/>
-```
-
-```css
-input:user-invalid {
-  border: 4px solid red;
-}
-```
-
-When the user attempts to submit the form the browser takes care of validating and showing the message.
-
-<figure style="margin: 4rem 0;">
-    <img src="./chromium.jpg" alt="A screenshot of Chrome.  The error message says 'Please match the requested format. Only alphabetical and numerical characters are accepted'" style="border: 1px solid #ccc;">
-    <figcaption>Example validation message on Chrome</figcaption>
-</figure>
-
-<figure style="margin: 4rem 0;">
-    <img src="./firefox.jpg" alt="A screenshot of Firefox.  The error message says 'Please match the requested format: Only alphabetical and numerical characters are accepted.'" style="border: 1px solid #ccc;">
-    <figcaption>Example validation message on Firefox</figcaption>
-</figure>
-
-<figure style="margin: 4rem 0;">
-    <img src="./safari.jpg" alt="A screenshot of Safari.  The error message says 'Match the requested format: Only alphabetical and numerical characters are accepted'" style="border: 1px solid #ccc;">
-    <figcaption>Example validation message on Safari</figcaption>
-</figure>
-
-<figure style="margin: 4rem 0;">
-    <img src="./ios.jpeg" alt="A screenshot of Safari on iOS.  The error message says 'Match the requested format: Only alphabetical and numerical characters are accepted'" style="border: 1px solid #ccc;">
-    <figcaption>Example validation message on Safari on iOS</figcaption>
-</figure>
-
-> You can play with a live example at [this CodePen](https://codepen.io/wes_goulet/pen/emJjqKj).
-
-BTW, I just noticed that Chrome and Firefox say "Please" but Safari doesn't 😃
-
-## Styling
-
-You can't style the error popup, so if that's important to you then maybe you need to write your own error UI. A lot of times I don't mind leaning on browser UI when it's available (ie: most of the time I don't need my error messages in my website's overall brand/styling). Also, I think a lot of users have seen the browser's error UI before (from other sites that use native form validation), so there is some familiarity there for the user.
-
-## The Problem: Accessibility
-
-Unfortunately, native form validation isn't very accessible.
-
-I had assumed it was accessible, because most of the time when I lean on the browser to do something it handles accessibility much better than any userland code I would write. But after reading [this excellent post from Adrian Roselli](https://adrianroselli.com/2019/02/avoid-default-field-validation.html) (an accessibility expert), I learned my assumption was wrong.
-
-The main accessibility issues with native form validation are:
-
-- **Error messages aren't associated with form fields** - Screen readers don't reliably announce which field has an error, so users relying on assistive technology can't easily figure out what needs to be fixed.
-- **Error messages disappear too quickly** - The browser's error bubble might disappear before users can read it.
-- **Error messages don't respect user text size/spacing preferences** - The error bubble text doesn't resize with browser zoom settings or respect text spacing preferences.
-
-Related to all this, [a recent update to WCAG](https://github.com/w3c/wcag/pull/4431) acknowledges these accessibility issues with native form validation.
-
-## Make it better with JS
-
-I originally wrote this post to point out that native form validation is good enough (lean on the browser!) and that's all you need. But after reading about the accessibility issues, I think the right answer is using native form validation as the foundation, and then adding a bit of JS to make it more accessible.
-
-We'll use the Constraint Validation API, which is the JavaScript interface for HTML form validation. It allows you to programmatically check if a form field is valid, get validation messages, and customize how errors are displayed to users. For example, you can check if an input is valid:
-
-```javascript
-const element = document.getElementById("program_name");
-console.log(element.checkValidity()); // returns true or false
-```
-
-You can also get the validation message:
-
-```javascript
-const element = document.getElementById("program_name");
-console.log(element.validationMessage); // returns the error message if invalid
-```
-
-We'll use the Constraint Validation API to create our own error messages that are properly associated with form fields. Here's a simple example:
+# The perfect element for abbreviations
+So, the first thing you do: you look up “abbreviations in HTML” and land straight on MDN (Mozilla Developer Network), at the `<abbr>` element. `<abbr>` is the short form for abbreviation. The [documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) shows exactly how to use it properly — and even has an accessibility section. It says that `<abbr>` helps people understand what an abbreviation means, especially when it is technical or industry jargon.
 
 ```html
-<form id="my-form">
-  <label for="program_name">Name of program</label>
-  <input
-    type="text"
-    id="program_name"
-    minlength="3"
-    maxlength="20"
-    pattern="[a-zA-Z0-9]+"
-    title="Only alphabetical and numerical characters are accepted"
-    required
-    aria-describedby="program_name-error"
-  />
-  <span id="program_name-error" role="alert" aria-live="polite"></span>
-</form>
+<p>The <abbr title="Mozilla Developer Network">MDN</abbr> is a documentation repository and learning resource for web developers.</p>
 ```
 
-```javascript
-const form = document.getElementById("my-form");
-const input = document.getElementById("program_name");
-const errorMessage = document.getElementById("program_name-error");
+Perfect. Exactly what you were looking for. Semantic, accessible — what could go wrong?  
+So you start using `<abbr>` everywhere. However, after a while you get feedback from people asking what those abbreviations mean *and* an accessibility report complaining about … those very same abbreviations.
 
-// IMPORTANT: set this attribute in JS, that way it's a
-// progressive enhancement (ie: if JS isn't available the
-// native form validation will still work).
-form.setAttribute("novalidate", "");
+Why? According to MDN, you did everything right.
 
-function validateInput() {
-  const isValid = input.checkValidity();
-  errorMessage.textContent = isValid ? "" : input.validationMessage;
-  if (isValid) {
-    input.removeAttribute("aria-invalid");
-  } else {
-    input.setAttribute("aria-invalid", "true");
-  }
-}
+# The problem with abbr
+The biggest problem with the `<abbr>` element is that its `title` attribute behaves completely inconsistently across browsers, and some assistive technologies do not read parts of it at all.
+Adrian Roselli has already run extensive tests on his blog article “[Using abbr Element with title Attribute](https://adrianroselli.com/2024/01/using-abbr-element-with-title-attribute.html#Testing)” showing that the `title` attribute on `<abbr>` elements is not announced by assistive technologies.
 
-// Validate on blur (when user leaves the field)
-input.addEventListener("blur", validateInput);
+On top of that, the `title` attribute is a problem on touch devices — there is simply no way to access it on a smartphone. It only appears on hover, and hover does not exist on touchscreens.
 
-// Clear errors as user types
-input.addEventListener("input", () => {
-  if (input.checkValidity()) {
-    errorMessage.textContent = "";
-    input.removeAttribute("aria-invalid");
-  }
-});
+No matter how you look at it, when you use `<abbr>`, at least one group of users will always miss out on information they need.
 
-// Handle form submit
-form.addEventListener("submit", (e) => {
-  if (!form.checkValidity()) {
-    e.preventDefault();
-    // Update validation state for all fields
-    validateInput();
-  }
-});
-```
+# The simple solution we are all looking for
+The easiest way to make abbreviations accessible is to spell them out the first time they appear, followed by the abbreviation in parentheses or vice versa.  
+After that, you can simply use the abbreviation throughout the rest of the text — it’s already been explained once.
 
-In this example:
+This approach is also accepted by WCAG (Web Content Accessibility Guidelines) 2.2 as a “Sufficient Technique” under “[G97: Providing the first use of an abbreviation immediately before or after the expanded form](https://www.w3.org/WAI/WCAG22/Techniques/general/G97)”.  
+And the best part: you do not even need to touch your HTML markup — you just make your text a bit clearer.
 
-- The form has `novalidate` to turn off the browser's built-in validation (added via JavaScript so it degrades gracefully).
-- The error message is associated with the input using `aria-describedby`, so screen readers will announce it when the field is focused.
-- The error message has `role="alert"` and `aria-live="polite"` so screen readers will announce it when it appears.
-- The input gets `aria-invalid` set appropriately, clearly marking it for assistive technologies.
-- Validation happens on `blur` (when the user leaves the field) and on form submit.
-- The error message stays visible, giving users time to read it.
+## Examples
+### First example
+In this example, the abbreviation comes first, followed by its full meaning in parentheses.  
+"The WAI (Web Accessibility Initiative) demonstrates the W3C (World Wide Web Consortium) commitment to accessibility."
 
-> You can play with a live example at [this CodePen](https://codepen.io/wes_goulet/pen/emJjqKj).
+### Second example
+The reverse is equally correct and accessible.  
+"The United Nations High Commissioner for Human Rights (UNHCR) was established in 1950 to provide protection and assistance to refugees."
 
-This [post by Cloud Four](https://cloudfour.com/thinks/progressively-enhanced-form-validation-part-2-layering-in-javascript/) spells out a more complete solution in detail. (If you mainly support evergreen browsers then I wouldn't worry too much about the first part "Removing invalid styles on page load for all browsers" since Chrome has shipped support for `:user-invalid` for [a couple years now](https://caniuse.com/wf-user-pseudos).)
+The key is consistency: do not switch between the two styles on the same website. Pick one and stick with it.
 
-So native HTML form validation is a good starting point, but it's not enough on its own due to accessibility issues. You can use the Constraint Validation API to layer on accessible error messages with a bit of JavaScript. That way you get the browser's validation working as a baseline, and then enhance it to be accessible when JS is available.
+# The alternatives you may need
+Below are three possible alternatives. They vary in complexity, and when implementing them, accessibility should always remain a priority. This is especially true for the third option — a dictionary search — where the input field and surrounding UI also need to be accessible.
 
-> Thanks to [Manuel](https://matuzo.at/) for reviewing this post and pointing out the accessibility issues with native form validation.
+I am intentionally leaving out implementation details here, as they would go beyond the scope of this article. These examples rely on other WCAG techniques that are not directly related to abbreviations. You will find plenty of examples online — and if you have questions about any of these approaches, feel free to reach out.
+
+## Linking to definitions
+Of course, spelling out abbreviations is not the only option. You can also link an abbreviation to a page that explains it in detail. There are several ways to do this, all clearly outlined in “[G55: Linking to definitions](https://www.w3.org/WAI/WCAG22/Techniques/general/G55)”.
+
+## Providing a glossary
+Another option is to provide an internal or external glossary that lists and explains all abbreviations used on your website. You can either link to it or simply reference it when abbreviations appear.  
+Just like in books, glossaries can live at the end of a site or section — and readers can look up terms as needed.  
+A clear explanation of this approach can be found under “[G62: Providing a glossary](https://www.w3.org/WAI/WCAG22/Techniques/general/G62)”.
+
+## Providing a function to search an online dictionary
+A more elegant approach is to include a search feature on your site that queries an online dictionary for abbreviations and displays relevant results.  
+You can find more information on this technique in “[G70: Providing a function to search an online dictionary](https://www.w3.org/WAI/WCAG22/Techniques/general/G70)”.
+
+# Conclusion
+Skip the `<abbr>` element altogether.  
+Right now, it does not add any real value — it only creates a false sense that your abbreviations are truly accessible and understandable by all persons.
+
+The best and by far simplest solution is to clearly spell out each abbreviation the first time you use it, and then stick to the short form for the rest of the text.
+
+Cheers  
+Alex
+
+# Resources
+* [Using abbr Element with title Attribute](https://adrianroselli.com/2024/01/using-abbr-element-with-title-attribute.html) \- by Adrian Roselli
+* [THE ABBR ELEMENT](https://heydonworks.com/article/the-abbr-element/#main) \- by Heydon Pickering
+* [The HTML abbr-tag – Managing Abbreviations the Right Way (German)](https://stolperfrei.digital/html-abbr-tag/) \- by Ria Weyprecht
+* [\<abbr\>: The Abbreviation element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) \- by mdn
+* [Understanding SC 3.1.4: Abbreviations (Level AAA)](https://www.w3.org/WAI/WCAG22/Understanding/abbreviations.html) \- by W3C
+* [Technique G55: Linking to definitions](https://www.w3.org/WAI/WCAG22/Techniques/general/G55) \- by W3C
+* [Technique G62: Providing a glossary](https://www.w3.org/WAI/WCAG22/Techniques/general/G62) \- by W3C
+* [Technique G70: Providing a function to search an online dictionary](https://www.w3.org/WAI/WCAG22/Techniques/general/G70) \- by W3C
+* [Technique G97: Providing the first use of an abbreviation immediately before or after the expanded form](https://www.w3.org/WAI/WCAG22/Techniques/general/G97) \- by W3C

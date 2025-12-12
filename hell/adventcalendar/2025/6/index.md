@@ -18,6 +18,7 @@ author_links:
     link_label: "Todd @ GitHub"
 intro: "<p>Sometimes, a tiny detail can make or break the experience for millions of users. One of these tiny, powerful details is the language attribute in your HTML.</p>"
 image: "advent25_6"
+active: true
 ---
 
 When starting a project, whether it is an application, a mobile app or site, or just a website in general I still see an alarming number of examples where the language attribute is not included in the `<html>` element. Not the `!DOCTYPE`, but the element directly after the DOCTYPE.
@@ -45,18 +46,19 @@ The [WebAIM Million Report](https://webaim.org/projects/million/) is an accessib
 
 ### Let&apos;s show the data for the language attribute.
 
-[!A graph showing the top six accessibility issues found in the top one million websites by WebAIM. Low contrast of text is number one followed by missing alt text, missing labels, empty links, empty buttons and finally missing language attribute.](https://res.cloudinary.com/colabottles/image/upload/v1760556179/images/webaim-million-2.png)
+<img src="https://res.cloudinary.com/colabottles/image/upload/v1760556179/images/webaim-million-2.png" alt="A graph showing the top six accessibility issues found in the top one million websites by WebAIM. Low contrast of text is number one followed by missing alt text, missing labels, empty links, empty buttons and finally missing language attribute." width="702" height="262" loading="lazy">
 
 For the seventh year in a row, a missing document language made the list.
 
-[!A graph showing the top six accessibility issues found in the top one million websites by WebAIM by year starting in 2019 up to 2025. Low contrast of text is number one followed by missing alt text, missing labels, empty links, empty buttons and finally missing language attribute.](https://res.cloudinary.com/colabottles/image/upload/v1760556180/images/webaim-million-3.png)
+<img src="https://res.cloudinary.com/colabottles/image/upload/v1760556179/images/webaim-million-3.png" alt="A graph showing the top six accessibility issues found in the top one million websites by WebAIM by year starting in 2019 up to 2025. Low contrast of text is number one followed by missing alt text, missing labels, empty links, empty buttons and finally missing language attribute." width="702" height="297" loading="lazy">
 
 As with the rest of the items in the data, it has been a common theme the last seven years. Missing language attribute has always been the last item on the _repeating list of common failures_. So what are the implications&quest;
 
 A numerical look shows the data is still trending to the **same six problems** in the report. So why is it that these issues are the ones that stay in the top six&quest;
 
 <figure>
-[!The WebAIM Million report showing the percentage of top million websites tested and the percentage of those with issues.](https://res.cloudinary.com/colabottles/image/upload/v1760556179/images/webaim-million-1.png)
+
+<img src="https://res.cloudinary.com/colabottles/image/upload/v1760556179/images/webaim-million-1.png" alt="The WebAIM Million report showing the percentage of top million websites tested and the percentage of those with issues." width="702" height="276" loading="lazy">
 <figcaption>The WebAIM Million Report showing low contrast of text at 79.1% followed by missing alternative text for images at 55.5%, missing form input labels at 48.2%, empty links at 45.4%, empty buttons at 29.6%, and finally missing language attribute at 15.8%.</figcaption>
 </figure>
 
@@ -82,7 +84,7 @@ The result is garbled, unnatural, and often unintelligible speech. The text is s
 
 This single small mistake transforms your helpful website into a frustrating, unusable experience.
 
-## It&apos;s a Rule, Not a Suggestion(WCAG)
+## It&apos;s a Rule, Not a Suggestion (WCAG)
 
 Using the `lang` attribute isn't just a friendly suggestion&semi; it&apos;s a **core requirement** for making your website accessible.
 
@@ -100,7 +102,7 @@ A refreshable braille display translates text into small patterns of raised bump
 
 ### 2. Automated Translation
 
-When a user relies on tools like Google Translate or a browser&apos;s built-in translation feature, telling the tool the source language (the language you wrote it in) ensures a much more accurate translation. If the source language is unclear, the translation quality drops sharply. [https://www.matuzo.at/blog/lang-attribute/](An example can be found here).
+When a user relies on tools like Google Translate or a browser&apos;s built-in translation feature, telling the tool the source language (the language you wrote it in) ensures a much more accurate translation. If the source language is unclear, the translation quality drops sharply. [An example can be found here](https://www.matuzo.at/blog/lang-attribute/).
 
 ### 3. Quotation Marks
 

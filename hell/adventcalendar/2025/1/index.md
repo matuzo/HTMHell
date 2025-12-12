@@ -12,6 +12,7 @@ author_links:
     link_label: "@5t3ph"
 intro: "<p>A sneaky accessibility conflict can arise when trying to use modal dialogs with the Popover API. Learn about the conflict and how to resolve it.</p>"
 image: "advent25_1"
+active: true
 ---
 
 Have you ever tried to set `z-index: 9999` to solve element layering issues? If so, you’ve been fighting a fundamental CSS concept of _stacking contexts_.

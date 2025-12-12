@@ -43,7 +43,7 @@
 
     {% if hell.env == 'development' %}
       <link rel="stylesheet" href="/assets/prism.css" />
-      <link rel="stylesheet" href="/assets/style.css" />
+      <link rel="stylesheet" href="/assets/style.css?s=202512" />
     {% else %}
       <link rel="stylesheet" href="/assets/min/style.min.css?hvala=sime" />
       {# <script>
@@ -92,7 +92,7 @@
 
   {% if hell.env == 'development' %}
     <script src="/assets/focus-visible.js"></script>
-    <script src="/assets/script.js"></script>
+    <script src="/assets/script.js?s=20251210"></script>
   {% else %}
     <script src="/assets/min/script.min.js"></script>
   {% endif %}
@@ -105,5 +105,6 @@
     }]
   }
   </script>
+  <div role="status" class="u-hidden"></div>
 </body>
 </html>

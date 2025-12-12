@@ -1,114 +1,123 @@
 ---
-title: "Controlling dialogs and popovers with the Invoker Commands API"
-author: "Aubrey Sambor"
-author_bio: "Aubrey Sambor is a front-end developer and accessibility advocate. She's one of the organizers of [A11yTalks](https://a11ytalks.com), a monthly virtual meetup featuring speakers and conversations around digital accessibility. She loves CSS, fountain pens, knitting, coffee, and sushi."
+title: "Giving pages a clear shape by using headings"
+author: "Steve Barnett"
+author_bio: "Steve Barnett is a human-centred front-end developer and user experience designer living in Aotearoa New Zealand. He helps software teams have happier customers by making more user-friendly software. That means making sites that everyone can use, regardless of their device, the network they’re on, or any disabilities they might have."
 date: 2025-12-16
 author_links:
-  - label: "Aubrey's website"
-    url: "https://aubreysambor.com"
-    link_label: "aubreysambor.com"
-  - label: "Aubrey on Mastodon"
-    url: "https://labyrinth.social/@starshaped"
-    link_label: "@starshaped@labyrinth.social"
-intro: "<p>Short introductory text</p>"
+  - label: "Personal website"
+    url: "https://human-centred.nz/"
+    link_label: "human-centred.nz"
+  - label: "Where I work"
+    url: "https://intopia.digital/"
+    link_label: "Intopia"
+intro: "<p>The three most common ways that headings go wonky, and how to fix them!</p>"
 image: "advent25_16"
 ---
-The [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) adds new attributes to the `<button>` element to control interactive elements on the page such as popovers and modal dialogs without having to write JavaScript. Dialogs have been available in all modern browsers since March 2022, and the Popover API is available in all modern browsers as of January 2025.
 
-Until now, users wanting to implement the `<dialog>` element needed to write their own JavaScript to power the show and hide functionality using the `HTMLDialogElement` interface, while the Popover API and Invoker Commands API for popovers work identically by using `HTMLElement` attributes to show, hide, or toggle the popover.
 
-Why should you use this new API, and what benefits does it bring?
+We can make our pages easier to understand by using headings to give our pages a clear shape. Our users might visually scan the page, use an extension or bookmarklet to list the headings, navigate using assistive technology like a screen reader, or ask AI for a summary of the page. High quality headings can make things better for everyone.
 
-## Dialogs vs popovers
-First, let's go over the difference between a dialog and a popover. Hidde de Vries [wrote a blog post in 2022](https://hidde.blog/dialog-modal-popover-differences/) detailing the differences, but in short:
+In my day job as a Digital Accessibility Consultant, there are a couple of ways that I've seen things go a bit... wonky. Let's go through the three most common issues, and how to fix them.
 
-* Dialogs usually contain an action to take, such as agreeing to text or choosing an option. Popovers usually display short-lived information such as a date picker or toast notification.
-* By default, dialog must be explicitly closed, either by taking an action within the dialog or closing via a close button. A popover can be lightly dismissed by clicking outside of the popover.
-* A dialog can either be modal or non-modal, while a popover is always non-modal by design. As of late 2025 the Invoker Commands API only has a built-in command for a modal dialog, so I will be focusing on modal dialogs only in this post.
-* Dialogs have a built in backdrop functionality to tint the background a different color, while popovers shouldn't use a backdrop in most cases.
-* A dialog is an HTML element with a role of `dialog`, while a popover is considered an attribute and needs a role to be added depending on the popover's context. See [Hidde de Vrie's post on popover semantics](https://hidde.blog/popover-semantics/) to learn more about potential roles to add to your popover!
+## Text *should not* be a heading
 
-## The `command` and `commandfor` attributes
-The Invoker Commands API introduces two new attributes to the `<button>` element—`command` and `commandfor`.  The `commandfor` attribute acts as a connector between the `<button>` controlling the functionality and the element that the command acts upon, while `command` contains the action that should be taken on the element.
+Ah, this one's a real classic! When we have some big and bold text, for Design Reasons, we sometimes take a bit of a shortcut and mark it up as a heading. Let's say an `<h2>`, because it seems about the right size, or that’s what it says in the design file. But here's the thing: this text doesn't introduce or describe the content that follows. It just "needs" to be big for the look of it. 
 
-As of late 2025 the following commands are supported within the API, which right now can only be used for `<dialog>` or `<div role="dialog">` elements or on elements with the `popover` attribute. These commands are:
+This is an issue because when things are marked up as headings that are not headings, it makes the page harder to understand. Users of assistive technology like screen readers hear things read as headings of section that are not headings.
 
-* `show-modal`: Shows a `<dialog>` element as a modal. If you're familiar with the underlying API to show a `<dialog>` as a modal, this is equivalent to the `HTMLDialogElement.showModal()` method.
-* `close`: Closes a `<dialog>` element. This is equivalent to the `HTMLDialogElement.close()` method.
-* `request-close`: This command works similarly to the `close` command, but before the `<dialog>` can be closed, a `cancel` event is triggered first to cancel the closure of the dialog if required actions do not occur, such as selecting required options within the `<dialog>`. This is equivalent to the `HTMLDialogElement.requestClose()` method. This concept is a little tricky, so I'll show an example later in the post. 
-* `show-popover`: Shows a popover element. This is equivalent to both the `popoveraction="show"` attribute and the `HTMLElement.showPopover()` method.
-* `hide-popover`: Hides a popover element. This is equivalent to both the `popoveraction="hide"` attribute and the `HTMLElement.hidePopover()` method.
-* `toggle-popover`: Toggles a popover element; if the popover is hidden, it will be shown, and if the popover is shown, it will be hidden. This is equivalent to both the `popoveraction="toggle"` attribute and the `HTMLElement.togglePopover()` method.
-* Custom values: This is where The Invoker API really shines! A user can provide a custom value, prefixed by two hyphens (`--`) to create a custom `command` event. This event is usually written in JavaScript and provided by the user to add new functionality. The possibilities are endless!
+### An example
 
-## Examples
-### The Invoker Commands API with a `<dialog>` element
-This is a basic example of how to use the Invoker Commands API with a `<dialog>` element. One button fires the `show-modal` command when it is clicked, and within the `<dialog>`, another button fires the `close` command to close the dialog. No JavaScript necessary, it's all built in for you!
+Let's say we have a page explaining colours, RGB-style. We might have headings marked up as follows.
 
-```html
-<button commandfor="my-fancy-dialog" command="show-modal">Open dialog</button>
-<dialog id="my-fancy-dialog">
-  <p>Dialog content</p>
-  <button commandfor="my-fancy-dialog" command="close">Close dialog</button>
-</dialog>
-```
+- `<h1>`Colours
+  - `<h2>`Red
+  - `<h2>`Green
+    - `<h3>`Make it pop!
+  - `<h2>`Blue
 
-### The `request-close` command on a `<dialog>` element
-To use the `request-close` command, a bit of JavaScript is needed. First, use the same code as above, but change the command on the button inside the `<dialog>` from `close` to `request-close`:
+In this case "Make it pop!" is just some big text, designed to be eye-catching. It's not the start of a section of content.
 
-```html
-<button commandfor="my-fancy-dialog" command="show-modal">Open dialog</button>
-<dialog id="my-fancy-dialog">
-  <p>Dialog content</p>
-  <button commandfor="my-fancy-dialog" command="request-close">Close dialog</button>
-</dialog>
-```
+### How to fix it
 
-Now, since a `cancel` event is fired on the `<dialog>` element (as that's the element that can be closed), an event listener needs to be added to capture the cancel event when `request-close` is called. In this example, an alert displays when the close button is clicked, and then, when the user clicks 'OK', the alert closes and then the dialog closes. This causes the user to have to perform an action before the dialog is closed.
+Stop using HTML and start using CSS. Instead of using a heading element, using a `<p>` or `<span>` or  `<div>` element and use CSS to make it big and bold.
 
-```js
-const myFancyDialog = document.getElementById("my-fancy-dialog");
+## Text *should* be a heading
 
-myFancyDialog.addEventListener("cancel", (event) => {
-  window.alert(
-    "A cancel event gets fired when using the 'request-close' command."
-  );
-});
-```
-### The Invoker Commands API with the popover attribute
-Commands for the popover attribute also exist in the Invoker Commands API. The new `show-popover`, `hide-popover`, and `toggle-popover` commands are equivalent to the `show`, `hide`, and `toggle` values on the `popovertargetaction` attribute in the Popover API. The `popover` attribute still needs to be added to the popover's container, but the Invoker Commands API handles the rest of the popover's functionality. 
+Now let's come from the other side. We look at a design and see some bold text. Some big, some bigger, some biggest. Sweet! We fling down a bunch of `<div>` elements, add some styles and we're done. It looks just like the design, chef's kiss, and so on. But here's the thing: this text looks like a heading, but doesn't have any semantics.
 
-```html
-<button commandfor="mycommandpopover" command="toggle-popover">Toggle popover</button>
-<div id="mycommandpopover" popover>Popover content</div>
-```
-### The Invoker Commands API with a custom command
-This is where the Invoker Commands API gets fun! You can add your own custom commands if the command you wish to run does not exist. Since a mechanism for opening and closing `<details>` elements does not yet exist as a command, I wrote a custom `--toggle-details` command to open and close the `<details>` element when the `<button>` element is clicked. 
+This is an issue because when text is marked up as a heading even though it isn’t one, it makes the page harder to understand. People using bookmarklets or browser extensions to list headings won't see this text in the list of headings.
 
-```html
-<button class="my-fancy-button" commandfor="my-fancy-details" command="--toggle-details">Open details element</button>
-<details id="my-fancy-details">
-  <summary>This is a details element</summary>
-  <p>Here is the text inside the details element, opened by a custom command!</p>
-</details>
-```
 
-```js
-const detailsElement = document.querySelector("details");
+### An example
 
-detailsElement.addEventListener("command", (event) => {
-  if (event.command === "--toggle-details") {
-    detailsElement.open = !detailsElement.open;
-  }
-});
-```
-## Looking ahead
-The Invoker Commands API is not widely supported across all modern browsers just yet—as of late 2025, the Invoker Commands API is available in Chrome and Edge as of version 135, Opera as of version 120, Firefox as of version 144, and Safari Technology Preview. However, if older browsers need to be supported, you're in luck as there's a [polyfill](https://github.com/keithamus/invokers-polyfill) created by the API author. 
+Let's say we have a page explaining what the web is made of. We might have some big bold text marked up as follows.
 
-To learn what's coming next for the Invoker Commands API, the authors have created an [explainer document](https://open-ui.org/components/future-invokers.explainer/) with potential future enhancements to the API, including commands to open, close, or toggle a `<details>` element, a command to open a native HTML date picker, and commands to play, pause, and mute HTML `<audio>` and `<video>` elements. Users can also [submit an issue](https://github.com/openui/open-ui/issues) to add other commands that are not yet implemented—go forth and add your ideas!
+- `<h1>`The world wide web
+  - `<h2>`HTML
+  - `<p>`CSS
+  - `<h2>`JavaScript
 
-## Further reading
-* [Can native web APIs replace custom components in 2025?](https://blog.logrocket.com/can-native-web-apis-replace-custom-components-2025/#invoker-commands)
-* [Introducing command and commandfor](https://developer.chrome.com/blog/command-and-commandfor)
-* [`command` and `commandfor`: the Invoker Commands API](https://webinista.com/updates/command-and-commandfor-invoker-commands-api)
-* [Going JavaScript-free with the new Invoker Command API!](https://gomakethings.com/going-javascript-free-with-the-new-invoker-command-api/)
+In this case "CSS" isn't just a paragraph. It's the start of a section of content.
+
+### How to fix it
+
+Stop using CSS and start using HTML. Instead of using a `<p>` or `<span>` or `<div>` element, use a heading element at the right level to give it semantic structure: from `<h1>` to `<h6>`. If we have some big and bold text that introduces or describes the content that follows, it should probably be a heading.
+
+## Headings do not reflect the content structure
+
+Okay, we've sorted out text that should and shouldn't be a heading: only things that are structural headings are marked as headings. Hooray! There's one more snag that we might hit: when the headings are in a weird order. For example: let's say we have a page listing edible things. We mark up `<h3>`Fruit`</h3>` as a section, and then `<h2>`Apples`</h2>` as a sub-section of Fruit. Maybe we've done this because that's what the styles in the design file suggest. But here's the thing: it's wonky because the headings don't represent the hierarchical relationships. 
+
+This is an issue because users of assistive technology like screen readers use headings to understand how each section of the page relates to each other and the page as a whole. When the headings are wonky, the shape of the page is harder to understand.
+
+### How to fix it
+
+Use HTML to give the headings the correct nesting and ordering. Use CSS to make them look appropriately sized and shiny.
+
+I like to start from the page as a whole and work my way down.
+
+1. What’s the topic or purpose of this page? That text should be in an `<h1>` element near the top of the page.
+2. What are the sections of the page? The name of each section should be in an `<h2>` element, at the start of the section.
+3. What (if any) are the subsections of each section? The name of each subsection should be in an `<h3>` element, at the start of the subsection.
+4. What (if any) are the sub-subsections of each subsection? The name of each sub-subsection should be in an `<h4>` element, at the start of the sub-subsection.
+
+And we keep going, down to an `<h6>` element. Although if you've reached an `<h6>` element, it might be worth reviewing the content and seeing if there's Too Much Stuff there!
+
+The list of headings should read a bit like a table of contents for the page.
+
+## Other weird heading things
+
+There are other aspects of wonkiness that may occur. Keep a watch for these too!
+
+- **Heading text that doesn't describe the content that follows.** The words of the heading must introduce the section. Ask your friendly Content writer for help!
+- **`<h1>` shenanigans: no `<h1>` element, or multiple `<h1>` elements.** Just one `<h1>` element, please! It should describe the topic or purpose of page.
+- **Skipped heading levels**, for example: jumping from an `<h2>` element to an `<h4>` element, without an `<h3>` between them. Keep the nesting and order correct: `<h3>` elements for subsections of a section with an `<h2>` heading.
+
+## Accessibility nerd corner
+
+The big three issues we started with all fall under [Web Content Accessibility Guidelines Success Criteria 1.3.1 Info and Relationships (A)](https://www.w3.org/TR/WCAG22/#info-and-relationships): "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text."
+
+- The "Text should not be a heading" and "Text should be a heading" issues are about the information.
+- The "Headings do not reflect the content structure" issue is about structure and relationships.
+
+When we spot these issue in the course of an [Accessibility Assessment](https://intopia.digital/services/accessibility-usability-testing/), we usually log them as Medium Severity: it causes problems or frustrations for users.
+
+Headings that aren't descriptive fall under [WCAG Success Criteria 2.4.6 Headings and Labels (AA)](https://www.w3.org/TR/WCAG22/#headings-and-labels). These are usually Medium Severity too.
+
+## Use your head(ings)
+
+Using headings to give our pages a clear shape makes them easier to understand.
+
+Make sure that:
+
+- text that functions as a heading is marked up as a heading
+- text that does not function as a heading is not marked up as a heading
+- headings reflect the content structure
+
+### Useful tools
+
+Two of my favourite ways to visualise headings are:
+
+- the Headings bookmarklet at [Accessibility Bookmarklets](https://accessibility-bookmarklets.org/install.html)
+- the Headings toggle (in Ad hoc tools) of the [Accessibility Insights for Web](https://accessibilityinsights.io/docs/web/overview/) extension.
+
+Both of them add annotation-like boxes and text, making it easier scroll through and visually spot weird heading things.
