@@ -7,9 +7,9 @@ author_links:
   - label: "Site"
     url: "https://goulet.dev"
     link_label: "goulet.dev"
-    intro: "<p>Built-in HTML input validation makes a good foundation for simple client-side validation. It just needs a little extra to make it accessible.</p>"
-    image: "advent25_30"
-    canonical: "https://goulet.dev/posts/html-input-validation-is-good/"
+intro: "<p>Built-in HTML input validation makes a good foundation for simple client-side validation. It just needs a little extra to make it accessible.</p>"
+image: "advent25_30"
+canonical: "https://goulet.dev/posts/html-input-validation-is-good/"
 ---
 
 I think of client-side validation as a progressive enhancement for your users. You have to validate user input on the server (you can't trust what comes from the client), but some validation on the client makes for a nice UX. But that doesn't have to mean lots of JS code or using some validation library on your client. You can get pretty far with the browser's built-in HTML input validation. And then you can layer a little bit of JS on top of that to make it even better.
