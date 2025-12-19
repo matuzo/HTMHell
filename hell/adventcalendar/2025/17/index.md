@@ -15,6 +15,7 @@ author_links:
     url: "https://www.linkedin.com/in/gerireid"
     link_label: "@gerireid.com"
 image: "advent25_17"
+active: true
 ---
 
 {{ intro }}

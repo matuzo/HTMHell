@@ -15,6 +15,7 @@ author_links:
     link_label: "@knowler.dev"
 intro: "<p>Semantic HTML is the cure to divitis, but we need to go beyond tag names if we want to truly understand how to write it.</p>"
 image: "advent25_19"
+active: true
 ---
 
 There is a terrible epidemic that plagues the web: <i>divitis</i>.

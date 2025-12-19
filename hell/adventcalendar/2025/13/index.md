@@ -15,6 +15,7 @@ author_links:
     link_label: "@lloydi"
 intro: "<p>Other people's markup can be hell to decipher at times: bloated, unnecessarily complicated and really not easy to grasp the structure of at a glance. What if there were a tool that could give you the distilled version of any markup in an instant? Well, there is, and Lloydi is here to tell you all about it.</p>"
 image: "advent25_13"
+active: true
 ---
 [HTMLHell](https://www.htmhell.dev) started as a site that showed some of the finest, and by that I mean most **awful**, examples of crimes against markup the world has to offer (and how these crimes can be put right). We’ve all seen some shit, man. But somewhere along the line, Manuel started [HTML Heaven](https://www.htmhell.dev/tips/), covering decent markup and clever techniques. It's a good mix of dark and light, yin and yang. And what I wanted to cover in my offering to this annual advent calendar sits firmly in the middle. I can't prevent you from witnessing markup that makes you want to gouge your eyes out with rusty soup spoons, but I may have a solution that helps you understand what you can see in the browser a little more easily.
 

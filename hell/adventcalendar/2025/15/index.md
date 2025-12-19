@@ -15,6 +15,7 @@ author_links:
     link_label: "@tylersticka@social.lol"
 intro: "<p>Tyler walks through several HTML options for managing mid-content line breaks: How they work, when they’re appropriate, and alternatives to consider.</p>"
 image: "advent25_15"
+active: true
 ---
 
 On the web, it’s easy to take line breaks for granted.

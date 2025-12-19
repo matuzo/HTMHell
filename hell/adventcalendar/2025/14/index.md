@@ -15,6 +15,7 @@ author_links:
     link_label: "@maureenholland"
 intro: "<p>Web feeds are incredible! And a bit confusing! This post offers a peek behind the curtain of what makes a web feed and delights in the fact RSS Autodiscovery means you don’t need to know anything about that to subscribe.</p>"
 image: "advent25_14"
+active: true
 ---
 
 Web feeds are incredible! And a bit confusing! Why are the feed links often called “RSS”? And why is this “RSS” feed in an <code>atom.xml</code> file… hang on, what is <code>feed.json</code> for? What are they even feeding into anyway?

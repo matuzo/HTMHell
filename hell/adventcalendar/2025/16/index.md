@@ -12,6 +12,7 @@ author_links:
     link_label: "Intopia"
 intro: "<p>The three most common ways that headings go wonky, and how to fix them!</p>"
 image: "advent25_16"
+active: true
 ---
 
 

@@ -18,6 +18,7 @@ author_links:
     link_label: "jensgro"
 intro: "<p>Forms, huge or compact, are one of the important building blocks of the web. Without forms the web would be a one-way street. With HTML5 we received an optimized set of form elements. HTML5 turned into a Recommendation in 2014. But until now web developers have to struggle with forms.</p>"
 image: "advent25_18"
+active: true
 ---
 
 Forms were likely one of the reasons why browser vendors joined forces in the WHATWG in 2004. They felt that HTML standardization was heading into the wrong direction and wanted more practical relevance. While this may be an oversimplification, if true, it highlights the failure of the WHATWG (i.e., the browser vendors) and, subsequently, the W3C. Although the newly standardized form elements and features all point into the right direction, they are incomplete and unfinished. The fact that this is still the case, even more than ten years after HTML5 became a recommendation, is alarming. I will concentrate in this article on forms and especially on missing elements, inconsistent behaviour and the problems with styling.
