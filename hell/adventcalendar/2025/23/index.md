@@ -15,6 +15,7 @@ author_links:
     link_label: "@developerjustin"
 intro: "<p>Short introductory text</p>"
 image: "advent25_23"
+active: true
 ---
 
 When you list all the things HTML can do out of the box without the help of CSS or Javascript, it can seem like a short list. Headings and lists will come to mind. You will most likely think of things like images and video. Any good list of HTML elements will grow to include form elements like input and select, the original interactive elements, too. Recently, a lot of work and attention has turned to some of the lesser known semantic HTML elements too. The work of [Heydon Pickering](https://front-end.social/@heydon) comes to mind, and his incredible effort to explain [every HTML element](https://heydonworks.com/article/the-col-element/) in alphabetical order. 

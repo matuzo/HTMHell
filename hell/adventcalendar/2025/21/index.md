@@ -9,6 +9,7 @@ author_links:
     link_label: "Accessibility First Blog"
 intro: "<p>The <code>lang</code> attribute isn’t just for accessibility—it can also help you design elegantly across languages that look and feel very different. English and Japanese are a great example: two writing systems with unique visual rhythms, spacing needs, and font personalities.</p>"
 image: "advent25_21"
+active: true
 ---
 
 <style>

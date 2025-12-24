@@ -12,6 +12,7 @@ author_links:
     link_label: "@katrin_k"
 intro: "<p>A page title describes or identifies a page. So far, so good. But when and how is a page title actually relevant? Let's look at this from the user's perspective.</p>"
 image: "advent25_20"
+active: true
 ---
 
 The page title — together with its co-star, the favicon — appears on stage in the browser tab. It shows up in search results. It’s announced by screen readers when a page loads. And it even becomes the default name when you bookmark a page.

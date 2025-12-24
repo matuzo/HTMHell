@@ -15,6 +15,7 @@ author_links:
     link_label: "@vale.rocks"
 intro: "<p>A look at some of HTML's older and lesser-known elements, both standard and non-standard. Assorted arcane obscura, such as <code>nextid</code> and <code>isindex</code>, as well as many others.</p>"
 image: "advent25_22"
+active: true
 ---
 
 Last year I inflicted upon you the cursed knowledge of [HTML's legacy colour parsing](https://htmhell.dev/adventcalendar/2024/20/), a crime for which I'm still yet to pay. This year, I return with more unwanted and unrequested HTML knowledge of yore.
