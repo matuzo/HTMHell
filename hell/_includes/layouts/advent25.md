@@ -39,7 +39,7 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
 
   <div class="comment-message" id="comment-message"></div>
   
-  <form action="https://htmhell.dev/commentapi/" method="POST" id="comment">
+  <form action="https://www.htmhell.dev/commentapi/" method="POST" id="comment">
     <input type="hidden" name="date" value="{{ date }}">
     <p>
       <label for="name">Name</label>
