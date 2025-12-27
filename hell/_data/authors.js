@@ -99,6 +99,11 @@ module.exports = {
       "id": "todd",
       "name": "Todd Libby",
       "link": "https://toddl.dev"
+    },
+    {
+      "id": "wes-goulet",
+      "name": "Wes Goulet",
+      "link": "https://goulet.dev"
     }
   ]
 };
