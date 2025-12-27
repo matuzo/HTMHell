@@ -4,6 +4,7 @@ author: "Darice de Cuba"
 date: 2025-12-26
 intro: "<p>Short introductory text</p>"
 image: "advent25_26"
+active: true
 ---
 One of the first thing I learned when I started coding HTML, besides using `div` instead of `tables` for the layout, was naming classes. One of the core ideas being that with HTML and CSS we keep content separate from design. A website should have solid HTML and class names in such a way that you can redesign the website by only editing the CSS and maybe a little bit of the HTML.
 
@@ -30,11 +31,12 @@ A basic weblog homepage can look like this:
 ```html 
 <article>
     <div class="meta">
-        <span class="date"> December 29, 2025 </span>
+        <time class="date" datetime="2025-12-26T19:00"> December 26, 2025 </time>
         <span class="category">HTML</span>
     </div>
+
     <h1 class="post-title">
-        <a href="https://site.org">How to HTML</a>
+        <a href="https://www.htmhell.dev">How to HTML</a>
     </h1>
 
     <div class="intro">
@@ -45,8 +47,11 @@ A basic weblog homepage can look like this:
             voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         </p>
     </div>
-    <a href="https:/site.org/2025/12/29/how-to-html/" class="read-more">Read more <span
-            class="visually-hidden">about 'How to HTML'</span></a>
+    <a href="https:/www.htmhell.dev/adventcalendar/2025/26/" class="read-more">
+        Read more 
+        <span class="visually-hidden">
+            about “How to HTML”
+        </span></a>
 </article>
 ```
 

@@ -19,7 +19,7 @@ author_links:
     link_label: "linkedin.com/in/aarontgrogg"
 intro: "<p>With web performance, less is typically more: When possible, send less data, and make the browser do less work. Here are several examples where you can replace JS components with nothing but HTML.</p>"
 image: "advent25_27"
-active: false
+active: true
 ---
 
 
@@ -45,7 +45,7 @@ Below are a few examples; any you care to add?
 ### Description:
 
 The `details` and `summary` HTML elements provide an HTML-only replacement to the typical JS accordion:
-![Examples of HTML `details` element expanding and contracting](https://aarontgrogg.com/wp-content/uploads/2025/10/accordion-expanding-content.gif)
+![Examples of HTML `details` element expanding and contracting](accordion-expanding-content.gif)
 CopePen: [Accordion / Expanding Content](https://codepen.io/aarontgrogg/pen/GgoOqVX)
 
 ### Use cases:
@@ -90,7 +90,7 @@ Use the same `name` attribute on all related `details` (like radio buttons) to r
 
 You can also customize the appearance with CSS and trigger the open/close via JS.
 
-Learn more about the `details` element in the previously-published “[For the Love of &lt;details&gt;](https://www.htmhell.dev/adventcalendar/2025/XX)".
+Learn more about the `details` element in the previously-published “[For the Love of &lt;details&gt;](https://www.htmhell.dev/adventcalendar/2025/23)".
 
 ### Resources:
 
@@ -107,7 +107,7 @@ Learn more about the `details` element in the previously-published “[For the L
 ### Description:
 
 Combining the HTML `input` and `datalist` elements can create a dropdown of options that autofilters as you type:
-![Examples of HTML `input` and `datalist` providing autofilter dropdown](https://aarontgrogg.com/wp-content/uploads/2025/10/input-with-datalist.gif)
+![Examples of HTML `input` and `datalist` providing autofilter dropdown](input-with-datalist.gif)
 CodePen: [Input with Autofilter Suggestions Dropdown](https://codepen.io/aarontgrogg/pen/yyePPor)
 
 ### Use cases:
@@ -186,7 +186,7 @@ Also note that, at the time of this writing, [there are limitations on mobile, a
 ### Description:
 
 The `popover` and `popovertarget` attributes can replace the traditional JS-driven modal/popover/overlay:
-![Examples of HTML `popover` elements opening and closing](https://aarontgrogg.com/wp-content/uploads/2025/10/modal-popover.gif)
+![Examples of HTML `popover` elements opening and closing](modal-popover.gif)
 CodePen: [Modal / Popover](https://codepen.io/aarontgrogg/pen/QwyOKNW)
 
 ### Use cases:
@@ -252,7 +252,7 @@ Learn more about the opening and closing dialogs and popovers in the previously-
 ### Description:
 
 The above Modal / Popover functionality can also be used to create an offscreen navigation that requires no JS:
-![Example of HTML Popover used as an offscreen navigation menu](https://aarontgrogg.com/wp-content/uploads/2025/10/offscreen-nav.gif)
+![Example of HTML Popover used as an offscreen navigation menu](offscreen-nav.gif)
 
 CodePen: [Offscreen Content](https://codepen.io/aarontgrogg/pen/wBMPMVG)
 
