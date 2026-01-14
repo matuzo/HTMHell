@@ -9,7 +9,7 @@ author_links:
     url: "https://aarontgrogg.com"
     link_label: "aarontgrogg.com"
   - label: "BlueSky"
-    url: "https://bsky.app/profile/aarontgrogg.bsky.social"
+    url: "https://bsky.app/profile/aarontgrogg.com"
     link_label: "aarontgrogg.bsky.social"
   - label: "Mastodon"
     url: "https://mastodon.social/@aarontgrogg"
