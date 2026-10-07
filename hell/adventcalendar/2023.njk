@@ -11,9 +11,9 @@ page__class: calendar
 {% macro day(num) %}
   {% set days = collections.advent2023 %}
   <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 24 %}style="grid-column: span 2"{% endif %}>
-    <div class="acalendar__number">
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2023/{{ num }}/"{% endif %}>{{ num }}</a>
-    </div>
+    <a class="acalendar__number" {% if days[num - 1].data.active %}href="/adventcalendar/2023/{{ num }}/"{% endif %}>
+      <span >{{ num }}</span>
+    </a>
 
     <div class="acalendar__title">
       {% if days[num - 1].data.active %}

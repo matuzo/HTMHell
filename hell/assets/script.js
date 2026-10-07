@@ -61,8 +61,8 @@ const addHiddenField = (form, name, value) => {
 if (document.querySelector('[name="date"]')) {
   hashString(document.querySelector('[name="date"]').value).then((hash) => {
     const folder = hash.substring(0, 16);
-    const url = `https://www.htmhell.dev/commentapi/${folder}/${folder}.php`;
-    // const url = `http://localhost/demo/commentapi/${folder}/${folder}.php`;
+    // const url = `https://www.htmhell.dev/commentapi/${folder}/${folder}.php`;
+    const url = `http://localhost/demo/commentapi/${folder}/${folder}.php`;
     fetch(url)
       .then((response) => {
         if (!response.ok) {

@@ -15,9 +15,9 @@ tags:
 {% macro day(num) %}
   {% set days = collections.advent2025 %}
   <li {% if days[num - 1].data.active %}data-day="{{ num }}"{% endif %} {% if num === 25 %}style="grid-column: span 2"{% endif %}>
-    <div class="acalendar__number">
-      <span aria-hidden="true">{{ num }}</span><a {% if days[num - 1].data.active %}href="/adventcalendar/2025/{{ num }}/"{% endif %}>{{ num }}</a>
-    </div>
+    <a class="acalendar__number" {% if days[num - 1].data.active %}href="/adventcalendar/2025/{{ num }}/"{% endif %}>
+      <span >{{ num }}</span>
+    </a>
 
     <div class="acalendar__title">
       {% if days[num - 1].data.active %}
@@ -163,10 +163,6 @@ tags:
         if (opened.indexOf(e.target.closest('li').dataset.day) < 0) {
           opened.push(e.target.closest('li').dataset.day)
           localStorage.setItem('html_opened25', JSON.stringify(opened))
-        }
-
-        if (e.target.closest('li').querySelector('a')) {
-          e.target.closest('li').querySelector('a').click();
         }
       }
     });

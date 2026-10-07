@@ -50,6 +50,10 @@ by [{{ author }}]({{ author_links[0].url }}) published on <time datetime="{{ dat
       <span class="desc" id="desc"><small>HTML is not supported, but you can use Markdown.</small></span>
       <textarea id="message" name="message" rows="5" aria-describedby="comment-message desc"></textarea>
     </p>
+    <p aria-hidden="true" class="u-hidden">
+      <label for="color">Color</label>
+      <input name="color" id="color" tabindex="-1">
+    </p>
     <button>Send</button>
   </form>
 </section>

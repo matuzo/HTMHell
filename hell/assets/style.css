@@ -1033,27 +1033,14 @@ pre.language-html::before {
   cursor: pointer;
 }
 
-.acalendar--calendar > li div {
+.acalendar--calendar > li a {
   border: 2px solid #000;
   display: flex;
   height: 100%;
-  transform-style: preserve-3d;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .acalendar--calendar > li div {
-    transition: transform .3s linear;
-  }
-}
-
-.acalendar--calendar > li[data-day]:focus-within div,
-.acalendar--calendar > li[data-day]:hover div,
-.acalendar--calendar > li.opened div {
-  transform: rotateY(-180deg);
-}
-
-.acalendar--calendar > li span,
-.acalendar--calendar > li a {
+.acalendar--calendar > li span {
   height: 100%;
   display: flex;
   width: 100%;
@@ -1071,15 +1058,12 @@ pre.language-html::before {
   background-origin: content-box;
 }
 
-.acalendar--calendar > li a {
-  transform: translateZ(-1px) translateX(-100%) rotateY(180deg);
-  background: linear-gradient(270deg, #eb1b1b, #620b0b);
+.acalendar--calendar > .opened span {
   background: #fff;
-  text-decoration: none;
   color: #000;
 }
 
-.acalendar--calendar > li--opened a:hover {
+.acalendar--calendar > li--opened .clicked:hover {
   background: #eb1b1b;
   color: #fff;
 }
