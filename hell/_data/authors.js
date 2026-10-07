@@ -94,6 +94,21 @@ module.exports = {
       "id": "annedrtlf",
       "name": "Anne Drotleff",
       "link": "https://www.anne-drotleff.de"
+    },
+    {
+      "id": "stevebarnett",
+      "name": "Steve Barnett",
+      "link": "https://human-centred.nz/"
+    },
+    {
+      "id": "todd",
+      "name": "Todd Libby",
+      "link": "https://toddl.dev"
+    },
+    {
+      "id": "wes-goulet",
+      "name": "Wes Goulet",
+      "link": "https://goulet.dev"
     }
   ]
 };

@@ -7,6 +7,10 @@
 
     <title>{% if title %}{{ title | e }} - {%endif%}{{ hell.site_title }}</title>
 
+    {% if canonical %}
+      <link rel="canonical" href="{{ canonical }}">
+    {% endif %}
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,9 +43,9 @@
 
     {% if hell.env == 'development' %}
       <link rel="stylesheet" href="/assets/prism.css" />
-      <link rel="stylesheet" href="/assets/style.css" />
+      <link rel="stylesheet" href="/assets/style.css?s=202512" />
     {% else %}
-      <link rel="stylesheet" href="/assets/min/style.min.css?hvala=sime" />
+      <link rel="stylesheet" href="/assets/min/style.min.css?y=2026" />
       {# <script>
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.register("/service-worker.js");
@@ -88,9 +92,19 @@
 
   {% if hell.env == 'development' %}
     <script src="/assets/focus-visible.js"></script>
-    <script src="/assets/script.js"></script>
+    <script src="/assets/script.js?s=20251210"></script>
   {% else %}
     <script src="/assets/min/script.min.js"></script>
   {% endif %}
+
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": { "href_matches": "/*" },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
+  <div role="status" class="u-hidden"></div>
 </body>
 </html>
