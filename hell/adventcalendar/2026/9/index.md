@@ -14,7 +14,7 @@ active: true
 
 As a blind screen reader user and accessibility specialist, nothing gets under my skin quite like when I see no JavaScript components talked about like they're the greatest thing since sliced bread. While they may sound simple on the surface, they often use non-standard patterns and create accessibility barriers.
 
-That being said, Ido believe that we can learn from some of these patterns and take advantage of CSS to minimize the amount of JavaScript needed for a project. Below I'll break down my approach to developing an accordion that uses just a tiny bit of JavaScript and leans heavily on CSS to provide core functionality.
+That being said, I do believe that we can learn from some of these patterns and take advantage of CSS to minimize the amount of JavaScript needed for a project. Below I'll break down my approach to developing an accordion that uses just a tiny bit of JavaScript and leans heavily on CSS to provide core functionality.
 
 ## Why not just use summary/details?
 
@@ -41,7 +41,7 @@ Accordion label goes here
 
 A few notes on the elements being used
 
-- The level of the heading element doesn't matter and should be adjusted to fit the content structure of your page. This simply ensures the button it wraps has the proper heading level applied. I added the "acc-headfing" class to it  to simplify the CSS used later in this example.
+- The level of the heading element doesn't matter and should be adjusted to fit the content structure of your page. This simply ensures the button it wraps has the proper heading level applied. I added the "acc-heading" class to it  to simplify the CSS used later in this example.
 - A button element as the first child of the heading element. The inner text of the button serves as the visual label and the `aria-expanded` attribute will indicate to screen readers if the content in the panel below is displayed or hidden. This attribute is very important for this pattern, as you'll see below.
 - A `<div>` to serve as the container for the content that is shown or hidden when the button is activated. For this example, we’ll add the class "acc-panel"to it.
 
