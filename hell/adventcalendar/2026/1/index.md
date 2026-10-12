@@ -107,7 +107,7 @@ A language *only* tells you about the language. A locale, by contrast, tells you
 >
 > [Understanding locale - IBM](https://www.ibm.com/docs/en/aix/7.3.0?topic=locales-understanding-locale)
 
-Do you know if 10/08/12 is the tenth of August or the 8th of October?
+Do you know if 10/08/12 is the 10th of August or the 8th of October?
 
 Is 5.99 describing the cost in a mark, a yen, a buck, or a pound?
 
