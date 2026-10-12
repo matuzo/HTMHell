@@ -64,7 +64,7 @@ Here's the example it gives:
    content="en_GB" />
 ```
 
-That says the locale of the *tags* not the page is in British English. So you could have a page in the Japanese language but OGP tags written in Cherokee.
+That says the locale of the *tags*, not the page, is British English. So you could have a page in the Japanese language but OGP tags written in Cherokee.
 
 Now I have two questions.
 
