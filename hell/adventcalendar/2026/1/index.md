@@ -131,4 +131,4 @@ If Facebook were still interested in maintaining OGP, I think that asking them t
 
 So there you have it. A language is <strong>not</strong> the same as a locale, and an underscore is <u>not</u> the same as a hyphen, and a Facebook recommendation is <strong><em><u>not</u></em></strong> the same as a living standard.
 
-Right, that's enough yak shaving. I'm sure I was meant to be doing something important… Oh! Yes! Welcome to HTMHell 🎅
+Right, that's enough [yak shaving](https://en.wiktionary.org/wiki/yak_shaving). I'm sure I was meant to be doing something important… Oh! Yes! Welcome to HTMHell 🎅
