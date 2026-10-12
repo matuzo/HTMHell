@@ -101,6 +101,10 @@ nav {
     margin: unset;
   }
 }
+
+svg {
+  fill: currentcolor;
+}
 ```
 
 ** TODO: Add basic layout part here **
@@ -155,7 +159,9 @@ Finally we'll add a background color to the popover and some padding to the link
       inset-block-start: anchor(end);
       inset-block-end: 0;
       block-size: auto;
-      background: oklch(from currentcolor l c h / 0.1);
+      background: var(
+        --color-bg-subtle
+      ); /* Make sure the popover background is not transparent */
 
       a {
         padding-inline: 1em;
@@ -220,11 +226,11 @@ First, we'll start by checking for scroll timeline support:
 
 ```css
 body {
-	--supports-scroll-timeline: false;
+  --supports-scroll-timeline: false;
 
-	@supports (scroll-timeline: --bg x) {
-		--supports-scroll-timeline: true;
-	}
+  @supports (scroll-timeline: --bg x) {
+    --supports-scroll-timeline: true;
+  }
 }
 ```
 
@@ -232,12 +238,12 @@ Then we'll update our fallback to only trigger, when scroll timeline support is 
 
 ```css
 header {
-	nav {
-		@container (inline-size < 60ch) and at-rule(--supports-scroll-timeline: false) {
-			/* Switch to mobile view with fixed header with if scroll-timeline is not supported*/
-			--show-mobile-nav: true;
-		}
-	}
+  nav {
+    @container (inline-size < 60ch) and at-rule(--supports-scroll-timeline: false) {
+      /* Switch to mobile view with fixed header with if scroll-timeline is not supported*/
+      --show-mobile-nav: true;
+    }
+  }
 }
 ```
 
@@ -246,26 +252,25 @@ First, we'll define the keyframes to turn the mobile navigation on. Then, we'll 
 Finally, we'll apply the animation to the navigation.
 
 ```css
-
 @keyframes show-mobile-nav {
-	from,
-	to {
-		--show-mobile-nav: true;
-	}
+  from,
+  to {
+    --show-mobile-nav: true;
+  }
 }
 
 @container style(--supports-scroll-timeline: true) {
-	header {
-		timeline-scope: --header-timeline;
-		max-inline-size: 100vi;
-		overflow-x: auto;
-		scroll-timeline: --header-timeline x;
-	}
+  header {
+    timeline-scope: --header-timeline;
+    max-inline-size: 100vi;
+    overflow-x: auto;
+    scroll-timeline: --header-timeline x;
+  }
 
-	nav {
-			animation: show-mobile-nav 1ms linear;
-			animation-timeline: --header-timeline;
-		}
+  nav {
+    animation: show-mobile-nav 1ms linear;
+    animation-timeline: --header-timeline;
+  }
 }
 ```
 
@@ -273,14 +278,13 @@ If you resize your window now in browser with support, you'll see our new logic 
 If you press the button, everything will break: the button will disappear and the navigation will appear entirely out of place.
 The reason is that when the popover opens, the animation is being reevaluated, causing the navigation to partially switch back to the desktop view (`--show-mobile-nav` is back to being false).
 
-
 So first, we need to make sure, that whenever the popover is open, we'll always display the mobile view:
 
 ```css
 @container style(--supports-scroll-timeline: true) {
-	nav:has(:popover-open) {
-		--show-mobile-nav: true;
-	}
+  nav:has(:popover-open) {
+    --show-mobile-nav: true;
+  }
 }
 ```
 
@@ -288,10 +292,10 @@ That solved the problem on popover open, but we still have the issue on close. S
 
 ```css
 @container style(--supports-scroll-timeline: true) {
-	nav:not(:has(:popover-open)) {
-		animation: show-mobile-nav 1ms linear;
-		animation-timeline: --header-timeline;
-	}
+  nav:not(:has(:popover-open)) {
+    animation: show-mobile-nav 1ms linear;
+    animation-timeline: --header-timeline;
+  }
 }
 ```
 
@@ -300,4 +304,3 @@ That's it! Now our mobile navigation will correctly display both when popover op
 Check out the CodePen for the full code and to see it in all in action.
 
 https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a370-b568033f4db1
-
