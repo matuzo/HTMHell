@@ -74,3 +74,144 @@ Next, we'll add a button to open and close the navigation popover. Later, CSS wi
 <p class="highlight"><strong>Note:</strong> This example uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API">invoker commands</a> to toggle the popover. They reached Baseline in 2025. For broader browser support, replace <code>commandfor</code> and <code>command</code> with <code>popovertarget</code> and <code>popovertargetaction</code>.</p>
 
 That's all the HTML we need. Right now, the popover gives us the compact version of the navigation. Next, we'll use CSS to keep the links in a row when there's enough room and show the popover button when they no longer fit.
+
+## The styles
+
+Now we need to create 2 styles: one for the regular navigation layout and one for the popover layout.
+Usually I would go with the mobile first approach, but in this case, we need CSS to evaluate the available space and need to know when the navigation links no longer fit in a row. This requires working with a desktop first approach instead.
+
+But before we get to that, let us setup the basic CSS structure for our header navigation.
+First, let's add a basic reset to remove some margin and padding from common elements as well as the list marker from the navigation lists.
+
+```css
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+nav {
+  ul {
+    list-style: none;
+    padding: unset;
+    margin: unset;
+  }
+}
+```
+
+** TODO: Add basic layout part here **
+
+### Regular Layout
+
+Now that the header is in place, let's setup the desktop navigation layout which is pretty simple.
+All we need to do here is hide the popover button and make sure the navigation (currently hidden by the default popover styles) is displayed.
+We'll also add a `flex-wrap: wrap;` as a fallback to ensure the navigation links wrap to the next line if they no longer fit in a single row since we don't have any popover yet.
+
+```css
+nav {
+  button {
+    display: none;
+  }
+  ul {
+    display: flex;
+
+    /* reset popover styles */
+    position: unset;
+    border: none;
+    background: none;
+
+    /* The ultimate fallback */
+    flex-wrap: wrap;
+  }
+}
+```
+
+### Popover Layout
+
+Now let's define the popover layout, which will be used when the navigation links no longer fit in a single row.
+We'll use a style container query as a trigger for the switch (we'll get to that later).
+
+First, we'll restore the popover button and the popover styles itself that were hidden in the regular layout.
+Then we'll anchor the popover to the header's bottom on the top as well as the right and bottom edge of the page.
+Finally we'll add a background color to the popover and some padding to the links for better spacing.
+
+```css
+@container style(--show-mobile-nav: true) and style(--supports-popover: true) {
+  nav {
+    button {
+      display: revert;
+    }
+
+    [popover] {
+      display: revert;
+      position: absolute;
+      position-anchor: --nav-button;
+      inset-inline-start: unset;
+      inset-inline-end: 0;
+      inset-block-start: anchor(end);
+      inset-block-end: 0;
+      block-size: auto;
+      background: oklch(from currentcolor l c h / 0.1);
+
+      a {
+        padding-inline: 1em;
+      }
+    }
+  }
+}
+```
+
+For the automatic switch based on the menu space to work, we'll need to rely on `scroll-timeline` which isn't widely supported yet, so before getting into that, let's add another layer of fallback using a good all container query and magic number combination.
+
+So we'll setup 2 variables: `--supports-popover` and `--show-mobile-nav`.
+If both popover and style container queries are supported, we can rely on them to switch between regular and popover layouts.
+
+Then we'll setup the classic container query that will switch to the mobile view based on a predifined fixed value (60ch in our example).
+
+```css
+body {
+  --supports-popover: false;
+  --show-mobile-nav: false;
+
+  @supports selector(:popover-open) {
+    @container not style(--supports-popover: unknown) {
+      /* if both popover and style query are supported */
+      --supports-popover: true;
+    }
+  }
+}
+
+header {
+  nav {
+    @container (inline-size < 60ch) {
+      /* Switch to mobile view with fixed header width */
+      --show-mobile-nav: true;
+    }
+  }
+}
+```
+
+We'll also disable the `flex-wrap` in our desktop view styles we defined earlier.
+
+```css
+ul {
+    ...
+		/* The ultimate fallback if style queries are not supported */
+		flex-wrap: wrap;
+
+		@container style(--supports-popover: true) {
+			flex-wrap: nowrap;
+		}
+	}
+
+```
+
+Now we have a robust responsive layout for our navigation. But the pattern so far isn't new, and still has this magic number in the media/container query that can quickly become an issue. But we' dont want to add JavaScript to calculate the available space, instead we'll rely on `scroll-timeline` and a little trick I learner from Ahmad Shadeed in his [Detect when element overlap with CSS](https://ishadeed.com/article/css-detect-overlap/) article.
+
+### Automatic Switch with Scroll-Timeline
+
+** TODO: Add automatic switching here **
