@@ -215,3 +215,89 @@ Now we have a robust responsive layout for our navigation. But the pattern so fa
 ### Automatic Switch with Scroll-Timeline
 
 ** TODO: Add automatic switching here **
+
+First, we'll start by checking for scroll timeline support:
+
+```css
+body {
+	--supports-scroll-timeline: false;
+
+	@supports (scroll-timeline: --bg x) {
+		--supports-scroll-timeline: true;
+	}
+}
+```
+
+Then we'll update our fallback to only trigger, when scroll timeline support is lacking by extending our container query:
+
+```css
+header {
+	nav {
+		@container (inline-size < 60ch) and at-rule(--supports-scroll-timeline: false) {
+			/* Switch to mobile view with fixed header with if scroll-timeline is not supported*/
+			--show-mobile-nav: true;
+		}
+	}
+}
+```
+
+Now the magic...
+First, we'll define the keyframes to turn the mobile navigation on. Then, we'll add a scroll timeline on the horizontal axis of the header and make sure a scroll bar is added when the content overflows.
+Finally, we'll apply the animation to the navigation.
+
+```css
+
+@keyframes show-mobile-nav {
+	from,
+	to {
+		--show-mobile-nav: true;
+	}
+}
+
+@container style(--supports-scroll-timeline: true) {
+	header {
+		timeline-scope: --header-timeline;
+		max-inline-size: 100vi;
+		overflow-x: auto;
+		scroll-timeline: --header-timeline x;
+	}
+
+	nav {
+			animation: show-mobile-nav 1ms linear;
+			animation-timeline: --header-timeline;
+		}
+}
+```
+
+If you resize your window now in browser with support, you'll see our new logic working and the navigation switching to the popover view as soon as it runs out of space. Unfortunately, we're not done yet.
+If you press the button, everything will break: the button will disappear and the navigation will appear entirely out of place.
+The reason is that when the popover opens, the animation is being reevaluated, causing the navigation to partially switch back to the desktop view (`--show-mobile-nav` is back to being false).
+
+
+So first, we need to make sure, that whenever the popover is open, we'll always display the mobile view:
+
+```css
+@container style(--supports-scroll-timeline: true) {
+	nav:has(:popover-open) {
+		--show-mobile-nav: true;
+	}
+}
+```
+
+That solved the problem on popover open, but we still have the issue on close. So we also need to make sure that our animation only runs when the popover is not open.
+
+```css
+@container style(--supports-scroll-timeline: true) {
+	nav:not(:has(:popover-open)) {
+		animation: show-mobile-nav 1ms linear;
+		animation-timeline: --header-timeline;
+	}
+}
+```
+
+That's it! Now our mobile navigation will correctly display both when popover opens and closes. And as long as the popover is closed, it will monitor the available space to switch between narrow and wide layout automatically.
+
+Check out the CodePen for the full code and to see it in all in action.
+
+https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a370-b568033f4db1
+
