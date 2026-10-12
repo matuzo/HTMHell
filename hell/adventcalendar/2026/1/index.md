@@ -7,7 +7,7 @@ author_links:
   - label: "Site"
     url: "https://shkspr.mobi/blog/"
     link_label: "Website"
-intro: "<p>Why does HTML sometimes use hyphens sometimes use underscores when specifying languages?</p>"
+intro: "<p>Why does HTML sometimes use hyphens and sometimes underscores when specifying languages?</p>"
 image: "advent26_1"
 active: true
 ---
