@@ -99,7 +99,7 @@ Despite Facebook removing the page, it lives on! Take a look at the [documentati
 >
 > `'https://connect.facebook.net/fr_FR/sdk.js';`
 
-Which, I *think* leads us to the answer. An answer which was hidden in the question the whole time. A language is *not* the same as a locale.
+Which, I *think*, leads us to the answer. An answer which was hidden in the question the whole time. A language is *not* the same as a locale.
 
 A language *only* tells you about the language. A locale, by contrast, tells you about the user's preferences.
 
