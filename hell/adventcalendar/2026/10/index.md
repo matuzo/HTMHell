@@ -1,5 +1,5 @@
 ---
-title: "Accessible and Responsive Header Navigation"
+title: "Build an Accessible Responsive Header Navigation with HTML and CSS"
 author: "Michaël Vanderheyden"
 author_bio: "Michaël Vanderheyden is a web developer passionate about building accessible, user-friendly interfaces with clean and modern HTML and CSS. As a martial artist, he brings discipline and respect to creating thoughtful, high-quality digital experiences."
 date: 2026-12-10
@@ -10,22 +10,22 @@ author_links:
   - label: "Bluesky"
     url: "https://bsky.app/profile/th3s4mur41.me"
     link_label: "@th3s4mur41.me"
-intro: "<p>A step-by-step guide to an accessible header navigation that responds to available space, using modern HTML and CSS without JavaScript or a 'magic' breakpoint.</p>"
+intro: "<p>Build a responsive header navigation that keeps its links visible as a row by default and enhances them into a popover menu when the header is narrow. This guide combines semantic HTML, the Popover API, and CSS container queries, with a fallback for browsers that lack popover support.</p>"
 image: "advent26_1"
 active: true
 ---
 
-Responsive navigation seems simple: keep the links in a row on a wide screen, then switch to a menu button (often called a hamburger menu) on a narrow one. Implementations often reach for JavaScript or duplicate the navigation markup to create those two layouts. Neither is necessary.
+Responsive header navigation seems simple: keep the links in a row when there is enough room, then switch to a menu button (often called a hamburger menu) when space is limited. Implementations often use JavaScript or duplicate the navigation markup to create those two layouts. Neither is necessary here.
 
-We'll start with semantic HTML, add the Popover API, then use a container query to switch the same list of links between a horizontal navigation and a compact menu. Because the query responds to the header's width instead of the viewport's width, the component also works when it is placed in a narrow sidebar or a wider page layout.
+We'll start with semantic HTML, add the Popover API, then use a CSS container query to switch the same list of links between a horizontal navigation and a compact menu. A container query checks the size of an element's container. Here, it responds to the header's width instead of the viewport's width, so the navigation also works in a narrow sidebar or a wider page layout.
 
-This solution uses modern HTML and CSS, so we'll build it as a progressive enhancement. In browsers that do not support the newer features, the links remain visible and can wrap onto multiple lines.
+This solution uses modern HTML and CSS, so we'll build it as a progressive enhancement: the basic navigation works first, and browsers that support the newer features get the compact menu as an extra. In browsers without popover support, the links stay visible and can wrap onto multiple lines.
 
-## The base
+## Start with the HTML structure
 
-While I usually prefer to work with a mobile first approach, in this case we'll start by setting up the desktop version first and add the narrow screen version on top as a progressive enhancement. That way, we can make sure the navigation will always work, even without popover support.
+I usually prefer a mobile-first approach, but this time we'll start with the wide layout and add the compact version as a progressive enhancement. That way, the navigation still works in browsers without popover support.
 
-So, let's start with the basic structure of the header: a site logo and a navigation landmark. We'll make sure to add an `aria-label` on `<nav>` to give the navigation landmark a name.
+Start with a header containing a logo and a navigation landmark. The `aria-label` gives the landmark a name, which helps people using screen readers tell it apart from other navigation areas on the page.
 
 ```html
 <header class="main-header">
@@ -42,10 +42,11 @@ So, let's start with the basic structure of the header: a site logo and a naviga
 </header>
 ```
 
-Now that we have a basic structure, let's add some styling to make sure our navigation is responsive.
+This first example shows the simple version of the markup. We'll add a button and the `popover` attribute to this same list in the next section.
 
-But before we get to that, let us setup the basic CSS structure for our header navigation.
-First, let's add a basic reset to remove some margin and padding from common elements as well as the list marker from the navigation lists.
+## Set up the wide-layout
+
+Before making the navigation responsive, let's set up its basic styles. These examples use CSS nesting, which lets us write styles for child elements inside their parent rule. This reset removes the default list markers, margin, and padding from the navigation list.
 
 ```css
 body {
@@ -56,6 +57,9 @@ body {
 button,
 input {
   font: inherit;
+}
+
+button {
   cursor: pointer;
 }
 
@@ -76,7 +80,7 @@ svg {
 }
 ```
 
-Now that we have a good base, let's add some basic header layout and styling.
+Next, add the header layout and colors.
 
 ```css
 body {
@@ -107,10 +111,9 @@ body {
 }
 ```
 
-### Regular Layout
+The logo and navigation will sit on opposite sides of the header. We'll also add a border to help separate the header in forced-colors mode, where a user's chosen color settings replace many page colors.
 
-Now that the header is in place, let's setup the desktop navigation layout which is pretty simple.
-We'll add a `flex-wrap: wrap;` as the ultimate fallback to ensure the navigation links wrap to the next line if they no longer fit in a single row since we don't have any popover yet.
+Use Flexbox to lay out the links in a row. `flex-wrap: wrap` is the fallback: if the links do not fit, they move onto another line instead of being hidden or overflowing.
 
 ```css
 .main-header nav {
@@ -121,71 +124,69 @@ We'll add a `flex-wrap: wrap;` as the ultimate fallback to ensure the navigation
 }
 ```
 
-## Adding the popover
+## Add a popover menu button
 
-Next, we'll add a button to open and close the navigation popover.
-The icon has a `<title>` linked with `aria-labelledby`, which gives the button an accessible name.
+Now add a button to open and close the navigation popover. The button's SVG icon has a title element that is linked with the svg via `aria-labelledby` to ensure it is accessible to assistive technologies.
 
 ```html
 <header class="main-header">
   <img class="logo" src="logo.png" alt="Site logo" />
   <nav aria-label="Main">
-    <button commandfor="main-nav" command="toggle-popover">
-      <svg
-        class="hamburger"
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        viewBox="0 0 256 256"
-        aria-labelledby="menu"
-      >
-        <title id="menu">Menu</title>
-        <line
-          x1="40"
-          y1="128"
-          x2="216"
-          y2="128"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-        <line
-          x1="40"
-          y1="128"
-          x2="216"
-          y2="128"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-        <line
-          x1="40"
-          y1="64"
-          x2="216"
-          y2="64"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-        <line
-          x1="40"
-          y1="192"
-          x2="216"
-          y2="192"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"
-        ></line>
-      </svg>
-    </button>
+		<button commandfor="main-nav" command="toggle-popover">
+			<svg
+				class="hamburger"
+				xmlns="http://www.w3.org/2000/svg"
+				width="32"
+				height="32"
+				viewBox="0 0 256 256"
+				aria-labelledby="menu"
+			>
+				<title id="menu">Menu</title>
+				<line
+					x1="40"
+					y1="128"
+					x2="216"
+					y2="128"
+					fill="none"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="16"
+				></line>
+				<line
+					x1="40"
+					y1="128"
+					x2="216"
+					y2="128"
+					fill="none"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="16"
+				></line>
+				<line
+					x1="40"
+					y1="64"
+					x2="216"
+					y2="64"
+					fill="none"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="16"
+				></line>
+				<line
+					x1="40"
+					y1="192"
+					x2="216"
+					y2="192"
+					fill="none"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="16"
+				></line>
+			</svg>
     <ul id="main-nav" popover>
       <li><a href="#">Home</a></li>
       <li><a href="#">Page 1</a></li>
@@ -199,17 +200,15 @@ The icon has a `<title>` linked with `aria-labelledby`, which gives the button a
 
 <p class="highlight"><strong>Note:</strong> This example uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API">invoker commands</a> to toggle the popover. They reached Baseline in 2025. For broader browser support, replace <code>commandfor</code> and <code>command</code> with <code>popovertarget</code> and <code>popovertargetaction</code>.</p>
 
-That's all the HTML we need. Right now, the popover gives us the compact version of the navigation. Next, we'll use CSS to keep the links in a row when there's enough room and show the popover button when they no longer fit.
+This is the complete markup, replacing the simpler example from the first section. The button controls the list by its `id`. The list becomes a popover, so the browser can show it when the button is activated.
 
-But our navigation is broken now and always shows the popover button, even when there's enough room for the links to be displayed in a row.
-So let's revert that with CSS.
+At this point, the button is always visible and the links are hidden by the browser's default popover styles. Next, we'll restore the wide layout: hide the button and show the links as a row.
 
-All we need to do here is hide the popover button and make sure the navigation (currently hidden by the default popover styles) is displayed.
+The `display: flex` declaration overrides the hidden default for the popover list. The other declarations reset some of the browser's default popover styles.
 
 ```css
 .main-header nav {
   button {
-    /* hide the button */
     display: none;
   }
   ul {
@@ -224,9 +223,9 @@ All we need to do here is hide the popover button and make sure the navigation (
 }
 ```
 
-Next, we'll add the styles for the popover layout. We could wrap all that inside supports and container queries, but for the sake of clean and DRY code, we'll define the popover styles separately and then conditionally apply them using a single style query.
+Next, we'll decide when to use the compact layout. We could put all its styles inside feature and size checks, but instead we'll set one custom property when the required features are supported and the header is narrow.
 
-So let's start by defining our conditions:
+The `@supports` rule checks for popover support. The `@container` rule checks that the header is narrower than `60ch` and that CSS style queries are available. The `ch` unit is based on the width of the “0” character, so `60ch` gives us a text-based starting point for the switch. Adjust this value to suit your own links and design.
 
 ```css
 .main-header {
@@ -234,9 +233,7 @@ So let's start by defining our conditions:
   container: header / inline-size;
 
   nav {
-    /* first check popover support */
     @supports selector(:popover-open) {
-      /* then check for container size and for style query support */
       @container header (inline-size < 60ch) and style(--show-mobile-nav: false) {
         --show-mobile-nav: true;
       }
@@ -245,17 +242,15 @@ So let's start by defining our conditions:
 }
 ```
 
-Now that we've defined the conditions for showing the mobile navigation, we can proceed to implement the styles for popover layouts by just checking a single condition.
+Now that we've set the condition, we can use a single style query to apply the compact menu styles. We call this the “mobile” layout in the CSS variable, but the query responds to the header's width, not the device or viewport.
 
-So let's define the popover layout, which will be used when the navigation links no longer fit in a single row.
+## Style the compact navigation
 
-First, we'll restore the popover button and the popover styles itself that were hidden in the regular layout.
-Then we'll anchor the popover to the header's bottom on the top as well as the right and bottom edge of the page.
-Finally we'll add a background color to the popover and some padding to the links for better spacing.
+When the header is narrow, show the button and style the list as a popover. CSS anchor positioning places the popover relative to the header: its top edge starts at the bottom of the header, and its inline end aligns with the header's inline end (the right edge in left-to-right text, and the left edge in right-to-left text). The background, border, and link padding make the menu easier to distinguish and use.
 
 ```css
 .main-header {
-  anchor-name: --nav-button;
+  anchor-name: --nav-header;
 
   nav {
     @container style(--show-mobile-nav: true) {
@@ -267,7 +262,7 @@ Finally we'll add a background color to the popover and some padding to the link
         display: revert;
         flex-direction: column;
         position: absolute;
-        position-anchor: --nav-button;
+        position-anchor: --nav-header;
         inset-inline-start: unset;
         inset-inline-end: 0;
         inset-block-start: anchor(end);
@@ -290,17 +285,15 @@ Finally we'll add a background color to the popover and some padding to the link
 }
 ```
 
-That's it! Now we have a working responsive and accessible header navigation for both narrow and wide screen.
+That's it! We now have a responsive header navigation for wide and narrow containers. The links remain available in browsers that do not support the features used for the compact menu.
 
-## Bonus
+## Optional: Animate the menu
 
-All that's left to do is add some styles and animations to make it look and feel nice.
+The navigation works without animation. If you'd like, add these styles to animate the menu button and popover.
 
-Let's first make out hamburger button turn into a close button when the popover is open.
-We've explicitely prepared the SVG with 4 lines (2 lines being stacked in the middle) lnes to prepare for a smooth transition.
-All we need is to shrink the top and bottom line into nothing and rotate the middle lines to form a cross.
+First, turn the hamburger icon into a close icon while the popover is open. The SVG has four lines: two overlap in the middle. Rotate those middle lines to make a cross, and shrink the top and bottom lines until they disappear.
 
-For accessibility's sake, make sure to wrap the transition into a `prefers-reduced-motion` media query.
+Only add the transition when the user has not asked for reduced motion. This respects the system setting that reduces or removes animation.
 
 ```css
 .hamburger line {
@@ -325,12 +318,9 @@ nav:has(:popover-open) .hamburger {
 }
 ```
 
-Of course we also want to animate the popover coming and going smoothly, here to only if the user has not requested reduced motion.
-The principle is simple, we'll use the scale property to let the navigation grow when opening and shring to nothing when closing.
-As many of you might now, to animate popovers smoothly, we need to transition also `display` and `overlay` properties with `allow-discrete`, and use the `@starting-style` at-rule to define the initial state before the transition begins.
+We can also animate the popover as it opens and closes, again only when the user has not requested reduced motion. The `scale` property makes the menu grow when it opens and shrink when it closes. Because a popover switches between being displayed and hidden, the transition also needs to include `display` and `overlay` with `allow-discrete`. The `@starting-style` rule sets the popover's starting appearance when it opens.
 
-There is one caveat though. You might have noticed so far that all the code has been written using logical properties to make is work with both left-to-right and right-to-left languages.
-The scale property though is not logical, meaning it doesn't automatically adapt to the text direction. That's why we need to use the `--dir-origin` custom property to adjust the transform origin based on the direction.
+One detail: the CSS so far uses logical properties, which adapt to left-to-right and right-to-left languages. The `scale` property does not know which direction the text uses, so set the transform origin with a custom property. This makes the menu grow from the edge nearest the page edge in either direction.
 
 ```css
 html {
@@ -345,7 +335,7 @@ html {
     nav {
       [popover] {
         transform: scaleX(0);
-        /* Use the --dir-origin to make sure the popover is pushed out of to the viewport edge in both LTR & RTL directions */
+        /* Make the popover grow from the outer edge in both text directions. */
         transform-origin: calc(100% * var(--dir-origin));
         transition:
           transform,
@@ -368,12 +358,10 @@ html {
 
 ## Conclusion
 
-This is an easy way to create a responsive and accessible header navigation that adapts to both narrow and wide screens.
-The only downside to this is that you still need one "magic number" in the container query to determine when to switch between the narrow and wide layouts.
+This is one way to build an accessible header navigation that adapts to the space available, without JavaScript. You still need to choose a width in the container query to switch between the wide and compact layouts. Treat `60ch` as a starting point and adjust it until the links fit comfortably in your design.
 
-That is definitely a minor inconvenience, one that could definitely be solved with a few lines of javascript.
-All it needs needs is to measure and store the size of the desktop navigation compare it to the viewport and flip the custom property, but that falls out of the scope of this post.
+If you want the switch to happen exactly when the links stop fitting, JavaScript could measure the navigation and the space available, then update the custom property. That is outside the scope of this post.
 
-If you want to check the full code including an easy way to test both reading mode, have a look at the CodePen below.
+See the CodePen for the full example, including a way to test both left-to-right and right-to-left text directions:
 
-https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a370-b568033f4db1
+[View the example on CodePen](https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a370-b568033f4db1).
