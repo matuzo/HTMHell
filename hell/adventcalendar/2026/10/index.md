@@ -223,9 +223,9 @@ The `display: flex` declaration overrides the hidden default for the popover lis
 }
 ```
 
-Next, we'll decide when to use the compact layout. We could put all its styles inside feature and size checks, but instead we'll set one custom property when the required features are supported and the header is narrow.
+Next we could add the mobile layout and wrap it all in feature and container queries to toggle the layout, but I personally prefer to set a single custom property and use it to control the layout. That way, you only need to check all of the conditions in one place and have a simple style query to switch between the mobile and wide layouts wherever you need it.
 
-The `@supports` rule checks for popover support. The `@container` rule checks that the header is narrower than `60ch` and that CSS style queries are available. The `ch` unit is based on the width of the “0” character, so `60ch` gives us a text-based starting point for the switch. Adjust this value to suit your own links and design.
+So first, we'll use an `@supports` rule that checks for popover support. Then we'll use a `@container` query to check that the header is narrower than `60ch` and that CSS style queries are available. The `ch` unit is based on the width of the “0” character, so `60ch` gives us a text-based starting point for the switch. Adjust this value to suit your own links and design.
 
 ```css
 .main-header {
@@ -286,6 +286,52 @@ When the header is narrow, show the button and style the list as a popover. CSS 
 ```
 
 That's it! We now have a responsive header navigation for wide and narrow containers. The links remain available in browsers that do not support the features used for the compact menu.
+
+### Supporting browsers without style queries
+
+Style queries are a recent addition to CSS (Baseline newly available 2026). In browsers that don't support them, the compact layout won't be applied, so the links remain visible and can wrap as needed.
+
+If you need to support browsers without style queries, you can omit the style query and apply the compact styles directly inside the popover support and container-width conditions, as shown below. This is more verbose because both conditions need to wrap the compact styles, but browsers that support popovers and size container queries can still use the compact layout. Browsers that lack those features retain the always-visible navigation.
+
+```css
+.main-header {
+  --show-mobile-nav: false;
+  container: header / inline-size;
+
+  nav {
+    @supports selector(:popover-open) {
+      @container header (inline-size < 60ch) {
+        button {
+          display: revert;
+        }
+
+        [popover] {
+          display: revert;
+          flex-direction: column;
+          position: absolute;
+          position-anchor: --nav-header;
+          inset-inline-start: unset;
+          inset-inline-end: 0;
+          inset-block-start: anchor(end);
+          inset-block-end: 0;
+          block-size: auto;
+          /* Make sure the popover background is not transparent */
+          background: var(--color-bg-subtle);
+          /* Adding a border helps with visual separator in forced-color mode */
+          border-inline-start: 1px solid var(--color-bg-subtle);
+          box-shadow: 0 6px 4px 2px oklch(from currentcolor l c h / 0.25);
+
+          a {
+            display: block;
+            padding-block: 0.5em;
+            padding-inline: 1.5em;
+          }
+        }
+      }
+    }
+  }
+}
+```
 
 ## Optional: Animate the menu
 
