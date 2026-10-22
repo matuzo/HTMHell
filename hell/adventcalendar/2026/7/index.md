@@ -15,64 +15,63 @@ image: "advent26_7"
 active: true
 ---
 
-The question “How to hide an element?” is about as old as the question “How to center a div?” and its answers are almost equally as diverse, as there are indeed many ways to hide an element:
+The `hidden` attribute has always been an odd way of hiding elements. It allows you to hide elements with HTML. Its presence has been a source for debate for a long time. [A couple of years ago, this attribute was already discussed](https://www.htmhell.dev/adventcalendar/2023/11/), but what in the article back then had been predicted as the future has now become a reality, and so I would say it is a good idea to revisit this nefarious attribute to see what has changed and what we can learn from this. 
 
-- use `display: none` (some jokers will add `!important` to the answer “because only _then_ you can be sure it’s gone, right?”);
-- use `opacity: 0`;
-- use `visibility: hidden` (with its nefarious perk that one can essentially ‘undo’ the hidden visibility in descendents by placing `visibility: visible` on any descendent);
-- “one can also just use `position fixed, top -999px, left -999px, width 0px, height 0px` to move it out of view, right?”;
-- use the `hidden` attribute.
+## How `hidden` hides elements (and how it does not)
 
-`hidden` has always been an odd way of hiding elements. It allows you to hide elements by means of HTML and that has been food for debate for a long time. [A couple of years ago, this attribute was already discussed](https://www.htmhell.dev/adventcalendar/2023/11/), but what in the article back then had been predicted as the future, has now become a reality and so I would say it is a good idea revisit this nefarious attribute and see what has changed and what we can learn from it. 
+Basically, the `hidden` attribute applies `display: none`, which is defined in the UA-stylesheet. Therefore, an element with this attribute will _generally_ be instantly hidden; it does not need to wait for any render-blocking CSS to parse. 
 
-## Why `hidden` and how hidden hides elements (and how it does not)
+The attribute can be applied to any element, but its effect is actually uncertain, as even a declaration with a specificity of `0-0-0` (looking at you, `:where()`) will override the default behaviour in the UA-stylesheet. This is why oftentimes developers choose to add an explicit `[hidden]` declaration in their reset-stylesheet or wherever, to make sure it consistently hides elements. Not doing so could lead to an element still being visible, despite the presence of the `hidden` attribute and that is kind of cursed.
 
-For those who forgot the backstory: basically, the `hidden` attribute applies `display: none`, which is defined in the UA-stylesheet. It can be applied to any element, but its effect is uncertain, as even a declaration with a specificity of `0-0-0` will override the default behaviour in the UA-stylesheet. This is why oftentimes developers choose to add an explicit `[hidden]` declaration in their reset-stylesheet or wherever, to make sure it actually/consistently hides elements. Not doing so could lead to an element still being visible, despite the presence of the `hidden` attribute and that is kind of cursed... or is it?
-
-The core principle of `hidden` is to be a semantic and readable manner to convey that any element with this attribute _should not_ be available to the user. [User Agents should not display elements using this attribute](https://html.spec.whatwg.org/multipage/interaction.html#attr-hidden).
+The `hidden` attribute comes along with a few special features in JavaScript, like other attributes that can exist without a value associated to it. One does not need to use `setAttribute` (the reason why this crazy `hidden="hidden"` pops up in the wild sometimes as some do not seem to know they can leave the second argument empty), as one can use `element.hidden = true`. It could make you think that this is some kind of boolean attribute, but it's not, as it is an _enumerated_ attribute: `hidden="false"` will still make an element hidden.
 
 
-The `hidden` attribute comes along with a few special features in JavaScript, like other attributes that can exist without a value associated to it. One does not need to use `setAttribute` (the reason why this crazy `hidden="hidden"` pops up in the wild sometimes as some do not seem to know they can leave the second argument empty), as one can use `element.hidden = true`. It could make you think that this is some kind of boolean attribute, but it's not, as it is an enumerated attribute, since `hidden="false"` will still hide your element.
+### Thoughts on what the specs state about `hidden`
 
+The core principle of `hidden` is to be a semantic and readable manner to convey that any element with this attribute _should not_ be available to the user. The specs state: [User Agents should not display elements using this attribute](https://html.spec.whatwg.org/multipage/interaction.html#attr-hidden).
 
-### An analysis on what the specs state about `hidden`
+If you think of this, the specs are fairly strict on what you should use `hidden` for. Using `hidden` on elements that "_could legitimately be shown in another presentation_" (for example in a tabs pattern) is literally deemed 'incorrect' because "_the tabbed interface is merely a kind of overflow presentation_", explaining one could "equally well" just have "one big page with a scrollbar". 
 
-The specs are fairly strict on what you should use `hidden` for. Using `hidden` on elements that "_could legitimately be shown in another presentation_" (for example in a tabs pattern) is literally deemed 'incorrect' because "_the tabbed interface is merely a kind of overflow presentation_", explaining one could "equally well" just have "one big page with a scrollbar". 
+I tend to agree with this vision from a stance of "(information on) the internet should be available to all" and "important information should not be hidden anyway", but when we _do_ want to temporarily hide content... Apparently we should _not_ use `hidden`, but should we also not use `display: none` since that is essentially what `hidden` does? It feels conflicting, as we all use `display: none` to hide things in e.g. accordions, tabs, header navigation menus, etc.
 
-I tend to agree with this vision from a stance of "(information on) the internet should be available to all" and "important information should not be hidden anyway", but when we _do_ want to temporarily hide content... we should _not_ use `hidden`, therefore also not `display: none` since that is essentially what `hidden` does? It feels so conflicting, as we all use `display: none` to hide things in e.g. accordions, tabs, header navigation menus, etc.  
-
-
-### Should you use `hidden`?
-
-I have wondered since the beginning what `hidden` is good for, _at all_, if `display: none` basically does the same thing. If most of the use-cases I can come up with would not be in the spirit of what it is supposed to do. I could even go as far as stating that using the `hidden` attribute is a bad practice due to its weak default in the UA-stylesheet; its strict definition in the specs that seem too strict and is it _really_ that semantic? If it actually were _that_ semantic, what would be the added value? Does `hidden` make an element _more hidden_ than by using `display: none`? Also, if I would declare `display:block` on a `[hidden]` selector, any element with this will become visible anyway and there is not a single screen reader that will keep on announcing an element with this attribute as being hidden.
-
-If I were you, I would not use it _as-is_. Surely, I could keep on arguing about "just show whatever important information you have!", but I know _very well_ that there are _perfectly acceptable and reasonable_ arguments and use-cases to hide certain fragments of content. If one has to/wants to hide elements, just adding `hidden` (or `display: none`) will not make an element more (or less) accessible, as just toggling this visibility will not suffice (speaking about using some `aria` attributes alongside). 
+About `hidden` being supposedly semantic: if it actually were _that_ semantic, what would be the added value? Does `hidden` make an element _more hidden_ than by using `display: none`? Also, if I would declare `display:block` on a `[hidden]` selector, any element with this attribute will become visible anyway and there is not a single screen reader that will announce an element with this attribute as being hidden.
 
 
 ## People who use the in-browser find-in-page functionality
 
 In the spirit of 'don't hide important content': if you hide content in an accordion or in tabs, you render it not only invisible, but also inaccessible. A user must have interaction with e.g. a button first to render the content visible and to be able to see the content.
 
-What if you do not have a button at your disposal or simply do not want to press open tens of items in an imaginary (probably AI-slopped, SEO-optimized) FAQ-list? In that case, you want to scan through the page by using the in-browser find-in-page functionality (triggered by e.g. CMD+F / CTRL+F). Well, you cannot, as you will get zero (0) results, even if you _know_ there is content _somewhere_ on that page. Why? Any element with `display: none` will be rendered invisible, and the browser will not know about its contents. 
+What if you do not have a button at your disposal or simply do not want to press open tens of items in an imaginary (nowadays probably AI-slopped, SEO-optimized) FAQ list? In that case, you want to scan through the page using the in-browser find-in-page functionality (possibly triggered by `CMD+F` or `CTRL+F`). Well, you cannot, as you will get zero (0) results, even if you _know_ there is content _somewhere_ on that page. Why? Any element with `display: none` will be rendered not only invisible, but also inaccessible and the browser will not know about its contents. 
+
 
 ### Examples of sites that hide important content
 
-A few examples of sites where important content is being hidden are news media, blogs and other sites with articles that contain long chapters. Expecially news media found it several years ago a good idea to cut their articles in half by inserting a 'Continue reading' button, especially on mobile devices, as it would increase ad revenue and as it actually registered how many users actually _read_ an article. By doing this, they deliberately hide parts of an article and if the user wants to read the whole article, they press a button to load the remaining content. Below is an example of how certain well known news media do this to this day:
+A few examples of sites where important content is being hidden are news media, blogs and other sites with articles that contain long chapters. Several years ago there was a wave of news media that found it a good idea to cut their articles in half by inserting a 'Continue reading' button at some point, especially on mobile devices. Reasons behind this are about possible ad revenue increases by getting extra clicks (unintentional often due to layout shifts), but it also provides a way to track how many users actually _read_ an article or at all _interact_ with it. By doing this, sites deliberately hide parts of an article and if a user wants to read the whole article, they press a button to load the remaining content (mind you, we're _not_ talking about a paywall!). Below is an example of how certain well-known news media apply this practice to this day: 
 
 ```html
-<p>Lorem ipsum dolor sit amet.</p>
+<!-- some article here -->
+<p>
+    Lorem ipsum dolor sit amet.
+</p>
+<p>
+    Dolor sit amet?
+</p>
 <button type="button" aria-expanded="false">
-    Read More
+    Continue reading this article
 </button>
 <p data-readmore-hidden="1" style="display: none;">
     Consectetur adipiscing elit.
 </p>
+<p data-readmore-hidden="1" style="display: none;">
+    Aenean euismod bibendum laoreet.
+</p>
+<!-- more paragraphs like this follow -->
 ```
 
-Imagine you visit such a page, and you want to only see if for instance a particular person is mentioned. You probably do not want to spend all of your time reading the whole article, so you would reach for the in-browser find-in-page functionality. Unfortunately, your query returns no results and by then you would probably leave if you did not know there is a 'continue reading' button somewhere that could possibly contain the information you were looking for. That would be quite a shame, wouldn't it? 
+Imagine you visit such a page, and you want to only check for instance if a particular person is mentioned. You probably do not want to spend all of your time reading the whole article, so you would reach for the in-browser find-in-page functionality. Unfortunately, your query returns no results and by then you would probably leave the page if you did not know there is a 'continue reading' button somewhere that could possibly contain the information you were looking for. That would be quite a shame, wouldn't it? 
 
 
-Other types of content-heavy websites tend to be 'smart' by treating headings as buttons for imaginable accordions, so a user can expand content within a certain chapter of their interest. On a mobile device, where space is sparse, it removes the need for a long and prominent table of contents, as a group of collapsed chapters will function like a table of contents by themselves. The only issue, however, is that to hide the content, one had to resort to using `display: none` and especially in articles like these, you would probably want to globally search for certain important data as well, only to find nothing with the find-in-page functionality, as everything is collapsed and therefor inaccessible. To work around this problem, one could expand every single chapter in that article (from the bottom up of course, as from top to bottom means you have to scroll down each time to get to the next chapter, right?), and _then_ be able to find results, but _man_, that is just tedious.
+Other types of content-heavy websites tend to be 'smart' by treating headings as buttons for imaginable accordions, so a user can expand content within a certain chapter of their interest. On a mobile device, where space is sparse, it removes the need for a long and prominent table of contents, as a group of collapsed chapters will function like a table of contents by themselves. The only issue, however, is that to hide the content, one had to resort to using `display: none` and especially in articles like these, you would probably want to globally search for certain important data as well, only to find nothing with the find-in-page functionality, as everything is collapsed and therefore inaccessible. To work around this problem, one could expand every single chapter in that article (from the bottom up of course, as from top to bottom means you have to scroll down each time to get to the next chapter, right?), and _then_ be able to find results, but _man_, that is just tedious.
 
 
 ## The "solution": `hidden="until-found"`
