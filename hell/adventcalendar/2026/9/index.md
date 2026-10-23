@@ -66,7 +66,7 @@ This approach ensures two things:
 
 By now you may be asking yourself how we’re going to actually show or hide the panel of content the button is supposed to control. Thanks to the greatness of the [:has sudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has), we can lean on the CSS for this. Simply put, if the button has `aria-expanded="false"` applied, we hide the panel below using `display: none;`.
 
-```
+```css
 .acc-heading:has(> [aria-expanded="false"]) + .acc-panel {
   display: none;
 }
