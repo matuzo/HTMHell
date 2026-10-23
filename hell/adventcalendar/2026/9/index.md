@@ -22,7 +22,7 @@ You can create more or less the same functionality as I’ll describe below by s
 
 ## Building the accordion
 
-Let’s take a look at what’s needed for this minimal javascript accordion, the code for it really is pretty simple
+Let’s take a look at what’s needed for this minimal javascript accordion.
 
 ### HTML
 
