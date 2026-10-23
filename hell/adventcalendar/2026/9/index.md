@@ -18,7 +18,7 @@ That being said, I do believe that we can learn from some of these patterns and 
 
 ## Why not just use summary/details?
 
-You can create more or less the same functionality as I’ll describe below by simply using the summary and details elements with zero JS, but that’s not really a viable option if you want the button triggering the accordion to have heading semantics. While the [MDN article for the summary element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/summary) states that you can use heading elements within the summary element, doing so isn’t supported by many browser and screen reader combinations since the underlying semantics are stripped out of all children of anything with a button role.
+You can create more or less the same functionality as I’ll describe below by simply using the summary and details elements with zero JS, but that’s not really a viable option if you want the button triggering the accordion to have heading semantics. While the [MDN article for the summary element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/summary) states that you can use heading elements within the summary element, doing so isn’t supported by many browser and screen reader combinations since the [underlying semantics are stripped out](https://w3c.github.io/aria/#tree_exclusion:~:text=Any%20descendants%20of,Children%20Presentational%3A%20True%22%3A) of all children of anything with a button role.
 
 ## Building the accordion
 
