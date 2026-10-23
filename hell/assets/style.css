@@ -41,6 +41,10 @@ h1 {
   color: #000;
 }
 
+h1 code {
+  font-size: 0.8em;
+}
+
 /* @media (prefers-color-scheme: dark) {
   .h1 {
     color: #fff;
