@@ -49,7 +49,7 @@ While the [ARIA Authoring Practices Guide accordion example](https://www.w3.org/
 
 From a JS perspective, all you really need to do is loop through all of the buttons with an `aria-expanded` attribute and add an event listener to them that will toggle the value of the attribute between true and false when clicked.
 
-```
+```js
 document.querySelectorAll('[aria-expanded]').forEach((accButton) => {
   accButton.addEventListener('click', function () {
     this.ariaExpanded = this.ariaExpanded == 'true' ? 'false' : 'true';
