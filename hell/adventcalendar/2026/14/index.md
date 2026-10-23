@@ -33,7 +33,7 @@ Let's teleport us all back to the times when saying "HTML5" was considered cutti
 There's a lot going on here, so let's unpack what's in the first `<script>` tag.
 
 * `src="https://code.jquery.com/jquery-3.5.0.min.js"`: This points at a specific [versioned URL of jQuery](https://code.jquery.com/jquery-3.5.0.min.js) on the official [jQuery CDN](https://releases.jquery.com/).
-* `integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="`: This is a [Subresource Integrity](https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity) (SRI) hash that ensures the fetched file has not been tampered with.
+* `integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="`: This is a [Subresource Integrity](/adventcalendar/2022/3/) (SRI) hash that ensures the fetched file has not been tampered with.
 * `crossorigin="anonymous"`: Cross-origin requests (from the site using the boilerplate to the CDN) that use Subresource Integrity must use the [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) (CORS) protocol. The `crossorigin` attribute is needed because, by default, a resource loaded from a document's HTML is loaded in `no-cors` mode.
 
 #### Trust, but verify
