@@ -28,17 +28,15 @@ Let’s take a look at what’s needed for this minimal javascript accordion.
 
 The underlying HTML for the accordion is pretty simple, consisting of a heading element, a button as a child of the heading, and a div to contain the panel that's shown/hidden:
 
-```
+```html
 <h2 class="acc-header">
-<button aria-expanded="false">
-Accordion label goes here
-</button>
+  <button aria-expanded="false">
+    Accordion label goes here
+  </button>
 </h2>
 <div class="acc-panel">
-<!--Accordion content goes here-->
+  <!--Accordion content goes here-->
 </div>
-```
-
 A few notes on the elements being used
 
 - The level of the heading element doesn't matter and should be adjusted to fit the content structure of your page. This simply ensures the button it wraps has the proper heading level applied. I added the "acc-heading" class to it  to simplify the CSS used later in this example.
