@@ -41,7 +41,7 @@ A few notes on the elements being used
 
 - The level of the heading element doesn't matter and should be adjusted to fit the content structure of your page. This simply ensures the button it wraps has the proper heading level applied. I added the "acc-heading" class to it  to simplify the CSS used later in this example.
 - A button element as the first child of the heading element. The inner text of the button serves as the visual label and the `aria-expanded` attribute will indicate to screen readers if the content in the panel below is displayed or hidden. This attribute is very important for this pattern, as you'll see below.
-- A `<div>` to serve as the container for the content that is shown or hidden when the button is activated. For this example, we’ll add the class "acc-panel"to it.
+- A `<div>` to serve as the container for the content that is shown or hidden when the button is activated. For this example, we’ll add the class “acc-panel” to it.
 
 While the [ARIA Authoring Practices Guide accordion example](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) has a good bit more attributes and such, they’re not really needed and don’t really impact functionality.
 
