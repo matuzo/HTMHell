@@ -38,7 +38,7 @@ There's a lot going on here, so let's unpack what's in the first `<script>` tag.
 
 #### Trust, but verify
 
-Using third-party CDNs _without_ `integrity` requires you to trust the CDN provider to not tamper with the files being served. HTML5 Boilerplate blindly trusted the jQuery CDN until [h5bp/html5-boilerplate#1904](https://github.com/h5bp/html5-boilerplate/pull/1904/changes) landed. And because on the Internet we can't have nice things, eventually what had to happen happened: this naive trust in CDNs to always be a good thing was eventually eroded by incidents like the [polyfill.io takeover](https://blog.cloudflare.com/automatically-replacing-polyfill-io-links-with-cloudflares-mirror-for-a-safer-internet/).
+Using third-party CDNs _without_ `integrity` requires you to trust the CDN provider to not tamper with the files being served. HTML5 Boilerplate unconditionally trusted the jQuery CDN until [h5bp/html5-boilerplate#1904](https://github.com/h5bp/html5-boilerplate/pull/1904/changes) landed. And because on the Internet we can't have nice things, eventually what had to happen happened: this naive trust in CDNs to always be a good thing was eventually eroded by incidents like the [polyfill.io takeover](https://blog.cloudflare.com/automatically-replacing-polyfill-io-links-with-cloudflares-mirror-for-a-safer-internet/).
 
 Luckily, HTML5 Boilerplate itself was spared, and the jQuery CDN did _not_ tamper with the data it serves, which you can verify with my [SRI Hash Generator](https://tomayac.github.io/sri-hash/?url=https%3A%2F%2Fcode.jquery.com%2Fjquery-3.5.0.min.js&algorithm=sha256). The highlighted hash in the screenshot matches the one from the code snippet earlier in the article.
 
