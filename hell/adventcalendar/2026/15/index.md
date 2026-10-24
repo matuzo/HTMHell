@@ -19,7 +19,7 @@ Working on different web projects with other developers from various backgrounds
 
 Today I’d like to talk about when and where to open and close a `div` element, and why.
 
-I’m going to show you three examples I picked from real projects built by real developers who had all the help they could possibly get: a design system including component documentation, code that has already been written and could be used as an example, and still… they made some tiny markup “mistakes” that lead to broken layouts (in production).
+I’m going to show you three examples I picked from real projects built by real developers who had all the help they could possibly get: a design system including component documentation, code that has already been written and could be used as an example, and still… they made some tiny markup “mistakes” that led to broken layouts (in production).
 
 In a design system, there’s often documentation about individual components and building blocks, but not always about how to combine these elements and how to structure them. Often, there are multiple solutions to the same problem (some more elegant than others). Similar layouts might require completely different approaches. It’s not easy to write a documentation that covers every single layout problem that can come up.
 
@@ -30,9 +30,11 @@ In my experience, a “gut feeling” is often more helpful than rigid rules. Ne
 The default behavior of block elements in HTML is the following: they are stacked in block direction (usually from top to bottom). By adding block margins to these elements, we get some space between them. The element itself controls its surrounding space. This is the default behavior in a browser for certain elements (e.g., headings, paragraphs, lists) as specified by user-agent styles.
 
 ![Three rectangles representing blocks of content surrounded by a hatched area representing block margins.](images/01-mind-the-gap-block-margins.png)
+
 Often when creating layouts, we think differently: we want to have a parent element that controls the layout within. This mindset became mainstream with the introduction of CSS flexible box (flexbox) or grid layouts.
 
 ![Three boxes surrounded by a dashed border that visualizes the wrapping layout component. Between the boxes are two gaps marked as a hatched area.](images/02-mind-the-gap-layout-wrapper.png)
+
 Let’s say we work with a (vertical) stack component. We use it to create a consistent spacing between its child elements, for example, a stack of text content, cards or input elements:
 
 ```html
@@ -249,7 +251,7 @@ The best solution depends—as always—on the context. Often in larger applicat
 
 ## What to take away
 
-Not everyone who writes HTML code or pieces together a user interface with given components from a UI library knows the CSS layouts algorithms that come with them. This is fine!
+Not everyone who writes HTML code or pieces together a user interface with given components from a UI library knows the CSS layout algorithms that come with them. This is fine!
 
 It takes experienced frontend developers or designers who can spot a small difference in spacing at first glance, who look at the screen and in their minds draw boxes around related elements, who randomly resize the browser viewport and see how the layout adjusts…
 
