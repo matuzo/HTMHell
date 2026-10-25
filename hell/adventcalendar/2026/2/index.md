@@ -1,5 +1,5 @@
 ---
-title: "Accessible Fallback HTMLfor Canvas Elements"
+title: "Accessible Fallback HTML for Canvas Elements"
 author: "Rhiana Heppenstall"
 author_bio: "Rhiana Heppenstall is a Software Engineer, Accessibility Lead at 3P learning, specialising in making web sites and applications accessible for people with disabilities. Combining her background in educational psychology and a love of computers she prides herself in developing software that is a delight for users and fellow developers alike. She has spoken and given workshops to businesses, at meetups and conferences around Australia, as she is a big advocate for professional development. Based in Melbourne when she isn't working she's going to the latest festival, museum or zoo with her two children. "
 date: 2026-12-02
