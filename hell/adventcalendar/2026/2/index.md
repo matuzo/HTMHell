@@ -96,7 +96,7 @@ If the child selects the wrong answer a “wrong” sound is played and the life
 
 Lastly for this activity it has a track counter to show you how many you have left to find:
 
-![A screenshot of the star tracker chart. One is one and one is off](../../../images/advent2026/2/star-counter.png)
+![A screenshot of the star tracker chart. One is on and one is off](../../../images/advent2026/2/star-counter.png)
 
 One option here would be to have separate image tags for each star, but this was determined to be a bit challenging as the user would have to count them one by one. Instead we added in a description of what the image was conveying, which was how many letters they had found and how many they had so far.
 
