@@ -118,5 +118,5 @@ Lastly, again for multiple use cases, the debate of buttons vs. forms came up. T
 
 One of the priorities for adding in the HTML fallback for the canvas activities was to keep the best of both worlds, keeping our existing interactive content, but adding in hooks for screen readers and keyboard. This has been a huge step forward for making our program more accessible, but still has some limitations and questions. As you can see even one activity out of hundreds can raise many questions and debates about how to best represent the HTML for the user.
 
-This is a really tough balance to find, while we have tested it out on a screen reader ourselves next steps here would be some user testing with native screen reader users, preferably in the younger age range. To make sure we meet not only the check points of the WCAG, but make something that would make a meaningful difference to a young users educational experience.
+This is a really tough balance to find, while we have tested it out on a screen reader ourselves next steps here would be some user testing with native screen reader users, preferably in the younger age range. To make sure we meet not only the check points of the WCAG, but make something that would make a meaningful difference to a young user's educational experience.
 
