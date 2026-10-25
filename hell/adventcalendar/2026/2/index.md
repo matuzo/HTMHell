@@ -32,7 +32,7 @@ So we set to work adding in fallback HTML to closely resemble what was on the sc
 
 ![A screenshot of the Letter Grid activity in readingeggs. Showing a topbar with progress, lives and an audio button. The Letter grid is a 6 by 6 grid with a variety of letters. It has a second progress bar on the side with a number of stars.](../../../images/advent2026/2/letter-grid.png)
 
-## The HTML's
+## The HTML
 ### Top Bar
 ![A screenshot of the topbar with progress, lives and an audio button.](../../../images/advent2026/2/top-bar.png)
 
