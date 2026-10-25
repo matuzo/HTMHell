@@ -106,7 +106,7 @@ One option here would be to have separate image tags for each star, but this was
 
 ## Up for Debate
 
-We touched on how much fallback HTML to add, to make sure it was useful and instruction and feedback and not overly verbose and repetitive. To make sure it matched the intent of the visuals of the activity, adding in the extra context at an age appropriate level. It may be that some of the instructions are removed or simplified in the future for example.
+We touched on how much fallback HTML to add, to make sure it was useful as instruction and feedback and not overly verbose and repetitive. To make sure it matched the intent of the visuals of the activity, adding in the extra context at an age appropriate level. It may be that some of the instructions are removed or simplified in the future for example.
 
 Another consideration that came up with a few lessons were around punctuation and character case. As they may have to pick a letter of the right case or the correct punctuation mark for the place in the sentence. In this case should we write the letter and the case or the full name of the punctuation? e.g. “Lower case i”, “Upper case I”, “full stop”, “exclamation mark”. It was discovered that some screen readers, such as voice over, have a mode where they read out and describe each character, so it was decided that if there was a native solution to use that rather than make our own.
 
