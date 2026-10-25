@@ -15,7 +15,7 @@ active: true
 ## Canvas, the Good, the Bad and the Inaccessible
 If you’re a parent (or primary school teacher) you’re probably familiar with Readingeggs. A colourful, engaging learning to read program with ants that sing and dance. Activities range from tapping the correct letter, matching words with their pictures, reading books and answering quiz questions.
 
-Back when it was being developed it was using Flash, which supported that fun, interactive mix of animations and activities. With the death of Flash they got converted into Canvas, a HTML element that can support this functionality. With it you are free to draw, add images, animations, sound effects and interactive elements.
+Back when it was being developed it was using Flash, which supported that fun, interactive mix of animations and activities. With the death of Flash they got converted into Canvas, an HTML element that can support this functionality. With it you are free to draw, add images, animations, sound effects and interactive elements.
 
 Canvas elements however, are not accessible to keyboards and screen readers. It is treated as a blank image and generally was used to draw pictures and diagrams on the web. You can add some basic description in similar way as alt text, but that just wasn’t going to cut it for such detailed activities.
 
