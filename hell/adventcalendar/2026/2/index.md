@@ -69,7 +69,7 @@ Each activity starts the same way. With a named section so highlight the area as
 </section>
 ```
 
-![A screenshot of the first two rows of the letyter grid.](../../../images/advent2026/2/letter-grid-two-rows.png)
+![A screenshot of the first two rows of the letter grid.](../../../images/advent2026/2/letter-grid-two-rows.png)
 
 For this activity the letters are buttons inside an unordered list. Allowing the user to tab between each letter and the screen reader user to hear how many items are in the list at the start. Each letter is disabled when selected correctly so they can’t unselect the button, which mimics the existing usability.
 
