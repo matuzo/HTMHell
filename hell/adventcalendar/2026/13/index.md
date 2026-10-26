@@ -740,7 +740,7 @@ Can we do without an alternative, then? Probably not. The map works for many use
 A choropleth map shows a value for each area, here each country, by grouping the values into classes and giving each class its own colour. It is one of the most common kinds of data maps, and it raises its own accessibility challenges: the information is carried first by colour, some areas are tiny, and the map is meant to be compared at a glance. Here, what matters is less each value than the groups the countries fall into.
 
 The data comes from the EU statistics on income and living conditions (EU-SILC), published by Eurostat.
-In 2025, 24.2% of people aged 16 or over in the EU reported some or severe long-standing limitations in their usual activities due to health problems.
+In 2025, 24.2% of people aged 16 or over in the EU reported some or severe long-standing limitations in their usual activities due to health problems (source: [Eurostat, dataset hlth_silc_12](https://ec.europa.eu/eurostat/databrowser/product/page/HLTH_SILC_12), updated in September 2026). The Statistics Explained article quoted below still gives the 2024 figure, 23.9%.
 
 > All of the indicators [&hellip;] are derived from self-reported data, so they are, to a certain extent, affected by respondents’ subjective perception as well as by their social and cultural background.
 > Eurostat, [Population with disability](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Population_with_disability)
@@ -1523,6 +1523,7 @@ On hover or focus, the whole class is highlighted, and every country of the clas
 
 #### How it works
 
+```html
 <g class="tm-class" role="button" tabindex="0" aria-haspopup="dialog"
    aria-label="20 to 25%, 10 countries">
   …countries of this class…
