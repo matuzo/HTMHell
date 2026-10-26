@@ -121,50 +121,7 @@ Now add a button to open and close the navigation popover. The button's SVG icon
 				aria-labelledby="menu"
 			>
 				<title id="menu">Menu</title>
-				<line
-					x1="40"
-					y1="128"
-					x2="216"
-					y2="128"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				></line>
-				<line
-					x1="40"
-					y1="128"
-					x2="216"
-					y2="128"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				></line>
-				<line
-					x1="40"
-					y1="64"
-					x2="216"
-					y2="64"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				></line>
-				<line
-					x1="40"
-					y1="192"
-					x2="216"
-					y2="192"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				></line>
+				...
 			</svg>
     <ul id="main-nav" popover>
       <li><a href="#">Home</a></li>
@@ -314,7 +271,7 @@ If you need to support browsers without style queries, you can omit the style qu
 
 The navigation works without animation. If you'd like, add these styles to animate the button and popover.
 
-First, turn the hamburger icon into a close icon while the popover is open. The SVG has four lines: two overlap in the middle. Rotate those middle lines to make a cross, and shrink the top and bottom lines until they disappear.
+First, turn the hamburger icon into a close icon while the popover is open. The SVG in the [CodePen](https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a370-b568033f4db1) has four lines: two overlap in the middle. Rotate those middle lines to make a cross, and shrink the top and bottom lines until they disappear.
 
 Only add the transition when the user has not asked for reduced motion. This respects the system setting that reduces or removes animation.
 
