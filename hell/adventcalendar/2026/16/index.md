@@ -231,9 +231,13 @@ A product page has plenty more to get wrong: image carousels and zoom, reviews a
 
 ## Keep testing
 
-Browsers keep shipping changes to these features, so testing isn't a one-off before launch. Make it part of every release. Try the whole page, and read its code, in [the product page demo on CodePen](CODEPEN_URL).
+Browsers keep shipping changes to these features, so testing isn't a one-off before launch. Make it part of every release. Try the whole page, and read its code, in [the product page demo on CodePen](https://codepen.io/thedavedavies/pen/azJavpY).
 
-<!-- TODO: paste the CodePen embed here (markup in htmhell-conventions.md section 7, script tag once at the end of the file), replace CODEPEN_URL above, then delete this comment. Create the Pen from the demo folder: node build-codepen.cjs, then open codepen.html. -->
+<p class="codepen" data-height="600" data-default-tab="result" data-slug-hash="azJavpY" data-pen-title="An accessible product page that still looks good" data-user="thedavedavies" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<span>See the Pen <a href="https://codepen.io/thedavedavies/pen/azJavpY">
+An accessible product page that still looks good</a> by Dave Davies (<a href="https://codepen.io/thedavedavies">@thedavedavies</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
 ## Further reading
 
@@ -243,3 +247,5 @@ Browsers keep shipping changes to these features, so testing isn't a one-off bef
 - [Tweaking text level styles, reprised](https://adrianroselli.com/2025/04/tweaking-text-level-styles-reprised.html) by Adrian Roselli
 
 <!-- prettier-ignore-end -->
+
+<script async src="https://public.codepenassets.com/embed/index.js"></script>
