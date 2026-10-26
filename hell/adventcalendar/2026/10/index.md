@@ -49,37 +49,16 @@ This first example shows the simple version of the markup. We'll add a button an
 Before making the navigation responsive, let's set up its basic styles. These examples use CSS nesting, which lets us write styles for child elements inside their parent rule. This reset removes the default list markers, margin, and padding from the navigation list.
 
 ```css
-body {
-  font-family: system-ui, sans-serif;
-  margin: 0;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-:is(button, a, input):focus-visible {
-  outline-color: currentcolor;
-}
-
 nav {
   ul {
     list-style: none;
-    padding: unset;
-    margin: unset;
+    padding: 0;
+    margin: 0;
   }
-}
-
-svg {
-  fill: currentcolor;
 }
 ```
 
+The [CodePen demo](https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a370-b568033f4db1) contains more styling rules, but those are not absolutely necessary to make the layout work correctly.
 Next, add the header layout and colors.
 
 ```css
@@ -132,7 +111,7 @@ Now add a button to open and close the navigation popover. The button's SVG icon
 <header class="main-header">
   <img class="logo" src="logo.png" alt="Site logo" />
   <nav aria-label="Main">
-		<button commandfor="main-nav" command="toggle-popover">
+		<button popovertarget="main-nav" popovertargetaction="toggle">
 			<svg
 				class="hamburger"
 				xmlns="http://www.w3.org/2000/svg"
@@ -197,8 +176,6 @@ Now add a button to open and close the navigation popover. The button's SVG icon
   </nav>
 </header>
 ```
-
-<p class="highlight"><strong>Note:</strong> This example uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API">invoker commands</a> to toggle the popover. They reached Baseline in 2025. For broader browser support, replace <code>commandfor</code> and <code>command</code> with <code>popovertarget</code> and <code>popovertargetaction</code>.</p>
 
 This is the complete markup, replacing the simpler example from the first section. The button controls the list by its `id`. The list becomes a popover, so the browser can show it when the button is activated.
 
