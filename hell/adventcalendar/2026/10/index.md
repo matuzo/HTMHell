@@ -273,7 +273,7 @@ The navigation works without animation. If you'd like, add these styles to anima
 
 First, turn the hamburger icon into a close icon while the popover is open. The SVG in the [CodePen](https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a370-b568033f4db1) has four lines: two overlap in the middle. Rotate those middle lines to make a cross, and shrink the top and bottom lines until they disappear.
 
-Only add the transition when the user has not asked for reduced motion. This respects the system setting that reduces or removes animation.
+The icon animation is unlikely to cause a problem, but since it is purely aesthetic, it can safely be disabled when the user has requested reduced motion. This respects the system setting that reduces or removes animation.
 
 ```css
 .hamburger line {
