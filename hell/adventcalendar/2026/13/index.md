@@ -1,5 +1,5 @@
 ---
-title: "Accessible interactive SVG map."
+title: "Accessible interactive SVG map"
 author: "Pascal Cauhepe"
 author_bio: "Web developer for 15 years, now focused on digital accessibility: RGAA audits, accessible components, and tools. Based near Toulouse, France, and currently looking for my next role."
 date: 2026-12-13
@@ -735,7 +735,7 @@ Can we do without an alternative, then? Probably not. The map works for many use
 
 
 
-## Part 2: a choropleth map, 2 approaches
+## Part 2: a choropleth map, two approaches
 
 A choropleth map shows a value for each area, here each country, by grouping the values into classes and giving each class its own colour. It is one of the most common kinds of data maps, and it raises its own accessibility challenges: the information is carried first by colour, some areas are tiny, and the map is meant to be compared at a glance. Here, what matters is less each value than the groups the countries fall into.
 
@@ -1523,7 +1523,6 @@ On hover or focus, the whole class is highlighted, and every country of the clas
 
 #### How it works
 
-```svg
 <g class="tm-class" role="button" tabindex="0" aria-haspopup="dialog"
    aria-label="20 to 25%, 10 countries">
   …countries of this class…
