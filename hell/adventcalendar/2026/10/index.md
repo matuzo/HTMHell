@@ -143,7 +143,7 @@ The `display: flex` declaration overrides the hidden default for the popover lis
 
 Next we could add the mobile layout and wrap it all in feature and container queries to toggle the layout, but I personally prefer to set a single custom property and use it to control the layout. That way, you only need to check all of the conditions in one place and have a simple style query to switch between the mobile and wide layouts wherever you need it.
 
-So first, we'll use an `@supports` rule that checks for popover support. Then we'll use a `@container` query to check that the header is narrower than `60ch` and that CSS style queries are available. The `ch` unit is based on the width of the “0” character, so `60ch` gives us a text-based starting point for the switch. Adjust this value to suit your own links and design.
+So first, we'll use an `@supports` rule that checks for popover support. Then we'll use a `@container` query to check that the header is narrower than `60ch` and that CSS style queries are available. Here, `60ch` is simply the width that fits this example's content. Choose a breakpoint that works for your own content and design; the right value depends on what you're laying out.
 
 ```css
 .main-header {
