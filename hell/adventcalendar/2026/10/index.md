@@ -62,16 +62,6 @@ The [CodePen demo](https://codepen.io/editor/th3s4mur41/pen/01a116cf-9b21-7d44-a
 Next, add the header layout and colors.
 
 ```css
-body {
-  --color-bg: light-dark(oklch(1 0 0), oklch(0 0 0));
-  --color-bg-subtle: light-dark(oklch(0.9 0 0), oklch(0.25 0 0));
-  --color-text: light-dark(oklch(0 0 0), oklch(1 0 0));
-
-  color-scheme: light dark;
-  background: var(--color-bg);
-  color: var(--color-text);
-}
-
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -81,12 +71,6 @@ body {
   background: var(--color-bg-subtle);
   /* Adding a border helps with visual separator in forced-color mode */
   border-block-end: 1px solid var(--color-bg-subtle);
-  box-shadow: 0 0 4px 2px oklch(from currentcolor l c h / 0.25);
-
-  .logo {
-    block-size: 2lh;
-    inline-size: auto;
-  }
 }
 ```
 
@@ -206,7 +190,6 @@ When the header is narrow, show the button and style the list as a popover. CSS 
         background: var(--color-bg-subtle);
         /* Adding a border helps with visual separator in forced-color mode */
         border-inline-start: 1px solid var(--color-bg-subtle);
-        box-shadow: 0 6px 4px 2px oklch(from currentcolor l c h / 0.25);
 
         a {
           display: block;
