@@ -227,7 +227,7 @@ My rule of thumb: check the feature's [Baseline](https://web.dev/baseline) statu
 
 ## This isn't an exhaustive list
 
-A product page has plenty more to get wrong: image carousels and zoom, reviews and star ratings, delivery estimators, sticky add-to-basket bars, quick-add buttons on product cards, and prices that change with the variant. The demo in codepen has a few extra examples, but each could be an article of its own. Wherever you can, start with the HTML element that already does the job, then style it.
+A product page has plenty more to get wrong: image carousels and zoom, reviews and star ratings, delivery estimators, sticky add-to-basket bars, quick-add buttons on product cards, and prices that change with the variant. The demo on CodePen has a few extra examples, but each could be an article of its own. Wherever you can, start with the HTML element that already does the job, then style it.
 
 ## Keep testing
 
