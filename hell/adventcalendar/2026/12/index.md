@@ -16,7 +16,7 @@ active: true
 
 ## Let’s travel back in time!
 
-At first, we had `<table>`. In the early days of web development, it was very common to define the page layout as a `<table>` element, basically abusing an HTML tag for something it was probably never intended to do. Web designers and webmasters did it, in lack of better tools, to allow a full-width header span over two or three columns of content, then close them down again with a full-width footer (aka different versions of “The Holy Grail Layout”).
+At first, we had `<table>`. In the early days of web development, it was very common to define the page layout as a `<table>` element, basically abusing an HTML tag for something it was probably never intended to do. Web designers and webmasters did it, for lack of better tools, to allow a full-width header span over two or three columns of content, then close them down again with a full-width footer (aka different versions of “The Holy Grail Layout”).
 
 Ready for a time-travel? You can check my example of one such [old-school table-based layout](https://codepen.io/editor/zkriszti/pen/01a12bea-9470-7c01-ba9b-7a4182c4af99) here (you’ve been warned! 🤪)
 
