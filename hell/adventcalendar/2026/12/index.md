@@ -42,7 +42,7 @@ My instinct here (and maybe yours, too) would naturally lead us to using CSS gri
 
 - Will it perform better for responsivity?
 - Will it be easily stylable for displaying structured data?
-- And most of all: will it be accessible? How does a screen reader reads the content?
+- And most of all: will it be accessible? How does a screen reader read the content?
 
 Let’s see for ourselves!
 
