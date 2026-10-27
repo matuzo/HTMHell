@@ -99,9 +99,11 @@ Appropriately enough, I’ll present my results in the table below: 😄
 
 <table>
   <thead>
-    <th>SOLUTION</th>
-    <th>ROLE ATTRIBUTES ADDED</th>
-    <th>HOW NVDA READS</th>
+    <tr>
+      <th>SOLUTION</th>
+      <th>ROLE ATTRIBUTES ADDED</th>
+      <th>HOW NVDA READS</th>
+    </tr>
   </thead>
   <tbody>
     <tr>
