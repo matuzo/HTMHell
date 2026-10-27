@@ -57,7 +57,7 @@ In the following pen, we can compare the basic implementation of a regular `<tab
 </p>
 <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
-You can notice they almost look the same! Well… almost! but taking a closer look at them (more specifically, at the code), we might notice some interesting issues:
+You can notice they almost look the same! Well… almost! But taking a closer look at them (more specifically, at the code), we might notice some interesting issues:
 
 ### Let’s address visuals first:
 
