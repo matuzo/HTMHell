@@ -180,7 +180,7 @@ The hidden comma uses the usual `visually-hidden` class, which keeps text in the
 
 <p class="highlight"><strong>Browser support:</strong> customizable select shipped in Chrome and Edge 135 and in Safari 27. Firefox has only a partial version behind flags, so it isn't Baseline yet. The rules sit inside <code>@supports</code>, so other browsers get an ordinary select, and the hidden comma means its options still read "Slim, close to the body".</p>
 
-There's two very important caveats to note: Each option's accessible name is ***all of its text***, description included, so keep descriptions short and useful. And browser vendors currently disagree on the closed select's value: Chromium exposes "Regular", but WebKit builds it from the option's full text, so it's a very good idea to test it yourself.
+There are two very important caveats to note: each option's accessible name is ***all of its text***, description included, so keep descriptions short and useful. And browser vendors currently disagree on the closed select's value: Chromium exposes "Regular", but WebKit builds it from the option's full text, so it's a very good idea to test it yourself.
 
 ## Quantity
 
