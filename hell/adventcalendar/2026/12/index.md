@@ -157,7 +157,7 @@ Appropriately enough, I’ll present my results in the table below: 😄
       </td>
     </tr>
     <tr>
-      <td>GRID 2: <br /><a href="https://codepen.io/editor/zkriszti/pen/01a16d6e-b35a-7ab6-b65d-c725c253cb03" target="_blank" rel="noopener noreferrer">structural elements w/ flat CSS grid</a></td>
+      <td>GRID 2: <br /><a href="https://codepen.io/editor/zkriszti/pen/01a16d6e-b35a-7ab6-b65d-c725c253cb03" target="_blank" rel="noopener noreferrer">structural elements w/ flat CSS grid + roles</a></td>
       <td>table, columnheader, cell</td>
       <td>
         <ul>
