@@ -11,6 +11,7 @@ author_links:
     url: "https://bsky.app/profile/krisztinazavecz.com"
     link_label: "Krisztina Závecz on Bluesky"
 image: "advent26_1"
+intro: "HTML tables might be a hard nut to crack. You may be tempted to reach for CSS grid instead. But are they really interchangeable in terms of styling options, responsivity and accessibility?"
 active: true
 ---
 
