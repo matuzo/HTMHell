@@ -141,7 +141,7 @@ Et voilà, a bit of fiddling later, the audio was playing. Most importantly, in 
 
 
 ## Check, one, two
-Do you remember the GitHub issue I mentioned earlier? This turned out to be a documented [WebKit bug (#317741)](https://bugs.webkit.org/show_bug.cgi?id=317741) that got a fix [(PR #67772)](https://github.com/WebKit/WebKit/pull/67772). The pull request description explains that using the microphone catpure requires an audio session to stay active, but speech recognition did not ensure that. As a result, other processes may have deactivated the audio session, causisng speech recognition to fail silently. I really can't tell why using the Web Audio API avoids this issue. All I can say is that it does.
+Do you remember the GitHub issue I mentioned earlier? This turned out to be a documented [WebKit bug (#317741)](https://bugs.webkit.org/show_bug.cgi?id=317741) that got a fix [(PR #67772)](https://github.com/WebKit/WebKit/pull/67772). The pull request description explains that using the microphone catpure requires an audio session to stay active, but speech recognition did not ensure that. As a result, other processes may have deactivated the audio session, causing speech recognition to fail silently. I really can't tell why using the Web Audio API avoids this issue. All I can say is that it does.
 
 The fix landed in WebKit in June 2026. Kudos to everyone involved! 👏 As far as I can tell, it hasn't reached a stable release yet, though.
 
