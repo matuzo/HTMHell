@@ -25,7 +25,7 @@ So far, so good. But soon enough, I ran into problems in Safari on iOS when spee
 Finding a solution meant figuring out what was going on first. But the lack of error messages made troubleshooting quite challenging. Not to mention setting up a seamless debugging workflow between an iPad and your local development environment (but that's a story for another day).
 
 ### Notetaking
-The issue occured after every audio playback → speech recognition cycle, so it was reliably reproducible in Safari on iOS, whether the web app was launched in standalone mode or within the standard Safari browser. I had two test devices, one iPad running on iOS version `18.7.3` and one on version `26.2`. This led to the following observations:
+The issue occurred after every audio playback → speech recognition cycle, so it was reliably reproducible in Safari on iOS, whether the web app was launched in standalone mode or within the standard Safari browser. I had two test devices, one iPad running on iOS version `18.7.3` and one on version `26.2`. This led to the following observations:
 - Initially, speech recognition worked flawlessly.
 - After the audio finished playing the AI response, starting a new speech recognition would not capture any further speech input.
 - The microphone icon appeared in the status bar (indicating that permission to use the mic was still granted).
@@ -49,8 +49,11 @@ So when my initial approach hit a wall, I wondered, "What if I just gave it a tr
 
 
 ### HTMLAudioElement vs. Web Audio API
-For comparison, let's first take a look at a simplified example of the `HTMLAudioElement`. 
-Here, we create a new audio object with the `Audio()` constructor and set the audio source. We also define a function that later can be used to start the playback:
+For comparison, let's first take a look at a simplified example of using a **HTMLAudioElement** to play audio. Here, we create a new audio object with the `Audio()` constructor and set the audio source. We also define a function that later can be used to start the playback when the play button is clicked:
+
+```html
+<button type="button" id="play-btn">Play Audio</button>
+```
 
 ```js
 // Audio source as base64 encoded data URL
@@ -65,12 +68,15 @@ async function playAudio() {
   try {
     await audio.play();
   } catch (error) {
-    console.error("Audio play failed: ", error);
+    console.error("Audio playback failed: ", error);
   }
 }
+
+const playButton = document.getElementById("play-btn");
+playButton.addEventListener("click", playAudio);
 ```
 
-When using the Web Audio API, everything happens in an `AudioContext`. Inside this context, we now need to create and connect different audio nodes to build an audio graph, the main concept of the Web Audio API. Nodes come in roughly three kinds: sources (input), nodes that modify the audio, and the destination (output). Once connected, _source_ → _modification_ → _destination_ represent an audio graph: 
+When using the **Web Audio API**, everything happens in an `AudioContext`. Inside this context, we now need to create and connect different audio nodes to build an _audio graph_, the main concept of the Web Audio API. Nodes come in roughly three kinds: sources (input), nodes that modify the audio, and the destination (output). Once connected, _source_ → _modification_ → _destination_ represent an audio graph:
 
 ```js
 // Initialize the audio context
@@ -86,58 +92,76 @@ gainNode.connect(audioContext.destination);
 
 // At this point, we are here: modification -> destination
 ```
-We created a single audio context and a gain node that is wired to the speakers. This has to be done only once, on page load or when the component mounts. Due to browsers' autoplay policies, an audio context created on page load is in a `suspended` state, which we will discuss again below.
 
-Setting up the source node takes a bit more work. Unlike HTMLAudioElement, Web Audio API requires some data preparation. Which or how many steps are needed depends on the input type and some inputs need no preparation at all:
+We created a single audio context and a gain node that is wired to the speakers. Ideally, you do this only once, on page load or when the component mounts and then reuse your `AudioContext` object. Due to browsers' autoplay policies, an audio context created on page load usually starts in a `suspended` state, i.e. it is currently paused. To unpause it, you can call its `resume()` method, which we will discuss again below when everything gets connected. Alternatively, you can create the audio context on the first user interaction, then it will start in the `running` state.
+
+Setting up the source node takes a bit more work. Unlike HTMLAudioElement, the Web Audio API requires some data preparation. Which or how many steps are needed depends on the input type and some inputs need no preparation at all. We wrap that in a function which we can call later:
+
 ```js
-// Audio source as base64 encoded data URL
-const audioChunk = "data:audio/mpeg;base64,<data>";
+async function playAudio() {
+  // Audio source as base64 encoded data URL
+  const audioChunk = "data:audio/mpeg;base64,<data>";
 
-// Convert base64 to ArrayBuffer
-const base64Audio = audioChunk.split(",")[1];
-const binaryString = atob(base64Audio);
-const bytes = new Uint8Array(binaryString.length);
-for (let i = 0; i < binaryString.length; i++) {
-  bytes[i] = binaryString.charCodeAt(i);
+  // Convert base64 to ArrayBuffer
+  const base64Audio = audioChunk.split(",")[1];
+  const binaryString = atob(base64Audio);
+  const bytes = new Uint8Array(binaryString.length);
+  for (let i = 0; i < binaryString.length; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+
+  // Decode raw bytes to audio samples
+  const audioBuffer = await audioContext.decodeAudioData(bytes.buffer);
+
+  // Create the source node
+  const source = audioContext.createBufferSource();
+  source.buffer = audioBuffer;
+  // and connect it to the gain node
+  source.connect(gainNode);
+
+  // Now we have our graph: source -> modification -> destination
+
+  // Play
+  source.start();
 }
 
-// Decode raw bytes to audio samples
-const audioBuffer = await audioContext.decodeAudioData(bytes.buffer);
-
-// Create the source node
-const source = audioContext.createBufferSource();
-source.buffer = audioBuffer;
-// and connect it to the gain node
-source.connect(gainNode);
-
-// Now we have our graph: source -> modification -> destination
-
-// Play
-source.start();
-
 ```
-This snippet demonstrates the basic flow for a single audio chunk: prepare the data, create a source node, connect it to the graph, and start playback. If you want to dig deeper, grab a snack and head over to MDN's guide [Using the Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API). It's a great resource with lots of (live) examples!
+This function covers the basic flow for a single audio chunk: prepare the data, create a source node, connect it to the graph, and start playback. However, if we call `playAudio()` now, we won't necessarily hear anything. Let's see why.
 
 
-### Audio Control: `autoplay` and `resume()`
-Browsers do not allow websites to play sound whenever they want. According to their _autoplay (blocking) policies_ (e.g. from [WebKit](https://webkit.org/blog/7734/auto-play-policy-changes-for-macos/) or [Google Chrome](https://developer.chrome.com/blog/autoplay/)), audio may only start when a user has interacted with the page, such as by tapping or clicking. Otherwise, playback will be blocked.
+#### Audio Control: `autoplay` and `resume()`
+Browsers do not allow websites to play sound whenever they want. According to their _autoplay (blocking) policies_ (e.g. from [WebKit](https://webkit.org/blog/7734/auto-play-policy-changes-for-macos/), [Google Chrome](https://developer.chrome.com/blog/autoplay/) or [Firefox](https://hacks.mozilla.org/2019/02/firefox-66-to-block-automatically-playing-audible-video-and-audio/)), audio may only start when a user has interacted with the page, such as by tapping or clicking. Otherwise, playback will be blocked.
 
 Sound that starts out of nowhere isn't just annoying. For people who use a screen reader or have difficulty concentrating, it's a real accessibility issue, as it limits their ability to use the site and [success criterion 1.4.2 Audio Control](https://www.w3.org/TR/WCAG22/#audio-control) of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG22/)  applies to it.
 
-With `HTMLAudioElement`, a blocked `play()` call causes a `NotAllowedError`. The Web Audio API handles it differently. If the `AudioContext` is created without user interaction, e.g. on page load, it starts in the `suspended` state. We can connect nodes and call `start()` as many times as we want, but nothing will happen. To get it running, we need to call `resume()` after a user interaction:
-```js
-// Called from a user interaction, e.g. a click handler
-async function ensureAudioContextReady() {
-  if (audioContext.state === "suspended") {
-    await audioContext.resume();
-  }
-}
+With `HTMLAudioElement`, a blocked `play()` call causes a `NotAllowedError`. The Web Audio API handles it differently. As mentioned above, if the `AudioContext` is created without user interaction, e.g. on page load, it starts in the `suspended` state. We can connect nodes and call `start()`, but nothing will happen until the context is running. To get it running, we need to call `resume()` after a user interaction.
+
+Now we can plug it all in:
+
+```html
+<button type="button" id="play-btn">Play Audio</button>
 ```
-In Safari on iOS, context state can also change to `interrupted`, e.g. after a phone call or when switching tabs or apps. So, it's worth checking this state, too.
+
+```js
+const playButton = document.getElementById("play-btn");
+playButton.addEventListener("click", async () => {
+  try {
+    if (audioContext.state === "suspended") {
+      await audioContext.resume();
+    }
+    await playAudio();
+  } catch(error) {
+    console.error("Audio playback failed:", error);
+  }
+});
+```
+In Safari on iOS, context state can also change to `interrupted`, e.g. after a phone call or when switching tabs or apps. So it's worth checking this state, too.
 
 
 ## Oh, it's working!
 Et voilà, a bit of fiddling later, the audio was playing. Most importantly, in Safari on iOS the audio playback → speech recognition cycle worked, too! Playing the audio and speech recognition no longer got in each other's way. And not only did the debug example work with the Web Audio API approach: after everything was finally implemented and pushed, the real application with the actual user and data flow did too. Sure, it's more code than before and it takes a few extra steps, but the chat component has been running reliably for over eight months now, and I'd call that a success.
+
+If you want to dig deeper into the Web Audio API, grab one of those homemade Christmas cookies (or two ☺️) and head over to MDN's guide [Using the Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API). It's a great resource with links to a lot of (live) examples!
 
 
 ## Check, one, two
