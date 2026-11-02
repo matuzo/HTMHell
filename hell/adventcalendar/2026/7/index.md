@@ -156,7 +156,7 @@ The toggle button is still present, even when the visually hidden content is acc
 Also: what would happen if you use a screen reader in combination with a magnifier? Content would be announced, but the user would not be able to see where this text is coming from, since it is visually hidden. It's potentially confusing.
 
 
-## A final note on reader mode
+## Final notes on reader mode
 
 There's one more thing I want to discuss that I mentioned earlier on in this article, namely about the `Hidden` state. 
 
