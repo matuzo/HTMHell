@@ -48,7 +48,7 @@ Or, as someone on Mastodon put it: <q>It’s damn humiliating how long it takes 
 
 ## In your face
 
-The second element is our beloved `<dialog>`. I say beloved cause it seems like a lot of people have really taken to it. And yes, the element itself does solve a lot of things that were very problematic with the custom `<div>`-soup we managed with JavaScript in the past. That's cool.
+The second element is our beloved `<dialog>`. I say beloved because it seems like a lot of people have really taken to it. And yes, the element itself does solve a lot of things that were very problematic with the custom `<div>`-soup we managed with JavaScript in the past. That's cool.
 But often it shouldn't be there in the first place. It's an annoying element, very similar to the window popups of the past. It's in your face and you are desperately trying to close it in order to get back to the page behind the popup. Why did you have to be interrupted like this?
 Want people to sign up for your newsletter? Don't use a dialog. Use a form on the page. Want people to log in? Don't use a dialog. Use a dedicated login page or a login form on the current page. Have you ever tried to register an account somewhere via a dialog and then there are terms that opens in a new dialog on top? Dialog misery. Let's use them less!
 
