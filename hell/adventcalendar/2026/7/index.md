@@ -61,11 +61,11 @@ This definition is confusing. I tend to agree with this vision from a stance of 
 
 ### The `Hidden` State
 
-Interestingly, the specs also state (no pun intended) this: "_User agents should not render elements that are in the `Hidden` state_". This **state** is what `hidden` sets `display: none` apart semantically. Applying `display: none` to an element, does not give that element the `Hidden` state.
+Interestingly, the specs also state (no pun intended) this: "_User agents should not render elements that are in the `Hidden` state_". This **state** is what sets `hidden` apart from `display: none` semantically. Applying `display: none` to an element does not give that element the `Hidden` state.
 
-So, elements with the `hidden` attribute get the `Hidden` state, but didn't `until-found` explicitly enable user agents to actually _render_ elements? Perhaps surprisingly, elements with `hidden="until-found"` do _not_ get the `Hidden` state, so `hidden="until-found"` is funnily enough not `Hidden`. Instead, a special `Hidden Until Found` state was introduced, which allows an element to be accessible to find-in-page and fragment navigation, but the element "_needs to be affected by layout containment_" (essentially if `display` is not `none`, `contents` or `inline`). It appears `hidden="until-found"` is more different from just `hidden` than I thought.
+So, elements with the `hidden` attribute get the `Hidden` state, but didn't `until-found` explicitly enable user agents to actually _render_ elements? Perhaps surprisingly, elements with `hidden="until-found"` do _not_ get the `Hidden` state. Instead, a special `Hidden Until Found` state was introduced, which allows an element to be accessible to find-in-page and fragment navigation, but for that to happen, the element "_needs to be affected by layout containment_" (essentially if `display` is not `none`, `contents` or `inline`). It appears `hidden="until-found"` is more different from just `hidden` than I thought.
 
-A question you might have: to whom is this state actually relevant? The answer to that is: the browser. The main task a state has is to express the relevance of content to the _browser_. After all, a user will not notice the visible difference between `hidden` and `display: none`. There can be cases, however, where states _do_ get relevant for the user. I will talk about such a case in the final chapter of this article.
+This `Hidden` state is only relevant for the browser, as it is the browser that uses this state to determine the relevance of the content. After all, a user will not notice the visible difference between `hidden` and `display: none`. There can be cases, however, where states _do_ get relevant for the user. I will talk about such a case in the final chapter of this article.
 
 
 ## Comparison with `<details>`
