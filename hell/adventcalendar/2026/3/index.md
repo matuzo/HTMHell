@@ -1,20 +1,20 @@
 ---
 title: "Viewports (A Viewport On The Past?)"
 author: "ppk"
-author_bio: "ppk is a web developer and browser researcher in Amsterdam. He is a survivor not of the previous universe of web development, but the one before that. He knows his viewports, though. In his spare time he [organises](https://cssday.nl) [conferences](https://perfnow.nl)"
+author_bio: "ppk is a web developer and browser researcher in Amsterdam. He is a survivor not of the previous universe of web development, but the one before that. He knows his viewports, though. In his spare time he [organises](https://cssday.nl) [conferences](https://perfnow.nl)."
 date: 2026-12-03
 author_links:
   - label: "Website"
     url: "https://quirksmode.org"
     link_label: "Website"
-  - label: "Mastodon"
+  - label: "Mastodon (personal)"
     url: "https://front-end.social/@ppk"
     link_label: "@ppk"
-  - label: "Mastodon"
+  - label: "Mastodon (quirksmode)"
     url: "https://mu.social/profile/quirksmode.org"
     link_label: "@quirksmode"
-intro: "<p>It turns out initial-scale=1 is no necessary in meta viewport boilerplate. Why do we need a meta viewport boilerplate in the first place, and why does initial-scale belong there? And which class of errors did it inadvertently hide?</p>"
-image: "advent26_1"
+intro: "<p>It turns out initial-scale=1 is not necessary in meta viewport boilerplate. Why do we need a meta viewport boilerplate in the first place, and why does initial-scale belong there? And which class of errors did it inadvertently hide?</p>"
+image: "advent26_3"
 active: true
 ---
 
@@ -111,13 +111,15 @@ Apple improved on that solution. By default the brand-new Safari on iOS browser 
 
 Crucially, Safari would only do so if the web developer signalled that the site was ready for narrow mobile screens by explicitly opting into the behaviour. The opt-in mechanism was the meta viewport.
 
+```html
 <meta name="viewport" content="width=device-width">
+```
 
 Then a bright lad called Ethan Marcotte [made the case](https://alistapart.com/article/responsive-web-design/) for combining the meta viewport with another exciting new technology called media queries, and responsive design was born and the mobile web took off and we never looked back.
 
 <figure>
 
-![desc](viewports-3.png)
+![desc](viewports-4.png)
 
 <figcaption>A mobile-optimised site uses the meta viewport to narrow its layout viewport and combines it with media queries to figure out the current width of the viewport and respond to it.</figcaption>
 
@@ -128,7 +130,7 @@ Then a bright lad called Ethan Marcotte [made the case](https://alistapart.com/a
 
 There are two viewports, the layout and the visual, and the layout viewport has two pre-programmed possible values as well as an actual value. I'm going to use these names in the rest of this article, so please study them for a minute.
 
-If you are have trouble visualising all of this, don't worry. You're not the only one. Use my aptly-named [Viewports visualisation app](https://www.quirksmode.org/mobile/viewports/) to understand what's going on. Best viewed with a desktop browser.
+If you have trouble visualising all of this, don't worry. You're not the only one. Use my aptly-named [Viewports visualisation app](https://www.quirksmode.org/mobile/viewports/) to understand what's going on. Best viewed with a desktop browser.
 
 #### Layout viewport
 
@@ -198,7 +200,7 @@ Did you know you can set an effective min-width for your viewports? If `width` a
 Did you know it is possible to change the layout viewport width after page load? All browsers change the size of the layout viewport to 500px with the following code:
 
 ```js
-let viewport = document.querySelector('meta\[name=viewport\]');
+let viewport = document.querySelector('meta[name=viewport]');
 viewport.setAttribute('content','width=500');
 ```
 
