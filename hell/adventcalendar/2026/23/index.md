@@ -25,7 +25,7 @@ Right, so is this is about old obscure elements and attributes that are rarely u
 
 Let's start!
 
-## Lets bin select
+## Lets bin `<select>`
 
 I'm not sure when I started to see this element as something really problematic, but I know that [the talk titled "Bin your select tags" by Alice Bartlett](https://www.youtube.com/watch?v=-dH6a6eMdXE) absolutely did contribute to strengthen my opinion. The talk was given at NordicJS back in 2015, and it points out several ways a `<select>` can be hard for people to use. You might think that it's 2026 now and surely everyone know how to use that element? If that's your opinion then tell me when you last saw a person zooming into their browser to try to see things and then hitting a select handled it? Or how someone confuse the selected state with the focused state resulting in the wrong value being chosen?
 
