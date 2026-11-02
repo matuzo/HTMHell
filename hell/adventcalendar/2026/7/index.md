@@ -63,7 +63,7 @@ This definition is confusing. I tend to agree with this vision from a stance of 
 
 ### The `Hidden` State
 
-Interestingly, the specs also state this: "_User agents should not render elements that are in the Hidden **state**_". This state is what `hidden` sets `display: none` apart. Applying `display: none` to an element, does not give that element the `Hidden` state. To whom does this matter? Well, basically to no-one. Only the browser cares about this and this gets relevant later on in the article.
+Interestingly, the specs also state this: "_User agents should not render elements that are in the Hidden **state**_". This state is what `hidden` sets `display: none` apart. Applying `display: none` to an element, does not give that element the `Hidden` state. To whom does this matter? Well, only to the browser, although there are cases where this gets relevant for the user and I will discuss that at the end of the article.
 
 So, elements with the `hidden` attribute get the Hidden state, but didn't `until-found` explicitly enable user agents to actually _render_ elements? Perhaps surprisingly, elements with `hidden="until-found"` do _not_ get the `Hidden` state, so `hidden="until-found"` is funnily enough not `Hidden`. Instead, a special `Hidden Until Found` state was introduced, which allows an element to be accessible to find-in-page and fragment navigation, but the element "_needs to be affected by layout containment_" (essentially if `display` is not `none`, `contents` or `inline`). It appears `hidden="until-found"` is more different from just `hidden` than I thought.
 
@@ -126,7 +126,7 @@ I have come up with a cursed way of implementing `hidden="until-found"` by actua
 }
 ```
 
-What this essentially does is this: it hides content visually, while keeping it searchable for browsers _and_ keeping it available to screen readers. You can use the same JavaScript toggle described in the use-case above to make this work exactly like a 'normal' accordion that uses `hidden="until-found"` to hide its collapsed content.
+What this essentially does is this: it hides content visually, while keeping it searchable for browsers _and_ keeping it available to screen readers. 
 
 A few notes on this:
 - I apply `content-visibility: visible` to override the default browser implementation of `hidden="until-found"`;
@@ -140,7 +140,7 @@ Compared to a regular accordion where you deliberately hide content and render i
 - one can browser-search within the hidden content;
 - one can interact with interactive elements (links, buttons) within the hidden content and by adding a `focusin` event listener, you can even toggle the visibility when a user focuses on such an item.
 
-Below is a snippet that implements this experiment. It is simplified to leave only the important parts in.
+Below is a snippet that implements this experiment. It is simplified to leave only the relevant parts in, including a minimum bit of JavaScript to make the toggle work both on `click` (on the button), on `beforematch` and on `focusin`.
 
 <p class="codepen" data-height="420" data-pen-title="Hidden until-found in use as an accordion" data-version="2" data-default-tab="result" data-slug-hash="QwpBwLm" data-user="roye7777777" style="height: 420px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/editor/roye7777777/pen/01a16504-de67-7157-bcc0-376e510e2a12">
@@ -158,7 +158,9 @@ Also: what would happen if you use a screen reader in combination with a magnifi
 
 ## A final note on reader mode
 
-There's one more thing I want to mention: browsers these days have a reader mode functionality, and its intention is to make content-heavy articles easier to read with less noise. Those who have been testing with this know that reader mode in each browser behaves differently. Each browser engine has a different implementation of this non-standardised concept, and their specific rules and guidelines are often undocumented.
+There's one more thing I want to discuss that I mentioned earlier on in this article, namely about the `Hidden` state. 
+
+Browsers these days have a reader mode functionality, and its intention is to make content-heavy articles easier to read with less noise. Those who have been testing with this know that reader mode in each browser behaves differently. Each browser engine has a different implementation of this non-standardised concept, and their specific rules and guidelines are often undocumented.
 
 Rules of thumb for reader mode are generally: let the HTML be semantically correct, have enough content for reader mode to trigger active, and most importantly in this context: **any hidden content will stay hidden**. It means: any hidden content, despite being able to be visible at some point, will always remain hidden in reader mode. To me, when using `hidden="until-found"` and `<details>`, this feels wrong. I expect content in both `hidden="until-found"` and `<details>` to be visible in reader mode. Yes, they are hidden, but they all can natively become visible, and that ability, together with this special so-called `Hidden Until Found` state, has been implemented in browsers for a reason after all! I hope this will change in browsers in the future.
 
