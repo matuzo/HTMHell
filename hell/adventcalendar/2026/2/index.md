@@ -21,9 +21,17 @@ Canvas elements however, are not accessible to keyboards and screen readers. The
 
 ## The Fallback
 
-We researched and discovered that Canvas elements are designed to have fallback HTML in case they don’t load (e.g. IE 6) which can be harnessed for accessibility. By having fallback HTML the screen reader can read out what’s on the screen. Interactive elements, such as links and buttons, can also be linked to images and text on the Canvas with JavaScript, to mimic that interactivity and add focus states when using a keyboard.
+Our accessibility team researched potential ways to make the activities more accessible and discovered that Canvas elements are designed to have fallback HTML in case they don’t load which can be harnessed for accessibility. By having fallback HTML the screen reader can read out what’s on the screen. Interactive elements, such as links and buttons, can also be linked to images and text on the Canvas with JavaScript, to mimic that interactivity and add focus states when using a keyboard.
 
-So we set to work adding in fallback HTML to closely resemble what was on the screen. However we found that these are not traditional web pages, and do not resemble them in any way. How to match the components to the closest HTML element that makes sense? How to fill in the gaps when that wasn’t possible?
+```html
+<canvas>
+  <h1>Activity Title</h1>
+  <p>Instructions</p>
+  <button>Press me!</button>
+</canvas>
+```
+
+We set to work adding in fallback HTML to closely resemble what was on the screen. However we found that these are not traditional web pages, and do not resemble them in any way. How to match the components to the closest HTML element that makes sense? How to fill in the gaps when that wasn’t possible?
 
 <p class="highlight"><strong>Note:</strong> Adding the HTML inside the Canvas is advised, but we found it wasn't compatible with some browser screen reader combinations. Instead we add it afterwards.</p>
 
