@@ -15,12 +15,15 @@ image: "advent26_7"
 active: true
 ---
 
-The `hidden` attribute has always been an odd way of hiding elements. It allows a developer to hide elements with HTML and this by itself has been a source of debate since it was introduced. [A couple of years ago, this attribute was already discussed over here](https://www.htmhell.dev/adventcalendar/2023/11/), but what that article described as the future has now become reality: `hidden` is no longer _truly_ so hidden anymore since we have got a new value for this attribute: `until-found`. 
+The `hidden` attribute has always been an odd way of hiding elements. It allows a developer to hide elements with HTML and this by itself has been a source of debate since it was introduced. [A couple of years ago, this attribute was already discussed over here](https://www.htmhell.dev/adventcalendar/2023/11/), but what has been predicted as the future, has turned into a reality today.
+It turns out, `hidden` is no longer _truly_ so hidden anymore since the introduction of `until-found` as a new value for this attribute.
 
-We were promised in the specs that when you add `hidden` to an element, you make it hidden from all presentations. Since `until-found` has been implemented, I feel being lied to a bit, as this new value seems to break that promise. I would say it is a good idea to revisit this nefarious attribute to see what has actually changed and what we can learn from it.
+From the beginning, we were promised in the specs that when you add `hidden` to an element, you make it hidden from all presentations. Since `until-found` has been implemented, I feel being lied to a bit, as this new value seems to break that promise. I would say it is a good idea to revisit this nefarious attribute to see what has actually changed and what we can learn from it.
 
 
-## Hiding important content with `display: none` has shortcomings
+## Hiding important content with `display:none` (and `hidden`) has shortcomings
+
+Let's start with a brief reminder to why `hidden="until-found"` was introduced in the first place. The very basics are that `hidden` applies `display: none` to an element as it is defined in the user agent stylesheet like that, but using `display: none` can lead to some shortcomings.
 
 Some years ago, various news media found it a good idea to cut stories on their websites in two parts by inserting a 'Continue reading' button at some point in their articles, especially on mobile devices. Below is a simplified snippet of how this concept is applied today:
 
@@ -36,50 +39,50 @@ Some years ago, various news media found it a good idea to cut stories on their 
 </p>
 ```
 
+_Note: the original version of this snippet uses `display: none`, not `hidden`, and I have retained this. In the chapter about the specs later on, I will discuss why `display: none` might indeed be a better choice than `hidden` in this context._ 
 
-_Note: you can read `display: none` here as if the `hidden` attribute was in place. The original version of this snippet used `display: none` and I have retained this. Essentially, both hide elements identically anyway._ 
 
-`display: none` can hide elements very well, but it can produce some issues. If you want to search for "_departure time_" in this snippet, you have got two choices: either read the whole article or use the in-browser **find-in-page** functionality that can for instance be triggered by pressing `CMD+F` or `CTRL+F` on a keyboard. If you try to use the latter, however, you will get zero (0) results. Why? If you hide content with `display: none`, you render it not only invisible and inaccessible to the user, but also to the user agent, causing find-in-page to fail to find any results. 
+`display: none` indeed hides the second segment of the article, but there is an issue with this approach. If you want to search for "_departure time_" in this snippet, you have got two choices: either read the whole article or use the in-browser **find-in-page** functionality that can for instance be triggered by pressing `CMD+F` or `CTRL+F` on a keyboard. If you try to use the latter, however, you will get zero (0) results. Why? If you hide content with `display: none`, you render it not only invisible and inaccessible to the user, but also to the user agent, causing find-in-page to fail to find any results. 
 
-What also will not work with hidden content is linking to a page anchor (by referring to an `id` attribute set, think of `website.test/some-page#paragraph-1`) and using text fragments in the URL to highlight text (think of `website.test/some-page#:~:text=departure%20time`).
+What also will not work with hidden content is linking to a page anchor (in case an element has got an `id` attribute set, think of `website.test/some-page#paragraph-1`) and using text fragments in the URL to highlight text (think of `website.test/some-page#:~:text=departure%20time`).
 
 
 ## How `hidden="until-found"` fixes these shortcomings
 
-To make hidden content searchable, we can now use `hidden="until-found"`, which uses `content-visibility: hidden` instead of `display: none`. 
+To make this hidden content searchable by the user agent, we can now use `hidden="until-found"`, which uses `content-visibility: hidden` instead of `display: none`. 
 
 By using `content-visibility`, the element keeps its box, but its contents are not rendered, and the browser retains its state (scroll positions, form values, focus) instead of throwing it away like `display: none` does. It allows a browser to tell content that should _really_ be hidden apart from content that is hidden but should still be searchable. 
 
-When a user searches for a term with find-in-page or text fragments, the browser searches through all searchable content on the web page. In case there is a match, the browser triggers an associated `beforematch` event on the element that contains the match and the `hidden="until-found"` attribute will be removed from the element, before scrolling to the newly revealed match. The removed attribute will not be re-added to the element, even when closing find-in-page, so the element will not be hidden again in the currently active browser session. 
-
 Note: just using `content-visibility` on an element by itself does not make the element searchable. Using `hidden="until-found"` _does_. Also, it is worth to mention that using `until-found` still does _not_ make content available to screen readers: `hidden` is meant to hide content from all presentations (see below) and a user agent is not a presentation.
+
+In practice, `hidden="until-found"` works like this: when a user searches for a term with find-in-page or text fragments, the browser searches through all searchable content on the web page. In case there is a match, the browser triggers an associated `beforematch` event on the element that contains the match and `hidden="until-found"` will be removed from the element, before scrolling to the newly revealed match. The removed attribute will not be re-added to the element, even when closing find-in-page, so the element will not be hidden again in the currently active browser session.
 
 
 ## Notes on what specs state about `hidden`
 
-[The specs state the following](https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute) about the `hidden` attribute: "_if something is marked `hidden`, it is hidden from all presentations, including, for instance, screen readers_". It is fairly strict on what you should use `hidden` for. Using `hidden` on elements that "_could legitimately be shown in another presentation_" (for example, in a tabs pattern) is literally deemed 'incorrect' because "_the tabbed interface is merely a kind of overflow presentation_", explaining you could "equally well" have "one big page with a scrollbar". 
+[The specs state the following](https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute) about the `hidden` attribute: "_if something is marked `hidden`, it is hidden from all presentations, including, for instance, screen readers_". It is fairly strict on what you should use `hidden` for. Using `hidden` on elements that "_could legitimately be shown in another presentation_" (for example, in a tabs pattern) is literally deemed 'incorrect' because "_the tabbed interface is merely a kind of overflow presentation_", explaining you could "equally well" have "one big page with a scrollbar".
 
-This definition is confusing. I tend to agree with this vision from a stance of "(information on) the internet should be available to all" and "important information should not be hidden anyway", but what bothers me is this: when we _do_ want to temporarily hide content, we should apparently _not_ use `hidden`, but should we also not use `display: none` since that is essentially what `hidden` does? That would truly be strange, as we all use `display: none` to hide elements in all kinds of use-cases, such as accordions, tabs, header navigation menus, etc. Even a closed native `<dialog>` uses `display: none` internally. Is that supposed to be different, then?
+I tend to agree with the principle of this statement from a vision of "(information on) the internet should be available to all" and "important information should not be hidden anyway", but what bothers me is this: when we _do_ want to temporarily hide content, we should apparently _not_ use `hidden`, but should we also not use `display: none` since that is essentially what `hidden` does? That would truly be strange, as we all use `display: none` to hide elements in all kinds of use-cases, such as the first snippet in this article, but also accordions, tabs, header navigation menus, etc. Even a closed native `<dialog>` uses `display: none` internally. Is that supposed to be different, then?
 
-### The `Hidden` State
+### The mysterious `Hidden` state
 
-Interestingly, the specs also state (no pun intended) this: "_User agents should not render elements that are in the `Hidden` state_". This **state** is what sets `hidden` apart from `display: none` semantically. Applying `display: none` to an element does not give that element the `Hidden` state.
-
-So, elements with the `hidden` attribute get the `Hidden` state, but didn't `until-found` explicitly enable user agents to actually _render_ elements? Perhaps surprisingly, elements with `hidden="until-found"` do _not_ get the `Hidden` state. Instead, a special `Hidden Until Found` state was introduced, which allows an element to be accessible to find-in-page and fragment navigation, but for that to happen, the element "_needs to be affected by layout containment_" (essentially if `display` is not `none`, `contents` or `inline`). It appears `hidden="until-found"` is more different from just `hidden` than I thought.
+Interestingly, the specs also state (no pun intended) this: "_User agents should not render elements that are in the `Hidden` state_". This **state** is what sets `hidden` apart from `display: none` semantically: applying `display: none` to an element does not give an element the `Hidden` state. 
 
 This `Hidden` state is only relevant for the browser, as it is the browser that uses this state to determine the relevance of the content. After all, a user will not notice the visible difference between `hidden` and `display: none`. There can be cases, however, where states _do_ get relevant for the user. I will talk about such a case in the final chapter of this article.
+
+So, elements with the `hidden` attribute get the `Hidden` state, but didn't `until-found` explicitly enable user agents to actually _render_ elements? Perhaps surprisingly, elements with `hidden="until-found"` do _not_ get the `Hidden` state. Instead, a special `Hidden Until Found` state is introduced, which allows an element to be accessible to find-in-page and fragment navigation, but for that to happen, the element "_needs to be affected by layout containment_" (essentially if `display` is not `none`, `contents` or `inline`). It appears `hidden="until-found"` is more different from just `hidden` than I thought.
 
 
 ## Comparison with `<details>`
 
 Essentially, `hidden="until-found"` works similarly to `<details>`, as both use `content-visibility` to hide content. However, `<details>` was not meant to work like this when it was introduced. Its original purpose was simply to allow a user to toggle the visibility of content without having to resort to using JavaScript or CSS and yes, its original implementation worked with a `display: none` toggle. Only when `content-visibility` arrived in browsers was `display: none` replaced by it, which created a way to expand any `<details>` through find-in-page. 
 
-Notable differences to `hidden="until-found"` is that you **will be able to collapse `<details>` natively** after a match has caused to expand it and there `<details>` has user interface additions, like a (native) marker, suggesting there is hidden content to expand, while `hidden="until-found"` does not give any clues by itself. 
+Notable differences to `hidden="until-found"` is that you **will be able to collapse `<details>` natively** after a match has caused to expand it and `<details>` has user interface additions, like a (native) marker, suggesting there is hidden content to expand, while `hidden="until-found"` does not give any clues by itself. 
 
 
 ## An accordion use-case with `hidden="until-found"`
 
-Let us make an accordion where we can actually search in collapsed content, using `hidden="until-found"`. [As a base, we can take this Accordion Example in the ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/#support-notice-header). That example already makes use of `hidden=""` – the attribute the specs kind of told us _not_ to use here! – to hide content, so make the content available for find-in-page is as simple as adding `until-found` as a value to that same attribute. 
+Let us make an accordion where we can search in collapsed content, using `hidden="until-found"`. [As a base, we can take this Accordion Example in the ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/#support-notice-header). That example already makes use of `hidden=""` – the attribute the specs kind of told us _not_ to use here! – to hide content, so to make the content available for find-in-page is as simple as adding `until-found` as a value to that same attribute. 
 
 Consider the following HTML snippet, where JavaScript has been omitted for brevity:
 
@@ -99,11 +102,11 @@ Consider the following HTML snippet, where JavaScript has been omitted for brevi
 </div>
 ```
 
-Essentially, here we manage to more or less replicate `<details>`, as we can search in the collapsed content and we can actively expand and collapse the content, but there are notable differences.
+Essentially, here we manage to more or less replicate `<details>`, as we can expand the content by searching in the hidden content, while also being able to collapse it, but there are notable differences.
 
 Firstly, **headings keep their semantic meaning** consistently. `<details>` has a limitation in its usage [Scott O'Hara elaborates in more detail about](https://www.scottohara.me/blog/2022/09/12/details-summary.html), but the core issue here is that when you would place a heading inside the compulsory `<summary>`, browsers and screen readers could interpret this heading as _presentational_, which messes up with the intended semantics of the page.
 
-Secondly, we **do need JavaScript** to control the visibility state of the content and the state of `aria-expanded`. Using JavaScript allows us to let `hidden="until-found"` truly shine in here, as we can use the `beforematch` event to our advantage to toggle this visibility state.
+Secondly, we **do need JavaScript** to control the visibility state of the content and the state of `aria-expanded`. Using JavaScript allows us to let `hidden="until-found"` truly shine in here, as we can listen for the `beforematch` event to fire and use that to toggle the visibility state.
 
 
 ## About browser support
