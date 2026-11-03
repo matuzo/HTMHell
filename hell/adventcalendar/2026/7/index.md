@@ -50,9 +50,9 @@ To make hidden content searchable, we can now use `hidden="until-found"`, which 
 
 By using `content-visibility`, the element keeps its box, but its contents are not rendered, and the browser retains its state (scroll positions, form values, focus) instead of throwing it away like `display: none` does. It allows a browser to tell content that should _really_ be hidden apart from content that is hidden but should still be searchable. 
 
-When a user searches for a term with find-in-page or text fragments, the browser searches through all searchable content on the web page and in case there is a match, the browser triggers an associated `beforematch` event on the element that contains the match and the `hidden="until-found"` attribute will be removed from the element, before scrolling to the newly revealed match. The removed attribute will not be re-added to the element, even when closing find-in-page, so the element will not be hidden again in the currently active browser session. 
+When a user searches for a term with find-in-page or text fragments, the browser searches through all searchable content on the web page. In case there is a match, the browser triggers an associated `beforematch` event on the element that contains the match and the `hidden="until-found"` attribute will be removed from the element, before scrolling to the newly revealed match. The removed attribute will not be re-added to the element, even when closing find-in-page, so the element will not be hidden again in the currently active browser session. 
 
-Note: just using `content-visibility` on an element by itself does not make the element searchable though. Using `hidden="until-found"` _does_. Also, it is worth to mention that using `until-found` still does _not_ make content available to screen readers: `hidden` is meant to hide content from all presentations (see below) and a user agent is not a presentation.
+Note: just using `content-visibility` on an element by itself does not make the element searchable. Using `hidden="until-found"` _does_. Also, it is worth to mention that using `until-found` still does _not_ make content available to screen readers: `hidden` is meant to hide content from all presentations (see below) and a user agent is not a presentation.
 
 
 ## Notes on what specs state about `hidden`
