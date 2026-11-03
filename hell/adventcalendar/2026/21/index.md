@@ -8,7 +8,7 @@ author_links:
     url: "https://sidvishnoi.com/"
     link_label: "Website"
 intro: "<p>Stop wasting mobile bandwidth! Conditionally load images using CSS, the HTML picture element, or try a native lazy-loading trick</p>"
-image: "advent26_1"
+image: "advent26_21"
 active: true
 ---
 
@@ -105,7 +105,7 @@ To avoid loading an image, we can substitute it with a [transparent 1px image](h
 </picture>
 ```
 
-This approach handles image dimensions as expected. There won't be an image load request (apart from a local data URI) either ([demo](https://test.sidvishnoi.com/conditional-image-loading/html-picture.html)). The browser's speculative preloading — loading the image in the presence of a parser-blocking script — will work appropriately as well, and only on desktop as it should.
+This approach handles image dimensions as expected. There won't be an image load request (apart from a local data URI) either ([demo](https://test.sidvishnoi.com/conditional-image-loading/html-picture.html)). The browser's speculative preloading (loading the image in the presence of a parser-blocking script) will work appropriately as well, and only on desktop as it should.
 
 By the way, assuming you've passed width and height attributes (which you should to [prevent layout shifts](https://www.aleksandrhovhannisyan.com/blog/setting-width-and-height-on-images/)), this `<picture>` will take up the space/aspect ratio of the `<img>` even when using the other 1px `<source>`. We'll need some CSS to hide that transparent space:
 
@@ -142,13 +142,13 @@ In the olden days, we used a `data-src` attribute on `<img>` that we turned into
 </script>
 ```
 
-Note, we can't do the opposite here: keep `src` by default and then turn it into `data-src`, as that'll be too late. We don't get any loading benefits on desktop either. We also need the same `display: none` CSS so the images hide again if the viewport shrinks after they've loaded. Not sure why someone would do this, unless they want to use JS for everything?
+We can't do the opposite here: keep `src` by default and then turn it into `data-src`, as that'll be too late. We don't get any loading benefits on desktop either. We also need the same `display: none` CSS so the images hide again if the viewport shrinks after they've loaded. Not sure why someone would do this, unless they want to use JS for everything?
 
 ## Bonus: Native lazy loading trick
 
 Alternatively, if we are sure that the image will be reasonably [far below the viewport](https://calibreapp.com/blog/native-lazy-loading#how-far-ahead-each-browser-fetches-lazy-images), we can use `<img>` with `loading="lazy"` and then hide the `<img>` on mobile with `display: none` ([demo](https://test.sidvishnoi.com/conditional-image-loading/html-lazy.html)).
 
-User avatars in a long comment thread are a good fit for this approach — we might want to avoid loading these images on compact mobile layouts, and they usually sit well below the first screen.
+User avatars in a long comment thread are a good fit for this approach: we might want to avoid loading these images on compact mobile layouts, and they usually sit well below the first screen.
 
 ```html
 <!-- IMPORTANT: This image must be far below viewport -->
