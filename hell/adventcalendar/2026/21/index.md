@@ -12,10 +12,18 @@ image: "advent26_1"
 active: true
 ---
 
-Suppose we want to load an image on a desktop, but not on mobile. Perhaps the image isn't important enough for mobile, but it's not purely decorative either. We may be tempted to do something like this:
+Suppose we want to load an image on desktop, but not on mobile. In a design I worked on, the hero section featured two images arranged in an asymmetric grid ([preview](./sample-layout.png)). On mobile, stacking both images pushed the actual content too far down, so we showed only one. The second image wasn't purely decorative, but it wasn't worth downloading on a phone either.
+
+We may be tempted to do something like this:
 
 ```html
-<img src="image.png" class="desktop-only" alt="" width="600" height="400" />
+<img
+  src="image.png"
+  class="desktop-only"
+  alt="description of image"
+  width="600"
+  height="400"
+/>
 
 <style>
   @media (max-width: 480px) {
@@ -28,7 +36,7 @@ Suppose we want to load an image on a desktop, but not on mobile. Perhaps the im
 
 However, if we check the Network Panel in DevTools, we'll see that the image did load but was only hidden with CSS ([demo](https://test.sidvishnoi.com/conditional-image-loading/css-display-none.html)). So, how can we prevent an image from loading altogether under particular conditions? The condition can be any media query: hide only on mobile, hide only on desktop, or skip loading in data saver mode. In this post, I'll use `max-width: 480px` to imply "mobile device".
 
-Let's explore a few ways to conditionally load images and why you would want to use each.
+Let's explore a few ways to conditionally load images and why you would want to use each. I tested everything here in the latest versions of Chrome and Firefox (desktop and Android) and Safari on desktop, as of writing. I didn't get to test Safari on iOS.
 
 ## CSS background image
 
@@ -52,7 +60,7 @@ If the image is decorative only, we can use CSS `background` to define the image
 </style>
 ```
 
-This will correctly prevent loading the image on a small viewport ([demo](https://test.sidvishnoi.com/conditional-image-loading/css-background-img.html)), but it has some issues.
+This will correctly prevent loading the image on small viewports ([demo](https://test.sidvishnoi.com/conditional-image-loading/css-background-img.html)), but there are some drawbacks.
 
 First, we need to define the image/container size in CSS for each such image (either via width/height or using aspect-ratio), as our `<div>` has no height. We can't use the image's natural height like with `<img>`. We can use CSS variables to avoid editing our stylesheet for every instance:
 
@@ -116,35 +124,41 @@ Ideally, the above should be our go-to approaches, but for completeness, let's r
 In the olden days, we used a `data-src` attribute on `<img>` that we turned into `src` with JavaScript to lazy-load images. We can try something like that here as well:
 
 ```html
-<img data-src="image.png" alt="" width="600" height="400" />
+<img data-src="image.png" alt="description of image" width="600" height="400" />
 
 <script>
-  const isMobile = window.matchMedia("(max-width: 480px)").matches;
-  document.querySelectorAll("img[data-src]").forEach((img) => {
-    if (!isMobile) {
-      img.setAttribute("src", img.dataset.src);
-      img.removeAttribute("data-src");
-    }
-  });
-  // Be careful to trigger the above appropriately on resize or orientation change
+  const mobileViewport = window.matchMedia("(max-width: 480px)");
+  function loadImages() {
+    document.querySelectorAll("img[data-src]").forEach((img) => {
+      if (!mobileViewport.matches) {
+        img.setAttribute("src", img.dataset.src);
+        img.removeAttribute("data-src");
+      }
+    });
+  }
+  loadImages();
+  // Load later if the viewport grows (resize, rotation, zooming out)
+  mobileViewport.addEventListener("change", loadImages);
 </script>
 ```
 
-Note, we can't do the opposite here - keep `src` by default and then turn it into `data-src`, as that'll be too late. We don't get any loading benefits on desktop either. Not sure why someone would do this, unless they want to use JS for everything?
+Note, we can't do the opposite here: keep `src` by default and then turn it into `data-src`, as that'll be too late. We don't get any loading benefits on desktop either. We also need the same `display: none` CSS so the images hide again if the viewport shrinks after they've loaded. Not sure why someone would do this, unless they want to use JS for everything?
 
 ## Bonus: Native lazy loading trick
 
-Alternatively, if we are sure that the image will be reasonably [far below the viewport](https://calibreapp.com/blog/native-lazy-loading#how-far-ahead-each-browser-fetches-lazy-images), we can use `<img src="">` with `loading="lazy"` and then hide the `<img>` altogether on mobile with `display: none`. Browsers are smart here ([demo](https://test.sidvishnoi.com/conditional-image-loading/html-lazy.html)).
+Alternatively, if we are sure that the image will be reasonably [far below the viewport](https://calibreapp.com/blog/native-lazy-loading#how-far-ahead-each-browser-fetches-lazy-images), we can use `<img>` with `loading="lazy"` and then hide the `<img>` on mobile with `display: none` ([demo](https://test.sidvishnoi.com/conditional-image-loading/html-lazy.html)).
+
+User avatars in a long comment thread are a good fit for this approach — we might want to avoid loading these images on compact mobile layouts, and they usually sit well below the first screen.
 
 ```html
 <!-- IMPORTANT: This image must be far below viewport -->
 <img
-  src="image.png"
+  src="avatar.png"
   loading="lazy"
   class="desktop-only"
   alt=""
-  width="600"
-  height="400"
+  width="128"
+  height="128"
 />
 
 <style>
@@ -156,8 +170,11 @@ Alternatively, if we are sure that the image will be reasonably [far below the v
 </style>
 ```
 
-By adding `loading="lazy"`, we tell the browser to wait until the image is visible (or about to become visible). Since our CSS ensures it never becomes visible on mobile, the browser skips the loading entirely.
+By adding `loading="lazy"`, we tell the browser to wait until the image is visible (or about to become visible). Since our CSS ensures it never becomes visible on mobile, the browser skips the loading entirely. This won't suit images near the top of the page, like my hero images example: the browser loads them right away, even when they're hidden by CSS.
 
----
+## Conclusion
 
-**TL;DR:** Use CSS background images for purely decorative images and when you're ok specifying dimensions in CSS. Use the `<picture>` element for important content images, reasonable markup, and less dependency on CSS (keeping the image within markup). Save the JS for actual interactivity.
+1. Use `<picture>` with an empty `<source>` as the default choice for content images. Dimensions and alt text stay in the HTML, and the browser can still start loading the image early on desktop.
+2. Use `loading="lazy"` with `display: none` for images well below the fold. It needs the least code.
+3. Use a CSS `background-image` for purely decorative images, if you're fine setting dimensions in CSS and giving up early loading.
+4. Avoid JavaScript for this. Images load later, and you have to handle resizing yourself.
