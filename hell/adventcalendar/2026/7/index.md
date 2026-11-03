@@ -16,7 +16,7 @@ active: true
 ---
 
 The `hidden` attribute has always been an odd way of hiding elements. It allows a developer to hide elements with HTML and this by itself has been a source of debate since it was introduced. [A couple of years ago, this attribute was already discussed over here](https://www.htmhell.dev/adventcalendar/2023/11/), but what has been predicted as the future, has turned into a reality today.
-It turns out, `hidden` is no longer _truly_ so hidden anymore since the introduction of `until-found` as a new value for this attribute.
+It appears `hidden` is no longer _truly_ so hidden anymore since the introduction of `until-found` as a new value for this attribute.
 
 From the beginning, we were promised in the specs that when you add `hidden` to an element, you make it hidden from all presentations. Since `until-found` has been implemented, I feel being lied to a bit, as this new value seems to break that promise. I would say it is a good idea to revisit this nefarious attribute to see what has actually changed and what we can learn from it.
 
@@ -49,7 +49,7 @@ What also will not work with hidden content is linking to a page anchor (in case
 
 ## How `hidden="until-found"` fixes these shortcomings
 
-To make this hidden content searchable by the user agent, we can now use `hidden="until-found"`, which uses `content-visibility: hidden` instead of `display: none`. 
+To make hidden content searchable by the user agent, we can now use `hidden="until-found"`, which uses `content-visibility: hidden` instead of `display: none`. 
 
 By using `content-visibility`, the element keeps its box, but its contents are not rendered, and the browser retains its state (scroll positions, form values, focus) instead of throwing it away like `display: none` does. It allows a browser to tell content that should _really_ be hidden apart from content that is hidden but should still be searchable. 
 
@@ -118,7 +118,7 @@ If a browser does not support `until-found`, it falls back to using `display: no
 
 ## A cursed thought experiment
 
-A screen reader user will need to use a button (with JavaScript) to toggle the visibility of hidden content to be able to access the content, whether it has `until-found` or not. In case you would want to let screen readers access hidden content without them having to press a toggle, there are ways to work around this limitation.
+In case a `<details>` does not suffice in a particular use-case, a screen reader user will need to interact with a button (with JavaScript enabled) to toggle the visibility of a hidden element to be able to access its contents, whether it is hidden by `hidden="until-found"` or not. In case you would want to let screen readers access hidden content without them having to press a scripted toggle, there are ways to work around this limitation.
 
 I have come up with a cursed way of implementing `hidden="until-found"` by actually _not_ hiding its contents by default. Consider this CSS snippet:
 
