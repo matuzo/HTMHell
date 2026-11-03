@@ -37,16 +37,18 @@ Some years ago, various news media found it a good idea to cut stories on their 
 ```
 
 
-_Note: you can read `display: none` here as if the `hidden` attribute was in place. The original example used here, however, used `display: none` and I have retained this. Essentially, both hide elements identically anyway._ 
+_Note: you can read `display: none` here as if the `hidden` attribute was in place. The original version of this snippet used `display: none` and I have retained this. Essentially, both hide elements identically anyway._ 
 
-`display: none` can hide elements very well, but it can produce some issues. If you want to search for "_departure time_" in such an article, you have got two choices: either read the whole article or use the in-browser **find-in-page** functionality that can for instance be triggered by pressing `CMD+F` or `CTRL+F` on a keyboard. If you try to use the latter, however, you will get zero (0) results. Why? If you hide content with `display: none`, you render it not only invisible and inaccessible for the user, but also for the user agent, causing find-in-page to fail to produce any results. 
+`display: none` can hide elements very well, but it can produce some issues. If you want to search for "_departure time_" in this snippet, you have got two choices: either read the whole article or use the in-browser **find-in-page** functionality that can for instance be triggered by pressing `CMD+F` or `CTRL+F` on a keyboard. If you try to use the latter, however, you will get zero (0) results. Why? If you hide content with `display: none`, you render it not only invisible and inaccessible to the user, but also to the user agent, causing find-in-page to fail to find any results. 
 
 What also will not work with hidden content is linking to a page anchor (by referring to an `id` attribute set, think of `website.test/some-page#paragraph-1`) and using text fragments in the URL to highlight text (think of `website.test/some-page#:~:text=departure%20time`).
 
 
 ## How `hidden="until-found"` fixes these shortcomings
 
-To make hidden content searchable, we can now use `hidden="until-found"`, which uses `content-visibility: hidden` instead of `display: none`. With `content-visibility`, the element keeps its box, but its contents are not rendered, and the browser retains its state (scroll positions, form values, focus) instead of throwing it away like `display: none` does. It allows a browser to tell content that should _really_ be hidden apart from content that is hidden but should still be searchable. 
+To make hidden content searchable, we can now use `hidden="until-found"`, which uses `content-visibility: hidden` instead of `display: none`. 
+
+By using `content-visibility`, the element keeps its box, but its contents are not rendered, and the browser retains its state (scroll positions, form values, focus) instead of throwing it away like `display: none` does. It allows a browser to tell content that should _really_ be hidden apart from content that is hidden but should still be searchable. 
 
 When a user searches for a term with find-in-page or text fragments, the browser searches through all searchable content on the web page and in case there is a match, the browser triggers an associated `beforematch` event on the element that contains the match and the `hidden="until-found"` attribute will be removed from the element, before scrolling to the newly revealed match. The removed attribute will not be re-added to the element, even when closing find-in-page, so the element will not be hidden again in the currently active browser session. 
 
@@ -72,7 +74,7 @@ This `Hidden` state is only relevant for the browser, as it is the browser that 
 
 Essentially, `hidden="until-found"` works similarly to `<details>`, as both use `content-visibility` to hide content. However, `<details>` was not meant to work like this when it was introduced. Its original purpose was simply to allow a user to toggle the visibility of content without having to resort to using JavaScript or CSS and yes, its original implementation worked with a `display: none` toggle. Only when `content-visibility` arrived in browsers was `display: none` replaced by it, which created a way to expand any `<details>` through find-in-page. 
 
-The notable difference to `hidden="until-found"` is that you **will be able to collapse `<details>` natively** after a match has caused to expand it. Apart from this, `hidden="until-found"` does not come with any additional user interface additions, unlike `<details>` that comes with a marker, suggesting there is hidden content to expand.   
+Notable differences to `hidden="until-found"` is that you **will be able to collapse `<details>` natively** after a match has caused to expand it and there `<details>` has user interface additions, like a (native) marker, suggesting there is hidden content to expand, while `hidden="until-found"` does not give any clues by itself. 
 
 
 ## An accordion use-case with `hidden="until-found"`
