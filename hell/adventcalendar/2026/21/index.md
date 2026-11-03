@@ -12,7 +12,7 @@ image: "advent26_21"
 active: true
 ---
 
-Suppose we want to load an image on desktop, but not on mobile. In a design I worked on, the hero section featured two images arranged in an asymmetric grid ([preview](./sample-layout.png)). On mobile, stacking both images pushed the actual content too far down, so we showed only one. The second image wasn't purely decorative, but it wasn't worth downloading on a phone either.
+In a design I worked on, the hero section featured two images arranged in an asymmetric grid ([preview](./sample-layout.png)). On mobile, stacking both images pushed the actual content too far down, so we showed only one. The second image wasn't purely decorative, but it wasn't worth downloading on a phone either.
 
 We may be tempted to do something like this:
 
