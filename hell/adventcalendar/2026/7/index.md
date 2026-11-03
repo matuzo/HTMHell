@@ -118,7 +118,7 @@ If a browser does not support `until-found`, it falls back to using `display: no
 
 ## A cursed thought experiment
 
-In case a `<details>` does not suffice in a particular use-case, a screen reader user will need to interact with a button (with JavaScript enabled) to toggle the visibility of a hidden element to be able to access its contents, whether it is hidden by `hidden="until-found"` or not. In case you would want to let screen readers access hidden content without them having to press a scripted toggle, there are ways to work around this limitation.
+A screen reader user will need to use a button (with JavaScript) to toggle the visibility of hidden content to be able to access the content, whether it has `until-found` or not. In case you would want to let screen readers access hidden content without them having to press a toggle, there are ways to work around this limitation.
 
 I have come up with a cursed way of implementing `hidden="until-found"` by actually _not_ hiding its contents by default. Consider this CSS snippet:
 
