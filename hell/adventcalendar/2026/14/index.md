@@ -162,7 +162,7 @@ You can see the effect of the `crossoriginstorage` attribute in action with the 
 * First iframe hosted on the origin [`https://www.htmhell.dev`](tailwind-demo.html) (the origin of the HTMHell site).
   <iframe title="Tailwind demo, same origin" style="border: 6px solid #000;" allow="cross-origin-storage" src="tailwind-demo.html" width="100%" height="150"></iframe>
 * Second iframe hosted on the origin [`https://htmhell-cos-tomayacgoogle.yoyo.codes`](https://htmhell-cos-tomayacgoogle.yoyo.codes) (cross-origin from HTMHell).
-  <iframe style="border: 6px solid #000;" allow="cross-origin-storage" src="https://htmhell-cos-tomayacgoogle.yoyo.codes" width="100%" height="150"></iframe>
+  <iframe title="Tailwind demo, cross-origin" style="border: 6px solid #000;" allow="cross-origin-storage" src="https://htmhell-cos-tomayacgoogle.yoyo.codes" width="100%" height="150"></iframe>
 
 When the browser encounters this today, _absolutely nothing_ different will happen than when you had loaded the resource _without_ `crossoriginstorage` attribute. As you can verify on the DevTools Network panel, both files are loaded independently, 282kB uncompressed, the difference only being the compression (gzip vs. brotli), which means one is slightly smaller than the other. And that's it, thanks for reading my HTMHell Advent Calendar contribution.
 
