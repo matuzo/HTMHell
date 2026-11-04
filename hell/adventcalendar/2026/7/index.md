@@ -106,7 +106,7 @@ Essentially, here we manage to more or less replicate `<details>`, as we can exp
 
 Firstly, **headings keep their semantic meaning** consistently. `<details>` has a limitation in its usage [Scott O'Hara elaborates in more detail about](https://www.scottohara.me/blog/2022/09/12/details-summary.html), but the core issue here is that when you would place a heading inside the compulsory `<summary>`, browsers and screen readers could interpret this heading as _presentational_, which messes up with the intended semantics of the page.
 
-Secondly, we **do need JavaScript** to control the visibility state of the content and the state of `aria-expanded`. Using JavaScript allows us to let `hidden="until-found"` truly shine in here, as we can listen for the `beforematch` event to fire and use that to toggle the visibility state.
+Secondly, we **do need JavaScript** to control the visibility state of the content and the state of `aria-expanded`. Using JavaScript allows us to let `hidden="until-found"` truly shine in here, as we can listen for the `beforematch` event to fire and use that to toggle the visibility state. Interestingly, just like how you can't just place `content-visibility: hidden` somewhere and an element will be searchable for the user agent; you cannot just place a `beforematch` event listener on an element with visually clipped content and expect it to fire. You must use `hidden="until-found"` for this to work.  
 
 
 ## About browser support
@@ -118,7 +118,7 @@ If a browser does not support `until-found`, it falls back to using `display: no
 
 ## A cursed thought experiment
 
-A screen reader user will need to use a button (with JavaScript) to toggle the visibility of hidden content to be able to access the content, whether it has `until-found` or not. In case you would want to let screen readers access hidden content without them having to press a toggle, there are ways to work around this limitation.
+In case `<details>` is not a viable option, we need to resort to JavaScript and that means a screen reader user will need to use a button to toggle the visibility of hidden content to be able to access the content, whether it has `until-found` or not. In case you would want to let screen readers access hidden content without them having to press a toggle, there are ways to work around this limitation.
 
 I have come up with a cursed way of implementing `hidden="until-found"` by actually _not_ hiding its contents by default. Consider this CSS snippet:
 
@@ -156,9 +156,9 @@ Below is a snippet that implements this experiment. It is simplified to leave on
 
 There is much to think of here, but here are a few things I want to mention.
 
-The toggle button is still present, even when the visually hidden content is accessible to screen readers. It will still toggle the visibility. For screen reader users, this makes no difference anymore, since all content is readily available to them. To then still find a button that suggests an element is still collapsed, while it is not _actually_ is wrong and one reason not to use this altogether. One could try to hide the button from screen reader users, but there is not much one can do, really. Applying `aria-hidden="true"` onto a button is wrong, as hiding a focusable element hidden from assistive technology is an accessibility failure in itself. 
+The toggle button is still present, even when the visually hidden content is accessible to screen readers. It will still toggle the visibility. For screen reader users, this makes no difference, since all content is readily available to them. To then still find a button that suggests an element is still collapsed, while it is not _actually_ is wrong and one reason not to use this altogether. You could try to hide the button from screen reader users, but there is not much you can do, really. Applying `aria-hidden="true"` onto a button is wrong as hiding a focusable element hidden from assistive technology is an accessibility failure in itself. 
 
-Also: what would happen if you use a screen reader in combination with a magnifier? Content would be announced, but the user would not be able to see where this text is coming from, since it is visually hidden. It's potentially confusing.
+Also: what would happen if you use a screen reader in combination with a magnifier? Content could probably be announced, but the user would not be able to see where this text is coming from, since it is visually hidden. Although it is not uncommon to see this in practice (particularly in these 'read more' articles), it is potentially confusing. 
 
 
 ## Final notes on reader mode
@@ -169,6 +169,6 @@ Browsers these days have a reader mode functionality, and their intention is to 
 
 Rules of thumb for reader mode are generally: let the HTML be semantically correct, have enough content for reader mode to trigger active, and most importantly in this context: **any hidden content will stay hidden**. Any element with the `hidden` attribute set, despite having `until-found` as value and even despite being overridden with `display: block`, will always be hidden in reader mode. 
 
-To me, when using specifically `hidden="until-found"` and `<details>`, this principle feels wrong. I expect content in both `hidden="until-found"` and `<details>` to be visible in reader mode. Yes, these elements are hidden, but they all can natively become visible and that ability, together with this special so-called `Hidden Until Found` state, has been implemented in browsers for a reason after all! Why would a group of `<details>` be hidden while for instance only one actually does get visible because it has an `open` attribute on it? I hope this behaviour will change in browsers in the future.
+To me, when using specifically `hidden="until-found"` and `<details>`, this principle feels wrong. I expect content in both `hidden="until-found"` and `<details>` to be _visible_ in reader mode. Yes, these elements are hidden, but they all can natively become visible and that ability, together with this special so-called `Hidden Until Found` state, has been implemented in browsers for a reason after all! Why would a group of `<details>` be hidden except for the first as that contains an `open` attribute? I hope this behaviour will change in browsers in the future, or at least there will be an option where one can express a desire to show a collapsible element in reader mode.
 
-Important to remember here is this: if you were to use `hidden="until-found"` in a content-heavy article, you deny users the ability to read all content in reader mode. There is no way to work around this without resorting to duplicating content and rendering it invisible differently by means of `opacity: 0`, clipping, positioning it out of view or whatever nonsense, as then this duplicated content is semantically _not_ hidden. Now _that_ is hell!
+So, important to remember here is this: if you were to use `hidden="until-found"` in a content-heavy article, you deny users the ability to read all content in reader mode. There is no way to work around this without resorting to duplicating content and rendering it invisible differently by means of `opacity: 0`, clipping, positioning it out of view or whatever nonsense, as then this duplicated content is semantically _not_ hidden. Now _that_ is hell!
