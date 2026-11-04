@@ -204,7 +204,7 @@ For PHL-listed resources, browsers may occasionally lie and say they don't have 
 
 COS lets a tracker write, which turns it into a potential cross-site store. Under some circumstances, a tracker can write a resource on site&nbsp;A to store a chosen subset of small files, each file's presence encoding one bit, and read that subset back from site&nbsp;B.
 
-With the COS HTML integration, when the tracker controls the server, they can detect COS hits by observing whether requests for those resources arrive. To prevent this, we're considering a lookup budget. Every lookup that could reveal what another site stored counts against a small budget. The budget belongs to the top-level site the user is visiting, and every frame on the page draws from it, so a tracker can't multiply it by adding origins or by moving the page through subdomains. Lookups for files your own origin stored are free. Since each lookup reveals at most one bit, a budget of \$n caps a tracker at \$n bits per window. Roughly 32 bits are needed to identify a device.
+With the COS HTML integration, when the tracker controls the server, they can detect COS hits by observing whether requests for those resources arrive. To prevent this, we're considering a lookup budget. Every lookup that could reveal what another site stored counts against a small budget. The budget belongs to the top-level site the user is visiting, and every frame on the page draws from it, so a tracker can't multiply it by adding origins or by moving the page through subdomains. Lookups for files your own origin stored are free. Since each lookup reveals at most one bit, a budget of _n_ caps a tracker at _n_ bits per window. Roughly 32 bits are needed to identify a device.
 
 ## Try it today
 
