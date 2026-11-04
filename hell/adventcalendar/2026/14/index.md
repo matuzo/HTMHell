@@ -7,7 +7,7 @@ author_links:
   - label: "Site"
     url: "https://blog.tomayac.com"
     link_label: "Website"
-intro: "<p>Short introductory text</p>"
+intro: "<p>Your browser has downloaded the same copy of jQuery a thousand times since 2021. One new HTML attribute, part of the proposed Cross-Origin Storage API, could finally make it stop.</p>"
 image: "advent26_1"
 active: true
 ---
