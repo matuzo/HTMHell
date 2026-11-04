@@ -212,7 +212,7 @@ There are two ways to experiment with COS right now. Option&nbsp;1 allows you to
 
 ### Option&nbsp;1: The browser extension, easy but with caveats
 
-A browser extension polyfills the full `navigator.crossOriginStorage` surface, plus, among others, the HTML integration, which is the topic of this blog post, so you can test the complete flow in your current browser. The extension exists for all major versions.
+A browser extension polyfills the full `navigator.crossOriginStorage` surface, plus, among others, the HTML integration, which is the topic of this blog post, so you can test the complete flow in your current browser. The extension exists for all major browsers.
 
 You can also [load the extension unpacked](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked) from its [source code](https://github.com/web-ai-community/cross-origin-storage-extension). The small caveat of the extension is that it may not perfectly replicate the loading behavior of the native implementation, as the browser's preload scanner can be faster than the extension's logic overriding it. It does, however, always populate the COS cache correctly.
 
