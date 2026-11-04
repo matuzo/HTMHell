@@ -29,7 +29,7 @@ Let’s take a look at what’s needed for this minimal javascript accordion.
 The underlying HTML for the accordion is pretty simple, consisting of a heading element, a button as a child of the heading, and a div to contain the panel that's shown/hidden:
 
 ```html
-<h2 class="acc-header">
+<h2 class="acc-heading">
   <button aria-expanded="false">
     Accordion label goes here
   </button>
