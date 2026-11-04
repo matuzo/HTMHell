@@ -37,7 +37,9 @@ The underlying HTML for the accordion is pretty simple, consisting of a heading 
 <div class="acc-panel">
   <!--Accordion content goes here-->
 </div>
-A few notes on the elements being used
+```
+
+A few notes on the elements being used:
 
 - The level of the heading element doesn't matter and should be adjusted to fit the content structure of your page. This simply ensures the button it wraps has the proper heading level applied. I added the "acc-heading" class to it  to simplify the CSS used later in this example.
 - A button element as the first child of the heading element. The inner text of the button serves as the visual label and the `aria-expanded` attribute will indicate to screen readers if the content in the panel below is displayed or hidden. This attribute is very important for this pattern, as you'll see below.
