@@ -140,7 +140,7 @@ At its core, the COS HTML integration is just one new attribute, `crossoriginsto
 
 ### Example with Tailwind
 
-The jQuery library is a resource that's (still) widely used across many sites, but of course it's not something you'd use today (not jQuery per se, just this particular old version). Instead, let's use something as non-controversial as Tailwind. At the time of this writing, the latest version is  `4.3.3`, and as a globally popular resource, it can be loaded from a CDN like jsDelivr with the `crossoriginstorage` attribute:
+The jQuery library is a resource that's (still) widely used across many sites, but of course it's not something you'd use today (not jQuery per se, just this particular old version). Instead, let's use something as non-controversial as Tailwind. At the time of this writing, the latest version is `4.3.3`, and as a globally popular resource, it can be loaded from a CDN like jsDelivr with the `crossoriginstorage` attribute:
 
 ```html
 <script
