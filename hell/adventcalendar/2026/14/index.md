@@ -160,7 +160,7 @@ The jQuery library is a resource that's (still) widely used across many sites, b
 You can see the effect of the `crossoriginstorage` attribute in action with the following iframes. Both are authorized via Permissions Policy to use Cross-Origin Storage by adding `allow="cross-origin-storage"` to the iframe elements.
 
 * First iframe hosted on the origin [`https://www.htmhell.dev`](tailwind-demo.html) (the origin of the HTMHell site).
-  <iframe style="border: 6px solid #000;" allow="cross-origin-storage" src="tailwind-demo.html" width="100%" height="150"></iframe>
+  <iframe title="Tailwind demo, same origin" style="border: 6px solid #000;" allow="cross-origin-storage" src="tailwind-demo.html" width="100%" height="150"></iframe>
 * Second iframe hosted on the origin [`https://htmhell-cos-tomayacgoogle.yoyo.codes`](https://htmhell-cos-tomayacgoogle.yoyo.codes) (cross-origin from HTMHell).
   <iframe style="border: 6px solid #000;" allow="cross-origin-storage" src="https://htmhell-cos-tomayacgoogle.yoyo.codes" width="100%" height="150"></iframe>
 
