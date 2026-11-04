@@ -64,7 +64,7 @@ On site&nbsp;A, the attacker might load a script they minted just for you for th
 
 While the problem of tampered-with code is solved by Subresource Integrity (SRI) without any collateral damage (apart from the slight but automatable annoyance of having to update the hash whenever the code changes), cache-timing attacks required browsers to pull out the sledgehammer and completely isolate all their caches, rendering the above attack impossible, but also breaking all legitimate cross-origin caching with CDNs and common resources like jQuery (or today React, Vue, etc.).
 
-Since 2020, all major browsers have isolated their caches:
+Since 2021, all major browsers have isolated their caches:
 
 * [Safari by top-level `eTLD+1`](https://webkit.org/blog/8613/intelligent-tracking-prevention-2-1/#:~:text=their%20shorter%20expiry.-,Verified%20Partitioned%20Cache,-WebKit%20implemented%20partitioned)
 * [Chrome by top-level `scheme://eTLD+1` and frame `scheme://eTLD+1`](https://developer.chrome.com/blog/http-cache-partitioning/)
