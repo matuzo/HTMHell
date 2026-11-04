@@ -170,7 +170,7 @@ When the browser encounters this today, _absolutely nothing_ different will happ
 
 #### Tomorrow, with COS
 
-Well, there's of course something more. The fact that nothing different happens today also means _nothing breaks_. COS is designed as a progressive enhancement. When you use a [special build of Chromium](https://goo.gle/cos-chromium) that has the COS API already implemented, things start to look differently.
+Well, there's of course something more. The fact that nothing different happens today also means _nothing breaks_. COS is designed as a progressive enhancement. When you use a [special build of Chromium](https://goo.gle/cos-chromium) that has the COS API already implemented, things start to look different.
 
 The first iframe (or tab when you opened the demos directly) will now check and see if a resource with the hash `sha256-pgx4VjCgYZaAjL555ve9tKvMj0QhpHtW8pM4/ISAXjs=` is already stored in the COS cache. This won't be the case, so the resource will be fetched from the network from the URL it sees in the `src` attribute of the `<script>`, [`https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3/dist/index.global.js`](https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3/dist/index.global.js). After the download, the resource's _calculated_ hash will be checked against the _expected_ hash according to the `integrity` attribute. If the hashes match, the file can then be used and at the same time stored in COS.
 
