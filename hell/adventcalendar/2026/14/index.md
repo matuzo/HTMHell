@@ -119,6 +119,10 @@ The proposed COS API introduces an imperative [`navigator.crossOriginStorage.get
 
 At its core, the COS HTML integration is just one new attribute, `crossoriginstorage`. (No dashes, those are reserved for potential [HTML custom attributes](https://github.com/WICG/webcomponents/issues/1029), which I root for.) You add the `crossoriginstorage` attribute to your `<script>` tags as in the snippet below. The attribute takes optional values that determine the sharing level of resources.
 
+<p class="highlight"><strong>Note:</strong>
+  The <code>crossoriginstorage</code> attribute will also work for <code>&lt;link&gt;</code> tags and possibly <a href="https://github.com/WICG/cross-origin-storage/issues/85">other tags</a>, plus there are additional COS integrations planned <a href="https://github.com/WICG/cross-origin-storage/#css-integration">for CSS</a>, <a href="https://github.com/WICG/cross-origin-storage/#javascript-import-attribute-integration">for JavaScript</a>, and <a href="https://github.com/WICG/cross-origin-storage/#fetch-integration">for <code>fetch()</code></a>, but this being the HTMHell Advent Calendar, I chose to keep it focused on just the COS HTML integration explained at the example of <code>&lt;script&gt;</code>.
+</p>
+
 ```html
 <script
   src="https://unpkg.com/jquery@3.5.0/dist/jquery.min.js"
