@@ -83,7 +83,7 @@ You can include this meta tag in your `<head>` to indicate that your site does n
 
 ## What to test
 
-When following the operating system, you'll want to make sure that both scaled down text and scaled up text doesn't break anything.
+When following the operating system, you'll want to make sure that both scaled down text and scaled up text don't break anything.
 
 There are some things that are prone to breaking when text is scaled up:
 
