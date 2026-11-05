@@ -27,7 +27,7 @@ When you look into this, however, you'll notice that in every browser, `100%` is
 
 ## Scaling on the web
 
-Before we go over why that is, we need a little refresher on what scaling means on the web. There's roughly three ways to scale content on the web:
+Before we go over why that is, we need a little refresher on what scaling means on the web. There are roughly three ways to scale content on the web:
 
 - viewport zoom
 - page zoom
