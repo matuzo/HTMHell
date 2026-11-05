@@ -47,7 +47,7 @@ When you set this, the browser will change only the text size. Other elements, l
 
 ![normal and text zoom side-by-side](/images/advent2026/22/textzoom.png)
 
-When you use (r)ems, you probably imagine that when a user sets a different default font size on their device, that the browser behaves like the text zoom example. After all, that `100%` default font-size ostensibly means 100% of the user's default operating system font size.
+When you use (r)ems, you probably imagine that when a user sets a different default font size on their device, the browser behaves like the text zoom example. After all, that `100%` default font-size ostensibly means 100% of the user's default operating system font size.
 
 ## Current behavior
 
