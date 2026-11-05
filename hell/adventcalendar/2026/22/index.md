@@ -67,7 +67,7 @@ To cater to that one-third of mobile users, add this meta tag:
 
 If you add that to your `<head>`, you tell the browser that your site is explicitly built to handle the _actual_ default font size that your visitors have, whether that's 16px, 20px or 9px.
 
-Worth noting is that, at time of writing, "the browser" in this case is any Chromium-based browser on mobile devices. Safari and Firefox have no support for it yet, they just ignore the meta tag, and desktop Chromium does not change its behavior based on the meta tag.
+Worth noting is that, at time of writing, "the browser" in this case is any Chromium-based browser on mobile devices. Safari and Firefox have no support for it yet; they just ignore the meta tag, and desktop Chromium does not change its behavior based on the meta tag.
 
 It's part of [CSS Fonts level 5](https://drafts.csswg.org/css-fonts-5/#text-scale-meta) though, so it should make its way to other browsers in time.
 
