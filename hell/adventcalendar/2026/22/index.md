@@ -43,7 +43,7 @@ Page zoom is what happens when you zoom in on a desktop browser. Under the hood,
 
 Lastly, text zoom is ironically the oldest of the three. You can see it in action if you use Firefox and go to View -> Zoom and then check "Zoom text only".
 
-When you set this, the browser will change only the text size. Other elements, like images will remain the same size.
+When you set this, the browser will change only the text size. Other elements, like images, will remain the same size.
 
 ![normal and text zoom side-by-side](/images/advent2026/22/textzoom.png)
 
