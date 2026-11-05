@@ -29,7 +29,7 @@ Start with a header containing a logo and a navigation landmark. The `aria-label
 
 ```html
 <header class="main-header">
-  <img class="logo" src="logo.png" alt="Site logo" />
+  <img class="logo" src="logo.png" alt="Site name" />
   <nav aria-label="Main">
     <ul id="main-nav">
       <li><a href="#">Home</a></li>
@@ -71,6 +71,7 @@ Next, add the header layout and colors.
   background: var(--color-bg-subtle);
   /* Adding a border provides a visual separator in forced-colors mode */
   border-block-end: 1px solid var(--color-bg-subtle);
+  box-shadow: 0 0 4px 2px oklch(from currentcolor l c h / 0.25);
 }
 ```
 
@@ -93,21 +94,21 @@ Now add a button to open and close the navigation popover. The button's SVG icon
 
 ```html
 <header class="main-header">
-  <img class="logo" src="logo.png" alt="Site logo" />
+  <img class="logo" src="logo.png" alt="Site name" />
   <nav aria-label="Main">
-		<button popovertarget="main-nav" popovertargetaction="toggle">
-			<svg
-				class="hamburger"
-				xmlns="http://www.w3.org/2000/svg"
-				width="32"
-				height="32"
-				viewBox="0 0 256 256"
-				aria-labelledby="menu"
-			>
-				<title id="menu">Menu</title>
-				...
-			</svg>
-		</button>
+    <button popovertarget="main-nav" popovertargetaction="toggle">
+      <svg
+        class="hamburger"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 256 256"
+        aria-labelledby="menu"
+      >
+        <title id="menu">Menu</title>
+        ...
+      </svg>
+    </button>
     <ul id="main-nav" popover>
       <li><a href="#">Home</a></li>
       <li><a href="#">Page 1</a></li>
@@ -212,7 +213,6 @@ If you need to support browsers without style queries, you can omit the style qu
 
 ```css
 .main-header {
-  --show-mobile-nav: false;
   container: header / inline-size;
 
   nav {
