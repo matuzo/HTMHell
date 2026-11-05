@@ -44,7 +44,7 @@ Start with a header containing a logo and a navigation landmark. The `aria-label
 
 This first example shows the simple version of the markup. We'll add a button and the `popover` attribute to this same list in the next section.
 
-## Set up the wide-layout
+## Set up the wide layout
 
 Before making the navigation responsive, let's set up its basic styles. These examples use CSS nesting, which lets us write styles for child elements inside their parent rule. This reset removes the default list markers, margin, and padding from the navigation list.
 
@@ -69,7 +69,7 @@ Next, add the header layout and colors.
   padding-block: 0.5rem;
 
   background: var(--color-bg-subtle);
-  /* Adding a border helps with visual separator in forced-color mode */
+  /* Adding a border provides a visual separator in forced-colors mode */
   border-block-end: 1px solid var(--color-bg-subtle);
 }
 ```
@@ -89,7 +89,7 @@ Use Flexbox to lay out the links in a row. `flex-wrap: wrap` is the fallback: if
 
 ## Add a popover button
 
-Now add a button to open and close the navigation popover. The button's SVG icon has a title element that is linked with the svg via `aria-labelledby` to ensure it is accessible to assistive technologies.
+Now add a button to open and close the navigation popover. The button's SVG icon has a title element that is linked with the SVG via `aria-labelledby` to ensure it is accessible to assistive technologies.
 
 ```html
 <header class="main-header">
@@ -107,6 +107,7 @@ Now add a button to open and close the navigation popover. The button's SVG icon
 				<title id="menu">Menu</title>
 				...
 			</svg>
+		</button>
     <ul id="main-nav" popover>
       <li><a href="#">Home</a></li>
       <li><a href="#">Page 1</a></li>
@@ -151,7 +152,7 @@ So first, we'll use an `@supports` rule that checks for popover support. Then we
   container: header / inline-size;
 
   nav {
-    @supports selector(:popover-open) {
+    @supports selector(:popover-open) and (inset-block-start: anchor(end)) {
       @container header (inline-size < 60ch) and style(--show-mobile-nav: false) {
         --show-mobile-nav: true;
       }
@@ -178,17 +179,16 @@ When the header is narrow, show the button and style the list as a popover. CSS 
 
       [popover] {
         display: revert;
-        flex-direction: column;
         position: absolute;
         position-anchor: --nav-header;
         inset-inline-start: unset;
-        inset-inline-end: 0;
+        inset-inline-end: anchor(end);
         inset-block-start: anchor(end);
         inset-block-end: 0;
         block-size: auto;
         /* Make sure the popover background is not transparent */
         background: var(--color-bg-subtle);
-        /* Adding a border helps with visual separator in forced-color mode */
+        /* Adding a border provides a visual separator in forced-colors mode */
         border-inline-start: 1px solid var(--color-bg-subtle);
 
         a {
@@ -216,7 +216,7 @@ If you need to support browsers without style queries, you can omit the style qu
   container: header / inline-size;
 
   nav {
-    @supports selector(:popover-open) {
+    @supports selector(:popover-open) and (inset-block-start: anchor(end)) {
       @container header (inline-size < 60ch) {
         button {
           display: revert;
@@ -224,17 +224,16 @@ If you need to support browsers without style queries, you can omit the style qu
 
         [popover] {
           display: revert;
-          flex-direction: column;
           position: absolute;
           position-anchor: --nav-header;
           inset-inline-start: unset;
-          inset-inline-end: 0;
+          inset-inline-end: anchor(end);
           inset-block-start: anchor(end);
           inset-block-end: 0;
           block-size: auto;
           /* Make sure the popover background is not transparent */
           background: var(--color-bg-subtle);
-          /* Adding a border helps with visual separator in forced-color mode */
+          /* Adding a border provides a visual separator in forced-colors mode */
           border-inline-start: 1px solid var(--color-bg-subtle);
           box-shadow: 0 6px 4px 2px oklch(from currentcolor l c h / 0.25);
 
@@ -281,9 +280,9 @@ nav:has(:popover-open) .hamburger {
 }
 ```
 
-We can also animate the popover as it opens and closes, again only when the user has not requested reduced motion. The `scale` property makes the popover grow when it opens and shrink when it closes. Because a popover switches between being displayed and hidden, the transition also needs to include `display` and `overlay` with `allow-discrete`. The `@starting-style` rule sets the popover's starting appearance when it opens.
+We can also animate the popover as it opens and closes, again only when the user has not requested reduced motion. The `scaleX()` transform makes the popover grow when it opens and shrink when it closes. Because a popover switches between being displayed and hidden, the transition also needs to include `display` and `overlay` with `allow-discrete`. The `@starting-style` rule sets the popover's starting appearance when it opens.
 
-One detail: the CSS so far uses logical properties, which adapt to left-to-right and right-to-left languages. The `scale` property does not know which direction the text uses, so set the transform origin with a custom property. This makes the popover grow from the edge nearest the page edge in either direction.
+One detail: the CSS so far uses logical properties, which adapt to left-to-right and right-to-left languages. The transform does not know which direction the text uses, so set the transform origin with a custom property. This makes the popover grow from the edge nearest the page edge in either direction.
 
 ```css
 html {
