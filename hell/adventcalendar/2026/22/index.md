@@ -23,7 +23,7 @@ Just a quick refresher: your browser has a default stylesheet for pages, and the
 
 The idea with using rems is that it doesn't really matter what that 100% is in "actual" pixels. You're designing with a relative scale that will adjust to whatever that 100% ends up being.
 
-When you look into this however, you'll notice that in every browser, `100%` is 16 pixels, regardless of what the default font size on the operating system is.
+When you look into this, however, you'll notice that in every browser, `100%` is 16 pixels, regardless of what the default font size on the operating system is.
 
 ## Scaling on the web
 
