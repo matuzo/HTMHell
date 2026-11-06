@@ -1,13 +1,13 @@
 ---
 title: "[Tap tap] Uhm... is this thing on?"
 author: "Nadja Zollo"
-author_bio: "Nadja (she/her) is a frontend developer currently based in Cologne, Germany."
+author_bio: "Nadja (she/her) is a frontend developer from Germany. She usually has more browser tabs open than she can keep track of."
 date: 2026-12-19
 author_links:
   - label: "Nadja on LinkedIn"
     url: "https://www.linkedin.com/in/nadja-zollo/"
     link_label: "nadja-zollo"
-intro: "<p>Short introductory text</p>"
+intro: "<p>Nadja shares how chasing a silent speech recognition bug in Safari on iOS unexpectedly led her to the Web Audio API.</p>"
 image: "advent26_1"
 active: true
 ---
@@ -161,7 +161,7 @@ In Safari on iOS, context state can also change to `interrupted`, e.g. after a p
 ## Oh, it's working!
 Et voilà, a bit of fiddling later, the audio was playing. Most importantly, in Safari on iOS the audio playback → speech recognition cycle worked, too! Playing the audio and speech recognition no longer got in each other's way. And not only did the debug example work with the Web Audio API approach: after everything was finally implemented and pushed, the real application with the actual user and data flow did too. Sure, it's more code than before and it takes a few extra steps, but the chat component has been running reliably for over eight months now, and I'd call that a success.
 
-If you want to dig deeper into the Web Audio API, grab one of those homemade Christmas cookies (or two ☺️) and head over to MDN's guide [Using the Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API). It's a great resource with links to a lot of (live) examples!
+If you want to dig deeper into the Web Audio API, grab one of those homemade Christmas cookies (or two ☺️) and head over to MDN's guide [Using the Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API). It's a great resource with links to a lot of (live) examples! And if you are curious about speech recognition, then MDN also provides a guide on [Using the Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API).
 
 
 ## Check, one, two
@@ -172,8 +172,10 @@ The fix landed in WebKit in June 2026. Kudos to everyone involved! 👏 As far a
 ## Wrapping up
 I started this post by saying the best part of having options is discovering one you didn't know existed. For me, that was the Web Audio API. Of course, I had seen it before, but I just never had a use case for it. 
 
-There is this quote from the [Using the Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API) guide: 
+There is this quote from MDN's [Using the Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API) guide: 
 <q>The Web Audio API does not replace the `<audio>` media element, but rather complements it, just like `<canvas>` coexists alongside the `<img>` element. Your use case will determine what tools you use to implement audio. If you want to control playback of an audio track, the `<audio>` media element provides a better, quicker solution than the Web Audio API. If you want to carry out more complex audio processing, as well as playback, the Web Audio API provides much more power and control.</q>
 
 In theory, my use case (play some audio chunks) was a perfect fit for the good old audio element. In practice, a bug made the call. I'm actually quite happy about it. Now I know there is another tool in the box.
 
+## Acknowledgements
+A big thank you for letting me be a part of this year's HTMHell Advent Calendar! Thanks so much to [Manuel Matuzović](https://matuzo.at/) and [Marco Hengstenberg](https://marco-hengstenberg.de/) for reading my drafts and helping me improve this post, and for all the work you put into this. And thank you to everyone in the web dev and accessibility community sharing their knowledge, thoughts, and stories, whether in this Advent calendar or out there in the wild. You make the web a better, more inclusive place, and I keep learning so much from all of you! 💜
