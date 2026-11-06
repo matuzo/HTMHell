@@ -22,7 +22,7 @@ To play the audio, I went with the most obvious - and for a long time I thought 
 So far, so good. But soon enough, I ran into problems in Safari on iOS when speech recognition stopped working after the audio finished. In Safari on desktop and in Chrome, however, I did not observe this kind of behavior. As this issue affected a key feature and prevented users from having a smooth chat experience (on our primary target device, of all things), I had to come up with a solution.
 
 ## Hello? Testing... testing...
-To find a solution meant to figure out what was going on first. But the lack of error messages made troubleshooting quite challenging. Not to mention setting up a seamless debugging workflow between an iPad and your local development environment (but that's a story for another day).
+Finding a solution meant figuring out what was going on first. But the lack of error messages made troubleshooting quite challenging. Not to mention setting up a seamless debugging workflow between an iPad and your local development environment (but that's a story for another day).
 
 ### Notetaking
 The issue occured after every audio playback → speech recognition cycle, so it was reliably reproducible in Safari on iOS, whether the web app was launched in standalone mode or within the standard Safari browser. I had two test devices, one iPad running on iOS version `18.7.3` and one on version `26.2`. This led to the following observations:
@@ -41,7 +41,7 @@ By then, I had already searched half the internet, hoping Stack Overflow would c
 
 
 ## Sidestepping
-Early on, while searching for a solution to get `SpeechRecognition` and `HTMLAudioElement` working together,  the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) kept popping up in my search results. Stack Overflow threads, Mozilla Developer's Network (MDN) documentation, GitHub issues. Intrigued (or even more confused), I'd occasionally click through and start reading, only to bounce off because it sounded... just a little too much.
+Early on, while searching for a solution to get `SpeechRecognition` and `HTMLAudioElement` working together, the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) kept popping up in my search results. Stack Overflow threads, Mozilla Developer Network (MDN) documentation, GitHub issues. Intrigued (or even more confused), I'd occasionally click through and start reading, only to bounce off because it sounded... just a little too much.
 
 From MDN on [target audience](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API#web_audio_api_target_audience): <q>The Web Audio API can seem intimidating to those that aren't familiar with audio or music terms, and as it incorporates a great deal of functionality it can prove difficult to get started if you are a developer.</q>
 
@@ -151,5 +151,5 @@ I started this post by saying the best part of having options is discovering one
 There is this quote from the [Using the Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API) guide: 
 <q>The Web Audio API does not replace the `<audio>` media element, but rather complements it, just like `<canvas>` coexists alongside the `<img>` element. Your use case will determine what tools you use to implement audio. If you want to control playback of an audio track, the `<audio>` media element provides a better, quicker solution than the Web Audio API. If you want to carry out more complex audio processing, as well as playback, the Web Audio API provides much more power and control.</q>
 
-In theory, my use case (play some audio chunks) was a perfect fit for the good old audio element. In practice, a bug made the call. I'm actually quite happy about. Now I know there is another tool in the box.
+In theory, my use case (play some audio chunks) was a perfect fit for the good old audio element. In practice, a bug made the call. I'm actually quite happy about it. Now I know there is another tool in the box.
 
