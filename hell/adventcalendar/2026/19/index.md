@@ -169,9 +169,9 @@ If you want to dig deeper into the Web Audio API, grab one of those homemade Chr
 
 
 ## Check, one, two
-Do you remember the GitHub issue I mentioned earlier? This turned out to be a documented [WebKit bug (#317741)](https://bugs.webkit.org/show_bug.cgi?id=317741) that got a fix [(PR #67772)](https://github.com/WebKit/WebKit/pull/67772). The pull request description explains that using the microphone capture requires an audio session to stay active, but speech recognition did not ensure that. As a result, other processes may have deactivated the audio session, causing speech recognition to fail silently. I really can't tell why using the Web Audio API avoids this issue. All I can say is that it does.
+Do you remember the GitHub issue I mentioned earlier? Over the past few months it has come up quite often, with several developers describing similar symptoms when using speech recognition. The WebKit bug tracker documents closely related audio session problems with speech recogntion (e.g. [bug #317741](https://bugs.webkit.org/show_bug.cgi?id=317741), [bug #317747](https://bugs.webkit.org/show_bug.cgi?id=317747), [bug #321436](https://bugs.webkit.org/show_bug.cgi?id=321436), and at least one of them has a fix that landed in Safari 27. (Kudos to everyone involved! 👏)
 
-The fix landed in WebKit in June 2026. Kudos to everyone involved! 👏 As far as I can tell, it hasn't reached a stable release yet, though.
+I re-tested on my test device, now updated to iPadOS 27.2, and sadly the problem was still there. Out of curiosity, I then also tried my personal iPad, an old one that can't update past iPadOS 17.7.11. No sign of the issue there at all. So either the fix doesn't cover my case or something else is going on. I really can't tell why using the Web Audio API avoids this issue. All I can say is that it does.
 
 ## Wrapping up
 I started this post by saying the best part of having options is discovering one you didn't know existed. For me, that was the Web Audio API. Of course, I had seen it before, but I just never had a use case for it. 
