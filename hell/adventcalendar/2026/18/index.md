@@ -8,7 +8,7 @@ author_links:
     url: "https://pagespeed.one/"
     link_label: "pagespeed.one"
 intro: "<p>Short introductory text</p>"
-image: "advent26_1"
+image: "advent26_18"
 active: true
 ---
 For years, we lied to browsers. We told them how large images on the page would be, even though we often didn't know ourselves. Browsers believed us and downloaded data based on our estimates. With the `sizes="auto"` attribute, however, we are finally offloading this calculation directly to the browser.
