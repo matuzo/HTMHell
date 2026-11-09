@@ -1,11 +1,15 @@
 ---
 title: "Let's Code Like It's 1995"
 author: "Kate Bolin"
-author_bio: "Kate lives on a steady diet of bad pop culture, kitschy ephemera, and deep Internet lore. She's either too old for [x] or too young for [y], but obsesses over the entire alphabet. You can find her at [KateBolin.com](https://www.katebolin.com)."
+author_bio: "Kate lives on a steady diet of bad pop culture, kitschy ephemera, and deep Internet lore. She's either too old for [x] or too young for [y], but obsesses over the entire alphabet."
 date: 2026-12-11
 intro: "<p>You don't have to know the latest framework, language, vibe code, or whatever it is people are telling you to do. Let's remember how to code from a time when it was HTML 2.0 or nothing.</p>"
-image: "advent26_12"
+image: "advent26_11"
 active: true
+author_links:
+  - label: "Website"
+    url: "https://www.katebolin.com"
+    link_label: "katebolin.com"
 ---
 Let's go back in time.
 
@@ -83,7 +87,7 @@ Your 1995 text website?
 
 Small. Streamlined. Faster than anything.
 
-No one's going to have to worry about missing out on something important. It's all right there, and it all loads in a blink of an eye.
+No one's going to have to worry about missing out on something important. It's all right there, and it all loads in the blink of an eye.
 
 ### Safety
 
