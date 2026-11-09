@@ -52,13 +52,13 @@ they fall within what W3C calls [Tables with Two Headers](https://www.w3.org/WAI
 
 With respect to accessibility what matters in simple numerical tables is coding their header cells using `th` elements with the correct scope attribute value set. Which is `scope=col` for column headers and `scope=row` for row headers. 
 
-After having done that, when navigating the table using the screen reader commands for bidirectional table navigation (Ctrl+Alt+Arrow keys when using NVDA or JAWS), data cells values are announced together with the corresponding headers text. 
+After having done that, when navigating the table using the screen reader commands for bidirectional table navigation (Ctrl+Alt+Arrow keys when using NVDA or JAWS), data cell values are announced together with the corresponding headers text. 
 
-Which is what is needed for meaningfully consuming the data, as can be observed in this “[Using NVDA with tables](https://youtu.be/d-MBaU5d4Pk?si=lhNpDJ6fUuA4zsB6)” YouTube video by Popetech.
+Which is what is needed for meaningfully consuming the data, as can be observed in this “[Using NVDA with tables](https://youtu.be/d-MBaU5d4Pk?si=lhNpDJ6fUuA4zsB6)” YouTube video by Pope Tech.
 
 Coding complex numerical tables for accessibility is not that straightforward though.
 
-Support for columns headers organised over multiple rows (hierarchical column headers) is present in the latest versions (2026) of NVDA and JAWS, including support for header cells spanning multiple rows. But not every screen reader user relies on the newest releases of NVDA or JAWS.
+Support for column headers organised over multiple rows (hierarchical column headers) is present in the latest versions (2026) of NVDA and JAWS, including support for header cells spanning multiple rows. But not every screen reader user relies on the newest releases of NVDA or JAWS.
 
 Support for `th` elements having `scope=rowgroup` for labelling `tbody` elements is scarce. Even when it is supported, it is not announced as expected when the `th` element is positioned in `colspan` across the top of the row group, as is typical in numerical tables.
 
@@ -92,7 +92,7 @@ Let us examine each case individually.
 
 If you are targeting the latest versions (2026) of NVDA and JAWS, coding the table header using semantic HTML is all that is needed to make hierarchical column headers accessible.
 
-Wrap the headers rows in a `thead` element, use `th` elements for the header cells setting their `scope` attribute to `col`, and use the `colspan` and `rowspan` attributes for header cells spanning multiple columns and rows.
+Wrap the header rows in a `thead` element, use `th` elements for the header cells setting their `scope` attribute to `col`, and use the `colspan` and `rowspan` attributes for header cells spanning multiple columns and rows.
 
 In a few years, this approach will probably be sufficient for coding accessible hierarchical column headers. However, if you wish to support other screen readers or older versions of NVDA and JAWS right now, you must convert this semantic HTML code into an alternative form.
 
@@ -128,7 +128,7 @@ The next step is to silence all headers rows **but the bottom-most one** by mark
 
 From the screen reader’s viewpoint, the table header now consists of one row, and reading the data cells produces a header announcement corresponding to what is achieved by concatenating the full hierarchy of the relevant column headers.
 
-This time, though, concatenating the headers text did not depend on the user screen reader capabilities.
+This time, though, concatenating the headers text did not depend on the user's screen reader capabilities.
 
 To summarise, we can code the above table header using semantic HTML as follows:
 
@@ -234,7 +234,7 @@ I personally prefer doing it partly server side (the HTML rewrite) and partly cl
 
 Let’s now examine the case of hierarchical relationships between data rows. 
 
-These relationships are frequently — though not invariably —shown by indenting the related row headers, as illustrated in the figure below:
+These relationships are frequently — though not invariably — shown by indenting the related row headers, as illustrated in the figure below:
 
 <figure>
 <img src="figure3.png" alt="screenshot of Table a5.5 (HTML version)"/>
@@ -283,7 +283,7 @@ table.numerical tbody {
 
 Although we applied the attribute to indent headers visually, noting the row’s indentation level means the hierarchy can now be determined programmatically.
 
-This is because the parent of a line with a `data-indent-level` greater than zero is the first line we encounter, scrolling backwards the list of rows of the same `tbody` element, whose `data-indent-level` attribute has a lower value than that of the starting row (or where the data-indent-level attribute is missing).
+This is because the parent of a line with a `data-indent-level` greater than zero is the first line we encounter, scanning backwards through the list of rows of the same `tbody` element, whose `data-indent-level` attribute has a lower value than that of the starting row (or where the data-indent-level attribute is missing).
 
 We can now expose the hierarchy to screen readers by rewriting the row headers text, following the same method applied to hierarchical column headers.
 
@@ -374,9 +374,9 @@ Why not use `aria-level` or the `id` and `headers` attributes?
 
 `aria-level` behaviour deviates from our intent, since we seek to replicate how data cells are read in simple tables extended to complex ones.
 
-By using `id` and `headers` we can achieve something close to what we want. But we would have to use the `id` and `header` solution for all row and column headers and for each data cell. Which means that writing and maintaining the HTML table code would be a nightmare. Furthermore, not all screen readers support `id` and `headers` or handle them in the same way.
+By using `id` and `headers` we can achieve something close to what we want. But we would have to use the `id` and `header`s solution for all row and column headers and for each data cell. Which means that writing and maintaining the HTML table code would be a nightmare. Furthermore, not all screen readers support `id` and `headers` or handle them in the same way.
 
-## Handling multiple group of rows and row groups labels
+## Handling multiple groups of rows and row group labels
 
 In complex numerical tables, rows are often arranged in multiple groups, with each group introduced by a distinct label. The following figure shows an example:
 
@@ -385,7 +385,7 @@ In complex numerical tables, rows are often arranged in multiple groups, with ea
 <figcaption>Complex numerical table with two groups of rows and group labels - “By Mission”, and “By type of actuator subject” - centred above data cells</figcaption>
 </figure>
 
-Centring the label of the group above the data cells is not the only choice. For example, the label could align left while the data rows are indented. Or, the label might align left and have a bold weight while the data rows are unindented and normal weight. One way to separate these later cases from genuine hierarchical headers is the lack of non-empty data cells in the row.
+Centring the label of the group above the data cells is not the only choice. For example, the label could align left while the data rows are indented. Or, the label might align left and have a bold weight while the data rows are unindented and normal weight. One way to separate these latter cases from genuine hierarchical headers is the lack of non-empty data cells in the row.
 
 <figure>
 <img src="figure5.png" alt="screenshot of Table a4.8"/>
