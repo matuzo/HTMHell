@@ -15,7 +15,7 @@ In web development, as in most of life, there's rarely just one way to get the r
 
 This happened to me earlier this year when I was working on an AI-assisted tutoring web application. For the conversation with the AI assistant, the web app provides a chat component which, in addition to text input, also supports voice input. We use the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) and the [SpeechRecognition interface](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) to transcribe speech-to-text and send the user's message to the backend. The backend uses [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) to stream the AI response to the frontend. This response includes text chunks and base64-encoded audio chunks.
 
-<p class="highlight"><strong>Note:</strong> As of October 2026, <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility"> Browser compatibility of the <code>SpeechRecognition</code> interface</a> is still limited. Until recently, Firefox, for example, didn't support it at all and it's only been available since Firefox 161, Nightly build. Safari provides it prefixed as <code>webkitSpeechRecognition</code>.</p>
+<p class="highlight"><strong>Note:</strong> At the time of writing, <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility"> Browser compatibility of the <code>SpeechRecognition</code> interface</a> is still limited. Until recently, Firefox, for example, didn't support it at all and it's only been available since Firefox 160 (Desktop). Safari provides it prefixed as <code>webkitSpeechRecognition</code>.</p>
 
 To play the audio, I went with the most obvious - and for a long time I thought my one and only - option, the [HTMLAudioElement interface](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement): create an audio element, take the `data:` URLs of the streamed audio chunks as source, and play them in order.
 
@@ -75,6 +75,8 @@ async function playAudio() {
 const playButton = document.getElementById("play-btn");
 playButton.addEventListener("click", playAudio);
 ```
+
+Here's a working demo on CodePen: [SpeechRecognition & HTMLAudioElement](https://codepen.io/editor/zollillo/pen/01a19df7-045a-7361-8abc-1e62d9089e70?tab=%2Findex.html%7C%2Fscript.js&orientation=left&panel=false&show=split).
 
 When using the **Web Audio API**, everything happens in an `AudioContext`. Inside this context, we now need to create and connect different audio nodes to build an _audio graph_, the main concept of the Web Audio API. Nodes come in roughly three kinds: sources (input), nodes that modify the audio, and the destination (output). Once connected, _source_ → _modification_ → _destination_ represent an audio graph:
 
@@ -156,6 +158,8 @@ playButton.addEventListener("click", async () => {
 });
 ```
 In Safari on iOS, context state can also change to `interrupted`, e.g. after a phone call or when switching tabs or apps. So it's worth checking this state, too.
+
+You can view all running together on CodePen: [SpeechRecognition & Web Audio API](https://codepen.io/editor/zollillo/pen/01a1b6ec-59d1-715c-b45d-83c32a291b33?tab=%2Findex.html%7C%2Fscript.js&orientation=left&panel=false&show=split).
 
 
 ## Oh, it's working!
