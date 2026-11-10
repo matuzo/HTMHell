@@ -31,11 +31,13 @@ Let's start!
 
 ## The worst attribute ever
 
-The `"disabled"` attribute. You guessed that this one would pop up? Good job! It's really an attribute that shouldn't be used at all. At least not in the context of a form. It's confusing for everyone. You know that button that you keep hitting without anything happening? I think you know what I mean. And if you don't, then take some time and read [this article by my friend Hampus on why "Disabled buttons suck"](https://axesslab.com/disabled-buttons-suck/).
+The `"disabled"` attribute. You guessed that this one would pop up? Good job! It's really an attribute that shouldn't be used at all. It's confusing for everyone. You know that button that you keep hitting without anything happening? I think you know what I mean. And if you don't, then take some time and read [this article by my friend Hampus on why "Disabled buttons suck"](https://axesslab.com/disabled-buttons-suck/).
 
 But it's not only buttons. This is about all form elements. That text input with a value with bad contrast that you can't do anything with. The grey radio input with the wrong value but you can't choose the right one and nobody is telling you why. Disabled form fields are almost always hard to perceive and they end up confusing people. If you'd like to dig deeper [Adrian has an article regarding using `disabled` on form controls](https://adrianroselli.com/2024/02/dont-disable-form-controls.html).
 
 Why do we keep using this attribute? The main reason is that it's easy to implement. You don't have to explain anything and the burden is on people using your form to understand why they can't do something.
+
+Instead of using the `"disabled"` attribute I think you should always be able to hit a button, and something should happen if you do so. If there is an issue you show a message with an explanation. As for other disabled form elements it depends on the context. Sometimes it's better to not have an input at all, sometimes you need to explain why. It's also better to show info in plain text instead of inside a disabled form control with bad contrast.
 
 A pet-peeve of mine is disabled form elements in a design system. In my opinion a design system should consist of elements that you'd like people to use. Why promote a thing that shouldn't exist?
 
