@@ -71,24 +71,29 @@ A common argument for using the select element is to save space: <q>We just can'
 
 ### When it might be ok
 
-- When people don't know the answer, there are several alternatives to choose from, displaying them all at the same time would make it really hard to get an overview and it's not feasible to build a custom component.
+- When people don't know the answer, there are several alternatives to choose from, displaying them all at the same time would make it really hard to get an overview, and it's not feasible to build a custom component.
 
 <p class="highlight"><strong>Bonus rant: </strong>Why is the bad decision of using a select for year of birth always followed by the equally terrible decision of having the default be the current year? Unless it's a form for babies it's unlikely to ever be the correct year.<br>
-Or, as someone on Mastodon put it: <q>It’s damn humiliating how long it takes to scroll all the way down to 1971!</q></p>
+Or, as someone on Bluesky put it: <a href="https://bsky.app/profile/did:plc:ishxjidq3hyvubicpghpsprp/post/3myelq5dixs2m"><q>It’s damn humiliating how long it takes to scroll all the way down to 1971!</q></a></p>
 
 ## In your face
 
 Our beloved `<dialog>`. I say beloved because it seems like a lot of people have really taken to it. And yes, the element itself does solve a lot of things that were very problematic with the custom `<div>`-soup we managed with JavaScript in the past. It's actually an element that is pretty solid both in terms of specification and implementation. But it might still be problematic due to how it's used.
 Often it shouldn't be there in the first place. It's an annoying element, very similar to the window popups of the past. It's in your face, and you are desperately trying to close it in order to get back to the page behind the popup. Why did you have to be interrupted like this?
+
+It might sound like only modal dialogs are problematic since you need to take action to get rid of them. But a dialog that isn't modal could also be problematic since it often hide the content behind. This is especially problematic when it comes to visible focus. That outline easily gets hidden behind an open dialog.
+
 Want people to sign up for your newsletter? Don't use a dialog. Use a form on the page. Want people to log in? Don't use a dialog. Use a dedicated login page or a login form on the current page. Have you ever tried to register an account somewhere via a dialog and then there are terms that open in a new dialog on top? Dialog misery. Let's use them less!
 
 ### When to refuse
 
 - When there is a possibility of having a dialog on top of a dialog.
-- When people are still fine even if they don't drop everything to focus on the dialog.
+- When focus might be hidden behind a dialog.
+- When people are still fine even if they don't drop everything to focus on a dialog.
 
 ### When it might be ok
 
+- When people expect it because they clicked a button with text indicating a dialog will open.
 - When it's very important that people do drop everything and take action.
 
 ## Be critical
