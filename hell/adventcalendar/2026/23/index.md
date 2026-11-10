@@ -25,7 +25,7 @@ That's not the case. HTML might be problematic for several reasons.
 1. Implementations in browsers are sometimes not good enough.
 1. Even if both the specification and the implementation are solid, HTML can still be misused.
 
-Right, so is this is about old obscure elements and attributes that are rarely used? Well, there are a couple that I don't think I have used in a long time or even ever. Elements like `<samp>` and `<rp>` or the `"ismap"` attribute on an image. This is not about those. I like to dig into HTML that are quite commonly used but that maybe it would be a good idea to use less. Or just not use at all. Ever.
+Right, so is this about old obscure elements and attributes that are rarely used? Well, there are a couple that I don't think I have used in a long time or even ever. Elements like `<samp>` and `<rp>` or the `"ismap"` attribute on an image. This is not about those. I like to dig into HTML that is quite commonly used but that maybe it would be a good idea to use less. Or just not use at all. Ever.
 
 Let's start!
 
