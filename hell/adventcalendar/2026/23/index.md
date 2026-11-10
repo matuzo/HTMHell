@@ -66,7 +66,7 @@ A common argument for using the select element is to save space: <q>We just can'
 ### When to refuse
 
 - When people know the answer, and it's faster and easier to use a text input.
-- When there are few alternatives and a radio input provide a better overview and easier interaction.
+- When there are few alternatives and radio inputs provide a better overview and easier interaction.
 - When you can choose more than one thing. Few people know how to handle a select with a `"multiple"` attribute even if they are given instructions. Use checkboxes instead.
 
 ### When it might be ok
