@@ -33,7 +33,7 @@ Let's start!
 
 The `"disabled"` attribute. You guessed that this one would pop up? Good job! It's really an attribute that shouldn't be used at all. At least not in the context of a form. It's confusing for everyone. You know that button that you keep hitting without anything happening? I think you know what I mean. And if you don't, then take some time and read [this article by my friend Hampus on why "Disabled buttons suck"](https://axesslab.com/disabled-buttons-suck/).
 
-But it's not only buttons. This is about all form elements. That text input with a value with bad contrast that you can't do anything with. The grey radio input with the wrong value but you can't choose the right one and nobody is telling you why. Disabled form fields are almost always hard to perceive and they end up confusing people. If you'd like to dig deeper [Adrian has an article regarding using disable on form controls](https://adrianroselli.com/2024/02/dont-disable-form-controls.html).
+But it's not only buttons. This is about all form elements. That text input with a value with bad contrast that you can't do anything with. The grey radio input with the wrong value but you can't choose the right one and nobody is telling you why. Disabled form fields are almost always hard to perceive and they end up confusing people. If you'd like to dig deeper [Adrian has an article regarding using `disabled` on form controls](https://adrianroselli.com/2024/02/dont-disable-form-controls.html).
 
 Why do we keep using this attribute? The main reason is that it's easy to implement. You don't have to explain anything and the burden is on people using your form to understand why they can't do something.
 
