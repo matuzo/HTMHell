@@ -109,6 +109,11 @@ module.exports = {
       "id": "wes-goulet",
       "name": "Wes Goulet",
       "link": "https://goulet.dev"
+    },
+    {
+      "id": "sprintercity",
+      "name": "Roy Keur",
+      "link": "https://bsky.app/profile/sprintercity.bsky.social"
     }
   ]
 };
