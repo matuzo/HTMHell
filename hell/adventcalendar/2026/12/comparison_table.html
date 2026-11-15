@@ -1,0 +1,336 @@
+<table>
+  <thead>
+    <tr>
+      <th>SOLUTION</th>
+      <th>ROLE ATTRIBUTES ADDED</th>
+      <th>HOW NVDA + FIREFOX READS</th>
+      <th>HOW JAWS + CHROME READS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a
+          href="https://codepen.io/editor/zkriszti/pen/01a15da6-6b2d-7685-9a62-a81e8da034ea"
+          target="_blank"
+          rel="noopener noreferrer"
+          >semantic HTML &lt;table&gt;</a
+        >
+      </td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>
+            table with 5 rows and 5 columns
+            <ul>
+              <li>
+                row 1
+                <ul>
+                  <li>column 1 - User id</li>
+                  <li>column 2 through 3 - Name</li>
+                  <li>column 4 - City</li>
+                  <li>column 5 - Country</li>
+                </ul>
+              </li>
+              <li>
+                row 2
+                <ul>
+                  <li>User id - column 1 - 628</li>
+                  <li>Name - column 2 - John</li>
+                  <li>Name - column 3 - Doe</li>
+                  <li>City - column 4 - Washington D.C</li>
+                  <li>Country - column 5 - USA</li>
+                </ul>
+              </li>
+              <li>(…and so on)</li>
+              <li>
+                row 5 (last row)
+                <ul>
+                  <li>User id - column 1 through 5 + footer content</li>
+                </ul>
+              </li>
+              <li>"out of table" announcement</li>
+            </ul>
+          </li>
+        </ul>
+        <p>Ctrl + Alt + Arrow correctly navigate the table and row-column connection doesn't break with spanned columns</p>
+      </td>
+      <td>
+        <ul>
+          <li>table with 5 columns and 5 rows</li>
+          <ul>
+            <li>Column1, Row1 (if using table mode -"T")</li>
+            <li>User id</li>
+            <li>
+              Name ("spans 2 columns" announced only if using Ctrl + Alt +
+              Arrows for table navigation)
+            </li>
+            <li>City</li>
+            <li>Country</li>
+            <li>(no further row-info announced)</li>
+            <li>628</li>
+            <li>John</li>
+            <li>Doe</li>
+            <li>Washington D.C</li>
+            <li>USA</li>
+            <li>
+              (...and so on - items in plain DOM-order, unless using Ctrl + Alt
+              + Arrows for table navigation)
+            </li>
+            <li>
+              my footer ("spans 5 columns" announced only if using Ctrl + Alt +
+              Arrows for table navigation)
+            </li>
+            <li>table end announcement</li>
+          </ul>
+        </ul>
+        <p>Ctrl + Alt + Arrow correctly navigate the table and row-column connection doesn't break with spanned columns</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        GRID 1: <br /><a
+          href="https://codepen.io/editor/zkriszti/pen/01a15d8e-0c61-7760-8df7-9eef5e0be873"
+          target="_blank"
+          rel="noopener noreferrer"
+          >structural elements w/ flat CSS grid</a
+        >
+      </td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>User id</li>
+          <li>Name</li>
+          <li>City</li>
+          <li>Country</li>
+          <li>628</li>
+          <li>John</li>
+          <li>Doe</li>
+          <li>Washington D.C</li>
+          <li>USA</li>
+          <li>(…and so on)</li>
+        </ul>
+          <p>Ctrl + Alt + Arrow would not work at all! Announcement: "not in a table cell"</p>
+      </td>
+      <td>
+        <p>the cells are just read out in DOM-order</p>
+        <p>trying to use table mode:</p>
+        <ul>
+          <li>"there are no tables on this page"</li>
+          <li>
+            Ctrl + Alt + Arrow would not work at all! Announcement: "not in a
+            table"
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        GRID 2: <br /><a
+          href="https://codepen.io/editor/zkriszti/pen/01a16d6e-b35a-7ab6-b65d-c725c253cb03"
+          target="_blank"
+          rel="noopener noreferrer"
+          >structural elements w/ flat CSS grid + roles</a
+        >
+      </td>
+      <td>table, columnheader, cell</td>
+      <td>
+        <ul>
+          <li>table</li>
+          <li>column header - User id</li>
+          <li>column header - Name</li>
+          <li>column header - City</li>
+          <li>column header - Country</li>
+          <li>cell - 628</li>
+          <li>cell - John</li>
+          <li>cell - Doe</li>
+          <li>(…and so on)</li>
+          <li>footer content</li>
+          <li>"out of table" announcement</li>
+        </ul>
+        <p>
+          While NVDA recognizes and announces cells, when trying to use table mode (Ctrl + Alt + Arrows navigation), it says: "not in a table cell".
+        </p>
+      </td>
+      <td>
+        <ul>
+          <li>table with 20 columns and 1 rows</li>
+          <li>User id</li>
+          <li>Name</li>
+          <li>City</li>
+          <li>Country</li>
+          <li>628</li>
+          <li>John</li>
+          <li>Doe</li>
+          <li>Washington D.C</li>
+          <li>USA</li>
+          <li>(…and so on)</li>
+          <li>footer content</li>
+          <li>table end announcement</li>
+        </ul>
+        <p>Ctrl + Alt + Arrows don't work reliably!</p>
+        <p>"bottom of column / top of
+        column" announcements show that the whole table is handled as one row</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        GRID 3: <br /><a
+          href="https://codepen.io/editor/zkriszti/pen/01a16e8a-8301-7a43-ad81-45d9894925b7"
+          target="_blank"
+          rel="noopener noreferrer"
+          >structural elements w/ CSS grid with grouped rows + display:
+          contents</a
+        >
+      </td>
+      <td>table, row, columnheader, cell</td>
+      <td>
+        <ul>
+          <li>
+            table with 5 rows and 5 columns
+            <ul>
+              <li>
+                row 1
+                <ul>
+                  <li>column 1 User id</li>
+                  <li>column 2 Name</li>
+                  <li>column 3 City</li>
+                  <li>column 4 Country</li>
+                </ul>
+              </li>
+              <li>
+                row 2
+                <ul>
+                  <li>User id column 1 628</li>
+                  <li>Name column 2 John</li>
+                  <li>City column 3 Doe</li>
+                  <li>Country column 4 Washington D.C</li>
+                  <li>column 5 USA</li>
+                </ul>
+              </li>
+              <li>(…and so on)</li>
+              <li>footer content</li>
+              <li>"out of table" announcement</li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Ctrl + Alt + Arrow allows to navigate the table.
+        </p>
+        </p>
+          Spanned column makes the row-column structure broken
+        </p>
+      </td>
+      <td>
+        <ul>
+          <li>
+            table with 5 columns and 4 rows
+            <ul>
+              <li>User id</li>
+              <li>Name</li>
+              <li>City</li>
+              <li>Country</li>
+              <li>628</li>
+              <li>John</li>
+              <li>Doe</li>
+              <li>Washington D.C</li>
+              <li>USA</li>
+              <li>(…and so on)</li>
+              <li>footer content</li>
+              <li>table end announcement</li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Ctrl + Alt + Arrow allows to navigate the table and in this
+          case, rows and columns are announced.
+        </p>
+        </p>
+          Spanned column makes the row-column structure broken, ie. from City, it jumps to the third literal column in
+          the next row, which includes first names!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        TABLE WITH DISPLAY: GRID: <br /><a
+          href="https://codepen.io/editor/zkriszti/pen/01a188d4-ac12-7ae0-bbe9-1da78f970077"
+          target="_blank"
+          rel="noopener noreferrer"
+          >semantic &lt;table&gt; but with grid layout</a
+        >
+      </td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>
+            table with 5 rows and 5 columns
+            <ul>
+              <li>
+                row 1
+                <ul>
+                  <li>column 1 User id</li>
+                  <li>column 2 Name</li>
+                  <li>column 3 City</li>
+                  <li>column 4 Country</li>
+                </ul>
+              </li>
+              <li>
+                row 2
+                <ul>
+                  <li>User id column 1 628</li>
+                  <li>Name column 2 John</li>
+                  <li>City column 3 Doe</li>
+                  <li>Country column 4 Washington D.C</li>
+                  <li>column 5 USA</li>
+                </ul>
+              </li>
+              <li>(…and so on)</li>
+              <li>
+                row 5
+                <ul>
+                  <li>User id - column 1, footer content</li>
+                </ul>
+              </li>
+              <li>"out of table" announcement</li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Ctrl + Alt + Arrow allows to navigate the table, rows and columns are announced.
+        </p>
+        <p>Spanned column makes the row-column structure broken</p>
+      </td>
+      <td>
+        <ul>
+          <li>table with 5 columns and 5 rows</li>
+          <ul>
+            <li>Column1, Row1 (if using table mode -"T")</li>
+            <li>User id</li>
+            <li>Name</li>
+            <li>City</li>
+            <li>Country</li>
+            <li>(no further row-info announced)</li>
+            <li>628 ("Row 2 of 5" announced if using the Ctrl + Alt + T navigation)</li>
+            <li>John</li>
+            <li>Doe</li>
+            <li>Washington D.C</li>
+            <li>USA</li>
+            <li>
+              (...and so on - items in plain DOM-order, unless using Ctrl + Alt
+              + Arrows for table navigation)
+            </li>
+            <li>
+              footer content
+            </li>
+            <li>table end announcement</li>
+          </ul>
+        </ul>
+        <p>
+          Ctrl + Alt + Arrow allows to navigate the table, rows and columns are announced.
+        </p>
+        <p>Spanned column makes the row-column structure broken</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
