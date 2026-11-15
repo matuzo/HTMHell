@@ -123,7 +123,7 @@ Don’t let grid’s great responsive opportunities carry you away - **use `<tab
 
 If you still (_really, absolutely_ must) choose grid for displaying structured data, make sure, as a bare minimum, to:
 
-- add the “table”, “row” and “cell” roles
+- add the “table”, “row”, “cell” and “columnheader” roles
 - keep a very simple, clean structure
 - not just throw the aria labels onto your HTML, but test the result with actual screen reader users!
 
