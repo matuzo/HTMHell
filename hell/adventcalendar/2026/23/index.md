@@ -53,7 +53,7 @@ A pet-peeve of mine is disabled form elements in a design system. In my opinion 
 <p class="highlight"><strong>Bonus rant: </strong>
 A dig at the HTML specification. Did you know that you can disable an entire form by setting a disabled attribute on the surrounding fieldset element? Why is this allowed? Should be illegal. Let's refuse to use it!</p>
 
-## Lets bin `<select>`
+## Let's bin `<select>`
 
 I'm not sure when I started to see this element as something really problematic, but I know that [the talk titled "Bin your select tags" by Alice Bartlett](https://www.youtube.com/watch?v=-dH6a6eMdXE) absolutely did contribute to strengthen my opinion. The talk was given at NordicJS back in 2015, and it points out several ways a `<select>` can be hard for people to use. You might think that it's 2026 now and surely everyone knows how to use that element? If that's your opinion then tell me when you last saw a person zooming into their browser to try to see things and then hitting a select handled it? Or how someone confuse the selected state with the focused state resulting in the wrong value being chosen?
 
