@@ -104,7 +104,7 @@ I think we can clearly present our winner here: NVDA yields the correct structur
 
 Umm, turns out, not so well!
 
-The plain grid-version (GRID 1) just reads the elements out loud. Zero info about the table structure! 0/10, would not recommend for structured data!
+The plain grid-version (GRID 1) just reads the elements out loud. Zero info about the table structure! While visually looks like a table, screen readers' built-in table mode functionality also breaks. 0/10, would not recommend for structured data!
 
 GRID 2 is a bit friendlier. By adding specific roles, it was at least announced that we are in a table and what specific headers we have. Then all the cells are read out in DOM-order, followed by the footer content, and lastly, NVDA also makes the out-of-table announcement that we didn't have in the plain grid version. But it’s still a subpar experience.
 
