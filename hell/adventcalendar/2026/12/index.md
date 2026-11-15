@@ -129,4 +129,6 @@ If you still (_really, absolutely_ must) choose grid for displaying structured d
 
 <p class="highlight">Let grid shine for layouts and let table do the heavy-lifting for structured data!</p>
 
+Keeping with semantic `<table>` might mean you'll still need to go with horizontal scrollbars if your table is wide, but this is still your safest bet and a decent price to pay if the result we get is a more accessible experience.
+
 <strong>NOTE:</strong> you can check out all the code examples mentioned in this article at one place in this [CodePen collection](https://codepen.io/collection/PoQrLb).
