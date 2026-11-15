@@ -106,9 +106,14 @@ Umm, turns out, not so well!
 
 The plain grid-version (GRID 1) just reads the elements out loud. Zero info about the table structure! While visually looks like a table, screen readers' built-in table mode functionality also breaks. 0/10, would not recommend for structured data!
 
-GRID 2 is a bit friendlier. By adding specific roles, it was at least announced that we are in a table and what specific headers we have. Then all the cells are read out in DOM-order, followed by the footer content, and lastly, NVDA also makes the out-of-table announcement that we didn't have in the plain grid version. But it’s still a subpar experience.
+GRID 2 is a bit friendlier. By adding specific roles, it was at least announced that we are in a table and what specific headers we have. Then all the cells are read out in DOM-order, followed by the footer content, and lastly, NVDA also makes the out-of-table announcement that we didn't have in the plain grid version. But it’s still a subpar experience. For example, this flat grid-structure prevents us from adding row roles. If you are using JAWS, this approach fails spectacularly (ie. it says "table with 20 columns and 1 rows" for a table with 5 columns and 4 rows).
 
-GRID 3 seems pretty well-groomed at first glance. NVDA announces that we are dealing with a table and gives us information about the table structure. We also get our out-of-table announcement at the end, similarly to our previous grid. Neat, isn’t it? But let’s look at it more closely. Row 1 is our header - so far so good, even though columnheader seems to be ignored. But this is the smaller problem. <strong>Look… what happens in our first data row, at the third column?</strong> Even though my code used aria-colspan and aria-colindex trying to handle the spanned name-column, the browser didn’t seem to correctly calculate the math. Now, for my sample data, this is not much of an issue, but what if we had numbers in neighboring columns? Or another spanned set of columns? We would have been in for a complete mess.
+GRID 3 differs from GRID 2 in that our grid now has a nested structure and we use display: contents to handle this. It seems pretty well-groomed at first glance. NVDA announces that we are dealing with a table and gives us information about the table structure. We also get our out-of-table announcement at the end, similarly to our previous grid. Neat, isn’t it? But let’s look at it more closely. Row 1 is our header - so far so good, even though columnheader seems to be ignored. But this is the smaller problem. We have two other issues to handle:
+
+<strong>Look… what happens in our first data row, at the third column?</strong> Even though my code used aria-colspan and aria-colindex trying to handle the spanned name-column, the browser didn’t seem to correctly calculate the math. Now, for my sample data, this is not much of an issue, but what if we had numbers in neighboring columns? Or another spanned set of columns? We would have been in for a complete mess.
+
+The other issue is that while our nested structure makes it possible to add row roles, display: contents may break accessibility in other aspects. You need to be very cautious before using it and get up-to-date info about what it may cause in browsers you need to support.
+
 
 ### The message is clear
 
