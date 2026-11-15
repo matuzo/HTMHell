@@ -21,7 +21,7 @@ At first, we had `<table>`. In the early days of web development, it was very co
 
 Ready for a time-travel? You can check my example of one such [old-school table-based layout](https://codepen.io/editor/zkriszti/pen/01a12bea-9470-7c01-ba9b-7a4182c4af99) here (you’ve been warned! 🤪)
 
-Then, if you really needed to add a genuine table, [you added a nested `<table>` (see my example here)](https://codepen.io/editor/zkriszti/pen/01a13427-5da4-7572-938a-23e92e5e2c64). You did the same if you had a specific part with a more unique layout. That was the time before we could use CSS floats, flexbox or grid. Semantics were not emphasized. With no additional context, an HTML element - such as `<table>` - could mean layout or a genuine table at the same time. If you needed to debug such a layout, well… good luck!
+Then, if you really needed to add a genuine table, [you added a nested `<table>` (see my example here)](https://codepen.io/editor/zkriszti/pen/01a13427-5da4-7572-938a-23e92e5e2c64). You did the same if you had a specific part with a more unique layout. That was the time before we could use CSS floats, flexbox or grid. Semantics were often not emphasized by page authors. With no additional context, an HTML element - such as `<table>` - could mean layout or a genuine table at the same time. If you needed to debug such a layout, well… good luck!
 
 With small-screen devices taking off, the concept of responsive design was born. As years passed by and responsive design took off, we, as a profession, collectively learned to communicate intention with HTML and solve layout by CSS.
 
