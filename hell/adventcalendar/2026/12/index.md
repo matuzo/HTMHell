@@ -115,7 +115,7 @@ GRID 3 differs from GRID 2 in that our grid now has a nested structure and we us
 
 The other issue is that while our nested structure makes it possible to add row roles, display: contents may break accessibility in other aspects. You need to be very cautious before using it and get up-to-date info about what it may cause in browsers you need to support.
 
-Then we could have a hybrid approach as well: what if we use a semantic `<table>` but decide to use a grid layout on it? What would be your expectation? (I honestly hadn't tried this very specific approach before having dived deep for this article 😁). Turns out screen readers will handle this approach pretty well, but there's one very important caveat. While the user of a screen reader is informed about rows and columns and the table stays navigable with NVDA's and JAWS' Ctrl + Alt + Arrow shortcut, if you have a spanned column (or row), the structure breaks! You either need to avoid using spanned headers or drop this approach.
+Then we could have a hybrid approach as well: what if we use a semantic `<table>` but decide to use a grid layout on it? What would be your expectation? (I honestly hadn't tried this very specific approach before having dived deep for this article 😁). Turns out screen readers will handle this approach pretty well, and it's not too difficult to keep it responsive via CSS grid, BUT there's one very important caveat. While the user of a screen reader is informed about rows and columns and the table stays navigable with NVDA's and JAWS' Ctrl + Alt + Arrow shortcut, if you have a spanned column (or row), the structure breaks! You either need to avoid using spanned headers or drop this approach altogether.
 
 ### The message is clear
 
