@@ -39,7 +39,7 @@ Indeed, all these options have their obvious or subtle drawbacks.
 
 Personally, I like to think about responsivity as a concept of _adapting_ to the characteristics of the device, which, in most of the cases, means a narrower screen. And from this aspect, with a scrollable div, we didn’t really _adapt_ to the medium, we just _kind of_ gave an often-good-enough solution. All in all, an HTML element being a `<table>` also dictates some limitations with regards to dimension and layout.
 
-My instinct here (and maybe yours, too) would naturally lead us to using CSS grid. Grid can be incredibly flexible when it comes to laying out content. Grid is also 2D like our good ol’ table. But will it be fit for our purposes? Specifically:
+My instinct here (and maybe yours, too) would naturally lead us to using CSS grid as an alternative to scrollable tables. Grid can be incredibly flexible when it comes to laying out content. Grid is also 2D like our good ol’ table. But will it be fit for our purposes? Specifically:
 
 - Will it perform better for responsivity?
 - Will it be easily stylable for displaying structured data?
