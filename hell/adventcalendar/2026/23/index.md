@@ -51,7 +51,7 @@ A pet-peeve of mine is disabled form elements in a design system. In my opinion 
 - Never.
 
 <p class="highlight"><strong>Bonus rant: </strong>
-A dig at the HTML specification. Did you know that you can disable an entire form by setting a disabled attribute on the surrounding fieldset attribute? Why is this allowed? Should be illegal. Let's refuse to use it!</p>
+A dig at the HTML specification. Did you know that you can disable an entire form by setting a disabled attribute on the surrounding fieldset element? Why is this allowed? Should be illegal. Let's refuse to use it!</p>
 
 ## Lets bin `<select>`
 
