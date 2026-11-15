@@ -55,7 +55,9 @@ A dig at the HTML specification. Did you know that you can disable an entire for
 
 ## Let's bin `<select>`
 
-I'm not sure when I started to see this element as something really problematic, but I know that [the talk titled "Bin your select tags" by Alice Bartlett](https://www.youtube.com/watch?v=-dH6a6eMdXE) absolutely did contribute to strengthen my opinion. The talk was given at NordicJS back in 2015, and it points out several ways a `<select>` can be hard for people to use. You might think that it's 2026 now and surely everyone knows how to use that element? If that's your opinion then tell me when you last saw a person zooming into their browser to try to see things and then hitting a select handled it? Or how someone confuse the selected state with the focused state resulting in the wrong value being chosen?
+I'm not sure when I started to see this element as something really problematic, but I know that [the talk titled "Bin your select tags" by Alice Bartlett](https://www.youtube.com/watch?v=-dH6a6eMdXE) absolutely did contribute to strengthen my opinion. The talk was given at NordicJS back in 2015, and it points out several ways a `<select>` can be hard for people to use.
+
+You might think that it's 2026 now and surely everyone knows how to use that element? If that's your opinion then tell me when you last saw a person on their phone trying to zoom in on the options of a select? Or how someone confuse the selected state with the focused state resulting in the wrong value being chosen?
 
 I think this element is a good example of HTML that could be better implemented in browsers. Why can't you zoom in on the options on your phone? But hopefully it will be possible to fix some of the issues with CSS soon as [customizable select elements are getting more support](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select).
 
@@ -63,7 +65,8 @@ A common argument for using the select element is to save space: <q>We just can'
 
 - If you have a short list of options use radio inputs instead. All options are visible without having to open something and it's much easier to navigate and choose.
 - If it's a really long list of alternatives but people know the answer use a text input. Common examples might be a date or a country. When using a text input remember to not force people to write the exact thing. It's easy enough to normalize data nowadays to not demand that. Let people spell things wrong and write in a format they like.
-- Using three different select elements to fill in a date is just harder for everyone. Let's refuse to use select here!
+
+Using three different select elements to fill in a date is just harder for everyone. Let's refuse to use select here!
 
 ### When to refuse
 
