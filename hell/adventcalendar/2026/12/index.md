@@ -87,12 +87,13 @@ What we are doing here, you can’t really achieve with a `<table>`, and we didn
 
 While nothing could stop you from using semantic elements for your table-like content, your table or table-like grid should still convey the structured nature of your data (that is, the “meta-information” of your table). And while you get this for free if you are using the semantic `<table>`, the grid-based solution lags behind, and won’t give you the structural information without using specific role attributes.
 
-To investigate this, I used 4 versions of the same structured data:
+To investigate this, I used 5 versions of the same structured data:
 
 - a semantic `<table>`
 - a flat-structure grid with no roles added
 - a flat-structure grid using roles of table, columnheader and cell
 - trying to keep a correct accessibility-tree with a row-grouped grid that keeps the layout with `display: contents`, using the roles for all levels: table, row, columnheader and cell.
+- a semantic `<table>` handling some styling aspects with display: grid
 
 For testing, I used Firefox with NVDA, and JAWS with Chrome, using default settings for both cases.
 
@@ -114,6 +115,7 @@ GRID 3 differs from GRID 2 in that our grid now has a nested structure and we us
 
 The other issue is that while our nested structure makes it possible to add row roles, display: contents may break accessibility in other aspects. You need to be very cautious before using it and get up-to-date info about what it may cause in browsers you need to support.
 
+Then we could have a hybrid approach as well: what if we use a semantic `<table>` but decide to use a grid layout on it? What would be your expectation? (I honestly hadn't tried this very specific approach before having dived deep for this article 😁). Turns out screen readers will handle this approach pretty well, but there's one very important caveat. While the user of a screen reader is informed about rows and columns and the table stays navigable with NVDA's and JAWS' Ctrl + Alt + Arrow shortcut, if you have a spanned column (or row), the structure breaks! You either need to avoid using spanned headers or drop this approach.
 
 ### The message is clear
 
