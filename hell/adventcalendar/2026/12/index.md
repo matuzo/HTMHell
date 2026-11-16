@@ -74,9 +74,9 @@ By default, `<table>` and a CSS grid based layout would behave the same way: in 
 
 There are no media queries for HTML structure. So this is where CSS grid could really shine! Look at the following codepen (to demonstrate the concept simply, I removed the spanning footer here) and try to resize it under / above 600px:
 
-<p class="codepen" data-height="300" data-pen-title="A grid disguised as a responsive &amp;quot;&amp;quot;table&amp;quot;&amp;quot;" data-version="2" data-default-tab="html,result" data-slug-hash="dPvKjKy" data-editable="true" data-user="zkriszti" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/editor/zkriszti/pen/01a15fc0-1ac8-775a-8781-bac67d0bb9b9">
-  A grid disguised as a responsive &quot;&quot;table&quot;&quot;</a> by Kriszti Z. (<a href="https://codepen.io/zkriszti">@zkriszti</a>)
+<p class="codepen" data-height="300" data-pen-title="A grid disguised as a responsive &amp;quot;&amp;quot;table&amp;quot;&amp;quot;, collapsing on small screens into a list-like format - with &amp;quot;row&amp;quot; roles" data-version="2" data-default-tab="html,result" data-slug-hash="jEBRxdO" data-editable="true" data-user="zkriszti" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/editor/zkriszti/pen/01a1e569-8ed2-786a-9f56-21805bb1659d">
+  A grid disguised as a responsive &quot;&quot;table&quot;&quot;, collapsing on small screens into a list-like format - with &quot;row&quot; roles</a> by Kriszti Z. (<a href="https://codepen.io/zkriszti">@zkriszti</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://public.codepenassets.com/embed/index.js"></script>
@@ -85,7 +85,17 @@ What we are doing here, you can’t really achieve with a `<table>`, and we didn
 
 ### But… is this accessible?!
 
-While nothing could stop you from using semantic elements for your table-like content, your table or table-like grid should still convey the structured nature of your data (that is, the “meta-information” of your table). And while you get this for free if you are using the semantic `<table>`, the grid-based solution lags behind, and won’t give you the structural information without using specific role attributes.
+For a start, try to resize the above pen to imitate a small screen. You will see that it works responsivity-wise. You are seeing a table-like layout turn into a list-like layout. But try to read its content with a screen reader now! NVDA will present you this:
+
+- table with 4 rows and 5 columns
+- row 2
+- column 1 User id, 628
+- column 2 Name, John
+- (and so on)...
+
+So it will read out "`column [n]`" while you are seeing rows! It can be quite confusing to hear about columns in this case. Our semantics (what the screen reader says) and visual layout (what the screen shows) diverge. At least no information is lost, but it can be pretty confusing for a sighted screen reader user.
+
+While nothing should stop you from using semantic elements for your table-like content, your table or table-like grid should still convey the structured nature of your data (that is, the “meta-information” of your table). And while you get this for free if you are using the semantic `<table>`, the grid-based solution lags behind, and won’t give you the structural information without using specific role attributes.
 
 To investigate this, I used 5 versions of the same structured data:
 
