@@ -29,11 +29,11 @@ In my experience, a “gut feeling” is often more helpful than rigid rules. Ne
 
 The default behavior of block elements in HTML is the following: they are stacked in block direction (usually from top to bottom). By adding block margins to these elements, we get some space between them. The element itself controls its surrounding space. This is the default behavior in a browser for certain elements (e.g., headings, paragraphs, lists) as specified by user-agent styles.
 
-![Three rectangles representing blocks of content surrounded by a hatched area representing block margins.](images/01-mind-the-gap-block-margins.png)
+![Three cards stacked on top of each other surrounded by a hatched area representing block margins. The first card contains an order overview: a christmas gift should be delivered to Lara on 24th of December 2026. The second box contains an info text saying: Hide the packages behind the house, so the kids don't see them. In the last card, the three latest activity feed entries are shown. The order name has been updated today, yesterday a message has been received and some days ago items were added to the wishlist.](images/01-mind-the-gap-block-margins.png)
 
 Often when creating layouts, we think differently: we want to have a parent element that controls the layout within. This mindset became mainstream with the introduction of CSS flexible box (flexbox) or grid layouts.
 
-![Three boxes surrounded by a dashed border that visualizes the wrapping layout component. Between the boxes are two gaps marked as a hatched area.](images/02-mind-the-gap-layout-wrapper.png)
+![Three cards stacked on top of each other surrounded by a dashed border that visualizes the wrapping layout component. Between the cards are two gaps marked as a hatched area. The first card contains an order overview: a christmas gift should be delivered to Lara at 24th of December 2026. The second box contains an info text saying: Hide the packages behind the house, so the kids don't see them. In the last card, the three latest activity feed entries are shown. The order name has been updated today, yesterday a message has been received and some days ago items were added to the wishlist.](images/02-mind-the-gap-layout-wrapper.png)
 
 Let’s say we work with a (vertical) stack component. We use it to create a consistent spacing between its child elements, for example, a stack of text content, cards or input elements:
 
@@ -56,7 +56,7 @@ Let’s say we work with a (vertical) stack component. We use it to create a con
 
 In the above examples, there is no block margin defined for `<my-text-block>`, `<my-card>` or `<my-text-input>`. The `<my-vertical-stack>` wrapper component handles the spacing between these items.
 
-![Three boxes representing input fields with a gap between each of them. In the right bottom corner sits a slightly smiling emoji.](images/03-mind-the-gap-inputs.png)
+![Three input fields (labelled order name, delivery date, and shipping address) with a gap between each of them. In the right bottom corner sits a slightly smiling emoji.](images/03-mind-the-gap-inputs.png)
 
 As time goes by, new features are requested and the markup needs to change. In the first example, we need to extend the existing text by adding another text block on top. In the second one, validation messages should appear below the input fields. Someone changes the code as follows:
 
@@ -86,7 +86,7 @@ All requirements are met, great! Well… only the functional ones. We now have s
 1. The two text blocks belong together, but they are now separated by the same spacing as the cards.
 2. The error message belongs to the preceding input field, but there’s now the same amount of whitespace between inputs and messages in both block directions.
 
-![Three boxes, each representing an input field, and black lines below them, visualizing a validation message. The elements are grouped by a single layout wrapper indicated by a dashed border. Between each input field and error message is the same amount of whitespace. In the bottom right corner is a grimacing face emoji.](images/04-mind-the-gap-inputs-errors-gaps.png)
+![Three input fields (labelled order name, delivery date, and shipping address) where the first two have a validation message below them ("The order name must be unique" after the name input and "The delivery date must be before 24/12/2026" after the date input). The elements are grouped by a single layout wrapper indicated by a dashed border. Between each input field and error message is the same amount of whitespace. In the bottom right corner is a grimacing face emoji.](images/04-mind-the-gap-inputs-errors-gaps.png)
 
 Let’s circle back to the law of proximity: elements that are related should be placed closer together.
 
@@ -123,7 +123,7 @@ To solve our layout issues, we need to introduce more markup to wrap the UI comp
 
 The `<div>` could also be replaced by `<my-vertical-stack spacing="small">`, it really depends on the context; but you get the idea! Elements that are related and belong together often require a common parent element to create the desired layouts.
 
-![Three boxes visualizing an input field. Below each box is a line representing an error message. The input field and the error message are placed closely together. After the validation message and the next input is a hatched area, representing some spacing (a gap in CSS). In the bottom right corner sits a smiling emoji with sunglasses on.](images/05-mind-the-gap-inputs-errors-grouped.png)
+![Three input fields (labelled order name, delivery date, and shipping address) where the first two have a validation message below them ("The order name must be unique" after the name input and "The delivery date must be before 24/12/2026" after the date input). The input fields and the error messages are placed closely together. After the validation message and the next input is a hatched area, representing some spacing (a gap in CSS). In the bottom right corner sits a smiling emoji with sunglasses on.](images/05-mind-the-gap-inputs-errors-grouped.png)
 
 ##  #2 Floating in a flex layout
 
@@ -191,7 +191,7 @@ What I find quite often in code bases is the following:
 
 The example code is inspired by JSX syntax. It describes a 2-column grid layout (using CSS grid behind the scenes) where the second card is only rendered when `showDetails` is `true`. The problem here is that the wrapping `div` element is rendered nonetheless. In case `showDetails` is `false`, the result in the output markup is an empty `div` as child element of the grid layout, which leads to an empty grid cell in the UI. This could be an intentional choice, though…
 
-![A 2x2 grid layout, visualized by a dashed frame and hatched areas for the grid gaps. In the first, third and fourth grid cell sits a rectangle. The second cell is empty.](images/10-mind-the-gap-empty-cell.png)
+![A 2x2 grid layout, visualized by a dashed frame and hatched areas for the grid gaps. In the first, third and fourth grid cell sits a card element each. The first card contains order overview data: a Christmas gift for Lara should be delivered on 24/12/2026. The third card contains a list of gifts and the fourth one the latest three activities. The second cell is empty.](images/10-mind-the-gap-empty-cell.png)
 
 On smaller viewports, however, the layout changes to a one-column grid, and we’re left with a grid gap followed by an empty cell with `0px` height followed by another grid gap. Visually, there is now a double-gap between the first and the second content element, which can look slightly off.
 
