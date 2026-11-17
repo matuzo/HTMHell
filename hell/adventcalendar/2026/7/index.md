@@ -82,7 +82,7 @@ Notable differences to `hidden="until-found"` are that you **will be able to col
 
 ## An accordion use-case with `hidden="until-found"`
 
-Let us make an accordion where we can search in collapsed content, using `hidden="until-found"`. [As a base, we can take this Accordion Example in the ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/#support-notice-header). That example already makes use of `hidden=""` – the attribute the specs kind of told us _not_ to use here! – to hide content, so to make the content available for find-in-page is as simple as adding `until-found` as a value to that same attribute. 
+Let us make an accordion where we can search in collapsed content, using `hidden="until-found"`. As a base, we can take this [Accordion Example in the ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/#support-notice-header). That example already makes use of `hidden=""` – the attribute the specs kind of told us _not_ to use here! – to hide content, so to make the content available for find-in-page is as simple as adding `until-found` as a value to that same attribute. 
 
 Consider the following HTML snippet, where JavaScript has been omitted for brevity:
 
