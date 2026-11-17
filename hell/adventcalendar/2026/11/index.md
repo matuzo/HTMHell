@@ -13,9 +13,9 @@ author_links:
 ---
 Let's go back in time.
 
-It's Friday, November 24th, 1995. You're 18, you're at college, you're looking forward to tonight's _The X-Files_ and you've given up trying to talk most of your new college friends into watching _Babylon 5_, but that's fine, alt.tv.babylon-5 is there for you.
+It's Friday, November 24th, 1995. You're 18, you're at college, you're looking forward to tonight's [_The X-Files_](https://web.archive.org/web/19961026164459/http://www.thex-files.com/) and you've given up trying to talk most of your new college friends into watching [_Babylon 5_](https://web.archive.org/web/19961025002625/http://www.babylon5.com/), but that's fine, `alt.tv.babylon-5` is there for you.
 
-You're sitting in your friend's dorm room, probably listening to They Might Be Giants or something similar, and she points to the computer.
+You're sitting in your friend's dorm room, probably listening to [They Might Be Giants](https://www.theymightbegiants.com) or something similar, and she points to the computer.
 
 "You want to learn how to make a website?"
 
@@ -23,7 +23,7 @@ Hell YEAH you want to learn how to make a website.
 
 She sits you down, you sign up for a whole whopping 5MB of space on your college's studentweb server, she opens [HotDog](https://www.webdesignmuseum.org/software/hotdog-1-0-in-1995), and before you know it, you've built your first website.
 
-It's not much, just a bunch of links to all the things you like, Oingo Boingo and the Morbid Fact du Jour and Archie McPhee and _Milk & Cheese_ and obviously the [Lurker's Guide to _Babylon 5_](http://midwinter.com/lurk/). But it's _yours_ and it's _real_ and you get to be _on the web_.
+It's not much, just a bunch of links to all the things you like, [Oingo Boingo](https://boingo.org) and the [Morbid Fact du Jour](https://web.archive.org/web/19970606204642/http://www.shocking.com/~despair/morbid.htm) and [Archie McPhee](https://mcphee.com) and [_Milk & Cheese_](https://web.archive.org/web/19970129054203/http://www.houseoffun.com/m&c/index.htm) and obviously the [Lurker's Guide to _Babylon 5_](http://midwinter.com/lurk/). But it's _yours_ and it's _real_ and you get to be _on the web_.
 
 Even better, she tells you that you don't need to own your own computer to update your website. You can log into the UNIX terminals that are in the computer lab &mdash; even the old black and white ones that are available 24 hours a day.
 
@@ -65,10 +65,13 @@ But above all else, 1995 HTML is this:
 
 ```html
 <html>
+<head>
+<title>THIS IS MY WEBSITE</title>
+</head>
 <body>
-  <h1>THIS IS MY WEBSITE</h1>
-  <p>Heck yeah it is.</p>
-  <p><a href="mailto:myemailaddress">Email me too</a></p>
+<h1>THIS IS MY WEBSITE</h1>
+<p>Heck yeah it is.</p>
+<p><a href="mailto:myemailaddress">Email me too</a></p>
 </body>
 </html>
 ```
@@ -101,7 +104,7 @@ You know what data a text website collects on its visitors?
 
 Nothing.
 
-Can the server it's on get hacked? Sure, it's a server. And, c'mon, [Hackers](https://www.youtube.com/watch?v=piI9vJ9-UZ0) came out in 1995, it's not like this is _new_ to you.
+Can the server it's on get hacked? Sure, it's a server. And, c'mon, _Hackers_ came out in 1995, it's not like this is _new_ to you.
 
 But is it a lot less likely?
 
@@ -113,9 +116,9 @@ People hate to change things. People hate to update things. People will have all
 
 People will need things to work a certain way. People will want to be able to find the information they need. People are awkward and unique and beautiful and it's up to _you_ to make sure that your voice is heard, no matter how they need it.
 
-Do you want to spend all your damn time going through, like, ARIA and browser testing and analysis and all that just to make sure your website works for all these people?
+Do you want to spend alllllll your time going through ARIA and multiple browser testing and deep analysis and all that just to make sure that whatever half-assed system you're using works for everyone?
 
-Or do you want to relax and know that no matter what they're using, no matter what they're doing, no matter what they need to use, your site just _works_?
+Or do you want to do a quick five-second check and relax, knowing that no matter what they're using, no matter what they're doing, no matter what's needed, your site just _works_?
 
 ### Back up and move
 
