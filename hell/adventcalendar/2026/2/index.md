@@ -33,7 +33,7 @@ Our accessibility team researched potential ways to make the activities more acc
 
 We set to work adding in fallback HTML to closely resemble what was on the screen. However we found that these are not traditional web pages, and do not resemble them in any way. How to match the components to the closest HTML element that makes sense? How to fill in the gaps when that wasn’t possible?
 
-<p class="highlight"><strong>Note:</strong> Adding the HTML inside the Canvas was advised in the documentation, but we found it wasn't compatible with some browser screen reader combinations. Instead we tried adding it afterwards, which fixed the issue.</p>
+<p class="highlight"><strong>Note:</strong> Adding the HTML inside the Canvas was advised in the documentation, but we found it <a href="https://bugs.webkit.org/show_bug.cgi?id=50126" target="_blank">wasn't compatible with Safari</a>. Adding it afterwards fixed the issue.</p>
 
 ```html
 <canvas>
