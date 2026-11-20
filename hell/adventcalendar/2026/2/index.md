@@ -23,6 +23,8 @@ Canvas elements, however, are not accessible to keyboards and screen readers. Th
 
 Our accessibility team researched potential ways to make the activities more accessible and discovered that Canvas elements are designed to have fallback HTML in case they don’t load, which can be harnessed for accessibility. By having fallback HTML the screen reader can read out what’s on the screen. Interactive elements, such as links and buttons, can also be linked to images and text on the Canvas with JavaScript, to mimic that interactivity and add focus states when using a keyboard.
 
+Chrome is currently working on making this into a default [in-built browser feature](https://developer.chrome.com/docs/modern-web-guidance/guides/visual-design/expose-canvas-content-to-browser-features). Exposing the HTML content inside the Canvas element to the browser itself with the `content="drawable"` attribute in order to improve accessibility. However this is not standard practice yet and has limited browser support.
+
 ```html
 <canvas>
   <h1>Activity Title</h1>
