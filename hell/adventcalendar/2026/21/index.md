@@ -144,7 +144,7 @@ If we add `loading="lazy"` to a regular `<img>` and hide it on mobile with `disp
 />
 ```
 
-This needs no extra markup. And while `<picture>` element only reacts to media queries, this lazy loading technique respects any CSS that hides the image, including container queries ([demo](https://test.sidvishnoi.com/conditional-image-loading/html-lazy-container-query.html)).
+This needs no extra markup. And while the `<picture>` element only reacts to media queries, this lazy loading technique respects any CSS that hides the image, including container queries ([demo](https://test.sidvishnoi.com/conditional-image-loading/html-lazy-container-query.html)).
 
 There are a few caveats:
 
