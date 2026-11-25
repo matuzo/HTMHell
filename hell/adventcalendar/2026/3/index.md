@@ -173,7 +173,7 @@ Without the meta viewport, the actual layout viewport becomes equal to the defau
 
 ## De-facto standard
 
-Apple provided the meta viewport, while Nokia and BlackBerry provided a bunch of JavaScript properties that gave information about the viewports. This led to a de-facto standard that was eventually - with a little help from yours truly - supported by all browsers by late 2010 - and back then "all browsers" was a hell of a lot more than three. (Things changed later, but that's beyond the scope of this article. Read [this blog post](notyetwritten) for an overview of the current situation.)
+Apple provided the meta viewport, while Nokia and BlackBerry provided a bunch of JavaScript properties that gave information about the viewports. This led to a de-facto standard that was eventually - with a little help from yours truly - supported by all browsers by late 2010 - and back then "all browsers" was a hell of a lot more than three. (Things changed later, but that's beyond the scope of this article.)
 
 But there never was an official specification, not even today. There's a [draft](https://drafts.csswg.org/css-device-adapt/), and when I researched this article I found that was updated recently and is moving in the [right direction](https://www.quirksmode.org/blog/archives/2015/09/a_new_device_ad.html). That's great news, but it's the first time that an official W3C viewports document bears a resemblance to reality.
 
