@@ -45,7 +45,7 @@ If your site has such issues and you can't fix them, it's a good idea to continu
 
 <figure>
 
-![desc](viewports-1.png)
+![The Mobilism website displayed on a BlackBerry device. A Call-To-Action section sticks out of the screen.](viewports-1.png)
 
 <figcaption>The site appears to be perfectly suited for mobile screens ... but the element that sticks out of the viewport will cause trouble later on.</figcaption>
 
@@ -91,7 +91,7 @@ But a mobile screen is a lot smaller than a desktop one, especially fifteen year
 
 <figure>
 
-![desc](viewports-2.png)
+![Elements overlap on a narrow screen on the Mobilism website.](viewports-2.png)
 
 <figcaption>A desktop-only site on a narrow mobile screen, if that screen doesn't do something clever with the viewport. It's clear no one ever tested the site on this narrow of a viewport.</figcaption>
 
@@ -101,7 +101,7 @@ Nokia and BlackBerry used a desktop-sized viewport, even though it was way large
 
 <figure>
 
-![desc](viewports-3.png)
+![The desktop version of the Mobilism website shrunk to fit a mobile screen.](viewports-3.png)
 
 <figcaption>A desktop-only site in a desktop-like viewport. It works, but the user must zoom in before doing anything else.</figcaption>
 
@@ -119,7 +119,7 @@ Then a bright lad called Ethan Marcotte [made the case](https://alistapart.com/a
 
 <figure>
 
-![desc](viewports-4.png)
+![All elements on the Mobilism website fit the narrow mobile screen perfectly.](viewports-4.png)
 
 <figcaption>A mobile-optimised site uses the meta viewport to narrow its layout viewport and combines it with media queries to figure out the current width of the viewport and respond to it.</figcaption>
 
@@ -156,7 +156,7 @@ Without the meta viewport, the actual layout viewport becomes equal to the defau
 
 <figure>
 
-![desc](viewports-5.png)
+![The desktop version of the Mobilism website. The BlackBerry screen viewport covers only a small part of it. An arrow marks the entire page, including the part that overlaps the mobile screen, as the layout viewport.](viewports-5.png)
 
 <figcaption>The layout viewport tells CSS how much space it has, and is especially important for % sizes.</figcaption>
 
@@ -164,7 +164,7 @@ Without the meta viewport, the actual layout viewport becomes equal to the defau
 
 <figure>
 
-![desc](viewports-6.png)
+![The desktop version of the Mobilism website. The BlackBerry screen viewport covers only a small part of it. An arrow marks only the part that fits the mobile screen as the visual viewport.](viewports-6.png)
 
 <figcaption>The visual viewport describes the part of the layout viewport the user is currently seeing.</figcaption>
 
@@ -268,7 +268,7 @@ Previously, if an image or other element was too wide for the layout viewport, `
 
 <figure>
 
-![desc](viewports-7.png)
+![The Mobilism website displayed on a BlackBerry device. A Call-To-Action section would stick out of the screen, but it’s cut off.](viewports-7.png)
 
 <figcaption>An element sticks out of the layout viewport. The site is zoomed in to the ideal layout viewport, though, so few people notice.</figcaption>
 
@@ -278,7 +278,7 @@ Without `initial-scale=1`, however, browsers zoom out in order to accommodate th
 
 <figure>
 
-![desc](viewports-8.png)
+![The Mobilism website displayed on a BlackBerry device. A Call-To-Action section would stick out of the screen, but the browser forces it to fit, causing the rest of the page to shrink.](viewports-8.png)
 
 <figcaption>The same element sticks out of the layout viewport. There is no initial-scale. Now the browser zooms out to accommodate the element.</figcaption>
 
