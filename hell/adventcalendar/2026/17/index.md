@@ -1,7 +1,7 @@
 ---
 title: "Making complex numerical tables accessible in HTML"
 author: "Renato Mancuso"
-author_bio: "Renato Mancuso is a Senior Software Engineer at Bank of Italy."
+author_bio: "Renato Mancuso is a Senior Software Engineer at the Bank of Italy."
 date: 2026-12-17
 author_links:
   - label: "Personal website"
@@ -16,12 +16,12 @@ author_links:
   - label: "E-Mail"
     url: "mailto:rmancuso969@gmail.com"
     link_label: "rmancuso969 at gmail.com"
-intro: "<p>Is it feasible to write complex numerical tables in HTML that are compatible with screen readers whilst preserving their distinctive visual presentation?</p>"
+intro: "<p>Is it feasible to write complex numerical tables in HTML that are compatible with screen readers while preserving their distinctive visual presentation?</p>"
 image: "advent26_1"
 active: true
 ---
 
-Is it feasible to write complex numerical tables in HTML that are compatible with screen readers whilst preserving their distinctive visual presentation?
+Is it feasible to write complex numerical tables in HTML that are compatible with screen readers while preserving their distinctive visual presentation?
 
 The majority of complex numerical tables can be made accessible through the integration of semantic HTML with server-side and client-side processing via JavaScript.
 
@@ -39,7 +39,7 @@ This is unfortunate because in many instances they remain the sole method used f
 
 ## Simple and complex numerical tables
 
-We define a simple numerical table as a table that has one header row (the first row) and one header column (the first column) and that contains a single unlabelled group of data rows. In simple numerical tables the data rows are flat. Which means that there are no hierarchical relationships between them. 
+We define a simple numerical table as a table that has one header row (the first row) and one header column (the first column) and that contains a single unlabelled group of data rows. In simple numerical tables the data rows are flat. Which means that there are no hierarchical relationships between them.
 
 <figure>
 <img src="figure0a.png" alt="screenshot of Table a4.1, Styled HTML"/>
@@ -50,20 +50,20 @@ The data rows are flat. The "core" of the table is a dense matrix of numerical v
 Complex numerical tables are conversely tables that present **one or more** of the following features:
 
 - Column headers organised over multiple rows (hierarchical column headers)
-- Hierarchical relationships within data rows (hierarchical row headers) 
+- Hierarchical relationships within data rows (hierarchical row headers)
 - Data rows organised in multiple groups, each with its own label
 
 <figure>
 <img src="figure0b.png" alt="screenshot of Table a6.13, Styled HTML"/>
-<figcaption>Example of complex numerical table. The column headers span the first two rows. The table body is organised in two groups of rows labeled "Tuscany" and "Italy". Hierachical relationships between data rows are suggested via indentation.</figcaption>
+<figcaption>Example of complex numerical table. The column headers span the first two rows. The table body is organised in two groups of rows labelled "Tuscany" and "Italy". Hierarchical relationships between data rows are suggested via indentation.</figcaption>
 </figure>
 
 Coding simple numerical tables in HTML is relatively simple:
-they fall within what W3C calls [Tables with Two Headers](https://www.w3.org/WAI/tutorials/tables/two-headers/). 
+they fall within what W3C calls [Tables with Two Headers](https://www.w3.org/WAI/tutorials/tables/two-headers/).
 
-With respect to accessibility what matters in simple numerical tables is coding their header cells using `th` elements with the correct scope attribute value set. Which is `scope=col` for column headers and `scope=row` for row headers. 
+With respect to accessibility what matters in simple numerical tables is coding their header cells using `th` elements with the correct scope attribute value set. Which is `scope=col` for column headers and `scope=row` for row headers.
 
-After having done that, when navigating the table using the screen reader commands for bidirectional table navigation (Ctrl+Alt+Arrow keys when using NVDA or JAWS), data cell values are announced together with the corresponding headers text. 
+After having done that, when navigating the table using the screen reader commands for bidirectional table navigation (Ctrl+Alt+Arrow keys when using NVDA or JAWS), data cell values are announced together with the corresponding headers text.
 
 Which is what is needed for meaningfully consuming the data, as can be observed in this “[Using NVDA with tables](https://youtu.be/d-MBaU5d4Pk)” YouTube video by Pope Tech.
 
@@ -81,13 +81,13 @@ How should we ensure, then, that complex numerical tables coded in HTML are acce
 
 The first thing to consider is how a screen reader should behave when processing these tables, especially when reading numerical cell values.
 
-It is worth noting that screen readers do not announce table structures, and that is what non-sighted users are accustomed to. Table header roles are not announced (though you can set up JAWS to use a different voice when reading their text). Likewise, entering and exiting `tbody`, `tfoot` and `thead` elements is not announced nor there are commands to enumerate them or jump to their beginning and end. 
+It is worth noting that screen readers do not announce table structures, and that is what non-sighted users are accustomed to. Table header roles are not announced (though you can set up JAWS to use a different voice when reading their text). Likewise, entering and exiting `tbody`, `tfoot` and `thead` elements is not announced nor there are commands to enumerate them or jump to their beginning and end.
 
 Even with complex tables, therefore, reading a numerical cell requires hearing the matching header text together with the value.
 
 Thus, the first issue to address is: what constitutes meaningful text for hierarchical headers in complex tables?
 
-For column headers arranged hierarchically, the answer is clear: it is the text formed by joining the full hierarchy. Recent versions (2026) of JAWS and NVDA follow this approach.
+For column headers arranged hierarchically, the answer is clear: it is the text formed by joining the full hierarchy. Recent versions of JAWS (e.g. version 2026.2609.84) and NVDA (e.g. version 2026.1) follow this approach.
 
 For rows organised hierarchically, the solution must be consistent. Irrespective of whether the hierarchy is presented via indentation or alternative layouts, a mechanism must be provided for screen readers to read the combined hierarchy of row headers.
 
@@ -97,17 +97,17 @@ Readers interested in reviewing the solutions described here may consult the com
 
 [https://renatomancuso.com/htmhell2026/](https://renatomancuso.com/htmhell2026/).
 
-Every table included in this article originates from that source. To locate the table in the HTML version of the statistical appendix, look for the given table identifier, such as “Table a2.1”. 
+Every table included in this article originates from that source. To locate the table in the HTML version of the statistical appendix, look for the given table identifier, such as “Table a2.1”.
 
 Please note that, for the reasons discussed in this article, the HTML page source of the statistical appendix and what you see in the DOM — for example by using the Elements panel in Chrome DevTools — are different.
 
-The JavaScript code used for processing the HTML page source as described in this article can also be reviewed at that address. 
+The JavaScript code used for processing the HTML page source as described in this article can also be reviewed at that address.
 
 Let us now examine each case individually.
- 
+
 ## Making hierarchical column headers accessible
 
-If you are targeting the latest versions (2026) of NVDA and JAWS, coding the table header using semantic HTML is all that is needed to make hierarchical column headers accessible.
+If you are targeting only the latest versions of NVDA and JAWS - like the aforementioned versions 2026.1 of NVDA and 2026.2609.84 of JAWS - coding the table header using semantic HTML might be all that is needed to make hierarchical column headers accessible.
 
 Let’s take for example the table header shown in the following figure:
 
@@ -141,9 +141,9 @@ To code it using semantic HTML, wrap the header rows in a `thead` element, use `
 </table>
 ```
 
-In a few years, this approach will probably be sufficient for coding accessible hierarchical column headers. 
+In a few years, this approach will probably be sufficient for coding accessible hierarchical column headers.
 
-However, if you want to support older versions of NVDA and JAWS — or any screen reader — you must transform this semantic HTML code into an alternative form.
+However, if you wish to support older versions of NVDA and JAWS — or any screen reader that can read simple numerical tables as demonstrated for NVDA in the video by Pope Tech — you need to convert this semantic HTML code into another form.
 
 There are two principal reasons.
 
@@ -151,11 +151,11 @@ First, header cells spanning multiple rows confuse many screen readers, leading 
 
 Second, many screen readers link data cells only to the column header in the final, bottom-most table header row; ancestor column headers are ignored.
 
-To overcome these limitations we must therefore: 
+To overcome these limitations we must therefore:
 - avoid using header cells spanning multiple rows (step 1)
-- make sure the final header row includes, for every data column, a column header cell containing the full text that we want the screen reader to announce (step 2) 
+- make sure the final header row includes, for every data column, a column header cell containing the full text that we want the screen reader to announce (step 2)
 
-Avoiding header cells spanning multiple rows is straightforward: add as many cells in the rows below as needed and remove the `rowspan` attribute from the original cell. 
+Avoiding header cells spanning multiple rows is straightforward: add as many cells in the rows below as needed and remove the `rowspan` attribute from the original cell.
 
 The header text must then be moved to the generated bottom-most header cell to prevent empty column header cells in the last header row.
 
@@ -212,31 +212,31 @@ This is how we need to transform it to remove header cells in `rowspan` (step 1)
 </table>
 ```
 
-This is a transformation that we might code in JavaScript and perform on the client browser. But it is more convenient doing it server-side, as performing it client-side will likely cause a large [Cumulative Layout Shift](https://web.dev/articles/cls). 
+This is a transformation that we might code in JavaScript and perform on the client browser. But it is more convenient doing it server-side, as performing it client-side will likely cause a large [Cumulative Layout Shift](https://web.dev/articles/cls).
 
 This transformation carries an additional cost though, as column headers intended for print are typically arranged from top to bottom whereas our converted HTML version is now laid out from bottom to top.
 
 The two figures below show the difference in visual arrangement between the original PDF table (in Italian) and its HTML version (translated into English):
 
 <figure>
-<img src="figure1.png" alt="screenshot of table header of Table a1.2, original PDF"/>
+<img src="figure1.png" alt="screenshot of table header of Table a1.2, original PDF. The column headers span the first two rows. The first row contains 4 header cells, with the fourth one spanning three columns. The first three column header cells span both rows. The second row contains the column headers for the last three columns."/>
 <figcaption>Hierarchical column headers (original PDF, Italian)</figcaption>
 </figure>
- 
+
 <figure>
-<img src="figure2.png" alt="screenshot of table header from Table a1.2, styled HTML"/>
+<img src="figure2.png" alt="screenshot of table header from Table a1.2, styled HTML. The column headers span the first two rows. The first row contains 4 header cells: the first 3 are blank; the fourth header cell spans three columns. The second row contains 6 column headers, one per column."/>
 <figcaption>Hierarchical column headers (HTML version, English translation)</figcaption>
 </figure>
 
 However, although the headers’ visual alignment varies between the two versions, the visually perceived hierarchy remains unchanged.
 
-The next step (step 2) is to silence all header rows **but the bottom-most one** by marking them with `aria-hidden="true"` and prepend the combined ancestors header text in each of the headers cells of the bottom-most header row. 
+The next step (step 2) is to silence all header rows **but the bottom-most one** by marking them with `aria-hidden="true"` and prepend ancestor header text in headers cells of the bottom-most header row.
 
-To maintain the visual layout, we place the ancestors header text into a `div` element hidden to sighted users but perceivable by screen readers. This can be achieved, for example, by [using a suitable css class on the div element to visually hide it](https://www.a11yproject.com/posts/how-to-hide-content/).   
+To maintain the visual layout, we silence the original header text by putting it inside a span with aria-hidden=“true”, while placing the new header text into a `span` element hidden to sighted users but perceivable by screen readers. Hiding content to visual users can be achieved, for example, by [using a suitable css class on the `span` element to visually hide it](https://www.a11yproject.com/posts/how-to-hide-content/).
 
-From the screen reader’s viewpoint, the table header now consists of a single row — as it was the case with simple numerical tables — and reading the data cells produces a header announcement corresponding to the text obtained by concatenating the full hierarchy of the column headers standing above them. 
+From the screen reader’s viewpoint, the table header now consists of a single row — as it was the case with simple numerical tables — and reading the data cells produces a header announcement corresponding to the text obtained by concatenating the full hierarchy of the column headers standing above them.
 
-Except that, this time, concatenating the headers text was done by our JavaScript code and did not depend on the user's screen reader capabilities.
+Except that, this time, concatenating header text was done by our JavaScript code and did not depend on the user's screen reader capabilities.
 
 Let’s view this in code. What follows is the final markup our JavaScript code must generate to ensure that a screen reader announces the complete hierarchy of column headers text while reading data cells (step 2):
 
@@ -256,22 +256,22 @@ Let’s view this in code. What follows is the final markup our JavaScript code 
         <th scope="col">Absolute values</th>
         <th scope="col">Share %</th>
         <th scope="col">
-           <div class="visually-hidden">
-              Percentage change over the previous year
-           </div>
-           2019
+           <span class="visually-hidden">
+              Percentage change over the previous year, 2019
+           </span>
+           <span aria-hidden="true">2019</span>
         </th>
         <th scope="col">
-           <div class="visually-hidden">
-              Percentage change over the previous year
-           </div>
-           2020
+           <span class="visually-hidden">
+              Percentage change over the previous year, 2020
+           </span>
+           <span aria-hidden="true">2020</span>
         </th>
         <th scope="col">
-           <div class="visually-hidden">
-              Percentage change over the previous year
-           </div>
-           2021
+           <span class="visually-hidden">
+              Percentage change over the previous year, 2021
+           </span>
+           <span aria-hidden="true">2021</span>
         </th>    
      </tr>
   </thead>
@@ -280,23 +280,23 @@ Let’s view this in code. What follows is the final markup our JavaScript code 
   </tbody>   
 </table>
 ```
-  
+
 Just a brief note. When I say our JavaScript code must generate a given target HTML, what I really mean is that it should manipulate the DOM tree in such a way that the final DOM elements match those that would be created by parsing the target HTML.
 
-Except for step 1 manipulations, all other references to JavaScript in this article assume that these DOM manipulations are performed at page load in the client browser.
-  
+With the exception of step 1 manipulations, all other references to JavaScript in this article assume that these DOM manipulations are performed at page load in the client browser.
+
 ## Making hierarchical relationships between data rows accessible
 
-Let’s now examine the case of hierarchical relationships between data rows. 
+Let’s now examine the case of hierarchical relationships between data rows.
 
 These relationships are frequently — though not invariably — shown by indenting the related row headers, as illustrated in the figure below:
 
 <figure>
-<img src="figure3.png" alt="screenshot of Table a5.5 (HTML version)"/>
+<img src="figure3.png" alt="screenshot of Table a5.5 (HTML version). The first column contain the following row headers: Public administration (not indented); Financial and insurance companies (not indented); Non-financial private sector (not indented); Companies (indented by 1 space); Medium-large (indented by 2 spaces); Small (indented by 2 spaces); of which producing families (indented by 3 spaces); Consumer families (indented by 1 space); Total (not indented)."/>
 <figcaption>Hierarchical relationships between data rows represented by visual indentation</figcaption>
 </figure>
 
-Translating these layouts to HTML involves two separate issues. 
+Translating these layouts to HTML involves two separate issues.
 
 The first is visual. In non-web documents, indentation comes from inserting spaces before the header text. This fails during HTML conversion because leading spaces are normally removed during rendering, so the indentation disappears.
 
@@ -429,7 +429,7 @@ Why not use `aria-level` or the `id` and `headers` attributes?
 
 `aria-level` behaviour deviates from our intent, since we seek to replicate how data cells are read in simple tables extended to complex ones.
 
-By using `id` and `headers` we can achieve something close to what we want. But we would have to use the `id` and `header`s solution for all row and column headers and for each data cell. Which means that writing and maintaining the HTML table code would be a nightmare. Furthermore, not all screen readers support `id` and `headers` or handle them in the same way.
+By using `id` and `headers` we can achieve something close to what we want. But we would have to use the `id` and `headers` solution for all row and column headers and for each data cell. Which means that writing and maintaining the HTML table code would be a nightmare. Furthermore, not all screen readers support `id` and `headers` or handle them in the same way.
 
 ## Handling multiple groups of rows and row group labels
 
@@ -443,24 +443,20 @@ In complex numerical tables, rows are often arranged in multiple groups, with ea
 Centring the label of the group above the data cells is not the only choice. For example, the label could align left while the data rows are indented. Or, the label might align left and have a bold weight while the data rows are unindented and normal weight. One way to separate these latter cases from genuine hierarchical headers is the lack of non-empty data cells in the row.
 
 <figure>
-<img src="figure5.png" alt="screenshot of Table a4.8"/>
+<img src="figure5.png" alt="screenshot of Table a4.8. The data rows are organised into two groups, labelled 'Families with 1 member' and 'Families with 2 members'. The group label are bold and left aligned. The data rows appear left-aligned and in normal weight, indented by one space beneath the group label."
+/>
 <figcaption>Example of group labels left aligned with indented data rows</figcaption>
 </figure>
 
-The HTML Standard covers tables with multiple row groups (multiple `tbody` elements) and describes how to code [headers aligned with those groups](https://html.spec.whatwg.org/multipage/tables.html#the-th-element):
+The HTML Standard covers tables with multiple row groups (multiple `tbody` elements) and describes [how to code headers aligned with those groups](https://html.spec.whatwg.org/commit-snapshots/0e292f402d0c3dd17fe00c1bb2ef3a3c94cd8bce/#the-th-element) (please note that the link leads to the 20 November 2026 snapshot of the HTML Living Standard).
 
-<figure>
-<img src="figure6.png" alt="screenshot from the current version of the HTML Living Standard (November 2026)"/>
-<figcaption>Definition and example of <code>th</code> elements having <code>scope=rowgroup</code></figcaption>
-</figure>
+Unfortunately, current support for `th` elements with `scope=rowgroup` placed in `colspan` above the data rows is inconsistent across products.
 
-Unfortunately, current support for `th` elements with `scope=rowgroup` placed in `colspan` above the data rows is inconsistent across products. 
+Furthermore, apart from the most recent versions of NVDA, the observed behaviour differs from our goal: group labels should be announced only once upon entering the corresponding row group.
 
-Furthermore, apart from the most recent versions (2026) of NVDA, the observed behaviour differs from our goal: group labels should be announced only once upon entering the corresponding row group.
+Which seems to be what every screen reader does when it instead reads a data cell spanning the whole row.
 
-Which seems to be what every screen reader does when it instead reads a data cell spanning the whole row. 
-
-Consequently, as screen reader users are accustomed to not be alerted of table structural elements, a practical but likely disputed approach to meet our goal would be to code the label as a `td` element rather than as a `th` element. 
+Consequently, as screen reader users are accustomed to not be alerted of table structural elements, a practical but likely disputed approach to meet our goal would be to code the label as a `td` element rather than as a `th` element.
 
 Alternatively, to better align with our strategy to use semantic HTML, we can code the label as a `th` element with `scope=rowgroup` and convert it to a `td` element once the page loads in the user’s browser.
 
@@ -535,19 +531,42 @@ Missing values should be stated explicitly. Economics and statistics papers ofte
 
 For example:
 
-| representation | meaning |
-|:--|:--|
-| – | the phenomenon does not exist |
-| .... | the phenomenon exists but its value is not known |
-| .. | the value is nil or less than half the final digit shown |
-| :: | not statistically significant |
-| () | provisional |
+| representation | meaning                                                  |
+|:---------------|:---------------------------------------------------------|
+| –              | the phenomenon does not exist                            |
+| ....           | the phenomenon exists but its value is not known         |
+| ..             | the value is nil or less than half the final digit shown |
+| ::             | not statistically significant                            |
+| ()             | provisional                                              |
 
 As screen readers generally omit punctuation, hidden text should be employed to enhance each instance. For example, when ‘–’ appears as a data cell value, enclose the value in a `span` with `aria-hidden="true"` and add a visually hidden `div` with the corresponding meaning text so that the cell is read as ‘the phenomenon does not exist’.
+
+## Screen reader/browser/OS
+
+The solutions presented in this article have been tested primarily under Windows 11 with JAWS and NVDA.
+
+A few tests have also been performed under macOS with VoiceOver.
+
+No tests have been performed with Windows Narrator.
+
+The main screen reader/browser/OS combinations used were the following ones:
+
+### JAWS
+- JAWS (2025.2508), Edge and Chrome, Windows 11
+- JAWS (2026.2609.84), Edge, Windows 11
+
+### NVDA
+- NVDA (2025), Firefox, Windows 11
+- NVDA (2026.1), Firefox, Windows 11
+
+### VoiceOver
+- VoiceOver, Safari, macOS Monterey (12.7.6)
+- VoiceOver, Safari, macOS Golden Gate (27.2.1)
 
 ## Further reading
 
 - [Penn State University - Tables](https://accessibility.psu.edu/tables/)
-- [HTML Living Standard - Tabular data](https://html.spec.whatwg.org/multipage/tables.html#header-and-data-cell-semantics)
+- [HTML Living Standard - Tabular data](https://html.spec.whatwg.org/multipage/tables.html#tables)
 - [Tables with Two Headers (part of WAI Table Tutorials)](https://www.w3.org/WAI/tutorials/tables/two-headers/)
 - [Design Better Data Tables](https://medium.com/mission-log/design-better-data-tables-430a30a00d8c)
+- [Screen Reader HTML Support - td element (TetraLogical)](https://tetralogical.github.io/screen-reader-HTML-support/lookup/lookup.html#td)
