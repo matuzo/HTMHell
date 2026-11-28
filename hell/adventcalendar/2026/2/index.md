@@ -33,7 +33,9 @@ Chrome is currently working on making this into a default [in-built browser feat
 </canvas>
 ```
 
-We set to work adding in fallback HTML to closely resemble what was on the screen. However we found that these are not traditional web pages, and do not resemble them in any way. How to match the components to the closest HTML element that makes sense? How to fill in the gaps when that wasn’t possible?
+The alternative would have been to re-write all of the thousands of activities, that are being used world wide by millions of students in more modern HTML, CSS and JavaScript. Adding in fallback HTML was picked as a lower risk option, that could be released incrementally without disrupting any students from their learning.
+
+We set to work adding in fallback HTML to closely resemble what was on the screen. However these are not traditional web pages, and do not resemble them in any way. How to match the components to the closest HTML element that makes sense? How to fill in the gaps when that wasn’t possible?
 
 <p class="highlight"><strong>Note:</strong> Adding the HTML inside the Canvas was advised in the documentation, but we found it <a href="https://bugs.webkit.org/show_bug.cgi?id=50126" target="_blank">wasn't compatible with Safari</a>. Adding it afterwards fixed the issue.</p>
 
