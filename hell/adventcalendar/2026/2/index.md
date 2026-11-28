@@ -21,7 +21,7 @@ Canvas elements, however, are not accessible to keyboards and screen readers. Th
 
 ## The Fallback
 
-Our accessibility team researched potential ways to make the activities more accessible and discovered that Canvas elements are designed to have fallback HTML in case they don’t load, which can be harnessed for accessibility. By having fallback HTML the screen reader can read out what’s on the screen. Interactive elements, such as links and buttons, can also be linked to images and text on the Canvas with JavaScript, to mimic that interactivity and add focus states when using a keyboard.
+Our accessibility team researched potential ways to make the activities more accessible and discovered that Canvas elements are designed to have fallback HTML in case they don’t load, which can be harnessed for accessibility. By having fallback HTML the screen reader can read out what’s on the screen. Interactive elements, such as links and buttons, can also be linked to images and text on the Canvas with JavaScript, to mimic that interactivity and add focus states when using a keyboard. The way we developed this was inspired from this [Canvas demo by Paul J. Adam](https://pauljadam.com/demos/canvas.html).
 
 Chrome is currently working on making this into a default [in-built browser feature](https://developer.chrome.com/docs/modern-web-guidance/guides/visual-design/expose-canvas-content-to-browser-features). Exposing the HTML content inside the Canvas element to the browser itself with the `content="drawable"` attribute in order to improve accessibility. However this is not standard practice yet and has limited browser support.
 
@@ -73,7 +73,7 @@ Next we have the top bar header landmark element. There aren’t any words in th
 
 ![A screenshot of the audio button with a custom keyboard focus outline.](../../../images/advent2026/2/focus-button.png)
 
-Finally a button that replays the instructions that were given on the introduction page. Helpful for many an impatient child who clicks play before finishing reading the instructions. As buttons are operable by the keyboard, this HTML was also linked to the Canvas object with JavaScript, so when the HTML button is in keyboard focus a custom focus outline appears around the Canvas object, in a similar way a real button would in the browser. While I can’t share this code directly, here is a [demo example we used to get started by Paul J. Adam](https://pauljadam.com/demos/canvas.html).
+Finally a button that replays the instructions that were given on the introduction page. Helpful for many an impatient child who clicks play before finishing reading the instructions. As buttons are operable by the keyboard, this HTML was also linked to the Canvas object with JavaScript, so when the HTML button is in keyboard focus a custom focus outline appears around the Canvas object, in a similar way a real button would in the browser.
 
 ### The Activity
 
