@@ -89,10 +89,10 @@ Each activity starts the same way. With a named `<section>` to highlight this Ca
 </section>
 ```
 
-For the Letter Grid activity, we chose to mark-up the letters as HTML buttons inside an unordered list. This allows the keyboard user to tab between each letter and also the screen reader user to hear how many items are in the list. Each letter button has the `disabled` attribute added when selected correctly, so users can’t unselect the button, which mimics the existing visual and mouse usability.
+For the Letter Grid activity, we chose to mark-up the letters as HTML buttons inside an unordered list. This allows the keyboard user to tab between each letter and also the screen reader user to hear how many items are in the list. When a child presses the button of the letter they are looking for, the button changes colour and behind the scenes we add the the `disabled` attribute so users can’t press the button again, which mimics the existing visual and mouse interactions.
 
 ```html
-<li><button disabled="">i</button></li>
+<li><button disabled="true">i</button></li>
 <li><button>o</button></li>
 <li><button>o</button></li>
 <li><button>r</button></li>
