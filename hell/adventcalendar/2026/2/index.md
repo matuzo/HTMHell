@@ -106,7 +106,7 @@ Like the audio button in the top bar, custom focus styles were added to the lett
 ![A screenshot of a letter button with a custom keyboard focus outline.](../../../images/advent2026/2/focus-letter.png)
 
 ### The Feedback
-If the child selects the wrong answer a “wrong” sound is played and the life counter goes down. In addition a hidden error message is read out, giving them more information like this:
+If the child selects the wrong answer a “wrong” sound is played and the life counter goes down. In addition a hidden error message is read out, giving them more information like this (this could also be achieved by adding `role="status"`):
 
 ```html
 <div aria-live="polite" aria-atomic="true">"l" is incorrect. Try again.</div>
